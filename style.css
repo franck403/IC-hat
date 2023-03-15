@@ -28,7 +28,9 @@ body {
     width: 20%;
     border:1px solid #ccc!important;
     border-radius: 20px;
+    border-style: solid;
     font-size: 16px;
+    display: flex;
     outline: none;
     position: absolute;
 }
@@ -37,16 +39,17 @@ body {
     border: none;
     font-size: 16px;
     outline: none;
-    padding-inline-start: 28px;
+    padding-inline-start: 2px;
     width: 40%;
+    margin-left: 10px;
     height: 37px;
+    background:none;
 }
 
 .search_image {
     position: absolute;
     right: 0;
     top: 10px;
-    display: flex;
     align-self: center;
     padding-right: 14px;
     outline: none;
