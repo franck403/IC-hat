@@ -15,9 +15,13 @@ body {
     grid-area: 1 / 1 / 2 / 2; 
     display:block;
     background: red;
+    border-right:1px #bbbbbb;
+    border-right-style: solid;
 }
 .message { 
     grid-area: 1 / 2 / 2 / 3; 
     display: block;
     background: blue;
+    border-left:1px #bbbbbb;
+    border-left-style: solid;
 }
