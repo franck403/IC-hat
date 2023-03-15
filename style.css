@@ -12,14 +12,14 @@ body {
 }
 
 .contact { 
-    grid-area: 1 / 2 / 2 / 3; 
+    grid-area: 1 / 1 / 2 / 2; 
     display:block;
     background: red;
     height: 100%;
     width: 20%;
 }
 .message { 
-    grid-area: 1 / 1 / 2 / 2; 
+    grid-area: 1 / 2 / 2 / 3; 
     display: block;
     background: blue;
     height: 100%;
