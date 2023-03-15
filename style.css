@@ -25,3 +25,7 @@ body {
     border-left:1px solid #ccc!important;
     border-left-style: solid;
 }
+.search {
+    border:1px solid #ccc!important;
+    border-radius: 5px;
+}
