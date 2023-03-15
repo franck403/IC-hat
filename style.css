@@ -28,4 +28,17 @@ body {
 .search {
     border:1px solid #ccc!important;
     border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    padding-inline-start: 4px;
+    height: 44px;
 }
+.search_form {
+    border: none;
+    border-radius: calc(0.5 * 44px);
+    font-size: 16px;
+    outline: none;
+    position: relative;
+    width: 20%;
+}
+/* https://splendorous-hamster-ecd34b.netlify.app/ */
