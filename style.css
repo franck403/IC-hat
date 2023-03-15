@@ -25,8 +25,9 @@ body {
 }
 .search_form {
     border: none;    
+    width: 20%;
     border:1px solid #ccc!important;
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 16px;
     outline: none;
     position: absolute;
