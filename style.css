@@ -1,3 +1,8 @@
+body {
+    margin:0;
+}
+
+
 .main {
     display: grid;
     grid-template-columns: 20% 80%;
@@ -10,9 +15,13 @@
     grid-area: 1 / 2 / 2 / 3; 
     display:block;
     background: red;
+    height: 100%;
+    width: 20%;
 }
 .message { 
     grid-area: 1 / 1 / 2 / 2; 
     display: block;
     background: blue;
+    height: 100%;
+    width: 80%;
 }
