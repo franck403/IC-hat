@@ -37,5 +37,26 @@ body {
     font-size: 16px;
     outline: none;
     position: relative;
-    width: 20%;
+}
+
+.search {
+    border: none;
+    border-radius: calc(0.5 * 44px);
+    font-size: 16px;
+    outline: none;
+    padding-inline-end: 40px;
+    padding-inline-start: 20px;
+    width: 80%;
+    height: 44px;
+}
+
+.search_image {
+    position: absolute;
+    right: 0;
+    top: -2.5px;
+    bottom: 0;
+    display: flex;
+    align-self: center;
+    padding-right: 14px;
+    outline: none;
 }
