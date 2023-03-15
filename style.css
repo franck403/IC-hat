@@ -34,20 +34,17 @@ body {
 
 .search {
     border: none;
-    border-radius: calc(0.5 * 44px);
     font-size: 16px;
     outline: none;
-    padding-inline-end: 40px;
-    padding-inline-start: 20px;
-    width: 80%;
-    height: 44px;
+    padding-inline-start: 28px;
+    width: 40%;
+    height: 37px;
 }
 
 .search_image {
     position: absolute;
     right: 0;
-    top: -2.5px;
-    bottom: 0;
+    top: 10px;
     display: flex;
     align-self: center;
     padding-right: 14px;
