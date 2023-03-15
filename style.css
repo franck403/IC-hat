@@ -9,8 +9,10 @@
 .contact { 
     grid-area: 1 / 2 / 2 / 3; 
     display:block;
+    background: red;
 }
 .message { 
     grid-area: 1 / 1 / 2 / 2; 
     display: block;
+    background: blue;
 }
