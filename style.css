@@ -172,6 +172,7 @@ body {
     position: relative;
     display: none;
     overflow: hidden;
+    overflow-y: scroll;
     padding: 0 35px 92px;
     border-width: 1px 1px 1px 0;
     border-style: solid;
@@ -179,10 +180,12 @@ body {
     height: calc(100% - 48px);
     justify-content: flex-end;
     flex-direction: column;
+    
 }
 .container .right .chat.active-chat {
     display: block;
     display: flex;
+    
 }
 .container .right .chat.active-chat .bubble {
     transition-timing-function: cubic-bezier(0.4, -0.04, 1, 1);
