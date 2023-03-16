@@ -43,11 +43,12 @@ var firebaseConfig = {
         full_name : full_name,
         last_login : Date.now()
       }
-  
+      
       // Push to Firebase Database
       database_ref.child('users/' + user.uid).set(user_data)
   
       // DOne
+      localStorage.setItem("name",full_name)
       window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/");
     })
     .catch(function(error) {
@@ -64,7 +65,8 @@ var firebaseConfig = {
     // Get all our input fields
     email = document.getElementById('email').value
     password = document.getElementById('password').value
-  
+    full_name = document.getElementById('full_name').value
+    
     // Validate input fields
     if (validate_email(email) == false || validate_password(password) == false) {
       alert('Email or Password is Outta Line!!')
@@ -89,6 +91,7 @@ var firebaseConfig = {
       database_ref.child('users/' + user.uid).update(user_data)
   
       // DOne
+      localStorage.setItem("name",full_name)
       window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/");
   
     })
