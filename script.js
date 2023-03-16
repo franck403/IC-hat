@@ -45,11 +45,11 @@ onChildAdded(newMsg, (data) => {
     if(data.val().name != myName) {
         var html = `<div class="bubble you">${ data.val().message }</div>`
         const d1 = document.querySelector('[data-chat="person1"]');
-        d1.insertAdjacentHTML('chat', html);
+        d1.innerHTML = d1.innerHTML + html
     }else{
         var html = `<div class="bubble me">${ data.val().message }</div>`
-        var d1 = document.getElementById('bodyContent');
-        d1.insertAdjacentHTML('chat', html);
+        const d1 = document.querySelector('[data-chat="person1"]');
+        d1.innerHTML = d1.innerHTML + html
     }
 });
 
