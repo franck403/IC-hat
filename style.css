@@ -232,8 +232,7 @@ body {
 }
 .container .right .write input {
     font-size: 16px;
-    float: left;
-    width: 347px;
+    width: 90%;
     height: 40px;
     padding: 0 10px;
     color: var(--dark);
