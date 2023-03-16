@@ -1,5 +1,5 @@
-document.querySelector('.chat[data-d-chat=person2]').classList.add('active-chat')
-document.querySelector('.person[data-chat=person2]').classList.add('active')
+document.querySelector('.chat[data-chat=person1]').classList.add('active-chat')
+document.querySelector('.person[data-d-chat=person1]').classList.add('active')
 
 let friends = {
     list: document.querySelector('ul.people'),
