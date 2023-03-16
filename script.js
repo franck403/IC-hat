@@ -69,27 +69,3 @@ onChildAdded(newMsg, (data) => {
         d1.innerHTML = d1.innerHTML + html
     }
 });
-
-App.initializeApp() 
-var initApp = function() {
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-    // User is signed in.
-    var displayName = user.displayName;
-    var email = user.email;
-    var emailVerified = user.emailVerified;
-    var photoURL = user.photoURL;
-    var uid = user.uid;
-    var myname = displayName
-    user.getIdToken().then(function(accessToken) {});
-    } else {
-        window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login");
-    }
-}, function(error) {
-    console.log(error);
-});
-};
-
-window.addEventListener('load', function() {
-initApp()
-});
