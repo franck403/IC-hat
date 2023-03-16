@@ -43,17 +43,17 @@ send.addEventListener('click', (e) => {
 const newMsg = ref(database, 'messages/');
 onChildAdded(newMsg, (data) => {
     if(data.val().name != myName) {
-        html = `<div class="bubble you">${ data.val().message }</div>`
+        var html = `<div class="bubble you">${ data.val().message }</div>`
         const d1 = document.querySelector('[data-chat="person1"]');
         d1.insertAdjacentHTML('chat', html);
     }else{
-        html = `<div class="bubble me">${ data.val().message }</div>`
+        var html = `<div class="bubble me">${ data.val().message }</div>`
         var d1 = document.getElementById('bodyContent');
         d1.insertAdjacentHTML('chat', html);
     }
 });
 
-initApp = function() {
+var initApp = function() {
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
     // User is signed in.
