@@ -53,26 +53,24 @@ onChildAdded(newMsg, (data) => {
     }
 });
 
-
- // FirebaseUI config.
- var uiConfig = {
-    signInSuccessUrl: '<url-to-redirect-to-on-success>',
-    signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.EmailAuthProvider.PROVIDER_ID
-    ],
-    // tosUrl and privacyPolicyUrl accept either url string or a callback
-    // function.
-    // Terms of service url/callback.
-    tosUrl: 'https://splendorous-hamster-ecd34b.netlify.app/',
-    // Privacy policy url/callback.
-    privacyPolicyUrl: function() {
-      window.location.assign('https://splendorous-hamster-ecd34b.netlify.app/');
+initApp = function() {
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+    // User is signed in.
+    var displayName = user.displayName;
+    var email = user.email;
+    var emailVerified = user.emailVerified;
+    var photoURL = user.photoURL;
+    var uid = user.uid;
+    user.getIdToken().then(function(accessToken) {});
+    } else {
+        window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login");
     }
-  };
+}, function(error) {
+    console.log(error);
+});
+};
 
-  // Initialize the FirebaseUI Widget using Firebase.
-  var ui = new firebaseui.auth.AuthUI(firebase.auth());
-  // The start method will wait until the DOM is loaded.
-  ui.start('#firebaseui-auth-container', uiConfig);
+window.addEventListener('load', function() {
+initApp()
+});
