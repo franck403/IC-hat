@@ -56,18 +56,19 @@ send.addEventListener('click', (e) => {
 });
 send2.addEventListener("keydown", (e) => {
     if (event.keyCode == 13) {
-        
-        var name = myName;
-        var message = document.getElementById("content")
-        const id = push(child(ref(database), 'messages')).key;
-        var friend = "none"
+        if (document.getElementById('content').value != "") {
+            var name = myName;
+            var message = document.getElementById("content")
+            const id = push(child(ref(database), 'messages')).key;
+            var friend = "none"
 
-        set(ref(database, 'messages/' + id), {
-            name: name,
-            allow:friend,
-            message: message.value
-        });
-        document.getElementById('content').value = "";
+            set(ref(database, 'messages/' + id), {
+                name: name,
+                allow:friend,
+                message: message.value
+            });
+            document.getElementById('content').value = "";
+        } else {}
     } else {}
 });
 
