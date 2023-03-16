@@ -18,9 +18,6 @@ body {
     text-rendering: optimizeLegibility;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
-    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/image.jpg');
-    background-size: cover;
-    background-repeat: none;
 }
 .wrapper {
     position: relative;
@@ -165,7 +162,7 @@ body {
 .container .right {
     position: relative;
     float: left;
-    width: 62.4%;
+    width: 100%;
     height: 100%;
 }
 .container .right .top {
