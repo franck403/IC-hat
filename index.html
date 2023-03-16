@@ -10,47 +10,6 @@
         <script type="text/babel" src="babel_script.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-auth-compat.js"></script>
-        <script type="module">
-            // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-            const firebaseConfig = {
-              apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
-              authDomain: "ic-hat.firebaseapp.com",
-              databaseURL: "https://ic-hat-default-rtdb.firebaseio.com",
-              projectId: "ic-hat",
-              storageBucket: "ic-hat.appspot.com",
-              messagingSenderId: "720687529085",
-              appId: "1:720687529085:web:2d964e880c5e2398058514",
-              measurementId: "G-YC8K0D7GLR"
-            };          
-            // Initialize Firebase
-            const App = initializeApp(firebaseConfig);
-        </script>
-        <script type="text/javascript">
-        initApp = function() {
-            firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                // User is signed in.
-                var displayName = user.displayName;
-                var email = user.email;
-                var emailVerified = user.emailVerified;
-                var photoURL = user.photoURL;
-                var uid = user.uid;
-                var phoneNumber = user.phoneNumber;
-                var providerData = user.providerData;
-            } else {
-            }
-            }, function(error) {
-            console.log(error);
-            });
-        };
-        try {
-        window.addEventListener('load', function() {
-            initApp()
-        });} catch {
-            console.error("error on the login")
-        }
-        </script>
     </head>
     <body>
         <div>
