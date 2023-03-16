@@ -32,7 +32,6 @@ const send2 = document.getElementById("content");
 send.addEventListener('click', (e) => {
     var name = myName;
     var message = document.getElementById("content")
-    var friend = f.querySelector('.name').innerText
     const id = push(child(ref(database), 'messages')).key;
 
     set(ref(database, 'messages/' + id), {
@@ -46,7 +45,6 @@ send.addEventListener('click', (e) => {
 send2.addEventListener('enter', (e) => {
     var name = myName;
     var message = document.getElementById("content")
-    var friend = f.querySelector('.name').innerText
     const id = push(child(ref(database), 'messages')).key;
 
     set(ref(database, 'messages/' + id), {
