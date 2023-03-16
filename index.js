@@ -1,4 +1,13 @@
+console.log("-----------------------------");
 
+var keys = localStorage.getItem("name");
+
+if (keys != null) {window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/");}
+else {}
+
+console.log("-----------------------------");
+console.log("finish generating the session");
+console.log("-----------------------------");
 
 var firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
