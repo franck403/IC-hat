@@ -35,7 +35,7 @@ send.addEventListener('click', (e) => {
 
     set(ref(database, 'messages/' + id), {
         name: name,
-        message: message
+        message: message.value
     });
     document.getElementById('content').value = "";
 });
