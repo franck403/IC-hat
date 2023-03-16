@@ -70,6 +70,7 @@ onChildAdded(newMsg, (data) => {
     }
 });
 
+App.initializeApp() 
 var initApp = function() {
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
