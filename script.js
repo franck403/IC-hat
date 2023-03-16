@@ -44,6 +44,7 @@ const send2 = document.getElementById("content");
 send.addEventListener('click', (e) => {
     var name = myName;
     var message = document.getElementById("content")
+    var friend = "none"
     const id = push(child(ref(database), 'messages')).key;
 
     set(ref(database, 'messages/' + id), {
@@ -53,18 +54,21 @@ send.addEventListener('click', (e) => {
     });
     document.getElementById('content').value = "";
 });
+send2.addEventListener("keydown", (e) => {
+    if (event.keyCode == 13) {
+        
+        var name = myName;
+        var message = document.getElementById("content")
+        const id = push(child(ref(database), 'messages')).key;
+        var friend = "none"
 
-send2.addEventListener('enter', (e) => {
-    var name = myName;
-    var message = document.getElementById("content")
-    const id = push(child(ref(database), 'messages')).key;
-
-    set(ref(database, 'messages/' + id), {
-        name: name,
-        allow:friend,
-        message: message.value
-    });
-    document.getElementById('content').value = "";
+        set(ref(database, 'messages/' + id), {
+            name: name,
+            allow:friend,
+            message: message.value
+        });
+        document.getElementById('content').value = "";
+    } else {}
 });
 
 const newMsg = ref(database, 'messages/');
