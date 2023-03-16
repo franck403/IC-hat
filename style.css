@@ -255,7 +255,8 @@ body {
 }
 .container .right .write .write-link.smiley:before {
     display: inline-block;
-    float: left;
+    position: absolute;
+    right: 40px;
     width: 20px;
     height: 42px;
     content: '';
@@ -265,7 +266,8 @@ body {
 }
 .container .right .write .write-link.send:before {
     display: inline-block;
-    float: left;
+    position: absolute;
+    right: 11px;
     width: 20px;
     height: 42px;
     margin-left: 11px;
