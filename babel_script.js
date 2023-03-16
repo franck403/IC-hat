@@ -27,5 +27,6 @@ function setAciveChat(f) {
   chat.current.classList.remove('active-chat')
   chat.container.querySelector('[data-chat="' + chat.person + '"]').classList.add('active-chat')
   friends.name = f.querySelector('.name').innerText
+  f.querySelector('.name').innerText = name
   chat.name.innerHTML = friends.name
 }
