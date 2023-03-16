@@ -23,7 +23,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
-var myname = ""
+var myname = "test"
 
 
 const send = document.getElementById("send");
