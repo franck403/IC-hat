@@ -300,7 +300,6 @@ body {
     color: var(--white);
     background-color: var(--blue);
     align-self: flex-start;
-    animation-name: slideFromLeft;
 }
 .container .right .bubble.you:before {
     left: -3px;
@@ -311,7 +310,6 @@ body {
     color: var(--dark);
     background-color: #eceff1;
     align-self: flex-end;
-    animation-name: slideFromRight;
 }
 .container .right .bubble.me:before {
     right: -3px;
@@ -342,44 +340,4 @@ body {
 }
 .container .right .conversation-start span:after {
     right: 0;
-}
-@keyframes slideFromLeft {
-    0% {
-        margin-left: -200px;
-        opacity: 0;
-   }
-    100% {
-        margin-left: 0;
-        opacity: 1;
-   }
-}
-@-webkit-keyframes slideFromLeft {
-    0% {
-        margin-left: -200px;
-        opacity: 0;
-   }
-    100% {
-        margin-left: 0;
-        opacity: 1;
-   }
-}
-@keyframes slideFromRight {
-    0% {
-        margin-right: -200px;
-        opacity: 0;
-   }
-    100% {
-        margin-right: 0;
-        opacity: 1;
-   }
-}
-@-webkit-keyframes slideFromRight {
-    0% {
-        margin-right: -200px;
-        opacity: 0;
-   }
-    100% {
-        margin-right: 0;
-        opacity: 1;
-   }
 }
