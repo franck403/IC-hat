@@ -27,8 +27,7 @@ body {
     height: 100%;
     border: 1px solid var(--light);
     background-color: var(--white);
-    height: 83%;
-    overflow: scroll;
+    overflow: hidden;
 }
 .container .left .top {
     position: relative;
