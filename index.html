@@ -7,7 +7,10 @@
         <title>IC hat - By Geoloup team</title>
         <link href="style.css" rel="stylesheet">
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-        <script type="text/babel" src="script.js"></script>
+        <script src=”https://www.gstatic.com/firebasejs/9.2.1/firebase-app.js”></script>
+        <script src=”https://www.gstatic.com/firebasejs/9.2.1/firebase-database.js”></script>
+        <script type="text/babel" src="babel_script.js"></script>
+        <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
         <div>
@@ -209,7 +212,7 @@
         
                     <div class="write">
                         <a href="javascript:;" class="write-link attach"></a>
-                        <input type="text" />
+                        <input id="content" type="text" />
                         <a href="javascript:;" class="write-link smiley"></a>
                         <a href="javascript:;" class="write-link send"></a>
                     </div>
