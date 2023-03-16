@@ -8,7 +8,6 @@
         <link href="style.css" rel="stylesheet">
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script type="text/babel" src="babel_script.js"></script>
-        <script type="text/javascript" src="script.js"></script>
         <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
@@ -25,6 +24,7 @@
             const app = initializeApp(firebaseConfig);
             const analytics = getAnalytics(app);
           </script>
+        <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
         <div>
