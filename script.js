@@ -23,8 +23,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
-
-var myName = prompt("Enter your name");
+var myname = ""
 
 
 const send = document.getElementById("send");
@@ -80,6 +79,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     var emailVerified = user.emailVerified;
     var photoURL = user.photoURL;
     var uid = user.uid;
+    var myname = displayName
     user.getIdToken().then(function(accessToken) {});
     } else {
         window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login");
