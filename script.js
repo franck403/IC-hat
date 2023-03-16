@@ -26,9 +26,10 @@ const database = getDatabase(app);
 
 var myName = prompt("Enter your name");
 
-function send() {
+content.addEventListener('click', (e) => {
+    var message = document.getElementById('message').value;
+    var name = myName;
     var message = document.getElementById("content")
-    html = `<div class="bubble me">${ message.value }</div>`
     const id = push(child(ref(database), 'messages')).key;
 
     set(ref(database, 'messages/' + id), {
@@ -36,9 +37,7 @@ function send() {
         message: message
     });
     document.getElementById('content').value = "";
-
-}
-
+});
 
 const newMsg = ref(database, 'messages/');
 onChildAdded(newMsg, (data) => {
