@@ -43,13 +43,11 @@ send.addEventListener('click', (e) => {
 const newMsg = ref(database, 'messages/');
 onChildAdded(newMsg, (data) => {
     if(data.val().name != myName) {
-        mes = data.val().message
-        html = `<div class="bubble you">${ mes }</div>`
+        html = `<div class="bubble you">${ data.val().message }</div>`
         const d1 = document.querySelector('[data-chat="person1"]');
         d1.insertAdjacentHTML('chat', html);
     }else{
-        mes = data.val().message
-        html = `<div class="bubble me">${ mes }</div>`
+        html = `<div class="bubble me">${ data.val().message }</div>`
         var d1 = document.getElementById('bodyContent');
         d1.insertAdjacentHTML('chat', html);
     }
