@@ -28,13 +28,31 @@ var myName = prompt("Enter your name");
 
 
 const send = document.getElementById("send");
+const send2 = document.getElementById("content");
+
 send.addEventListener('click', (e) => {
     var name = myName;
     var message = document.getElementById("content")
+    var friend = f.querySelector('.name').innerText
     const id = push(child(ref(database), 'messages')).key;
 
     set(ref(database, 'messages/' + id), {
         name: name,
+        allow:friend,
+        message: message.value
+    });
+    document.getElementById('content').value = "";
+});
+
+send2.addEventListener('enter', (e) => {
+    var name = myName;
+    var message = document.getElementById("content")
+    var friend = f.querySelector('.name').innerText
+    const id = push(child(ref(database), 'messages')).key;
+
+    set(ref(database, 'messages/' + id), {
+        name: name,
+        allow:friend,
         message: message.value
     });
     document.getElementById('content').value = "";
