@@ -1,3 +1,5 @@
+
+
 var firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
     authDomain: "ic-hat.firebaseapp.com",
@@ -66,7 +68,7 @@ var firebaseConfig = {
     email = document.getElementById('email').value
     password = document.getElementById('password').value
     full_name = document.getElementById('full_name').value
-    
+
     // Validate input fields
     if (validate_email(email) == false || validate_password(password) == false) {
       alert('Email or Password is Outta Line!!')
