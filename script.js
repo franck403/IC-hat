@@ -27,7 +27,7 @@ const database = getDatabase(app);
 var myName = prompt("Enter your name");
 
 
-const send = document.getElementById("content");
+const send = document.getElementById("send");
 send.addEventListener('click', (e) => {
     var name = myName;
     var message = document.getElementById("content")
