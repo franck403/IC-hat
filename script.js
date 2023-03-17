@@ -48,30 +48,44 @@ const send = document.getElementById("send");
 const send2 = document.getElementById("content");
 
 send.addEventListener('click', (e) => {
-    var name = myName;
-    var message = document.getElementById("content")
-    var friend = "none"
-    const id = push(child(ref(database), 'messages')).key;
+    var fg = document.getElementById('content').value
+    var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    if (document.getElementById('content').value != "" || fg.find(gh) != -1) {
+        var str = document.getElementById('content').value;
+        var str1 = str.replaceAll("<","&lt;")
+        var str2 = str1.replaceAll(">","&gt;")
+        var message = str2;
+        var name = myName;
+        const id = push(child(ref(database), 'messages')).key;
+        var friend = "none"
 
-    set(ref(database, 'messages/' + id), {
-        name: name,
-        allow:friend,
-        message: message.value
-    });
-    document.getElementById('content').value = "";
+        set(ref(database, 'messages/' + id), {
+            name: name,
+            allow:friend,
+            message: message.value,
+            date:Date.now()
+        });
+        document.getElementById('content').value = "";
+    } else {}
 });
 send2.addEventListener("keydown", (e) => {
     if (event.keyCode == 13) {
-        if (document.getElementById('content').value != "") {
+        var fg = document.getElementById('content').value
+        var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+        if (document.getElementById('content').value != "" || fg.find(gh) != -1) {
+            var str = document.getElementById('content').value;
+            var str1 = str.replaceAll("<","&lt;")
+            var str2 = str1.replaceAll(">","&gt;")
+            var message = str2;
             var name = myName;
-            var message = document.getElementById("content")
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
 
             set(ref(database, 'messages/' + id), {
                 name: name,
                 allow:friend,
-                message: message.value
+                message: message.value,
+                date:Date.now()
             });
             document.getElementById('content').value = "";
         } else {}
@@ -84,10 +98,14 @@ onChildAdded(newMsg, (data) => {
         var html = `<div class="bubble you">${ data.val().message }</div>`
         const d1 = document.querySelector('[data-chat="person1"]');
         d1.innerHTML = d1.innerHTML + html
+        document.getElementById("time").innerHTML =  data.val().time
+        document.getElementById("prew").innerHTML =  data.val().message
     }else{
         var html = `<div class="bubble me">${ data.val().message }</div>`
         const d1 = document.querySelector('[data-chat="person1"]');
         d1.innerHTML = d1.innerHTML + html
+        document.getElementById("time").innerHTML =  data.val().time
+        document.getElementById("prew").innerHTML =  data.val().message
     }
     var elem = document.querySelector('[data-chat="person1"]');
     elem.scrollTop = elem.scrollHeight;
