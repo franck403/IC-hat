@@ -115,7 +115,20 @@ var firebaseConfig = {
       database_ref.child('users/' + user.uid).update(user_data)
   
       // DOne
-      localStorage.setItem("name",full_name)
+      const dbRef = ref(getDatabase());
+      get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+          var username = snapshot.val().full_name
+          var email = snapshot.val().email
+        } else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
+        console.error(error);
+      });
+
+      localStorage.setItem("name",username)
+      localStorage.setItem("email",email)
       window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/");
   
     })
