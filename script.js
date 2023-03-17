@@ -87,3 +87,7 @@ onChildAdded(newMsg, (data) => {
     elem.scrollTop = elem.scrollHeight;
     elem.scrollTop = elem.scrollHeight;
 });
+
+var elem = document.querySelector('[data-chat="person1"]');
+elem.scrollTop = elem.scrollHeight;
+elem.scrollTop = elem.scrollHeight;
