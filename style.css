@@ -174,6 +174,7 @@ body {
 }
 .container .left .people .person.active, .container .left .people .person:hover {
     margin-top: -1px;
+    height:60px;
     margin-left: -1px;
     padding-top: 13px;
     border: 0;
