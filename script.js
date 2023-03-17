@@ -85,7 +85,7 @@ send2.addEventListener("keydown", (e) => {
                 name: name,
                 allow:friend,
                 message: message.value,
-                date:Date.now()
+                date: Date.now()
             });
             document.getElementById('content').value = "";
         } else {}
