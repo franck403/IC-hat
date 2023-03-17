@@ -35,7 +35,8 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
-var myName = "test"
+var myName = localStorage.getItem("name")
+
 var friendhtml = `
 <li class="person" data-d-chat="person1">
 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
