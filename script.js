@@ -47,6 +47,7 @@ var friendhtml = `
 
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
+const friend = document.getElementById("new_friend_add");
 
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -73,6 +74,18 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+friend.addEventListener('click', (e) => {
+    var fg = document.getElementById('content').value
+    var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    if (document.getElementById('friend_email').value != "" || fg.find(gh) != -1) {
+        var customid1 = Math.random() + Math.random() * Math.random() * Math.random()
+        var customid2 = customid1.split(".")
+        var customid = customid2.replace([1],"") + "/"
+        var friends = document.getElementById("friend_email").value + localStorage.getItem("name")
+        set(ref(database, 'messages/' + customid), {allow:friend,});
+        document.getElementById('content').value = "";
+    } else {}
+});
 
 send.addEventListener('click', (e) => {
     var fg = document.getElementById('content').value
