@@ -94,5 +94,5 @@ elem.scrollTop = elem.scrollHeight;
 
 
 
-
-
+document.getElementById("loader").remove();
+document.getElementById("loader_box").remove();
