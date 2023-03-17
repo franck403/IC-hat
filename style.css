@@ -20,20 +20,16 @@ body {
     font-weight: 400;
     margin:0;
 }
-.loader_box {
-    position :fixed;
-    height:100%;
-    z-index:1;
-    width:100%;
-    background: white;
-}
+
 .loader {
-    position :fixed;
-    top:50%;
-    bottom:50%;
-    left:50%;
-    right:50%;
-    z-index:2;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+.loader div {
+    margin:auto;
     border: 16px solid #f3f3f3;
     border-radius: 50%;
     border-top: 16px solid #3498db;
@@ -41,18 +37,23 @@ body {
     height: 120px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
     animation: spin 2s linear infinite;
-  }
-  
-  /* Safari */
-  @-webkit-keyframes spin {
+}
+.loader h2 {
+    text-align:center;
+}
+/* Safari */
+@-webkit-keyframes spin {
     0% { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
-  }
-  
-  @keyframes spin {
+}
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
+}
+
+
+
+
 
 .container .left {
     position: fixed;
