@@ -27,7 +27,7 @@ const database = getDatabase(app);
 var user = localStorage.getItem("uid")
 
 const dbRef = ref(getDatabase());
-get(child(dbRef, `users/${user}`)).then((snapshot) => {
+get(child(dbRef, `users/` + user)).then((snapshot) => {
   if (snapshot.exists()) {
     var username = snapshot.val().full_name
     var email = snapshot.val().email
