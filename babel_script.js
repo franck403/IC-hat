@@ -26,7 +26,7 @@ function setAciveChat(f) {
   chat.person = f.getAttribute('data-d-chat')
   chat.container.querySelector('[data-chat="' + chat.person + '"]').classList.add('active-chat')
   friends.name = f.querySelector('.name').innerText
-  f.querySelector('.name_title').innerText = name
+  f.document.getElementById("to").innerText = name
   chat.name.innerHTML = friends.name
   chat.current.classList.remove('active-chat')
 }
