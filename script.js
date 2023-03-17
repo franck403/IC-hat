@@ -36,7 +36,13 @@ const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
 var myName = "test"
-
+var friendhtml = `
+<li class="person" data-d-chat="person1">
+<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
+<span class="name">Thomas Bangalter</span>
+<span class="time">2:09 PM</span>
+<span class="preview">I was wondering...</span>
+</li>`
 
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
@@ -91,6 +97,7 @@ onChildAdded(newMsg, (data) => {
 var elem = document.querySelector('[data-chat="person1"]');
 elem.scrollTop = elem.scrollHeight;
 elem.scrollTop = elem.scrollHeight;
+
 
 
 
