@@ -124,6 +124,28 @@ body {
     border-bottom-right-radius: 20px;
 }
 
+.modal_input {
+    width: 300px;
+    height: 30px;
+    padding: 0 15px;
+    border: 1px solid var(--light);
+    background-color: #eceff1;
+    border-radius: 21px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+}
+.modal_input:focus {
+    width: 600px;
+    height: 30px;
+    padding: 0 15px;
+    border: 1px solid var(--light);
+    background-color: #eceff1;
+    border-radius: 21px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    outline:none;
+}
+
 .loader_box {
     position: fixed;
     height: 100%;
