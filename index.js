@@ -2,7 +2,7 @@ console.log("-----------------------------");
 
 var keys = localStorage.getItem("name");
 
-if (keys != null) {window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login");}
+if (keys != null) {window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/");}
 else {}
 
 console.log("-----------------------------");
