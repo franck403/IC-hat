@@ -9,15 +9,6 @@ console.log("-----------------------------");
 console.log("finish generating the session");
 console.log("-----------------------------");
 
-import {
-    getDatabase,
-    set,
-    ref,
-    push,
-    child,
-    onValue,
-    onChildAdded
-} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 
 var firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
@@ -125,21 +116,8 @@ var firebaseConfig = {
       database_ref.child('users/' + user.uid).update(user_data)
   
       // DOne
-      const dbRef = ref(getDatabase());
-      get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
-        if (snapshot.exists()) {
-          var username = snapshot.val().full_name
-          var email = snapshot.val().email
-        } else {
-          console.log("No data available");
-        }
-      }).catch((error) => {
-        console.error(error);
-      });
-
-      localStorage.setItem("name",username)
-      localStorage.setItem("email",email)
-      window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/");
+      localStorage.setItem("uid",user.uid)
+      window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/end");
   
     })
     .catch(function(error) {
