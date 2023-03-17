@@ -62,7 +62,7 @@ send.addEventListener('click', (e) => {
         set(ref(database, 'messages/' + id), {
             name: name,
             allow:friend,
-            message: message.value,
+            message: message,
             date:Date.now()
         });
         document.getElementById('content').value = "";
@@ -84,7 +84,7 @@ send2.addEventListener("keydown", (e) => {
             set(ref(database, 'messages/' + id), {
                 name: name,
                 allow:friend,
-                message: message.value,
+                message: message,
                 date: Date.now()
             });
             document.getElementById('content').value = "";
