@@ -31,6 +31,8 @@ get(child(dbRef, `users/${user}`)).then((snapshot) => {
   if (snapshot.exists()) {
     var username = snapshot.val().full_name
     var email = snapshot.val().email
+    localStorage.setItem("name",username)
+    localStorage.setItem("email",email)
   } else {
     console.log("No data available");
   }
@@ -38,8 +40,6 @@ get(child(dbRef, `users/${user}`)).then((snapshot) => {
   console.error(error);
 });
 
-localStorage.setItem("name",username)
-localStorage.setItem("email",email)
 
 
 window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/");
