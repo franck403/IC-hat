@@ -1,6 +1,9 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: border-box;
 }
+
 :root {
     --white: #fff;
     --black: #000;
@@ -11,6 +14,7 @@
     --wrapper: 1000px;
     --blue: #00b0ff;
 }
+
 body {
     background-color: var(--bg);
     -webkit-font-smoothing: antialiased;
@@ -18,44 +22,160 @@ body {
     text-rendering: optimizeLegibility;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
-    margin:0;
+    margin: 0;
 }
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    border-radius: 20px;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: none;
+    width: 80%;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 2px 16px;
+    background-color: var(--blue);
+    color: white;
+}
+
+.modal-body {
+    padding: 2px 16px;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: var(--blue);
+    color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
 .loader_box {
     position: fixed;
-    height:100%;
-    width:100%;
-    z-index:1;
-    background:white;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background: white;
 }
+
 .loader {
-    z-index:2;
+    z-index: 2;
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    }
+}
+
 .loader div {
-    margin:auto;
+    margin: auto;
     border: 16px solid #f3f3f3;
     border-radius: 50%;
     border-top: 16px solid #3498db;
     width: 120px;
     height: 120px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
     animation: spin 2s linear infinite;
 }
+
 .loader h2 {
-    text-align:center;
+    text-align: center;
 }
+
 /* Safari */
 @-webkit-keyframes spin {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
+
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 
@@ -71,12 +191,14 @@ body {
     background-color: var(--white);
     overflow: hidden;
 }
+
 .container .left .top {
     position: relative;
     width: 100%;
     height: 96px;
     padding: 29px;
 }
+
 .container .left .top:after {
     position: absolute;
     bottom: 0;
@@ -88,6 +210,7 @@ body {
     background-color: var(--light);
     transform: translate(-50%, 0);
 }
+
 .container .left input {
     float: left;
     width: 188px;
@@ -99,9 +222,11 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
 }
+
 .container .left input:focus {
     outline: none;
 }
+
 .container .left a.search {
     display: block;
     float: left;
@@ -115,12 +240,14 @@ body {
     background-position: top 12px left 14px;
     border-radius: 50%;
 }
+
 .container .left .people {
     margin-left: -1px;
     border-right: 1px solid var(--light);
     border-left: 1px solid var(--light);
     width: calc(100% + 2px);
 }
+
 .container .left .people .person {
     position: relative;
     width: 100%;
@@ -128,6 +255,7 @@ body {
     cursor: pointer;
     background-color: var(--white);
 }
+
 .container .left .people .person:after {
     position: absolute;
     bottom: 0;
@@ -139,6 +267,7 @@ body {
     background-color: var(--light);
     transform: translate(-50%, 0);
 }
+
 .container .left .people .person img {
     float: left;
     width: 40px;
@@ -147,6 +276,7 @@ body {
     border-radius: 50%;
     object-fit: cover;
 }
+
 .container .left .people .person .name {
     font-size: 14px;
     line-height: 22px;
@@ -154,6 +284,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
 }
+
 .container .left .people .person .time {
     font-size: 14px;
     position: absolute;
@@ -163,6 +294,7 @@ body {
     color: var(--grey);
     background-color: var(--white);
 }
+
 .container .left .people .person .preview {
     font-size: 14px;
     display: inline-block;
@@ -172,9 +304,11 @@ body {
     text-overflow: ellipsis;
     color: var(--grey);
 }
-.container .left .people .person.active, .container .left .people .person:hover {
+
+.container .left .people .person.active,
+.container .left .people .person:hover {
     margin-top: -1px;
-    height:60px;
+    height: 60px;
     margin-left: -1px;
     padding-top: 13px;
     border: 0;
@@ -182,34 +316,43 @@ body {
     width: calc(100% + 2px);
     padding-left: calc(10% + 1px);
 }
-.container .left .people .person.active span, .container .left .people .person:hover span {
+
+.container .left .people .person.active span,
+.container .left .people .person:hover span {
     color: var(--white);
     background: transparent;
 }
-.container .left .people .person.active:after, .container .left .people .person:hover:after {
+
+.container .left .people .person.active:after,
+.container .left .people .person:hover:after {
     display: none;
 }
+
 .container .right {
     position: absolute;
     width: 62%;
     height: 96%;
     right: 0px;
 }
+
 .container .right .top {
     width: 100%;
     height: 47px;
     padding: 15px 29px;
     background-color: #eceff1;
 }
+
 .container .right .top span {
     font-size: 15px;
     color: var(--grey);
 }
+
 .container .right .top span .name {
     color: var(--dark);
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
 }
+
 .container .right .chat {
     position: relative;
     display: none;
@@ -222,45 +365,58 @@ body {
     height: calc(100% - 117px);
     justify-content: flex-end;
     flex-direction: column;
-    
+
 }
+
 .container .right .chat.active-chat {
     display: block;
-    
+
 }
+
 .container .right .chat.active-chat .bubble {
     transition-timing-function: cubic-bezier(0.4, -0.04, 1, 1);
 }
+
 .container .right .chat.active-chat .bubble:nth-of-type(1) {
     animation-duration: 0.15s;
 }
+
 .container .right .chat.active-chat .bubble:nth-of-type(2) {
     animation-duration: 0.3s;
 }
+
 .container .right .chat.active-chat .bubble:nth-of-type(3) {
     animation-duration: 0.45s;
 }
+
 .container .right .chat.active-chat .bubble:nth-of-type(4) {
     animation-duration: 0.6s;
 }
+
 .container .right .chat.active-chat .bubble:nth-of-type(5) {
     animation-duration: 0.75s;
 }
+
 .container .right .chat.active-chat .bubble:nth-of-type(6) {
     animation-duration: 0.9s;
 }
+
 .container .right .chat.active-chat .bubble:nth-of-type(7) {
     animation-duration: 1.05s;
 }
+
 .container .right .chat.active-chat .bubble:nth-of-type(8) {
     animation-duration: 1.2s;
 }
+
 .container .right .chat.active-chat .bubble:nth-of-type(9) {
     animation-duration: 1.35s;
 }
+
 .container .right .chat.active-chat .bubble:nth-of-type(10) {
     animation-duration: 1.5s;
 }
+
 .container .right .write {
     position: absolute;
     bottom: 29px;
@@ -272,6 +428,7 @@ body {
     width: calc(100% - 58px);
     border-radius: 5px;
 }
+
 .container .right .write input {
     font-size: 16px;
     width: 90%;
@@ -284,6 +441,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
 }
+
 .container .right .write .write-link.attach:before {
     display: inline-block;
     position: absolute;
@@ -295,6 +453,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .container .right .write .write-link.smiley:before {
     display: inline-block;
     position: absolute;
@@ -306,6 +465,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .container .right .write .write-link.send:before {
     display: inline-block;
     position: absolute;
@@ -318,6 +478,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .container .right .bubble {
     font-size: 16px;
     position: relative;
@@ -328,6 +489,7 @@ body {
     vertical-align: top;
     border-radius: 5px;
 }
+
 .container .right .bubble:before {
     position: absolute;
     top: 19px;
@@ -337,38 +499,46 @@ body {
     content: '\00a0';
     transform: rotate(29deg) skew(-35deg);
 }
+
 .container .right .bubble.you {
     float: left;
     color: var(--white);
     background-color: var(--blue);
     align-self: flex-start;
 }
+
 .container .right .bubble.you:before {
     left: -3px;
     background-color: var(--blue);
 }
+
 .container .right .bubble.me {
     float: right;
     color: var(--dark);
     background-color: #eceff1;
     align-self: flex-end;
 }
+
 .container .right .bubble.me:before {
     right: -3px;
     background-color: #eceff1;
 }
+
 .container .right .conversation-start {
     position: relative;
     width: 100%;
     margin-bottom: 27px;
     text-align: center;
 }
+
 .container .right .conversation-start span {
     font-size: 14px;
     display: inline-block;
     color: var(--grey);
 }
-.container .right .conversation-start span:before, .container .right .conversation-start span:after {
+
+.container .right .conversation-start span:before,
+.container .right .conversation-start span:after {
     position: absolute;
     top: 10px;
     display: inline-block;
@@ -377,9 +547,11 @@ body {
     content: '';
     background-color: var(--light);
 }
+
 .container .right .conversation-start span:before {
     left: 0;
 }
+
 .container .right .conversation-start span:after {
     right: 0;
 }
