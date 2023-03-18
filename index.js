@@ -60,10 +60,9 @@ var firebaseConfig = {
         full_name : full_name
       }
       
-      
       // Push to Firebase Database
       database_ref.child('users/' + user.uid).set(user_data)
-      database_ref.child('user/' + user_data.full_name).set(user_data)
+      database_ref.child('user_data/' + user_data.full_name).set(user_data)
   
       // DOne
 
