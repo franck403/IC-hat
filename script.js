@@ -99,7 +99,7 @@ send.addEventListener('click', (e) => {
         const id = push(child(ref(database), 'messages')).key;
         var friend = "none"
 
-        set(ref(database, 'messages/' + id), {
+        set(ref(database, 'messages/geoloup_chat/' + id), {
             name: name,
             allow:friend,
             message: message,
@@ -121,7 +121,7 @@ send2.addEventListener("keydown", (e) => {
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
 
-            set(ref(database, 'messages/' + id), {
+            set(ref(database, 'messages/geoloup_chat/' + id), {
                 name: name,
                 allow:friend,
                 message: message,
