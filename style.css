@@ -147,7 +147,7 @@ body {
 }
 .add {
     text-align: center;
-    display: block;
+    display: inline-block;;
     width: 89px;
     height: 22px;
     margin-left: 10px;
