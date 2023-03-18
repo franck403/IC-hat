@@ -85,7 +85,7 @@ friends.addEventListener('click', (e) => {
         set(ref(database, 'messages/' + customid + "/"), {allow:friends});
         var data = {
             customid: "",
-            allow:friend
+            allow:friends
         }
         database_ref.child('users/' + localStorage.getItem("uid")).update(data)
         document.getElementById('content').value = "";
