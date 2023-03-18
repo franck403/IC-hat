@@ -132,7 +132,7 @@ send2.addEventListener("keydown", (e) => {
     } else {}
 });
 
-const newMsg = ref(database, 'messages/');
+const newMsg = ref(database, 'messages/geoloup_chat/');
 onChildAdded(newMsg, (data) => {
     if(data.val().name != myName) {
         var html = `<div class="bubble you">${ data.val().message }</div>`
