@@ -145,7 +145,15 @@ body {
     font-weight: 400;
     outline:none;
 }
-
+.add {
+    display: block;
+    width: 42px;
+    height: 42px;
+    margin-left: 10px;
+    border: 1px solid var(--light);
+    background-color: var(--blue);
+    border-radius: 10%;
+}
 .loader_box {
     position: fixed;
     height: 100%;
