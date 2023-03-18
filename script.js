@@ -80,6 +80,7 @@ friends.addEventListener('click', (e) => {
     if (document.getElementById('friend_email').value != "" || fg.find(gh) != -1) {
         var customid1 = String(Math.random())
         console.log(customid1)
+        var database_ref = database.ref()
         var customid = customid1.replace(".") + "/"
         var friends = [document.getElementById("friend_email").value,localStorage.getItem("name")]
         set(ref(database, 'messages/' + customid + "/"), {allow:friends});
