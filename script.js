@@ -80,15 +80,14 @@ friends.addEventListener('click', (e) => {
     if (document.getElementById('friend_email').value != "" || fg.find(gh) != -1) {
         var customid1 = String(Math.random())
         console.log(customid1)
-        var database_ref = database.ref()
-        var customid = customid1.replace(".") + "/"
-        var friends = [document.getElementById("friend_email").value,localStorage.getItem("name")]
+        var database_ref = ref()
+        var customid = customid1.replace(".","")
+        var friends = [document.getElementById("friend_email").value,localStorage.getItem("email")]
         set(ref(database, 'messages/' + customid + "/"), {allow:friends});
         var data = {
-            customid: "",
             allow:friends
         }
-        database_ref.child('users/' + localStorage.getItem("uid")).update(data)
+        child('users/' + localStorage.getItem("uid")).update(data)
         document.getElementById('content').value = "";
     } else {}
 });
