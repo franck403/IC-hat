@@ -82,7 +82,11 @@ friends.addEventListener('click', (e) => {
         console.log(customid)
         var customid = customid1.replace(".") + "/"
         var friends = document.getElementById("friend_email").value + localStorage.getItem("name")
-        set(ref(database, 'messages/' + customid), {allow:friend,});
+        set(ref(database, 'messages/' + customid + "/"), {allow:friend,});
+        var data = {
+            customid: ""
+        }
+        database_ref.child('users/' + localStorage.getItem("uid")).update(data)
         document.getElementById('content').value = "";
     } else {}
 });

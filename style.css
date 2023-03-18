@@ -146,13 +146,15 @@ body {
     outline:none;
 }
 .add {
+    text-align: center;
     display: block;
-    width: 42px;
-    height: 42px;
+    width: 89px;
+    height: 22px;
     margin-left: 10px;
     border: 1px solid var(--light);
     background-color: var(--blue);
-    border-radius: 10%;
+    border-radius: 50px;
+    color: white;
 }
 .loader_box {
     position: fixed;
