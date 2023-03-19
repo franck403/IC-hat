@@ -81,9 +81,9 @@ friends.addEventListener('click', (e) => {
         var customid1 = String(Math.random())
         console.log(customid1)
         var customid = customid1.replace(".","")
-        var before_friend = document.getElementById("friend_email").value
+        var before_friend = document.getElementById("friend_email").value + "," + localStorage.getItem("email")
         var after_friend = before_friend.split(",")
-        var endfriend = [after_friend,localStorage.getItem("email")]
+        var endfriend = after_friend
         var data = {
             allow:endfriend,
             dname:customid
