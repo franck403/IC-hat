@@ -183,9 +183,6 @@ onChildAdded(friend_invite, (data) => {
         const d1 = document.querySelector('[data-chat="' + data.val().dname + '"]');
         d1.innerHTML = d1.innerHTML + html
     }else{}
-    var elem = document.querySelector('[data-chat="' + data.val().dname + '"]');
-    elem.scrollTop = elem.scrollHeight;
-    elem.scrollTop = elem.scrollHeight;
     
 });
 
