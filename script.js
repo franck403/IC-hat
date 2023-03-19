@@ -173,6 +173,7 @@ elem.scrollTop = elem.scrollHeight;
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
+    console.log(dte)
     if(myName in dte) {
         var html = `
         <li class="person" data-d-chat="${data.val().dname}">
