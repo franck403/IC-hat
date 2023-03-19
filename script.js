@@ -94,7 +94,7 @@ friends.addEventListener('click', (e) => {
             dname:customid
         }
         set(ref(database, 'users_friend/' + customid), data);
-        
+
         document.getElementById('friend_email').value = "";
     } else {}
 });
@@ -172,7 +172,7 @@ elem.scrollTop = elem.scrollHeight;
 const friend_invite = ref(database, 'users_friend');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
-    if(dte.find(myName) != -1) {
+    if(myName in dte) {
         var html = `
         <li class="person" data-d-chat="${data.val().dname}">
         <img src="default_picture.gif" alt="picture" />
