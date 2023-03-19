@@ -94,6 +94,7 @@ friends.addEventListener('click', (e) => {
             dname:customid
         }
         set(ref(database, 'users_friend/' + customid), data);
+        
         document.getElementById('friend_email').value = "";
     } else {}
 });
