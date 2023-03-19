@@ -170,7 +170,7 @@ elem.scrollTop = elem.scrollHeight;
 elem.scrollTop = elem.scrollHeight;
 
 
-const friend_invite = ref(database, 'users_friend');
+const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
     if(myName in dte) {
