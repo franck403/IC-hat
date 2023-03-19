@@ -86,7 +86,8 @@ friends.addEventListener('click', (e) => {
         var friends = [after_friend,localStorage.getItem("email")]
         set(ref(database, 'messages/' + customid + "/"), {allow:friends});
         var data = {
-            allow:friends
+            allow:friends,
+            dname:customid
         }
         set('users_friend/' + localStorage.getItem("uid")).update(data)
         document.getElementById('content').value = "";
@@ -168,18 +169,16 @@ onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
     if(dte.find(myName) != -1) {
         var html = `
-        <li class="person" data-d-chat="person1">
-        <img src="default_picture.gif" alt="" />
+        <li class="person" data-d-chat="${data.val().dname}">
+        <img src="default_picture.gif" alt="picture" />
         <span class="name">${data.val().allow}</span>
-        <span class="time">0:00 PM</span>
-        <span class="preview">I was wondering...</span>
+        <span class="time"></span>
+        <span class="preview"></span>
         </li>`
-        const d1 = document.querySelector('[data-chat="person1"]');
+        const d1 = document.querySelector('[data-chat="' + data.val().dname + '"]');
         d1.innerHTML = d1.innerHTML + html
-        document.getElementById("time").innerHTML =  data.val().date
-        document.getElementById("prew").innerHTML =  data.val().message
     }else{}
-    var elem = document.querySelector('[data-chat="person1"]');
+    var elem = document.querySelector('[data-chat="' + data.val().dname + '"]');
     elem.scrollTop = elem.scrollHeight;
     elem.scrollTop = elem.scrollHeight;
     
