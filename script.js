@@ -75,7 +75,7 @@ window.onclick = function(event) {
   }
 }
 friends.addEventListener('click', (e) => {
-    var fg = document.getElementById('content').value
+    var fg = document.getElementById('friend_email').value
     var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     if (document.getElementById('friend_email').value != "" || fg.find(gh) != -1) {
         var customid1 = String(Math.random())
@@ -84,13 +84,17 @@ friends.addEventListener('click', (e) => {
         var before_friend = document.getElementById("friend_email").value
         var after_friend = before_friend.split(",")
         var friends = [after_friend,localStorage.getItem("email")]
-        set(ref(database, 'messages/' + customid + "/"), {allow:friends});
         var data = {
             allow:friends,
             dname:customid
         }
-        set('users_friend/' + localStorage.getItem("uid")).update(data)
-        document.getElementById('content').value = "";
+        set(ref(database, 'messages/' + customid + "/"), data);
+        var data = {
+            allow:friends,
+            dname:customid
+        }
+        set(ref(database, 'users_friend/' + customid), data);
+        document.getElementById('friend_email').value = "";
     } else {}
 });
 
