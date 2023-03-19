@@ -163,6 +163,27 @@ elem.scrollTop = elem.scrollHeight;
 elem.scrollTop = elem.scrollHeight;
 
 
+const friend_invite = ref(database, 'users_friend');
+onChildAdded(friend_invite, (data) => {
+    var dte = data.val().allow
+    if(dte.find(myName) != -1) {
+        var html = `
+        <li class="person" data-d-chat="person1">
+        <img src="default_picture.gif" alt="" />
+        <span class="name">${data.val().allow}</span>
+        <span class="time">0:00 PM</span>
+        <span class="preview">I was wondering...</span>
+        </li>`
+        const d1 = document.querySelector('[data-chat="person1"]');
+        d1.innerHTML = d1.innerHTML + html
+        document.getElementById("time").innerHTML =  data.val().date
+        document.getElementById("prew").innerHTML =  data.val().message
+    }else{}
+    var elem = document.querySelector('[data-chat="person1"]');
+    elem.scrollTop = elem.scrollHeight;
+    elem.scrollTop = elem.scrollHeight;
+    
+});
 
 
 document.getElementById("loader").remove();
