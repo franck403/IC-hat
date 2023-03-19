@@ -86,7 +86,7 @@ friends.addEventListener('click', (e) => {
         var data = {
             allow:friends
         }
-        child('users/' + localStorage.getItem("uid")).update(data)
+        set('users_friend/' + localStorage.getItem("uid")).update(data)
         document.getElementById('content').value = "";
     } else {}
 });
