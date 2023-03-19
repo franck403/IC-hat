@@ -83,18 +83,13 @@ friends.addEventListener('click', (e) => {
         var customid = customid1.replace(".","")
         var before_friend = document.getElementById("friend_email").value
         var after_friend = before_friend.split(",")
-        var friendss = [after_friend,localStorage.getItem("email")]
+        var endfriend = [after_friend,localStorage.getItem("email")]
         var data = {
-            allow:friendss,
+            allow:endfriend,
             dname:customid
         }
         set(ref(database, 'messages/' + customid + "/"), data);
-        var data = {
-            allow:friendss,
-            dname:customid
-        }
         set(ref(database, 'users_friend/' + customid), data);
-
         document.getElementById('friend_email').value = "";
         modal.style.display = "none";
     } else {}
@@ -111,7 +106,6 @@ send.addEventListener('click', (e) => {
         var name = myName;
         const id = push(child(ref(database), 'messages')).key;
         var friend = "none"
-
         set(ref(database, 'messages/geoloup_chat/' + id), {
             name: name,
             allow:friend,
