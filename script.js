@@ -81,7 +81,9 @@ friends.addEventListener('click', (e) => {
         var customid1 = String(Math.random())
         console.log(customid1)
         var customid = customid1.replace(".","")
-        var friends = [document.getElementById("friend_email").value,localStorage.getItem("email")]
+        var before_friend = document.getElementById("friend_email").value
+        var after_friend = before_friend.split(",")
+        var friends = [after_friend,localStorage.getItem("email")]
         set(ref(database, 'messages/' + customid + "/"), {allow:friends});
         var data = {
             allow:friends
