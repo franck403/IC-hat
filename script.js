@@ -172,7 +172,7 @@ onChildAdded(friend_invite, (data) => {
     if(dte.indexOf(myEmail) != -1) {
         var html = `
         <li class="person" data-d-chat="${data.val().dname}">
-        <img src="default_picture.gifd" alt="picture" />
+        <img src="default_picture.gif" alt="picture" />
         <span class="name">${data.val().allow}</span>
         <span class="time"></span>
         <span class="preview"></span>
