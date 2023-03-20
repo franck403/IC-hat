@@ -107,7 +107,7 @@ body {
 }
 
 .modal_input:focus {
-    width: 600px;
+    width: 300px;
     height: 30px;
     padding: 0 15px;
     border: 1px solid var(--light);
@@ -121,7 +121,7 @@ body {
 .add {
     text-align: center;
     display: inline-block;
-    ;
+    cursor: pointer;
     width: 89px;
     height: 22px;
     margin-left: 10px;
@@ -300,11 +300,10 @@ body {
 
 .container .left .people .person.active,
 .container .left .people .person:hover {
-    font-size: 14px;
-    position: absolute;
-    top: 16px;
-    right: 10%;
-    padding: 0 0 5px 5px;
+    position: relative;
+    width: 100%;
+    padding: 12px 10% 16px;
+    cursor: pointer;
     color: var(--white);
     background-color: var(--blue);
 }
