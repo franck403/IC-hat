@@ -191,7 +191,7 @@ onChildAdded(friend_invite, (data) => {
         onChildAdded(romc, (data2) => {
             if(data2.val().name != myName) {
                 var html = `<div class="bubble you">${ data2.val().message }</div>`
-                const d1 = document.querySelector('[data-chat=""]');
+                const d1 = document.querySelector(`[data-chat="${data2.val().dname}"]`);
                 d1.innerHTML = d1.innerHTML + html
                 document.getElementById("time").innerHTML =  data2.val().date
                 document.getElementById("prew").innerHTML =  data2.val().message
@@ -202,7 +202,7 @@ onChildAdded(friend_invite, (data) => {
                 document.getElementById("time").innerHTML =  data2.val().date
                 document.getElementById("prew").innerHTML =  data2.val().message
             }
-            var elem = document.querySelector('[data-chat="person1"]');
+            var elem = document.querySelector(`[data-chat="${data2.val().dname}"]`);
             elem.scrollTop = elem.scrollHeight;
             elem.scrollTop = elem.scrollHeight;
         });
