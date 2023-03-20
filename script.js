@@ -168,7 +168,7 @@ const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
     console.log(dte)
-    if(myName in dte) {
+    if(dte.indexOf(myName) != -1) {
         var html = `
         <li class="person" data-d-chat="${data.val().dname}">
         <img src="default_picture.gif" alt="picture" />
