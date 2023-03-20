@@ -453,8 +453,11 @@ body {
 .container .right .bubble.you {
     float: left;
     color: var(--white);
+    overflow: hidden;
+    max-width: 50%;
     background-color: var(--blue);
     align-self: flex-start;
+    word-break: break-word;
 }
 
 .container .right .bubble.you:before {
@@ -465,8 +468,11 @@ body {
 .container .right .bubble.me {
     float: right;
     color: var(--dark);
+    max-width: 50%;
+    overflow: hidden;
     background-color: #eceff1;
     align-self: flex-end;
+    word-break: break-word;
 }
 
 .container .right .bubble.me:before {
