@@ -269,9 +269,9 @@ body {
 
 .container .left .people .person .name {
     font-size: 14px;
-    line-height: 22px;
-    width: 54%;
-    height: 14px;
+    margin: 0;
+    width: 55%;
+    height: 16px;
     overflow: hidden;
     color: var(--dark);
     font-family: 'Source Sans Pro', sans-serif;
@@ -285,7 +285,6 @@ body {
     right: 10%;
     padding: 0 0 5px 5px;
     color: var(--grey);
-    background-color: var(--white);
 }
 
 .container .left .people .person .preview {
