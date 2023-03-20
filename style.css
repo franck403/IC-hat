@@ -25,31 +25,20 @@ body {
     margin: 0;
 }
 
-/* The Modal (background) */
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     padding-top: 100px;
-    /* Location of the box */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.1);
-    /* Black w/ opacity */
 }
 
-/* Modal Content */
 .modal-content {
     border-radius: 20px;
     position: relative;
@@ -64,32 +53,14 @@ body {
     animation-duration: 0.4s
 }
 
-/* Add Animation */
 @-webkit-keyframes animatetop {
-    from {
-        top: -300px;
-        opacity: 0
-    }
-
-    to {
-        top: 0;
-        opacity: 1
-    }
+    from {top: -300px;opacity: 0}
+    to {top: 0;opacity: 1}
 }
-
 @keyframes animatetop {
-    from {
-        top: -300px;
-        opacity: 0
-    }
-
-    to {
-        top: 0;
-        opacity: 1
-    }
+    from {top: -300px;opacity: 0}
+    to {top: 0;opacity: 1}
 }
-
-/* The Close Button */
 .close {
     color: white;
     float: right;
@@ -134,6 +105,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
 }
+
 .modal_input:focus {
     width: 600px;
     height: 30px;
@@ -143,11 +115,13 @@ body {
     border-radius: 21px;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
-    outline:none;
+    outline: none;
 }
+
 .add {
     text-align: center;
-    display: inline-block;;
+    display: inline-block;
+    ;
     width: 89px;
     height: 22px;
     margin-left: 10px;
@@ -156,6 +130,7 @@ body {
     border-radius: 50px;
     color: white;
 }
+
 .loader_box {
     position: fixed;
     height: 100%;
@@ -188,31 +163,14 @@ body {
 .loader h2 {
     text-align: center;
 }
-
-/* Safari */
 @-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
+    0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
 }
-
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }
-
-
-
-
 
 .container .left {
     position: fixed;
@@ -407,46 +365,6 @@ body {
 
 .container .right .chat.active-chat .bubble {
     transition-timing-function: cubic-bezier(0.4, -0.04, 1, 1);
-}
-
-.container .right .chat.active-chat .bubble:nth-of-type(1) {
-    animation-duration: 0.15s;
-}
-
-.container .right .chat.active-chat .bubble:nth-of-type(2) {
-    animation-duration: 0.3s;
-}
-
-.container .right .chat.active-chat .bubble:nth-of-type(3) {
-    animation-duration: 0.45s;
-}
-
-.container .right .chat.active-chat .bubble:nth-of-type(4) {
-    animation-duration: 0.6s;
-}
-
-.container .right .chat.active-chat .bubble:nth-of-type(5) {
-    animation-duration: 0.75s;
-}
-
-.container .right .chat.active-chat .bubble:nth-of-type(6) {
-    animation-duration: 0.9s;
-}
-
-.container .right .chat.active-chat .bubble:nth-of-type(7) {
-    animation-duration: 1.05s;
-}
-
-.container .right .chat.active-chat .bubble:nth-of-type(8) {
-    animation-duration: 1.2s;
-}
-
-.container .right .chat.active-chat .bubble:nth-of-type(9) {
-    animation-duration: 1.35s;
-}
-
-.container .right .chat.active-chat .bubble:nth-of-type(10) {
-    animation-duration: 1.5s;
 }
 
 .container .right .write {

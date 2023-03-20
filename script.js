@@ -36,6 +36,7 @@ const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
 var myName = localStorage.getItem("name")
+var myEmail = localStorage.getItem("email")
 
 var friendhtml = `
 <li class="person" data-d-chat="person1">
@@ -168,14 +169,20 @@ const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
     console.log(dte)
-    if(dte.indexOf(myName) != -1) {
+    if(dte.indexof(myEmail) != -1) {
         var html = `
         <li class="person" data-d-chat="${data.val().dname}">
-        <img src="default_picture.gif" alt="picture" />
+        <img src="default_picture.gifd" alt="picture" />
         <span class="name">${data.val().allow}</span>
         <span class="time"></span>
         <span class="preview"></span>
         </li>`
+        // chat_el_box
+        var html_chat = `
+        <div class="chat" data-chat="${data.val().dname}">
+        <span></span>
+        </div>
+        `
         const d1 = document.querySelector('[data-chat="' + data.val().dname + '"]');
         d1.innerHTML = d1.innerHTML + html
     }else{}
