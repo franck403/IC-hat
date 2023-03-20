@@ -184,7 +184,9 @@ onChildAdded(friend_invite, (data) => {
         </div>
         `
         const d1 = document.getElementById("chat_el_box")
-        d1.innerHTML = d1.innerHTML + html
+        const d2 = document.getElementById("people")
+        d1.innerHTML = d1.innerHTML + html_chat
+        d2.innerHTML = d2.innerHTML + html
     }else{}
     
 });
