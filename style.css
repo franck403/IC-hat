@@ -367,7 +367,7 @@ body {
     transition-timing-function: cubic-bezier(0.4, -0.04, 1, 1);
 }
 
-.container .right .write {
+.write{
     position: absolute;
     bottom: 29px;
     left: 30px;
@@ -379,7 +379,7 @@ body {
     border-radius: 5px;
 }
 
-.container .right .write input {
+.writeinput {
     font-size: 16px;
     width: 90%;
     height: 40px;
@@ -392,7 +392,7 @@ body {
     font-weight: 400;
 }
 
-.container .right .write .write-link.attach:before {
+.write.write-link.attach:before {
     display: inline-block;
     position: absolute;
     left: 0;
@@ -404,7 +404,7 @@ body {
     background-position: center;
 }
 
-.container .right .write .write-link.smiley:before {
+.write.write-link.smiley:before {
     display: inline-block;
     position: absolute;
     right: 40px;
@@ -416,7 +416,7 @@ body {
     background-position: center;
 }
 
-.container .right .write .write-link.send:before {
+.write.write-link.send:before {
     display: inline-block;
     position: absolute;
     right: 11px;
