@@ -183,7 +183,7 @@ onChildAdded(friend_invite, (data) => {
         <span></span>
         </div>
         `
-        const d1 = document.querySelector('[data-chat="' + data.val().dname + '"]');
+        const d1 = document.getElementById("chat_el_box")
         d1.innerHTML = d1.innerHTML + html
     }else{}
     
