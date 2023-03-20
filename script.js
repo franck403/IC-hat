@@ -173,9 +173,9 @@ onChildAdded(friend_invite, (data) => {
         var html = `
         <li class="person" data-d-chat="${data.val().dname}">
         <img src="default_picture.gif" alt="picture" />
-        <span class="name">${data.val().allow}</span>
-        <span class="time"></span>
-        <span class="preview"></span>
+        <p class="name">${data.val().allow}</p>
+        <p class="time"></p>
+        <p class="preview"></p>
         </li>`
         // chat_el_box
         var html_chat = `
