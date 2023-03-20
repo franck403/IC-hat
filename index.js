@@ -67,7 +67,8 @@ var firebaseConfig = {
       // DOne
 
       localStorage.setItem("uid",user.uid)
-      localStorage.setItem("name",email)
+      localStorage.setItem("email",email)
+      localStorage.setItem("name",full_name)
       window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/end");
     })
     .catch(function(error) {
@@ -111,7 +112,8 @@ var firebaseConfig = {
   
       // DOne
       localStorage.setItem("uid",user.uid)
-      localStorage.setItem("name",email)
+      localStorage.setItem("email",email)
+      localStorage.setItem("name",full_name)
       window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/end");
   
     })
