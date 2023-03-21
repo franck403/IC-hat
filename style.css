@@ -155,7 +155,8 @@ body {
     text-align: center;
     z-index:2;
     position: relative;
-    top: 70%;
+    color:white;
+    top: 15vh;
     left: 50%;
     transform: translate(-50%, -50%);
 }
