@@ -321,7 +321,6 @@ body {
     width: 55%;
     height: 16px;
     overflow: hidden;
-    color: var(--dark);
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
 }
@@ -398,7 +397,7 @@ body {
     display: none;
     overflow: hidden;
     overflow-y: scroll;
-    padding: 0 35px 40px;
+    padding: 10px 35px 40px;
     border-width: 1px 1px 1px 0;
     border-style: solid;
     border-color: var(--light);
