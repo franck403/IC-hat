@@ -162,7 +162,7 @@ onChildAdded(newMsg, (data) => {
         document.getElementById("time").innerHTML =  data.val().date
         document.getElementById("prew").innerHTML =  data.val().message
     }
-    var elem = document.querySelector('[data-chat="person1"]');
+    var elem = document.getElementById("geoloup_chat_c")
     elem.scrollTop = elem.scrollHeight;
     elem.scrollTop = elem.scrollHeight;
 });
@@ -221,5 +221,9 @@ onChildAdded(friend_invite, (data) => {
 const load_check = ref(database, 'load/');
 onChildAdded(load_check, (data) => {
     document.getElementById("loader").remove();
-    document.getElementById("loader_box").remove();
+    document.getElementById("loader_box").remove();    
+    var elem = document.getElementById("geoloup_chat_c")
+    elem.scrollTop = elem.scrollHeight;
+    elem.scrollTop = elem.scrollHeight;
+
 })
