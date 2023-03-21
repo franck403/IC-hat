@@ -292,6 +292,8 @@ body {
     display: inline-block;
     overflow: hidden !important;
     width: 70%;
+    height: 23px;
+    margin: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
     color: var(--grey);
