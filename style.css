@@ -154,6 +154,10 @@ body {
 .loader h2 {
     text-align: center;
     z-index:2;
+    position: relative;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 * {
     transition: all 0.3s;
