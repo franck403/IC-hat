@@ -7,8 +7,8 @@ function room(id){
     var old1 = document.getElementsByClassName("person active")[0]
     var old2 = document.getElementsByClassName("chat active-chat")[0]
     var new1 = document.getElementById(id)
-    old1.setattribute("class","person")
-    old2.setattribute("class","chat")
-    new1.setattribute("class","person active")
-    new2.setattribute("class","chat active-chat")
+    old1.setAttribute("class","person")
+    old2.setAttribute("class","chat")
+    new1.setAttribute("class","person active")
+    new2.setAttribute("class","chat active-chat")
 }
