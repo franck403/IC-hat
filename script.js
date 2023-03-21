@@ -38,11 +38,6 @@ const database = getDatabase(app);
 var myName = localStorage.getItem("name")
 var myEmail = localStorage.getItem("email")
 
-const load_check = ref(database, 'load/');
-onChildAdded(load_check, (data) => {
-    document.getElementById("loader").remove();
-    document.getElementById("loader_box").remove();
-})
 
 var friendhtml = `
 <li class="person" data-d-chat="person1">
@@ -223,3 +218,8 @@ onChildAdded(friend_invite, (data) => {
     
 });
 
+const load_check = ref(database, 'load/');
+onChildAdded(load_check, (data) => {
+    document.getElementById("loader").remove();
+    document.getElementById("loader_box").remove();
+})
