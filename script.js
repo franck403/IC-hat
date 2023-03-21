@@ -130,7 +130,8 @@ send2.addEventListener("keydown", (e) => {
             var name = myName;
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
-            var cusid = document.getElementsByClassName('active').attr("id")
+            console.log(document.getElementsByClassName('person active'))
+            var cusid = document.getElementsByClassName('person active').attr("id")
             console.log(cusid)
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 name: name,
