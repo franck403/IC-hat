@@ -190,8 +190,8 @@ onChildAdded(friend_invite, (data) => {
         const d2 = document.getElementById("people")
         d1.innerHTML = d1.innerHTML + html_chat
         d2.innerHTML = d2.innerHTML + html
-        var romc = ref(database, `messages/${data.val().dname}`);
         const dnamef = data.val().dname
+        var romc = ref(database, `messages/${dnamef}`);
         onChildAdded(romc, (data2) => {
             if(data2.val().name != myName) {
                 var html = `<div class="bubble you">${ data2.val().message }</div>`
