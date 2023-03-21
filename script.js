@@ -112,7 +112,8 @@ send.addEventListener('click', (e) => {
             name: name,
             allow:friend,
             message: message,
-            date:Date.now()
+            date:Date.now(),
+            dname = cusid
         });
         document.getElementById('content').value = "";
     } else {}
@@ -134,7 +135,8 @@ send2.addEventListener("keydown", (e) => {
                 name: name,
                 allow:friend,
                 message: message,
-                date: Date.now()
+                date: Date.now(),
+                dname = cusid
             });
             document.getElementById('content').value = "";
         } else {}
