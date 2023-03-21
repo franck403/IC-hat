@@ -131,6 +131,7 @@ send2.addEventListener("keydown", (e) => {
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('active').id
+            console.log(cusid)
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 name: name,
                 allow:friend,
@@ -191,6 +192,7 @@ onChildAdded(friend_invite, (data) => {
         d1.innerHTML = d1.innerHTML + html_chat
         d2.innerHTML = d2.innerHTML + html
         const dnamef = data.val().dname
+        console.log(dnamef)
         var romc = ref(database, `messages/${dnamef}`);
         onChildAdded(romc, (data2) => {
             if(data2.val().name != myName) {
