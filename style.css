@@ -137,7 +137,8 @@ body {
     height: 100%;
     width: 100%;
     z-index: 1;
-    background: white;
+    background: rgb(201,0,255);
+    background: linear-gradient(157deg, rgba(201,0,255,1) 0%, rgba(150,33,255,1) 44%, rgba(0,157,255,1) 100%);
 }
 
 .loader {
