@@ -147,13 +147,13 @@ const newMsg = ref(database, 'messages/geoloup_chat/');
 var romc = ref(database, 'messages/geoloup_chat/');
 onChildAdded(newMsg, (data) => {
     if(data.val().name != myName) {
-        var html = `<div class="bubble you"><p>${ data.val().message }</p></div>`
+        var html = `<div class="bubble you">${ data.val().message }</div>`
         const d1 = document.querySelector('[data-chat="person1"]');
         d1.innerHTML = d1.innerHTML + html
         document.getElementById("time").innerHTML =  data.val().date
         document.getElementById("prew").innerHTML =  data.val().message
     }else{
-        var html = `<div class="bubble me"><p>${ data.val().message }</p></div>`
+        var html = `<div class="bubble me">${ data.val().message }</div>`
         const d1 = document.querySelector('[data-chat="person1"]');
         d1.innerHTML = d1.innerHTML + html
         document.getElementById("time").innerHTML =  data.val().date
@@ -194,13 +194,13 @@ onChildAdded(friend_invite, (data) => {
         const dnamef = data.val().dname
         onChildAdded(romc, (data2) => {
             if(data2.val().name != myName) {
-                var html = `<div class="bubble you"><p>${ data2.val().message }</p></div>`
+                var html = `<div class="bubble you">${ data2.val().message }</div>`
                 const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                 d1.innerHTML = d1.innerHTML + html
                 document.getElementById("time").innerHTML =  data2.val().date
                 document.getElementById("prew").innerHTML =  data2.val().message
             }else{
-                var html = `<div class="bubble me"><p>${ data2.val().message }</p></div>`
+                var html = `<div class="bubble me">${ data2.val().message }</div>`
                 const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                 d1.innerHTML = d1.innerHTML + html
                 document.getElementById("time").innerHTML =  data2.val().date
