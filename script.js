@@ -107,7 +107,8 @@ send.addEventListener('click', (e) => {
         var name = myName;
         const id = push(child(ref(database), 'messages')).key;
         var friend = "none"
-        set(ref(database, 'messages/geoloup_chat/' + id), {
+        var cusid = document.querySelector('active').innerHTML
+        set(ref(database, 'messages/'+ cusid + '/' + id), {
             name: name,
             allow:friend,
             message: message,
@@ -128,8 +129,8 @@ send2.addEventListener("keydown", (e) => {
             var name = myName;
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
-
-            set(ref(database, 'messages/geoloup_chat/' + id), {
+            var cusid = document.querySelector('active').innerHTML
+            set(ref(database, 'messages/'+ cusid + '/' + id), {
                 name: name,
                 allow:friend,
                 message: message,
