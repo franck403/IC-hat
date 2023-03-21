@@ -351,7 +351,7 @@ body {
     display: none;
     overflow: hidden;
     overflow-y: scroll;
-    padding: 0 35px 92px;
+    padding: 0 35px 40px;
     border-width: 1px 1px 1px 0;
     border-style: solid;
     border-color: var(--light);
