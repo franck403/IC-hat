@@ -38,6 +38,12 @@ const database = getDatabase(app);
 var myName = localStorage.getItem("name")
 var myEmail = localStorage.getItem("email")
 
+const friend_invite = ref(database, 'load/');
+onChildAdded(friend_invite, (data) => {
+    document.getElementById("loader").remove();
+    document.getElementById("loader_box").remove();
+})
+
 var friendhtml = `
 <li class="person" data-d-chat="person1">
 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
@@ -170,7 +176,6 @@ var elem = document.querySelector('[data-chat="person1"]');
 elem.scrollTop = elem.scrollHeight;
 elem.scrollTop = elem.scrollHeight;
 
-
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
@@ -218,6 +223,3 @@ onChildAdded(friend_invite, (data) => {
     
 });
 
-
-document.getElementById("loader").remove();
-document.getElementById("loader_box").remove();
