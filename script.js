@@ -177,7 +177,7 @@ onChildAdded(friend_invite, (data) => {
     console.log(dte)
     if(dte.indexOf(myEmail) != -1) {
         var html = `
-        <li class="person" data-d-chat="${data.val().dname}" id="${data.val().dname}">
+        <li onlick("room(${data.val().dname})") class="person" data-d-chat="${data.val().dname}" id="${data.val().dname}">
         <img src="default_picture.gif" alt="picture" />
         <p class="name">${data.val().allow}</p>
         <p class="time"></p>
@@ -185,7 +185,7 @@ onChildAdded(friend_invite, (data) => {
         </li>`
         // chat_el_box
         var html_chat = `
-        <div class="chat" data-chat="${data.val().dname}">
+        <div class="chat" id="room_${data.val().dname}" data-chat="${data.val().dname}">
         <span></span>
         </div>`
         const d1 = document.getElementById("chat_el_box")
