@@ -355,7 +355,7 @@ body {
     border-width: 1px 1px 1px 0;
     border-style: solid;
     border-color: var(--light);
-    height: calc(100% - 117px);
+    height: calc(100% - 86px);
     justify-content: flex-end;
     flex-direction: column;
 
