@@ -1,8 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
 
-const storage = getStorage();
-const storageRef = ref(storage, 'some-child');
 
 const firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
@@ -14,7 +12,13 @@ const firebaseConfig = {
     appId: "1:720687529085:web:2d964e880c5e2398058514",
     measurementId: "G-YC8K0D7GLR"
   };
-  const app = initializeApp(firebaseConfig);
+
+const storage = getStorage();
+var storageId = document.getElementsByClassName('active').id
+var storageRef = ref(storage, `/img/${storageId}`);
+
+
+const app = initializeApp(firebaseConfig);
   
 // Get the modal
 var modal = document.getElementById("file");
