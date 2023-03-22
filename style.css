@@ -197,9 +197,15 @@ body {
   @keyframes rotate {
     0% {
       transform: rotate(0deg);
+      width: 10px;
+    }
+    50% {
+      transform: rotate(180deg);
+      width: 50px;
     }
     100% {
       transform: rotate(360deg);
+      width: 10px;
     }
   }
   @keyframes fade {
