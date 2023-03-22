@@ -1,9 +1,6 @@
 var keys = localStorage.getItem("name");
-
 if (keys != null) {}
 else {window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login");}
-
-
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
@@ -75,7 +72,7 @@ friends.addEventListener('click', (e) => {
     var fg = document.getElementById('friend_email').value
     var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     if (document.getElementById('friend_email').value != "" || fg.find(gh) != -1) {
-        var customid1 = String(Math.random())
+        var customid1 = String(Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random())
         var customid = customid1.replace(".","")
         var before_friend = document.getElementById("friend_email").value + "," + localStorage.getItem("email")
         var after_friend = before_friend.split(",")
@@ -170,9 +167,9 @@ onChildAdded(friend_invite, (data) => {
         var html = `
         <li onclick="room('${data.val().dname}')" class="person" data-name="${data.val().allow}" data-d-chat="${data.val().dname}" id="${data.val().dname}">
         <img src="default_picture.gif" alt="picture" />
-        <p class="name">${data.val().allow}</p>
-        <p class="time"></p>
-        <p class="preview"></p>
+        <p id="name_${data.val().allow}" class="name">${data.val().allow}</p>
+        <p id="time_${data.val().dname}" class="time"></p>
+        <p id="prew-${data.val().dname}" class="preview"></p>
         </li>`
         // chat_el_box
         var html_chat = `
@@ -190,14 +187,14 @@ onChildAdded(friend_invite, (data) => {
                 var html = `<div class="bubble you">${ data2.val().message }</div>`
                 const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                 d1.innerHTML = d1.innerHTML + html
-                document.getElementById("time").innerHTML =  data2.val().date
-                document.getElementById("prew").innerHTML =  data2.val().message
+                document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                document.getElementById(`prew_${danmef}`).innerHTML =  data2.val().message
             }else{
                 var html = `<div class="bubble me">${ data2.val().message }</div>`
                 const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                 d1.innerHTML = d1.innerHTML + html
-                document.getElementById("time").innerHTML =  data2.val().date
-                document.getElementById("prew").innerHTML =  data2.val().message
+                document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                document.getElementById(`prew_${danmef}`).innerHTML =  data2.val().message
             }
             var elem = document.querySelector(`[data-chat="${dnamef}"]`);
             elem.scrollTop = elem.scrollHeight;
