@@ -14,7 +14,7 @@ const firebaseConfig = {
   };
 
 const app = initializeApp(firebaseConfig);
-const storage = getStorage(firebaseConfig);
+const storage = getStorage(app);
 
 // Get the modal
 var modal = document.getElementById("file");
