@@ -13,13 +13,10 @@ const firebaseConfig = {
     measurementId: "G-YC8K0D7GLR"
   };
 
+const app = initializeApp(firebaseConfig);
 const storage = getStorage();
 var storageId = document.getElementsByClassName('active').id
-var storageRef = ref(storage, `/img/${storageId}`);
-
-
-const app = initializeApp(firebaseConfig);
-  
+var storageRef = ref(storage, `/img/${storageId}`);  
 // Get the modal
 var modal = document.getElementById("file");
 
