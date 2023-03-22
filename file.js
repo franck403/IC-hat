@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
+import { getStorage, uploadBytes } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
 
 
 const firebaseConfig = {
@@ -14,9 +14,7 @@ const firebaseConfig = {
   };
 
 const app = initializeApp(firebaseConfig);
-const storage = getStorage();
-var storageId = document.getElementsByClassName('active').id
-var storageRef = ref(storage, `/img/${storageId}`);  
+
 // Get the modal
 var modal = document.getElementById("file");
 
@@ -47,10 +45,17 @@ const add_file = document.getElementById("add_file");
 
 add_file.addEventListener('click', (e) => {
     modal.style.display = "none";
-    var imag = document.getElementById("file_input")
-    uploadBytes(storageRef, file).then((snapshot) => {
-        console.log('Uploaded the image');
-    });
+    const ref2 = firebase.storage().ref();
+    var storageId = document.getElementsByClassName('active').id
+    var imag = document.getElementById("file_input").files
+    const file = document.getElementById("file_input").files[0];
+    const name = +new Date() + `-${storageId}-` + file.name;
+    const metadata = {
+       contentType: file.type
+    };
+    const task = ref2.child(name).put(file, metadata);task
+    .then(snapshot => snapshot.ref2.getDownloadURL());
+
     document.getElementById("file_input").value = "";
 
 });
