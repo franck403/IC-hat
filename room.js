@@ -14,6 +14,6 @@ function room(id){
     new1.setAttribute("class","person active")
     new2.setAttribute("class","chat active-chat")
     to.innerHTML = new1.dataset.name
-    new1.scrollTop = new1.scrollHeight;
-    new1.scrollTop = new1.scrollHeight;
+    new2.scrollTop = new2.scrollHeight;
+    new2.scrollTop = new2.scrollHeight;
 }
