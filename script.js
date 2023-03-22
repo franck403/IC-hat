@@ -1,13 +1,8 @@
-console.log("-----------------------------");
-
 var keys = localStorage.getItem("name");
 
 if (keys != null) {}
 else {window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login");}
 
-console.log("-----------------------------");
-console.log("finish generating the session");
-console.log("-----------------------------");
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
@@ -81,7 +76,6 @@ friends.addEventListener('click', (e) => {
     var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     if (document.getElementById('friend_email').value != "" || fg.find(gh) != -1) {
         var customid1 = String(Math.random())
-        console.log(customid1)
         var customid = customid1.replace(".","")
         var before_friend = document.getElementById("friend_email").value + "," + localStorage.getItem("email")
         var after_friend = before_friend.split(",")
@@ -132,8 +126,6 @@ send2.addEventListener("keydown", (e) => {
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('person active')[0].id
-            console.log(document.getElementsByClassName('person active')[0].id)
-            console.log(cusid)
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 name: name,
                 allow:friend,
@@ -174,7 +166,6 @@ elem.scrollTop = elem.scrollHeight;
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
-    console.log(dte)
     if(dte.indexOf(myEmail) != -1) {
         var html = `
         <li onclick="room('${data.val().dname}')" class="person" data-name="${data.val().allow}" data-d-chat="${data.val().dname}" id="${data.val().dname}">
@@ -193,7 +184,6 @@ onChildAdded(friend_invite, (data) => {
         d1.innerHTML = d1.innerHTML + html_chat
         d2.innerHTML = d2.innerHTML + html
         const dnamef = data.val().dname
-        console.log(dnamef)
         var romc = ref(database, `messages/${dnamef}`);
         onChildAdded(romc, (data2) => {
             if(data2.val().name != myName) {
