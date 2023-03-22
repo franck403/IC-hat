@@ -159,6 +159,16 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.loader h2 .err {
+    text-align: center;
+    z-index:2;
+    position: relative;
+    color:white;
+    top: 17vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
 * {
     transition: all 0.3s;
 }
