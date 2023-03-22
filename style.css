@@ -331,7 +331,6 @@ body {
     top: 16px;
     right: 10%;
     padding: 0 0 5px 5px;
-    color: var(--grey);
 }
 
 .container .left .people .person .preview {
@@ -343,7 +342,6 @@ body {
     margin: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: var(--grey);
 }
 
 .container .left .people .person.active,
