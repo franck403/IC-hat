@@ -155,8 +155,9 @@ body {
     z-index:2;
     position: relative;
     color:white;
-    top: 15vh;
+    top: 17vh;
     left: 50%;
+    width: 1000px;
     transform: translate(-50%, -50%);
 }
 .loader h2 .err {
