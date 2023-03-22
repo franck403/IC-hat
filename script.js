@@ -44,7 +44,7 @@ var friendhtml = `
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
 const friends = document.getElementById("new_friend_add");
-
+const add_file = document.getElementById("add_file");
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -88,6 +88,13 @@ friends.addEventListener('click', (e) => {
         document.getElementById('friend_email').value = "";
         modal.style.display = "none";
     } else {}
+});
+add_file.addEventListener('click', (e) => {
+    modal.style.display = "none";
+    
+    uploadBytes(storageRef, file).then((snapshot) => {
+        console.log('Uploaded the image');
+    });
 });
 
 send.addEventListener('click', (e) => {
