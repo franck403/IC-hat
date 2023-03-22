@@ -13,6 +13,8 @@ import {
     onValue,
     onChildAdded
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+
 const firebaseConfig = {
   apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
   authDomain: "ic-hat.firebaseapp.com",
