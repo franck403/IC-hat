@@ -17,6 +17,7 @@
             <div class="loader-line"></div>
             </div>
             <h2>Ic-hat | made by Geoloup team</h2>
+            <h2 class="err" id="err"></h2>
         </div>
         <div id="loader_box" class="loader_box"></div>
         <div id="myModal" class="modal">
@@ -86,7 +87,9 @@
                 </div>
             </div>
         </div>
-        <script defer type="module" src="file.js"></script>
-        <script defer type="module" src="script.js"></script>
+        <script>document.getElementById("err").innerHTML = "Loading storage can create a freeze"</script>
+        <script type="module" src="file.js"></script>
+        <script>document.getElementById("err").innerHTML = "Loading Ic-hat core"</script>
+        <script type="module" src="core.js"></script>
     </body>
 </html>
