@@ -323,6 +323,7 @@ body {
     overflow: hidden !important;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
+    text-overflow: ellipsis;
 }
 
 .container .left .people .person .time {
