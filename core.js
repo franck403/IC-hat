@@ -226,8 +226,11 @@ onChildAdded(friend_invite, (data) => {
 
 const load_check = ref(database, 'load/');
 onChildAdded(load_check, (data) => {
-//    document.getElementById("loader").remove();
-//    document.getElementById("loader_box").remove();    
+    document.getElementById("err").innerHTML = "Finish loading entering IC-hat";    
+    setTimeout(function(){
+        document.getElementById("loader").remove();
+        document.getElementById("loader_box").remove()
+    }, 2000);
     var elem = document.getElementById("geoloup_chat_c")
     elem.scrollTop = elem.scrollHeight;
     elem.scrollTop = elem.scrollHeight;
