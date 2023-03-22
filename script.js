@@ -194,7 +194,7 @@ onChildAdded(friend_invite, (data) => {
                 const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                 d1.innerHTML = d1.innerHTML + html
                 document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                document.getElementById(`prew_${danmef}`).innerHTML =  data2.val().message
+                document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
             }
             var elem = document.querySelector(`[data-chat="${dnamef}"]`);
             elem.scrollTop = elem.scrollHeight;
