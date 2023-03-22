@@ -1,5 +1,5 @@
 
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/9.17.2/storage";
 
 // Get the modal
 var modal = document.getElementById("file");
