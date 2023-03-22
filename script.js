@@ -91,10 +91,12 @@ friends.addEventListener('click', (e) => {
 });
 add_file.addEventListener('click', (e) => {
     modal.style.display = "none";
-    
+    var imag = document.getElementById("file_input")
     uploadBytes(storageRef, file).then((snapshot) => {
         console.log('Uploaded the image');
     });
+    document.getElementById("file_input").value = "";
+
 });
 
 send.addEventListener('click', (e) => {
