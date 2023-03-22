@@ -169,7 +169,7 @@ onChildAdded(friend_invite, (data) => {
         <img src="default_picture.gif" alt="picture" />
         <p id="name_${data.val().allow}" class="name">${data.val().allow}</p>
         <p id="time_${data.val().dname}" class="time"></p>
-        <p id="prew-${data.val().dname}" class="preview"></p>
+        <p id="prew_${data.val().dname}" class="preview"></p>
         </li>`
         // chat_el_box
         var html_chat = `
