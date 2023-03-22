@@ -14,6 +14,7 @@ const firebaseConfig = {
   };
 
 const app = initializeApp(firebaseConfig);
+const storage = getStorage();
 
 // Get the modal
 var modal = document.getElementById("file");
@@ -45,7 +46,7 @@ const add_file = document.getElementById("add_file");
 
 add_file.addEventListener('click', (e) => {
     modal.style.display = "none";
-    const ref2 = firebase.storage().ref();
+    const ref2 = storage().ref();
     var storageId = document.getElementsByClassName('active').id
     var imag = document.getElementById("file_input").files
     const file = document.getElementById("file_input").files[0];
