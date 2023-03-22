@@ -13,7 +13,6 @@ import {
     onValue,
     onChildAdded
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
@@ -44,7 +43,6 @@ var friendhtml = `
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
 const friends = document.getElementById("new_friend_add");
-const add_file = document.getElementById("add_file");
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -88,15 +86,6 @@ friends.addEventListener('click', (e) => {
         document.getElementById('friend_email').value = "";
         modal.style.display = "none";
     } else {}
-});
-add_file.addEventListener('click', (e) => {
-    modal.style.display = "none";
-    var imag = document.getElementById("file_input")
-    uploadBytes(storageRef, file).then((snapshot) => {
-        console.log('Uploaded the image');
-    });
-    document.getElementById("file_input").value = "";
-
 });
 
 send.addEventListener('click', (e) => {
