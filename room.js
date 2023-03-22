@@ -9,7 +9,6 @@ function room(id){
     var new1 = document.getElementById(id)
     var to_name = document.getElementById(id) 
     var to = document.querySelector("#to")
-    console.log(new1)
     old1.setAttribute("class","person")
     old2.setAttribute("class","chat")
     new1.setAttribute("class","person active")
