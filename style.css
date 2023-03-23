@@ -433,7 +433,7 @@ body {
 .write {
     position: absolute;
     bottom: 20px;
-    right: 28px;
+    right: 18px;
     height: 42px;
     padding-left: 8px;
     border: 1px solid var(--light);
