@@ -235,17 +235,28 @@ body {
       opacity: 1;
     }
   }
-
-.container .left {
-    position: fixed;
-    left: 0;
-    width: 37.6%;
-    height: 100%;
-    border: 1px solid var(--light);
-    background-color: var(--white);
-    overflow: hidden;
+@media only screen and (max-width: 1000px)  {
+    .container .left {
+        position: fixed;
+        left: 0;
+        width: 434.34px;
+        height: 100%;
+        border: 1px solid var(--light);
+        background-color: var(--white);
+        overflow: hidden;
+    }
 }
-
+@media only screen and (min-width: 1000px)  {
+    .container .left {
+        position: fixed;
+        left: 0;
+        width: 37.6%;
+        height: 100%;
+        border: 1px solid var(--light);
+        background-color: var(--white);
+        overflow: hidden;
+    }
+}
 .container .left .top {
     position: relative;
     width: 100%;
