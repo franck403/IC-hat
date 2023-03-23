@@ -201,6 +201,7 @@ onChildAdded(friend_invite, (data) => {
             elem.scrollTop = elem.scrollHeight;
         });
         var on_img = ref(database, `/storage/${dnamef}`);
+        localStorage.setItem("dnamef",dnamef)
         onChildAdded(on_img, (data2) => {
             if(data2.val().name != myName) {
                 var html = `<div class="bubble you"><img class="img" src="${data.val().url}"></img></div>`

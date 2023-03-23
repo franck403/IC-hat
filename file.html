@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Firebase Image Upload using HTML and JavaScript</title>
+   <style>
+      #photo{
+         margin-top: 200px;
+         margin-left: 450px;
+      }
+      #upload{
+         margin-top: 20px;
+         margin-left: 450px;
+      }
+   </style>
+</head>
+<body>
+   <input type="file" id="photo" /></br>
+   <button id="upload" onclick="uploadImage()">Upload Image</button>
+</body>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
+        authDomain: "ic-hat.firebaseapp.com",
+        databaseURL: "https://ic-hat-default-rtdb.firebaseio.com",
+        projectId: "ic-hat",
+        storageBucket: "ic-hat.appspot.com",
+        messagingSenderId: "720687529085",
+        appId: "1:720687529085:web:2d964e880c5e2398058514",
+        measurementId: "G-YC8K0D7GLR"
+    };
+
+   // Initialize Firebase
+   firebase.initializeApp(firebaseConfig);
+   const database = firebase.database()
+   var database_ref = database.ref()
+   console.log(firebase);
+   function uploadImage() {
+      const ref = firebase.storage().ref();
+      const file = document.querySelector("#photo").files[0];
+      const name = +new Date() + "-" + file.name;
+      const metadata = {
+         contentType: file.type
+      };
+      const task = ref.child(name).put(file, metadata);task
+      .then(snapshot => snapshot.ref.getDownloadURL())
+      .then(url => {
+      console.log(url);
+      alert('image uploaded successfully');
+      document.querySelector("#image").src = url;
+      var storageData = {
+        type:file.type,
+        name,
+        metadata
+      }
+      database_ref.child(`storage/${localStorage.getItem("dnamef")}/${name}`).set(storageData)
+   })
+   .catch(console.error);
+   }
+</script>
+</html>
