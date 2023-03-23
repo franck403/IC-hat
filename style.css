@@ -235,7 +235,7 @@ body {
       opacity: 1;
     }
   }
-@media only screen and (max-width: 1000px)  {
+@media only screen and (min-width: 1000px)  {
     .container .left {
         position: fixed;
         left: 0;
@@ -246,7 +246,7 @@ body {
         overflow: hidden;
     }
 }
-@media only screen and (min-width: 1000px)  {
+@media only screen and (max-width: 1000px)  {
     .container .left {
         position: fixed;
         left: 0;
