@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getStorage, uploadBytes } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
+import { getStorage, uploadBytes, storage } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
 
 
 const firebaseConfig = {
@@ -13,8 +13,8 @@ const firebaseConfig = {
     measurementId: "G-YC8K0D7GLR"
   };
 
-const app = initializeApp(firebaseConfig);
-const storage = getStorage(app);
+
+firebase.initializeApp(firebaseConfig);
 
 // Get the modal
 var modal = document.getElementById("file");
