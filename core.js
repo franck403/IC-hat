@@ -210,22 +210,25 @@ onChildAdded(friend_invite, (data) => {
         const dnamef = data.val().dname
         var romc = ref(database, `messages/${dnamef}`);
         onChildAdded(romc, (data2) => {
-            if(data2.val().name != myName) {
-                var html = `<div class="bubble you">${ data2.val().message }</div>`
-                const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                d1.innerHTML = d1.innerHTML + html
-                document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
-            }else{
-                var html = `<div class="bubble me">${ data2.val().message }</div>`
-                const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                d1.innerHTML = d1.innerHTML + html
-                document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
-            }
-            var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-            elem.scrollTop = elem.scrollHeight;
-            elem.scrollTop = elem.scrollHeight;
+            if (data2.val().message != null) {
+                if(data2.val().name != myName) {
+                    var html = `<div class="bubble you">${ data2.val().message }</div>`
+                    const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                    d1.innerHTML = d1.innerHTML + html
+                    document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                    document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                }else{
+                    var html = `<div class="bubble me">${ data2.val().message }</div>`
+                    const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                    d1.innerHTML = d1.innerHTML + html
+                    document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                    document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                }
+                var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                elem.scrollTop = elem.scrollHeight;
+                elem.scrollTop = elem.scrollHeight;
+                }
+            else {}
         });
         var on_img = ref(database, `/storage/${dnamef}`);
         localStorage.setItem("dnamef",dnamef)
