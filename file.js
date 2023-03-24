@@ -3,7 +3,7 @@ add_file.addEventListener('click', (e) => {
     const formData = new FormData();
     
     const fileField = document.getElementById("file_input").files
-    formData.append('file', fileField.files[0])
+    formData.append('file', fileField.files)
     var storageId = document.getElementsByClassName('active').id
     var url;
     fetch("https://fireimage.francoischouin1.repl.co/success", {
@@ -11,7 +11,7 @@ add_file.addEventListener('click', (e) => {
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: formData,
+        body: formData,mode:"no-cors",
     })
     .then((response) => url = response)
     .catch((error) => {
