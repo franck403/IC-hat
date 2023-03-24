@@ -6,7 +6,7 @@ add_file.addEventListener('click', (e) => {
     data.append('file', fileField.files[0])
     var storageId = document.getElementsByClassName('active').id
     var url;
-    fetch("https://fireimage.francoischoui1.repl.co/success", {
+    fetch("https://fireimage.francoischouin1.repl.co/success", {
         method: "POST",    
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
