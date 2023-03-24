@@ -9,7 +9,6 @@ add_file.addEventListener('click', (e) => {
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
         },
-        mode:"no-cors",
         body: formData,
     })
     .then((response) => url = response)
