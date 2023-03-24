@@ -16,7 +16,7 @@ add_file.addEventListener('click', (e) => {
     .catch((error) => {
         console.error("Error:", error);
     });
-    modal.style.display = "none";
+    document.getElementById("file").style.display = "none";
     document.getElementById("file_input").value = "";
 
 });
