@@ -5,7 +5,10 @@ add_file.addEventListener('click', (e) => {
     var storageId = document.getElementsByClassName('active').id
     var url;
     fetch("https://fireimage.francoischoui1.repl.co/success", {
-        method: "POST",
+        method: "POST",    
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
         mode:"no-cors",
         body: formData,
     })
