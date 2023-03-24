@@ -1,4 +1,4 @@
-
+add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
     const formData = new FormData();
     const fileField = document.getElementById("file_input").files
