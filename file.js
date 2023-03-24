@@ -3,7 +3,7 @@ add_file.addEventListener('click', (e) => {
     const formData = new FormData();
     
     const fileField = document.getElementById("file_input").files
-    data.append('file', fileField.files[0])
+    formData.append('file', fileField.files[0])
     var storageId = document.getElementsByClassName('active').id
     var url;
     fetch("https://fireimage.francoischouin1.repl.co/success", {
