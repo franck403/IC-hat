@@ -189,7 +189,7 @@ elem.scrollTop = elem.scrollHeight;
 elem.scrollTop = elem.scrollHeight;
 */
 
-add_file = document.getElementById("add_image")
+var add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
     const formData = new FormData();
     
