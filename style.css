@@ -243,7 +243,7 @@ body {
 .container .left {
     position: fixed;
     left: 0;
-    width: 37.6%;
+    width: 38%;
     height: 100%;
     border: 1px solid var(--light);
     background-color: var(--white);
