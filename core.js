@@ -210,7 +210,7 @@ add_file.addEventListener('click', (e) => {
     set(ref(database, `storage/${cusid}/` + id), {
         name: name,
         allow:friend,
-        message: `<img src="${url}" alt="image">`,
+        message: `<img src="${url}" class="message_image" alt="image">`,
         date:Date.now(),
         dname:cusid
     });
