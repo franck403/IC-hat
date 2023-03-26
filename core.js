@@ -237,7 +237,7 @@ onChildAdded(friend_invite, (data) => {
         localStorage.setItem("count",localStorage.getItem + 1)
         var html = `
         <li onclick="room('${data.val().dname}')" class="${class2}" data-name="${data.val().allow}" data-d-chat="${data.val().dname}" id="${data.val().dname}">
-        <img src="default_picture.gif" alt="picture" />
+        <img src="default.png" alt="picture" />
         <p id="name_${data.val().allow}" class="name">${data.val().allow}</p>
         <p id="time_${data.val().dname}" class="time"></p>
         <p id="prew_${data.val().dname}" class="preview"></p>
