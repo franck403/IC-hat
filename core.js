@@ -207,10 +207,7 @@ add_file.addEventListener('click', (e) => {
         console.log(url)
         var name = myName;
         const id = push(child(ref(database), 'messages')).key;
-        console.log(id)
-        console.log('<img src="' + url +'" class="message_image" alt="image">')
         var cusid = document.getElementsByClassName('person active')[0].id
-        console.log(cusid)
         set(ref(database, "storage/"+ cusid + "/" + id), {
             name: name,
             message: `<img src="${url}" class="message_image" alt="image">`,
@@ -279,13 +276,13 @@ onChildAdded(friend_invite, (data) => {
         localStorage.setItem("dnamef",dnamef)
         onChildAdded(on_img, (data2) => {
             if(data2.val().name != myName) {
-                var html = `<div class="bubble you"><img class="img" src="${data.val().url}"></img></div>`
+                var html = `<div class="bubble you"><img class="img" src="${data.val().message}"></img></div>`
                 const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                 d1.innerHTML = d1.innerHTML + html
                 document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
                 document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
             }else{
-                var html = `<div class="bubble me"><img class="img" src="${data.val().url}"></img></div>`
+                var html = `<div class="bubble me"><img class="img" src="${data.val().message}"></img></div>`
                 const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                 d1.innerHTML = d1.innerHTML + html
                 document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
