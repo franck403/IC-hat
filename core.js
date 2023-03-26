@@ -187,6 +187,44 @@ var elem = document.querySelector('[data-chat="person1"]');
 elem.scrollTop = elem.scrollHeight;
 elem.scrollTop = elem.scrollHeight;
 
+add_file = document.getElementById("add_image")
+add_file.addEventListener('click', (e) => {
+    const formData = new FormData();
+    
+    const fileField = document.getElementById("file_input").files[0]
+    formData.append('file', fileField)
+    var storageId = document.getElementsByClassName('active').id
+    var url;
+    fetch("https://fireimage.francoischouin1.repl.co/success", {
+        method: "POST",
+        body: formData
+    })
+    .then((response) => url = response)
+    .catch((error) => {
+        console.error("Error:", error);
+    });
+    var name = myName;
+    const id = push(child(ref(database), 'messages')).key;
+    var friend = "none"
+    var cusid = document.getElementsByClassName('active').id
+    set(ref(database, `storage/${cusid}/` + id), {
+        name: name,
+        allow:friend,
+        message: `<img src="${url}" alt="image">`,
+        date:Date.now(),
+        dname:cusid
+    });
+    document.getElementById("file").style.display = "none";
+    document.getElementById("file_input").value = "";
+
+});
+
+const form  = document.getElementById('add_image');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+});
+
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
