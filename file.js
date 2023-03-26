@@ -11,7 +11,8 @@ add_file.addEventListener('click', (e) => {
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: formData,mode:"no-cors",
+        body: formData,
+        mode:"no-cors",
     })
     .then((response) => url = response)
     .catch((error) => {
@@ -20,4 +21,11 @@ add_file.addEventListener('click', (e) => {
     document.getElementById("file").style.display = "none";
     document.getElementById("file_input").value = "";
 
+});
+
+const form  = document.getElementById('add_image');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    form.submit();
 });
