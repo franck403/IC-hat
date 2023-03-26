@@ -201,7 +201,9 @@ add_file.addEventListener('click', (e) => {
         method: "POST",
         body: formData
     })
-    .then((response) => url = response)
+    .then((response) => {
+        var url = response
+    })
     .catch((error) => {
         console.error("Error:", error);
     });
