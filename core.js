@@ -208,6 +208,7 @@ add_file.addEventListener('click', (e) => {
         var name = myName;
         const id = push(child(ref(database), 'messages')).key;
         console.log(id)
+        console.log('<img src="' + url +'" class="message_image" alt="image">')
         var cusid = document.getElementsByClassName('person active')[0].id
         console.log(cusid)
         set(ref(database, "storage/"+ cusid + "/" + id), {
