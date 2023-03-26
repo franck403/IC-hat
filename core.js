@@ -203,21 +203,21 @@ add_file.addEventListener('click', (e) => {
     })
     .then((response) => {
         var url = response
+        console.log(url)
+        var name = myName;
+        const id = push(child(ref(database), 'messages')).key;
+        console.log(id)
+        var cusid = document.getElementsByClassName('person active')[0].id
+        console.log(cusid)
+        set(ref(database, "storage/"+ cusid + "/" + id), {
+            name: name,
+            message: `<img src="${url}" class="message_image" alt="image">`,
+            date:Date.now(),
+            dname:cusid
+        });    
     })
     .catch((error) => {
         console.error("Error:", error);
-    });
-    console.log(url)
-    var name = myName;
-    const id = push(child(ref(database), 'messages')).key;
-    console.log(id)
-    var cusid = document.getElementsByClassName('person active')[0].id
-    console.log(cusid)
-    set(ref(database, "storage/"+ cusid + "/" + id), {
-        name: name,
-        message: `<img src="${url}" class="message_image" alt="image">`,
-        date:Date.now(),
-        dname:cusid
     });
     document.getElementById("file").style.display = "none";
     document.getElementById("file_input").value = "";
