@@ -202,7 +202,7 @@ add_file.addEventListener('click', (e) => {
         body: formData
     })
     .then((response) => {
-        var url = response.text
+        var url = response.text()
         console.log(url)
         var name = myName;
         const id = push(child(ref(database), 'messages')).key;
