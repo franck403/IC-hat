@@ -28,7 +28,56 @@ var firebaseConfig = {
   
   // Set up our register function
   function register () {
-      window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/register.js");
+    // Get all our input fields
+    email = document.getElementById('email').value
+    password = document.getElementById('password').value
+    full_name = document.getElementById('full_name').value
+  
+    // Validate input fields
+    if (validate_email(email) == false || validate_password(password) == false) {
+      alert('Email or Password is Outta Line!!')
+      return
+      // Don't continue running the code
+    }
+       
+    // Move on with Auth
+    auth.createUserWithEmailAndPassword(email, password)
+    .then(function() {
+      // Declare user variable
+      var user = auth.currentUser
+  
+      // Add this user to Firebase Database
+      var database_ref = database.ref()
+  
+      // Create User data
+      var user_data = {
+        email : email,
+        full_name : full_name,
+        last_login : Date.now()
+      }
+      var user_data2 = {
+        email : email,
+        full_name : full_name
+      }
+      
+      // Push to Firebase Database
+      database_ref.child('users/' + user.uid).set(user_data)
+      database_ref.child('user_data/' + user_data.full_name).set(user_data)
+  
+      // DOne
+
+      localStorage.setItem("uid",user.uid)
+      localStorage.setItem("email",email)
+      localStorage.setItem("name",full_name)
+      window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/end");
+    })
+    .catch(function(error) {
+      // Firebase will use this to alert of its errors
+      var error_code = error.code
+      var error_message = error.message
+  
+      alert(error_message)
+    })
   }
   
   // Set up our login function
