@@ -9,8 +9,10 @@ function room(id){
     var new1 = document.getElementById(id)
     var to_name = document.getElementById(id) 
     var to = document.querySelector("#to")
-    old1.setAttribute("class","person")
-    old2.setAttribute("class","chat")
+    try {
+        old1.setAttribute("class","person")
+        old2.setAttribute("class","chat")
+    } catch {}
     new1.setAttribute("class","person active")
     new2.setAttribute("class","chat active-chat")
     to.innerHTML = new1.dataset.name
