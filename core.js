@@ -209,7 +209,7 @@ add_file.addEventListener('click', (e) => {
     const id = push(child(ref(database), 'messages')).key;
     var friend = "none"
     var cusid = document.getElementsByClassName('active').id
-    set(ref(database, `storage/${cusid}/` + id), {
+    set(ref(database, "storage/ "+ cusid + "/" + id), {
         name: name,
         allow:friend,
         message: `<img src="${url}" class="message_image" alt="image">`,
