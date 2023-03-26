@@ -275,6 +275,7 @@ onChildAdded(friend_invite, (data) => {
         var on_img = ref(database, `/storage/${dnamef}`);
         localStorage.setItem("dnamef",dnamef)
         onChildAdded(on_img, (data2) => {
+            console.log(data.val().message)
             if(data2.val().name != myName) {
                 var html = `<div class="bubble you"><img class="img" src="${data.val().message}"></img></div>`
                 const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
