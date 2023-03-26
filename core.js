@@ -162,6 +162,7 @@ send2.addEventListener("keydown", (e) => {
     } else {}
 });
 
+/*
 const newMsg = ref(database, 'messages/geoloup_chat/');
 var romc = ref(database, 'messages/geoloup_chat/');
 onChildAdded(newMsg, (data) => {
@@ -186,6 +187,7 @@ onChildAdded(newMsg, (data) => {
 var elem = document.querySelector('[data-chat="person1"]');
 elem.scrollTop = elem.scrollHeight;
 elem.scrollTop = elem.scrollHeight;
+*/
 
 add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
