@@ -118,7 +118,10 @@ body {
     font-weight: 400;
     outline: none;
 }
-
+.img {
+    max-height: 50%;
+    max-width: 100%;
+}
 .add {
     text-align: center;
     justify-items: center;
