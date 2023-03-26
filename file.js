@@ -23,5 +23,4 @@ const form  = document.getElementById('add_image');
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    form.submit();
 });
