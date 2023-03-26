@@ -126,7 +126,7 @@ send.addEventListener('click', (e) => {
         var name = myName;
         const id = push(child(ref(database), 'messages')).key;
         var friend = "none"
-        var cusid = document.getElementsByClassName('active').id
+        var cusid = document.getElementsByClassName('person active')[0].id
         set(ref(database, 'messages/'+ cusid + '/' + id), {
             name: name,
             allow:friend,
@@ -208,9 +208,9 @@ add_file.addEventListener('click', (e) => {
     var name = myName;
     const id = push(child(ref(database), 'messages')).key;
     console.log(id)
-    var cusid = document.getElementsByClassName('active').id
+    var cusid = document.getElementsByClassName('person active')[0].id
     console.log(cusid)
-    set(ref(database, "storage/ "+ cusid + "/" + id), {
+    set(ref(database, "storage/"+ cusid + "/" + id), {
         name: name,
         message: `<img src="${url}" class="message_image" alt="image">`,
         date:Date.now(),
