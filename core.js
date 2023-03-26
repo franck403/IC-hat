@@ -201,8 +201,9 @@ add_file.addEventListener('click', (e) => {
         method: "POST",
         body: formData
     })
-    .then((response) => {
-        var url = response.text()
+    .then((response) => response.json())
+    .then((data) => {
+        var url = data
         console.log(url)
         var name = myName;
         const id = push(child(ref(database), 'messages')).key;
