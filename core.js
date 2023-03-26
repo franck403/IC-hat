@@ -302,8 +302,4 @@ onChildAdded(load_check, (data) => {
         document.getElementById("loader").remove();
         document.getElementById("loader_box").remove()
     }, 2000);
-    var elem = document.getElementById("geoloup_chat_c")
-    elem.scrollTop = elem.scrollHeight;
-    elem.scrollTop = elem.scrollHeight;
-
 })
