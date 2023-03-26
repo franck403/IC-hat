@@ -1,4 +1,3 @@
-/*
 add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
     const formData = new FormData();
@@ -8,10 +7,7 @@ add_file.addEventListener('click', (e) => {
     var storageId = document.getElementsByClassName('active').id
     var url;
     fetch("https://fireimage.francoischouin1.repl.co/success", {
-        method: "POST",    
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
+        method: "POST",
         body: formData
     })
     .then((response) => url = response)
@@ -22,7 +18,6 @@ add_file.addEventListener('click', (e) => {
     document.getElementById("file_input").value = "";
 
 });
-*/
 
 const form  = document.getElementById('add_image');
 
