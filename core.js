@@ -234,6 +234,7 @@ onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
     if(dte.indexOf(myEmail) != -1) {
         if (localStorage.getItem("count") == 0) {var class2 = "person active"} else {var class2 = "person"}
+        localStorage.setItem("count",localStorage.getItem + 1)
         var html = `
         <li onclick="room('${data.val().dname}')" class="${class2}" data-name="${data.val().allow}" data-d-chat="${data.val().dname}" id="${data.val().dname}">
         <img src="default_picture.gif" alt="picture" />
