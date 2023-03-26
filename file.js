@@ -9,10 +9,9 @@ add_file.addEventListener('click', (e) => {
     fetch("https://fireimage.francoischouin1.repl.co/success", {
         method: "POST",    
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "multipart/form-data",
         },
-        body: formData,
-        mode:"no-cors",
+        body: formData
     })
     .then((response) => url = response)
     .catch((error) => {
