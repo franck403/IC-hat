@@ -201,7 +201,7 @@ add_file.addEventListener('click', (e) => {
         method: "POST",
         body: formData
     })
-    .then((response) => response.json())
+    .then((response) => response.text())
     .then((data) => {
         var url = data
         console.log(url)
