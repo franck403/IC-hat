@@ -1,3 +1,4 @@
+localStorage.setItem("count",0)
 var keys = localStorage.getItem("name");
 if (keys != null) {}
 else {window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login");}
@@ -232,8 +233,9 @@ const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
     if(dte.indexOf(myEmail) != -1) {
+        if (localStorage.getITem("count") == 0) {var class2 = "person active"} else {var class2 = "person"}
         var html = `
-        <li onclick="room('${data.val().dname}')" class="person" data-name="${data.val().allow}" data-d-chat="${data.val().dname}" id="${data.val().dname}">
+        <li onclick="room('${data.val().dname}')" class="${class2}" data-name="${data.val().allow}" data-d-chat="${data.val().dname}" id="${data.val().dname}">
         <img src="default_picture.gif" alt="picture" />
         <p id="name_${data.val().allow}" class="name">${data.val().allow}</p>
         <p id="time_${data.val().dname}" class="time"></p>
