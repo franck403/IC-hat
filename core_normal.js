@@ -272,28 +272,7 @@ onChildAdded(friend_invite, (data) => {
             else {
                 console.log("type non supported")
             }
-        });
-        var on_img = ref(database, `/storage/${dnamef}`);
-        localStorage.setItem("dnamef",dnamef)
-        onChildAdded(on_img, (data2) => {
-            if(data2.val().name != myName) {
-                var html = `<div class="bubble you"><img class="img" src="${data2.val().message}"></img></div>`
-                const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                d1.innerHTML = d1.innerHTML + html
-                document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
-            }else{
-                var html = `<div class="bubble me"><img class="img" src="${data2.val().message}"></img></div>`
-                const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                d1.innerHTML = d1.innerHTML + html
-                document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
-            }
-            var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-            elem.scrollTop = elem.scrollHeight;
-            elem.scrollTop = elem.scrollHeight;
-        });
-        
+        });        
     }else{}
     
 });
