@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="emote">
+      <div id="drawer" class="emoji-drawer"></div>
+      <div class="emoji-input">
+        <input class="input" id="input" placeholder="Text">
+        <button for="input" onclick="toggleEmojiDrawer()"><img src="img.png"></button>
+      </div>
+    </div>
+    <script src="emoji.js"></script>
+  </body>
+</html>
