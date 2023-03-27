@@ -165,33 +165,6 @@ send2.addEventListener("keydown", (e) => {
     } else {}
 });
 
-/*
-const newMsg = ref(database, 'messages/geoloup_chat/');
-var romc = ref(database, 'messages/geoloup_chat/');
-onChildAdded(newMsg, (data) => {
-    if(data.val().name != myName) {
-        var html = `<div class="bubble you">${ data.val().message }</div>`
-        const d1 = document.querySelector('[data-chat="person1"]');
-        d1.innerHTML = d1.innerHTML + html
-        document.getElementById("time").innerHTML =  data.val().date
-        document.getElementById("prew").innerHTML =  data.val().message
-    }else{
-        var html = `<div class="bubble me">${ data.val().message }</div>`
-        const d1 = document.querySelector('[data-chat="person1"]');
-        d1.innerHTML = d1.innerHTML + html
-        document.getElementById("time").innerHTML =  data.val().date
-        document.getElementById("prew").innerHTML =  data.val().message
-    }
-    var elem = document.getElementById("geoloup_chat_c")
-    elem.scrollTop = elem.scrollHeight;
-    elem.scrollTop = elem.scrollHeight;
-});
-
-var elem = document.querySelector('[data-chat="person1"]');
-elem.scrollTop = elem.scrollHeight;
-elem.scrollTop = elem.scrollHeight;
-*/
-
 var add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
     const formData = new FormData();
