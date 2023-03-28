@@ -25,4 +25,5 @@ function addEmoji(emoji) {
     htog.setAttribute("class","emoji-active-toggle")
   }
   
-  toggleEmojiDrawer()
+toggleEmojiDrawer()
+// shit code
