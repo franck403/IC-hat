@@ -25,7 +25,75 @@ body {
     font-weight: 400;
     margin: 0;
 }
+.emoji-drawer .emoji-drawer-class {
+    display:none;
+    position:fixed;
+    height:1px;
+    width:1px;
+    overflow: hidden;
+}
+.emoji-list {
+    width:400px;
+}
+.emoji-box{
+    height: 258px;
+    width: 321px;
+    position: fixed;
+    background:white;
+    border-radius:30px;
+}
+.emoji-drawer .emoji-drawer-class-active {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: auto;
+    max-width:400px;
+    margin-bottom: 32px;
+    height:230px;
+    overflow: scroll;
+}
+.emoji-active-toggle {
+    border:none;
+    border-radius: 5px;
+    background: #bcb8b836;
+}
+.emoji-normal-toggle {
+    border:none;
+    background: none;
+}
+.emoji-class {
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid;
+    width: 322px;
+    text-align: center;
+}
+.emoji-drawer {
+    position: absolute;
+    top: 0;
+    height:231px;
+}
+.hidden {
+    opacity: 0;
+}
 
+.emoji {
+    text-align: center;
+    font-size: 24px;
+    padding: 8px;
+}
+
+.emoji:hover {
+    cursor: pointer;
+}      
+img {
+    width: 20px;
+    height: auto;
+}
+.emoji-input {
+    position: fixed;
+    bottom: 10px;
+}
+  
 .modal {
     display: none;
     position: fixed;

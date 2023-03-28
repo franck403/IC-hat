@@ -1,5 +1,5 @@
 function addEmoji(emoji) {
-    let inputEle = document.getElementById('input');
+    let inputEle = document.getElementById('content');
     input.value += emoji;
   }
   
