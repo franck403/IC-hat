@@ -26,4 +26,3 @@ function addEmoji(emoji) {
   }
   
 toggleEmojiDrawer()
-// shit code
