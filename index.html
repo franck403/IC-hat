@@ -120,12 +120,8 @@
                     document.addEventListener("mouseup", function(event) {
                         var obj = document.getElementById("drawer");
                         if (!obj.contains(event.target)) {
-                            let drawer = document.getElementById('drawer');  
-                            if (drawer.classList.contains('emoji-hidden')) {
-                                drawer.classList.remove('emoji-hidden')
-                            } else {
-                                drawer.classList.add('emoji-hidden')
-                            }
+                            let drawer = document.getElementById('drawer');     
+                            drawer.classList.add('emoji-hidden')
                         }
                         else {}
                     });
