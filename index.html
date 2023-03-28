@@ -11,7 +11,7 @@
         <script src="room.js"></script>
     </head>
     <body>
-        <div id="drawer" class="emoji-box">
+        <div id="drawer" class="emoji-box hidden">
             <div id="selector" class="emoji-class">
               <button id="emoji-smile-toggle" class="emoji-active-toggle" onclick="toggle_class('smile')"><img src="smile.png"></img></button>
               <button id="emoji-main-toggle" class="emoji-normal-toggle" onclick="toggle_class('main')"><img src="hand.png"></img></button>
@@ -143,7 +143,6 @@
                     htog.setAttribute("class","emoji-active-toggle")
                   }
                   
-                toggleEmojiDrawer()
                 </script>
                 <div class="write">
                     <a id="add_file" class="write-link attach"></a>
