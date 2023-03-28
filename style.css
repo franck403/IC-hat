@@ -29,9 +29,6 @@ body {
     display:none;
     position:fixed;
     height:1px;
-    bottom: 70px;
-    right: 24px;
-    z-index: 3;
     width:1px;
     overflow: hidden;
 }
@@ -44,6 +41,9 @@ body {
     position: fixed;
     background:white;
     border-radius:30px;
+    bottom: 70px;
+    right: 24px;
+    z-index: 3;
 }
 .emoji-drawer .emoji-drawer-class-active {
     display: grid;
