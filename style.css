@@ -125,14 +125,6 @@ img {
     animation-duration: 0.4s
 }
 
-@-webkit-keyframes animatetop {
-    from {top: -300px;opacity: 0}
-    to {top: 0;opacity: 1}
-}
-@keyframes animatetop {
-    from {top: -300px;opacity: 0}
-    to {top: 0;opacity: 1}
-}
 .close {
     color: white;
     float: right;
