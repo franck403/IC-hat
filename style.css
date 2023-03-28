@@ -29,6 +29,7 @@ body {
     display:none;
     position:fixed;
     height:1px;
+    z-index: 3;
     width:1px;
     overflow: hidden;
 }
