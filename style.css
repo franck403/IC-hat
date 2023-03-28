@@ -79,6 +79,9 @@ body {
     opacity: 0;
 }
 
+.emoji-hidden {
+    opacity: 0;
+}
 .emoji {
     text-align: center;
     font-size: 24px;
