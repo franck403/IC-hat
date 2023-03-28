@@ -117,6 +117,18 @@
                       drawer.classList.add('hidden')
                     }
                   }
+                    document.addEventListener("mouseup", function(event) {
+                        var obj = document.getElementById("drawer");
+                        if (!obj.contains(event.target)) {
+                            let drawer = document.getElementById('drawer');  
+                            if (drawer.classList.contains('hidden')) {
+                                drawer.classList.remove('hidden')
+                            } else {
+                                drawer.classList.add('hidden')
+                            }
+                        }
+                        else {}
+                    });
                   
                   function toggle_class(categorie) {
                     var otog = document.getElementById(categorie)
