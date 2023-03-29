@@ -1,6 +1,6 @@
 function room(id){
     if (id == "geoloup_chat") {
-        var new2 = document.getElementById(id + "_c")        
+        var new2 = document.getElementById(id + "_c")
     } else {
         var new2 = document.getElementById("room_" + id)
     }
