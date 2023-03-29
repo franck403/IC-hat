@@ -397,7 +397,7 @@ body {
     border-radius: 50%;
     object-fit: cover;
 }
-.container .left .people .person .name {
+.people-name {
     font-size: 14px;
     margin: 0;
     width: 80%;
@@ -408,7 +408,7 @@ body {
     text-overflow: ellipsis;
 }
 
-.container .left .people .person .time {
+.people-time {
     font-size: 14px;
     position: absolute;
     top: 16px;
@@ -416,7 +416,7 @@ body {
     padding: 0 0 5px 5px;
 }
 
-.container .left .people .person .preview {
+.people-preview {
     font-size: 14px;
     display: inline-block;
     overflow: hidden !important;
