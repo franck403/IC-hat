@@ -251,13 +251,13 @@ onChildAdded(friend_invite, (data) => {
                     elem.scrollTop = elem.scrollHeight;
                 } else {
                     if(data2.val().name != myName) {
-                        var html = `<div class="bubble you"><img class="img" src="${data2.val().message}"></img></div>`
+                        var html = `<div class="bubble you"><img class="type-img" src="${data2.val().message}"></img></div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         d1.innerHTML = d1.innerHTML + html
                         document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
                         document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
                     }else{
-                        var html = `<div class="bubble me"><img class="img" src="${data2.val().message}"></img></div>`
+                        var html = `<div class="bubble me"><img class="type-img" src="${data2.val().message}"></img></div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         d1.innerHTML = d1.innerHTML + html
                         document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
