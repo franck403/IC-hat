@@ -389,18 +389,7 @@ body {
     background-color: var(--light);
     transform: translate(-50%, 0);
 }
-
-.container .left .people .person img {
-    float: left;
-    width: 40px;
-    height: 40px;
-    margin-right: 12px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-
-.container .left .people .person-active img {
+.people-img {
     float: left;
     width: 40px;
     height: 40px;
