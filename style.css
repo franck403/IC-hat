@@ -399,6 +399,15 @@ body {
     object-fit: cover;
 }
 
+
+.container .left .people .person-active img {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 .container .left .people .person .name {
     font-size: 14px;
     margin: 0;
