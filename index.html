@@ -111,8 +111,7 @@
                   
                   function toggleEmojiDrawer() {
                     let drawer = document.getElementById('drawer')
-                    console.log(drawer.classList.contains('emoji-hidden')) 
-                    if (drawer.classList.contains('emoji-hidden')) {
+                    if (drawer.classList.contains('emoji-hidden') == null) {
                       drawer.classList.remove('emoji-hidden')
                     } else {
                       drawer.classList.add('emoji-hidden')
