@@ -363,7 +363,7 @@ body {
     border-radius: 50%;
 }
 
-.container .left .people {
+.people {
     margin-left: -1px;
     border-right: 1px solid var(--light);
     border-left: 1px solid var(--light);
@@ -371,7 +371,7 @@ body {
     list-style: none;
 }
 
-.container .left .people .person {
+people-person {
     position: relative;
     width: 100%;
     padding: 12px 10% 16px;
