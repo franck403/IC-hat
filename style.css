@@ -223,10 +223,14 @@ body {
     z-index:2;
     position: relative;
     color:white;
-    top: 17vh;
     left: 50%;
     width: 1000px;
     transform: translate(-50%, -50%);
+}
+.loader-div-img {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
 .loader h2 .err {
     text-align: center;
