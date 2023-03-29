@@ -242,9 +242,6 @@ img {
     transform: translate(-50%, -50%);
 
 }
-* {
-    transition: all 0.3s;
-}
 .loader-circle {
     position: absolute;
     left: 50%;
