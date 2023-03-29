@@ -210,8 +210,8 @@ const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
     if(dte.indexOf(myEmail) != -1) {
-        if (localStorage.getItem("count") == 0) {var class2 = "person active"} else {var class2 = "person"}
-        localStorage.setItem("count",localStorage.getItem + 1)
+        if (localStorage.getItem("count") == 0) {var class2 = "person active";var class2 = "chat chat-active"} else {var class2 = "person";var class2 = "chat"}
+        localStorage.setItem("count",localStorage.getItem + 1)    
         var html = `
         <li onclick="room('${data.val().dname}')" class="${class2}" data-name="${data.val().allow}" data-d-chat="${data.val().dname}" id="${data.val().dname}">
         <img src="default.png" alt="picture" />
@@ -272,7 +272,8 @@ onChildAdded(friend_invite, (data) => {
             else {
                 console.log("type non supported")
             }
-        });        
+            
+        });
     }else{}
     
 });
