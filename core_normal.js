@@ -210,7 +210,7 @@ const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
     if(dte.indexOf(myEmail) != -1) {
-        if (localStorage.getItem("count") == 0) {var class2 = "person active";var class2 = "chat chat-active"} else {var class2 = "person";var class2 = "chat"}
+        if (localStorage.getItem("count") == 0) {var class2 = "people-person active";var class3 = "chat chat-active"} else {var class2 = "people-person";var class3= "chat"}
         localStorage.setItem("count",localStorage.getItem + 1)    
         var html = `
         <li onclick="room('${data.val().dname}')" class="${class2}" data-name="${data.val().allow}" data-d-chat="${data.val().dname}" id="${data.val().dname}">
@@ -221,7 +221,7 @@ onChildAdded(friend_invite, (data) => {
         </li>`
         // chat_el_box
         var html_chat = `
-        <div class="chat" id="room_${data.val().dname}" data-chat="${data.val().dname}">
+        <div class="${class3}" id="room_${data.val().dname}" data-chat="${data.val().dname}">
         <span></span>
         </div>`
         const d1 = document.getElementById("chat_el_box")

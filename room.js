@@ -4,16 +4,16 @@ function room(id){
     } else {
         var new2 = document.getElementById("room_" + id)
     }
-    var old1 = document.getElementsByClassName("person active")[0]
+    var old1 = document.getElementsByClassName("people-person active")[0]
     var old2 = document.getElementsByClassName("chat active-chat")[0]
     var new1 = document.getElementById(id)
     var to_name = document.getElementById(id) 
     var to = document.querySelector("#to")
     try {
-        old1.setAttribute("class","person")
+        old1.setAttribute("class","people-person")
         old2.setAttribute("class","chat")
     } catch {}
-    new1.setAttribute("class","person active")
+    new1.setAttribute("class","people-person active")
     new2.setAttribute("class","chat active-chat")
     to.innerHTML = new1.dataset.name
     new2.scrollTop = new2.scrollHeight;
