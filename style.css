@@ -427,8 +427,8 @@ body {
     text-overflow: ellipsis;
 }
 
-.container .left .people .person.active,
-.container .left .people .person:hover {
+.people-person.active,
+.people-person:hover {
     position: relative;
     width: 100%;
     padding: 12px 10% 16px;
@@ -437,14 +437,14 @@ body {
     background-color: var(--blue);
 }
 
-.container .left .people .person.active span,
-.container .left .people .person:hover span {
+.people-person.active span,
+.people-person:hover span {
     color: var(--white);
     background: transparent;
 }
 
-.container .left .people .person.active:after,
-.container .left .people .person:hover:after {
+.people-person.active:after,
+.people-person:hover:after {
     display: none;
 }
 
