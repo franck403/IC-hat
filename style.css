@@ -371,14 +371,14 @@ body {
     list-style: none;
 }
 
-people-person {
+.people-person {
     position: relative;
     width: 100%;
     padding: 12px 10% 16px;
     cursor: pointer;
 }
 
-.container .left .people .person:after {
+.people-person:after {
     position: absolute;
     bottom: 0;
     left: 50%;
