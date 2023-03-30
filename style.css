@@ -63,6 +63,11 @@ body {
     border:none;
     background: none;
 }
+      
+emoji-class-img {
+    width: 20px;
+    height: auto;
+}
 .emoji-class {
     position: absolute;
     bottom: 0;
