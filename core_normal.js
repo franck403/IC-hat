@@ -219,12 +219,12 @@ onChildAdded(friend_invite, (data) => {
         <p id="time_${data.val().dname}" class="people-time"></p>
         <p id="prew_${data.val().dname}" class="people-preview"></p>
         </li>`
-        if (localStorage.getItem("count") == 0) {var class2 = "people-person active";var new1 = document.getElementById(id);var to = document.querySelector("#to");to.innerHTML = new1.dataset.name;var class3 = "chat chat-active"} else {}
         // chat_el_box
         var html_chat = `
         <div class="${class3}" id="room_${data.val().dname}" data-chat="${data.val().dname}">
         <span></span>
         </div>`
+        if (localStorage.getItem("count") == 1) {var class2 = "people-person active";var new1 = document.getElementById(id);var to = document.querySelector("#to");to.innerHTML = new1.dataset.name;var class3 = "chat chat-active"} else {}
         const d1 = document.getElementById("chat_el_box")
         const d2 = document.getElementById("people")
         d1.innerHTML = d1.innerHTML + html_chat
