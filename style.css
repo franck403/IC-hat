@@ -210,8 +210,8 @@ body {
     height: 100%;
     width: 100%;
     z-index: 1;
-    background: rgb(201,0,255);
-    background: linear-gradient(157deg, rgba(201,0,255,1) 0%, rgba(150,33,255,1) 44%, rgba(0,157,255,1) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(157deg, rgb(255, 255, 255) 0%, rgb(214, 214, 214) 44%, rgb(203, 203, 203) 100%);
 }
 
 .loader {
@@ -241,7 +241,7 @@ body {
     text-align: center;
     z-index:2;
     position: relative;
-    color:white;
+    color:black;
     top: 20vhs;
     left: 50%;
     transform: translate(-50%, -50%);
