@@ -127,7 +127,7 @@ send.addEventListener('click', (e) => {
         var name = myName;
         const id = push(child(ref(database), 'messages')).key;
         var friend = "none"
-        var cusid = document.getElementsByClassName('person active')[0].id
+        var cusid = document.getElementsByClassName('people-person active')[0].id
         set(ref(database, 'messages/'+ cusid + '/' + id), {
             name: name,
             allow:friend,
@@ -151,7 +151,7 @@ send2.addEventListener("keydown", (e) => {
             var name = myName;
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
-            var cusid = document.getElementsByClassName('person active')[0].id
+            var cusid = document.getElementsByClassName('people-person active')[0].id
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 name: name,
                 allow:friend,
