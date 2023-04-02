@@ -19,3 +19,7 @@ function room(id){
     new2.scrollTop = new2.scrollHeight;
     new2.scrollTop = new2.scrollHeight;
 }
+// spam counter
+var send_by_img = document.getElementById("send")
+var send_by_enter = document.getElementById("content")
+add_file.addEventListener('click', (e) => {});
