@@ -55,6 +55,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log(user.email)
     var myEmail = user.email
+    console.log(myEmail)
   } else {}
 });
 console.log(myEmail)
