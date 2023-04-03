@@ -53,9 +53,11 @@ onAuthStateChanged(auth, (user) => {
 });
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    console.log(user.email)
     var myEmail = user.email
   } else {}
 });
+console.log(email)
 var friendhtml = `
 <li class="person" data-d-chat="person1">
 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
