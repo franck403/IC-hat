@@ -17,10 +17,6 @@ function getCookie(cname) {
   return "";
 }
 
-var keys = getCookie("uid");
-if (keys != null) {window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/");}
-else {}
-
 var firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
     authDomain: "ic-hat.firebaseapp.com",

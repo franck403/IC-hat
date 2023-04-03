@@ -59,6 +59,7 @@ else {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
 }
+try {
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
 const friends = document.getElementById("new_friend_add");
@@ -305,3 +306,4 @@ onChildAdded(load_check, (data) => {
     document.getElementById("loader").remove();
     document.getElementById("loader_box").remove()
 })
+} catch {}
