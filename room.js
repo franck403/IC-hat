@@ -22,4 +22,8 @@ function room(id){
 // spam counter
 var send_by_img = document.getElementById("send")
 var send_by_enter = document.getElementById("content")
-add_file.addEventListener('click', (e) => {});
+// spam code
+let spam_event = () => {}
+// spam listener
+send_by_img.addEventListener('click', spam_event);
+send_by_enter.addEventListener('click', spam_event);
