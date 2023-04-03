@@ -47,6 +47,7 @@ const database = getDatabase(app);
 
 const auth = getAuth();
 const user = auth.currentUser;
+console.log(user)
 if (user !== null) {
   // The user object has basic properties such as display name, email, etc.
   const myName = user.displayName;
