@@ -48,8 +48,8 @@ const database = getDatabase(app);
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    var myName = user.name;
-    var useremail = user.email;
+    var myName = user.name
+    var useremail = user.email
   } else {}
 });
 
