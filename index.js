@@ -43,11 +43,9 @@ var firebaseConfig = {
     // Get all our input fields
     email = document.getElementById('email').value
     password = document.getElementById('password').value
-    full_name = document.getElementById('full_name').value
 
     // Validate input fields
     if (validate_email(email) == false || validate_password(password) == false) {
-      alert('Email or Password is Outta Line!!')
       return
       // Don't continue running the code
     }
@@ -71,7 +69,7 @@ var firebaseConfig = {
       // DOne
       setCookie("uid",user.uid)
       setCookie("email",email)
-      setCookie("name",full_name)
+      setCookie("name",name)
       window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/end");
   
     })
