@@ -50,6 +50,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     var myName = user.name;
     var myEmail = user.email;
+    console.log(myEmail)
   } else {}
 });
 
