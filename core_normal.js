@@ -49,7 +49,6 @@ const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
     var myName = user.name
-    var myEmail = user.email
   } else {}
 });
 onAuthStateChanged(auth, (user) => {
