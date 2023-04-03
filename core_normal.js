@@ -58,13 +58,6 @@ onAuthStateChanged(auth, (user) => {
   } else {}
 });
 console.log(myEmail)
-var friendhtml = `
-<li class="person" data-d-chat="person1">
-<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
-<span class="name">Thomas Bangalter</span>
-<span class="time">2:09 PM</span>
-<span class="preview">I was wondering...</span>
-</li>`
 
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
