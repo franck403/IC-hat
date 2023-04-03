@@ -655,8 +655,12 @@ body {
 
 #connected {
     position:fixed;
+    height:100%;
+    width:100%;
+    z-index:1;
 }
 
 #not-connected {
     position:fixed;
+    z-index:0;
 }
