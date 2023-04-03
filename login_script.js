@@ -1,5 +1,5 @@
 function setCookie(cname, cvalue) {
-  document.cookie = cname + "=" + cvalue + ";path=https://auth.geoloup.com/";
+  document.cookie = cname + "=" + cvalue + ";path=/";
 }
 function getCookie(cname) {
   let name = cname + "=";

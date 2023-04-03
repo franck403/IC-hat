@@ -1,14 +1,25 @@
-console.log("-----------------------------");
+function setCookie(cname, cvalue) {
+  document.cookie = cname + "=" + cvalue + ";path=/";
+}
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 
-var keys = localStorage.getItem("name");
-
+var keys = getCookie("uid");
 if (keys != null) {window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/");}
 else {}
-
-console.log("-----------------------------");
-console.log("finish generating the session");
-console.log("-----------------------------");
-
 
 var firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
