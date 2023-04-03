@@ -5,15 +5,7 @@
     <title>Sample FirebaseUI App</title>
     <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-auth-compat.js"></script>
-    <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    <script>
     const firebaseConfig = {
         apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
         authDomain: "ic-hat.firebaseapp.com",
@@ -26,8 +18,8 @@
     };
 
     // Initialize Firebase
-    const App = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(App);
+    App.initializeApp()
+    App.initializeApp(firebaseConfig);
     </script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.2/firebase-ui-auth.css" />
