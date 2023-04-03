@@ -13,7 +13,7 @@
     <body>
       <div id="not-connected"><iframe src="https://i-home.calebgauthier.repl.co"></iframe></div>
       <div id="connected">
-        <script>var keys = getCookie("uid");if (keys != null) {document.getElementById("not-connected").remove()}else {document.getElementById("connected").remove()};</script>
+        <script>  function getCookie(cname) {let name = cname + "=";let decodedCookie = decodeURIComponent(document.cookie);let ca = decodedCookie.split(';');for(let i = 0; i <ca.length; i++) {let c = ca[i];while (c.charAt(0) == ' ') {;c = c.substring(1);};if (c.indexOf(name) == 0) {;return c.substring(name.length, c.length);};}return "";};var keys = getCookie("uid");if (keys != null) {document.getElementById("not-connected").remove()}else {document.getElementById("connected").remove()};</script>
         <div id="drawer" class="emoji-box emoji-hidden">
             <div id="selector" class="emoji-class">
               <button id="emoji-smile-toggle" class="emoji-active-toggle" onclick="toggle_class('smile')"><img class="emoji-class-img" src="smile.png"></img></button>
