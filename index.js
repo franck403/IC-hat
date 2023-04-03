@@ -69,9 +69,9 @@ var firebaseConfig = {
       database_ref.child('users/' + user.uid).update(user_data)
   
       // DOne
-      localStorage.setItem("uid",user.uid)
-      localStorage.setItem("email",email)
-      localStorage.setItem("name",full_name)
+      setCookie("uid",user.uid)
+      setCookie("email",email)
+      setCookie("name",full_name)
       window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/end");
   
     })
