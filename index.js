@@ -35,7 +35,7 @@ var firebaseConfig = {
   
   // Set up our register function
   function register () {
-      window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/register.js");
+      window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/register");
   }
   
   // Set up our login function
