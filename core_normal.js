@@ -48,10 +48,8 @@ const database = getDatabase(app);
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // User is signed in, see docs for a list of available properties
-    // https://firebase.google.com/docs/reference/js/firebase.User
     const myName = user.name;
-    const myEmail = user.email
+    const myEmail = user.email;
   } else {}
 });
 
