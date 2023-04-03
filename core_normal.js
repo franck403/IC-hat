@@ -52,9 +52,6 @@ onAuthStateChanged(auth, (user) => {
     var myEmail = user.email
   } else {}
 });
-
-
-const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
     var myEmail = user.email
