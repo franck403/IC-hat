@@ -29,7 +29,7 @@ import {
     onValue,
     onChildAdded
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+import {getAuth} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
@@ -46,14 +46,13 @@ const database = getDatabase(app);
 
 
 const auth = getAuth();
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    var myName = user.name
-    var myEmail = user.email
-  } else {}
-});
-console.log(myEmail)
-
+const user = auth.currentUser;
+if (user !== null) {
+  // The user object has basic properties such as display name, email, etc.
+  const myName = user.displayName;
+  const myEmail = user.email;
+  const uid = user.uid;
+}
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
 const friends = document.getElementById("new_friend_add");
