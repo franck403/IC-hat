@@ -49,13 +49,7 @@ const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
     var myName = user.name
-  } else {}
-});
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log(user.email)
     var myEmail = user.email
-    console.log(myEmail)
   } else {}
 });
 console.log(myEmail)
