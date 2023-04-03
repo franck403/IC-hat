@@ -674,3 +674,8 @@ body {
     z-index:10;
     background:white;
 }
+.not-connected-iframe {
+    position:fixed;    
+    height:100%;
+    width:100%;
+}
