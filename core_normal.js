@@ -1,7 +1,26 @@
+function setCookie(cname, cvalue) {
+    document.cookie = cname + "=" + cvalue + ";path=https://auth.geoloup.com/";
+  }
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
 localStorage.setItem("count",0)
-var keys = localStorage.getItem("name");
-if (keys != null) {}
-else {window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login");}
+var keys = getCookie("name");
+if (keys != null) {document.getElementById("not-connected").remove()}
+else {document.getElementById("connected").remove()}
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {

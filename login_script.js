@@ -1,3 +1,22 @@
+function setCookie(cname, cvalue) {
+  document.cookie = cname + "=" + cvalue + ";path=https://auth.geoloup.com/";
+}
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
 import {
@@ -24,15 +43,15 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
-var user = localStorage.getItem("uid")
+var user = getCookie("uid")
 
 const dbRef = ref(getDatabase());
 get(child(dbRef, `users/` + user)).then((snapshot) => {
   if (snapshot.exists()) {
     var username = snapshot.val().full_name
     var email = snapshot.val().email
-    localStorage.setItem("name",username)
-    localStorage.setItem("email",email)
+    setCookie("name",username)
+    setCookie("email",email)
   } else {
     console.log("No data available");
   }
