@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IC-hat</title>
+    <link rel="shortcut icon" href="ic-hat.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <nav class="navbar">
+      <a class="logo">IC-hat</a>
+      <div class="nav-links">
+        <ul>
+          <li id="login"><a class="connect">Login</a></li>
+          <li id="register"><a class="connect">Register</a></li>
+        </ul>
+      </div>
+      <img src="menu-btn.png" alt="mobile" class="mobile">
+  </nav>
+
+  <div class="homeHeader">
+    <h4>Quaracteristics of IC-hat :</h4>
+      <li>IC-hat    <b class="good">allow</b> you to add friend.</li>
+      <li>IC-hat    <b class="good">allow</b> you to create groups.</li>
+      <li>IC-hat    <b class="good">support</b> all type of images.</li>
+      <li>IC-hat    <b class="bad">not support</b> any files except images.</li>
+      <li>IC-hat is <b class="good">made using </b>html, css, js and realtime database.</li>
+      <li>IC-hat    <b class="good">integrated </b>emojis.</li>
+  </div>
+  <div class="homeRule">
+    <h4>Rules of IC-hat :</h4>
+      <li><b class="bad">Don't</b> send illegal image exemple: sexy image.</li>
+      <li><b class="bad">Don't</b> use it for secret message.</li>
+      <li><b class="good">Be</b> make sure to be respectful for you're everyone.</li>
+      <li></li>
+      <li></li>
+  </div>
+</body>
+
+<script>
+    const mobileMenu = document.querySelector(".mobile")
+    const navLinks = document.querySelector(".nav-links")
+
+    mobileMenu.addEventListener('click',()=>{
+    navLinks.classList.toggle('mobile-menu')
+    })
+</script>
+</html>
