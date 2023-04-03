@@ -49,10 +49,17 @@ const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
     var myName = user.name
-    var useremail = user.email
+    var myEmail = user.email
   } else {}
 });
 
+
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    var myEmail = user.email
+  } else {}
+});
 var friendhtml = `
 <li class="person" data-d-chat="person1">
 <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
@@ -231,7 +238,7 @@ form.addEventListener('submit', (event) => {
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
-    var semail = useremail
+    var semail = myEmail
     if(dte.indexOf(semail) != -1) {
         if (localStorage.getItem("count") == 0) {var class2 = "people-person active";var class3 = "chat chat-active"} else {var class2 = "people-person";var class3= "chat"}
         localStorage.setItem("count",localStorage.getItem + 1)    
