@@ -18,9 +18,6 @@ function setCookie(cname, cvalue) {
   }
 
 localStorage.setItem("count",0)
-var keys = getCookie("name");
-if (keys != null) {document.getElementById("not-connected").remove()}
-else {document.getElementById("connected").remove()}
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
