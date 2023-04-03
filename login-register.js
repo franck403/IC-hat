@@ -1,5 +1,7 @@
-var login = parent.document.getElementById("login")
-var register = parent.document.getElementById("login")
+var if1 = document.getElementById("not-connected-iframe");
+var fc = (if1.contentWindow || if1.contentDocument);
+var login = fc.document.getElementById("login");
+var register = fc.document.getElementById("register");
 
 login.addEventListener('click', (e) => {
     window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login")
