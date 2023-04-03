@@ -5,5 +5,5 @@ login.addEventListener('click', (e) => {
     window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login")
 });
 register.addEventListener('click', (e) => {
-    window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login")
+    window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/register")
 });
