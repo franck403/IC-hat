@@ -29,6 +29,7 @@ import {
     onValue,
     onChildAdded
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
@@ -43,9 +44,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-var myName = localStorage.getItem("name")
-var myEmail = localStorage.getItem("email")
 
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const myName = user.name;
+    const myEmail = user.email
+  } else {}
+});
 
 var friendhtml = `
 <li class="person" data-d-chat="person1">
