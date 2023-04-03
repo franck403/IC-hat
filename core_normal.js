@@ -53,9 +53,11 @@ if (user !== null) {
   const myEmail = user.email;
   const uid = user.uid;
   document.getElementById("not-connected").remove()
+  document.getElementById("wait-connected").remove()
 }
 else {
     document.getElementById("connected").remove()
+    document.getElementById("wait-connected").remove()
 }
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
