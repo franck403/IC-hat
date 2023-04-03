@@ -10,7 +10,7 @@
         <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-auth-compat.js"></script>
     </head>
     <body>
-      <div id="not-connected"><iframe id="eventneed" src="https://i-home.calebgauthier.repl.co"></iframe><script src="login-register.js"></script></div>
+      <div id="not-connected"><iframe src="https://i-home.calebgauthier.repl.co"></iframe><script src="login-register.js"></script></div>
       <div id="connected">
         <script>  function getCookie(cname) {let name = cname + "=";let decodedCookie = decodeURIComponent(document.cookie);let ca = decodedCookie.split(';');for(let i = 0; i <ca.length; i++) {let c = ca[i];while (c.charAt(0) == ' ') {;c = c.substring(1);};if (c.indexOf(name) == 0) {;return c.substring(name.length, c.length);};}return "";};var keys = getCookie("uid");if (keys != null) {document.getElementById("not-connected").remove()}else {document.getElementById("connected").remove()};</script>
         <div id="drawer" class="emoji-box emoji-hidden">
