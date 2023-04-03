@@ -518,7 +518,7 @@ body {
 
 .write input {
     font-size: 16px;
-    width: 86%;
+    width: 51.5vw;
     height: 40px;
     padding: 0 6px;
     color: var(--dark);
@@ -536,6 +536,7 @@ body {
     left: 0;
     width: 20px;
     height: 42px;
+    bottom: 0px;
     content: '';
     background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/attachment.png');
     background-repeat: no-repeat;
@@ -546,6 +547,7 @@ body {
     display: inline-block;
     position: absolute;
     right: 40px;
+    bottom: 0px;
     width: 20px;
     height: 42px;
     content: '';
@@ -560,6 +562,7 @@ body {
     right: 11px;
     width: 20px;
     height: 42px;
+    bottom: 0px;
     margin-left: 11px;
     content: '';
     background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/send.png');
