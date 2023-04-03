@@ -49,7 +49,7 @@ const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   if (user) {
     var myName = user.name;
-    var myEmail = user.email;
+    var useremail = user.email;
   } else {}
 });
 
@@ -231,7 +231,7 @@ form.addEventListener('submit', (event) => {
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
-    var semail = myEmail
+    var semail = useremail
     if(dte.indexOf(semail) != -1) {
         if (localStorage.getItem("count") == 0) {var class2 = "people-person active";var class3 = "chat chat-active"} else {var class2 = "people-person";var class3= "chat"}
         localStorage.setItem("count",localStorage.getItem + 1)    
