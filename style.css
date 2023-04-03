@@ -652,3 +652,11 @@ body {
 .container .right .conversation-start span:after {
     right: 0;
 }
+
+#connected {
+    position:fixed;
+}
+
+#not-connected {
+    position:fixed;
+}
