@@ -52,6 +52,10 @@ if (user !== null) {
   const myName = user.displayName;
   const myEmail = user.email;
   const uid = user.uid;
+  document.getElementById("not-connected").remove()
+}
+else {
+    document.getElementById("connected").remove()
 }
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
