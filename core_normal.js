@@ -23,13 +23,14 @@ const firebaseConfig = {
   measurementId: "G-YC8K0D7GLR"
 };
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const database =
+ getDatabase(app);
 
 console.log(getCookie("uid"))
 if (getCookie("uid") != null) {
-  const myEmail = getCookie("email");
-  const myName = getCookie("name");
-  const uid = getCookie("uid");
+  var myEmail = getCookie("email")
+  var myName = getCookie("name")
+  var uid = getCookie("uid")
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
 }
