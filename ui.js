@@ -32,7 +32,7 @@ export const showLoginError = (error) => {
 
 export const showLoginState = (user) => {
   if (getCookie("uid") != null) {
-    window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
+    window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/end")
   } else {}
 }
 
