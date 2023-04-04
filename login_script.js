@@ -18,7 +18,6 @@ function getCookie(cname) {
 }
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
 import {
     getDatabase,
     set,
@@ -40,7 +39,6 @@ const firebaseConfig = {
   measurementId: "G-YC8K0D7GLR"
 };
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
 var user = getCookie("uid")
