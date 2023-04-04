@@ -50,9 +50,12 @@ console.log(auth)
 const user = auth.currentUser;
 console.log(user)
 if (user) {
-  const myName = user.displayName;
+  const myName = user.name;
   const myEmail = user.email;
   const uid = user.uid;
+  const myName = getCookie("name");
+  const myEmail = getCookie("email");
+  const uid = getCookie("uid");
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
 }
