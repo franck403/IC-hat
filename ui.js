@@ -1,4 +1,5 @@
 import { AuthErrorCodes } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js';
+import {getCookie} from './bhuy3huygyufwyuge.js';
 
 export const txtEmail = document.querySelector('#txtEmail')
 export const txtPassword = document.querySelector('#txtPassword')
@@ -37,7 +38,9 @@ export const showLoginError = (error) => {
 }
 
 export const showLoginState = (user) => {
-window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
+  if (getCookie("uid") != null) {
+    window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
+  } else {}
 }
 
 hideLoginError()

@@ -7,7 +7,7 @@ import {
   btnLogin,
   btnSignup
 } from './ui.js'
-
+import {setCookie} from './bhuy3huygyufwyuge.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js';
 import { 
   getAuth,
@@ -28,39 +28,26 @@ var firebaseApp =  initializeApp({
     appId: "1:720687529085:web:2d964e880c5e2398058514",
     measurementId: "G-YC8K0D7GLR"
   });
-  // Login using email/password
   const loginEmailPassword = async () => {
     const loginEmail = txtEmail.value
     const loginPassword = txtPassword.value
   
-    // step 1: try doing this w/o error handling, and then add try/catch
     await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
   
-    // step 2: add error handling
-    // try {
-    //   await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-    // }
-    // catch(error) {
-    //   console.log(`There was an error: ${error}`)
-    //   showLoginError(error)
-    // }
   }
-  
-  // Create new account using email/password
   const createAccount = async () => {
     const email = txtEmail.value
     const password = txtPassword.value
   
     try {
       await createUserWithEmailAndPassword(auth, email, password)
+      await setCookie("uid","ready")
     }
     catch(error) {
       console.log(`There was an error: ${error}`)
       showLoginError(error)
     } 
   }
-  
-  // Monitor auth state
   const monitorAuthState = async () => {
     onAuthStateChanged(auth, user => {
       if (user) {
@@ -76,12 +63,6 @@ var firebaseApp =  initializeApp({
       }
     })
   }
-  
-  // Log out
-  const logout = async () => {
-    await signOut(auth);
-  }
-  
   btnLogin.addEventListener("click", loginEmailPassword) 
   btnSignup.addEventListener("click", createAccount)
   
