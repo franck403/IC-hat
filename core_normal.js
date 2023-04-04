@@ -46,13 +46,10 @@ const database = getDatabase(app);
 
 
 const auth = getAuth(app);
+console.log(auth)
 const user = auth.currentUser;
 console.log(user)
-const myName = user.name;
-const myEmail = user.email;
-const uid = user.uid;
 if (user) {
-  // The user object has basic properties such as display name, email, etc.
   const myName = user.displayName;
   const myEmail = user.email;
   const uid = user.uid;
