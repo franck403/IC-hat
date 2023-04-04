@@ -46,16 +46,11 @@ const database = getDatabase(app);
 
 
 const auth = getAuth(app);
-console.log(auth)
 const user = auth.currentUser;
-console.log(user)
-const user2 = JSON.parse(auth.currentUser)
-console.log(user2)
-console.log(user2.email)
-if (user2.email != null) {
-  const myEmail = user.email;
+if (getCookie("uid" != null)) {
+  const myEmail = getCookie("email");
   const myName = getCookie("name");
-  const uid = user.uid;
+  const uid = getCookie("uid");
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
 }
