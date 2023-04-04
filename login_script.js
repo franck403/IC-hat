@@ -50,8 +50,10 @@ get(child(dbRef, `users/` + user)).then((snapshot) => {
   if (snapshot.exists()) {
     var username = snapshot.val().full_name
     var email = snapshot.val().email
+    var email = snapshot.val().uid
     setCookie("name",username)
     setCookie("email",email)
+    setCookie("uid",uid)
   } else {
     console.log("No data available");
   }
