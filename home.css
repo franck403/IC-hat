@@ -58,7 +58,7 @@ body {
     cursor: pointer;
   }
   
-  @media screen and (max-width: 900px){
+  @media screen and (max-width: 600px){
     .navbar {
       padding: 0;
     }
@@ -108,7 +108,7 @@ body {
       font-size: 1.5em;
     }
     .navbar .nav-links ul li a {
-      color: black;
+      color: white;
       text-decoration: none;
     }
   }
