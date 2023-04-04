@@ -20,7 +20,6 @@ export const showLoginForm = () => {
 
 export const showApp = () => {
   login.style.display = 'none'
-  app.style.display = 'block'
 }
 
 export const hideLoginError = () => {
