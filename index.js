@@ -32,6 +32,7 @@ var firebaseApp =  initializeApp({
     try {
       setCookie("uid","ready")
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+      showLoginState()
     } catch {
       setCookie("uid",null)
     }
@@ -43,6 +44,7 @@ var firebaseApp =  initializeApp({
     try {
       setCookie("uid","ready")
       await createUserWithEmailAndPassword(auth, email, password)
+      showLoginState()
     }
     catch(error) {
       setCookie("uid",null)
