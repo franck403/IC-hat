@@ -272,7 +272,7 @@ onChildAdded(friend_invite, (data) => {
                 }
             }
             else {
-                console.log(val().type)
+                console.log(data2.val().type)
             }
             
         });
