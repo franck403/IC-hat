@@ -48,7 +48,7 @@ const database = getDatabase(app);
 const auth = getAuth(app);
 const user = auth.currentUser;
 console.log(user)
-const myName = user.displayName;
+const myName = user.name;
 const myEmail = user.email;
 const uid = user.uid;
 if (user) {
