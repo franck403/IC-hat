@@ -88,6 +88,5 @@ var firebaseApp =  initializeApp({
   btnSignup.addEventListener("click", createAccount)
   
   const auth = getAuth(firebaseApp);
-  connectAuthEmulator(auth, "http://localhost:9099");
   
   monitorAuthState();
