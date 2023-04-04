@@ -25,8 +25,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-
-if (getCookie("uid" != null)) {
+console.log(getCookie("uid"))
+if (getCookie("uid") != null) {
   const myEmail = getCookie("email");
   const myName = getCookie("name");
   const uid = getCookie("uid");
