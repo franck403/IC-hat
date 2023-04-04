@@ -74,7 +74,6 @@ var firebaseApp =  initializeApp({
       }
       else {
         showLoginForm()
-        lblAuthState.innerHTML = `You're not logged in.`
       }
     })
   }
