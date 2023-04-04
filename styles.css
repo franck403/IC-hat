@@ -74,6 +74,9 @@ label {
 	border-radius: 0;
 	border-bottom: 1px solid #ff0000;
 }
+.errorlabel:empty {
+    display: none;
+}
 
 
 /* active */
