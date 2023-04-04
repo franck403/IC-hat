@@ -1,4 +1,3 @@
-import './styles.css';
 import { 
   hideLoginError, 
   showLoginState, 
@@ -10,7 +9,7 @@ import {
   btnLogout
 } from './ui.js'
 
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-app';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js';
 import { 
   getAuth,
   onAuthStateChanged, 
@@ -18,7 +17,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   connectAuthEmulator
-} from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth'
+} from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js'
 
 var firebaseApp =  initializeApp({
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
