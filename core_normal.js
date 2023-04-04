@@ -45,7 +45,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 
-const auth = getAuth();
+const auth = getAuth(firebaseConfig);
 const user = auth.currentUser;
 console.log(user)
 if (user !== null) {
