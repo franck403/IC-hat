@@ -48,21 +48,6 @@ var firebaseApp =  initializeApp({
       showLoginError(error)
     } 
   }
-  const monitorAuthState = async () => {
-    onAuthStateChanged(auth, user => {
-      if (user) {
-        console.log(user)
-        showApp()
-        showLoginState(user)
-  
-        hideLoginError()
-        hideLinkError()
-      }
-      else {
-        showLoginForm()
-      }
-    })
-  }
   btnLogin.addEventListener("click", loginEmailPassword) 
   btnSignup.addEventListener("click", createAccount)
   

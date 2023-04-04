@@ -14,13 +14,6 @@ export const lblAuthState = document.querySelector('#lblAuthState')
 export const divLoginError = document.querySelector('#divLoginError')
 export const lblLoginErrorMessage = document.querySelector('#lblLoginErrorMessage')
 
-export const showLoginForm = () => {
-  login.style.display = 'block'
-}
-
-export const showApp = () => {
-  login.style.display = 'none'
-}
 
 export const hideLoginError = () => {
   divLoginError.style.display = 'none'
