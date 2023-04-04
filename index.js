@@ -87,7 +87,6 @@ var firebaseApp =  initializeApp({
   
   btnLogin.addEventListener("click", loginEmailPassword) 
   btnSignup.addEventListener("click", createAccount)
-  btnLogout.addEventListener("click", logout)
   
   const auth = getAuth(firebaseApp);
   connectAuthEmulator(auth, "http://localhost:9099");
