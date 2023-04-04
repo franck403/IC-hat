@@ -29,9 +29,12 @@ var firebaseApp =  initializeApp({
   const loginEmailPassword = async () => {
     const loginEmail = txtEmail.value
     const loginPassword = txtPassword.value
-  
-    await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-  
+    try {
+      setCookie("uid","ready")
+      await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    } catch {
+      setCookie("uid",null)
+    }
   }
   const createAccount = async () => {
     const email = txtEmail.value
@@ -42,7 +45,7 @@ var firebaseApp =  initializeApp({
       await createUserWithEmailAndPassword(auth, email, password)
     }
     catch(error) {
-      setCookie("uid","")
+      setCookie("uid",null)
       console.log(`There was an error: ${error}`)
       showLoginError(error)
     } 
