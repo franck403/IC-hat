@@ -232,7 +232,7 @@ onChildAdded(friend_invite, (data) => {
         onChildAdded(romc, (data2) => {
             if (data2.val().message != null) {
                 if (data2.val().type != "image") {
-                    if (data2.val().name != null) {
+                    if (data2.val().name == null) {
                         if(data2.val().email != myName) {
                             var html = `<div class="bubble you">${ data2.val().message }</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
@@ -252,7 +252,7 @@ onChildAdded(friend_invite, (data) => {
                     } else {}
                 } else {
                     if (data2.val().name != null) {
-                        if(data2.val().name != myName) {
+                        if(data2.val().name == myName) {
                             var html = `<div class="bubble you"><img class="type-img" src="${data2.val().message}"></img></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             d1.innerHTML = d1.innerHTML + html
