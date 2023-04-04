@@ -38,10 +38,11 @@ var firebaseApp =  initializeApp({
     const password = txtPassword.value
   
     try {
+      setCookie("uid","ready")
       await createUserWithEmailAndPassword(auth, email, password)
-      await setCookie("uid","ready")
     }
     catch(error) {
+      setCookie("uid","")
       console.log(`There was an error: ${error}`)
       showLoginError(error)
     } 
