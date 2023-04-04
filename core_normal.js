@@ -50,6 +50,7 @@ console.log(auth)
 const user = auth.currentUser;
 console.log(user)
 const user2 = JSON.parse(auth.currentUser)
+console.log(user2)
 console.log(user2.email)
 if (user2.email != null) {
   const myEmail = user.email;
