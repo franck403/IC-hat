@@ -8,7 +8,7 @@ import {
   btnLogin,
   btnSignup,
   btnLogout
-} from 'ui.js'
+} from './ui.js'
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-app';
 import { 
