@@ -28,7 +28,7 @@ const database =
 
 if (getCookie("ready") != null) {
   var myEmail = getCookie("email")
-  var myName = getCookie("name")
+  var myName = getCookie("email")
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
 }

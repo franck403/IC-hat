@@ -55,6 +55,7 @@ const database = getDatabase(app);
     try {
       setCookie("ready","ready")
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+      setCookie("email",loginEmail)
       showLoginState()
     } catch {
       setCookie("ready",null)
