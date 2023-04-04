@@ -26,11 +26,9 @@ const app = initializeApp(firebaseConfig);
 const database =
  getDatabase(app);
 
-console.log(getCookie("uid"))
-if (getCookie("uid") != null) {
+if (getCookie("ready") != null) {
   var myEmail = getCookie("email")
   var myName = getCookie("name")
-  var uid = getCookie("uid")
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
 }
