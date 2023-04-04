@@ -50,5 +50,3 @@ var firebaseApp =  initializeApp({
   btnSignup.addEventListener("click", createAccount)
   
   const auth = getAuth(firebaseApp);
-  
-  monitorAuthState();
