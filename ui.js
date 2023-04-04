@@ -1,4 +1,4 @@
-import { AuthErrorCodes } from 'firebase/auth';
+import { AuthErrorCodes } from 'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth';
 
 export const txtEmail = document.querySelector('#txtEmail')
 export const txtPassword = document.querySelector('#txtPassword')
