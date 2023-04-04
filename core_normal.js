@@ -45,8 +45,6 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 
-const auth = getAuth(app);
-const user = auth.currentUser;
 if (getCookie("uid" != null)) {
   const myEmail = getCookie("email");
   const myName = getCookie("name");
