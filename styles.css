@@ -78,7 +78,7 @@ label {
 
 /* active */
 
-input:focus ~ label, input.used ~ label {
+input label{
 	top: -20px;
   transform: scale(.75); left: -2px;
 	/* font-size: 14px; */
