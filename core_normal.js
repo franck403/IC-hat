@@ -127,7 +127,7 @@ send.addEventListener('click', (e) => {
         var friend = "none"
         var cusid = document.getElementsByClassName('people-person active')[0].id
         set(ref(database, 'messages/'+ cusid + '/' + id), {
-            name: name,
+            email:name,
             allow:friend,
             message: message,
             tpye:"message",
@@ -151,7 +151,7 @@ send2.addEventListener("keydown", (e) => {
             var friend = "none"
             var cusid = document.getElementsByClassName('people-person active')[0].id
             set(ref(database, 'messages/'+ cusid + '/' + id), {
-                name: name,
+                email:name,
                 allow:friend,
                 tpye:"message",
                 message: message,
@@ -233,39 +233,43 @@ onChildAdded(friend_invite, (data) => {
         onChildAdded(romc, (data2) => {
             if (data2.val().message != null) {
                 if (data2.val().type != "image") {
-                    if(data2.val().name != myName) {
-                        var html = `<div class="bubble you">${ data2.val().message }</div>`
-                        const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                        d1.innerHTML = d1.innerHTML + html
-                        document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                        document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
-                    }else{
-                        var html = `<div class="bubble me">${ data2.val().message }</div>`
-                        const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                        d1.innerHTML = d1.innerHTML + html
-                        document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                        document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
-                    }
-                    var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                    elem.scrollTop = elem.scrollHeight;
-                    elem.scrollTop = elem.scrollHeight;
+                    if (data2.val().name != null) {
+                        if(data2.val().email != myName) {
+                            var html = `<div class="bubble you">${ data2.val().message }</div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                        }else{
+                            var html = `<div class="bubble me">${ data2.val().message }</div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                        }
+                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;
+                    } else {}
                 } else {
-                    if(data2.val().name != myName) {
-                        var html = `<div class="bubble you"><img class="type-img" src="${data2.val().message}"></img></div>`
-                        const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                        d1.innerHTML = d1.innerHTML + html
-                        document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                        document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
-                    }else{
-                        var html = `<div class="bubble me"><img class="type-img" src="${data2.val().message}"></img></div>`
-                        const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                        d1.innerHTML = d1.innerHTML + html
-                        document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                        document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
-                    }
-                    var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                    elem.scrollTop = elem.scrollHeight;
-                    elem.scrollTop = elem.scrollHeight;
+                    if (data2.val().name != null) {
+                        if(data2.val().name != myName) {
+                            var html = `<div class="bubble you"><img class="type-img" src="${data2.val().message}"></img></div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
+                        }else{
+                            var html = `<div class="bubble me"><img class="type-img" src="${data2.val().message}"></img></div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
+                        }
+                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;
+                    } else {}
         
                 }
             }
