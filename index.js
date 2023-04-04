@@ -1,8 +1,6 @@
 import { 
   hideLoginError, 
-  showLoginState, 
-  showLoginForm, 
-  showApp, 
+  showLoginState,
   showLoginError, 
   btnLogin,
   btnSignup
