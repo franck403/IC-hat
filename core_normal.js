@@ -272,7 +272,7 @@ onChildAdded(friend_invite, (data) => {
                 }
             }
             else {
-                console.log("type non supported")
+                console.log(val().type))
             }
             
         });
