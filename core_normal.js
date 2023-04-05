@@ -270,21 +270,21 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                     } else {}
                 } else if(data2.val().type == "encrypted") {
-                    fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/uncrypt/", {method: "GET"})
+                    fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/uncrypt/" + data2.val().message, {method: "GET"})
                     .then((response) => response.text())
                     .then((data) => {
                         if(data2.val().name == myName) {
-                            var html = `<div class="bubble you"><img class="type-img" src="${data}"></img></div>`
+                            var html = `<div class="bubble you">${data}</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  data
                         }else{
-                            var html = `<div class="bubble me"><img class="type-img" src="${data}"></img></div>`
+                            var html = `<div class="bubble me">${data}</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  data
                         }
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                         elem.scrollTop = elem.scrollHeight;
