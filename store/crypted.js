@@ -94,7 +94,7 @@ try {
                         dname: cusid
                     });
                     document.getElementById('content').value = "";
-                    document.getElementById('content').removeAttribute(" disabled")
+                    document.getElementById('content').removeAttribute("disabled")
                 })
                 .catch((error) => {
                     console.error("Error:", error);
