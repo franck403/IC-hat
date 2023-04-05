@@ -205,7 +205,7 @@ form.addEventListener('submit', (event) => {
 });
 
 const friend_invite = ref(database, 'users_friend/');
-async () =>  {onChildAdded(friend_invite, (data) => {
+onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
     if(dte.indexOf(myEmail) != -1) {
         if (localStorage.getItem("count") == 0) {var class2 = "people-person active";var class3 = "chat chat-active"} else {var class2 = "people-person";var class3= "chat"}
@@ -276,10 +276,9 @@ async () =>  {onChildAdded(friend_invite, (data) => {
         });
     }else{}    
 });
-}
 
 const load_check = ref(database, 'load/');
 onChildAdded(load_check, (data) => {
     document.getElementById("loader").remove();
-    document.getElementById("loader_box").remove()
-});
+    document.getElementById("loader_box").remove();
+})
