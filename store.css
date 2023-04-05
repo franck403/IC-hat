@@ -1,0 +1,12 @@
+.store_img {
+    height: 100px;
+}
+.store_button {
+    border:none;
+    background: none;
+    cursor: pointer;
+}
+.store_box {
+    height: 120px;
+    width: 200px;
+}

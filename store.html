@@ -7,13 +7,19 @@
         <title>IC hat extention store</title>
         <link rel="shortcut icon" href="ic-hat.png">
         <link href="style.css" rel="stylesheet">
+        <link href="store.css" rel="stylesheet">
         <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-auth-compat.js"></script>
     </head>
     <body>
-      <div id="wait-connected"></div>
-      <div id="not-connected"><iframe class="not-connected-iframe" id="not-connected-iframe" src="home.html"></iframe><script src="login-register.js"></script></div>
-      <div id="connected"><button id="add_extention">Add crypt message</button></div>
+      <!--<div id="wait-connected"></div>
+      <div id="not-connected"><iframe class="not-connected-iframe" id="not-connected-iframe" src="home.html"></iframe><script src="login-register.js"></script></div> -->
+      <div id="connected">
+        <div class="store_box">
+            <img class="store_image" src="ic-hat.png"></img>
+            <button class="store_button" id="add_extention">Add crypt message</button>
+        </div>
+      </div>
       <script type="module" src="extention.js"></script>
 
     </body>
