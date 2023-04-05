@@ -279,8 +279,7 @@ async () =>  {onChildAdded(friend_invite, (data) => {
 }
 
 const load_check = ref(database, 'load/');
-async () => onChildAdded(load_check, (data) => {
+onChildAdded(load_check, (data) => {
     document.getElementById("loader").remove();
     document.getElementById("loader_box").remove()
-})
-} catch {}
+});
