@@ -8,7 +8,7 @@
     border: none;
     display: table;
     background: none;
-    cursor: pointer;}
+}
 .store_box {
     width: 200px;
     background: #dfdcdc;
@@ -16,6 +16,7 @@
     padding: 2px;
     margin-right: 12px;
     margin-top: 13px;
+    cursor: pointer;
 }
 .store-grid {
     display: grid;
