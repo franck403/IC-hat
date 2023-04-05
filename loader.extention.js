@@ -9,6 +9,7 @@ export function load() {
         .then((data) => {
             var tag = document.createElement("script");
             tag.src = act2[1];
+            tag.type = "module" 
             document.getElementById("extention_import").appendChild(tag);
             tag.setAttribute("type","module")
             console.log("[extention loader] " + act2[1] + " loaded")
