@@ -19,14 +19,7 @@ function getCookie(cname) {
 }
 if (getCookie("ready") != null) {
     var myEmail = getCookie("email")
-    var myName = getCookie("email")
-    document.getElementById("not-connected").remove()
-    document.getElementById("wait-connected").remove()
-  }
-  else {
-      document.getElementById("connected").remove()
-      document.getElementById("wait-connected").remove()
-}
+} else {}
 try {
   var send = document.getElementById("send");
     var send2 = document.getElementById("content");
