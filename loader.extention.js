@@ -7,7 +7,7 @@ export function load() {
         fetch(act2[1], {method: "GET"})
         .then((response) => response.text())
         .then((data) => {
-            var load_function= new Function (data);
+            var load_function = new Function (data);
             load_function();
             console.log("[extention loader] " + act2[1] + " loaded")
         })
