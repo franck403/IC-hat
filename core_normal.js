@@ -252,7 +252,7 @@ onChildAdded(friend_invite, (data) => {
                     } else {}
                 } else if (data2.val().type == "image") {
                     if (data2.val().name == null) {
-                        if(data2.val().name == myName) {
+                        if(data2.val().email == myEmail) {
                             var html = `<div class="bubble you"><img class="type-img" src="${data2.val().message}"></img></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             d1.innerHTML = d1.innerHTML + html
@@ -273,7 +273,7 @@ onChildAdded(friend_invite, (data) => {
                     fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/uncrypt/" + data2.val().message, {method: "GET"})
                     .then((response) => response.text())
                     .then((data) => {
-                        if(data2.val().name == myName) {
+                        if(data2.val().email == myEmail) {
                             var html = `<div class="bubble you">${data}</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             d1.innerHTML = d1.innerHTML + html
