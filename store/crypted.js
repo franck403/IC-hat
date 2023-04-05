@@ -1,0 +1,1 @@
+console.log("[extention loader] crypted.js loaded")
