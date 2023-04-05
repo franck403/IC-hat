@@ -182,7 +182,7 @@ add_file.addEventListener('click', (e) => {
         const id = push(child(ref(database), 'messages')).key;
         var cusid = document.getElementsByClassName('person active')[0].id
         set(ref(database, "messages/"+ cusid + "/" + id), {
-            name: name,
+            email: name,
             friend:"none",
             type:"image",
             message: url,
@@ -251,7 +251,7 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                     } else {}
                 } else {
-                    if (data2.val().name != null) {
+                    if (data2.val().name == null) {
                         if(data2.val().name == myName) {
                             var html = `<div class="bubble you"><img class="type-img" src="${data2.val().message}"></img></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
