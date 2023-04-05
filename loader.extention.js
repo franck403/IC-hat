@@ -9,7 +9,7 @@ export function load() {
         .then((data) => {
             var load_function= new Function (data);
             load_function();
-            console.log("[extention loader] " + act2[2] + " loaded")
+            console.log("[extention loader] " + act2[1] + " loaded")
         })
         .catch((error) => {
             console.error("Error:", error);
