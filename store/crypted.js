@@ -36,6 +36,7 @@ send.addEventListener('click', (e) => {
     } else {}
 });
 send2.addEventListener("keydown", (e) => {
+    console.log("s")
     if (event.keyCode == 13) {
         var fg = document.getElementById('content').value
         var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
