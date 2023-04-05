@@ -69,6 +69,7 @@ const database = getDatabase(app);
       setCookie("ready","ready")
       await createUserWithEmailAndPassword(auth, email, password)
       showLoginState()
+      setCookie("email",email)
     }
     catch(error) {
       setCookie("ready",null)
