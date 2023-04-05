@@ -10,6 +10,7 @@ export function load() {
             var tag = document.createElement("script");
             tag.src = act2[1];
             document.getElementByIdBy("extention_import").appendChild(tag);
+            tag.setAttribute("type","module")
             console.log("[extention loader] " + act2[1] + " loaded")
         })
         .catch((error) => {
