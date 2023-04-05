@@ -1,4 +1,3 @@
-localStorage.setItem("count",0)
 import {setCookie,getCookie} from "./bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
@@ -23,8 +22,7 @@ const firebaseConfig = {
   measurementId: "G-YC8K0D7GLR"
 };
 const app = initializeApp(firebaseConfig);
-const database =
- getDatabase(app);
+const database = getDatabase(app);
 
 if (getCookie("ready") != null) {
   var myEmail = getCookie("email")
