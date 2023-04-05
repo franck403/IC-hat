@@ -1,10 +1,12 @@
 console.log("[checker] ✅")
-const send = document.getElementById("send");
-const send2 = document.getElementById("content");
+var send = document.getElementById("send");
+var send2 = document.getElementById("content");
 
 send.replaceWith(send.cloneNode(true));
 send2.replaceWith(send2.cloneNode(true));
 
+var send = document.getElementById("send");
+var send2 = document.getElementById("content");
 send.addEventListener('click', (e) => {
     var fg = document.getElementById('content').value
     console.log(fg.replace(/\s/g, '').length)
