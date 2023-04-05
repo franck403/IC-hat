@@ -130,7 +130,7 @@ send.addEventListener('click', (e) => {
             email:name,
             allow:friend,
             message: message,
-            tpye:"message",
+            type:"message",
             date:Date.now(),
             dname:cusid
         });
@@ -153,7 +153,7 @@ send2.addEventListener("keydown", (e) => {
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 email:name,
                 allow:friend,
-                tpye:"message",
+                type:"message",
                 message: message,
                 date: Date.now(),
                 dname: cusid
