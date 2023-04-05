@@ -19,9 +19,10 @@ function getCookie(cname) {
 }
 if (getCookie("ready") != null) {
     var myEmail = getCookie("email")
+    var myName = getCookie("email")
 } else {}
 try {
-  var send = document.getElementById("send");
+    var send = document.getElementById("send");
     var send2 = document.getElementById("content");
 
     send.replaceWith(send.cloneNode(true));
