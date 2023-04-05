@@ -280,5 +280,6 @@ onChildAdded(friend_invite, (data) => {
 const load_check = ref(database, 'load/');
 onChildAdded(load_check, (data) => {
     document.getElementById("loader").remove();
-    document.getElementById("loader_box").remove();
+    document.getElementById("loader_box").remove()
 })
+} catch {}
