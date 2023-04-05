@@ -217,7 +217,7 @@ onChildAdded(friend_invite, (data) => {
         </li>`
         // chat_el_box
         var html_chat = `
-        <div class="${class3}" id="room_${data.val().dname}" data-chat="${data.val().dname}">
+        <div class="chat" id="room_${data.val().dname}" data-chat="${data.val().dname}">
         <span></span>
         </div>`
         const d1 = document.getElementById("chat_el_box")
