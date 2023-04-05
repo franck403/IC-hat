@@ -56,7 +56,7 @@ try {
                 set(ref(database, 'messages/'+ cusid + '/' + id), {
                     email:name,
                     allow:friend,
-                    type:"message",
+                    type:"encrypted",
                     message: data,
                     date: Date.now(),
                     dname: cusid
@@ -87,7 +87,7 @@ try {
                     set(ref(database, 'messages/'+ cusid + '/' + id), {
                         email:name,
                         allow:friend,
-                        type:"message",
+                        type:"encrypted",
                         message: data,
                         date: Date.now(),
                         dname: cusid
