@@ -4,7 +4,7 @@ export function load() {
     var act = ext.split(",")
     act.forEach((main) => {
         console.log(main)
-        if (main != "undefined") {
+        if (main != null) {
             var act2 = main.split(";")
             fetch(act2[1], {method: "GET"})
             .then((response) => response.text())
