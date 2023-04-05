@@ -1,3 +1,4 @@
+console.log("[checker] ✅")
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
 
