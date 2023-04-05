@@ -1,5 +1,3 @@
-console.log("[extention loader] crypted.js loaded")
-
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
 
