@@ -1,7 +1,7 @@
 var url = window. location. href;
 import {load} from "./loader.extention.js"
 import {add} from "./add.extention.js"
-console.log(url)
+
 if (url == "https://splendorous-hamster-ecd34b.netlify.app/") {
     load()
 }
