@@ -231,7 +231,7 @@ onChildAdded(friend_invite, (data) => {
         var romc = ref(database, `messages/${dnamef}`);
         onChildAdded(romc, (data2) => {
             if (data2.val().message != null) {
-                if (data2.val().type != "image") {
+                if (data2.val().type == "message") {
                     if (data2.val().name == null) {
                         if(data2.val().email != myName) {
                             var html = `<div class="bubble you">${ data2.val().message }</div>`
@@ -250,7 +250,7 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
                     } else {}
-                } else {
+                } else if (data2.val().type == "image") {
                     if (data2.val().name == null) {
                         if(data2.val().name == myName) {
                             var html = `<div class="bubble you"><img class="type-img" src="${data2.val().message}"></img></div>`
@@ -269,8 +269,31 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
                     } else {}
-        
-                }
+                } else if(data2.val().type == "encrypted") {
+                    fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/uncrypt/", {method: "GET"})
+                    .then((response) => response.text())
+                    .then((data) => {
+                        if(data2.val().name == myName) {
+                            var html = `<div class="bubble you"><img class="type-img" src="${data}"></img></div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
+                        }else{
+                            var html = `<div class="bubble me"><img class="type-img" src="${data}"></img></div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
+                        }
+                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                    });
+                } else {}
             }
             else {}
         });
