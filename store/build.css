@@ -1,0 +1,116 @@
+body {margin:0px;;}
+#top {
+  width:100vw;
+  height:21px;
+  background:white;
+  position: fixed;
+  top: 0px;
+}
+#run {
+  height:21px;
+  width:50px;
+  position: fixed;
+  top: 0px;
+  text-align:center;
+  right:50vw;
+  background:red;
+  border-radius:30%; 
+}
+#save {
+  height:20px;
+  width:60px;
+  position: fixed;
+  top: 0px;
+  text-align:center;
+  right:80px;
+  background:red;
+  border-radius:30%; 
+  
+}
+#code {
+    margin-left: 15vw;
+    width: 85%;
+    position: fixed;
+    top: 5.4px;
+}
+#file_title_box {
+    position: fixed;
+    color:white;
+    text-align:center;
+    margin-top:2px;
+    margin-left: 0px;
+    width:14vw;
+    height:17px;
+    background:gray;
+    top: 21px;
+    left:10vw;
+}
+#file_title {
+    color:white;
+    text-align:center;
+    margin-top:2px;
+    margin-left: 0px;
+    width:15vw;
+    height:17px;
+    border-top-right-radius: 280px 280px;
+    border-top-left-radius: 280px 280px;
+    background:gray;
+}
+#file_name {
+    margin-left: 0px;
+    width:15vw;
+    height:16px;
+    color:black;
+    text-align:center;
+}
+#file {
+    margin-left: 0px;
+    width:15%;
+    position: fixed;
+    height: 97vh;
+    top: 21px;
+    background:white;
+}
+#codeEditor, #lineCounter {
+    font-family: lucida console, courier new, courier, monospace;
+    margin: 0;
+    padding: 10px 0;
+    height: 97vh;
+    border-radius: 0;
+    resize: none;
+    font-size: 16px;
+    line-height: 1.2;
+    outline: none;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#lineCounter:focus-visible,
+#codeEditor:focus-visible {
+    outline:none;
+}
+#lineCounter {
+      border-top-left-radius: 280px 280px;
+      display: flex;
+      border-color: transparent;
+      overflow-y: hidden;
+      text-align: right;
+      box-shadow: none;
+      color: c;
+      background-color: #d8d8d8;
+      position: absolute;
+      width: 3.5rem;
+      /* Determine appearance of line counter */
+      background-color:#3E3D32;
+      border-color:#3E3D32;
+      color:#928869;
+}
+#codeEditor {
+      border-top-left-radius: 60px;
+      padding-left: calc(3.5rem + 5px);
+      width:90vw;
+      /* Determine appearance of code editor */
+      background-color:#272822;
+      border-color:#272822;
+      color:#ffffff;
+}
