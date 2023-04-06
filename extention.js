@@ -1,6 +1,6 @@
 var url = window. location.href;
 import {load} from "./loader.extention.js"
-import {add,chack} from "./add.extention.js"
+import {add,check} from "./add.extention.js"
 
 if (url == "https://splendorous-hamster-ecd34b.netlify.app/") {
     load()
