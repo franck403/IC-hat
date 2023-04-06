@@ -285,7 +285,7 @@ onChildAdded(friend_invite, (data) => {
                         document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
                         document.getElementById(`prew_${dnamef}`).innerHTML =  ""
                     }else{
-                        var html = `<div class="bubble you" id="${data2.val().date}">loading</div>`
+                        var html = `<div class="bubble you" style="display: none;" id="${data2.val().date}">loading</div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         d1.innerHTML = d1.innerHTML + html
                         document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
@@ -299,10 +299,12 @@ onChildAdded(friend_invite, (data) => {
                     .then((response) => response.text())
                     .then((data) => {
                         document.getElementById(data2.val().date).innerHTML = data
+                        document.getElementById(data2.val().date).setAttribute("style","display:block;")
                         document.getElementById(`prew_${dnamef}`).innerHTML =  data
                     })
                     .catch((error) => {
                         console.error("Error:", error);
+                        document.getElementById(data2.val().date).setAttribute("style","display:none;")
                     });
                 } else {}
             }
