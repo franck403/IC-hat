@@ -307,7 +307,6 @@ onChildAdded(friend_invite, (data) => {
                         document.getElementById(`prew_${dnamef}`).innerHTML =  data
                     })
                     .catch((error) => {
-                        console.error("Error:", error);
                         document.getElementById(data2.val().date).setAttribute("style","display:none;")
                     });
                 } else {}
