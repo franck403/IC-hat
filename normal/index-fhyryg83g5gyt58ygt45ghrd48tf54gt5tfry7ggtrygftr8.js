@@ -77,7 +77,14 @@ const database = getDatabase(app);
       showLoginError(error)
     } 
   }
-  btnLogin.addEventListener("click", loginEmailPassword) 
-  btnSignup.addEventListener("click", createAccount)
+  const winhref = window.location.href
+  const winl = winhref.split("#")
+  if (winl[1] != "register") {
+    btnLogin.addEventListener("click", loginEmailPassword) 
+    btnSignup.remove()
+  } else {
+    btnSignup.addEventListener("click", createAccount)
+    btnLogin.remove()
+  }
   
   const auth = getAuth(firebaseApp);

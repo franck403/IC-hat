@@ -1,4 +1,4 @@
-var url = window. location. href;
+var url = window. location.href;
 import {load} from "./loader.extention.js"
 import {add} from "./add.extention.js"
 
