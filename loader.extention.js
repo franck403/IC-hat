@@ -3,8 +3,7 @@ export function load() {
     var ext = localStorage.getItem("extention")
     var act = ext.split(",")
     act.forEach((main) => {
-        console.log(main)
-        if (main != null) {
+        if (main != "") {
             var act2 = main.split(";")
             fetch(act2[1], {method: "GET"})
             .then((response) => response.text())
