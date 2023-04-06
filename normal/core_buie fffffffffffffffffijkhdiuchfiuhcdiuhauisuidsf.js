@@ -279,17 +279,17 @@ onChildAdded(friend_invite, (data) => {
                     } else {}
                 } else if(data2.val().type == "encrypted") {
                     if(data2.val().email == myEmail) {
-                        var html = `<div class="bubble me" id="${data2.val().date}">${data}</div>`
+                        var html = `<div class="bubble me" id="${data2.val().date}">loading</div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         d1.innerHTML = d1.innerHTML + html
                         document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                        document.getElementById(`prew_${dnamef}`).innerHTML =  data
+                        document.getElementById(`prew_${dnamef}`).innerHTML =  ""
                     }else{
-                        var html = `<div class="bubble you" id="${data2.val().date}">${data}</div>`
+                        var html = `<div class="bubble you" id="${data2.val().date}">loading</div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         d1.innerHTML = d1.innerHTML + html
                         document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
-                        document.getElementById(`prew_${dnamef}`).innerHTML =  data
+                        document.getElementById(`prew_${dnamef}`).innerHTML =  ""
                     }
                     var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                     elem.scrollTop = elem.scrollHeight;
@@ -298,7 +298,8 @@ onChildAdded(friend_invite, (data) => {
                     fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/uncrypt/" + data2.val().message, {method: "GET"})
                     .then((response) => response.text())
                     .then((data) => {
-
+                        document.getElementById(data2.val().date).innerHTML = data
+                        document.getElementById(`prew_${dnamef}`).innerHTML =  data
                     })
                     .catch((error) => {
                         console.error("Error:", error);
