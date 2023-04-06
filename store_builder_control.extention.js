@@ -48,31 +48,6 @@ else {
     document.getElementById("wait-connected").remove()
 }
 
-send.addEventListener('click', (e) => {
-    var fg = document.getElementById('content').value
-    console.log(fg.replace(/\s/g, '').length)
-    var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-    if (document.getElementById('content').value != "" && fg.replace(/\s/g, '').length != 0) {
-        var str = document.getElementById('content').value;
-        var str1 = str.replaceAll("<","&lt;")
-        var str2 = str1.replaceAll(">","&gt;")
-        var message = str2;
-        var name = myName;
-        const id = push(child(ref(database), 'messages')).key;
-        var friend = "none"
-        var cusid = document.getElementsByClassName('people-person active')[0].id
-        set(ref(database, 'messages/'+ cusid + '/' + id), {
-            email:name,
-            allow:friend,
-            message: message,
-            type:"message",
-            date:Date.now(),
-            dname:cusid
-        });
-        document.getElementById('content').value = "";
-    } else {}
-});
-
 export function add_type(type_name,type_code) {
     var cusid = document.getElementsByClassName('people-person active')[0].id
     const id = push(child(ref(database), 'extention_type')).key;
@@ -80,7 +55,6 @@ export function add_type(type_name,type_code) {
         code: type_code,
         add_type:type_name,
     });
-
     var old1 = localStorage.getItem("control_extention")
     localStorage.setItem("control_extention",old1 + "," + type_name)
     localStorage.setItem(type_name,type_code)
