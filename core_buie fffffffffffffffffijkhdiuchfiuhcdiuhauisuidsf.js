@@ -299,7 +299,11 @@ onChildAdded(friend_invite, (data) => {
                     .then((response) => response.text())
                     .then((data) => {
                         document.getElementById(data2.val().date).innerHTML = data
-                        document.getElementById(data2.val().date).setAttribute("style","display:block;")
+                        if (data = "loading") {
+                        document.getElementById(data2.val().date).setAttribute("style","display:none;")
+                        } else {
+                            document.getElementById(data2.val().date).setAttribute("style","display:block;")
+                        }
                         document.getElementById(`prew_${dnamef}`).innerHTML =  data
                     })
                     .catch((error) => {
