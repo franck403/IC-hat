@@ -74,7 +74,7 @@ try {
             var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
             if (document.getElementById('content').value != "" && fg.replace(/\s/g, '').length != 0) {
                 var str = document.getElementById('content').value;
-                document.getElementById('content').setAttribute("disabled","")
+                document.getElementById('content').value = "";
                 var str1 = str.replaceAll("<","&lt;")
                 var str2 = str1.replaceAll(">","&gt;")
                 var message = str2;
@@ -93,8 +93,6 @@ try {
                         date: Date.now(),
                         dname: cusid
                     });
-                    document.getElementById('content').value = "";
-                    document.getElementById('content').removeAttribute("disabled")
                 })
                 .catch((error) => {
                     console.error("Error:", error);
