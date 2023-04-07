@@ -370,7 +370,7 @@ body {
 
 .people {
     margin-left: -1px;
-    overflow:scroll;
+    overflow-y:scroll;
     height: 82vh;
     border-right: 1px solid var(--light);
     border-left: 1px solid var(--light);
