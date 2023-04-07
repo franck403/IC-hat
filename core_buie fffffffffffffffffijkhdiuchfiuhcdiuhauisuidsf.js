@@ -340,7 +340,7 @@ onChildAdded(friend_invite, (data) => {
                     */
                     var stim = localStorage.getItem("wait")
                     setTimeout(cryptmess(data2.val().message,data2),1000 + stim)
-                    localStorage.setItem("wait",stim + 500)
+                    localStorage.setItem("wait",stim + 1000)
                 } else {}
             }
             else {}
