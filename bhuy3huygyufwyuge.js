@@ -1,3 +1,5 @@
+import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
+
 export function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue + ";path=https://auth.geoloup.com/";
   }
@@ -25,34 +27,15 @@ export function delCookie(name) {
     document.cookie = name+'=; Max-Age=-99999999;';  
 }
 
-export function cryptmess(mess,data2) {
-  fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/uncrypt?text=" + mess, {method: "GET"})
-  .then((response) => response.text())
-  .then((data) => {
-      document.getElementById(data2.val().date).innerHTML = data
-      if (data == "loading") {
-      document.getElementById(data2.val().date).setAttribute("style","display:none;")
-      var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-      elem.scrollTop = elem.scrollHeight;
-      elem.scrollTop = elem.scrollHeight;
-      } else {
-          document.getElementById(data2.val().date).setAttribute("style","display:block;")
-          var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-          elem.scrollTop = elem.scrollHeight;
-          elem.scrollTop = elem.scrollHeight;
-      }
-      document.getElementById(`prew_${dnamef}`).innerHTML =  data
-      var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-      elem.scrollTop = elem.scrollHeight;
-      elem.scrollTop = elem.scrollHeight;
-  })
-  .catch((error) => {
-      document.getElementById(data2.val().date).setAttribute("style","display:none;")
-  });
-
-}
-
 export function removeloader() {
   document.getElementById("loader").remove();
   document.getElementById("loader_box").remove()
 }
+
+export function encrypt(text) {
+  return CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(text));
+};
+
+export function decrypt(data) {
+  return CryptoJS.enc.Base64.parse(data).toString(CryptoJS.enc.Utf8);
+};

@@ -18,7 +18,7 @@ fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/", {
     // window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
 });
 
-import {setCookie,getCookie,delCookie,cryptmess,removeloader} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie,decrypt,removeloader} from "./bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
     getDatabase,
@@ -296,9 +296,10 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
                     } else {}
-                } else if(data2.val().type == "encrypted") {
+                } else if(data2.val().type == "new-encrypted") {
                     if(data2.val().email == myEmail) {
-                        var html = `<div class="bubble me" id="${data2.val().date}">loading</div>`
+                        var message = decrypt(data2.val().message)
+                        var html = `<div class="bubble me" id="${data2.val().date}">${message}</div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         var DateNow = data2.val().date
                         var dateConvert = new Date(DateNow)
@@ -307,29 +308,16 @@ onChildAdded(friend_invite, (data) => {
                         document.getElementById(`time_${dnamef}`).innerHTML =  date
                         document.getElementById(`prew_${dnamef}`).innerHTML =  ""
                     }else{
-                        var html = `<div class="bubble you" style="display: none;" id="${data2.val().date}">loading</div>`
+                        var message = decrypt(data2.val().message)
+                        var html = `<div class="bubble you" id="${data2.val().date}">${message}</div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         var DateNow = data2.val().date
                         var dateConvert = new Date(DateNow)
                         var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
                         d1.innerHTML = d1.innerHTML + html
                         document.getElementById(`time_${dnamef}`).innerHTML =  date
-                        document.getElementById(`prew_${dnamef}`).innerHTML =  ""
+                        document.getElementById(`prew_${dnamef}`).innerHTML =  message
                     }
-                    var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                    elem.scrollTop = elem.scrollHeight;
-                    elem.scrollTop = elem.scrollHeight;
-                    var stim = parseInt(localStorage.getItem("wait"))
-                    var stim2 = parseInt(localStorage.getItem("mainwait"))
-                    setTimeout(cryptmess(data2.val().message,data2),stim)
-                    localStorage.setItem("wait",stim + 10000)
-                    localStorage.setItem("mainwait",stim2 + 1)
-                    var stim2 = parseInt(localStorage.getItem("mainwait"))
-                    var su_mes_time = su_mes_time + 10000
-                    var su_mes = su_mes + 1
-                    try {
-                    document.getElementById("load_rest").innerHTML = `${stim2} encrypted are message loaded`
-                    } catch {}
                 } else {}
             }
             else {}

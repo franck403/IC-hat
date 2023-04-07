@@ -1,5 +1,6 @@
-import {setCookie,getCookie,Regex} from "https://splendorous-hamster-ecd34b.netlify.app/bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,Regex,encrypt} from "https://splendorous-hamster-ecd34b.netlify.app/bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import {
     getDatabase,
     set,
@@ -49,33 +50,14 @@ try {
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('people-person active')[0].id
-            if (fg.search("&#x") == -1 && Regex(fg) == false) {
-                fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt?text=" + message, {method: "GET"})
-                .then((response) => response.text())
-                .then((data) => {
-                    set(ref(database, 'messages/'+ cusid + '/' + id), {
-                        email:name,
-                        allow:friend,
-                        type:"encrypted",
-                        message: data,
-                        date: Date.now(),
-                        dname: cusid
-                    });
-                    document.getElementById('content').value = "";    
-                })
-                .catch((error) => {
-                    console.error("Error:", error);
-                 });
-            } else {
-                set(ref(database, 'messages/'+ cusid + '/' + id), {
-                    email:name,
-                    allow:friend,
-                    type:"message",
-                    message: message,
-                    date: Date.now(),
-                    dname: cusid
-                });
-            }
+            set(ref(database, 'messages/'+ cusid + '/' + id), {
+                email:name,
+                allow:friend,
+                type:"new-encrypted",
+                message: message,
+                date: Date.now(),
+                dname: cusid
+            });
         } else {}
     });
     send2.addEventListener("keydown", (e) => {
@@ -88,36 +70,19 @@ try {
                 var str1 = str.replaceAll("<","&lt;")
                 var str2 = str1.replaceAll(">","&gt;")
                 var message = str2;
+                var message = encrypt(message)
                 var name = myName;
                 const id = push(child(ref(database), 'messages')).key;
                 var friend = "none"
                 var cusid = document.getElementsByClassName('people-person active')[0].id
-                if (fg.search("&#x") == -1 && Regex(fg) == false) {
-                    fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt?text=" + message, {method: "GET"})
-                    .then((response) => response.text())
-                    .then((data) => {
-                        set(ref(database, 'messages/'+ cusid + '/' + id), {
-                            email:name,
-                            allow:friend,
-                            type:"encrypted",
-                            message: data,
-                            date: Date.now(),
-                            dname: cusid
-                        });
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error);
-                    });
-                } else {
-                    set(ref(database, 'messages/'+ cusid + '/' + id), {
-                        email:name,
-                        allow:friend,
-                        type:"message",
-                        message: message,
-                        date: Date.now(),
-                        dname: cusid
-                    });
-                }
+                set(ref(database, 'messages/'+ cusid + '/' + id), {
+                    email:name,
+                    allow:friend,
+                    type:"new-encrypted",
+                    message: message,
+                    date: Date.now(),
+                    dname: cusid
+                });
             } else {}
         } else {}
     });
