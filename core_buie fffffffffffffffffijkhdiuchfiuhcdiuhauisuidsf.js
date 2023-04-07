@@ -11,7 +11,7 @@ fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/", {
     // window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
 });
 
-import {setCookie,getCookie,delCookie} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie,cryptmess} from "./bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
     getDatabase,
@@ -312,7 +312,7 @@ onChildAdded(friend_invite, (data) => {
                     var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                     elem.scrollTop = elem.scrollHeight;
                     elem.scrollTop = elem.scrollHeight;
-
+                    /*
                     fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/uncrypt?text=" + data2.val().message, {method: "GET"})
                     .then((response) => response.text())
                     .then((data) => {
@@ -336,6 +336,8 @@ onChildAdded(friend_invite, (data) => {
                     .catch((error) => {
                         document.getElementById(data2.val().date).setAttribute("style","display:none;")
                     });
+                    */
+                    setTimeout(cryptmess(data2.val().message,data2),500)
                 } else {}
             }
             else {}
