@@ -39,7 +39,6 @@ try {
     var send2 = document.getElementById("content");
     send.addEventListener('click', (e) => {
         var fg = document.getElementById('content').value
-        console.log(fg.replace(/\s/g, '').length)
         var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
         if (document.getElementById('content').value != "" && fg.replace(/\s/g, '').length != 0) {
             var str = document.getElementById('content').value;
