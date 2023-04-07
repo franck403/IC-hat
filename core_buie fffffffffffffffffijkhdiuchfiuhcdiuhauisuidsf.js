@@ -1,6 +1,8 @@
 localStorage.setItem("wait",1)
-const mes = localStorage.getItem("mainwait")
-const mes_time = localStorage.getItem("wait")
+const mes = parseFloat(localStorage.getItem("mainwait"))
+const mes_time = parseFloat(localStorage.getItem("wait"))
+var su_mes = parseFloat(localStorage.getItem("mainwait"))
+var su_mes_time = parseFloat(localStorage.getItem("wait"))
 localStorage.setItem("mainwait",1)
 
 fetch("https://fireimage.francoischouin1.repl.co/", {
@@ -323,6 +325,8 @@ onChildAdded(friend_invite, (data) => {
                     localStorage.setItem("wait",stim + 10000)
                     localStorage.setItem("mainwait",stim2 + 1)
                     var stim2 = parseInt(localStorage.getItem("mainwait"))
+                    var su_mes_time = su_mes_time + 10000
+                    var su_mes = su_mes + 1
                     document.getElementById("load_rest").innerHTML = `${stim2} encrypted are message loaded`
                 } else {}
             }
