@@ -327,7 +327,9 @@ onChildAdded(friend_invite, (data) => {
                     var stim2 = parseInt(localStorage.getItem("mainwait"))
                     var su_mes_time = su_mes_time + 10000
                     var su_mes = su_mes + 1
+                    try {
                     document.getElementById("load_rest").innerHTML = `${stim2} encrypted are message loaded`
+                    } catch {}
                 } else {}
             }
             else {}
