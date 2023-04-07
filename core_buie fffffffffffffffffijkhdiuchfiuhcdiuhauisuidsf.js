@@ -340,12 +340,12 @@ onChildAdded(friend_invite, (data) => {
                         document.getElementById(data2.val().date).setAttribute("style","display:none;")
                     });
                     */
-                    var stim = Float(localStorage.getItem("wait"))
-                    var stim2 = Float(localStorage.getItem("mainwait"))
+                    var stim = parseInt(localStorage.getItem("wait"))
+                    var stim2 = parseInt(localStorage.getItem("mainwait"))
                     setTimeout(cryptmess(data2.val().message,data2),stim)
                     localStorage.setItem("wait",stim + 10000)
                     localStorage.setItem("mainwait",stim2 + 1)
-                    var stim2 = Float(localStorage.getItem("mainwait"))
+                    var stim2 = parseInt(localStorage.getItem("mainwait"))
                     document.getElementById("load_rest").innerHTML = `loading | ${stim2} message loaded`
                 } else {}
             }
