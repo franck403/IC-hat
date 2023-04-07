@@ -244,14 +244,18 @@ onChildAdded(friend_invite, (data) => {
                         if(data2.val().email == myEmail) {
                             var html = `<div class="bubble me">${ data2.val().message }</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = new Date(DateNow).toString()    
                             d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
                         }else{
                             var html = `<div class="bubble you">${ data2.val().message }</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = new Date(DateNow).toString()    
                             d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
                         }
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
@@ -263,14 +267,18 @@ onChildAdded(friend_invite, (data) => {
                         if(data2.val().email == myEmail) {
                             var html = `<div class="bubble me"><img class="type-img" src="${data2.val().message}"></img></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = new Date(DateNow).toString()    
                             d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
                         }else{
                             var html = `<div class="bubble you"><img class="type-img" src="${data2.val().message}"></img></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = new Date(DateNow).toString()    
                             d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
                         }
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
@@ -281,14 +289,18 @@ onChildAdded(friend_invite, (data) => {
                     if(data2.val().email == myEmail) {
                         var html = `<div class="bubble me" id="${data2.val().date}">loading</div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                        var DateNow = data2.val().date
+                        var date = new Date(DateNow).toString()
                         d1.innerHTML = d1.innerHTML + html
-                        document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                        document.getElementById(`time_${dnamef}`).innerHTML =  date
                         document.getElementById(`prew_${dnamef}`).innerHTML =  ""
                     }else{
                         var html = `<div class="bubble you" style="display: none;" id="${data2.val().date}">loading</div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                        var DateNow = data2.val().date
+                        var date = new Date(DateNow).toString()
                         d1.innerHTML = d1.innerHTML + html
-                        document.getElementById(`time_${dnamef}`).innerHTML =  data2.val().date
+                        document.getElementById(`time_${dnamef}`).innerHTML =  date
                         document.getElementById(`prew_${dnamef}`).innerHTML =  ""
                     }
                     var elem = document.querySelector(`[data-chat="${dnamef}"]`);
