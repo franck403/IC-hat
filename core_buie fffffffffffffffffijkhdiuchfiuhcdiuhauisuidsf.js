@@ -1,4 +1,6 @@
 localStorage.setItem("wait",1)
+localStorage.setItem("mainwait",1)
+
 fetch("https://fireimage.francoischouin1.repl.co/", {
     method: "GET"
 })
@@ -339,8 +341,12 @@ onChildAdded(friend_invite, (data) => {
                     });
                     */
                     var stim = localStorage.getItem("wait")
+                    var stim2 = localStorage.getItem("mainwait")
                     setTimeout(cryptmess(data2.val().message,data2),1000 + stim)
                     localStorage.setItem("wait",stim + 1000)
+                    localStorage.setItem("mainwait",stim2 + 1)
+                    var stim2 = localStorage.getItem("mainwait")
+                    document.getElementById("load_rest").innerHTML = `loading | ${stim2} message loaded`
                 } else {}
             }
             else {}
