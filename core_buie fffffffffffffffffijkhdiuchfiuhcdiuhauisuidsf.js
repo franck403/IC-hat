@@ -355,7 +355,7 @@ onChildAdded(friend_invite, (data) => {
 });
 
 
-var log_out = document.getElementById("log_out")
+var log_out = document.getElementById("log-out")
 log_out.addEventListener('click', (e) => {
     delCookie("ready")
     delCookie("myEmail")
