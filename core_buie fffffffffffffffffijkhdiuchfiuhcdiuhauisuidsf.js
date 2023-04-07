@@ -11,7 +11,7 @@ fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/", {
     window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
 });
 
-import {setCookie,getCookie} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie} from "./bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
     getDatabase,
@@ -346,7 +346,8 @@ onChildAdded(friend_invite, (data) => {
 
 var log_out = document.getElementById("log_out")
 log_out.addEventListener('click', (e) => {
-    setCookie("read")
+    delCookie("ready")
+    delCookie("myEmail")
 });
 
 const load_check = ref(database, 'load/');
