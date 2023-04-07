@@ -339,8 +339,8 @@ onChildAdded(friend_invite, (data) => {
                     });
                     */
                     var stim = localStorage.getItem("wait")
-                    setTimeout(cryptmess(data2.val().message,data2),500 + stim)
-                    localStorage.setItem("wait",stim + 250)
+                    setTimeout(cryptmess(data2.val().message,data2),1000 + stim)
+                    localStorage.setItem("wait",stim + 500)
                 } else {}
             }
             else {}
