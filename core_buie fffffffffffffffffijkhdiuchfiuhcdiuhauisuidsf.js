@@ -1,4 +1,6 @@
 localStorage.setItem("wait",1)
+const mes = localStorage.getItem("mainwait")
+const mes_time = localStorage.getItem("wait")
 localStorage.setItem("mainwait",1)
 
 fetch("https://fireimage.francoischouin1.repl.co/", {
@@ -14,7 +16,7 @@ fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/", {
     // window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
 });
 
-import {setCookie,getCookie,delCookie,cryptmess} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie,cryptmess,removeloader} from "./bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
     getDatabase,
@@ -315,31 +317,6 @@ onChildAdded(friend_invite, (data) => {
                     var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                     elem.scrollTop = elem.scrollHeight;
                     elem.scrollTop = elem.scrollHeight;
-                    /*
-                    fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/uncrypt?text=" + data2.val().message, {method: "GET"})
-                    .then((response) => response.text())
-                    .then((data) => {
-                        document.getElementById(data2.val().date).innerHTML = data
-                        if (data == "loading") {
-                        document.getElementById(data2.val().date).setAttribute("style","display:none;")
-                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
-                        } else {
-                            document.getElementById(data2.val().date).setAttribute("style","display:block;")
-                            var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                            elem.scrollTop = elem.scrollHeight;
-                            elem.scrollTop = elem.scrollHeight;
-                        }
-                        document.getElementById(`prew_${dnamef}`).innerHTML =  data
-                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
-                    })
-                    .catch((error) => {
-                        document.getElementById(data2.val().date).setAttribute("style","display:none;")
-                    });
-                    */
                     var stim = parseInt(localStorage.getItem("wait"))
                     var stim2 = parseInt(localStorage.getItem("mainwait"))
                     setTimeout(cryptmess(data2.val().message,data2),stim)
@@ -362,6 +339,5 @@ log_out.addEventListener('click', (e) => {
     window.location.reload()
 });
 
-document.getElementById("loader").remove();
-document.getElementById("loader_box").remove()
+setTimeout(removeloader,mes_time)
 } catch {}

@@ -51,3 +51,8 @@ export function cryptmess(mess,data2) {
   });
 
 }
+
+export function removeloader() {
+  document.getElementById("loader").remove();
+  document.getElementById("loader_box").remove()
+}
