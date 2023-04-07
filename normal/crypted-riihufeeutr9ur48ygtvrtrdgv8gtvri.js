@@ -1,4 +1,4 @@
-/* import {setCookie,getCookie} from "https://splendorous-hamster-ecd34b.netlify.app/bhuy3huygyufwyuge.js"
+import {setCookie,getCookie} from "https://splendorous-hamster-ecd34b.netlify.app/bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
     getDatabase,
@@ -50,22 +50,33 @@ try {
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('people-person active')[0].id
-            fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt/" + message, {method: "GET"})
-            .then((response) => response.text())
-            .then((data) => {
+            if (fg.search("&#x") == -1) {
+                fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt/" + message, {method: "GET"})
+                .then((response) => response.text())
+                .then((data) => {
+                    set(ref(database, 'messages/'+ cusid + '/' + id), {
+                        email:name,
+                        allow:friend,
+                        type:"encrypted",
+                        message: data,
+                        date: Date.now(),
+                        dname: cusid
+                    });
+                    document.getElementById('content').value = "";    
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                 });
+            } else {
                 set(ref(database, 'messages/'+ cusid + '/' + id), {
                     email:name,
                     allow:friend,
-                    type:"encrypted",
-                    message: data,
+                    type:"message",
+                    message: message,
                     date: Date.now(),
                     dname: cusid
                 });
-                document.getElementById('content').value = "";    
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+            }
         } else {}
     });
     send2.addEventListener("keydown", (e) => {
@@ -82,22 +93,33 @@ try {
                 const id = push(child(ref(database), 'messages')).key;
                 var friend = "none"
                 var cusid = document.getElementsByClassName('people-person active')[0].id
-                fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt/" + message, {method: "GET"})
-                .then((response) => response.text())
-                .then((data) => {
+                if (fg.search("&#x") == -1) {
+                    fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt/" + message, {method: "GET"})
+                    .then((response) => response.text())
+                    .then((data) => {
+                        set(ref(database, 'messages/'+ cusid + '/' + id), {
+                            email:name,
+                            allow:friend,
+                            type:"encrypted",
+                            message: data,
+                            date: Date.now(),
+                            dname: cusid
+                        });
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                    });
+                } else {
                     set(ref(database, 'messages/'+ cusid + '/' + id), {
                         email:name,
                         allow:friend,
-                        type:"encrypted",
-                        message: data,
+                        type:"message",
+                        message: message,
                         date: Date.now(),
                         dname: cusid
                     });
-                })
-                .catch((error) => {
-                    console.error("Error:", error);
-                });
+                }
             } else {}
         } else {}
     });
-} catch {} */
+} catch {}
