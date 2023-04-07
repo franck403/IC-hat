@@ -50,7 +50,7 @@ try {
             var friend = "none"
             var cusid = document.getElementsByClassName('people-person active')[0].id
             if (fg.search("&#x") == -1 && Regex(fg) == false) {
-                fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt/" + message, {method: "GET"})
+                fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt?text=" + message, {method: "GET"})
                 .then((response) => response.text())
                 .then((data) => {
                     set(ref(database, 'messages/'+ cusid + '/' + id), {
@@ -93,7 +93,7 @@ try {
                 var friend = "none"
                 var cusid = document.getElementsByClassName('people-person active')[0].id
                 if (fg.search("&#x") == -1 && Regex(fg) == false) {
-                    fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt/" + message, {method: "GET"})
+                    fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt?text=" + message, {method: "GET"})
                     .then((response) => response.text())
                     .then((data) => {
                         set(ref(database, 'messages/'+ cusid + '/' + id), {

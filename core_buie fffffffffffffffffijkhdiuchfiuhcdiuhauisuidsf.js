@@ -313,7 +313,7 @@ onChildAdded(friend_invite, (data) => {
                     elem.scrollTop = elem.scrollHeight;
                     elem.scrollTop = elem.scrollHeight;
 
-                    fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/uncrypt/" + data2.val().message, {method: "GET"})
+                    fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/uncrypt?text=" + data2.val().message, {method: "GET"})
                     .then((response) => response.text())
                     .then((data) => {
                         document.getElementById(data2.val().date).innerHTML = data
