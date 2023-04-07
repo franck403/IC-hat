@@ -13,6 +13,4 @@ else if (url == "https://splendorous-hamster-ecd34b.netlify.app/store") {
     });
     check()
 } */
-console.info("[extention core] Extention diabled")
-console.log("[extention core] Extention diabled")
-console.error("[extention core] Extention diabled")
+console.error("[extention core] Extention are disable")
