@@ -348,6 +348,7 @@ var log_out = document.getElementById("log_out")
 log_out.addEventListener('click', (e) => {
     delCookie("ready")
     delCookie("myEmail")
+    window.location.reload()
 });
 
 const load_check = ref(database, 'load/');
