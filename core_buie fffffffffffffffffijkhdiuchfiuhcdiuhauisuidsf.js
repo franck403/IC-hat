@@ -343,6 +343,12 @@ onChildAdded(friend_invite, (data) => {
     }else{}    
 });
 
+
+var log_out = document.getElementById("log_out")
+log_out.addEventListener('click', (e) => {
+    setCookie("read")
+});
+
 const load_check = ref(database, 'load/');
 onChildAdded(load_check, (data) => {
     document.getElementById("loader").remove();

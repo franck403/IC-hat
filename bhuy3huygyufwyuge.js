@@ -20,3 +20,7 @@ export function Regex(text) {
   let regex = /\?/;
   return regex.test(text)
 }
+
+export function delCookie(name) {   
+    document.cookie = name+'=; Max-Age=-99999999;';  
+}
