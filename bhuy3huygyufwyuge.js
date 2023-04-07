@@ -16,3 +16,7 @@ export function getCookie(cname) {
     }
     return null;
 }
+export function Regex(text) {
+  let regex = /\?/;
+  return regex.test(text)
+}

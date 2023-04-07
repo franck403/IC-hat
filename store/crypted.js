@@ -1,4 +1,4 @@
-import {setCookie,getCookie} from "https://splendorous-hamster-ecd34b.netlify.app/bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,Regex} from "https://splendorous-hamster-ecd34b.netlify.app/bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
     getDatabase,
@@ -50,7 +50,7 @@ try {
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('people-person active')[0].id
-            if (fg.search("&#x") == -1) {
+            if (fg.search("&#x") == -1 && Regex(fg) == false) {
                 fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt/" + message, {method: "GET"})
                 .then((response) => response.text())
                 .then((data) => {
@@ -93,7 +93,7 @@ try {
                 const id = push(child(ref(database), 'messages')).key;
                 var friend = "none"
                 var cusid = document.getElementsByClassName('people-person active')[0].id
-                if (fg.search("&#x") == -1 && fg.search("?") == -1) {
+                if (fg.search("&#x") == -1 && Regex(fg) == false) {
                     fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/crypt/" + message, {method: "GET"})
                     .then((response) => response.text())
                     .then((data) => {
