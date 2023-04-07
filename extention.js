@@ -1,4 +1,4 @@
-/* var url = window. location.href;
+var url = window. location.href;
 import {load} from "./loader.extention.js"
 import {add,check} from "./add.extention.js"
 
@@ -12,5 +12,5 @@ else if (url == "https://splendorous-hamster-ecd34b.netlify.app/store") {
         add("crypted message","https://splendorous-hamster-ecd34b.netlify.app/store/crypted.js")
     });
     check()
-} */
-console.error("[extention core] Extention are disable")
+}
+console.info("[extention core] Extention are enable")
