@@ -23,8 +23,9 @@ export function Regex(text) {
   return regex.test(text)
 }
 
-export function delCookie(name) {   
-    document.cookie = name+'=;  expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+export function delCookie(name) { 
+  console.log('[Cookie del] a cookie was delete')  
+  document.cookie = name+'=;  expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
 }
 
 export function removeloader() {
