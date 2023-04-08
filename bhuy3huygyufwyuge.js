@@ -33,9 +33,9 @@ export function removeloader() {
 }
 
 export function encrypt(text) {
-  return cryptoJs.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(text));
+  return cryptoJs.enc.Base64.stringify(cryptoJs.enc.Utf8.parse(text));
 };
 
 export function decrypt(data) {
-  return cryptoJs.enc.Base64.parse(data).toString(CryptoJS.enc.Utf8);
+  return cryptoJs.enc.Base64.parse(data).toString(cryptoJs.enc.Utf8);
 };
