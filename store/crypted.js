@@ -46,6 +46,7 @@ try {
             var str1 = str.replaceAll("<","&lt;")
             var str2 = str1.replaceAll(">","&gt;")
             var message = str2;
+            var message = encrypt(message)
             var name = myName;
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
