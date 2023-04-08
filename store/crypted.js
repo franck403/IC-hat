@@ -87,5 +87,3 @@ try {
         } else {}
     });
 } catch {}
-
-console.log("[extention core] crypted.js loaded")
