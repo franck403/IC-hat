@@ -6,6 +6,13 @@ fetch("https://fireimage.francoischouin1.repl.co/", {
 });
 
 import {setCookie,getCookie,delCookie,decrypt,removeloader} from "./bhuy3huygyufwyuge.js"
+var log_out = document.getElementById("log-out")
+log_out.addEventListener('click', (e) => {
+    delCookie("ready")
+    delCookie("myEmail")
+    window.location.reload()
+});
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
     getDatabase,
