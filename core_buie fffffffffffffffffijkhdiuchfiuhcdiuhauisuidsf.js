@@ -1,10 +1,3 @@
-localStorage.setItem("wait",1)
-const mes = parseFloat(localStorage.getItem("mainwait"))
-const mes_time = parseFloat(localStorage.getItem("wait"))
-var su_mes = parseFloat(localStorage.getItem("mainwait"))
-var su_mes_time = parseFloat(localStorage.getItem("wait"))
-localStorage.setItem("mainwait",1)
-
 fetch("https://fireimage.francoischouin1.repl.co/", {
     method: "GET"
 })
@@ -327,5 +320,5 @@ log_out.addEventListener('click', (e) => {
     window.location.reload()
 });
 
-setTimeout(removeloader,mes_time)
+removeloader()
 } catch {}
