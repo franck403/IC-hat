@@ -1,7 +1,7 @@
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 
 export function setCookie(cname, cvalue) {
-    document.cookie = cname + "=" + cvalue + ";path=https://auth.geoloup.com/";
+    document.cookie = cname + "=" + cvalue + ";path=/";
   }
 export function getCookie(cname) {
     let name = cname + "=";
