@@ -24,7 +24,7 @@ export function Regex(text) {
 }
 
 export function delCookie(name) {   
-    document.cookie = name+'=; Max-Age=-99999999;';  
+    document.cookie = name+'=;  expires=Thu, 01 Jan 1970 00:00:00 UTC;';
 }
 
 export function removeloader() {
