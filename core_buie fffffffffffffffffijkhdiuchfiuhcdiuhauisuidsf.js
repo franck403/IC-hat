@@ -300,7 +300,7 @@ onChildAdded(friend_invite, (data) => {
                         var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
                         d1.innerHTML = d1.innerHTML + html
                         document.getElementById(`time_${dnamef}`).innerHTML =  date
-                        document.getElementById(`prew_${dnamef}`).innerHTML =  ""
+                        document.getElementById(`prew_${dnamef}`).innerHTML =  message
                     }else{
                         var message = decrypt(data2.val().message)
                         var html = `<div class="bubble you" id="${data2.val().date}">${message}</div>`
