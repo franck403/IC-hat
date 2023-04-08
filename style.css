@@ -509,7 +509,7 @@ body {
 .chat { scrollbar-width: none; scrollbar-color: #000000 #ffffff; }
 .chat::-webkit-scrollbar { width: 9px; } 
 .chat::-webkit-scrollbar-track { background: #ffffff; } 
-.chat::-webkit-scrollbar-thumb { background-color: #000000; border-radius: 0px; border: 93px solid #ffffff; }
+.chat::-webkit-scrollbar-thumb { background-color: #000000; border-radius: 0px; border: none;}
 
 .container .right .chat.active-chat {
     display: block;
