@@ -8,6 +8,7 @@ fetch("https://fireimage.francoischouin1.repl.co/", {
 import {setCookie,getCookie,delCookie,decrypt,removeloader} from "./bhuy3huygyufwyuge.js"
 var log_out = document.getElementById("log-out")
 log_out.addEventListener('click', (e) => {
+    console.log("{tr}")
     delCookie("ready")
     delCookie("myEmail")
     window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
