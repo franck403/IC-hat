@@ -320,13 +320,5 @@ onChildAdded(friend_invite, (data) => {
     }else{}    
 });
 
-
-var log_out = document.getElementById("log-out")
-log_out.addEventListener('click', (e) => {
-    delCookie("ready")
-    delCookie("myEmail")
-    window.location.reload()
-});
-
 removeloader()
 } catch {}
