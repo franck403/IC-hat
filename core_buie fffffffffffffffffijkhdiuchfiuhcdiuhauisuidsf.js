@@ -337,6 +337,13 @@ onChildAdded(friend_invite, (data) => {
                         document.getElementById(`time_${dnamef}`).innerHTML =  date
                         document.getElementById(`prew_${dnamef}`).innerHTML =  message
                     }
+                    var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                    elem.scrollTop = elem.scrollHeight;
+                    elem.scrollTop = elem.scrollHeight;
+                    var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                    elem.scrollTop = elem.scrollHeight;
+                    elem.scrollTop = elem.scrollHeight;
+
                 } else {}
             }
             else {}
