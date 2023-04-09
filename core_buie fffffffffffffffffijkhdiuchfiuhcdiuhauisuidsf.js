@@ -10,7 +10,7 @@ var log_out = document.getElementById("log-out")
 log_out.addEventListener('click', (e) => {
     delCookie("ready")
     delCookie("myEmail")
-    window.location.reload()
+    window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
