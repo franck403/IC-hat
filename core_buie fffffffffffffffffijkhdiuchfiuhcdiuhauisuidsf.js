@@ -308,42 +308,43 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                     } else {}
                 } else if(data2.val().type == "new-encrypted") {
-                    if(data2.val().email == myEmail) {
-                        var message = decrypt(data2.val().message)
-                        var html = `<div class="bubble me" id="${data2.val().date}">${message}</div>`
-                        const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                        var DateNow = data2.val().date
-                        var dateConvert = new Date(DateNow)
-                        if (dateConvert.getMinutes() < 10) {
-                            var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                        } else {
-                            var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                    try {
+                        if(data2.val().email == myEmail) {
+                            var message = decrypt(data2.val().message)
+                            var html = `<div class="bubble me" id="${data2.val().date}">${message}</div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var dateConvert = new Date(DateNow)
+                            if (dateConvert.getMinutes() < 10) {
+                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
+                            } else {
+                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            }
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message
+                        }else{
+                            var message = decrypt(data2.val().message)
+                            var html = `<div class="bubble you" id="${data2.val().date}">${message}</div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var dateConvert = new Date(DateNow)
+                            if (dateConvert.getMinutes() < 10) {
+                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
+                            } else {
+                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            }
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message
                         }
-                        d1.innerHTML = d1.innerHTML + html
-                        document.getElementById(`time_${dnamef}`).innerHTML =  date
-                        document.getElementById(`prew_${dnamef}`).innerHTML =  message
-                    }else{
-                        var message = decrypt(data2.val().message)
-                        var html = `<div class="bubble you" id="${data2.val().date}">${message}</div>`
-                        const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                        var DateNow = data2.val().date
-                        var dateConvert = new Date(DateNow)
-                        if (dateConvert.getMinutes() < 10) {
-                            var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                        } else {
-                            var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
-                        }
-                        d1.innerHTML = d1.innerHTML + html
-                        document.getElementById(`time_${dnamef}`).innerHTML =  date
-                        document.getElementById(`prew_${dnamef}`).innerHTML =  message
-                    }
-                    var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                    elem.scrollTop = elem.scrollHeight;
-                    elem.scrollTop = elem.scrollHeight;
-                    var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                    elem.scrollTop = elem.scrollHeight;
-                    elem.scrollTop = elem.scrollHeight;
-
+                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;
+                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;
+                    } catch {}
                 } else {}
             }
             else {}
