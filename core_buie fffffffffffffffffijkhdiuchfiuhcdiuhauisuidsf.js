@@ -248,7 +248,11 @@ onChildAdded(friend_invite, (data) => {
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var dateConvert = new Date(DateNow)
-                            var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            if (dateConvert.getMinutes() < 10) {
+                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
+                            } else {
+                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            }
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
@@ -257,7 +261,11 @@ onChildAdded(friend_invite, (data) => {
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var dateConvert = new Date(DateNow)
-                            var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            if (dateConvert.getMinutes() < 10) {
+                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
+                            } else {
+                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            }
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
@@ -273,7 +281,11 @@ onChildAdded(friend_invite, (data) => {
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var dateConvert = new Date(DateNow)
-                            var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            if (dateConvert.getMinutes() < 10) {
+                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
+                            } else {
+                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            }
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
@@ -282,7 +294,11 @@ onChildAdded(friend_invite, (data) => {
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var dateConvert = new Date(DateNow)
-                            var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            if (dateConvert.getMinutes() < 10) {
+                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
+                            } else {
+                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            }
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
@@ -298,7 +314,11 @@ onChildAdded(friend_invite, (data) => {
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         var DateNow = data2.val().date
                         var dateConvert = new Date(DateNow)
-                        var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                        if (dateConvert.getMinutes() < 10) {
+                            var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
+                        } else {
+                            var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                        }
                         d1.innerHTML = d1.innerHTML + html
                         document.getElementById(`time_${dnamef}`).innerHTML =  date
                         document.getElementById(`prew_${dnamef}`).innerHTML =  message
@@ -308,7 +328,11 @@ onChildAdded(friend_invite, (data) => {
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         var DateNow = data2.val().date
                         var dateConvert = new Date(DateNow)
-                        var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                        if (dateConvert.getMinutes() < 10) {
+                            var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
+                        } else {
+                            var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                        }
                         d1.innerHTML = d1.innerHTML + html
                         document.getElementById(`time_${dnamef}`).innerHTML =  date
                         document.getElementById(`prew_${dnamef}`).innerHTML =  message
