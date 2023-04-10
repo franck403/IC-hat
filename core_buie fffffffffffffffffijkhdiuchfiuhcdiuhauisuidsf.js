@@ -347,6 +347,8 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
                     } catch {}
+                } else if (data2.val().tpye() == "message") {
+                } else if (data2.val().type == "encrypted") {
                 } else {
                     OnNewMessage.OnMessage(data2.val())
                 }

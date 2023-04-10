@@ -4,7 +4,13 @@ export const OnNewMessage = {
         let lauch = ""
         lauch = OnNewMessage.code
         if (lauch != null) {
-            lauch(data)
+            try {
+                lauch(data)
+            } catch {}
+        } else {
+            try {
+                setTimeout(lauch(data),10000)
+            } catch {}
         }
     },
     setup_code : function(name,code) {
@@ -19,7 +25,7 @@ export const OnNewMessage = {
 export const docs = {
     help : 
     `import {OnNewMessage} from 'https://splendorous-hamster-ecd34b.netlify.app/devkit.extention.js'
-    // note the type support by the core are not send 
+    // note the type supported by the core are not send 
     OnNewMessage.setup_code("code name",(data) => {
         console.log("message recive = " + data.message)
     })
