@@ -11,10 +11,12 @@ export function LauchCode(code) {
 }
 
 export function OnMessage(val) {
-    var CodeToLauchListNotSplit = localStorage.getItem("devkit")
-    var CodeToLauchList = CodeToLauchListNotSplit.split("|__|")
-    CodeToLauchList.forEach(function(name){
-        var CodeToLauch = localStorage.getItem("devkit_" + name)
-        LauchCode(CodeToLauch)
-      });
+    if (localStorage.getItem("devkit") != null) {
+        var CodeToLauchListNotSplit = localStorage.getItem("devkit")
+        var CodeToLauchList = CodeToLauchListNotSplit.split("|__|")
+        CodeToLauchList.forEach(function(name){
+            var CodeToLauch = localStorage.getItem("devkit_" + name)
+            LauchCode(CodeToLauch)
+        }); 
+    } else {}
 }
