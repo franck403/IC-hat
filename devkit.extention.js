@@ -1,6 +1,6 @@
 export function OnNewMessage(name,code) {
-    var onmess = code
-    localStorage.setItem("devkit_" + name, code.toString())
+    var strcode = code.toString()
+    localStorage.setItem("devkit_" + name, strcode)
     var CodeToLauchList = localStorage.getItem("devkit")
     localStorage.setItem("devkit",CodeToLauchList + "|__|" + name)
 }
