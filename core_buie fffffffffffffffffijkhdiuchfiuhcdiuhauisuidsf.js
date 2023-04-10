@@ -7,6 +7,7 @@ fetch("https://fireimage.francoischouin1.repl.co/", {
 
 import {setCookie,getCookie,delCookie,decrypt,removeloader} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
+
 var log_out = document.getElementById("log-out")
 log_out.addEventListener('click', (e) => {
     console.log("{tr}")
@@ -220,6 +221,7 @@ form.addEventListener('submit', (event) => {
 
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
+    new OnNewMessage()
     var dte = data.val().allow
     if(dte.indexOf(myEmail) != -1) {
         var html = `
@@ -242,7 +244,7 @@ onChildAdded(friend_invite, (data) => {
         var romc = ref(database, `messages/${dnamef}`);
         onChildAdded(romc, (data2) => {
             if (data2.val().message != null) {
-                OnMessage(data2.val())
+                OnNewMessage.OnMessage(data2.val())
                 if (data2.val().type == "message") {
                     if (data2.val().name == null) {
                         if(data2.val().email == myEmail) {
