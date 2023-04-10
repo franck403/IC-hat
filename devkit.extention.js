@@ -4,7 +4,16 @@ export const OnNewMessage = {
         let lauch = ""
         lauch = OnNewMessage.code
         var s = ""
-        lauch(data)
+        try {
+            lauch(data)
+        } catch {
+            while (true) {
+                try {
+                    lauch(data)
+                    break
+                } catch {}
+            }
+        }
     },
     setup_code : function(name,code) {
         OnNewMessage.code = code
