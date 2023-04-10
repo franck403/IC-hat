@@ -11,7 +11,7 @@ export const OnNewMessage = {
     OnMessage : function(val) {
         var CodeToLauch =  OnNewMessage.code
         console.log(CodeToLauch)
-        LauchCode(CodeToLauch,val)
+        OnNewMessage.LauchCode(CodeToLauch,val)
     }
 }
 
