@@ -28,6 +28,7 @@ if (getCookie("ready") != null) {
     var myEmail = getCookie("email")
     var myName = getCookie("email")
 } else {}
+
 export function SendMessage(ext_name,ext_type,content) {
     var str = content;
     var message = str;
