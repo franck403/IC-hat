@@ -345,11 +345,13 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
                     } catch {}
-                } else {}
+                } else {
+                    
+                }
             }
             else {}
         });
-    }else{}    
+    } else{}    
 });
 
 removeloader()
