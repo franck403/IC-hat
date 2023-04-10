@@ -31,3 +31,5 @@ export const docs = {
     })
     `
 }
+import {SendMessage} from './message.extention.js'
+export const app = {}
