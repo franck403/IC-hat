@@ -8,7 +8,7 @@ export function OnNewMessage(name,code) {
 export function LauchCode(code,data) {
     let lauch = ""
     lauch = code
-    setTimeout(lauch(data), 1)
+    lauch(data)
 }
 
 export function OnMessage(val) {
