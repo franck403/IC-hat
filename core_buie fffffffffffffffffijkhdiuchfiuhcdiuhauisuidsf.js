@@ -221,7 +221,6 @@ form.addEventListener('submit', (event) => {
 
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
-    new OnNewMessage()
     var dte = data.val().allow
     if(dte.indexOf(myEmail) != -1) {
         var html = `
