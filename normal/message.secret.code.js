@@ -32,9 +32,9 @@ export function SendMessage(ext_name,ext_type,content) {
     var str = content;
     var message = str;
     var name = myName;
-    const id = push(child(ref(database), 'custom/extention/' + ext_name)).key;
     var cusid = document.getElementsByClassName('person active')[0].id
-    set(ref(database, 'custom/message/'+ id), {
+    const id = push(child(ref(database), 'message/' + cusid)).key;
+    set(ref(database, 'messages/'+ id), {
         email:name,
         type:ext_type,
         message: message,
