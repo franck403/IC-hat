@@ -6,10 +6,10 @@ export const OnNewMessage = {
         lauch(data)
     },
     setup_code : function(name,code) {
-        OnnewMessage.code = code
+        OnNewMessage.code = code
     },
     OnMessage : function(val) {
-        var CodeToLauch = code
+        var CodeToLauch =  OnNewMessage.code
         console.log(CodeToLauch)
         LauchCode(CodeToLauch,val)
     }
