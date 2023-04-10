@@ -2,7 +2,7 @@ export const OnNewMessage = {
     code : "",
     lauch : function() {    
         let lauch = ""
-        lauch = code
+        lauch = OnNewMessage.code
         lauch(data)
     },
     setup_code : function(name,code) {
