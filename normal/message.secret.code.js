@@ -28,20 +28,14 @@ if (getCookie("ready") != null) {
     var myEmail = getCookie("email")
     var myName = getCookie("email")
 } else {}
-export function SendMessage(content) {
+export function SendMessage(ext_name,ext_type,content) {
     var str = content;
-    var str1 = str.replaceAll("<","&lt;")
-    var str2 = str1.replaceAll(">","&gt;")
-    var message = str2;
-    var message = encrypt(message)
+    var message = str;
     var name = myName;
-    const id = push(child(ref(database), 'messages')).key;
-    var friend = "none"
-    var cusid = document.getElementsByClassName('people-person active')[0].id
-    set(ref(database, 'messages/'+ cusid + '/' + id), {
+    const id = push(child(ref(database), 'custom/extention/' + ext_name)).key;
+    set(ref(database, 'custom/extention/'+ id), {
         email:name,
-        allow:friend,
-        type:"new-encrypted",
+        type:ext_type,
         message: message,
         date: Date.now(),
         dname: cusid
