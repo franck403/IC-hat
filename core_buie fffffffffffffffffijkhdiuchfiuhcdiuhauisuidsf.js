@@ -243,7 +243,6 @@ onChildAdded(friend_invite, (data) => {
         var romc = ref(database, `messages/${dnamef}`);
         onChildAdded(romc, (data2) => {
             if (data2.val().message != null) {
-                OnNewMessage.OnMessage(data2.val())
                 if (data2.val().type == "message") {
                     if (data2.val().name == null) {
                         if(data2.val().email == myEmail) {
@@ -349,7 +348,7 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                     } catch {}
                 } else {
-                    
+                    OnNewMessage.OnMessage(data2.val())
                 }
             }
             else {}
