@@ -3,7 +3,6 @@ export function OnNewMessage(name,code) {
     localStorage.setItem("devkit_" + name, code.toString())
     var CodeToLauchList = localStorage.getItem("devkit")
     localStorage.setItem("devkit",CodeToLauchList + "|__|" + name)
-    return path
 }
 
 export function LauchCode(code) {
