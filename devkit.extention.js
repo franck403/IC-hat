@@ -6,7 +6,9 @@ export function OnNewMessage(name,code) {
 }
 
 export function LauchCode(code,data) {
-    setTimeout(code(data), 1)
+    let lauch = ""
+    lauch = code
+    setTimeout(lauch(data), 1)
 }
 
 export function OnMessage(val) {
