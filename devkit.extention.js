@@ -2,16 +2,16 @@ export const OnNewMessage = {
     code : "",
     lauch : function() {    
         let lauch = ""
-        lauch = this.code
+        lauch = code
         lauch(data)
     },
     setup_code : function(name,code) {
-        this.code = code
+        code = code
     },
     OnMessage : function(val) {
-        var CodeToLauch = this.code
+        var CodeToLauch = code
         console.log(CodeToLauch)
-        this.LauchCode(CodeToLauch,val)
+        LauchCode(CodeToLauch,val)
     }
 }
 
