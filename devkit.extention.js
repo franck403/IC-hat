@@ -1,5 +1,5 @@
 export function OnNewMessage(name,code) {
-    var strcode = code.toString()
+    var strcode = code
     localStorage.setItem("devkit_" + name, strcode)
     var CodeToLauchList = localStorage.getItem("devkit")
     localStorage.setItem("devkit",CodeToLauchList + "|__|" + name)
