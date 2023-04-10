@@ -17,6 +17,7 @@ export function OnMessage(val) {
             console.log(name)
             if (name != null) {
                 var CodeToLauch = localStorage.getItem("devkit_" + name)
+                console.log(CodeToLauch)
                 LauchCode(CodeToLauch)
             } else {}
         }); 
