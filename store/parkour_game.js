@@ -5,4 +5,4 @@ OnNewMessage.setup_code("consolelog",(data) => {
     console.log("type : " + data.type + " message : " + data.message)
 })
 
-SendMessage("devkit_test","devkit_test","TEST")
+setTimeout(SendMessage("devkit_test","devkit_test","TEST"),5000)
