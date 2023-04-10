@@ -8,6 +8,7 @@ export function OnNewMessage(name,code) {
 export function LauchCode(code,data) {
     let lauch = ""
     lauch = code
+    console.log(lauch)
     lauch(data)
 }
 
