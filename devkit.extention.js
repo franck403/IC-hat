@@ -15,7 +15,7 @@ export function OnMessage(val) {
         var CodeToLauchList = CodeToLauchListNotSplit.split("|__|")
         CodeToLauchList.forEach(function(name){
             console.log(name)
-            if (name != "") {
+            if (name != null) {
                 var CodeToLauch = localStorage.getItem("devkit_" + name)
                 LauchCode(CodeToLauch)
             } else {}
