@@ -7,6 +7,7 @@ export function OnNewMessage(name,code) {
 }
 
 export function LauchCode(code) {
+    console.log(code)
     return setTimeout(code, 0)
 }
 
