@@ -1,6 +1,6 @@
 export const OnNewMessage = {
     code : "",
-    lauch : function() {    
+    LauchCode : function() {    
         let lauch = ""
         lauch = OnNewMessage.code
         lauch(data)
