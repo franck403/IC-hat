@@ -3,11 +3,8 @@ export const OnNewMessage = {
     LauchCode : function(data) {    
         let lauch = ""
         lauch = OnNewMessage.code
-        var s = ""
-        try {
+        if (lauch != null) {
             lauch(data)
-        } catch {
-            window.location.reload()
         }
     },
     setup_code : function(name,code) {
