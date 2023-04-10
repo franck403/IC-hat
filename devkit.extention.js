@@ -13,6 +13,8 @@ export function LauchCode(code) {
 export function OnMessage(val) {
     var CodeToLauchListNotSplit = localStorage.getItem("devkit")
     var CodeToLauchList = CodeToLauchListNotSplit.split("|__|")
-    var CodeToLauch = localStorage.getItem("devkit_")
-    LauchCode(CodeToLauch)
+    CodeToLauchList.forEach(function(name){
+        var CodeToLauch = localStorage.getItem("devkit_" + name)
+        LauchCode(CodeToLauch)
+      });
 }
