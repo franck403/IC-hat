@@ -2,5 +2,5 @@ import {OnNewMessage} from 'https://splendorous-hamster-ecd34b.netlify.app/devki
 
 
 OnNewMessage.setup_code("consolelog",(data) => {
-    console.log("Hello World !" + data)
+    console.log("Hello World !" + data.message)
 })
