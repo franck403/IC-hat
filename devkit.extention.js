@@ -7,12 +7,7 @@ export const OnNewMessage = {
         try {
             lauch(data)
         } catch {
-            while (true) {
-                try {
-                    lauch(data)
-                    break
-                } catch {}
-            }
+            window.location.reload()
         }
     },
     setup_code : function(name,code) {
