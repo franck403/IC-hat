@@ -5,8 +5,8 @@ export function OnNewMessage(name,code) {
     localStorage.setItem("devkit",CodeToLauchList + "|__|" + name)
 }
 
-export function LauchCode(code) {
-    setTimeout(code, 1)
+export function LauchCode(code,data) {
+    setTimeout(code, 1,data)
 }
 
 export function OnMessage(val) {
@@ -17,7 +17,7 @@ export function OnMessage(val) {
             if (name != "null") {
                 var CodeToLauch = localStorage.getItem("devkit_" + name)
                 console.log(CodeToLauch)
-                LauchCode(CodeToLauch)
+                LauchCode(CodeToLauch,val)
             } else {}
         }); 
     } else {}
