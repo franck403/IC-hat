@@ -37,7 +37,6 @@ export function SendMessage(ext_name,ext_type,content) {
         email:name,
         type:ext_type,
         message: message,
-        date: Date.now(),
-        dname: cusid
+        date: Date.now()
     });
 }
