@@ -3,7 +3,6 @@ export const OnNewMessage = {
     LauchCode : function(data) {    
         let lauch = ""
         lauch = OnNewMessage.code
-        console.log(lauch)
         lauch(data)
     },
     setup_code : function(name,code) {
