@@ -6,7 +6,7 @@ fetch("https://fireimage.francoischouin1.repl.co/", {
 });
 
 import {setCookie,getCookie,delCookie,decrypt,removeloader} from "./bhuy3huygyufwyuge.js"
-import {OnMessage} from "./devkit.extention.js"
+import {OnNewMessage} from "./devkit.extention.js"
 var log_out = document.getElementById("log-out")
 log_out.addEventListener('click', (e) => {
     console.log("{tr}")
