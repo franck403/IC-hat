@@ -6,7 +6,6 @@ export function OnNewMessage(name,code) {
 }
 
 export function LauchCode(code) {
-    console.log(code)
     return setTimeout(code, 0)
 }
 
@@ -15,8 +14,10 @@ export function OnMessage(val) {
         var CodeToLauchListNotSplit = localStorage.getItem("devkit")
         var CodeToLauchList = CodeToLauchListNotSplit.split("|__|")
         CodeToLauchList.forEach(function(name){
-            var CodeToLauch = localStorage.getItem("devkit_" + name)
-            LauchCode(CodeToLauch)
+            if (name != null) {
+                var CodeToLauch = localStorage.getItem("devkit_" + name)
+                LauchCode(CodeToLauch)
+            } else {}
         }); 
     } else {}
 }
