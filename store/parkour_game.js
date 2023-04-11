@@ -5,4 +5,7 @@ OnNewMessage.setup_code("consolelog",(data) => {
     console.log("type : " + data.type + " message : " + data.message)
 })
 
-SendMessage("devkit_test","devkit_test","TEST")
+var log_out = document.getElementById("log-out")
+log_out.addEventListener('click', (e) => {
+    SendMessage("devkit_test","devkit_test","TEST")
+});
