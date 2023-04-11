@@ -9,3 +9,4 @@ var log_out = document.getElementById("log-out")
 log_out.addEventListener('click', (e) => {
     SendMessage("devkit_test","devkit_test","TEST")
 });
+
