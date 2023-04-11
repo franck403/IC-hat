@@ -24,5 +24,4 @@ function addEmoji(emoji) {
     otog.setAttribute("class","emoji-drawer-class-active")
     htog.setAttribute("class","emoji-active-toggle")
   }
-  
 toggleEmojiDrawer()
