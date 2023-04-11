@@ -195,7 +195,7 @@ add_file.addEventListener('click', (e) => {
         var url = data
         var name = myName;
         const id = push(child(ref(database), 'messages')).key;
-        var cusid = document.getElementsByClassName('person active')[0].id
+        var cusid = document.getElementsByClassName('people-person active')[0].id
         set(ref(database, "messages/"+ cusid + "/" + id), {
             email: name,
             friend:"none",
