@@ -9,7 +9,7 @@ export const OnNewMessage = {
             } catch {}
         } else {
             try {
-                setTimeout(lauch(data),10000)
+                setTimeout(lauch(data),60000)
             } catch {}
         }
     },
