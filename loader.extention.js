@@ -21,6 +21,11 @@ export function load() {
         } else{}
     
     });
+    var tag = document.createElement("script");
+    tag.src = "core_buie fffffffffffffffffijkhdiuchfiuhcdiuhauisuidsf.js";
+    tag.type = "module" 
+    document.getElementById("extention_import").appendChild(tag);
+    tag.setAttribute("type","module")
     return true
     } catch {
         return null
