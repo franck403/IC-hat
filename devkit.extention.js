@@ -4,13 +4,9 @@ export const OnNewMessage = {
         let lauch = ""
         lauch = OnNewMessage.code
         if (lauch != null) {
-            try {
-                lauch(data)
-            } catch {}
+            lauch(data)
         } else {
-            try {
-                setTimeout(lauch(data),10000)
-            } catch {}
+            setTimeout(lauch(data),10000)
         }
     },
     setup_code : function(name,code) {
