@@ -348,6 +348,7 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                     } catch {}
                 } else if (data2.val().tpye == "message") {
+                } else if (data2.val().type == null) {
                 } else if (data2.val().type == "message") {
                 } else if (data2.val().type == "encrypted") {
                 } else {
