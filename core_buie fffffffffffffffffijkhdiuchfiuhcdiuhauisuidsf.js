@@ -350,6 +350,7 @@ onChildAdded(friend_invite, (data) => {
                 } else if (data2.val().tpye == "message") {
                 } else if (data2.val().type == "encrypted") {
                 } else {
+                    console.log("message not supported")
                     OnNewMessage.OnMessage(data2.val())
                 }
             }
