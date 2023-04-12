@@ -6,9 +6,7 @@ export const OnNewMessage = {
         console.log(lauch)
         if (lauch != null) {
             lauch(data)
-        } else {
-            setTimeout(lauch(data),10000)
-        }
+        } else {}
     },
     setup_code : function(name,code) {
         OnNewMessage.code = code
