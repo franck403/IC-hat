@@ -5,7 +5,7 @@ fetch("https://fireimage.francoischouin1.repl.co/", {
     window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
 });
 
-import {setCookie,getCookie,delCookie,decrypt,removeloader} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie,decrypt,removeloader,bip} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
 
 var log_out = document.getElementById("log-out")
@@ -356,6 +356,7 @@ onChildAdded(friend_invite, (data) => {
                     console.log("type not spported");
                     OnNewMessage.OnMessage(data2.val())
                 }
+                bip()
             }
             else {}
         });

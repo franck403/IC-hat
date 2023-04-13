@@ -40,3 +40,8 @@ export function encrypt(text) {
 export function decrypt(data) {
   return cryptoJs.enc.Base64.parse(data).toString(cryptoJs.enc.Utf8);
 };
+
+export function bip() {
+  var audio_element = document.getElementById("message_recive")
+  audio_element.play()
+}
