@@ -22,10 +22,10 @@ export function load() {
     
     });
     var tag = document.createElement("script");
-    tag.src = "core_buie fffffffffffffffffijkhdiuchfiuhcdiuhauisuidsf.js";
+    tag.src = "core_buie_fffffffffffffffffijkhdiuchfiuhcdiuhauisuidsf.js";
     tag.type = "module" 
     document.getElementById("extention_import").appendChild(tag);
-    tag.setAttribute("type","module")
+    // tag.setAttribute("type","module")
     return true
     } catch {
         return null
