@@ -6,9 +6,9 @@ iframe.onload = () => {
     var register = fc.document.getElementById("register");
 
     login.addEventListener('click', (e) => {
-        window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login")
+        window.location.replace(window.location.href + "/login#login")
     });
     register.addEventListener('click', (e) => {
-        window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/login#register")
+        window.location.replace(window.location.href + "/login#register")
     });
 }
