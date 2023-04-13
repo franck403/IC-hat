@@ -356,7 +356,7 @@ onChildAdded(friend_invite, (data) => {
                     console.log("type not spported");
                     OnNewMessage.OnMessage(data2.val())
                 }
-                bip()
+                //bip()
             }
             else {}
         });
