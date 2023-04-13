@@ -6,7 +6,7 @@ iframe.onload = () => {
     var register = fc.document.getElementById("register");
 
     login.addEventListener('click', (e) => {
-        window.location.replace(window.location.href + "/login#login")
+        window.location.replace(window.location.href + "/login")
     });
     register.addEventListener('click', (e) => {
         window.location.replace(window.location.href + "/login#register")

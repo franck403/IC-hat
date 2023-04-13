@@ -7,5 +7,3 @@ fetch("https://I-home.calebgauthier.repl.co/text.html")
 .catch((error) => {
     console.error("Error:", error);
 });
-
-
