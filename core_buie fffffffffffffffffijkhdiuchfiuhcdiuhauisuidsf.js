@@ -353,7 +353,7 @@ onChildAdded(friend_invite, (data) => {
                 } else if (data2.val().type == "message") {
                 } else if (data2.val().type == "encrypted") {
                 } else {
-                    console.log("type not spported")
+                    console.log("type not spported");
                     OnNewMessage.OnMessage(data2.val())
                 }
             }

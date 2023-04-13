@@ -4,6 +4,7 @@ export const OnNewMessage = {
         let lauch = ""
         lauch = OnNewMessage.code
         console.log(lauch)
+        console.log("Lauched")
         if (lauch != null) {
             lauch(data)
         } else {}
