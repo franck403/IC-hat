@@ -9,7 +9,7 @@ else if (url == "https://splendorous-hamster-ecd34b.netlify.app/store" || url ==
     if (localStorage.getItem("extention") != null) {} else {localStorage.setItem("extention","")}
     const btn_add = document.getElementById("add_extention")
     btn_add.addEventListener('click', (event) => {
-        add("crypted message","https://splendorous-hamster-ecd34b.netlify.app/store/crypted.js")
+        add("crypted message",window.location.href + "/store/crypted.js")
     });
     check()
 }

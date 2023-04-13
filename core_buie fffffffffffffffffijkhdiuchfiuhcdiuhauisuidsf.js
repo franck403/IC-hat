@@ -2,7 +2,7 @@ fetch("https://fireimage.francoischouin1.repl.co/", {
     method: "GET"
 })
 .catch((error) => {
-    window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
+    window.location.replace(window.location.href + "/")
 });
 
 import {setCookie,getCookie,delCookie,decrypt,removeloader,bip} from "./bhuy3huygyufwyuge.js"
@@ -13,7 +13,7 @@ log_out.addEventListener('click', (e) => {
     console.log("{tr}")
     delCookie("ready")
     delCookie("myEmail")
-    window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
+    window.location.replace(window.location.href + "/")
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
