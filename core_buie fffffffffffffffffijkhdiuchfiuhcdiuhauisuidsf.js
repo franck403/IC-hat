@@ -348,10 +348,13 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                     } catch {}
                 } else if (data2.val().tpye == "message") {
+                    console.log("type not spported");
                 } else if (data2.val().type == null) {
                     console.log("type is none")
                 } else if (data2.val().type == "message") {
+                    console.log("type not spported");
                 } else if (data2.val().type == "encrypted") {
+                    console.log("type not spported");
                 } else {
                     console.log("type not spported");
                     OnNewMessage.OnMessage(data2.val())
