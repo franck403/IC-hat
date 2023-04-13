@@ -42,6 +42,6 @@ export function decrypt(data) {
 };
 
 export function bip() {
-  var audio_element = document.getElementById("message_recive")
-  audio_element.play()
+  var audio = new Audio('message_recive.mp3');
+  audio.play();
 }
