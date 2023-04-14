@@ -224,7 +224,9 @@ onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
     if(dte.indexOf(myEmail) != -1) {
         var n_allow = data.val().allow
+        try {
         var nw_allow = n_allow.replace(myEmail,"")
+        } catch {}
         var html = `
         <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-d-chat="${data.val().dname}" id="${data.val().dname}">
         <img src="img/default.png" class="people-img"alt="picture" />
