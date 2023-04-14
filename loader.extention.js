@@ -12,7 +12,6 @@ export function load() {
                 tag.src = act2[1];
                 tag.type = "module" 
                 document.getElementById("extention_import").appendChild(tag);
-                tag.setAttribute("type","module")
                 console.log("[extention loader] " + act2[1] + " loaded")
             })
             .catch((error) => {
