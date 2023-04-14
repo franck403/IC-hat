@@ -2,7 +2,7 @@ import {SendMessage} from 'https://splendorous-hamster-ecd34b.netlify.app/messag
 import {OnNewMessage} from 'https://splendorous-hamster-ecd34b.netlify.app/devkit.extention.js'
 
 OnNewMessage.setup_code("consolelog",(data) => {
-    console.log("type : " + data.type + " message : " + data.message)
+    console.log("type : " + data.type + "\n message : " + data.message)
 })
 
 var log_out = document.getElementById("log-out")
