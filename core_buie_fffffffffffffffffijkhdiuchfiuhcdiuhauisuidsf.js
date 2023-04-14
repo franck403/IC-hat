@@ -226,8 +226,8 @@ onChildAdded(friend_invite, (data) => {
         var n_allow = data.val().allow
         console.log(n_allow)
         try {
-            var new_allow = n_allow[0].replace(myEmail,"")
-            var nw_allow = n_allow[0] + new_allow 
+            var new_allow = n_allow.join(",")
+            var nw_allow = new_allow.replace(myEmail,"")
         } catch {
             var nw_allow = n_allow
         }
