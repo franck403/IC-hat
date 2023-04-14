@@ -116,7 +116,12 @@ friends.addEventListener('click', (e) => {
         var customid = customid1.replace(".","")
         var before_friend = document.getElementById("friend_email").value + "," + localStorage.getItem("email")
         var after_friend = before_friend.split(",")
-        var endfriend = after_friend
+        var endfriend =[]
+        after_friend.forEach(item => {
+            if (item.search("@" != -1)) {
+                endfriend.push(item)
+            }
+        });
         var data = {
             allow:endfriend,
             dname:customid
