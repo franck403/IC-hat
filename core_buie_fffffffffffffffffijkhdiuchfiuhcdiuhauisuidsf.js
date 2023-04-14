@@ -242,7 +242,6 @@ onChildAdded(friend_invite, (data) => {
         const dnamef = data.val().dname
         var romc = ref(database, `messages/${dnamef}`);
         onChildAdded(romc, (data2) => {
-            console.error(data2.val().message)
             if (data2.val().message != null) {
                 if (data2.val().type == "message") {
                     if (data2.val().name == null) {
