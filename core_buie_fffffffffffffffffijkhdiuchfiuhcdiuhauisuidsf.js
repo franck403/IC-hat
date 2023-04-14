@@ -224,12 +224,10 @@ onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
     if(dte.indexOf(myEmail) != -1) {
         var n_allow = data.val().allow
-        console.log(n_allow)
         try {
             var new_allow = n_allow.join(",")
             var nwe_allow = new_allow.replace(myEmail,"")
             var nw_allow = nwe_allow.replaceAll(",","")
-            console.log(nw_allow)
         } catch {
             var nw_allow = n_allow
         }
