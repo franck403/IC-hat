@@ -54,7 +54,7 @@ body {
     margin-left: 15vw;
     width: 85%;
     position: fixed;
-    top: 5.4px;
+    top: 21px;
 }
 
 #file_title_box {
@@ -192,4 +192,8 @@ body {
     background-color: #272822;
     border-color: #272822;
     color: #ffffff;
+}
+
+#code p {
+    margin: 0;
 }
