@@ -10,12 +10,12 @@ codeEditor.addEventListener('keydown', (e) => {
     let { value, selectionStart, selectionEnd } = codeEditor;
     if (keyCode === 9) {  // TAB = 9
         e.preventDefault();
-        codeEditor.value = value.slice(0, selectionStart) + '\t' + value.slice(selectionEnd);
+        codeEditor.value = value.slice(0, selectionStart) + '    ' + value.slice(selectionEnd);
         codeEditor.setSelectionRange(selectionStart+1, selectionStart+1)
        }
     else if(event.shiftKey && event.keyCode == 9) { 
         e.preventDefault();
-        codeEditor.value = value.slice(0, selectionStart) + '\t' + value.slice(selectionEnd);
+        codeEditor.value = value.slice(0, selectionStart) + '    ' + value.slice(selectionEnd);
         codeEditor.setSelectionRange(selectionStart-1, selectionStart-1)
       }
  });
