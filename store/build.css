@@ -22,6 +22,7 @@ body {
     background: red;
     border-radius: 9px;
     display: flex;
+    line-height: 1.5;
 }
 
 #docs {
@@ -35,6 +36,7 @@ body {
     background: red;
     border-radius: 9px;
     display: flex;
+    line-height: 1.5;
 }
 
 #save {
@@ -42,6 +44,7 @@ body {
     width: 80px;
     position: fixed;
     top: 0px;
+    line-height: 1.5;
     text-align: center;
     right: 80px;
     justify-content: center;
