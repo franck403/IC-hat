@@ -13,7 +13,7 @@ body {
 
 #run {
     height: 21px;
-    width: 140px;
+    width: 176px;
     position: fixed;
     top: 0px;
     text-align: center;
@@ -39,7 +39,7 @@ body {
 
 #save {
     height: 20px;
-    width: 65px;
+    width: 80px;
     position: fixed;
     top: 0px;
     text-align: center;
