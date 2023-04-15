@@ -8,16 +8,16 @@ codeEditor.addEventListener('scroll', () => {
 codeEditor.addEventListener('keydown', (e) => {
     let { keyCode } = e;
     let { value, selectionStart, selectionEnd } = codeEditor;
-    if (keyCode == 9) {
+    if(event.shiftKey && event.keyCode == 9) { 
+        e.preventDefault();
+        codeEditor.value = value.slice(0, selectionStart) + '' + value.slice(selectionEnd);
+        codeEditor.setSelectionRange(selectionStart-1, selectionStart-1)
+    }
+    else if (keyCode == 9) {
         e.preventDefault();
         codeEditor.value = value.slice(0, selectionStart) + ' '.repeat(4) + value.slice(selectionEnd);
         codeEditor.setSelectionRange(selectionStart+1, selectionStart+1)
        }
-    else if(event.shiftKey && event.keyCode == 9) { 
-        e.preventDefault();
-        codeEditor.value = value.slice(0, selectionStart) + '' + value.slice(selectionEnd);
-        codeEditor.setSelectionRange(selectionStart-1, selectionStart-1)
-      }
  });
 
 var lineCountCache = 0;
