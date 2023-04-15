@@ -245,6 +245,7 @@ body {
   #editing, #highlighting {
     overflow: auto;
     white-space: nowrap; /* Allows textarea to scroll horizontally */
+    tab-size: 2;
   }
   
   /* No resize on textarea */
