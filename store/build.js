@@ -15,7 +15,7 @@ codeEditor.addEventListener('keydown', (e) => {
        }
     else if(event.shiftKey && event.keyCode == 9) { 
         e.preventDefault();
-        codeEditor.value = value.slice(0, selectionStart) + '    ' + value.slice(selectionEnd);
+        codeEditor.value = value.slice(0, selectionStart) + '' + value.slice(selectionEnd);
         codeEditor.setSelectionRange(selectionStart-1, selectionStart-1)
       }
  });
