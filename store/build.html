@@ -10,6 +10,7 @@
         <link href="build.css" rel="stylesheet">
         <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-auth-compat.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
     </head>
     <body>
       <!--<div id="wait-connected"></div>
@@ -25,10 +26,15 @@
         </section>
         </section>
         <section id="code">
-        <p>
-          <textarea id='lineCounter' wrap='off' readonly>1.</textarea>
-          <textarea id='codeEditor' wrap='off'></textarea>
-        </p>
+        <div>
+          <textarea placeholder="Enter HTML Source Code" id="editing" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
+          <pre id="highlighting" aria-hidden="true">
+          <code class="language-html" id="highlighting-content">
+          
+          &lt;span title=&quot;Start Typing&quot;&gt;Just start typing!&lt;/span&gt;
+          </code>
+          </pre>
+          </div>
         </section>
         <section id="result">
         </section>
