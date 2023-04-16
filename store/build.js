@@ -48,12 +48,8 @@ function check_tab(element, event) {
 }
 
 function publish() {
-    const keywords = document.getElementsByClassName("token keyword");
-    const andkeyword = []
-    keywords.forEach(keyword => {
-        var keywordcontent = keyword.innerHTML
-        if (keywordcontent == "function") {
-            andkeyword.push("export " + keywordcontent);
-        }
-    });
+    var start = document.getElementById("editing").value
+    var start = start.replaceAll("function","export function")
+    document.getElementById("editing").value = start
+    update(start)
 }
