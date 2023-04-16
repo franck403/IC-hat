@@ -46,3 +46,10 @@ function check_tab(element, event) {
     update(element.value); // Update text to include indent
   }
 }
+
+function publish() {
+    if (text[text.length - 1] == "\n") {
+        text += ";";
+    }
+    
+}
