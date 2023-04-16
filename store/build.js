@@ -49,6 +49,7 @@ function check_tab(element, event) {
 
 function publish() {
     var start = document.getElementById("editing").value
+    var start = start.replaceAll("export function","function")
     var start = start.replaceAll("function","export function")
     document.getElementById("editing").value = start
     update(start)
