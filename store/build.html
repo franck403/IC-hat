@@ -16,7 +16,7 @@
       <!--<div id="wait-connected"></div>
       <div id="not-connected"><iframe class="not-connected-iframe" id="not-connected-iframe" src="../home.html"></iframe><script src="../login-register.js"></script></div>-->
       <div id="connected">
-        <header id="top"><bouton id="docs">Docs</bouton><bouton id="run">Update / Save extention</bouton><bouton id="save">Publish</bouton></header>
+        <header id="top"><bouton id="docs">Docs</bouton><bouton id="run" onclick="publish()">Update / Save extention</bouton><bouton id="save">Publish</bouton></header>
         <section id="code">
           <textarea placeholder="Put the js code for the extention" id="editing" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);"></textarea>
           <pre id="highlighting" aria-hidden="true">
