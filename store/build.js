@@ -9,6 +9,7 @@ function update(text) {
     .replace(new RegExp("&", "g"), "&amp;")
     .replace(new RegExp("<", "g"), "&lt;"); /* Global RegExp */
   // Syntax Highlight
+  localStorage.setItem("backup_code",result_element)
   Prism.highlightElement(result_element);
 }
 
@@ -54,3 +55,9 @@ function publish() {
     document.getElementById("editing").value = start
     update(start)
 }
+
+var start = localStorage.getItem("backup_code")
+var start = start.replaceAll("export function","function")
+var start = start.replaceAll("function","export function")
+document.getElementById("editing").value = start
+update(start)
