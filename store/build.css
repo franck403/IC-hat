@@ -10,7 +10,9 @@ body {
     position: fixed;
     top: 0px;
 }
-
+#top button {
+    cursor: pointer;
+}
 #run {
     height: 20px;
     width: 176px;
