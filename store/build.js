@@ -20,7 +20,6 @@ function sync_scroll(element) {
   result_element.scrollTop = element.scrollTop;
   result_element.scrollLeft = element.scrollLeft;
 }
-const some = 231312 "dasd"
 function check_tab(element, event) {
   let code = element.value;
   if (event.shiftKey && event.key == "Tab") {

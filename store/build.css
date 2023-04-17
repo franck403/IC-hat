@@ -212,7 +212,7 @@ body {
   .token.number,
   .token.constant,
   .token.symbol {
-    color: rgb(255, 255, 255);
+    color: #fff;
   }
   
   .token.selector,
