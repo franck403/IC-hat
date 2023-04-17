@@ -203,7 +203,7 @@ body {
   .token.namespace {
     opacity: .7;
   }
-  .token.token.keyword {
+  .token.keyword {
     color: #0cf;
   }
   .token.property,
@@ -212,7 +212,7 @@ body {
   .token.number,
   .token.constant,
   .token.symbol {
-    color: #0cf;
+    color: rgb(255, 255, 255);
   }
   
   .token.selector,
