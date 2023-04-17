@@ -42,3 +42,14 @@ export function SendMessage(ext_name,ext_type,content) {
         date: Date.now()
     });
 }
+
+export function SendCustomMessage(ext_name,ext_type,ext_content) {
+    var str = ext_content;
+    var message = str;
+    const id = push(child(ref(database), 'extention/')).key;
+    set(ref(database, 'extention/' + id), {
+        ext_name:ext_name,
+        ext_type:ext_type,
+        ext_code: message,
+    });
+}
