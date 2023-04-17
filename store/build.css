@@ -211,6 +211,7 @@ body {
   .token.boolean,
   .token.number,
   .token.constant,
+  .token.operator,
   .token.symbol {
     color: #fff;
   }
@@ -226,7 +227,6 @@ body {
     color: yellow;
   }
   
-  .token.operator,
   .token.entity,
   .token.url,
   .language-css .token.string,
