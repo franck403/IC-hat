@@ -197,13 +197,15 @@ body {
   }
   
   .token.punctuation {
-    color: #999;
+    color: #0cf;
   }
   
   .token.namespace {
     opacity: .7;
   }
-  
+  .token.function {
+    color: #0cf;
+  }
   .token.property,
   .token.tag,
   .token.boolean,
