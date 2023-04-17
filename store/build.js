@@ -56,8 +56,10 @@ function publish() {
     update(start)
 }
 
-var start = localStorage.getItem("backup_code")
-var start = start.replaceAll("export function","function")
-var start = start.replaceAll("function","export function")
-document.getElementById("editing").value = start
-update(start)
+try {
+    var start = localStorage.getItem("backup_code")
+    var start = start.replaceAll("export function","function")
+    var start = start.replaceAll("function","export function")
+    document.getElementById("editing").value = start
+    update(start)
+} catch {}
