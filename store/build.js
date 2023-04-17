@@ -9,7 +9,7 @@ function update(text) {
     .replace(new RegExp("&", "g"), "&amp;")
     .replace(new RegExp("<", "g"), "&lt;"); /* Global RegExp */
   // Syntax Highlight
-  localStorage.setItem("backup_code",result_element)
+  localStorage.setItem("backup_code",texta)
   Prism.highlightElement(result_element);
 }
 
