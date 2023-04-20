@@ -86,7 +86,7 @@ export function register(email,password) {
 
 export function getuser() {
   const response = fetch("https://auth.francoischouin1.repl.co/getuser");
-  const data = response.text();
+  const data = response.text;
   if (data != "no") {
     var ndata = data
   } else {
