@@ -50,10 +50,10 @@ export function login(email,password) {
   let formData = new FormData();
   formData.append('email', email);
   formData.append('password', password)
-  fetch("https://auth.francoischouin1.repl.co/login"), {
+  fetch("https://auth.francoischouin1.repl.co/login", {
     method: "POST",
     body: formData
-  }
+  })
   .then((response) => response.text())
   .then((data) => {
     if (data != "no") {
@@ -69,10 +69,10 @@ export function register(email,password) {
   let formData = new FormData();
   formData.append('email', email);
   formData.append('password', password)
-  fetch("https://auth.francoischouin1.repl.co/register"), {
+  fetch("https://auth.francoischouin1.repl.co/register", {
     method: "POST",
     body: formData
-  }
+  })
   .then((response) => response.text())
   .then((data) => {
     if (data != "no") {
