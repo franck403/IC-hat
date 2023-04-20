@@ -98,5 +98,6 @@ export function getuser() {
       console.error("Error:", error);
   });
   var ndata = document.getElementById("geoloup-id").innerHTML
+  console.log(ndata)
   return ndata
 }
