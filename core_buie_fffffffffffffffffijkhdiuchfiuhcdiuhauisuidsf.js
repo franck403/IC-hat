@@ -5,14 +5,12 @@ fetch("https://fireimage.francoischouin1.repl.co/", {
     window.location.replace(window.location.href + "/")
 });
 
-import {setCookie,getCookie,delCookie,decrypt,removeloader,bip} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie,decrypt,removeloader,bip,getuser} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
 
 var log_out = document.getElementById("log-out")
 log_out.addEventListener('click', (e) => {
-    console.log("{tr}")
-    delCookie("ready")
-    delCookie("myEmail")
+    delCookie("geoloup")
     window.location.replace(window.location.href + "/")
 });
 
@@ -41,9 +39,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-if (getCookie("ready") != null) {
-  var myEmail = getCookie("email")
-  var myName = getCookie("email")
+if (getuser != null) {
+  var myEmail = getuser
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
 }
@@ -142,7 +139,7 @@ send.addEventListener('click', (e) => {
         var str1 = str.replaceAll("<","&lt;")
         var str2 = str1.replaceAll(">","&gt;")
         var message = str2;
-        var name = myName;
+        var name = myemail;
         const id = push(child(ref(database), 'messages')).key;
         var friend = "none"
         var cusid = document.getElementsByClassName('people-person active')[0].id
@@ -166,7 +163,7 @@ send2.addEventListener("keydown", (e) => {
             var str1 = str.replaceAll("<","&lt;")
             var str2 = str1.replaceAll(">","&gt;")
             var message = str2;
-            var name = myName;
+            var name = myemail;
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('people-person active')[0].id
@@ -198,7 +195,7 @@ add_file.addEventListener('click', (e) => {
     .then((response) => response.text())
     .then((data) => {
         var url = data
-        var name = myName;
+        var name = myEmail;
         const id = push(child(ref(database), 'messages')).key;
         var cusid = document.getElementsByClassName('people-person active')[0].id
         set(ref(database, "messages/"+ cusid + "/" + id), {

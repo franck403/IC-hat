@@ -83,3 +83,17 @@ export function register(email,password) {
       console.error("Error:", error);
   });
 }
+
+export function getuser() {
+  fetch("https://auth.francoischouin1.repl.co/getuser")
+  .then((response) => response.text())
+  .then((data) => {
+    if (data != "no") {
+      var ndata = data
+    }
+  })
+  .catch((error) => {
+      console.error("Error:", error);
+  });
+  return ndata
+}
