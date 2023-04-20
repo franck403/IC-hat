@@ -39,8 +39,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-if (getuser != null) {
-  var myEmail = getuser
+if (getuser() != null) {
+  var myEmail = getuser()
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
 }
