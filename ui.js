@@ -32,7 +32,7 @@ export const showLoginError = (error) => {
 
 export const showLoginState = (user) => {
   if (getCookie("geoloup") != null) {
-    window.location.replace(window.location.href)
+    window.location.replace(window.location.host)
   } else {}
 }
 
