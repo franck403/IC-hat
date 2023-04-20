@@ -99,6 +99,4 @@ export function getuser() {
   });
   var ndata = document.getElementById("geoloup-id").innerHTML
   return ndata
-
-
 }

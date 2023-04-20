@@ -41,6 +41,7 @@ const database = getDatabase(app);
 
 if (getuser() != null) {
   var myEmail = getuser()
+  console.log(myEmail)
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
 }
@@ -139,7 +140,7 @@ send.addEventListener('click', (e) => {
         var str1 = str.replaceAll("<","&lt;")
         var str2 = str1.replaceAll(">","&gt;")
         var message = str2;
-        var name = myemail;
+        var name = myEmail;
         const id = push(child(ref(database), 'messages')).key;
         var friend = "none"
         var cusid = document.getElementsByClassName('people-person active')[0].id
@@ -163,7 +164,7 @@ send2.addEventListener("keydown", (e) => {
             var str1 = str.replaceAll("<","&lt;")
             var str2 = str1.replaceAll(">","&gt;")
             var message = str2;
-            var name = myemail;
+            var name = myEmail;
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('people-person active')[0].id
