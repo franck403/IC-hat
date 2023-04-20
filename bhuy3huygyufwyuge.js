@@ -52,7 +52,7 @@ export function login(email,password) {
   formData.append('password', password)
   fetch("https://auth.francoischouin1.repl.co/login"), {
     body: formData,
-    method: "post"
+    method: "POST"
   }
   .then((response) => response.text())
   .then((data) => {
@@ -71,7 +71,7 @@ export function register(email,password) {
   formData.append('password', password)
   fetch("https://auth.francoischouin1.repl.co/register"), {
     body: formData,
-    method: "post"
+    method: "POST"
   }
   .then((response) => response.text())
   .then((data) => {

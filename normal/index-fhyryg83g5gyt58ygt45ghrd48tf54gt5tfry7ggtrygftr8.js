@@ -33,5 +33,3 @@ if (winl[1] != "register") {
   btnSignup.addEventListener("click", createAccount)
   btnLogin.remove()
 }
-
-const auth = getAuth(firebaseApp);
