@@ -45,3 +45,41 @@ export function bip() {
   var audio = new Audio('message_recive.mp3');
   audio.play();
 }
+
+export function login(email,password) {
+  let formData = new FormData();
+  formData.append('email', email);
+  formData.append('password', password)
+  fetch("https://auth.francoischouin1.repl.co/login"), {
+    body: formData,
+    method: "post"
+  }
+  .then((response) => response.text())
+  .then((data) => {
+    if (data != "no") {
+      setCookie("geoloup",data)
+    }
+  })
+  .catch((error) => {
+      console.error("Error:", error);
+  });
+}
+
+export function register(email,password) {
+  let formData = new FormData();
+  formData.append('email', email);
+  formData.append('password', password)
+  fetch("https://auth.francoischouin1.repl.co/register"), {
+    body: formData,
+    method: "post"
+  }
+  .then((response) => response.text())
+  .then((data) => {
+    if (data != "no") {
+      setCookie("geoloup",data)
+    }
+  })
+  .catch((error) => {
+      console.error("Error:", error);
+  });
+}
