@@ -85,14 +85,20 @@ export function register(email,password) {
 }
 
 export function getuser() {
-  const response = fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"));
-  console.log(response)
-  const data = response.text;
-  console.log(data)
-  if (data != "no") {
-    var ndata = data
-  } else {
-    var ndata = null
-  }
+  const response = fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
+  .then((response) => response.text())
+  .then((data) => {
+    if (data != "no") {
+      document.getElementById("geoloup-id").innerHTML = data
+    } else {
+      document.getElementById("geoloup-id").remove()
+    }
+  })
+  .catch((error) => {
+      console.error("Error:", error);
+  });
+  ndata = document.getElementById("geoloup-id").innerHTML
   return ndata
+
+
 }
