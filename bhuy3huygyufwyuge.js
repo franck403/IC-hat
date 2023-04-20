@@ -90,6 +90,8 @@ export function getuser() {
   .then((data) => {
     if (data != "no") {
       var ndata = data
+    } else {
+      var ndata = null
     }
   })
   .catch((error) => {
