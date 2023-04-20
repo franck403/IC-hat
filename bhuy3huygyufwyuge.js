@@ -85,17 +85,12 @@ export function register(email,password) {
 }
 
 export function getuser() {
-  fetch("https://auth.francoischouin1.repl.co/getuser")
-  .then((response) => response.text())
-  .then((data) => {
-    if (data != "no") {
-      var ndata = data
-    } else {
-      var ndata = null
-    }
-  })
-  .catch((error) => {
-      console.error("Error:", error);
-  });
+  const response = await fetch("https://auth.francoischouin1.repl.co/getuser");
+  const data = await response.text();
+  if (data != "no") {
+    var ndata = data
+  } else {
+    var ndata = null
+  }
   return ndata
 }
