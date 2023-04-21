@@ -4,8 +4,7 @@ export function load() {
     var ext = localStorage.getItem("extention")
     var act = ext.split(",")
     act.forEach((main) => {
-        myEmail = await getuser()
-        if (main != "" && getCookie("geoloup") != null && myEmail != null && myEmail.search("<title>500 Internal Server Error</title>") != -1) {
+        if (main != "" && getCookie("geoloup") != null) {
             var act2 = main.split(";")
             fetch(act2[1], {method: "GET"})
             .then((response) => response.text())
