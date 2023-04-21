@@ -44,6 +44,9 @@ console.log(myEmail)
 if (myEmail != null) {
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
+} else if (myEmail.search("<title>500 Internal Server Error</title>") != -1) {
+    document.getElementById("not-connected").remove()
+    document.getElementById("wait-connected").remove()
 }
 else {
     document.getElementById("connected").remove()
