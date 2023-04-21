@@ -95,6 +95,6 @@ export function getuser() {
     return null
   })
   .catch(() => {
-    return null;
+    return null
   });
 }
