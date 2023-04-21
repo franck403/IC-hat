@@ -218,10 +218,10 @@ body {
     z-index: 2;
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    z-index:2;
+    transform: translate(-50%, 0%);
+    z-index: 2;
 }
 .loader h2 {
     text-align: center;
