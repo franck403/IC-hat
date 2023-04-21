@@ -39,7 +39,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-var myEmail = await asdasdasdasdagetuser()
+var myEmail = await getuser()
 
 if (myEmail != null) {
   console.log(myEmail)
