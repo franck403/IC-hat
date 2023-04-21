@@ -85,6 +85,7 @@ export function register(email,password) {
 }
 
 export function getuser() {
+  if (getCookie("geoloup") != null) {
   return fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
   .then((reponse) => reponse.text())
   .then((data) => {
@@ -96,5 +97,7 @@ export function getuser() {
   })
   .catch(() => {
     return null
-  });
+  })} else {
+    return null
+  }
 }
