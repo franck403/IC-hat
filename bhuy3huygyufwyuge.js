@@ -90,9 +90,9 @@ export function getuser() {
   .then((data) => {
     console.log(data)
     if (data != "no") {
-      return null;
+      return data
     }
-    return data;
+    return null
   })
   .catch(() => {
     return null;
