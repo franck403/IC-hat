@@ -98,5 +98,6 @@ export function getuser() {
   .catch((error) => {
       console.error("Error:", error);
   });
+  console.log(global_email)
   return  global_email
 }
