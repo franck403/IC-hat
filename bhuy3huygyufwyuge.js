@@ -85,19 +85,22 @@ export function register(email,password) {
 }
 
 export function getuser() {
-  var global_email = ""
-  const response = fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
+  
+  let data = fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
   .then((response) => response.text())
   .then((data) => {
     if (data != "no") {
-      window.global_email = data
+      return data
     } else {
-      document.getElementById("geoloup-id").remove()
+      return "no"
     }
   })
   .catch((error) => {
       console.error("Error:", error);
   });
-  console.log(global_email)
-  return  global_email
+  if (data != "no") {
+   return data
+  } else {
+    return null
+  }
 }
