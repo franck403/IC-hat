@@ -39,8 +39,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-if (getuser() != null) {
-  var myEmail = getuser()
+var myEmail = await asdasdasdasdagetuser()
+
+if (myEmail != null) {
   console.log(myEmail)
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
