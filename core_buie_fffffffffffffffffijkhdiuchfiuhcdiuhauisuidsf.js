@@ -41,9 +41,7 @@ const database = getDatabase(app);
 
 var myEmail = await getuser()
 
-console.log(myEmail)
 if (myEmail != null) {
-  console.log(myEmail)
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
 }
