@@ -98,8 +98,9 @@ export function getuser() {
   .catch((error) => {
       console.error("Error:", error);
   });
+  console.log(data)
   if (data != "no") {
-   return data
+    return data
   } else {
     return null
   }
