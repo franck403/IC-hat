@@ -1,10 +1,10 @@
-import {getCookie} from "./bhuy3huygyufwyuge.js"
+import {getCookie,getuser} from "./bhuy3huygyufwyuge.js"
 export function load() {
     try {
     var ext = localStorage.getItem("extention")
     var act = ext.split(",")
     act.forEach((main) => {
-        if (main != "" && getCookie("geoloup") != null) {
+        if (main != "" && getCookie("geoloup") != null && getuser() != null && getuser().search("<title>500 Internal Server Error</title>") != -1) {
             var act2 = main.split(";")
             fetch(act2[1], {method: "GET"})
             .then((response) => response.text())
