@@ -88,6 +88,7 @@ export function getuser() {
   return fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
   .then((reponse) => reponse.text())
   .then((data) => {
+    console.log(data)
     if (data != "no") {
       return null;
     }
