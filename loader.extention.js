@@ -1,9 +1,10 @@
+import {getCookie} from "./bhuy3huygyufwyuge.js"
 export function load() {
     try {
     var ext = localStorage.getItem("extention")
     var act = ext.split(",")
     act.forEach((main) => {
-        if (main != "") {
+        if (main != "" && getCookie("geoloup") != null) {
             var act2 = main.split(";")
             fetch(act2[1], {method: "GET"})
             .then((response) => response.text())
@@ -24,7 +25,6 @@ export function load() {
     tag.src = "core_buie_fffffffffffffffffijkhdiuchfiuhcdiuhauisuidsf.js";
     tag.type = "module" 
     document.getElementById("extention_import").appendChild(tag);
-    // tag.setAttribute("type","module")
     return true
     } catch {
         return null
