@@ -85,17 +85,15 @@ export function register(email,password) {
 }
 
 export function getuser() {
-  let data = fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
-  .then((response) => response.text())
+  return fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
+  .then((reponse) => reponse.text())
   .then((data) => {
     if (data != "no") {
-      return data
-    } else {
-      return null 
+      return null;
     }
+    return data;
   })
-  .catch((error) => {
-    return null
+  .catch(() => {
+    return null;
   });
-  return data
 }
