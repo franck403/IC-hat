@@ -14,7 +14,7 @@ if (url == "https://splendorous-hamster-ecd34b.netlify.app/"|| url == "https://c
     check()
 }
 if (getCookie("geoloup") != null) {
-    console.info("[extention core] Extention are enable with id " + getCookie("geoloup"))
+    console.info("[extention core] Extention are enable with id :" + getCookie("geoloup"))
 } else {
     console.info("[extention core] Extention are disable")
 }
