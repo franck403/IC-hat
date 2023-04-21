@@ -65,10 +65,11 @@ export function login(email,password) {
   });
 }
 
-export function register(email,password) {
+export function register(name,email,password) {
   let formData = new FormData();
   formData.append('email', email);
-  formData.append('password', password)
+  formData.append('password', password);
+  formData.append('name', name);
   fetch("https://auth.francoischouin1.repl.co/register", {
     method: "POST",
     body: formData

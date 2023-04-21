@@ -17,9 +17,10 @@ const loginEmailPassword = async () => {
 const createAccount = async () => {
   const email = txtEmail.value
   const password = txtPassword.value
+  const name = txtName.value
 
   try {
-    register(loginEmail, loginPassword)
+    register(name,loginEmail, loginPassword)
     showLoginState()
   }
   catch(error) {} 
@@ -29,6 +30,7 @@ const winl = winhref.split("#")
 if (winl[1] != "register") {
   btnLogin.addEventListener("click", loginEmailPassword) 
   btnSignup.remove()
+  txtName.remove()
 } else {
   btnSignup.addEventListener("click", createAccount)
   btnLogin.remove()

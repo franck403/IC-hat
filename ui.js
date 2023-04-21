@@ -3,6 +3,7 @@ import {getCookie} from './bhuy3huygyufwyuge.js';
 
 export const txtEmail = document.querySelector('#txtEmail')
 export const txtPassword = document.querySelector('#txtPassword')
+export const txtName = document.querySelector('#txtName')
 
 export const btnLogin = document.querySelector('#btnLogin')
 export const btnSignup = document.querySelector('#btnSignup')
