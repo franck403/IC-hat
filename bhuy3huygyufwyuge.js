@@ -91,16 +91,11 @@ export function getuser() {
     if (data != "no") {
       return data
     } else {
-      return "no"
+      return null 
     }
   })
   .catch((error) => {
-      console.error("Error:", error);
-  });
-  console.log(data)
-  if (data != "no") {
-    return data
-  } else {
     return null
-  }
+  });
+  return data
 }
