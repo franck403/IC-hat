@@ -84,9 +84,8 @@ export function register(email,password) {
   });
 }
 
-export function getuser() {
-  
-  let data = fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
+export async function getuser() {
+  let data = await fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
   .then((response) => response.text())
   .then((data) => {
     if (data != "no") {
