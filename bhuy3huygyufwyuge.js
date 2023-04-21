@@ -85,11 +85,12 @@ export function register(email,password) {
 }
 
 export function getuser() {
+  var global_email = ""
   const response = fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
   .then((response) => response.text())
   .then((data) => {
     if (data != "no") {
-      document.getElementById("geoloup-id").innerHTML = data
+      window.global_email = data
     } else {
       document.getElementById("geoloup-id").remove()
     }
@@ -97,5 +98,5 @@ export function getuser() {
   .catch((error) => {
       console.error("Error:", error);
   });
-  return  "raedy"
+  return  global_email
 }
