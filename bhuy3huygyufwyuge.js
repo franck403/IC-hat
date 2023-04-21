@@ -97,6 +97,5 @@ export function getuser() {
   .catch((error) => {
       console.error("Error:", error);
   });
-  let ndata = document.getElementById("geoloup-id").innerHTML;
-  return ndata
+  return  document.getElementById("geoloup-id").innerHTML
 }
