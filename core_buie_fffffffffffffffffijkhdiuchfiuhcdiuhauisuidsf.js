@@ -39,14 +39,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-var myEmail = await getuser()
-if (myEmail != null) {
-  document.getElementById("not-connected").remove()
-  document.getElementById("wait-connected").remove()
-} else if (myEmail == null){
+var myData = await getuser()
+if (myData != null) {
+    var myEmail = myData.email
+    var myName = myData.name
+    document.getElementById("not-connected").remove()
+    document.getElementById("wait-connected").remove()
+} else if (myData == null){
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
-} else if (myEmail.search("<title>500 Internal Server Error</title>") != -1) {
+} else if (myData.search("<title>500 Internal Server Error</title>") != -1) {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
 }
