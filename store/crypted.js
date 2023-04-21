@@ -25,9 +25,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-var myEmail = await getuser()
-
 try {
+    var myEmail = await getuser()
     var send = document.getElementById("send");
     var send2 = document.getElementById("content");
 
