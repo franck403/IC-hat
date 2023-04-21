@@ -38,11 +38,9 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-console.log(getuser())
 
 if (getuser() != null) {
-  var myEmail = getuser()
-  console.log(myEmail)
+  var myEmail = document.getElementById("geoloup-id").innerHTML
   document.getElementById("not-connected").remove()
   document.getElementById("wait-connected").remove()
 }

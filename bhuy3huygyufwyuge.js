@@ -97,5 +97,5 @@ export function getuser() {
   .catch((error) => {
       console.error("Error:", error);
   });
-  return  document.getElementById("geoloup-id").innerHTML
+  return  "raedy"
 }
