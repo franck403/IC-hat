@@ -1,4 +1,4 @@
-import {setCookie,getCookie,Regex,encrypt} from "https://splendorous-hamster-ecd34b.netlify.app/bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,Regex,encrypt,getuser} from "https://splendorous-hamster-ecd34b.netlify.app/bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import {
@@ -25,10 +25,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-if (getCookie("ready") != null) {
-    var myEmail = getCookie("email")
-    var myName = getCookie("email")
-} else {}
+var myEmail = await getuser()
+
+console.log(myEmail)
+if (myEmail != null) {
+  console.log(myEmail)
+  document.getElementById("not-connected").remove()
+  document.getElementById("wait-connected").remove()
+}
+else {
+    document.getElementById("connected").remove()
+    document.getElementById("wait-connected").remove()
+}
 try {
     var send = document.getElementById("send");
     var send2 = document.getElementById("content");
