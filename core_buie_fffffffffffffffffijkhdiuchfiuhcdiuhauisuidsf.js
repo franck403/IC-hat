@@ -42,7 +42,7 @@ const database = getDatabase(app);
 var myEmail = await getuser()
 if (myEmail != null) {
   document.getElementById("not-connected").remove()
-  //document.getElementById("wait-connected").remove()
+  document.getElementById("wait-connected").remove()
 } else if (myEmail == null){
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
