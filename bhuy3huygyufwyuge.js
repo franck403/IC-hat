@@ -91,7 +91,8 @@ export function getuser() {
     .then((reponse) => reponse.text())
     .then((data) => {
       if (data != "no") {
-        return data
+        var datafeuijhtr4ihurgtuyh = JSON.parse(data)
+        return datafeuijhtr4ihurgtuyh
       }
       return null
     })
