@@ -42,6 +42,7 @@ const database = getDatabase(app);
 var myData = await getuser()
 console.log(myData)
 if (myData != null) {
+    var myData = JSON.parse(myData)
     var myEmail = myData.email
     var myName = myData.name
     document.getElementById("not-connected").remove()
