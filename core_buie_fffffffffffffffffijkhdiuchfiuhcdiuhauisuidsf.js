@@ -40,6 +40,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 var myData = await getuser()
+console.log(myData)
 if (myData != null) {
     var myEmail = myData.email
     var myName = myData.name
