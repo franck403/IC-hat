@@ -299,7 +299,6 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                     } else {}
                 } else if (data2.val().type == "image") {
-                    if (data2.val().name == null) {
                         if(data2.val().email == myEmail) {
                             var html = `<div class="bubble me"><img class="type-img" src="${data2.val().message}"></img></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
@@ -330,7 +329,6 @@ onChildAdded(friend_invite, (data) => {
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
-                    } else {}
                 } else if(data2.val().type == "new-encrypted") {
                     try {
                         if(data2.val().email == myEmail) {
