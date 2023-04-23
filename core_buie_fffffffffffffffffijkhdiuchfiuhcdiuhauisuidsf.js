@@ -368,6 +368,38 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                     } catch {}
                 } else if (data2.val().tpye == "message") {
+                    if (data2.val().name == null) {
+                        if(data2.val().name == myName) {
+                            var html = `<div class="bubble me">${ data2.val().message }</div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var dateConvert = new Date(DateNow)
+                            if (dateConvert.getMinutes() < 10) {
+                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
+                            } else {
+                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            }
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                        }else{
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ data2.val().message }</div></div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var dateConvert = new Date(DateNow)
+                            if (dateConvert.getMinutes() < 10) {
+                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
+                            } else {
+                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
+                            }
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                        }
+                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;
+                    } else {}
                 } else if (data2.val().type == null) {
                 } else if (data2.val().type == "message") {
                 } else if (data2.val().type == "encrypted") {
