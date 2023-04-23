@@ -28,6 +28,10 @@
 }
 @media screen and (max-width: 970px){
     .mobile {
+        position: fixed;
+        top:0;
+        left:0;
+        z-index:3;
         background-image:  url('/img/mobile.png');
         height: 50px;
         width: 50px;
