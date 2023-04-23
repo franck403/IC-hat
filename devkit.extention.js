@@ -4,7 +4,9 @@ export const OnNewMessage = {
         let lauch = ""
         lauch = OnNewMessage.code
         if (lauch != null) {
+            try {
             lauch(data)
+            } catch {}
         } else {}
     },
     setup_code : function(name,code) {
