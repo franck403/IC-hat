@@ -52,7 +52,7 @@ try {
             var friend = "none"
             var cusid = document.getElementsByClassName('people-person active')[0].id
             set(ref(database, 'messages/'+ cusid + '/' + id), {
-                email:name,
+                email:myEmail,
                 allow:friend,
                 type:"new-encrypted",
                 message: message,
@@ -78,7 +78,7 @@ try {
                 var friend = "none"
                 var cusid = document.getElementsByClassName('people-person active')[0].id
                 set(ref(database, 'messages/'+ cusid + '/' + id), {
-                    email:name,
+                    email:myEmail,
                     allow:friend,
                     type:"new-encrypted",
                     message: message,
