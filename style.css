@@ -747,4 +747,21 @@ body {
         margin-left: auto;
         margin-right: auto;
     }
+    .container .right .chat .active-chat  {
+        display: block;
+        z-index:4;
+    }
+    .container .right .chat {
+        position: relative;
+        display: none;
+        overflow: hidden;
+        overflow-y: scroll;
+        padding: 10px 35px 40px;
+        border-width: 1px 1px 1px 0;
+        border-style: solid;
+        border-color: var(--light);
+        height: calc(100% - 86px);
+        justify-content: flex-end;
+        flex-direction: column;
+    }
 }
