@@ -793,7 +793,7 @@ body {
         width: calc(100% - 58px);
         border-radius: 5px;
     }
-    .content .right .top.top-active {
+    .container .right .top.top-active {
         width: 100%;
         z-index: 4;
         position: relative;
@@ -803,7 +803,7 @@ body {
         background-color: #eceff1;
         display: inline-flex;
     }
-    .content .right .top {
+    .container .right .top {
         width: 100%;
         z-index: 2;
         position: relative;
