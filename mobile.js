@@ -1,6 +1,6 @@
 function room(id){
     var actual_size = window.innerWidth
-    var max_size = 967
+    var max_size = 970
     
     if (id == "geoloup_chat") {
         var new2 = document.getElementById(id + "_c")
