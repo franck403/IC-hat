@@ -729,10 +729,13 @@ body {
         height: 50px;
         width: 50px;
     }
-    .people-person {
-        position: relative;
-        width: 120%;
-        padding: 12px 10% 16px;
-        cursor: pointer;
+    .container .left {
+        position: fixed;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid var(--light);
+        background-color: var(--white);
+        overflow: hidden;
     }
 }
