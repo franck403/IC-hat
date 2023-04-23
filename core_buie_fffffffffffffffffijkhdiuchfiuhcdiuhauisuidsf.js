@@ -40,7 +40,6 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 var myData = await getuser()
-console.log(myData)
 if (myData != null) {
     var myData = JSON.parse(myData)
     var myEmail = myData.email
@@ -158,6 +157,7 @@ send.addEventListener('click', (e) => {
             allow:friend,
             message: message,
             type:"message",
+            name:myName,
             date:Date.now(),
             dname:cusid
         });
@@ -182,6 +182,7 @@ send2.addEventListener("keydown", (e) => {
                 allow:friend,
                 type:"message",
                 message: message,
+                name:myName,
                 date: Date.now(),
                 dname: cusid
             });
@@ -279,7 +280,7 @@ onChildAdded(friend_invite, (data) => {
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
                         }else{
-                            var html = `<div class="bubble you">${ data2.val().message }</div>`
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ data2.val().message }</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var dateConvert = new Date(DateNow)
@@ -312,7 +313,7 @@ onChildAdded(friend_invite, (data) => {
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
                         }else{
-                            var html = `<div class="bubble you"><img class="type-img" src="${data2.val().message}"></img></div>`
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ data2.val().message }</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var dateConvert = new Date(DateNow)

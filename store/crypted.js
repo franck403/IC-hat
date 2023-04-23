@@ -26,7 +26,10 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 try {
-    var myEmail = await getuser()
+    var myData = await getuser()
+    var myData = JSON.parse(myData)
+    var myEmail = myData.email
+    var myName = myData.name
     var send = document.getElementById("send");
     var send2 = document.getElementById("content");
 
@@ -54,6 +57,7 @@ try {
                 allow:friend,
                 type:"new-encrypted",
                 message: message,
+                name:myName,
                 date: Date.now(),
                 dname: cusid
             });
@@ -79,6 +83,7 @@ try {
                     allow:friend,
                     type:"new-encrypted",
                     message: message,
+                    name:myName,
                     date: Date.now(),
                     dname: cusid
                 });
