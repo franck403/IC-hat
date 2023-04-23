@@ -31,8 +31,8 @@
         position: fixed;
         top:0;
         left:0;
-        z-index:3;
-        background-image:  url('/img/mobile.png');
+        display: block;
+        z-index:4;
         height: 50px;
         width: 50px;
     }
