@@ -770,7 +770,7 @@ body {
         width: 96%;
     }
     .write{
-        z-index: 2;
+        z-index: 0;
         position: absolute;
         bottom: 20px;
         right: 18px;
