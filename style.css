@@ -16,6 +16,12 @@
     --blue: #00b0ff;
 }
 
+bubble-name {
+    font-weight: bolder;
+    text-align: left;
+    font-size: 15px;
+}
+
 body {
     background-color: var(--bg);
     -webkit-font-smoothing: antialiased;
@@ -705,10 +711,4 @@ body {
     width: 87px;
     height: 18px;
     cursor: pointer;
-}
-
-bubble-name {
-    font-weight: bolder;
-    text-align: left;
-    font-size: 15px;
 }
