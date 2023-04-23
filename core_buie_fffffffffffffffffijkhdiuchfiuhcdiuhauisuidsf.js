@@ -313,7 +313,7 @@ onChildAdded(friend_invite, (data) => {
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
                         }else{
-                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ data2.val().message }</div></div>`
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div><img class="type-img" src="${data2.val().message}"></img></div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var dateConvert = new Date(DateNow)
@@ -348,7 +348,7 @@ onChildAdded(friend_invite, (data) => {
                             document.getElementById(`prew_${dnamef}`).innerHTML =  message
                         }else{
                             var message = decrypt(data2.val().message)
-                            var html = `<div class="bubble you" id="${data2.val().date}">${message}</div>`
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ data2.val().message }</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var dateConvert = new Date(DateNow)
