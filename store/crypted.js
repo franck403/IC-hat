@@ -51,7 +51,6 @@ try {
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-            console.log(cusid)
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 email:myEmail,
                 allow:friend,
