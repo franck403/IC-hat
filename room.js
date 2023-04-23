@@ -10,6 +10,7 @@ function room(id){
         }
         var old1 = document.getElementsByClassName("write")[0].setAttribute("class","write write-active")
         var old2 = document.getElementsByClassName("chat active-chat")[0]
+        var old3 = document.getElementsByClassName("top")[1].setAttribute("class","top top-active")
         var new1 = document.getElementById(id)
         var new1 = document.getElementById(id)
         var to = document.querySelector("#to")
@@ -54,4 +55,7 @@ send_by_enter.addEventListener('click', spam_event);
 
 function mobile() {
     var old1 = document.getElementsByClassName("write write-active")[0].setAttribute("class","write")
+    old2.setAttribute("class","chat")
+    var old2 = document.getElementsByClassName("chat active-chat")[0].setAttribute("class","chat")
+    var old3 = document.getElementsByClassName("top")[1].setAttribute("class","top")
 }
