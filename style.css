@@ -16,10 +16,14 @@
     --blue: #00b0ff;
 }
 
-bubble-name {
+.bubble-name {
     font-weight: bolder;
     text-align: left;
     font-size: 15px;
+}
+
+.mobile {
+    background-image:  url('/img/mobile.png');
 }
 
 body {
