@@ -21,9 +21,17 @@
     text-align: left;
     font-size: 15px;
 }
-
 .mobile {
-    background-image:  url('/img/mobile.png');
+    display:none;
+    height: 0px;
+    width: 0px;
+}
+@media screen and (max-width: 970px){
+    .mobile {
+        background-image:  url('/img/mobile.png');
+        height: 50px;
+        width: 50px;
+    }
 }
 
 body {
