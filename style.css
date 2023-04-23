@@ -769,4 +769,28 @@ body {
     .container .right {
         width: 96%;
     }
+    .write{
+        z-index: 2;
+        position: absolute;
+        bottom: 20px;
+        right: 18px;
+        height: 42px;
+        padding-left: 8px;
+        border: 1px solid var(--light);
+        background-color: #eceff1;
+        width: calc(100% - 58px);
+        border-radius: 5px;
+    }
+    .write.write-active{
+        z-index: 4;
+        position: absolute;
+        bottom: 20px;
+        right: 18px;
+        height: 42px;
+        padding-left: 8px;
+        border: 1px solid var(--light);
+        background-color: #eceff1;
+        width: calc(100% - 58px);
+        border-radius: 5px;
+    }
 }
