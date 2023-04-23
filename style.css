@@ -26,23 +26,6 @@
     height: 0px;
     width: 0px;
 }
-@media screen and (max-width: 970px){
-    .mobile {
-        position: fixed;
-        top:0;
-        left:0;
-        display: block;
-        z-index:4;
-        height: 50px;
-        width: 50px;
-    }
-    .people-person {
-        position: relative;
-        width: 100%;
-        padding: 12px 10% 16px;
-        cursor: pointer;
-    }
-}
 
 body {
     background-color: var(--bg);
@@ -733,4 +716,23 @@ body {
     width: 87px;
     height: 18px;
     cursor: pointer;
+}
+
+
+@media screen and (max-width: 970px){
+    .mobile {
+        position: fixed;
+        top:0;
+        left:0;
+        display: block;
+        z-index:4;
+        height: 50px;
+        width: 50px;
+    }
+    .people-person {
+        position: relative;
+        width: 120%;
+        padding: 12px 10% 16px;
+        cursor: pointer;
+    }
 }
