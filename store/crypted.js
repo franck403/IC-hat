@@ -50,7 +50,8 @@ try {
             var name = myName;
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
-            var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+            var cusid1 = document.getElementsByClassName('chat active-chat')[0]
+            var cusid = cusid1.dataset.chat
             console.log(cusid)
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 email:myEmail,
