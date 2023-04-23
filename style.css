@@ -747,12 +747,14 @@ body {
         margin-left: auto;
         margin-right: auto;
     }
-    .container .right .chat .active-chat  {
+    .container .right .chat.active-chat  {
         display: block;
         z-index:4;
+        background: white;
     }
     .container .right .chat {
         position: relative;
+        z-index: 2;
         display: none;
         overflow: hidden;
         overflow-y: scroll;
@@ -763,5 +765,8 @@ body {
         height: calc(100% - 86px);
         justify-content: flex-end;
         flex-direction: column;
+    }
+    .container .right {
+        width: 96%;
     }
 }
