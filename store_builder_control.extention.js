@@ -2,13 +2,13 @@ fetch("https://fireimage.francoischouin1.repl.co/", {
     method: "GET"
 })
 .catch((error) => {
-    window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
+    window.location.replace("https://" + window.location.host)
 });
 fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/", {
     method: "GET"
 })
 .catch((error) => {
-    window.location.replace("https://splendorous-hamster-ecd34b.netlify.app/")
+    window.location.replace("https://" + window.location.host)
 });
 
 import {setCookie,getCookie} from "./bhuy3huygyufwyuge.js"

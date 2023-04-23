@@ -20,7 +20,7 @@ export const OnNewMessage = {
 
 export const docs = {
     help : 
-    `import {OnNewMessage} from 'https://splendorous-hamster-ecd34b.netlify.app/devkit.extention.js'
+    `import {OnNewMessage} from '../.devkit.extention.js'
     // note the type supported by the core are not send 
     OnNewMessage.setup_code("code name",(data) => {
         console.log("message recive = " + data.message)
