@@ -150,7 +150,7 @@ send.addEventListener('click', (e) => {
         var name = myEmail;
         const id = push(child(ref(database), 'messages')).key;
         var friend = "none"
-        var cusid = document.getElementsByClassName('people-person active')[0].id
+        var cusid = document.getElementsByClassName('chat active-chat')[0].id
         set(ref(database, 'messages/'+ cusid + '/' + id), {
             email:name,
             allow:friend,
@@ -175,7 +175,7 @@ send2.addEventListener("keydown", (e) => {
             var name = myEmail;
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
-            var cusid = document.getElementsByClassName('people-person active')[0].id
+            var cusid = document.getElementsByClassName('chat active-chat')[0].id
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 email:name,
                 allow:friend,
@@ -207,7 +207,7 @@ add_file.addEventListener('click', (e) => {
         var url = data
         var name = myEmail;
         const id = push(child(ref(database), 'messages')).key;
-        var cusid = document.getElementsByClassName('people-person active')[0].id
+        var cusid = document.getElementsByClassName('chat active-chat')[0].id
         set(ref(database, "messages/"+ cusid + "/" + id), {
             email: name,
             friend:"none",

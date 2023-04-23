@@ -50,7 +50,7 @@ try {
             var name = myName;
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
-            var cusid = document.getElementsByClassName('people-person active')[0].id
+            var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 email:myEmail,
                 allow:friend,
@@ -76,7 +76,7 @@ try {
                 var name = myName;
                 const id = push(child(ref(database), 'messages')).key;
                 var friend = "none"
-                var cusid = document.getElementsByClassName('people-person active')[0].id
+                var cusid = document.getElementsByClassName('chat active-chat')[0].id
                 set(ref(database, 'messages/'+ cusid + '/' + id), {
                     email:myEmail,
                     allow:friend,
