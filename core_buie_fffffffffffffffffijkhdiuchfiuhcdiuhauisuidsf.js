@@ -266,7 +266,7 @@ onChildAdded(friend_invite, (data) => {
             if (data2.val().name != null) {
             if (data2.val().message != null) {
                 if (data2.val().type == "message") {
-                    if (data2.val().name == null) {
+                    if (data2.val().name != null) {
                         if(data2.val().email == myEmail) {
                             var html = `<div class="bubble me">${ data2.val().message }</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
@@ -368,7 +368,7 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                     } catch {}
                 } else if (data2.val().tpye == "message") {
-                    if (data2.val().name == null) {
+                    if (data2.val().name != null) {
                         if(data2.val().name == myName) {
                             var html = `<div class="bubble me">${ data2.val().message }</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
