@@ -1,4 +1,4 @@
-import {setCookie,getCookie,Regex,encrypt,getuser} from "https://splendorous-hamster-ecd34b.netlify.app/bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,Regex,encrypt,getuser} from ".././bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import {
