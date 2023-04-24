@@ -719,15 +719,22 @@ body {
 }
 
 
+.mobile-active {
+    display: none;
+}
+
 @media screen and (max-width: 970px){
     .mobile {
         position: fixed;
-        top:0;
-        left:0;
-        display: block;
-        z-index:4;
+        top:10px;
+        left:10px;
+        display: none;
+        z-index:5;
         height: 50px;
         width: 50px;
+    }
+    .mobile-active {
+        display: block;
     }
     .container .left {
         position: fixed;
@@ -813,5 +820,4 @@ body {
         background-color: #eceff1;
         display: none;
     }
-    
 }

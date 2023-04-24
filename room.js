@@ -11,6 +11,7 @@ function room(id){
         var old1 = document.getElementsByClassName("write")[0].setAttribute("class","write write-active")
         var old2 = document.getElementsByClassName("chat active-chat")[0]
         var old3 = document.getElementsByClassName("top")[1].setAttribute("class","top top-active")
+        var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class","mobile mobile-active")
         var new1 = document.getElementById(id)
         var new1 = document.getElementById(id)
         var to = document.querySelector("#to")
@@ -29,6 +30,7 @@ function room(id){
         }
         var old1 = document.getElementsByClassName("people-person active")[0]
         var old2 = document.getElementsByClassName("chat active-chat")[0]
+        var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class","mobile mobile-active")
         var new1 = document.getElementById(id)
         var to_name = document.getElementById(id) 
         var to = document.querySelector("#to")
