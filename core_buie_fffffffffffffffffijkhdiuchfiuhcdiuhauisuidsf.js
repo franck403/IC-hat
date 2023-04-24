@@ -51,8 +51,7 @@ if (myData != null) {
 } else if (myData.search("<title>500 Internal Server Error</title>") != -1) {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
-}
-else {
+} else {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
 }

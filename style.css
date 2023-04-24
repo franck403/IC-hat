@@ -820,4 +820,14 @@ body {
         background-color: #eceff1;
         display: none;
     }
+    .mobile-frame {
+        position: fixed;
+        z-index: 4;
+        height: 100%;
+        width: 100%;
+        background: white;
+    }
+    .mobile-frame-active {
+        z-index: 4;
+    }
 }
