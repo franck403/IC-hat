@@ -1,49 +1,23 @@
 function room(id){
-
-    var actual_size = window.innerWidth
-    var max_size = 971
-    if (actual_size < max_size) {
-        if (id == "geoloup_chat") {
-            var new2 = document.getElementById(id + "_c")
-        } else {
-            var new2 = document.getElementById("room_" + id)
-        }
-        var old1 = document.getElementsByClassName("write")[0].setAttribute("class","write write-active")
-        var old2 = document.getElementsByClassName("chat active-chat")[0]
-        var old3 = document.getElementsByClassName("top")[1].setAttribute("class","top top-active")
-        var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class","mobile mobile-active")
-        var new1 = document.getElementById(id)
-        var new1 = document.getElementById(id)
-        var to = document.querySelector("#to")
-        try {
-            old2.setAttribute("class","chat")
-        } catch {}
-        new2.setAttribute("class","chat active-chat")
-        to.innerHTML = new1.dataset.name
-        new2.scrollTop = new2.scrollHeight;
-        new2.scrollTop = new2.scrollHeight; 
+    if (id == "geoloup_chat") {
+        var new2 = document.getElementById(id + "_c")
     } else {
-        if (id == "geoloup_chat") {
-            var new2 = document.getElementById(id + "_c")
-        } else {
-            var new2 = document.getElementById("room_" + id)
-        }
-        var old1 = document.getElementsByClassName("people-person active")[0]
-        var old2 = document.getElementsByClassName("chat active-chat")[0]
-        var new1 = document.getElementById(id)
-        var to_name = document.getElementById(id) 
-        var to = document.querySelector("#to")
-        try {
-            old1.setAttribute("class","people-person")
-            old2.setAttribute("class","chat")
-            var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class","mobile mobile-active")
-        } catch {}
-        new1.setAttribute("class","people-person active")
-        new2.setAttribute("class","chat active-chat")
-        to.innerHTML = new1.dataset.name
-        new2.scrollTop = new2.scrollHeight;
-        new2.scrollTop = new2.scrollHeight;
+        var new2 = document.getElementById("room_" + id)
     }
+    var old1 = document.getElementsByClassName("write")[0].setAttribute("class","write write-active")
+    var old2 = document.getElementsByClassName("chat active-chat")[0]
+    var old3 = document.getElementsByClassName("top")[1].setAttribute("class","top top-active")
+    var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class","mobile mobile-active")
+    var new1 = document.getElementById(id)
+    var new1 = document.getElementById(id)
+    var to = document.querySelector("#to")
+    try {
+        old2.setAttribute("class","chat")
+    } catch {}
+    new2.setAttribute("class","chat active-chat")
+    to.innerHTML = new1.dataset.name
+    new2.scrollTop = new2.scrollHeight;
+    new2.scrollTop = new2.scrollHeight; 
 }
 // spam counter
 var send_by_img = document.getElementById("send")
