@@ -32,7 +32,6 @@ var spam_database = {
 let spam_event = (spam_database) => {
     spam_database.spam_counter = spam_database.spam_counter + 1
     if (spam_database == spam_database.spam_counter) {
-        document.getElementById().hasAttribute
         document.getElementById("content").setAttribute("disable","true")
     } else {
         document.getElementById("content").removeAttribute("disable")
