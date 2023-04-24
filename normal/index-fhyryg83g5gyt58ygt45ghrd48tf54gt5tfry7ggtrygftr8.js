@@ -31,6 +31,7 @@ if (winl[1] != "register") {
   btnLogin.addEventListener("click", loginEmailPassword) 
   btnSignup.remove()
   txtName.remove()
+  txtNameNom.remove()
 } else {
   btnSignup.addEventListener("click", createAccount)
   btnLogin.remove()
