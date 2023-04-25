@@ -2,7 +2,7 @@ fetch("https://fireimage.francoischouin1.repl.co/", {
     method: "GET"
 })
 .catch((error) => {
-    window.location.replace(window.location.href + "/")
+    window.location.replace("https://" + window.location.host)
 });
 
 import {setCookie,getCookie,delCookie,decrypt,removeloader,bip,getuser} from "./bhuy3huygyufwyuge.js"
