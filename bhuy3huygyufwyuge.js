@@ -96,7 +96,17 @@ export function getuser() {
       return null
     })
     .catch(() => {
-      return null
+      return fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"),{mode:"no-cors"})
+      .then((reponse) => reponse.text())
+      .then((data) => {
+        if (data != "no") {
+          return data
+        }
+        return null
+      })
+      .catch(() => {
+        return null
+      })
     })
   } else {
     return null
