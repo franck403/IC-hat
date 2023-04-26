@@ -6,9 +6,9 @@ iframe.onload = () => {
     var register = fc.document.getElementById("register");
 
     login.addEventListener('click', (e) => {
-        window.location.replace(window.location.href + "/login")
+        window.location.replace("https://" + window.location.host + "/login")
     });
     register.addEventListener('click', (e) => {
-        window.location.replace(window.location.href + "/login#register")
+        window.location.replace("https://" + window.location.host + "/login#register")
     });
 }

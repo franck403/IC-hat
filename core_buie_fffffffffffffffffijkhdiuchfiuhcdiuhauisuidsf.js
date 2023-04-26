@@ -17,7 +17,7 @@ import {OnNewMessage} from "./devkit.extention.js"
 var log_out = document.getElementById("log-out")
 log_out.addEventListener('click', (e) => {
     delCookie("geoloup")
-    window.location.replace(window.location.href + "/")
+    window.location.replace("https://" + window.location.host)
 });
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
