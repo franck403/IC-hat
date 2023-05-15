@@ -20,7 +20,7 @@ const createAccount = async () => {
   const name = txtName.value
 
   try {
-    register(name,loginEmail, loginPassword)
+    register(name,email, password)
     showLoginState()
   }
   catch(error) {} 
