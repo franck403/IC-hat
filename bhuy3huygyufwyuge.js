@@ -50,6 +50,7 @@ export function login(email,password) {
   .then((data) => {
     if (data != "no") {
       document.cookie = "geoloup" + "=" + data
+      window.location.replace("https://" + window.location.host)
     }
   })
   .catch((error) => {
@@ -70,6 +71,7 @@ export function register(name,email,password) {
   .then((data) => {
     if (data != "no") {
       document.cookie = "geoloup" + "=" + data
+      window.location.replace("https://" + window.location.host)
     }
   })
   .catch((error) => {
