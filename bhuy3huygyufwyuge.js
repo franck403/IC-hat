@@ -1,22 +1,14 @@
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 
 export function setCookie(cname, cvalue) {
-    document.cookie = cname + "=" + cvalue;
-  }
+  localStorage.setItem(cname,cvalue)
+}
+
 export function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return null;
+  if (localStorage.getItem(cname) != undefined) {
+    return localStorage.getItem(cname)
+  }
+  return null;
 }
 export function Regex(text) {
   let regex = /\?/;
