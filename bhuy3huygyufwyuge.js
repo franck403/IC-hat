@@ -59,6 +59,7 @@ export function login(email,password) {
     if (data != "no") {
       console.log(data)
       setCookie("geoloup",data)
+      console.log("sdsadsda")
     }
   })
   .catch((error) => {
