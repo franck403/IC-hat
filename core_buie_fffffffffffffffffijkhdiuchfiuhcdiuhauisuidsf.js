@@ -11,7 +11,19 @@ fetch("https://fireimage.francoischouin1.repl.co/", {
     });
 });
 
-import {setCookie,getCookie,delCookie,decrypt,removeloader,bip,getuser} from "./bhuy3huygyufwyuge.js"
+fetch("https://auth.francoischouin1.repl.co/", {
+    method: "GET"
+})
+.catch((error) => {
+    fetch("https://auth.francoischouin1.repl.co/", {
+        method: "GET",
+        mode:"no-cors"
+    })
+    .catch((error) => {
+        window.location.replace("https://" + window.location.host)
+    });
+});
+import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
 
 var log_out = document.getElementById("log-out")
