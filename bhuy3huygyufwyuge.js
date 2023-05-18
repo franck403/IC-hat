@@ -57,6 +57,7 @@ export function login(email,password) {
   .then((response) => response.text())
   .then((data) => {
     if (data != "no") {
+      console.log(data)
       setCookie("geoloup",data)
     }
   })
