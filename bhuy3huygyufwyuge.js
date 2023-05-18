@@ -1,7 +1,7 @@
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 
 export function setCookie(cname, cvalue) {
-    document.cookie = cname + "=" + cvalue + ";path=/";
+    document.cookie = cname + "=" + cvalue;
   }
 export function getCookie(cname) {
     let name = cname + "=";
@@ -57,7 +57,7 @@ export function login(email,password) {
   .then((response) => response.text())
   .then((data) => {
     if (data != "no") {
-      setCookie("geoloup",data)
+      document.cookie = "geoloup" + "=" + data
     }
   })
   .catch((error) => {
@@ -77,7 +77,7 @@ export function register(name,email,password) {
   .then((response) => response.text())
   .then((data) => {
     if (data != "no") {
-      setCookie("geoloup",data)
+      document.cookie = "geoloup" + "=" + data
     }
   })
   .catch((error) => {
