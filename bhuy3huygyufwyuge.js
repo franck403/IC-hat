@@ -49,7 +49,7 @@ export function login(email,password) {
   .then((response) => response.text())
   .then((data) => {
     if (data != "no") {
-      document.cookie = "geoloup" + "=" + data
+      setCookie("geoloup",data)
       window.location.replace("https://" + window.location.host)
     }
   })
@@ -70,7 +70,7 @@ export function register(name,email,password) {
   .then((response) => response.text())
   .then((data) => {
     if (data != "no") {
-      document.cookie = "geoloup" + "=" + data
+      setCookie("geoloup",data)
       window.location.replace("https://" + window.location.host)
     }
   })
