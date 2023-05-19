@@ -23,15 +23,9 @@ fetch("https://auth.francoischouin1.repl.co/", {
         window.location.replace("https://" + window.location.host)
     });
 });
+
 import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
-
-var log_out = document.getElementById("log-out")
-log_out.addEventListener('click', (e) => {
-    delCookie("geoloup")
-    window.location.replace("https://" + window.location.host)
-});
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
     getDatabase,

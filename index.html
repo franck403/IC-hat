@@ -11,46 +11,7 @@
         <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
     </head>
     <body>
-      <!--<div id="april30">
-        <style>
-        .video-container {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          width: 98%;
-          height: 98%; 
-          overflow: hidden;
-        }
-        .video-container video {
-          /* Make video to at least 100% wide and tall */
-          min-width: 98%; 
-          min-height: 98%; 
-
-          /* Setting width & height to auto prevents the browser from stretching or squishing the video */
-          width: auto;
-          height: auto;
-
-          /* Center the video */
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%,-50%);
-        }
-      </style>
-      <video class="video-container" id="video" onclick="video">
-        <source src="https://videoplayer.francoischouin1.repl.co/video/intro.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <script type='text/javascript'>
-        function video() {
-          document.getElementById('video').play();
-        }
-      </script>
-      </div>-->
-      <div id="april31">
-        <!--<script>
-          document.getElementById("april30").remove()
-        </script>-->
+      <div>
         <div id="wait-connected">
           <div class="loader">
             <h2>Loading IC-hat</h2>
@@ -155,7 +116,13 @@
                     <div class="right" id="chat_el_box">
                         <div class="top">
                           <p class="to">To: <p id="to" style="width: 62vw;" class="name">Nobody</p></p>
-                          <a id="log-out">Log out</a>
+                          <script>
+                            function log_out() {
+                              localStorage.removeItem("geoloup")
+                              window.location.replace("https://" + window.location.host)
+                            }
+                          </script>
+                          <a onclick="log_out()">Log out</a>
                         </div>
                     </div>
                   </div>
