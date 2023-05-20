@@ -1,7 +1,7 @@
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 
 export function setCookie(cname, cvalue) {
-  localStorage.setItem(cname,cvalue)
+  localStorage.setItem(cname, cvalue)
 }
 
 export function getCookie(cname) {
@@ -15,7 +15,7 @@ export function Regex(text) {
   return regex.test(text)
 }
 
-export function delCookie(name) { 
+export function delCookie(name) {
   localStorage.removeItem(name)
 }
 
@@ -37,7 +37,7 @@ export function bip() {
   audio.play();
 }
 
-export function login(email,password) {
+export function login(email, password) {
   let formData = new FormData();
   formData.append('email', email);
   formData.append('password', password)
@@ -45,19 +45,19 @@ export function login(email,password) {
     method: "POST",
     body: formData
   })
-  .then((response) => response.text())
-  .then((data) => {
-    if (data != "no") {
-      setCookie("geoloup",data)
-      window.location.replace("https://" + window.location.host)
-    }
-  })
-  .catch((error) => {
+    .then((response) => response.text())
+    .then((data) => {
+      if (data != "no") {
+        setCookie("geoloup", data)
+        window.location.replace("https://" + window.location.host)
+      }
+    })
+    .catch((error) => {
       console.error("Error:", error);
-  });
+    });
 }
 
-export function register(name,email,password) {
+export function register(name, email, password) {
   let formData = new FormData();
   formData.append('email', email);
   formData.append('password', password);
@@ -66,30 +66,21 @@ export function register(name,email,password) {
     method: "POST",
     body: formData
   })
-  .then((response) => response.text())
-  .then((data) => {
-    if (data != "no") {
-      setCookie("geoloup",data)
-      window.location.replace("https://" + window.location.host)
-    }
-  })
-  .catch((error) => {
+    .then((response) => response.text())
+    .then((data) => {
+      if (data != "no") {
+        setCookie("geoloup", data)
+        window.location.replace("https://" + window.location.host)
+      }
+    })
+    .catch((error) => {
       console.error("Error:", error);
-  });
+    });
 }
 
 export function getuser() {
   if (getCookie("geoloup") != null) {
     return fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
-    .then((reponse) => reponse.text())
-    .then((data) => {
-      if (data != "no") {
-        return data
-      }
-      return null
-    })
-    .catch(() => {
-      return fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"),{mode:"no-cors"})
       .then((reponse) => reponse.text())
       .then((data) => {
         if (data != "no") {
@@ -98,9 +89,18 @@ export function getuser() {
         return null
       })
       .catch(() => {
-        return null
+        return fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"), { mode: "no-cors" })
+          .then((reponse) => reponse.text())
+          .then((data) => {
+            if (data != "no") {
+              return data
+            }
+            return null
+          })
+          .catch(() => {
+            return null
+          })
       })
-    })
   } else {
     return null
   }
@@ -110,22 +110,22 @@ export function message_date(DateNow) {
   var dateConvert = new Date(DateNow)
   var dateActual = new Date(Date.now())
   if (dateConvert.getFullYear() == dateActual.getFullYear()) {
-      if (dateConvert.getHours() == dateActual.getHours()) {
-          if (dateConvert.getMinutes() == dateActual.getMinutes()) {
-              var date = dateActual.getSeconds() - dateConvert.getSeconds()
-              var data = date + " sec ago"
-          } else {
-              var date = dateActual.getMinutes() - dateConvert.getMinutes()
-              var data = date + " min ago"
-          }
+    if (dateConvert.getHours() == dateActual.getHours()) {
+      if (dateConvert.getMinutes() == dateActual.getMinutes()) {
+        var date = dateActual.getSeconds() - dateConvert.getSeconds()
+        var date = Math.abs(date) + " sec ago"
       } else {
-          var date = dateActual.getHours() - dateConvert.getHours()
-          var data = date + " hours ago"
+        var date = dateActual.getMinutes() - dateConvert.getMinutes()
+        var date = Math.abs(date) + " min ago"
       }
+    } else {
+      var date = dateActual.getHours() - dateConvert.getHours()
+      var date = Math.abs(date) + " hours ago"
+    }
   } else {
-      var date = dateActual.getFullYear() - dateConvert.getFullYear()
-      var data = date + " Years ago"
+    var date = dateActual.getFullYear() - dateConvert.getFullYear()
+    var date = Math.abs(date) + " Years ago"
   }
-  console.log(Math.abs(date))
-  return Math.abs(date)
+  console.log(date)
+  return date
 }
