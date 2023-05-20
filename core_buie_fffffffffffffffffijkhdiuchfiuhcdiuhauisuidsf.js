@@ -24,7 +24,7 @@ fetch("https://auth.francoischouin1.repl.co/", {
     });
 });
 
-import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
@@ -238,27 +238,6 @@ const form  = document.getElementById('add_image');
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 });
-
-function message_date(DateNow) {
-    var dateConvert = new Date(DateNow)
-    var dateActual = new Date(Date.now())
-    if (dateConvert.getFullYear() == dateActual.getFullYear()) {
-        if (dateConvert.getHours() == dateActual.getHours()) {
-            if (dateConvert.getMinutes() == dateActual.getMinutes()) {
-                var date = dateActual.getSeconds() - dateConvert.getSeconds()
-            } else {
-                var date = dateActual.getMinutes() - dateConvert.getMinutes()
-            }
-        } else {
-            var date = dateActual.getHours() - dateConvert.getHours()
-        }
-    } else {
-        var date = dateActual.getFullYear() - dateConvert.getFullYear()
-    }
-    console.log(date)
-    return date
-}
-
 
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {

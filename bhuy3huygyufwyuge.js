@@ -105,3 +105,23 @@ export function getuser() {
     return null
   }
 }
+
+export function message_date(DateNow) {
+  var dateConvert = new Date(DateNow)
+  var dateActual = new Date(Date.now())
+  if (dateConvert.getFullYear() == dateActual.getFullYear()) {
+      if (dateConvert.getHours() == dateActual.getHours()) {
+          if (dateConvert.getMinutes() == dateActual.getMinutes()) {
+              var date = dateActual.getSeconds() - dateConvert.getSeconds()
+          } else {
+              var date = dateActual.getMinutes() - dateConvert.getMinutes()
+          }
+      } else {
+          var date = dateActual.getHours() - dateConvert.getHours()
+      }
+  } else {
+      var date = dateActual.getFullYear() - dateConvert.getFullYear()
+  }
+  console.log(date)
+  return date
+}
