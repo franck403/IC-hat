@@ -239,7 +239,7 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
 });
 
-export function message_date(DateNow) {
+function message_date(DateNow) {
     var dateConvert = new Date(DateNow)
     var dateActual = new Date(Date.now())
     if (dateConvert.getFullYear == dateActual.getFullYear()) {
