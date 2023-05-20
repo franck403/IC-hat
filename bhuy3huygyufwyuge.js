@@ -126,6 +126,6 @@ export function message_date(DateNow) {
       var date = dateActual.getFullYear() - dateConvert.getFullYear()
       var data = date + " Years ago"
   }
-  console.log(abs(date))
-  return abs(date)
+  console.log(Math.abs(date))
+  return Math.abs(date)
 }
