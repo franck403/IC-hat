@@ -242,8 +242,8 @@ form.addEventListener('submit', (event) => {
 function message_date(DateNow) {
     var dateConvert = new Date(DateNow)
     var dateActual = new Date(Date.now())
-    if (dateConvert.getFullYear == dateActual.getFullYear()) {
-        if (dateConvert.getHours == dateActual.getHours) {
+    if (dateConvert.getFullYear() == dateActual.getFullYear()) {
+        if (dateConvert.getHours() == dateActual.getHours()) {
             if (dateConvert.getMinutes() == dateActual.getMinutes()) {
                 var date = dateActual.getSeconds() - dateConvert.getSeconds()
             } else {
@@ -255,6 +255,7 @@ function message_date(DateNow) {
     } else {
         var date = dateActual.getFullYear() - dateConvert.getFullYear()
     }
+    console.log(date)
     return date
 }
 
