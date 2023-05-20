@@ -239,6 +239,26 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
 });
 
+export function message_date(DateNow) {
+    var dateConvert = new Date(DateNow)
+    var dateActual = new Date(Date.now())
+    if (dateConvert.getFullYear == dateActual.getFullYear()) {
+        if (dateConvert.getHours == dateActual.getHours) {
+            if (dateConvert.getMinutes() == dateActual.getMinutes()) {
+                var date = dateActual.getSeconds() - dateConvert.getSeconds()
+            } else {
+                var date = dateActual.getMinutes() - dateConvert.getMinutes()
+            }
+        } else {
+            var date = dateActual.getHours() - dateConvert.getHours()
+        }
+    } else {
+        var date = dateActual.getFullYear() - dateConvert.getFullYear()
+    }
+    return date
+}
+
+
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
@@ -278,12 +298,7 @@ onChildAdded(friend_invite, (data) => {
                             var html = `<div class="bubble me">${ data2.val().message }</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
-                            var dateConvert = new Date(DateNow)
-                            if (dateConvert.getMinutes() < 10) {
-                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                            } else {
-                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
-                            }
+                            var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
@@ -291,12 +306,7 @@ onChildAdded(friend_invite, (data) => {
                             var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ data2.val().message }</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
-                            var dateConvert = new Date(DateNow)
-                            if (dateConvert.getMinutes() < 10) {
-                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                            } else {
-                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
-                            }
+                            var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
@@ -310,12 +320,7 @@ onChildAdded(friend_invite, (data) => {
                             var html = `<div class="bubble me"><img class="type-img" src="${data2.val().message}"></img></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
-                            var dateConvert = new Date(DateNow)
-                            if (dateConvert.getMinutes() < 10) {
-                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                            } else {
-                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
-                            }
+                            var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
@@ -323,12 +328,7 @@ onChildAdded(friend_invite, (data) => {
                             var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div><img class="type-img" src="${data2.val().message}"></img></div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
-                            var dateConvert = new Date(DateNow)
-                            if (dateConvert.getMinutes() < 10) {
-                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                            } else {
-                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
-                            }
+                            var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
@@ -343,12 +343,7 @@ onChildAdded(friend_invite, (data) => {
                             var html = `<div class="bubble me" id="${data2.val().date}">${message}</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
-                            var dateConvert = new Date(DateNow)
-                            if (dateConvert.getMinutes() < 10) {
-                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                            } else {
-                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
-                            }
+                            var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  message
@@ -357,12 +352,7 @@ onChildAdded(friend_invite, (data) => {
                             var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ message }</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
-                            var dateConvert = new Date(DateNow)
-                            if (dateConvert.getMinutes() < 10) {
-                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                            } else {
-                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
-                            }
+                            var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  message
@@ -377,12 +367,7 @@ onChildAdded(friend_invite, (data) => {
                             var html = `<div class="bubble me">${ data2.val().message }</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
-                            var dateConvert = new Date(DateNow)
-                            if (dateConvert.getMinutes() < 10) {
-                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                            } else {
-                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
-                            }
+                            var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
@@ -390,12 +375,7 @@ onChildAdded(friend_invite, (data) => {
                             var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ data2.val().message }</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
-                            var dateConvert = new Date(DateNow)
-                            if (dateConvert.getMinutes() < 10) {
-                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                            } else {
-                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
-                            }
+                            var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
@@ -410,12 +390,7 @@ onChildAdded(friend_invite, (data) => {
                             var html = `<div class="bubble me">${ data2.val().message }</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
-                            var dateConvert = new Date(DateNow)
-                            if (dateConvert.getMinutes() < 10) {
-                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                            } else {
-                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
-                            }
+                            var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
@@ -423,12 +398,7 @@ onChildAdded(friend_invite, (data) => {
                             var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ data2.val().message }</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
-                            var dateConvert = new Date(DateNow)
-                            if (dateConvert.getMinutes() < 10) {
-                                var date = dateConvert.getHours() + ":0" + dateConvert.getMinutes()
-                            } else {
-                                var date = dateConvert.getHours() + ":" + dateConvert.getMinutes()
-                            }
+                            var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
