@@ -125,11 +125,9 @@ window.onclick = function(event) {
 
 friends.addEventListener('click', (e) => {
     var fg = document.getElementById('friend_email').value
-    console.log(fg.replace(/\s/g, '').length)
     var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     if (document.getElementById('friend_email').value != "" && fg.replace(/\s/g, '').length != 0) {
-        var customid1 = String(btoa(fg))
-        var customid = customid1.replace(".","")
+        var customid1 = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(localStorage.getItem("email")))
         var before_friend = document.getElementById("friend_email").value + "," + localStorage.getItem("email")
         var after_friend = before_friend.split(",")
         var endfriend =[]
