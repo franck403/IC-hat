@@ -113,15 +113,19 @@ export function message_date(DateNow) {
       if (dateConvert.getHours() == dateActual.getHours()) {
           if (dateConvert.getMinutes() == dateActual.getMinutes()) {
               var date = dateActual.getSeconds() - dateConvert.getSeconds()
+              var data = date + " sec ago"
           } else {
               var date = dateActual.getMinutes() - dateConvert.getMinutes()
+              var data = date + " min ago"
           }
       } else {
           var date = dateActual.getHours() - dateConvert.getHours()
+          var data = date + " hours ago"
       }
   } else {
       var date = dateActual.getFullYear() - dateConvert.getFullYear()
+      var data = date + " Years ago"
   }
-  console.log(date)
-  return date
+  console.log(abs(date))
+  return abs(date)
 }
