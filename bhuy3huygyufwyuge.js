@@ -106,7 +106,7 @@ export function getuser() {
   }
 }
 
-export function before(text) {
+export function before(date) {
   var split = text.split(".")
   console.log(split)
   return split[0]
@@ -120,26 +120,26 @@ export function message_date(DateNow) {
         if (dateConvert.getHours() == dateActual.getHours()) {
           if (dateConvert.getMinutes() == dateActual.getMinutes()) {
             var date = dateActual.getSeconds() - dateConvert.getSeconds()
-            var date = before(text) + " Sec ago"
+            var date = before(date) + " Sec ago"
           } else {
             var date = dateActual.getMinutes() - dateConvert.getMinutes()
-            var date = before(text) + " Min ago"
+            var date = before(date) + " Min ago"
           }
         } else {
           var date = dateActual.getHours() - dateConvert.getHours()
-          var date = before(text) + " Hours ago"
+          var date = before(date) + " Hours ago"
         }
       } else {
         var date = dateActual.getDay() - dateConvert.getDay()
-        var date = before(text) + " Days ago"  
+        var date = before(tex) + " Days ago"  
       }
     } else {
       var date = dateActual.getMonth() - dateConvert.getMonth()
-      var date = before(text) + " Months ago"
+      var date = before(date) + " Months ago"
     }
   } else {
     var date = dateActual.getFullYear() - dateConvert.getFullYear()
-    var date = before(text) + " Years ago"
+    var date = before(date) + " Years ago"
   }
   console.log(date + "..." + dateConvert)
   return date
