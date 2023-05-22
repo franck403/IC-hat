@@ -110,17 +110,22 @@ export function message_date(DateNow) {
   var dateConvert = new Date(DateNow)
   var dateActual = new Date(Date.now())
   if (dateConvert.getFullYear() == dateActual.getFullYear()) {
-    if (dateConvert.getHours() == dateActual.getHours()) {
-      if (dateConvert.getMinutes() == dateActual.getMinutes()) {
-        var date = dateActual.getSeconds() - dateConvert.getSeconds()
-        var date = Math.abs(date) + " sec ago"
+    if (dateConvert.getMonth() == dateActual.getMonth()) {
+      if (dateConvert.getHours() == dateActual.getHours()) {
+        if (dateConvert.getMinutes() == dateActual.getMinutes()) {
+          var date = dateActual.getSeconds() - dateConvert.getSeconds()
+          var date = Math.abs(date) + " Sec ago"
+        } else {
+          var date = dateActual.getMinutes() - dateConvert.getMinutes()
+          var date = Math.abs(date) + " Min ago"
+        }
       } else {
-        var date = dateActual.getMinutes() - dateConvert.getMinutes()
-        var date = Math.abs(date) + " min ago"
+        var date = dateActual.getHours() - dateConvert.getHours()
+        var date = Math.abs(date) + " Hours ago"
       }
     } else {
-      var date = dateActual.getHours() - dateConvert.getHours()
-      var date = Math.abs(date) + " hours ago"
+      var date = dateActual.getMonth() - dateConvert.getMonth()
+      var date = Math.abs(date) + " Month ago"
     }
   } else {
     var date = dateActual.getFullYear() - dateConvert.getFullYear()
