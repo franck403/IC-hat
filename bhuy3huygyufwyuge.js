@@ -106,7 +106,7 @@ export function getuser() {
   }
 }
 
-export function before(date) {
+export function before(text) {
   var split = text.split(".")
   console.log(split)
   return split[0]
