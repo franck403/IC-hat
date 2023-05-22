@@ -130,12 +130,12 @@ export function message_date(DateNow) {
       }
     } else {
       var date = dateActual.getMonth() - dateConvert.getMonth()
-      var date = Math.abs(date) + " Month ago"
+      var date = Math.abs(date) + " Months ago"
     }
   } else {
     var date = dateActual.getFullYear() - dateConvert.getFullYear()
     var date = Math.abs(date) + " Years ago"
   }
-  console.log(date)
+  console.log(date + "..." + dateConvert)
   return date
 }
