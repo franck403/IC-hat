@@ -164,5 +164,9 @@ export function message_render(message) {
     };
     return unzalgo()
   })(message_start);
-  return message
+  if (message != undefined) {
+    return message
+  } else {
+    return message_start
+  }
 }
