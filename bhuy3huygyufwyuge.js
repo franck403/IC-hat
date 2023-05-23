@@ -113,7 +113,7 @@ export function before(text) {
 }
 export function message_date(DateNow) {
   var dateConvert = new Date(DateNow)
-  var dateUtc = String(dateConvert.split("GMT"))
+  var dateUtc = String(dateConvert).split("GMT")
   var dateUtc = dateUtc[0].split(" ")
   var dateUtc = [0]
   var dateActual = new Date(Date.now())
