@@ -130,8 +130,8 @@ export function message_date(DateNow) {
           var date = before(date) + " Hours ago"
         }
       } else {
-        var date = dateActual.getDay() - dateConvert.getDay()
-        console.log(dateActual.getDay() + " : " + dateConvert.getDay())
+        var date = dateActual.getDate() - dateConvert.getDate()
+        console.log(dateActual.getDate() + " : " + dateConvert.getDate())
         var date = before(date) + " Days ago"  
       }
     } else {
