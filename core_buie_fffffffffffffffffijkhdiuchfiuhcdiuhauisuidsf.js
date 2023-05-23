@@ -317,7 +317,6 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
                 } else if(data2.val().type == "new-encrypted") {
-                    try {
                         if(data2.val().email == myEmail) {
                             var message = decrypt(data2.val().message)
                             var html = `<div class="bubble me" id="${data2.val().date}">${message}</div>`
@@ -340,7 +339,6 @@ onChildAdded(friend_invite, (data) => {
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
-                    } catch {}
                 } else if (data2.val().tpye == "message") {
                     if (data2.val().name != null) {
                         if(data2.val().name == myName) {
