@@ -1,4 +1,4 @@
-import {setCookie,getCookie,Regex,encrypt,getuser} from ".././bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,Regex,encrypt,getuser,message_render} from ".././bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import {
@@ -46,6 +46,7 @@ try {
             var str1 = str.replaceAll("<","&lt;")
             var str2 = str1.replaceAll(">","&gt;")
             var message = str2;
+            var message = message_render(message)
             var message = encrypt(message)
             var name = myName;
             const id = push(child(ref(database), 'messages')).key;
@@ -72,6 +73,7 @@ try {
                 var str1 = str.replaceAll("<","&lt;")
                 var str2 = str1.replaceAll(">","&gt;")
                 var message = str2;
+                var message = message_render(message);
                 var message = encrypt(message)
                 var name = myName;
                 const id = push(child(ref(database), 'messages')).key;

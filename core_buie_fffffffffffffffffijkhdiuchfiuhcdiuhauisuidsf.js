@@ -164,8 +164,8 @@ send.addEventListener('click', (e) => {
         set(ref(database, 'messages/'+ cusid + '/' + id), {
             email:myEmail,
             allow:friend,
-            type:"new-encrypted",
-            message: message,
+            type:"message",
+            message: message_render(message),
             name:myName,
             date: Date.now(),
             dname: cusid
@@ -189,8 +189,8 @@ send2.addEventListener("keydown", (e) => {
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 email:myEmail,
                 allow:friend,
-                type:"new-encrypted",
-                message: message,
+                type:"message",
+                message: message_render(message),
                 name:myName,
                 date: Date.now(),
                 dname: cusid
