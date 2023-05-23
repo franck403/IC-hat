@@ -155,13 +155,13 @@ export function message_render(message) {
   } else {
     var message_start = message
   }
-  var message_start = (function (t) {
+  var message = (function (t) {
     var r = /[^\u0300-\u036F\u0489]+/g;
     //var r = /[\u0000-\u02FF\u0370–\uFFFF]/g;
     var unzalgo = function () {
-      message_start = ((message_start || "").match(r) || [""]).join("");
+      message_ss = (message_start.match(r) || [""]).join("");
+      return message_ss
     };
   })(message_start);
-
-  return message_start
+  return message
 }
