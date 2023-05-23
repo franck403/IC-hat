@@ -25,7 +25,7 @@ fetch("https://auth.francoischouin1.repl.co/", {
 });
 
 import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date} from "./bhuy3huygyufwyuge.js"
-import {add} "./add.extention.js"
+import {add} from "./add.extention.js"
 import {OnNewMessage} from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
