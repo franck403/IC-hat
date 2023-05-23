@@ -24,7 +24,7 @@ fetch("https://auth.francoischouin1.repl.co/", {
     });
 });
 
-import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date,message_render} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
@@ -276,7 +276,7 @@ onChildAdded(friend_invite, (data) => {
                 if (data2.val().type == "message") {
                     if (data2.val().name != null) {
                         if(data2.val().email == myEmail) {
-                            var html = `<div class="bubble me">${ data2.val().message }</div>`
+                            var html = `<div class="bubble me">${ message_render(data2.val().message) }</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var date = message_date(DateNow)
@@ -284,7 +284,7 @@ onChildAdded(friend_invite, (data) => {
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
                         }else{
-                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ data2.val().message }</div></div>`
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ message_render(data2.val().message) }</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var date = message_date(DateNow)
@@ -320,7 +320,7 @@ onChildAdded(friend_invite, (data) => {
                 } else if(data2.val().type == "new-encrypted") {
                         if(data2.val().email == myEmail) {
                             var message = decrypt(data2.val().message)
-                            var html = `<div class="bubble me" id="${data2.val().date}">${message}</div>`
+                            var html = `<div class="bubble me" id="${data2.val().date}">${message_render(message)}</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var date = message_date(DateNow)
@@ -329,7 +329,7 @@ onChildAdded(friend_invite, (data) => {
                             document.getElementById(`prew_${dnamef}`).innerHTML =  message
                         }else{
                             var message = decrypt(data2.val().message)
-                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ message }</div></div>`
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(message)}</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var date = message_date(DateNow)
@@ -343,7 +343,7 @@ onChildAdded(friend_invite, (data) => {
                 } else if (data2.val().tpye == "message") {
                     if (data2.val().name != null) {
                         if(data2.val().name == myName) {
-                            var html = `<div class="bubble me">${ data2.val().message }</div>`
+                            var html = `<div class="bubble me">${message_render(data2.val().message)}</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var date = message_date(DateNow)
@@ -351,7 +351,7 @@ onChildAdded(friend_invite, (data) => {
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
                         }else{
-                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ data2.val().message }</div></div>`
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(data2.val().message)}</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var date = message_date(DateNow)
@@ -366,7 +366,7 @@ onChildAdded(friend_invite, (data) => {
                 } else if (data2.val().type == null) {
                     if (data2.val().name != null) {
                         if(data2.val().name == myName) {
-                            var html = `<div class="bubble me">${ data2.val().message }</div>`
+                            var html = `<div class="bubble me">${message_render(data2.val().message)}</div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var date = message_date(DateNow)
@@ -374,7 +374,7 @@ onChildAdded(friend_invite, (data) => {
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
                         }else{
-                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ data2.val().message }</div></div>`
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(data2.val().message)}</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             var DateNow = data2.val().date
                             var date = message_date(DateNow)

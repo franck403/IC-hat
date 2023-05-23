@@ -146,3 +146,14 @@ export function message_date(DateNow) {
   }
   return date
 }
+
+
+export function messenger_render(mesage) {
+  if (message.length < 200) {
+    var message_end = message.slice(200);
+    var message_start = message.replace(message_end)
+  } else {
+    var message_start = message
+  }
+  return message_start
+}
