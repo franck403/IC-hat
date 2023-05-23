@@ -148,7 +148,7 @@ export function message_date(DateNow) {
 }
 
 
-export function messenger_render(mesage) {
+export function message_render(mesage) {
   if (message.length < 200) {
     var message_end = message.slice(200);
     var message_start = message.replace(message_end)
