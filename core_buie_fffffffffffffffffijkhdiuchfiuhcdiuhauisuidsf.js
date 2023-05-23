@@ -153,23 +153,24 @@ send.addEventListener('click', (e) => {
     var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     if (document.getElementById('content').value != "" && fg.replace(/\s/g, '').length != 0) {
         var str = document.getElementById('content').value;
+        document.getElementById('content').value = "";
         var str1 = str.replaceAll("<","&lt;")
         var str2 = str1.replaceAll(">","&gt;")
         var message = str2;
-        var name = myEmail;
+        var message = encrypt(message)
+        var name = myName;
         const id = push(child(ref(database), 'messages')).key;
         var friend = "none"
-        var cusid = document.getElementsByClassName('chat active-chat')[0].id
+        var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
         set(ref(database, 'messages/'+ cusid + '/' + id), {
-            email:name,
+            email:myEmail,
             allow:friend,
+            type:"new-encrypted",
             message: message,
-            type:"message",
             name:myName,
-            date:Date.now(),
-            dname:cusid
+            date: Date.now(),
+            dname: cusid
         });
-        document.getElementById('content').value = "";
     } else {}
 });
 send2.addEventListener("keydown", (e) => {
@@ -178,23 +179,24 @@ send2.addEventListener("keydown", (e) => {
         var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
         if (document.getElementById('content').value != "" && fg.replace(/\s/g, '').length != 0) {
             var str = document.getElementById('content').value;
+            document.getElementById('content').value = "";
             var str1 = str.replaceAll("<","&lt;")
             var str2 = str1.replaceAll(">","&gt;")
             var message = str2;
-            var name = myEmail;
+            var message = encrypt(message)
+            var name = myName;
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
-            var cusid = document.getElementsByClassName('chat active-chat')[0].id
+            var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
             set(ref(database, 'messages/'+ cusid + '/' + id), {
-                email:name,
+                email:myEmail,
                 allow:friend,
-                type:"message",
+                type:"new-encrypted",
                 message: message,
                 name:myName,
                 date: Date.now(),
                 dname: cusid
             });
-            document.getElementById('content').value = "";
         } else {}
     } else {}
 });
