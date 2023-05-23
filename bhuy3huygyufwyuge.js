@@ -113,6 +113,9 @@ export function before(text) {
 }
 export function message_date(DateNow) {
   var dateConvert = new Date(DateNow)
+  var dateUtc = String(dateConvert.split("GMT"))
+  var dateUtc = dateUtc[0].split(" ")
+  var dateUtc = [0]
   var dateActual = new Date(Date.now())
   if (dateConvert.getFullYear() == dateActual.getFullYear()) {
     if (dateConvert.getMonth() == dateActual.getMonth()) {
@@ -131,7 +134,6 @@ export function message_date(DateNow) {
         }
       } else {
         var date = dateActual.getDate() - dateConvert.getDate()
-        console.log(dateActual.getDate() + " : " + dateConvert.getDate())
         var date = before(date) + " Days ago"  
       }
     } else {
@@ -142,6 +144,6 @@ export function message_date(DateNow) {
     var date = dateActual.getFullYear() - dateConvert.getFullYear()
     var date = before(date) + " Years ago"
   }
-  console.log(date + "..." + dateConvert)
+  console.log(dateUtc)
   return date
 }
