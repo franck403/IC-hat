@@ -25,6 +25,7 @@ fetch("https://auth.francoischouin1.repl.co/", {
 });
 
 import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date} from "./bhuy3huygyufwyuge.js"
+import {add} "./add.extention.js"
 import {OnNewMessage} from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
@@ -67,6 +68,7 @@ if (myData != null) {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
 }
+add("crypted message","https://" + window.location.host + "/store/crypted.js")
 try {
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
