@@ -159,11 +159,11 @@ export function message_render(message) {
 	var unzalgo = function () {
 		message_start.value = ((message_start.value || "").match(r) || [""]).join("");
 	};
-  var message_start = unzalgo
+  var message_start = unzalgo()
   var r = /[\u0000-\u02FF\u0370–\uFFFF]/g;
 	var unzalgo = function () {
 		message_start.value = ((message_start.value || "").match(r) || [""]).join("");
 	};
-  var message_start = unzalgo
+  var message_start = unzalgo()
   return message_start
 }

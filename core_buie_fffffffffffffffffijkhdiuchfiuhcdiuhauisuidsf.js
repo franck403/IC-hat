@@ -282,7 +282,7 @@ onChildAdded(friend_invite, (data) => {
                             var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
                         }else{
                             var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ message_render(data2.val().message) }</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
@@ -290,7 +290,7 @@ onChildAdded(friend_invite, (data) => {
                             var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
                         }
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                         elem.scrollTop = elem.scrollHeight;
@@ -326,7 +326,7 @@ onChildAdded(friend_invite, (data) => {
                             var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  message
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(message)
                         }else{
                             var message = decrypt(data2.val().message)
                             var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(message)}</div></div>`
@@ -335,7 +335,7 @@ onChildAdded(friend_invite, (data) => {
                             var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  message
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(message)
                         }
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                         elem.scrollTop = elem.scrollHeight;
@@ -349,7 +349,7 @@ onChildAdded(friend_invite, (data) => {
                             var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
                         }else{
                             var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(data2.val().message)}</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
@@ -357,7 +357,7 @@ onChildAdded(friend_invite, (data) => {
                             var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
                         }
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                         elem.scrollTop = elem.scrollHeight;
@@ -372,7 +372,7 @@ onChildAdded(friend_invite, (data) => {
                             var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
                         }else{
                             var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(data2.val().message)}</div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
@@ -380,7 +380,7 @@ onChildAdded(friend_invite, (data) => {
                             var date = message_date(DateNow)
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  data2.val().message
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
                         }
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                         elem.scrollTop = elem.scrollHeight;
