@@ -390,7 +390,6 @@ onChildAdded(friend_invite, (data) => {
                 } else {
                     OnNewMessage.OnMessage(data2.val())
                 }
-                //bip()
             }
             else {}
         }
