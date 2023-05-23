@@ -162,6 +162,7 @@ export function message_render(message) {
       message_ss = (message_start.match(r) || [""]).join("");
       return message_ss
     };
+    return unzalgo()
   })(message_start);
   return message
 }
