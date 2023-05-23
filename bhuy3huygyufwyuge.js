@@ -131,7 +131,7 @@ export function message_date(DateNow) {
         }
       } else {
         var date = dateActual.getDay() - dateConvert.getDay()
-        var date = before(tex) + " Days ago"  
+        var date = before(date) + " Days ago"  
       }
     } else {
       var date = dateActual.getMonth() - dateConvert.getMonth()
