@@ -134,7 +134,7 @@ export function message_date(DateNow) {
         }
       } else {
         var date = dateActual.getDate() - dateConvert.getDate()
-        var date = before(date) + " Days ago"  
+        var date = before(date) + " Days ago"
       }
     } else {
       var date = dateActual.getMonth() - dateConvert.getMonth()
@@ -155,15 +155,13 @@ export function message_render(message) {
   } else {
     var message_start = message
   }
-  var r = /[^\u0300-\u036F\u0489]+/g;
-	var unzalgo = function () {
-		message_start = ((message_start).match(r) || [""]).join("");
-	};
-  var message_start = unzalgo()
-  var r = /[\u0000-\u02FF\u0370–\uFFFF]/g;
-	var unzalgo = function () {
-		message_start = ((message_start).match(r) || [""]).join("");
-	};
-  var message_start = unzalgo()
+  var message_start = (function (t) {
+    var r = /[^\u0300-\u036F\u0489]+/g;
+    //var r = /[\u0000-\u02FF\u0370–\uFFFF]/g;
+    var unzalgo = function () {
+      message_start = ((message_start || "").match(r) || [""]).join("");
+    };
+  })(message_start);
+
   return message_start
 }
