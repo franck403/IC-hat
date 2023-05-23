@@ -144,6 +144,5 @@ export function message_date(DateNow) {
     var date = dateActual.getFullYear() - dateConvert.getFullYear()
     var date = before(date) + " Years ago"
   }
-  console.log(dateUtc)
   return date
 }
