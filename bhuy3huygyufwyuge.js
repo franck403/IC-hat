@@ -162,6 +162,7 @@ export function message_render(message) {
     };
     return unzalgo()
   })(message_start);
+  console.log(message)
   if (message != undefined) {
     return message
   } else {
