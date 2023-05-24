@@ -47,8 +47,12 @@ const firebaseConfig = {
   appId: "1:720687529085:web:2d964e880c5e2398058514",
   measurementId: "G-YC8K0D7GLR"
 };
+import { getStorage } from "firebase/storage";
+
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const storage = getStorage(app);
+
 
 var myData = await getuser()
 if (myData != null) {
