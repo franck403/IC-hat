@@ -203,6 +203,7 @@ send2.addEventListener("keydown", (e) => {
 var add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
     var name = myEmail;
+    var file = docuemnt.getElementById("file_input").files[0]
     var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
     var reader = new FileReader();
     reader.onload = function () {
