@@ -210,7 +210,7 @@ add_file.addEventListener('click', (e) => {
         name:myName,
         friend:"none",
         type:"new-image",
-        message: "png;base64" + btoa(document.getElementById("file_input").files[0]),
+        message: "png;base64," + btoa(document.getElementById("file_input").files[0]),
         date:Date.now(),
         dname:cusid
     })
