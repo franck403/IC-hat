@@ -205,11 +205,14 @@ add_file.addEventListener('click', (e) => {
     var name = myEmail;
     const id = push(child(ref(database), 'messages')).key;
     var cusid = document.getElementsByClassName('chat active-chat')[0].id
+    var name_1 = document.getElementById("file_input").files[0].name
+    var name_2 = name_1.split(".")
+    var name = name_2[-1]
     set(ref(database, "messages/"+ cusid + "/" + id), {
         email: name,
         friend:"none",
         type:"new-image",
-        message: document.getElementById("file_input").files[0].name + ";base64" + btoa(document.getElementById("file_input").files[0]),
+        message: name + ";base64" + btoa(document.getElementById("file_input").files[0]),
         date:Date.now(),
         dname:cusid
     })
@@ -310,7 +313,7 @@ onChildAdded(friend_invite, (data) => {
                         document.getElementById(`time_${dnamef}`).innerHTML =  date
                         document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
                     }else{
-                        var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div><img class="type-img" src="${data2.val().message}"></img></div></div>`
+                        var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div><img class="type-img" src="data:image/${data2.val().message}"></img></div></div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         var DateNow = data2.val().date
                         var date = message_date(DateNow)
