@@ -205,21 +205,21 @@ add_file.addEventListener('click', (e) => {
     var name = myEmail;
     var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
     var reader = new FileReader();
-    reader.readAsText(file);
-    reader.onload = function (evt) {
+    reader.onload = function () {
         const id = push(child(ref(database), 'messages')).key;
         set(ref(database, "messages/"+ cusid + "/" + id), {
             email: name,
             name:myName,
             friend:"none",
             type:"new-image",
-            message: "png;base64," + btoa(evt.target.result),
+            message: "png;base64," + btoa(reader.result),
             date:Date.now(),
             dname:cusid
         })
         document.getElementById("file").style.display = "none";
         document.getElementById("file_input").value = "";
     }
+    reader.readAsBinaryString(file);
 });
 
 const form  = document.getElementById('add_image');
