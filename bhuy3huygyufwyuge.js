@@ -155,6 +155,7 @@ export function message_render(message) {
     var message_start = message
   }
   console.log(message_start)
+  console.log(message_end)
   var messages = (function (t) {
     var r = /[^\u0300-\u036F\u0489]+/g;
     //var r = /[\u0000-\u02FF\u0370–\uFFFF]/g;
@@ -162,7 +163,7 @@ export function message_render(message) {
       return (t.match(r) || [""]).join("");
     };
     return unzalgo()
-  })(message_start);
+  })(message);
   console.log(messages)
   if (messages != undefined) {
     return messages
