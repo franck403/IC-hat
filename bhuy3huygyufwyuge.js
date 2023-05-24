@@ -168,7 +168,6 @@ export function message_render(message) {
     };
     return unzalgo()
   })(message);
-  console.log(messages)
   if (messages != undefined) {
     return messages
   } else {
