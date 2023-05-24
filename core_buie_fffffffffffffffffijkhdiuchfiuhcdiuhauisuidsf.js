@@ -204,12 +204,13 @@ var add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
     var name = myEmail;
     const id = push(child(ref(database), 'messages')).key;
-    var cusid = document.getElementsByClassName('chat active-chat')[0].id
+    var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
     var name_1 = document.getElementById("file_input").files[0].name
     var name_2 = name_1.split(".")
     var name = name_2[-1]
     set(ref(database, "messages/"+ cusid + "/" + id), {
         email: name,
+        name:myName,
         friend:"none",
         type:"new-image",
         message: name + ";base64" + btoa(document.getElementById("file_input").files[0]),
