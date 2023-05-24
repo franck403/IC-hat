@@ -148,9 +148,13 @@ export function message_date(DateNow) {
 
 
 export function message_render(message) {
-  if (message.length < 200) {
+  if (message.length > 200) {
     var message_end = message.slice(200);
-    var message_start = message.replace(message_end)
+    if (message_end != "") {
+      var message_start = message.replace(message_end)
+    } else {      
+      var message_start = message
+    }
   } else {
     var message_start = message
   }
