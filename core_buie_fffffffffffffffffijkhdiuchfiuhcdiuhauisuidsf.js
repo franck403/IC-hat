@@ -204,11 +204,7 @@ var add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
     var name = myEmail;
     var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-    var name_1 = document.getElementById("file_input").files[0]
     const id = push(child(ref(database), 'messages')).key;
-    var name_2 = name_1.name.split(".")
-    var name = name_2[-1]
-    console.log(name + ";base64" + btoa(document.getElementById("file_input").files[0]))
     set(ref(database, "messages/"+ cusid + "/" + id), {
         email: name,
         name:myName,
