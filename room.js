@@ -6,7 +6,7 @@ function room(id){
     }
     var old1 = document.getElementsByClassName("write")[0].setAttribute("class","write write-active")
     var old2 = document.getElementsByClassName("chat active-chat")[0]
-    var old3 = document.getElementsByClassName("top")[0].setAttribute("class","top top-active")
+    
     var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class","mobile mobile-active")
     var old5 = document.getElementsByClassName("mobile-frame")[0].setAttribute("class","mobile-frame mobile-frame-active")
     var new1 = document.getElementById(id)
@@ -45,7 +45,6 @@ send_by_enter.addEventListener('click', spam_event(spam_database));
 function mobile() {
     var old1 = document.getElementsByClassName("write write-active")[0].setAttribute("class","write")
     var old2 = document.getElementsByClassName("chat active-chat")[0].setAttribute("class","chat")
-    var old3 = document.getElementsByClassName("top top-active")[0].setAttribute("class","top")
     var old4 = document.getElementsByClassName("mobile mobile-active")[0].setAttribute("class","mobile")
     var old5 = document.getElementsByClassName("mobile-frame mobile-frame-active")[0].setAttribute("class","mobile-frame")
 }

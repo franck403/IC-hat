@@ -830,4 +830,7 @@ body {
     .mobile-frame-active {
         z-index: 4;
     }
+    .people-active {
+        z-index: 4;
+    }
 }
