@@ -204,18 +204,22 @@ var add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
     var name = myEmail;
     var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-    const id = push(child(ref(database), 'messages')).key;
-    set(ref(database, "messages/"+ cusid + "/" + id), {
-        email: name,
-        name:myName,
-        friend:"none",
-        type:"new-image",
-        message: "png;base64," + btoa(document.getElementById("file_input").files[0]),
-        date:Date.now(),
-        dname:cusid
-    })
-    document.getElementById("file").style.display = "none";
-    document.getElementById("file_input").value = "";
+    var reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = function (evt) {
+        const id = push(child(ref(database), 'messages')).key;
+        set(ref(database, "messages/"+ cusid + "/" + id), {
+            email: name,
+            name:myName,
+            friend:"none",
+            type:"new-image",
+            message: "png;base64," + btoa(evt.target.result),
+            date:Date.now(),
+            dname:cusid
+        })
+        document.getElementById("file").style.display = "none";
+        document.getElementById("file_input").value = "";
+    }
 });
 
 const form  = document.getElementById('add_image');
