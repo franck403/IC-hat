@@ -47,12 +47,9 @@ const firebaseConfig = {
   appId: "1:720687529085:web:2d964e880c5e2398058514",
   measurementId: "G-YC8K0D7GLR"
 };
-import { getStorage } from "firebase/storage";
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const storage = getStorage(app);
-
 
 var myData = await getuser()
 if (myData != null) {
@@ -205,37 +202,19 @@ send2.addEventListener("keydown", (e) => {
 
 var add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
-    const formData = new FormData();
-    
-    const fileField = document.getElementById("file_input").files[0]
-    formData.append('file', fileField)
-    var storageId = document.getElementsByClassName('active').id
-    var url;
-    fetch("https://fireimage.francoischouin1.repl.co/success", {
-        method: "POST",
-        body: formData
+    var name = myEmail;
+    const id = push(child(ref(database), 'messages')).key;
+    var cusid = document.getElementsByClassName('chat active-chat')[0].id
+    set(ref(database, "messages/"+ cusid + "/" + id), {
+        email: name,
+        friend:"none",
+        type:"new-image",
+        message: document.getElementById("file_input").files[0].name + ";base64" + btoa(document.getElementById("file_input").files[0]),
+        date:Date.now(),
+        dname:cusid
     })
-    .then((response) => response.text())
-    .then((data) => {
-        var url = data
-        var name = myEmail;
-        const id = push(child(ref(database), 'messages')).key;
-        var cusid = document.getElementsByClassName('chat active-chat')[0].id
-        set(ref(database, "messages/"+ cusid + "/" + id), {
-            email: name,
-            friend:"none",
-            type:"image",
-            message: url,
-            date:Date.now(),
-            dname:cusid
-        });    
-    })
-    .catch((error) => {
-        console.error("Error:", error);
-    });
     document.getElementById("file").style.display = "none";
     document.getElementById("file_input").value = "";
-
 });
 
 const form  = document.getElementById('add_image');
@@ -321,6 +300,27 @@ onChildAdded(friend_invite, (data) => {
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
+                } else if (data2.val().type == "new-image") {
+                    if(data2.val().email == myEmail) {
+                        var html = `<div class="bubble me"><img class="type-img" src="data:image/${data2.val().message}"></img></div>`
+                        const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                        var DateNow = data2.val().date
+                        var date = message_date(DateNow)
+                        d1.innerHTML = d1.innerHTML + html
+                        document.getElementById(`time_${dnamef}`).innerHTML =  date
+                        document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
+                    }else{
+                        var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div><img class="type-img" src="${data2.val().message}"></img></div></div>`
+                        const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                        var DateNow = data2.val().date
+                        var date = message_date(DateNow)
+                        d1.innerHTML = d1.innerHTML + html
+                        document.getElementById(`time_${dnamef}`).innerHTML =  date
+                        document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
+                    }
+                    var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                    elem.scrollTop = elem.scrollHeight;
+                    elem.scrollTop = elem.scrollHeight;
                 } else if(data2.val().type == "new-encrypted") {
                         if(data2.val().email == myEmail) {
                             var message = decrypt(data2.val().message)
