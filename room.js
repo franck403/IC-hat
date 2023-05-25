@@ -61,7 +61,7 @@ function dropHandler(ev) {
         // If dropped items aren't files, reject them
         if (item.kind === "file") {
           const file = item.getAsFile();
-          console.log(`${item.kind}… file[${i}].name = ${file.name}`);
+          console.log(`${item}… file[${i}].name = ${file.name}`);
         }
       });
     } else {
