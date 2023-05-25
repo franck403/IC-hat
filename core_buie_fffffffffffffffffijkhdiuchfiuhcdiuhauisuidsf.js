@@ -24,7 +24,7 @@ fetch("https://auth.francoischouin1.repl.co/", {
     });
 });
 
-import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date,message_render} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date,message_render,image_render} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
@@ -162,7 +162,7 @@ send.addEventListener('click', (e) => {
         const id = push(child(ref(database), 'messages')).key;
         var friend = "none"
         var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-        document.getElementById("add_image").click()
+        image_render(myEmail,myName)
         set(ref(database, 'messages/'+ cusid + '/' + id), {
             email:myEmail,
             allow:friend,
@@ -188,7 +188,7 @@ send2.addEventListener("keydown", (e) => {
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-            document.getElementById("add_image").click()
+            image_render(myEmail,myName)
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 email:myEmail,
                 allow:friend,
@@ -204,29 +204,7 @@ send2.addEventListener("keydown", (e) => {
 
 var add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
-    var name = myEmail;
-    var filelist = document.getElementById("file_input").files
-    Object.keys(filelist).forEach(key => {
-        console.log(key)
-        var file = document.getElementById("file_input").files[key]
-        var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-        var reader = new FileReader();
-        reader.onload = function () {
-            const id = push(child(ref(database), 'messages')).key;
-            set(ref(database, "messages/"+ cusid + "/" + id), {
-                email: name,
-                name:myName,
-                friend:"none",
-                type:"new-image",
-                message: "png;base64," + btoa(reader.result),
-                date:Date.now(),
-                dname:cusid
-            })
-            document.getElementById("file").style.display = "none";
-            document.getElementById("file_input").value = "";
-        }
-        reader.readAsBinaryString(file);
-    });
+    image_render(myEmail,myName)
 });
 
 const form  = document.getElementById('add_image');
