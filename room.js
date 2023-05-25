@@ -62,7 +62,7 @@ function dropHandler(ev) {
         if (item.kind === "file") {
             var t = item.type
             console.log(t)
-            console.log(t.search("image"))
+            console.log(String(t).search("image"))
             if (t.search("image") != 0) {
               const file = item.getAsFile();
               document.getElementById("file_input").files = document.getElementById("file_input").files + e.dataTransfer.files;
