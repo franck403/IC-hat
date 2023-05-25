@@ -203,24 +203,27 @@ send2.addEventListener("keydown", (e) => {
 var add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
     var name = myEmail;
-    var file = document.getElementById("file_input").files[0]
-    var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-    var reader = new FileReader();
-    reader.onload = function () {
-        const id = push(child(ref(database), 'messages')).key;
-        set(ref(database, "messages/"+ cusid + "/" + id), {
-            email: name,
-            name:myName,
-            friend:"none",
-            type:"new-image",
-            message: "png;base64," + btoa(reader.result),
-            date:Date.now(),
-            dname:cusid
-        })
-        document.getElementById("file").style.display = "none";
-        document.getElementById("file_input").value = "";
-    }
-    reader.readAsBinaryString(file);
+    var filelist = document.getElementById("file_input").files
+    Object.keys(filelist).forEach(key => {
+        var file = docuemnt.getElementById("file_input").files[key]
+        var cusid = document.getElementsByClassName('chat active-chat')[o].dataset.chat
+        var reader = new FileReader();
+        reader.onload = function () {
+            const id = push(child(ref(database), 'messages')).key;
+            set(ref(database, "messages/"+ cusid + "/" + id), {
+                email: name,
+                name:myName,
+                friend:"none",
+                type:"new-image",
+                message: "png;base64," + btoa(reader.result),
+                date:Date.now(),
+                dname:cusid
+            })
+            document.getElementById("file").style.display = "none";
+            document.getElementById("file_input").value = "";
+        }
+        reader.readAsBinaryString(file);
+    });
 });
 
 const form  = document.getElementById('add_image');
