@@ -61,7 +61,7 @@ function dropHandler(ev) {
         // If dropped items aren't files, reject them
         if (item.kind === "file") {
             var t = item.type
-            if (t.find("image") != 0) {
+            if (t.search("image") != 0) {
               const file = item.getAsFile();
               document.getElementById("file_input").files = document.getElementById("file_input").files + e.dataTransfer.files;
               console.log(`${item.type}… file[${i}].name = ${file.name}`);
