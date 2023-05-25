@@ -118,7 +118,7 @@ export function message_date(DateNow) {
   var dateActual = new Date(Date.now())
   if (dateConvert.getFullYear() == dateActual.getFullYear()) {
     if (dateConvert.getMonth() == dateActual.getMonth()) {
-      if (dateConvert.getDay() == dateActual.getDay()) {
+      if (dateConvert.getDate() == dateActual.getDate()) {
         if (dateConvert.getHours() == dateActual.getHours()) {
           if (dateConvert.getMinutes() == dateActual.getMinutes()) {
             var date = dateActual.getSeconds() - dateConvert.getSeconds()
