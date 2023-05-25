@@ -162,6 +162,7 @@ send.addEventListener('click', (e) => {
         const id = push(child(ref(database), 'messages')).key;
         var friend = "none"
         var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+        document.getElementById("file").click()
         set(ref(database, 'messages/'+ cusid + '/' + id), {
             email:myEmail,
             allow:friend,
@@ -187,6 +188,7 @@ send2.addEventListener("keydown", (e) => {
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+            document.getElementById("file").click()
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 email:myEmail,
                 allow:friend,
