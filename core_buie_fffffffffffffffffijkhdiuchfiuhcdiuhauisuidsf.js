@@ -207,6 +207,7 @@ add_file.addEventListener('click', (e) => {
     var name = myEmail;
     var filelist = document.getElementById("file_input").files
     Object.keys(filelist).forEach(key => {
+        console.log(key)
         var file = document.getElementById("file_input").files[key]
         var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
         var reader = new FileReader();
