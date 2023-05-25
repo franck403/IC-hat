@@ -48,3 +48,9 @@ function mobile() {
     var old4 = document.getElementsByClassName("mobile mobile-active")[0].setAttribute("class","mobile")
     var old5 = document.getElementsByClassName("mobile-frame mobile-frame-active")[0].setAttribute("class","mobile-frame")
 }
+
+
+function allowDrop() {
+    docuemnt.getElementById("content_file").classList.add("content_file-active")
+    document.getElementById("content_file").classList.remove('content_file-active');
+}
