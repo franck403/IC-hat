@@ -166,6 +166,5 @@ export function message_render(message) {
   }
 
   var message_start = message_good.substring(1,1000);
-
   return message_start
 }
