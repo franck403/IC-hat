@@ -157,7 +157,7 @@ export function message_render(message) {
       return (t.match(r) || [""]).join("");
     };
     return unzalgo()
-  })(message_start);
+  })(message);
   if (messages != undefined) {
     message_good = messages
   } else {
