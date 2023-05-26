@@ -25,8 +25,8 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 export function image_render(email,name) {
-    var name = email;
     var myName = name
+    var name = email;
     var filelist = document.getElementById("file_input").files
     Object.keys(filelist).forEach(key => {
         var file = document.getElementById("file_input").files[key]
