@@ -159,9 +159,9 @@ export function message_render(message) {
     return unzalgo()
   })(message);
   if (messages != undefined) {
-    message_good = messages
+    var message_good = messages
   } else {
-    message_good = message
+    var message_good = message
   }
 
   if (message_good.length > 200) {
