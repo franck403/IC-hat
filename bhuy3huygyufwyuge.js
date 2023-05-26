@@ -130,8 +130,6 @@ export function message_date(DateNow) {
         } else {
           var date = dateActual.getHours() - dateConvert.getHours()
           var date = before(date) + " Hours ago"
-          console.log(dateActual.getHours() + " : " + dateConvert.getHours()
-          )
         }
       } else {
         var date = dateActual.getDate() - dateConvert.getDate()
