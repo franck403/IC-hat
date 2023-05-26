@@ -152,28 +152,20 @@ export function message_date(DateNow) {
 export function message_render(message) {
   var messages = (function (t) {
     var r = /[^\u0300-\u036F\u0489]+/g;
-    //var r = /[\u0000-\u02FF\u0370–\uFFFF]/g;
+    var c = /[\u0000-\u02FF\u0370–\uFFFF]/g;
     var unzalgo = function () {
-      return (t.match(r) || [""]).join("");
+      var h = (t.match(r) || [""]).join("");
+      return (h.match(c) || [""]).join("");
     };
     return unzalgo()
   })(message);
-  if (messages != undefined) {
+  if (messages != undefined && messages != "") {
     var message_good = messages
   } else {
     var message_good = message
   }
 
-  if (message_good.length > 200) {
-    var message_end = message_good.slice(200);
-    console.log(message_end)
-    if (message_end != "") {
-      var message_start = message_good.replace(message_end,"")
-    } else {      
-      var message_start = message_good
-    }
-  } else {
-    var message_start = message_good
-  }
+  var message_start = message_good.substring(1,1000);
+
   return message_start
 }
