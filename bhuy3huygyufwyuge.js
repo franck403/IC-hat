@@ -150,6 +150,7 @@ export function message_date(DateNow) {
 
 
 export function message_render(message) {
+  console.log(message.length)
   if (message.length > 200) {
     var message_end = message.slice(200);
     if (message_end != "") {
