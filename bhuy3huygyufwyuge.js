@@ -25,6 +25,7 @@ export function removeloader() {
 }
 
 export function encrypt(text) {
+  console.log(text)
   return cryptoJs.enc.Base64.stringify(cryptoJs.enc.Utf8.parse(text));
 };
 
