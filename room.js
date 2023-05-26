@@ -60,6 +60,7 @@ function dropHandler(ev) {
       [...ev.dataTransfer.items].forEach((item, i) => {
         // If dropped items aren't files, reject them
         if (item.kind === "file") {
+          console.log(ev.dataTransfer.files)
             var imageTypes = ['image/png', 'image/gif', 'image/bmp', 'image/jpeg'];
             if (imageTypes.includes(item.type) != 0) {
               const file = item.getAsFile();
