@@ -151,10 +151,10 @@ export function message_date(DateNow) {
 
 export function message_render(message) {
   if (message.length > 200) {
-    console.log(message.length)
     var message_end = message.slice(200);
+    console.log(message_end)
     if (message_end != "") {
-      var message_start = message.replace(message_end)
+      var message_start = message.replace(message_end,"")
     } else {      
       var message_start = message
     }
@@ -168,7 +168,7 @@ export function message_render(message) {
       return (t.match(r) || [""]).join("");
     };
     return unzalgo()
-  })(message);
+  })(message_start);
   if (messages != undefined) {
     return messages
   } else {
