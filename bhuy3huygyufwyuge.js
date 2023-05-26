@@ -150,10 +150,8 @@ export function message_date(DateNow) {
 export function message_render(message) {
   var messages = (function (t) {
     var r = /[^\u0300-\u036F\u0489]+/g;
-    var c = /[\u0000-\u02FF\u0370–\uFFFF]/g;
     var unzalgo = function () {
-      var h = (t.match(r) || [""]).join("");
-      return (h.match(c) || [""]).join("");
+      return (t.match(r) || [""]).join("");
     };
     return unzalgo()
   })(message);
