@@ -175,4 +175,5 @@ export function message_render(message) {
   } else {
     var message_start = message_good
   }
+  return message_start
 }
