@@ -24,6 +24,32 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
+export function image_render(email,name) {
+    var name = email;
+    var myName = name
+    var filelist = document.getElementById("file_input").files
+    Object.keys(filelist).forEach(key => {
+        var file = document.getElementById("file_input").files[key]
+        var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+        var reader = new FileReader();
+        reader.onload = function () {
+            const id = push(child(ref(database), 'messages')).key;
+            set(ref(database, "messages/"+ cusid + "/" + id), {
+                email: name,
+                name:myName,
+                friend:"none",
+                type:"new-image",
+                message: "png;base64," + btoa(reader.result),
+                date:Date.now(),
+                dname:cusid
+            })
+            document.getElementById("file").style.display = "none";
+            document.getElementById("file_input").value = "";
+        }
+        reader.readAsBinaryString(file);
+    });
+  }
+
 try {
     var myData = await getuser()
     var myData = JSON.parse(myData)
@@ -52,6 +78,7 @@ try {
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+            image_render(myEmail,myName)
             set(ref(database, 'messages/'+ cusid + '/' + id), {
                 email:myEmail,
                 allow:friend,
@@ -79,6 +106,7 @@ try {
                 const id = push(child(ref(database), 'messages')).key;
                 var friend = "none"
                 var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+                image_render(myEmail,myName)
                 set(ref(database, 'messages/'+ cusid + '/' + id), {
                     email:myEmail,
                     allow:friend,
