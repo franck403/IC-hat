@@ -24,7 +24,7 @@ fetch("https://auth.francoischouin1.repl.co/", {
     });
 });
 
-import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date,message_render,image_render} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date,message_render} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
@@ -68,7 +68,31 @@ if (myData != null) {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
 }
-
+export function image_render(email,name) {
+    var name = email;
+    var myName = name
+    var filelist = document.getElementById("file_input").files
+    Object.keys(filelist).forEach(key => {
+        var file = document.getElementById("file_input").files[key]
+        var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+        var reader = new FileReader();
+        reader.onload = function () {
+            const id = push(child(ref(database), 'messages')).key;
+            set(ref(database, "messages/"+ cusid + "/" + id), {
+                email: name,
+                name:myName,
+                friend:"none",
+                type:"new-image",
+                message: "png;base64," + btoa(reader.result),
+                date:Date.now(),
+                dname:cusid
+            })
+            document.getElementById("file").style.display = "none";
+            document.getElementById("file_input").value = "";
+        }
+        reader.readAsBinaryString(file);
+    });
+  }
 try {
 const send = document.getElementById("send");
 const send2 = document.getElementById("content");
