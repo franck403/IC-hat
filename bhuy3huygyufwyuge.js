@@ -161,6 +161,6 @@ export function message_render(message) {
     var message_good = message
   }
   console.log(message_good)
-  var message_start = message_good.substring(1,1000);
+  var message_start = message_good.substring(0,1000);
   return message_start
 }
