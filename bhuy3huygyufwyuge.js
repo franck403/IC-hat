@@ -150,17 +150,6 @@ export function message_date(DateNow) {
 
 
 export function message_render(message) {
-  if (message.length > 200) {
-    var message_end = message.slice(200);
-    console.log(message_end)
-    if (message_end != "") {
-      var message_start = message.replace(message_end,"")
-    } else {      
-      var message_start = message
-    }
-  } else {
-    var message_start = message
-  }
   var messages = (function (t) {
     var r = /[^\u0300-\u036F\u0489]+/g;
     //var r = /[\u0000-\u02FF\u0370–\uFFFF]/g;
@@ -170,8 +159,20 @@ export function message_render(message) {
     return unzalgo()
   })(message_start);
   if (messages != undefined) {
-    return messages
+    message_good = messages
   } else {
-    return message_start
+    message_good = message
+  }
+
+  if (message_good.length > 200) {
+    var message_end = message_good.slice(200);
+    console.log(message_end)
+    if (message_end != "") {
+      var message_start = message_good.replace(message_end,"")
+    } else {      
+      var message_start = message_good
+    }
+  } else {
+    var message_start = message_good
   }
 }
