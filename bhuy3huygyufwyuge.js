@@ -150,8 +150,8 @@ export function message_date(DateNow) {
 
 
 export function message_render(message) {
-  console.log(message.length)
   if (message.length > 200) {
+    console.log(message.length)
     var message_end = message.slice(200);
     if (message_end != "") {
       var message_start = message.replace(message_end)
