@@ -25,7 +25,6 @@ export function removeloader() {
 }
 
 export function encrypt(text) {
-  console.log(text)
   return cryptoJs.enc.Base64.stringify(cryptoJs.enc.Utf8.parse(text));
 };
 
@@ -161,8 +160,6 @@ export function message_render(message) {
   } else {
     var message_good = message
   }
-  console.log(message_good)
   var message_start = message_good.substring(0,1000);
-  console.log(message_start)
   return message_start
 }
