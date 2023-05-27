@@ -84,12 +84,14 @@ function search() {
 	let x = document.getElementsByClassName('people-person');
 	
 	for (i = 0; i < x.length; i++) {
-		if (!x[i].innerHTML.toLowerCase().includes(input)) {
-			x[i].style.display="none";
-		}
-		else {
-			x[i].style.display="list-item";				
-		}
+    if (!x[i].classList.contains("db")) {
+      if (!x[i].innerHTML.toLowerCase().includes(input)) {
+        x[i].style.display="none";
+      }
+      else {
+        x[i].style.display="list-item";				
+      }
+    }
 	}
   let x_test = 0
   let x_need = Object.keys(x).length
