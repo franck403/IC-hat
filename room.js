@@ -3,7 +3,7 @@ function room(id){
         var new2 = document.getElementById(id + "_c")
     } else if (id.search("new") != -1) {
       var research = id.replace("new")
-      var fg = document.getElementById('friend_email').value
+      var fg = document.getElementById('search').value
       var myEmail = localStorage.getItem("email")
       var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
       if (document.getElementById('search_bar').value != "" && fg.replace(/\s/g, '').length != 0) {
@@ -22,8 +22,8 @@ function room(id){
           }
           set(ref(database, 'messages/' + customid + "/"), data);
           set(ref(database, 'users_friend/' + customid), data);
+          var new2 = document.getElementById("customid" + "c")
           document.getElementById('search_bar').value = ""
-          modal.style.display = "none";
       } else {}
     } else {
         var new2 = document.getElementById("room_" + id)
