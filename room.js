@@ -103,29 +103,19 @@ function search() {
     document.getElementById('search_bar').disabled
     fetch('https://auth.francoischouin1.repl.co/user/search?name=' + input)
       .then((response)=>response.json())
-      .then((responseJson)=>{() => {
+      .then((responseJson)=>{
         document.getElementById('search_bar').removeAttribute("disable")
-        let z = document.getElementsByClassName('people-person db');
         var html = `
-        <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-d-chat="${data.val().dname}" id="${data.val().dname}">
+        <li onclick="room('new')" class="people-person db" data-name="" data-d-chat="" id="">
         <img src="img/default.png" class="people-img"alt="picture" />
-        <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
-        <p id="time_${data.val().dname}" class="people-time"></p>
-        <p id="prew_${data.val().dname}" class="people-preview"></p>
+        <p id="name_" class="people-name">${db_name}</p>
+        <p id="time_" class="people-time"></p>
+        <p id="prew_" class="people-preview"></p>
         </li>`
-        // chat_el_box
-        var html_chat = `
-        <div class="chat" id="room_${data.val().dname}" data-chat="${data.val().dname}">
-        <span></span>
-        </div>`
-        const d1 = document.getElementById("chat_el_box")
         const d2 = document.getElementById("people")
-        d1.innerHTML = d1.innerHTML + html_chat
         d2.innerHTML = d2.innerHTML + html
-        const dnamef = data.val().dname
-
         return responseJson
-      }});
+    });
   } else {
     console.log("[search core] Searching Person in friend...")
     let z = document.getElementsByClassName('people-person db');
