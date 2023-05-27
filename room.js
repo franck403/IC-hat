@@ -105,17 +105,21 @@ function search() {
       .then((response)=>response.json())
       .then((responseJson)=>{
         document.getElementById('search_bar').removeAttribute("disable")
-        var html = `
-        <li onclick="room('new')" class="people-person db" data-name="" data-d-chat="" id="">
-        <img src="img/default.png" class="people-img"alt="picture" />
-        <p id="name_" class="people-name">${db_name}</p>
-        <p id="time_" class="people-time"></p>
-        <p id="prew_" class="people-preview"></p>
-        </li>`
-        const d2 = document.getElementById("people")
-        d2.innerHTML = d2.innerHTML + html
-        return responseJson
-    });
+        var list = responseJson
+        Object.keys(list).forEach(key => {
+          var db_name = list[key]
+          var db_name = db_name["email"]
+          var html = `
+          <li onclick="room('new')" class="people-person db" data-name="" data-d-chat="" id="">
+          <img src="img/default.png" class="people-img"alt="picture" />
+          <p id="name_" class="people-name">${db_name}</p>
+          <p id="time_" class="people-time"></p>
+          <p id="prew_" class="people-preview"></p>
+          </li>`
+          const d2 = document.getElementById("people")
+          d2.innerHTML = d2.innerHTML + html
+        });
+      });
   } else {
     console.log("[search core] Searching Person in friend...")
     let z = document.getElementsByClassName('people-person db');
