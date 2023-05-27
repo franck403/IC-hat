@@ -138,6 +138,9 @@ function search() {
     fetch('https://auth.francoischouin1.repl.co/user/search?name=' + input)
       .then((response)=>response.json())
       .then((responseJson)=>{
+        for (i = 0; i < z.length; i++) {
+          z[i].remove()
+        }    
         document.getElementById('search_bar').removeAttribute("disable")
         var list = responseJson
         Object.keys(list).forEach(key => {
