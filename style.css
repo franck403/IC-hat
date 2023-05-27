@@ -725,15 +725,15 @@ body {
     display: none;
 }
 
-@media screen and (max-width: 970px){
+@media screen and (max-width: 970px){   
     .mobile {
         position: fixed;
-        top:10px;
-        left:10px;
+        top: 4px;
+        left: 20px;
         display: none;
-        z-index:5;
-        height: 50px;
-        width: 50px;
+        z-index: 5;
+        height: 40px;
+        width: 40px;
     }
     .mobile-active {
         display: block;
