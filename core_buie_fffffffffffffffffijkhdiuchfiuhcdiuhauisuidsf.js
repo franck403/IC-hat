@@ -56,6 +56,8 @@ if (myData != null) {
     var myData = JSON.parse(myData)
     var myEmail = myData.email
     var myName = myData.name
+    setCookie("email",myEmail)
+    setCookie("name",myName)
     document.getElementById("not-connected").remove()
     document.getElementById("wait-connected").remove()
 } else if (myData == null){
