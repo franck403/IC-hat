@@ -99,6 +99,9 @@ function search() {
 		if (x[i].style.display == "none") {
 			x_test++
 		}
+    if (!x[i].classList.contains("db")) {
+			x_test++
+    }
 	}
   if (x_test == x_need) {
     let z = document.getElementsByClassName('people-person db');
