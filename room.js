@@ -123,7 +123,7 @@ function search() {
 		if (x[i].style.display == "none") {
 			x_test++
 		}
-    if (!x[i].classList.contains("db")) {
+    if (x[i].classList.contains("db")) {
       x[i].remove()
 			x_test++
     }
