@@ -758,7 +758,7 @@ body {
     }
 
     .container .left input {
-        width: 89%;
+        width: calc(89% - 42px);
     }
     .container .left .top{
         width: 85%;
