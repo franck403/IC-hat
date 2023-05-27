@@ -718,7 +718,9 @@ body {
     cursor: pointer;
 }
 
-
+#to {
+    text-overflow: ellipsis;
+}
 .mobile-active {
     display: none;
 }
@@ -749,7 +751,10 @@ body {
     .container .left-active{
         z-index: 5;
     }
-
+    .container .top-active{
+        z-index: 1;
+        display:inline-flex;
+    }
     .container .left input {
         width: calc(100% - 52px);
     }
