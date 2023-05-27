@@ -16,7 +16,7 @@ function room(id){
     var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class","mobile mobile-active")
     var old5 = document.getElementsByClassName("mobile-frame")[0].setAttribute("class","mobile-frame mobile-frame-active")
     var old6 = document.getElementsByClassName("left left-active")[0].setAttribute("class","left")
-    var old7 = document.getElementsByClassName("top")[0].setAttribute("class","top top-active")
+    var old7 = document.getElementsByClassName("top")[1].setAttribute("class","top top-active")
     var new1 = document.getElementById(id)
     var new1 = document.getElementById(id)
     var to = document.querySelector("#to")
@@ -56,7 +56,7 @@ function mobile() {
   var old4 = document.getElementsByClassName("mobile mobile-active")[0].setAttribute("class","mobile")
   var old5 = document.getElementsByClassName("mobile-frame mobile-frame-active")[0].setAttribute("class","mobile-frame")
   var old6 = document.getElementsByClassName("left")[0].setAttribute("class","left left-active")
-  var old7 = document.getElementsByClassName("top top-active")[0].setAttribute("class","top")
+  var old7 = document.getElementsByClassName("top top-active")[1].setAttribute("class","top")
 }
 
 function dropHandler(ev) {
