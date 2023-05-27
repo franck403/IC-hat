@@ -56,9 +56,7 @@ function dropHandler(ev) {
     ev.preventDefault();
   
     if (ev.dataTransfer.items) {
-      // Use DataTransferItemList interface to access the file(s)
       [...ev.dataTransfer.items].forEach((item, i) => {
-        // If dropped items aren't files, reject them
         if (item.kind === "file") {
           console.log(ev.dataTransfer.files)
             var imageTypes = ['image/png', 'image/gif', 'image/bmp', 'image/jpeg'];
@@ -67,13 +65,31 @@ function dropHandler(ev) {
               document.getElementById("file_input").files = ev.dataTransfer.files;
               console.log(`${item.type}… file[${i}].name = ${file.name}`);
             }
+            else {
+              var d  = ev.dataTransfer.files
+              console.log(d)
+            }
         }
       });
     } else {
-      // Use DataTransfer interface to access the file(s)
       [...ev.dataTransfer.files].forEach((file, i) => {
         console.log(`… file[${i}].name = ${file.name}`);
       });
     }
-  }
-  
+}
+
+function search_revu() {
+	let input = document.getElementById('searchbar').value
+	input=input.toLowerCase();
+	let x = document.getElementsByClassName('animals');
+	
+	for (i = 0; i < x.length; i++) {
+		if (!x[i].innerHTML.toLowerCase().includes(input)) {
+			x[i].style.display="none";
+		}
+		else {
+			x[i].style.display="list-item";				
+		}
+	}
+}
+
