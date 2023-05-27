@@ -54,7 +54,7 @@ body {
     border-radius:30px;
     bottom: 70px;
     right: 24px;
-    z-index: 3;
+    z-index: 5;
 }
 .emoji-drawer .emoji-drawer-class-active {
     display: grid;
