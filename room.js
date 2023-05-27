@@ -91,8 +91,20 @@ function search() {
 			x[i].style.display="list-item";				
 		}
 	}
-  if (x[i].style.display == "none") {
-
+  let x_test = 0
+  let x_need = Object.keys(x).length
+  for (i = 0; i < x.length; i++) {
+		if (x[i].style.display == "none") {
+			x_test++
+		}
+	}
+  if (x_test == x_need) {
+    console.log("[search core] Searching Person in db...")
+    var user = fetch('https://auth.geoloup.com')
+      .then((response)=>response.json())
+      .then((responseJson)=>{return responseJson});
+  } else {
+    console.log("[search core] Searching Person in friend...")
   }
 }
 
