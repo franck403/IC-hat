@@ -100,9 +100,14 @@ function search() {
 	}
   if (x_test == x_need) {
     console.log("[search core] Searching Person in db...")
-    var user = fetch('https://auth.geoloup.com')
+    document.getElementById('search_bar').disabled = true
+    fetch('https://auth.francoischouin1.repl.co/user/search?name=' + input)
       .then((response)=>response.json())
-      .then((responseJson)=>{return responseJson});
+      .then((responseJson)=>{() => {
+        document.getElementById('search_bar').disabled = false
+        
+        return responseJson
+      }});
   } else {
     console.log("[search core] Searching Person in friend...")
   }
