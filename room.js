@@ -99,6 +99,10 @@ function search() {
 		}
 	}
   if (x_test == x_need) {
+    let z = document.getElementsByClassName('people-person db');
+    for (i = 0; i < z.length; i++) {
+      z[i].remove()
+    }
     console.log("[search core] Searching Person in db...")
     document.getElementById('search_bar').disabled
     fetch('https://auth.francoischouin1.repl.co/user/search?name=' + input)
