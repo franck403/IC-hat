@@ -170,6 +170,7 @@ friends.addEventListener('click', (e) => {
         }
         set(ref(database, 'messages/' + customid + "/"), data);
         set(ref(database, 'users_friend/' + customid), data);
+        console.log(document.getElementById('friend_email').value)
         document.getElementById('friend_email').value = "";
         modal.style.display = "none";
     } else {}
