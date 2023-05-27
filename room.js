@@ -100,11 +100,11 @@ function search() {
 	}
   if (x_test == x_need) {
     console.log("[search core] Searching Person in db...")
-    document.getElementById('search_bar').disabled = true
+    document.getElementById('search_bar').disabled
     fetch('https://auth.francoischouin1.repl.co/user/search?name=' + input)
       .then((response)=>response.json())
       .then((responseJson)=>{() => {
-        document.getElementById('search_bar').disabled = false
+        document.getElementById('search_bar').removeAttribute("disable")
         let z = document.getElementsByClassName('people-person db');
         var html = `
         <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-d-chat="${data.val().dname}" id="${data.val().dname}">
