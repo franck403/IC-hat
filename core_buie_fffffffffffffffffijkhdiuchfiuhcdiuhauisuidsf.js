@@ -270,7 +270,7 @@ onChildAdded(friend_invite, (data) => {
         d2.innerHTML = d2.innerHTML + html
         const dnamef = data.val().dname
         var romc = ref(database, `messages/${dnamef}`);
-        onChildAdded(romc, (data2) => {
+        onChildAdded(romc, async (data2) => {
             if (data2.val().name != null) {
             if (data2.val().message != null) {
                 if (data2.val().type == "message") {
