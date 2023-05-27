@@ -126,10 +126,6 @@ function search() {
       });
   } else {
     console.log("[search core] Searching Person in friend...")
-    let z = document.getElementsByClassName('people-person db');
-    for (i = 0; i < z.length; i++) {
-      z[i].remove()
-    }
   }
 }
 
