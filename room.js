@@ -1,7 +1,7 @@
 function room(id){
     if (id == "geoloup_chat") {
         var new2 = document.getElementById(id + "_c")
-    } else if (id.search("new") == -1) {
+    } else if (id.search("new") != -1) {
       var research = id.replace("new")
       var fg = document.getElementById('friend_email').value
       var myEmail = localStorage.getItem("email")
