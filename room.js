@@ -3,30 +3,12 @@ function room(id){
         var new2 = document.getElementById(id + "_c")
     } else if (id.search("new") != -1) {
       var research = id.replace("new")
-      var fg = document.getElementById('search_bar').value
-      var myEmail = localStorage.getItem("email")
-      var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-      if (document.getElementById('search_bar').value != "" && fg.replace(/\s/g, '').length != 0) {
-          var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
-          var before_friend = research + "," + myEmail
-          var after_friend = before_friend.split(",")
-          var endfriend =[]
-          after_friend.forEach(item => {
-              if (item.search("@" != -1)) {
-                  endfriend.push(item)
-              }
-          });
-          var data = {
-              allow:endfriend,
-              dname:customid
-          }
-          set(ref(database, 'messages/' + customid + "/"), data);
-          set(ref(database, 'users_friend/' + customid), data);
-          var new2 = document.getElementById("customid" + "c")
-          document.getElementById('search_bar').value = ""
-      } else {}
+      document.getElementById("friend_email").value = friend_email
+      document.getElementById("new_friend_add").click()
+      document.getElementById('search_bar').value = ""
+      var new2 = document.getElementById("room_" + id)
     } else {
-        var new2 = document.getElementById("room_" + id)
+      var new2 = document.getElementById("room_" + search)
     }
     var old1 = document.getElementsByClassName("write")[0].setAttribute("class","write write-active")
     var old2 = document.getElementsByClassName("chat active-chat")[0]
