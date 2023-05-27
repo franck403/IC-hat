@@ -79,9 +79,9 @@ function dropHandler(ev) {
 }
 
 function search() {
-	let input = document.getElementById('searchbar').value
+	let input = document.getElementById('search_bar').value
 	input=input.toLowerCase();
-	let x = document.getElementsByClassName('animals');
+	let x = document.getElementsByClassName('people-person');
 	
 	for (i = 0; i < x.length; i++) {
 		if (!x[i].innerHTML.toLowerCase().includes(input)) {
@@ -91,5 +91,8 @@ function search() {
 			x[i].style.display="list-item";				
 		}
 	}
+  if (x[i].style.display == "none") {
+
+  }
 }
 
