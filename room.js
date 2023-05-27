@@ -16,6 +16,7 @@ function room(id){
     
     var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class","mobile mobile-active")
     var old5 = document.getElementsByClassName("mobile-frame")[0].setAttribute("class","mobile-frame mobile-frame-active")
+    var old6 = document.getElementsByClassName("left left-active")[0].setAttribute("class","left")
     var new1 = document.getElementById(id)
     var new1 = document.getElementById(id)
     var to = document.querySelector("#to")
@@ -50,10 +51,11 @@ send_by_enter.addEventListener('click', spam_event(spam_database));
 
 
 function mobile() {
-    var old1 = document.getElementsByClassName("write write-active")[0].setAttribute("class","write")
-    var old2 = document.getElementsByClassName("chat active-chat")[0].setAttribute("class","chat")
-    var old4 = document.getElementsByClassName("mobile mobile-active")[0].setAttribute("class","mobile")
-    var old5 = document.getElementsByClassName("mobile-frame mobile-frame-active")[0].setAttribute("class","mobile-frame")
+  var old1 = document.getElementsByClassName("write write-active")[0].setAttribute("class","write")
+  var old2 = document.getElementsByClassName("chat active-chat")[0].setAttribute("class","chat")
+  var old4 = document.getElementsByClassName("mobile mobile-active")[0].setAttribute("class","mobile")
+  var old5 = document.getElementsByClassName("mobile-frame mobile-frame-active")[0].setAttribute("class","mobile-frame")
+  var old6 = document.getElementsByClassName("left")[0].setAttribute("class","left left-active")
 }
 
 function dropHandler(ev) {
