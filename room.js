@@ -6,6 +6,7 @@ function room(id){
       document.getElementById("friend_email").value = research
       document.getElementById("new_friend_add").click()
       document.getElementById('search_bar').value = ""
+      search()
       var new2 = document.getElementById("room_" + id)
     } else {
       var new2 = document.getElementById("room_" + search)
