@@ -3,7 +3,6 @@ function room(id){
         var new2 = document.getElementById(id + "_c")
     } else if (id.search("new") != -1) {
       var research = id.replace("new","")
-      console.log(research)
       document.getElementById("friend_email").value = research
       document.getElementById("new_friend_add").click()
       document.getElementById('search_bar').value = ""
