@@ -194,7 +194,7 @@ send.addEventListener('click', (e) => {
             email:myEmail,
             allow:friend,
             type:"message",
-            message: message_render(message),
+            message: message_render(message,"nop"),
             name:myName,
             date: Date.now(),
             dname: cusid
@@ -220,7 +220,7 @@ send2.addEventListener("keydown", (e) => {
                 email:myEmail,
                 allow:friend,
                 type:"message",
-                message: message_render(message),
+                message: message_render(message,"nop"),
                 name:myName,
                 date: Date.now(),
                 dname: cusid

@@ -148,7 +148,7 @@ export function message_date(DateNow,dname) {
   return date
 }
 
-export function link_render(message,type = "none") {
+export function link_render(message) {
   if (type == "none") {
     var message1 = message.split(" ")
     var message2 = message1.join(".")
@@ -168,7 +168,7 @@ export function link_render(message,type = "none") {
     return message    
   }
 }
-export function message_render(message) {
+export function message_render(message,type="none") {
   var messages = (function (t) {
     var r = /[^\u0300-\u036F\u0489]+/g;
     var unzalgo = function () {
@@ -183,6 +183,9 @@ export function message_render(message) {
   }
   var message_start = message_good.substring(0,1000);
   return message_start
+  if (type="none") {
+      link_render(message)
+  }
 }
 
 
