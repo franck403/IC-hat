@@ -144,7 +144,7 @@ export function message_date(DateNow,dname) {
     var date = dateActual.getFullYear() - dateConvert.getFullYear()
     var date = before(date) + " Years ago"
   }
-  document.getElementById(`time_${dname}`).dataset.send =  DateNow
+  document.getElementById(`time_${dname}`).dataset.send = DateNow
   return date
 }
 
@@ -197,6 +197,7 @@ export function time_fresh() {
       var el = list[id]
       var elt = document.getElementById("time_" + el.dataset.chatid)
       var elf = elt.dataset.send
+      console.log(elf + " - " + el.dataset.chatid)
       elt.innerHTML = message_date(elf,el.dataset.chatid)
     });
     console.log("[time] time refreshed")
