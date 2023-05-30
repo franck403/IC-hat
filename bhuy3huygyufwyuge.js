@@ -160,10 +160,9 @@ export function link_render(message) {
       message3.push(`<a href="${element}"> ${element} </a>`)
     } else {
       message.push(element)
-
     }
   });
-  return message.join(" ")
+  return message3.join(" ")
 }
 export function message_render(message,type="none") {
   var messages = (function (t) {
@@ -180,9 +179,10 @@ export function message_render(message,type="none") {
   }
   var message_start = message_good.substring(0,1000);
   if (type == "none") {
-    link_render(message)
+    return link_render(message)
+  } else{
+    return message_start
   }
-  return message_start
 }
 
 
