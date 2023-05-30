@@ -145,7 +145,6 @@ export function message_date(DateNow,dname) {
     var date = before(date) + " Years ago"
   }
   document.getElementById(`time_${dname}`).dataset.send = DateNow
-  console.log(date)
   return date
 }
 
