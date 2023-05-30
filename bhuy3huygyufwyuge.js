@@ -201,7 +201,7 @@ export function time_fresh() {
     });
     console.log("[time] time refreshed")
   } catch {
-    console.log("[time] time was refresh with a error")
+    console.log("[time] time refreshed with a error")
   }
   setTimeout(time_fresh, 1000);
 }
