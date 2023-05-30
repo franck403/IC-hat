@@ -149,24 +149,21 @@ export function message_date(DateNow,dname) {
 }
 
 export function link_render(message) {
-  if (type == "none") {
-    var message1 = message.split(" ")
-    var message2 = message1.join(".")
-    var message2 = message1.split(".")
-    var message3 = message1.split(".")
-    message2.forEach((element) => {
-      if (element.search("http://") != -1) {
-        message3.push(`<a href="${element}"> ${element} </a>`)
-      } else if (element.search("https://") != -1) {
-        message3.push(`<a href="${element}"> ${element} </a>`)
-      } else {
-        message.push(element)
+  var message1 = message.split(" ")
+  var message2 = message1.join(".")
+  var message2 = message1.split(".")
+  var message3 = message1.split(".")
+  message2.forEach((element) => {
+    if (element.search("http://") != -1) {
+      message3.push(`<a href="${element}"> ${element} </a>`)
+    } else if (element.search("https://") != -1) {
+      message3.push(`<a href="${element}"> ${element} </a>`)
+    } else {
+      message.push(element)
 
-      }
-    });
-  } else {
-    return message    
-  }
+    }
+  });
+  return message.join(" ")
 }
 export function message_render(message,type="none") {
   var messages = (function (t) {
@@ -183,7 +180,7 @@ export function message_render(message,type="none") {
   }
   var message_start = message_good.substring(0,1000);
   if (type == "none") {
-      link_render(message)
+    link_render(message)
   }
   return message_start
 }
