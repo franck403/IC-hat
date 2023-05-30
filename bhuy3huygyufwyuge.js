@@ -107,12 +107,14 @@ export function getuser() {
 }
 
 export function before(text) {
+  console.log(text)
   var split = String(text).split(".")
   return split[0]
 }
 
 export function message_date(DateNow,dname) {
   var dateConvert = new Date(DateNow)
+  console.log(dateConvert)
   var dateUtc = String(dateConvert).split("GMT")
   var dateUtc = dateUtc[0].split(" ")
   var dateUtc = [0]
