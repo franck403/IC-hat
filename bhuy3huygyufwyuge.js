@@ -110,7 +110,8 @@ export function before(text) {
   var split = String(text).split(".")
   return split[0]
 }
-export function message_date(DateNow) {
+
+export function message_date(DateNow,dname) {
   var dateConvert = new Date(DateNow)
   var dateUtc = String(dateConvert).split("GMT")
   var dateUtc = dateUtc[0].split(" ")
@@ -143,6 +144,7 @@ export function message_date(DateNow) {
     var date = dateActual.getFullYear() - dateConvert.getFullYear()
     var date = before(date) + " Years ago"
   }
+  document.getElementById(`time_${dname}`).dataset.send =  DateNow
   return date
 }
 
@@ -162,4 +164,16 @@ export function message_render(message) {
   }
   var message_start = message_good.substring(0,1000);
   return message_start
+}
+
+
+export function time_fresh() {
+  var list = document.getElementsByClassName("people-person")
+  Object.keys(list).forEach(id => {
+    var el = list[id]
+    var elt = document.getElementById("time_" + el.dataset.d.chat)
+    var elf = elt.dataset.send
+    elt.innerHTML = message_date(elf,el.dataset.d.chat)
+  });
+  setTimeout(time_fresh, 1000);
 }
