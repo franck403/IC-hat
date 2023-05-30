@@ -190,14 +190,19 @@ export function message_render(message,type="none") {
 
 
 export function time_fresh() {
-  console.log("[time] Refreshing time")
-  var list = document.getElementsByClassName("people-person")
-  Object.keys(list).forEach(id => {
-    var el = list[id]
-    var elt = document.getElementById("time_" + el.dataset.chatid)
-    var elf = elt.dataset.send
-    elt.innerHTML = message_date(elf,el.dataset.chat)
-  });
+  try {
+    console.log("[time] Refreshing time")
+    var list = document.getElementsByClassName("people-person")
+    Object.keys(list).forEach(id => {
+      var el = list[id]
+      var elt = document.getElementById("time_" + el.dataset.chatid)
+      var elf = elt.dataset.send
+      elt.innerHTML = message_date(elf,el.dataset.chat)
+    });
+    console.log("[time] time refreshed")
+  } catch {
+    console.log("[time] time was refresh with a error")
+  }
   setTimeout(time_fresh, 1000);
 }
 
