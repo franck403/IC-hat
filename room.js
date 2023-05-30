@@ -156,3 +156,7 @@ function search() {
   }
 }
 
+
+function url(link) {
+  window.open(link);
+}
