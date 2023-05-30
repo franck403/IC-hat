@@ -193,7 +193,7 @@ export function time_fresh() {
     var el = list[id]
     var elt = document.getElementById("time_" + el.dataset.chatid)
     var elf = elt.dataset.send
-    elt.innerHTML = message_date(elf,el.dataset.d.chat)
+    elt.innerHTML = message_date(elf,el.dataset.chat)
   });
   setTimeout(time_fresh, 1000);
 }
