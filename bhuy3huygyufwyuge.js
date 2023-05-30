@@ -197,6 +197,7 @@ export function time_fresh() {
       var el = list[id]
       var elt = document.getElementById("time_" + el.dataset.chatid)
       var elf = elt.dataset.send
+      console.log(elf)
       elt.innerHTML = message_date(elf,el.dataset.chatid)
     });
     console.log("[time] time refreshed")
