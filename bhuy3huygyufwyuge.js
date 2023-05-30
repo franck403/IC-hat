@@ -159,7 +159,7 @@ export function link_render(message) {
     } else if (element.search("https://") != -1) {
       message3.push(`<a href="${element}"> ${element} </a>`)
     } else {
-      message.push(element)
+      message3.push(element)
     }
   });
   return message3.join(" ")
