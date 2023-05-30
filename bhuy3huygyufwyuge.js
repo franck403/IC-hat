@@ -173,7 +173,7 @@ export function message_render(message,type="none") {
   }
   var message_start = message_good.substring(0,1000);
   if (type == "none") {
-    return link_render(message)
+    return link_render(message).replaceAll("\n","<br>")
   } else{
     return message_start
   }
