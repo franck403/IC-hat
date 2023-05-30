@@ -256,7 +256,7 @@ onChildAdded(friend_invite, (data) => {
         <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="${data.val().dname}">
         <img src="img/default.png" class="people-img"alt="picture" />
         <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
-        <p id="time_${data.val().dname}" class="people-time"></p>
+        <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
         <p id="prew_${data.val().dname}" class="people-preview"></p>
         </li>`
         // chat_el_box
