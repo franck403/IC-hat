@@ -113,10 +113,8 @@ export function before(text) {
 }
 
 export function message_date(DateNow,dname) {
-  console.log(DateNow)
   document.getElementById(`time_${dname}`).dataset.send = DateNow
   var dateConvert = new Date(DateNow)
-  console.log(dateConvert)
   var dateUtc = String(dateConvert).split("GMT")
   var dateUtc = dateUtc[0].split(" ")
   var dateUtc = [0]
@@ -200,7 +198,6 @@ export function time_fresh() {
       var el = list[id]
       var elt = document.getElementById("time_" + el.dataset.chatid)
       var elf = parseFloat(elt.dataset.send)
-      console.log(elf)
       elt.innerHTML = message_date(elf,el.dataset.chatid)
     });
     console.log("[time] time refreshed")
@@ -211,4 +208,4 @@ export function time_fresh() {
 }
 
 
-setTimeout(time_fresh, 1000);
+setTimeout(time_fresh, 30000);
