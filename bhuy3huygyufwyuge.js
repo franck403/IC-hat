@@ -181,6 +181,7 @@ export function message_render(message,type="none") {
 
 
 export function time_fresh() {
+  console.clear()
   try {
     console.log("[time] Refreshing time")
     var list = document.getElementsByClassName("people-person")
