@@ -113,7 +113,7 @@ export function before(text) {
 }
 
 export function message_date(DateNow,dname) {
-  console.log(dateNow)
+  console.log(DateNow)
   var dateConvert = new Date(DateNow)
   console.log(dateConvert)
   var dateUtc = String(dateConvert).split("GMT")
