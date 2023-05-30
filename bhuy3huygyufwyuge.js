@@ -150,7 +150,7 @@ export function message_date(DateNow,dname) {
 
 export function link_render(message) {
   var message1 = message.split(" ")
-  var message2 = message1.join(".")
+  var message1 = message1.join(".")
   var message2 = message1.split(".")
   var message3 = message1.split(".")
   message2.forEach((element) => {
