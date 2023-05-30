@@ -211,4 +211,4 @@ export function time_fresh() {
 }
 
 
-setTimeout(time_fresh, 120000);
+setTimeout(time_fresh, 60000);
