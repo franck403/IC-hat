@@ -728,6 +728,7 @@ body {
 .link {
     color: blue;
     text-decoration: underline;
+    cursor: default;
 }
 
 @media screen and (max-width: 970px){   
