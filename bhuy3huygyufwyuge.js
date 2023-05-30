@@ -199,7 +199,7 @@ export function time_fresh() {
     Object.keys(list).forEach(id => {
       var el = list[id]
       var elt = document.getElementById("time_" + el.dataset.chatid)
-      var elf = elt.dataset.send
+      var elf = parseFloat(elt.dataset.send)
       console.log(elf)
       elt.innerHTML = message_date(elf,el.dataset.chatid)
     });
