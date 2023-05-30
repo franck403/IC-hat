@@ -114,6 +114,7 @@ export function before(text) {
 
 export function message_date(DateNow,dname) {
   console.log(DateNow)
+  document.getElementById(`time_${dname}`).dataset.send = DateNow
   var dateConvert = new Date(DateNow)
   console.log(dateConvert)
   var dateUtc = String(dateConvert).split("GMT")
@@ -147,7 +148,6 @@ export function message_date(DateNow,dname) {
     var date = dateActual.getFullYear() - dateConvert.getFullYear()
     var date = before(date) + " Years ago"
   }
-  document.getElementById(`time_${dname}`).dataset.send = DateNow
   return date
 }
 
