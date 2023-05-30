@@ -183,7 +183,7 @@ export function message_render(message,type="none") {
   }
   var message_start = message_good.substring(0,1000);
   return message_start
-  if (type="none") {
+  if (type  == "none") {
       link_render(message)
   }
 }
