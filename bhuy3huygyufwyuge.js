@@ -107,7 +107,6 @@ export function getuser() {
 }
 
 export function before(text) {
-  console.log(text)
   var split = String(text).split(".")
   return split[0]
 }
