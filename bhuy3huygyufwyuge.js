@@ -204,8 +204,8 @@ export function time_fresh() {
       elt.innerHTML = message_date(elf,el.dataset.chatid)
     });
     console.log("[time] time refreshed")
-  } catch {
-    console.log("[time] time refreshed with a error")
+  } catch(err){
+    console.log("[time] time refreshed with the error :" + err.message)
   }
   setTimeout(time_fresh, 1000);
 }
