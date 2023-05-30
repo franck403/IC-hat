@@ -148,21 +148,15 @@ export function message_date(DateNow,dname) {
   return date
 }
 
+export function urlify(text) {
+  var urlRegex = /(https?:\/\/[^\s]+)/g;
+  return text.replace(urlRegex, function(url) {
+    return '<a href="' + url + '">' + url + '</a>';
+  })
+}
+
 export function link_render(message) {
-  var message1 = message.split(" ")
-  var message1 = message1.join(".")
-  var message2 = message1.split(".")
-  var message3 = []
-  message2.forEach((element) => {
-    if (element.search("http://") != -1) {
-      message3.push(`<a href="${element}"> ${element} </a>`)
-    } else if (element.search("https://") != -1) {
-      message3.push(`<a href="${element}"> ${element} </a>`)
-    } else {
-      message3.push(element)
-    }
-  });
-  return message3.join(" ")
+  return urlify(message)
 }
 export function message_render(message,type="none") {
   var messages = (function (t) {
