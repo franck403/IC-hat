@@ -191,7 +191,7 @@ export function time_fresh() {
   var list = document.getElementsByClassName("people-person")
   Object.keys(list).forEach(id => {
     var el = list[id]
-    var elt = document.getElementById("time_" + el.dataset.d.chat)
+    var elt = document.getElementById("time_" + el.dataset.chatid)
     var elf = elt.dataset.send
     elt.innerHTML = message_date(elf,el.dataset.d.chat)
   });

@@ -1,5 +1,5 @@
 document.querySelector('.chat[data-chat=person1]').classList.add('active-chat')
-document.querySelector('.person[data-d-chat=person1]').classList.add('active')
+document.querySelector('.person[data-chatid=person1]').classList.add('active')
 
 let friends = {
     list: document.querySelector('ul.people'),
@@ -23,7 +23,7 @@ function setAciveChat(f) {
   friends.list.querySelector('.active').classList.remove('active')
   f.classList.add('active')
   chat.current = chat.container.querySelector('.active-chat')
-  chat.person = f.getAttribute('data-d-chat')
+  chat.person = f.getAttribute('data-chatid')
   chat.container.querySelector('[data-chat="' + chat.person + '"]').classList.add('active-chat')
   friends.name = f.querySelector('.name').innerText
   document.getElementById("to").innerText = name
