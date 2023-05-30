@@ -148,7 +148,26 @@ export function message_date(DateNow,dname) {
   return date
 }
 
+export function link_render(message,type = "none") {
+  if (type == "none") {
+    var message1 = message.split(" ")
+    var message2 = message1.join(".")
+    var message2 = message1.split(".")
+    var message3 = message1.split(".")
+    message2.forEach((element) => {
+      if (element.search("http://") != -1) {
+        message3.push(`<a href="${element}"> ${element} </a>`)
+      } else if (element.search("https://") != -1) {
+        message3.push(`<a href="${element}"> ${element} </a>`)
+      } else {
+        message.push(element)
 
+      }
+    });
+  } else {
+    return message    
+  }
+}
 export function message_render(message) {
   var messages = (function (t) {
     var r = /[^\u0300-\u036F\u0489]+/g;
@@ -168,6 +187,7 @@ export function message_render(message) {
 
 
 export function time_fresh() {
+  console.log("[time] Refreshing time")
   var list = document.getElementsByClassName("people-person")
   Object.keys(list).forEach(id => {
     var el = list[id]
@@ -177,3 +197,6 @@ export function time_fresh() {
   });
   setTimeout(time_fresh, 1000);
 }
+
+
+setTimeout(time_fresh, 1000);

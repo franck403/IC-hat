@@ -24,7 +24,7 @@ fetch("https://auth.francoischouin1.repl.co/", {
     });
 });
 
-import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date,message_render} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date,message_render,time_fresh} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
@@ -420,5 +420,4 @@ onChildAdded(friend_invite, (data) => {
 });
 
 removeloader()
-setTimeout(time_fresh, 10000);
 } catch {}
