@@ -189,7 +189,7 @@ export function time_fresh() {
       var elf = parseFloat(elt.dataset.send)
       elt.innerHTML = message_date(elf,el.dataset.chatid)
     });
-  } catch(err){}
+  } catch {}
   setTimeout(time_fresh, 1000);
 }
 
