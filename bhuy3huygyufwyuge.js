@@ -181,9 +181,7 @@ export function message_render(message,type="none") {
 
 
 export function time_fresh() {
-  console.clear()
   try {
-    console.log("[time] Refreshing time")
     var list = document.getElementsByClassName("people-person")
     Object.keys(list).forEach(id => {
       var el = list[id]
@@ -191,10 +189,7 @@ export function time_fresh() {
       var elf = parseFloat(elt.dataset.send)
       elt.innerHTML = message_date(elf,el.dataset.chatid)
     });
-    console.log("[time] time refreshed")
-  } catch(err){
-    console.log("[time] time refreshed with the error :" + err.message)
-  }
+  } catch(err){}
   setTimeout(time_fresh, 1000);
 }
 
