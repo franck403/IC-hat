@@ -725,6 +725,11 @@ body {
     display: none;
 }
 
+.link {
+    color: blue;
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 970px){   
     .mobile {
         position: fixed;
