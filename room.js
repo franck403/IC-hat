@@ -160,3 +160,16 @@ function search() {
 function url(link) {
   window.open(link);
 }
+
+
+function big(src) {
+  var image = src
+  document.getElementById("big-img").src = image
+  document.getElementById("big-img").style.display = "block"
+}
+
+function small() {
+  var image = ""
+  document.getElementById("big-img").src = image
+  document.getElementById("big-img").style.display = "none"
+}

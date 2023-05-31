@@ -110,7 +110,30 @@ export function before(text) {
   var split = String(text).split(".")
   return split[0]
 }
+/*
+mes time = 1sec
+act time = 1min
 
+if mes have more than 365j 6h then
+  get number of years
+else then
+  if mes have more than 30.46666666666667mon then
+    get number of month
+  else then
+    if mess have more than 1d then
+      get number of day
+    else then
+      if mes have more than 1h then
+        get number of hours
+      else then 
+        if mes have more thant 1m then
+          get number of minutes
+        else then
+          if mess have more than 1s then
+            get number of seconds
+          else
+            get number of seconds
+*/
 export function message_date(DateNow,dname) {
   document.getElementById(`time_${dname}`).dataset.send = DateNow
   var dateConvert = new Date(DateNow)
@@ -173,7 +196,7 @@ export function message_render(message,type="none") {
   }
   var message_start = message_good.substring(0,1000);
   if (type == "none") {
-    return link_render(message).replaceAll("\n","<br>")
+    return link_render(message_start).replaceAll("\n","<br>")
   } else{
     return message_start
   }

@@ -319,7 +319,7 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                 } else if (data2.val().type == "new-image") {
                     if(data2.val().email == myEmail) {
-                        var html = `<div class="bubble me"><img class="type-img" src="data:image/${data2.val().message}"></img></div>`
+                        var html = `<div class="bubble me"><img onclick="big(this.src)" class="type-img" src="data:image/${data2.val().message}"></img></div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         var DateNow = data2.val().date
                         var date = message_date(DateNow,dnamef)
@@ -327,7 +327,7 @@ onChildAdded(friend_invite, (data) => {
                         document.getElementById(`time_${dnamef}`).innerHTML =  date
                         document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
                     }else{
-                        var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div><img class="type-img" src="data:image/${data2.val().message}"></img></div></div>`
+                        var html = `<div class="bubble you"><div onclick="big(this.src)" class="bubble-name">${ data2.val().name }</div><div><img class="type-img" src="data:image/${data2.val().message}"></img></div></div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         var DateNow = data2.val().date
                         var date = message_date(DateNow,dnamef)
