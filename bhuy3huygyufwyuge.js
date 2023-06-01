@@ -135,7 +135,7 @@ else then
             get number of seconds
 */
 
-export var CDate = {
+/*export var CDate = {
   "m": 1000 * 60,
   "h": this.m * 60,
   "d": this.h * 24,
@@ -166,6 +166,7 @@ export var CDate = {
   "":() => {},
   "":() => {},
 }
+*/
 
 export function message_date(DateNow,dname) {
   document.getElementById(`time_${dname}`).dataset.send = DateNow
