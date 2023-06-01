@@ -792,6 +792,7 @@ body {
 }
 
 .dropdown {
+    z-index:7;
     position: fixed;
     top: 0px;
     right: 0px;
