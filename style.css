@@ -784,10 +784,10 @@ body {
 }
 
 .dropbtn {
-    background-color: #fff;
     color: white;
     font-size: 16px;
     border: none;
+    height: 48px;
     padding: 0;
 }
 
@@ -833,6 +833,7 @@ body {
 img {
     height: 50px;
     border-radius: 50%;
+    background: none;
     object-fit: cover;
 }
 
