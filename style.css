@@ -803,6 +803,7 @@ body {
     display: none;
     position: absolute;
     right: 0px;
+    top: 48px;
     background-color: #fff;
     min-width: 70px;
     padding: 15px;
