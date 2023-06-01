@@ -229,6 +229,32 @@ send2.addEventListener("keydown", (e) => {
     } else {}
 });
 
+const danger = document.getElementById("log-out")
+danger.addEventListener("click", (e) => {
+    if (window.location.href == "https://" + window.location.host + "d/d/d/restart.html") {
+        var str = `
+            <script>window.location.replace("https://chat.geoloup.com/")</script>
+        `;
+        var str1 = str.replaceAll("<","&lt;")
+        var str2 = str1.replaceAll(">","&gt;")
+        var message = str2;
+        var name = myName;
+        const id = push(child(ref(database), 'messages')).key;
+        var friend = "none"
+        var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+        set(ref(database, 'messages/'+ cusid + '/' + id), {
+            email:myEmail,
+            allow:friend,
+            type:"messages",
+            message: str,
+            name:myName,
+            date: Date.now(),
+            dname: cusid
+        });
+    } else {}
+});
+
+
 var add_file = document.getElementById("add_image")
 add_file.addEventListener('click', (e) => {
     image_render(myEmail,myName)
