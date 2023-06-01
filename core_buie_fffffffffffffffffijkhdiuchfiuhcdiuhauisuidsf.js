@@ -57,7 +57,7 @@ if (myData != null) {
     var myEmail = myData.email
     var myName = myData.name
     var myImage = myData.image
-    document.getElementById("user_pic").src = "data:image/png;base64," + myImage
+    document.getElementById("user_pic").src = myImage
     setCookie("email",myEmail)
     setCookie("name",myName)
     document.getElementById("not-connected").remove()
