@@ -452,4 +452,6 @@ onChildAdded(friend_invite, (data) => {
 });
 
 removeloader()
-} catch {}
+} catch (err){
+    console.log(err.message)
+}
