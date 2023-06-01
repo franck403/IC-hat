@@ -831,7 +831,7 @@ body {
     background-color: #fff;
 }
 
-img {
+.dropbtn img {
     height: 50px;
     border-radius: 50%;
     background: none;
