@@ -250,5 +250,25 @@ export function time_fresh() {
   setTimeout(time_fresh, 1000);
 }
 
-
 setTimeout(time_fresh, 30000);
+
+export function changepic(img,email) {
+  let formData = new FormData();
+  formData.append('email', email);
+  formData.append('image', img);
+  fetch("https://auth-pic.francoischouin1.repl.co/changepic", {
+    method: "POST",
+    body: formData
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      if (data != "no") {
+        window.location.replace("https://" + window.location.host)
+      } else {
+        alert("A error occurrent. Please try again in 10min")
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
