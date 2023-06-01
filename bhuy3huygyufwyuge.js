@@ -134,6 +134,30 @@ else then
           else
             get number of seconds
 */
+
+export var CDate = {
+  "m": minute = 1000 * 60,
+  "h": hour = minute * 60,
+  "d": day = hour * 24,
+  "y": year = day * 365,
+  "ss":"",
+  "define":(m) => {
+    this.ss = m
+    return this.ss
+  },
+  "day":() => {
+    return 
+  },
+  "":() => {},
+  "":() => {},
+  "":() => {},
+  "":() => {},
+  "":() => {},
+  "":() => {},
+  "":() => {},
+  "":() => {},
+}
+
 export function message_date(DateNow,dname) {
   document.getElementById(`time_${dname}`).dataset.send = DateNow
   var dateConvert = new Date(DateNow)
