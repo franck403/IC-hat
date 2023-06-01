@@ -738,11 +738,11 @@ body {
     .mobile {
         position: fixed;
         top: 4px;
-        left: 20px;
+        left: 2px;
+        width: 38px;
+        height: auto;
         display: none;
         z-index: 5;
-        height: 40px;
-        width: 40px;
     }
     .mobile-active {
         display: block;
