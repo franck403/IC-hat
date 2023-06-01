@@ -136,22 +136,31 @@ else then
 */
 
 export var CDate = {
-  "m": minute = 1000 * 60,
-  "h": hour = minute * 60,
-  "d": day = hour * 24,
-  "y": year = day * 365,
+  "m": 1000 * 60,
+  "h": this.m * 60,
+  "d": this.h * 24,
+  "y": this.d * 365,
+  "mt": this.d * 0.03287671232876712,
   "ss":"",
   "define":(m) => {
     this.ss = m
     return this.ss
   },
   "day":() => {
-    return 
+    return Math.round(this.ss / this.d)
   },
-  "":() => {},
-  "":() => {},
-  "":() => {},
-  "":() => {},
+  "years":() => {
+    return Math.round(this.ss / this.y)
+  },
+  "minutes":() => {
+    return Math.round(this.ss / this.m)
+  },
+  "hours":() => {
+    return Math.round(this.ss / this.h)
+  },
+  "months":() => {
+    return Math.round(this.ss / this.mt)
+  },
   "":() => {},
   "":() => {},
   "":() => {},
