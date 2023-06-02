@@ -13,7 +13,7 @@ if (myData != null) {
     img.src = myImage
         img.onload = () => { context.drawImage(img, 0, 0,document.getElementById("user_pic_canvas").width,document.getElementById("user_pic").height)
     };
-    document.getElementById("user_pic").src = myImage
+    document.getElementById("user_pic_cnavas").src = myImage
     document.getElementById("not-connected").remove()
     document.getElementById("wait-connected").remove()
 } else if (myData == null) {
@@ -36,6 +36,12 @@ c.addEventListener("click", () => {
         reader.onload = function () {
             var img = "data:image/png;base64-" + btoa(reader.result)
             console.log(img)
+            const contexts = document.getElementById('user_pic_canvas').getContext('2d')
+            const imgs = new Image()
+            imgs.src = myImage
+                imgs.onload = () => { contexts.drawImage(imgs, 0, 0,document.getElementById("user_pic_canvas").width,document.getElementById("user_pic").height)
+            };
+            document.getElementById("user_pic_cnavas").src = img
             changepic(img, myEmail)
         }
         reader.readAsBinaryString(input.files[0]);
