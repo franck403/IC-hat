@@ -28,7 +28,7 @@ c.addEventListener("click", () => {
         var filelist = input.files[0]
         var reader = new FileReader();
         reader.onload = function () {
-            var img = "png;base64," + btoa(reader.result)
+            var img = "data:image/png;base64-" + btoa(reader.result)
             changepic(img,myEmail)
         }
         reader.readAsBinaryString(input.files[0]);    
