@@ -1,16 +1,17 @@
-import {getuser,changepic,removeloader} from ".././bhuy3huygyufwyuge.js"
+import { getuser, changepic, removeloader } from ".././bhuy3huygyufwyuge.js"
 var myData = await getuser()
 if (myData != null) {
     var myData = JSON.parse(myData)
     var myEmail = myData.email
     var myName = myData.name
     var myImage = myData.image
-    var myImage = myImage.replaceAll('"',"")
-    var myImage = myImage.replaceAll("'","")
+    var myImage = myImage.replaceAll('"', "")
+    var myImage = myImage.replaceAll("'", "")
+    const myCanvas = document.getElementById('user_pic'); const myContext = myCanvas.getContext('2d'); const img = new Image(); img.src = myImage; img.onload = () => { context.drawImage(img, 0, 0); };
     document.getElementById("user_pic").src = myImage
     document.getElementById("not-connected").remove()
     document.getElementById("wait-connected").remove()
-} else if (myData == null){
+} else if (myData == null) {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
 } else if (myData.search("<title>500 Internal Server Error</title>") != -1) {
@@ -30,9 +31,9 @@ c.addEventListener("click", () => {
         reader.onload = function () {
             var img = "data:image/png;base64-" + btoa(reader.result)
             console.log(img)
-            changepic(img,myEmail)
+            changepic(img, myEmail)
         }
-        reader.readAsBinaryString(input.files[0]);    
+        reader.readAsBinaryString(input.files[0]);
     };
     input.click();
 });
