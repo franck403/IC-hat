@@ -8,12 +8,6 @@ if (myData != null) {
     var myImage = myImage.replaceAll('"', "")
     var myImage = myImage.replaceAll("'", "")
     document.getElementById('user_pic').src = myImage
-    const context = document.getElementById('user_pic_canvas').getContext('2d')
-    const img = new Image()
-    img.src = myImage
-        img.onload = () => { context.drawImage(img, 0, 0,document.getElementById("user_pic_canvas").width,document.getElementById("user_pic").height)
-    };
-    document.getElementById("user_pic_canvas").src = myImage
     document.getElementById("not-connected").remove()
     document.getElementById("wait-connected").remove()
 } else if (myData == null) {
@@ -35,13 +29,6 @@ c.addEventListener("click", () => {
         var reader = new FileReader();
         reader.onload = function () {
             var img = "data:image/png;base64-" + btoa(reader.result)
-            console.log(img)
-            const contexts = document.getElementById('user_pic_canvas').getContext('2d')
-            const imgs = new Image()
-            imgs.src = myImage
-                imgs.onload = () => { contexts.drawImage(imgs, 0, 0,document.getElementById("user_pic_canvas").width,document.getElementById("user_pic").height)
-            };
-            document.getElementById("user_pic_canvas").src = img
             document.getElementById("user_pic_ready").value = "ready?"
             document.getElementById("user_pic_ready").addEventListener("click",() => {
                 changepic(img, myEmail)
