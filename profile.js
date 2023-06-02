@@ -29,7 +29,7 @@ c.addEventListener("click", () => {
         var reader = new FileReader();
         reader.onload = function () {
             var img = "data:image/png;base64-" + btoa(reader.result)
-            document.getElementById("user_pic_ready").value = "ready?"
+            document.getElementById("user_pic_ready").innerHTML = "ready?"
             document.getElementById("user_pic_ready").addEventListener("click",() => {
                 changepic(img, myEmail)
             })
