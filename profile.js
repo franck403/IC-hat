@@ -10,7 +10,7 @@ if (myData != null) {
     const context = document.getElementById('user_pic').getContext('2d')
     const img = new Image()
     img.src = myImage
-        img.onload = () => { context.drawImage(img, 0, 0,document.getElementById("user_pic").width,document.getElementById("user_pic").height)
+        img.onload = () => { context.drawImage(img, 0, 0,document.getElementById("user_pic").width,document.getElementById("user_pic").width)
     };
     document.getElementById("user_pic").src = myImage
     document.getElementById("not-connected").remove()
