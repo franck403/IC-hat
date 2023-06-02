@@ -265,7 +265,7 @@ export function changepic(img,email) {
       if (data != "no") {
         window.location.replace("https://" + window.location.host)
       } else {
-        alert("A error occurrent. Please try again in 10min")
+        alert("user was not find or a error occurrent. Please try again in 10min")
       }
     })
     .catch((error) => {
