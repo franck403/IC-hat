@@ -1,10 +1,27 @@
-import {getuser,changepic} from ".././bhuy3huygyufwyuge.js"
+import {getuser,changepic,removeloader} from ".././bhuy3huygyufwyuge.js"
 var myData = await getuser()
-var myData = JSON.parse(myData)
-var myEmail = myData.email
-var myName = myData.name
-
-
+if (myData != null) {
+    var myData = JSON.parse(myData)
+    var myEmail = myData.email
+    var myName = myData.name
+    var myImage = myData.image
+    var myImage = myImage.replaceAll('"',"")
+    var myImage = myImage.replaceAll("'","")
+    document.getElementById("user_pic").src = myImage
+    setCookie("email",myEmail)
+    setCookie("name",myName)
+    document.getElementById("not-connected").remove()
+    document.getElementById("wait-connected").remove()
+} else if (myData == null){
+    document.getElementById("connected").remove()
+    document.getElementById("wait-connected").remove()
+} else if (myData.search("<title>500 Internal Server Error</title>") != -1) {
+    document.getElementById("connected").remove()
+    document.getElementById("wait-connected").remove()
+} else {
+    document.getElementById("connected").remove()
+    document.getElementById("wait-connected").remove()
+}
 var c = document.getElementById("box")
 c.addEventListener("click", () => {
     let input = document.createElement('input');
@@ -20,3 +37,4 @@ c.addEventListener("click", () => {
     };
     input.click();
 });
+removeloader
