@@ -7,7 +7,11 @@ if (myData != null) {
     var myImage = myData.image
     var myImage = myImage.replaceAll('"', "")
     var myImage = myImage.replaceAll("'", "")
-    const myCanvas = document.getElementById('user_pic'); const myContext = myCanvas.getContext('2d'); const img = new Image(); img.src = myImage; img.onload = () => { context.drawImage(img, 0, 0); };
+    const myContext = document.getElementById('user_pic').getContext('2d')
+    const img = new Image()
+    img.src = myImage
+        img.onload = () => { context.drawImage(img, 0, 0)
+    };
     document.getElementById("user_pic").src = myImage
     document.getElementById("not-connected").remove()
     document.getElementById("wait-connected").remove()
