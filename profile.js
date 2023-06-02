@@ -14,7 +14,7 @@ c.addEventListener("click", () => {
         var reader = new FileReader();
         reader.onload = function () {
             var img = "png;base64," + btoa(reader.result)
-            await changepic(img,myEmail)
+            changepic(img,myEmail)
         }
         reader.readAsBinaryString(file);    
     };
