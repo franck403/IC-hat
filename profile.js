@@ -31,7 +31,7 @@ c.addEventListener("click", () => {
             var img = "png;base64," + btoa(reader.result)
             changepic(img,myEmail)
         }
-        reader.readAsBinaryString(inout.files[0]);    
+        reader.readAsBinaryString(input.files[0]);    
     };
     input.click();
 });
