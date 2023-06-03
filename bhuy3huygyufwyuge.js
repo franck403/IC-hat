@@ -272,3 +272,10 @@ export function changepic(img,email) {
       console.error("Error:", error);
     });
 }
+
+
+export function loadScript(file) {
+  var tag = document.createElement("script");
+  tag.src = file;
+  document.getElementById("import").appendChild(tag);
+}

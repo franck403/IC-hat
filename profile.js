@@ -1,4 +1,4 @@
-import { getuser, changepic, removeloader } from ".././bhuy3huygyufwyuge.js"
+import { getuser, changepic, removeloader, loadScript} from ".././bhuy3huygyufwyuge.js"
 var myData = await getuser()
 if (myData != null) {
     var myData = JSON.parse(myData)
@@ -30,7 +30,8 @@ c.addEventListener("click", () => {
         reader.onload = function () {
             var img = "data:image/png;base64-" + btoa(reader.result)
             document.getElementById("image").src = img.replace("-",",")
-            document.getElementById("import").innerHTML = `<script src="crop.profile.js" type="module"></script><script src="canvas.profile.js"></script>`
+            loadScript("crop.profile.js")
+            loadScript("canvas.profile.js")
             document.getElementById("user_pic_ready").innerHTML = "Select this picture"
             document.getElementById("user_pic_ready").addEventListener("click",() => {
                 changepic(img, myEmail)
