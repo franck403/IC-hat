@@ -35,7 +35,8 @@ window.addEventListener('DOMContentLoaded', function () {
         var roundedCanvas;
         var roundedImage;
 
-        if (!croppable) {
+        if (!croppable) {  
+            console.log("called")
             return;
         }
 
