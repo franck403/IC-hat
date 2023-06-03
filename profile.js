@@ -8,6 +8,13 @@ if (myData != null) {
     var myImage = myImage.replaceAll('"', "")
     var myImage = myImage.replaceAll("'", "")
     document.getElementById('user_pic').src = myImage
+    const contentType = 'image/png';
+    const b64Data = myImage
+
+    const blob = b64toBlob(b64Data, contentType);
+    const blobUrl = URL.createObjectURL(blob);
+
+    document.getElementById("image").src = blobUrl
     document.getElementById("not-connected").remove()
     document.getElementById("wait-connected").remove()
 } else if (myData == null) {
