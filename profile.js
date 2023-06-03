@@ -30,7 +30,6 @@ c.addEventListener("click", () => {
         reader.onload = function () {
             var img = "data:image/png;base64-" + btoa(reader.result)
             document.getElementById("image").src = img.replace("-",",")
-            loadScript("crop.profile.js")
             document.getElementById("user_pic_ready").innerHTML = "Select this picture"
             document.getElementById("user_pic_ready").addEventListener("click",() => {
                 changepic(img, myEmail)
