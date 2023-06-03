@@ -16,41 +16,39 @@ function getRoundedCanvas(sourceCanvas) {
     return canvas;
 }
 
-window.addEventListener('DOMContentLoaded', function () {
-    var image = document.getElementById('image');
-    var button = document.getElementById('button');
-    var result = document.getElementById('result');
-    var croppable = false;
-    var cropper = new Cropper(image, {
-        aspectRatio: 1,
-        viewMode: 1,
-        ready: function () {
-            croppable = true;console.log("called");
-        },
-    });
-
-    button.onclick = function () {
-        console.log("called")
-        var croppedCanvas;
-        var roundedCanvas;
-        var roundedImage;
-
-        if (!croppable) {  
-            console.log("called")
-            return;
-        }
-
-        // Crop
-        croppedCanvas = cropper.getCroppedCanvas();
-
-        // Round
-        roundedCanvas = getRoundedCanvas(croppedCanvas);
-
-        // Show
-        roundedImage = document.createElement('img');
-        roundedImage.src = roundedCanvas.toDataURL()
-        result.innerHTML = '';
-        result.appendChild(roundedImage);
-        console.log("called")
-    };
+var image = document.getElementById('image');
+var button = document.getElementById('button');
+var result = document.getElementById('result');
+var croppable = false;
+var cropper = new Cropper(image, {
+    aspectRatio: 1,
+    viewMode: 1,
+    ready: function () {
+        croppable = true;console.log("called");
+    },
 });
+
+button.onclick = function () {
+    console.log("called")
+    var croppedCanvas;
+    var roundedCanvas;
+    var roundedImage;
+
+    if (!croppable) {  
+        console.log("called")
+        return;
+    }
+
+    // Crop
+    croppedCanvas = cropper.getCroppedCanvas();
+
+    // Round
+    roundedCanvas = getRoundedCanvas(croppedCanvas);
+
+    // Show
+    roundedImage = document.createElement('img');
+    roundedImage.src = roundedCanvas.toDataURL()
+    result.innerHTML = '';
+    result.appendChild(roundedImage);
+    console.log("called")
+};
