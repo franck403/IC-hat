@@ -9,7 +9,7 @@ if (myData != null) {
     var myImage = myImage.replaceAll("'", "")
     document.getElementById('user_pic').src = myImage
     const contentType = 'image/png';
-    const b64Data = myImage.replace("data:image/png;base64-","")
+    const b64Data = myImage.replace("data:image/png;base64,","")
 
     const blob = b64toBlob(b64Data, contentType);
     const blobUrl = URL.createObjectURL(blob);
