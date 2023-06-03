@@ -1,4 +1,4 @@
-import { getuser, changepic, removeloader, loadScript} from ".././bhuy3huygyufwyuge.js"
+import { getuser, changepic, removeloader, loadScript,b64toBlob} from ".././bhuy3huygyufwyuge.js"
 var myData = await getuser()
 if (myData != null) {
     var myData = JSON.parse(myData)
@@ -29,7 +29,13 @@ c.addEventListener("click", () => {
         var reader = new FileReader();
         reader.onload = function () {
             var img = "data:image/png;base64-" + btoa(reader.result)
-            document.getElementById("image").src = img.replace("-",",")
+            const contentType = 'image/png';
+            const b64Data = btoa(reader.result)
+
+            const blob = b64toBlob(b64Data, contentType);
+            const blobUrl = URL.createObjectURL(blob);
+
+            document.getElementById("image").src = blobUrl
             document.getElementById("user_pic_ready").innerHTML = "Select this picture"
             document.getElementById("user_pic_ready").addEventListener("click",() => {
                 changepic(img, myEmail)
