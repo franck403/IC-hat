@@ -1,4 +1,5 @@
 function getRoundedCanvas(sourceCanvas) {
+    console.log("called")
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
     var width = sourceCanvas.width;
@@ -29,6 +30,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
 
     button.onclick = function () {
+        console.log("called")
         var croppedCanvas;
         var roundedCanvas;
         var roundedImage;
@@ -48,5 +50,6 @@ window.addEventListener('DOMContentLoaded', function () {
         roundedImage.src = roundedCanvas.toDataURL()
         result.innerHTML = '';
         result.appendChild(roundedImage);
+        console.log("called")
     };
 });
