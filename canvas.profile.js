@@ -25,7 +25,7 @@ window.addEventListener('DOMContentLoaded', function () {
         aspectRatio: 1,
         viewMode: 1,
         ready: function () {
-            croppable = true;
+            croppable = true;console.log("called");
         },
     });
 
