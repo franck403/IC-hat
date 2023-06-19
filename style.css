@@ -401,12 +401,16 @@ body {
     margin-left: 10px;
     border: 1px solid var(--light);
     background-color: var(--blue);
-    background-image: url('img/plus.png');
     background-repeat: no-repeat;
     background-position: top 12px left 14px;
     border-radius: 50%;
 }
-
+.container .left a.search img {
+    background: none;
+    margin: 2px;
+    height: 35px;
+    width: 35px;    
+}
 .people {
     margin-left: -1px;
     overflow-y: scroll;
