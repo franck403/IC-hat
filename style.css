@@ -401,7 +401,7 @@ body {
     margin-left: 10px;
     border: 1px solid var(--light);
     background-color: var(--blue);
-    background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/name-type.png');
+    background-image: url('img/plus.png');
     background-repeat: no-repeat;
     background-position: top 12px left 14px;
     border-radius: 50%;
