@@ -845,6 +845,14 @@ body {
     object-fit: cover;
 }
 
+.list {
+    display:flex;
+    width: 25vw;
+}
+.check img{
+    float:left;
+}
+
 @media screen and (max-width: 970px) {
     .mobile {
         position: fixed;
