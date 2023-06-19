@@ -186,7 +186,7 @@ function key_add() {
         Object.keys(list).forEach(key => {
           var db = list[key]
           var html = `
-          <li onclick="friend('new${db['email']}')" id="friend-preview-${db['email']}" class="friend-preview list">
+          <li onclick="friend('${db['email']}')" id="friend-preview-${db['email']}" class="friend-preview list">
           <img src="img/default.png" class="people-img"alt="picture" />
           <p id="name_" class="people-name">${db['name']}</p>
           </li>`
