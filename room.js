@@ -178,7 +178,7 @@ function key_add() {
   if (document.getElementById("firend_list_preview").innerHTML == "") {
     console.log("[core] Getting db content")
     document.getElementById('friend_email').disabled
-    fetch('https://auth.francoischouin1.repl.co/user/search?name=' + input)
+    fetch('https://auth.francoischouin1.repl.co/user/search?name=')
       .then((response) => response.json())
       .then((responseJson) => {
         document.getElementById('friend_email').removeAttribute("disable")
