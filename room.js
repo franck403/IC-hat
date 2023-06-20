@@ -200,13 +200,14 @@ function key_add() {
   let x = document.getElementsByClassName('friend-preview');
 
   for (i = 0; i < x.length; i++) {
-    if (!x[i].innerHTML.toLowerCase().includes(input)) {
-      if (!x[i].classList.contains("check")) {
-        x[i].style.display = "none";
+    var a = x[i]
+    if (!a.innerHTML.toLowerCase().includes(input)) {
+      if (!a.classList.contains("check")) {
+        a.style.display = "none";
       }
     }
     else {
-      x[i].style.display = "flex";
+      a.style.display = "flex";
     }
   }
 }
