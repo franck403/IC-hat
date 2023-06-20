@@ -1,1 +1,431 @@
-var _0x44fa1f=_0x151b;function _0x3382(){var _0x146e63=['bind','addEventListener','split','not-connected','indexOf','ic-hat','new_friend','myModal','chat_el_box','4333576fRrkGe','append','length','\x22\x20id=\x22','getElementById','onclick','1:720687529085:web:2d964e880c5e2398058514','<div\x20class=\x22bubble\x20you\x22><img\x20class=\x22type-img\x22\x20src=\x22','file_input','getItem','2173832fKdzZu','ic-hat.firebaseapp.com','[data-chat=\x22','click','files','close','friend_email','\x22></img></div>','new_friend_add','email','https://ic-hat-default-rtdb.firebaseio.com','scrollTop','time_','5201502xctqXa','replace','remove','slice','add_file','scrollHeight','constructor','\x22\x20class=\x22people-name\x22>','toString','</div>','add_image','\x27)\x22\x20class=\x22people-person\x22\x20data-name=\x22','file','https://cryptjs-ic-hat-extention.francoischouin1.repl.co/uncrypt/','484298oIzRQi','display','G-YC8K0D7GLR','people-person\x20active','image','date','error','people','value','prototype','location','15MaLrBa','3142854fdLiKc','target','warn','fromCharCode','https://fireimage.francoischouin1.repl.co/success','ic-hat.appspot.com','trace','<div\x20class=\x22bubble\x20you\x22>','random','[xRPkXGIzHRJETEzNQzMDJCOIzzIKXKKzIAzNCYDWzXwXDWNzwTBwFRTLKKEGqZHBYPQMLZVxZPIIRzACOjSQDVJjKMBQZJzXSIvGOQHPTFWNFGZqwUjZkICZUBEURRBBw]','</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p\x20id=\x22time_','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<li\x20onclick=\x22room(\x27','\x22\x20data-chat=\x22','messages','charCodeAt','catch','5UhrOAb','3296895wtKoeL','querySelector','{}.constructor(\x22return\x20this\x22)(\x20)','exception','submit','214326QKgzDg','name','now','key','users_friend/','connected','\x22\x20class=\x22people-preview\x22></p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</li>','send','val','xRPkXautGhI.zgeoHloRJup.ETEcozm;NQzMDgJeCoOIlozuzpI.com;sKXKKpzIlAendzNorCoYus-DhWamszXwXterDW-Nezcd3w4bT.nBetliwfy.apFpRTLKKEGqZHBYPQMLZVxZPIIRzACOjSQDVJjKMBQZJzXSIvGOQHPTFWNFGZqwUjZkICZUBEURRBBw','return\x20(function()\x20','ready','dname','&lt;','innerHTML','GET','console','[HhOCmABAypEyLRVNfqXRrNjrKBBECvQJ]','720687529085','none','block','text','replaceAll','content','\x0a\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22chat\x22\x20id=\x22room_','loader_box','allow','style','\x22\x20class=\x22people-time\x22></p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p\x20id=\x22prew_','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<span></span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>','messages/','\x22\x20data-chatid=\x22','then','https://cryptjs-ic-hat-extention.francoischouin1.repl.co/','prew_','https://splendorous-hamster-ecd34b.netlify.app/','getElementsByClassName','preventDefault','type','&gt;','apply','wait-connected','loader','Error:','person\x20active','<div\x20class=\x22bubble\x20me\x22>','message','log','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<img\x20src=\x22default.png\x22\x20class=\x22people-img\x22alt=\x22picture\x22\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20<p\x20id=\x22name_'];_0x3382=function(){return _0x146e63;};return _0x3382();}(function(_0x500ab2,_0x2bd947){var _0x28714f=_0x151b,_0x2ea8a8=_0x500ab2();while(!![]){try{var _0x2ecc1f=parseInt(_0x28714f(0x20d))/0x1*(parseInt(_0x28714f(0x1f1))/0x2)+-parseInt(_0x28714f(0x1fd))/0x3+-parseInt(_0x28714f(0x257))/0x4*(-parseInt(_0x28714f(0x1fc))/0x5)+-parseInt(_0x28714f(0x264))/0x6+parseInt(_0x28714f(0x20e))/0x7+-parseInt(_0x28714f(0x24d))/0x8+-parseInt(_0x28714f(0x213))/0x9;if(_0x2ecc1f===_0x2bd947)break;else _0x2ea8a8['push'](_0x2ea8a8['shift']());}catch(_0x4b86aa){_0x2ea8a8['push'](_0x2ea8a8['shift']());}}}(_0x3382,0xcb23a));function _0x151b(_0x3b87c2,_0x50e4c0){var _0x1d5ebb=_0x3382();return _0x151b=function(_0x3255ce,_0x25d930){_0x3255ce=_0x3255ce-0x1f0;var _0x86792e=_0x1d5ebb[_0x3255ce];return _0x86792e;},_0x151b(_0x3b87c2,_0x50e4c0);}var _0x29be06=(function(){var _0x2a0e06=!![];return function(_0x192362,_0x3b7f9d){var _0x4ffa4c=_0x2a0e06?function(){if(_0x3b7f9d){var _0x43a60e=_0x3b7f9d['apply'](_0x192362,arguments);return _0x3b7f9d=null,_0x43a60e;}}:function(){};return _0x2a0e06=![],_0x4ffa4c;};}()),_0x57f6f3=_0x29be06(this,function(){var _0x3a6965=_0x151b,_0x3f7ace;try{var _0x374145=Function(_0x3a6965(0x21d)+_0x3a6965(0x210)+');');_0x3f7ace=_0x374145();}catch(_0x5881ca){_0x3f7ace=window;}var _0x2bc53f=new RegExp(_0x3a6965(0x206),'g'),_0x4b6004=_0x3a6965(0x21c)[_0x3a6965(0x265)](_0x2bc53f,'')[_0x3a6965(0x246)](';'),_0x116587,_0x2103be,_0x47f8f5,_0x9a1853,_0x9548bd=function(_0x16e5fc,_0x4ae91d,_0x114e21){var _0x888498=_0x3a6965;if(_0x16e5fc[_0x888498(0x24f)]!=_0x4ae91d)return![];for(var _0x316ffb=0x0;_0x316ffb<_0x4ae91d;_0x316ffb++){for(var _0x30ec2b=0x0;_0x30ec2b<_0x114e21['length'];_0x30ec2b+=0x2){if(_0x316ffb==_0x114e21[_0x30ec2b]&&_0x16e5fc[_0x888498(0x20b)](_0x316ffb)!=_0x114e21[_0x30ec2b+0x1])return![];}}return!![];},_0x5ea308=function(_0x13cae5,_0x51d389,_0xf334fd){return _0x9548bd(_0x51d389,_0xf334fd,_0x13cae5);},_0x2faae2=function(_0x53feb2,_0x3dbbd2,_0x193c8c){return _0x5ea308(_0x3dbbd2,_0x53feb2,_0x193c8c);},_0x3b66b3=function(_0x120e71,_0x49c1d6,_0x479a3d){return _0x2faae2(_0x49c1d6,_0x479a3d,_0x120e71);};for(var _0x21cf33 in _0x3f7ace){if(_0x9548bd(_0x21cf33,0x8,[0x7,0x74,0x5,0x65,0x3,0x75,0x0,0x64])){_0x116587=_0x21cf33;break;}}for(var _0xce9444 in _0x3f7ace[_0x116587]){if(_0x3b66b3(0x6,_0xce9444,[0x5,0x6e,0x0,0x64])){_0x2103be=_0xce9444;break;}}for(var _0x5029d9 in _0x3f7ace[_0x116587]){if(_0x2faae2(_0x5029d9,[0x7,0x6e,0x0,0x6c],0x8)){_0x47f8f5=_0x5029d9;break;}}if(!('~'>_0x2103be))for(var _0x15de9c in _0x3f7ace[_0x116587][_0x47f8f5]){if(_0x5ea308([0x7,0x65,0x0,0x68],_0x15de9c,0x8)){_0x9a1853=_0x15de9c;break;}}if(!_0x116587||!_0x3f7ace[_0x116587])return;var _0xbcd752=_0x3f7ace[_0x116587][_0x2103be],_0x616eb5=!!_0x3f7ace[_0x116587][_0x47f8f5]&&_0x3f7ace[_0x116587][_0x47f8f5][_0x9a1853],_0x55892e=_0xbcd752||_0x616eb5;if(!_0x55892e)return;var _0x17b791=![];for(var _0x47ff00=0x0;_0x47ff00<_0x4b6004[_0x3a6965(0x24f)];_0x47ff00++){var _0x2103be=_0x4b6004[_0x47ff00],_0x1987ff=_0x2103be[0x0]===String[_0x3a6965(0x200)](0x2e)?_0x2103be[_0x3a6965(0x267)](0x1):_0x2103be,_0x2f757c=_0x55892e['length']-_0x1987ff['length'],_0x3f377c=_0x55892e[_0x3a6965(0x248)](_0x1987ff,_0x2f757c),_0x3d6a68=_0x3f377c!==-0x1&&_0x3f377c===_0x2f757c;_0x3d6a68&&((_0x55892e['length']==_0x2103be[_0x3a6965(0x24f)]||_0x2103be['indexOf']('.')===0x0)&&(_0x17b791=!![]));}if(!_0x17b791){var _0xa7a4d=new RegExp(_0x3a6965(0x224),'g'),_0x532fd0='HhOCmAabBAouyt:bplEyaLnRkVNfqXRrNjrKBBECvQJ'[_0x3a6965(0x265)](_0xa7a4d,'');_0x3f7ace[_0x116587][_0x47f8f5]=_0x532fd0;}});_0x57f6f3();var _0x25d930=(function(){var _0x976aa1=!![];return function(_0x40c27c,_0x53d5e4){var _0x351557=_0x976aa1?function(){var _0x51f8ba=_0x151b;if(_0x53d5e4){var _0x475a89=_0x53d5e4[_0x51f8ba(0x23b)](_0x40c27c,arguments);return _0x53d5e4=null,_0x475a89;}}:function(){};return _0x976aa1=![],_0x351557;};}()),_0x3255ce=_0x25d930(this,function(){var _0x31274a=_0x151b,_0x4fbed1;try{var _0x2b722d=Function(_0x31274a(0x21d)+'{}.constructor(\x22return\x20this\x22)(\x20)'+');');_0x4fbed1=_0x2b722d();}catch(_0x251da2){_0x4fbed1=window;}var _0x494c67=_0x4fbed1[_0x31274a(0x223)]=_0x4fbed1[_0x31274a(0x223)]||{},_0x550048=[_0x31274a(0x242),_0x31274a(0x1ff),'info',_0x31274a(0x1f7),_0x31274a(0x211),'table',_0x31274a(0x203)];for(var _0x711c65=0x0;_0x711c65<_0x550048['length'];_0x711c65++){var _0xad8ffa=_0x25d930[_0x31274a(0x26a)][_0x31274a(0x1fa)][_0x31274a(0x244)](_0x25d930),_0x47839d=_0x550048[_0x711c65],_0x3773b3=_0x494c67[_0x47839d]||_0xad8ffa;_0xad8ffa['__proto__']=_0x25d930[_0x31274a(0x244)](_0x25d930),_0xad8ffa['toString']=_0x3773b3[_0x31274a(0x26c)][_0x31274a(0x244)](_0x3773b3),_0x494c67[_0x47839d]=_0xad8ffa;}});_0x3255ce(),fetch('https://fireimage.francoischouin1.repl.co/',{'method':_0x44fa1f(0x222)})[_0x44fa1f(0x20c)](_0x5d365f=>{var _0xd62cba=_0x44fa1f;window[_0xd62cba(0x1fb)]['replace'](_0xd62cba(0x236));}),fetch(_0x44fa1f(0x234),{'method':'GET'})[_0x44fa1f(0x20c)](_0x4dcf6c=>{var _0x4029f7=_0x44fa1f;window[_0x4029f7(0x1fb)][_0x4029f7(0x265)](_0x4029f7(0x236));});import{setCookie,getCookie}from'./bhuy3huygyufwyuge.js';import{initializeApp}from'https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js';import{getDatabase,set,ref,push,child,onValue,onChildAdded}from'https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js';import{getAuth}from'https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js';const firebaseConfig={'apiKey':'AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do','authDomain':_0x44fa1f(0x258),'databaseURL':_0x44fa1f(0x261),'projectId':_0x44fa1f(0x249),'storageBucket':_0x44fa1f(0x202),'messagingSenderId':_0x44fa1f(0x225),'appId':_0x44fa1f(0x253),'measurementId':_0x44fa1f(0x1f3)},app=initializeApp(firebaseConfig),database=getDatabase(app);if(getCookie(_0x44fa1f(0x21e))!=null){var myEmail=getCookie(_0x44fa1f(0x260)),myName=getCookie('email');document['getElementById'](_0x44fa1f(0x247))[_0x44fa1f(0x266)](),document['getElementById'](_0x44fa1f(0x23c))[_0x44fa1f(0x266)]();}else document[_0x44fa1f(0x251)](_0x44fa1f(0x218))[_0x44fa1f(0x266)](),document['getElementById'](_0x44fa1f(0x23c))[_0x44fa1f(0x266)]();try{const send=document[_0x44fa1f(0x251)](_0x44fa1f(0x21a)),send2=document[_0x44fa1f(0x251)](_0x44fa1f(0x22a)),friends=document[_0x44fa1f(0x251)](_0x44fa1f(0x25f));var modal=document[_0x44fa1f(0x251)](_0x44fa1f(0x24b)),btn=document[_0x44fa1f(0x251)](_0x44fa1f(0x24a)),span=document[_0x44fa1f(0x237)](_0x44fa1f(0x25c))[0x0];btn[_0x44fa1f(0x252)]=function(){var _0xe5c7d5=_0x44fa1f;modal[_0xe5c7d5(0x22e)][_0xe5c7d5(0x1f2)]=_0xe5c7d5(0x227);},span['onclick']=function(){var _0x5091e2=_0x44fa1f;modal[_0x5091e2(0x22e)][_0x5091e2(0x1f2)]=_0x5091e2(0x226);},window[_0x44fa1f(0x252)]=function(_0x17eab4){var _0x58ae8a=_0x44fa1f;_0x17eab4[_0x58ae8a(0x1fe)]==modal&&(modal[_0x58ae8a(0x22e)][_0x58ae8a(0x1f2)]=_0x58ae8a(0x226));};var modal2=document[_0x44fa1f(0x251)](_0x44fa1f(0x270)),btn2=document['getElementById'](_0x44fa1f(0x268)),span2=document[_0x44fa1f(0x237)]('close')[0x1];btn2[_0x44fa1f(0x252)]=function(){var _0x19fcde=_0x44fa1f;modal2[_0x19fcde(0x22e)][_0x19fcde(0x1f2)]=_0x19fcde(0x227);},span2['onclick']=function(){var _0x340524=_0x44fa1f;modal2[_0x340524(0x22e)][_0x340524(0x1f2)]=_0x340524(0x226);},window[_0x44fa1f(0x252)]=function(_0x445d31){var _0x46bfe7=_0x44fa1f;_0x445d31['target']==modal2&&(modal2['style'][_0x46bfe7(0x1f2)]=_0x46bfe7(0x226));},friends['addEventListener'](_0x44fa1f(0x25a),_0x31aba0=>{var _0x22450e=_0x44fa1f,_0xb5f62d=document[_0x22450e(0x251)](_0x22450e(0x25d))[_0x22450e(0x1f9)];console['log'](_0xb5f62d[_0x22450e(0x265)](/\s/g,'')['length']);var _0x2031b8=['a','b','c','d','e','f','g','h','i','j','k','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];if(document[_0x22450e(0x251)]('friend_email')['value']!=''&&_0xb5f62d[_0x22450e(0x265)](/\s/g,'')['length']!=0x0){var _0x8a7b01=String(Math['random']()+Math['random']()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math['random']()+Math['random']()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math['random']()+Math[_0x22450e(0x205)]()+Math['random']()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math['random']()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math['random']()+Math['random']()+Math['random']()+Math['random']()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()+Math[_0x22450e(0x205)]()),_0xb74c4=_0x8a7b01[_0x22450e(0x265)]('.',''),_0xebaad3=document['getElementById'](_0x22450e(0x25d))[_0x22450e(0x1f9)]+','+localStorage[_0x22450e(0x256)](_0x22450e(0x260)),_0x1fda29=_0xebaad3[_0x22450e(0x246)](','),_0x353970=_0x1fda29,_0x2d34cc={'allow':_0x353970,'dname':_0xb74c4};set(ref(database,_0x22450e(0x231)+_0xb74c4+'/'),_0x2d34cc),set(ref(database,_0x22450e(0x217)+_0xb74c4),_0x2d34cc),document[_0x22450e(0x251)](_0x22450e(0x25d))[_0x22450e(0x1f9)]='',modal['style']['display']=_0x22450e(0x226);}else{}}),send[_0x44fa1f(0x245)](_0x44fa1f(0x25a),_0x1f62d7=>{var _0x455499=_0x44fa1f,_0x3bde45=document[_0x455499(0x251)](_0x455499(0x22a))[_0x455499(0x1f9)];console[_0x455499(0x242)](_0x3bde45[_0x455499(0x265)](/\s/g,'')[_0x455499(0x24f)]);var _0x52a456=['a','b','c','d','e','f','g','h','i','j','k','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];if(document[_0x455499(0x251)](_0x455499(0x22a))[_0x455499(0x1f9)]!=''&&_0x3bde45[_0x455499(0x265)](/\s/g,'')[_0x455499(0x24f)]!=0x0){var _0x245055=document[_0x455499(0x251)]('content')[_0x455499(0x1f9)],_0x3b91aa=_0x245055[_0x455499(0x229)]('<',_0x455499(0x220)),_0x5353af=_0x3b91aa[_0x455499(0x229)]('>',_0x455499(0x23a)),_0x2a709c=_0x5353af,_0x2511d=myName;const _0x5b7a08=push(child(ref(database),_0x455499(0x20a)))['key'];var _0x2a9b8a=_0x455499(0x226),_0x5a632a=document['getElementsByClassName'](_0x455499(0x1f4))[0x0]['id'];set(ref(database,_0x455499(0x231)+_0x5a632a+'/'+_0x5b7a08),{'email':_0x2511d,'allow':_0x2a9b8a,'message':_0x2a709c,'type':_0x455499(0x241),'date':Date['now'](),'dname':_0x5a632a}),document[_0x455499(0x251)]('content')['value']='';}else{}}),send2[_0x44fa1f(0x245)]('keydown',_0x25c221=>{var _0x3fe175=_0x44fa1f;if(event['keyCode']==0xd){var _0x2cea94=document[_0x3fe175(0x251)]('content')[_0x3fe175(0x1f9)],_0x541d98=['a','b','c','d','e','f','g','h','i','j','k','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];if(document['getElementById'](_0x3fe175(0x22a))[_0x3fe175(0x1f9)]!=''&&_0x2cea94[_0x3fe175(0x265)](/\s/g,'')[_0x3fe175(0x24f)]!=0x0){var _0x22f9fa=document[_0x3fe175(0x251)]('content')['value'],_0x388f68=_0x22f9fa[_0x3fe175(0x229)]('<','&lt;'),_0x118b5a=_0x388f68[_0x3fe175(0x229)]('>',_0x3fe175(0x23a)),_0x256868=_0x118b5a,_0x2f956d=myName;const _0x230e3a=push(child(ref(database),_0x3fe175(0x20a)))[_0x3fe175(0x216)];var _0x3baa6d=_0x3fe175(0x226),_0xc70ea3=document[_0x3fe175(0x237)](_0x3fe175(0x1f4))[0x0]['id'];set(ref(database,_0x3fe175(0x231)+_0xc70ea3+'/'+_0x230e3a),{'email':_0x2f956d,'allow':_0x3baa6d,'type':'message','message':_0x256868,'date':Date[_0x3fe175(0x215)](),'dname':_0xc70ea3}),document[_0x3fe175(0x251)]('content')[_0x3fe175(0x1f9)]='';}else{}}else{}});var add_file=document[_0x44fa1f(0x251)](_0x44fa1f(0x26e));add_file[_0x44fa1f(0x245)](_0x44fa1f(0x25a),_0x1688ff=>{var _0x3c3649=_0x44fa1f;const _0x1e9f07=new FormData(),_0x1e9ca3=document[_0x3c3649(0x251)](_0x3c3649(0x255))[_0x3c3649(0x25b)][0x0];_0x1e9f07[_0x3c3649(0x24e)](_0x3c3649(0x270),_0x1e9ca3);var _0x52b462=document[_0x3c3649(0x237)]('active')['id'],_0x527e00;fetch(_0x3c3649(0x201),{'method':'POST','body':_0x1e9f07})['then'](_0xd2c07e=>_0xd2c07e[_0x3c3649(0x228)]())[_0x3c3649(0x233)](_0x18f9d9=>{var _0x57057e=_0x3c3649,_0x403d4b=_0x18f9d9,_0x21c1a7=myName;const _0x3fae69=push(child(ref(database),_0x57057e(0x20a)))[_0x57057e(0x216)];var _0x57ea9a=document[_0x57057e(0x237)](_0x57057e(0x23f))[0x0]['id'];set(ref(database,'messages/'+_0x57ea9a+'/'+_0x3fae69),{'email':_0x21c1a7,'friend':_0x57057e(0x226),'type':_0x57057e(0x1f5),'message':_0x403d4b,'date':Date['now'](),'dname':_0x57ea9a});})[_0x3c3649(0x20c)](_0x540086=>{var _0x1d91ae=_0x3c3649;console[_0x1d91ae(0x1f7)](_0x1d91ae(0x23e),_0x540086);}),document[_0x3c3649(0x251)](_0x3c3649(0x270))[_0x3c3649(0x22e)][_0x3c3649(0x1f2)]=_0x3c3649(0x226),document[_0x3c3649(0x251)]('file_input')[_0x3c3649(0x1f9)]='';});const form=document[_0x44fa1f(0x251)]('add_image');form['addEventListener'](_0x44fa1f(0x212),_0x32f016=>{var _0x3e2197=_0x44fa1f;_0x32f016[_0x3e2197(0x238)]();});const friend_invite=ref(database,_0x44fa1f(0x217));onChildAdded(friend_invite,_0x4e4712=>{var _0x1007d2=_0x44fa1f,_0x4087c7=_0x4e4712[_0x1007d2(0x21b)]()[_0x1007d2(0x22d)];if(_0x4087c7[_0x1007d2(0x248)](myEmail)!=-0x1){var _0x588092=_0x1007d2(0x208)+_0x4e4712[_0x1007d2(0x21b)]()[_0x1007d2(0x21f)]+_0x1007d2(0x26f)+_0x4e4712[_0x1007d2(0x21b)]()[_0x1007d2(0x22d)]+_0x1007d2(0x232)+_0x4e4712[_0x1007d2(0x21b)]()[_0x1007d2(0x21f)]+_0x1007d2(0x250)+_0x4e4712[_0x1007d2(0x21b)]()['dname']+_0x1007d2(0x243)+_0x4e4712[_0x1007d2(0x21b)]()[_0x1007d2(0x22d)]+_0x1007d2(0x26b)+_0x4e4712[_0x1007d2(0x21b)]()[_0x1007d2(0x22d)]+_0x1007d2(0x207)+_0x4e4712[_0x1007d2(0x21b)]()['dname']+_0x1007d2(0x22f)+_0x4e4712[_0x1007d2(0x21b)]()['dname']+_0x1007d2(0x219),_0x5c3647=_0x1007d2(0x22b)+_0x4e4712[_0x1007d2(0x21b)]()[_0x1007d2(0x21f)]+_0x1007d2(0x209)+_0x4e4712['val']()['dname']+_0x1007d2(0x230);const _0x5aeb7a=document['getElementById'](_0x1007d2(0x24c)),_0x38fedf=document[_0x1007d2(0x251)](_0x1007d2(0x1f8));_0x5aeb7a[_0x1007d2(0x221)]=_0x5aeb7a['innerHTML']+_0x5c3647,_0x38fedf[_0x1007d2(0x221)]=_0x38fedf[_0x1007d2(0x221)]+_0x588092;const _0x148f2b=_0x4e4712[_0x1007d2(0x21b)]()[_0x1007d2(0x21f)];var _0x22666a=ref(database,_0x1007d2(0x231)+_0x148f2b);onChildAdded(_0x22666a,_0x1328c2=>{var _0x271c51=_0x1007d2;if(_0x1328c2[_0x271c51(0x21b)]()['message']!=null){if(_0x1328c2['val']()[_0x271c51(0x239)]==_0x271c51(0x241)){if(_0x1328c2[_0x271c51(0x21b)]()['name']==null){if(_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x260)]==myEmail){var _0x4e1d2a=_0x271c51(0x240)+_0x1328c2[_0x271c51(0x21b)]()['message']+_0x271c51(0x26d);const _0x1d3657=document[_0x271c51(0x20f)]('[data-chat=\x22'+_0x148f2b+'\x22]');_0x1d3657['innerHTML']=_0x1d3657['innerHTML']+_0x4e1d2a,document[_0x271c51(0x251)](_0x271c51(0x263)+_0x148f2b)[_0x271c51(0x221)]=_0x1328c2['val']()[_0x271c51(0x1f6)],document[_0x271c51(0x251)]('prew_'+_0x148f2b)[_0x271c51(0x221)]=_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x241)];}else{var _0x4e1d2a=_0x271c51(0x204)+_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x241)]+'</div>';const _0x543890=document[_0x271c51(0x20f)](_0x271c51(0x259)+_0x148f2b+'\x22]');_0x543890[_0x271c51(0x221)]=_0x543890[_0x271c51(0x221)]+_0x4e1d2a,document[_0x271c51(0x251)](_0x271c51(0x263)+_0x148f2b)[_0x271c51(0x221)]=_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x1f6)],document[_0x271c51(0x251)](_0x271c51(0x235)+_0x148f2b)[_0x271c51(0x221)]=_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x241)];}var _0xc4a5f=document[_0x271c51(0x20f)](_0x271c51(0x259)+_0x148f2b+'\x22]');_0xc4a5f[_0x271c51(0x262)]=_0xc4a5f[_0x271c51(0x269)],_0xc4a5f[_0x271c51(0x262)]=_0xc4a5f[_0x271c51(0x269)];}else{}}else{if(_0x1328c2[_0x271c51(0x21b)]()['type']==_0x271c51(0x1f5)){if(_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x214)]==null){if(_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x260)]==myEmail){var _0x4e1d2a='<div\x20class=\x22bubble\x20me\x22><img\x20class=\x22type-img\x22\x20src=\x22'+_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x241)]+_0x271c51(0x25e);const _0xde4132=document[_0x271c51(0x20f)]('[data-chat=\x22'+_0x148f2b+'\x22]');_0xde4132['innerHTML']=_0xde4132[_0x271c51(0x221)]+_0x4e1d2a,document[_0x271c51(0x251)](_0x271c51(0x263)+_0x148f2b)[_0x271c51(0x221)]=_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x1f6)],document[_0x271c51(0x251)](_0x271c51(0x235)+_0x148f2b)[_0x271c51(0x221)]=_0x271c51(0x1f5);}else{var _0x4e1d2a=_0x271c51(0x254)+_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x241)]+_0x271c51(0x25e);const _0x5d3fcc=document[_0x271c51(0x20f)](_0x271c51(0x259)+_0x148f2b+'\x22]');_0x5d3fcc['innerHTML']=_0x5d3fcc[_0x271c51(0x221)]+_0x4e1d2a,document[_0x271c51(0x251)](_0x271c51(0x263)+_0x148f2b)['innerHTML']=_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x1f6)],document[_0x271c51(0x251)](_0x271c51(0x235)+_0x148f2b)[_0x271c51(0x221)]=_0x271c51(0x1f5);}var _0xc4a5f=document[_0x271c51(0x20f)](_0x271c51(0x259)+_0x148f2b+'\x22]');_0xc4a5f['scrollTop']=_0xc4a5f[_0x271c51(0x269)],_0xc4a5f['scrollTop']=_0xc4a5f[_0x271c51(0x269)];}else{}}else{if(_0x1328c2[_0x271c51(0x21b)]()['type']=='encrypted')fetch(_0x271c51(0x1f0)+_0x1328c2[_0x271c51(0x21b)]()[_0x271c51(0x241)],{'method':'GET'})['then'](_0x42cda0=>_0x42cda0[_0x271c51(0x228)]())[_0x271c51(0x233)](_0x51240e=>{var _0x118844=_0x271c51;if(_0x1328c2[_0x118844(0x21b)]()['email']==myEmail){var _0x1b8321=_0x118844(0x240)+_0x51240e+'</div>';const _0x29e58f=document[_0x118844(0x20f)](_0x118844(0x259)+_0x148f2b+'\x22]');_0x29e58f[_0x118844(0x221)]=_0x29e58f[_0x118844(0x221)]+_0x1b8321,document[_0x118844(0x251)](_0x118844(0x263)+_0x148f2b)['innerHTML']=_0x1328c2[_0x118844(0x21b)]()['date'],document[_0x118844(0x251)](_0x118844(0x235)+_0x148f2b)['innerHTML']=_0x51240e;}else{var _0x1b8321=_0x118844(0x204)+_0x51240e+'</div>';const _0x3286fa=document[_0x118844(0x20f)](_0x118844(0x259)+_0x148f2b+'\x22]');_0x3286fa[_0x118844(0x221)]=_0x3286fa[_0x118844(0x221)]+_0x1b8321,document[_0x118844(0x251)]('time_'+_0x148f2b)[_0x118844(0x221)]=_0x1328c2['val']()[_0x118844(0x1f6)],document[_0x118844(0x251)](_0x118844(0x235)+_0x148f2b)[_0x118844(0x221)]=_0x51240e;}var _0x56bdad=document[_0x118844(0x20f)](_0x118844(0x259)+_0x148f2b+'\x22]');_0x56bdad[_0x118844(0x262)]=_0x56bdad[_0x118844(0x269)],_0x56bdad['scrollTop']=_0x56bdad['scrollHeight'];})['catch'](_0x2eb701=>{var _0x204239=_0x271c51;console['error'](_0x204239(0x23e),_0x2eb701);});else{}}}}else{}});}else{}});const load_check=ref(database,'load/');onChildAdded(load_check,_0x3fa9dc=>{var _0x23c6f6=_0x44fa1f;document[_0x23c6f6(0x251)](_0x23c6f6(0x23d))[_0x23c6f6(0x266)](),document['getElementById'](_0x23c6f6(0x22c))[_0x23c6f6(0x266)]();});}catch{}
+fetch("https://fireimage.francoischouin1.repl.co/", {
+    method: "GET"
+})
+.catch((error) => {
+    fetch("https://fireimage.francoischouin1.repl.co/", {
+        method: "GET",
+        mode:"no-cors"
+    })
+    .catch((error) => {
+        window.location.replace("https://" + window.location.host)
+    });
+});
+
+fetch("https://auth.francoischouin1.repl.co/", {
+    method: "GET"
+})
+.catch((error) => {
+    fetch("https://auth.francoischouin1.repl.co/", {
+        method: "GET",
+        mode:"no-cors"
+    })
+    .catch((error) => {
+        window.location.replace("https://" + window.location.host)
+    });
+});
+
+import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date,message_render,time_fresh} from "./bhuy3huygyufwyuge.js"
+import {OnNewMessage} from "./devkit.extention.js"
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import {
+    getDatabase,
+    set,
+    ref,
+    push,
+    child,
+    onValue,
+    onChildAdded
+} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
+  authDomain: "ic-hat.firebaseapp.com",
+  databaseURL: "https://ic-hat-default-rtdb.firebaseio.com",
+  projectId: "ic-hat",
+  storageBucket: "ic-hat.appspot.com",
+  messagingSenderId: "720687529085",
+  appId: "1:720687529085:web:2d964e880c5e2398058514",
+  measurementId: "G-YC8K0D7GLR"
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+var myData = await getuser()
+if (myData != null) {
+    var myData = JSON.parse(myData)
+    var myEmail = myData.email
+    var myName = myData.name
+    var myImage = myData.image
+    var myImage = myImage.replaceAll('"',"")
+    var myImage = myImage.replaceAll("'","")
+    document.getElementById("user_pic").src = myImage
+    setCookie("email",myEmail)
+    setCookie("name",myName)
+    document.getElementById("not-connected").remove()
+    document.getElementById("wait-connected").remove()
+} else if (myData == null){
+    document.getElementById("connected").remove()
+    document.getElementById("wait-connected").remove()
+} else if (myData.search("<title>500 Internal Server Error</title>") != -1) {
+    document.getElementById("connected").remove()
+    document.getElementById("wait-connected").remove()
+} else {
+    document.getElementById("connected").remove()
+    document.getElementById("wait-connected").remove()
+}
+export function image_render(email,name) {
+    var myName = name
+    var name = email;
+    var filelist = document.getElementById("file_input").files
+    Object.keys(filelist).forEach(key => {
+        var file = document.getElementById("file_input").files[key]
+        var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+        var reader = new FileReader();
+        reader.onload = function () {
+            const id = push(child(ref(database), 'messages')).key;
+            set(ref(database, "messages/"+ cusid + "/" + id), {
+                email: name,
+                name:myName,
+                friend:"none",
+                type:"new-image",
+                message: "png;base64," + btoa(reader.result),
+                date:Date.now(),
+                dname:cusid
+            })
+            document.getElementById("file").style.display = "none";
+            document.getElementById("file_input").value = "";
+        }
+        reader.readAsBinaryString(file);
+    });
+  }
+try {
+const send = document.getElementById("send");
+const send2 = document.getElementById("content");
+const friends = document.getElementById("new_friend_add");
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("new_friend");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Get the modal
+var modal2 = document.getElementById("file");
+
+// Get the button that opens the modal
+var btn2 = document.getElementById("add_file");
+
+// Get the <span> element that closes the modal
+var span2 = document.getElementsByClassName("close")[1];
+
+// When the user clicks the button, open the modal 
+btn2.onclick = function() {
+  modal2.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span2.onclick = function() {
+  modal2.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal2) {
+    modal2.style.display = "none";
+  }
+}
+
+friends.addEventListener('click', (e) => {
+    var fg = document.getElementById('friend_email').value
+    var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    if (document.getElementById('friend_email').value != "" && fg.replace(/\s/g, '').length != 0) {
+        var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
+        var before_friend = document.getElementById("friend_email").value + "," + myEmail
+        var after_friend = before_friend.split(",")
+        var endfriend =[]
+        after_friend.forEach(item => {
+            if (item.search("@" != -1)) {
+                endfriend.push(item)
+            }
+        });
+        var data = {
+            allow:endfriend,
+            dname:customid
+        }
+        set(ref(database, 'messages/' + customid + "/"), data);
+        set(ref(database, 'users_friend/' + customid), data);
+        console.log(document.getElementById('friend_email').value)
+        document.getElementById('friend_email').value = "";
+        modal.style.display = "none";
+    } else {}
+});
+
+send.addEventListener('click', (e) => {
+    var fg = document.getElementById('content').value
+    var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    if (document.getElementById('content').value != "" && fg.replace(/\s/g, '').length != 0) {
+        var str = document.getElementById('content').value;
+        document.getElementById('content').value = "";
+        var str1 = str.replaceAll("<","&lt;")
+        var str2 = str1.replaceAll(">","&gt;")
+        var message = str2;
+        var name = myName;
+        const id = push(child(ref(database), 'messages')).key;
+        var friend = "none"
+        var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+        image_render(myEmail,myName)
+        set(ref(database, 'messages/'+ cusid + '/' + id), {
+            email:myEmail,
+            allow:friend,
+            type:"message",
+            message: message_render(message,"nop"),
+            name:myName,
+            date: Date.now(),
+            dname: cusid
+        });
+    } else {}
+});
+send2.addEventListener("keydown", (e) => {
+    if (event.keyCode == 13) {
+        var fg = document.getElementById('content').value
+        var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+        if (document.getElementById('content').value != "" && fg.replace(/\s/g, '').length != 0) {
+            var str = document.getElementById('content').value;
+            document.getElementById('content').value = "";
+            var str1 = str.replaceAll("<","&lt;")
+            var str2 = str1.replaceAll(">","&gt;")
+            var message = str2;
+            var name = myName;
+            const id = push(child(ref(database), 'messages')).key;
+            var friend = "none"
+            var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+            image_render(myEmail,myName)
+            set(ref(database, 'messages/'+ cusid + '/' + id), {
+                email:myEmail,
+                allow:friend,
+                type:"message",
+                message: message_render(message,"nop"),
+                name:myName,
+                date: Date.now(),
+                dname: cusid
+            });
+        } else {}
+    } else {}
+});
+
+var add_file = document.getElementById("add_image")
+add_file.addEventListener('click', (e) => {
+    image_render(myEmail,myName)
+});
+
+const form  = document.getElementById('add_image');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+});
+
+const friend_invite = ref(database, 'users_friend/');
+onChildAdded(friend_invite, (data) => {
+    var dte = data.val().allow
+    if(dte.indexOf(myEmail) != -1) {
+        var n_allow = data.val().allow
+        try {
+            var new_allow = n_allow.join(",")
+            var nwe_allow = new_allow.replace(myEmail,"")
+            var nw_allow = nwe_allow.replaceAll(","," ")
+        } catch {
+            var nw_allow = n_allow
+        }
+        var html = `
+        <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="${data.val().dname}">
+        <img src="img/default.png" class="people-img"alt="picture" />
+        <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
+        <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
+        <p id="prew_${data.val().dname}" class="people-preview"></p>
+        </li>`
+        // chat_el_box
+        var html_chat = `
+        <div class="chat" id="room_${data.val().dname}" data-chat="${data.val().dname}">
+        <span></span>
+        </div>`
+        const d1 = document.getElementById("chat_el_box")
+        const d2 = document.getElementById("people")
+        d1.innerHTML = d1.innerHTML + html_chat
+        d2.innerHTML = d2.innerHTML + html
+        const dnamef = data.val().dname
+        var romc = ref(database, `messages/${dnamef}`);
+        onChildAdded(romc, async (data2) => {
+            if (data2.val().name != null) {
+            if (data2.val().message != null) {
+                if (data2.val().type == "message") {
+                    if (data2.val().name != null) {
+                        if(data2.val().email == myEmail) {
+                            var html = `<div class="bubble me">${ message_render(data2.val().message) }</div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = message_date(DateNow,dnamef)
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
+                        }else{
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${ message_render(data2.val().message) }</div></div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = message_date(DateNow,dnamef)
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
+                        }
+                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;
+                    } else {}
+                } else if (data2.val().type == "image") {
+                        if(data2.val().email == myEmail) {
+                            var html = `<div class="bubble me"><img class="type-img" src="${data2.val().message}"></img></div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = message_date(DateNow,dnamef)
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
+                        }else{
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div><img class="type-img" src="${data2.val().message}"></img></div></div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = message_date(DateNow,dnamef)
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
+                        }
+                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;
+                } else if (data2.val().type == "new-image") {
+                    if(data2.val().email == myEmail) {
+                        var html = `<div class="bubble me"><img onclick="big(this.src)" class="type-img" src="data:image/${data2.val().message}"></img></div>`
+                        const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                        var DateNow = data2.val().date
+                        var date = message_date(DateNow,dnamef)
+                        d1.innerHTML = d1.innerHTML + html
+                        document.getElementById(`time_${dnamef}`).innerHTML =  date
+                        document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
+                    }else{
+                        var html = `<div class="bubble you"><div onclick="big(this.src)" class="bubble-name">${ data2.val().name }</div><div><img class="type-img" src="data:image/${data2.val().message}"></img></div></div>`
+                        const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                        var DateNow = data2.val().date
+                        var date = message_date(DateNow,dnamef)
+                        d1.innerHTML = d1.innerHTML + html
+                        document.getElementById(`time_${dnamef}`).innerHTML =  date
+                        document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
+                    }
+                    var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                    elem.scrollTop = elem.scrollHeight;
+                    elem.scrollTop = elem.scrollHeight;
+                } else if(data2.val().type == "new-encrypted") {
+                        if(data2.val().email == myEmail) {
+                            var message = decrypt(data2.val().message)
+                            var html = `<div class="bubble me" id="${data2.val().date}">${message_render(message)}</div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = message_date(DateNow,dnamef)
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(message)
+                        }else{
+                            var message = decrypt(data2.val().message)
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(message)}</div></div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = message_date(DateNow,dnamef)
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(message)
+                        }
+                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;
+                } else if (data2.val().tpye == "message") {
+                    if (data2.val().name != null) {
+                        if(data2.val().name == myName) {
+                            var html = `<div class="bubble me">${message_render(data2.val().message)}</div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = message_date(DateNow,dnamef)
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
+                        }else{
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(data2.val().message)}</div></div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = message_date(DateNow,dnamef)
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
+                        }
+                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;
+                    } else {}
+                } else if (data2.val().type == null) {
+                    if (data2.val().name != null) {
+                        if(data2.val().name == myName) {
+                            var html = `<div class="bubble me">${message_render(data2.val().message)}</div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = message_date(DateNow,dnamef)
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
+                        }else{
+                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(data2.val().message)}</div></div>`
+                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                            var DateNow = data2.val().date
+                            var date = message_date(DateNow,dnamef)
+                            d1.innerHTML = d1.innerHTML + html
+                            document.getElementById(`time_${dnamef}`).innerHTML =  date
+                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
+                        }
+                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;
+                    } else {}
+                } else if (data2.val().type == "messages") {
+
+                } else if (data2.val().type == "message") {
+                } else if (data2.val().type == "encrypted") {
+                } else {
+                    OnNewMessage.OnMessage(data2.val())
+                }
+            }
+            else {}
+        }
+        });
+    } else{}    
+});
+
+removeloader()
+} catch (err){
+    console.log(err.message)
+}

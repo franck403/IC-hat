@@ -22,7 +22,7 @@ export function load() {
     
     });
     var tag = document.createElement("script");
-    tag.src = "core_buie_fffffffffffffffffijkhdiuchfiuhcdiuhauisuidsf.js";
+    tag.src = "core.js";
     tag.type = "module" 
     document.getElementById("extention_import").appendChild(tag);
     return true
