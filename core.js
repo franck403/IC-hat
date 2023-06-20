@@ -159,7 +159,11 @@ friends.addEventListener('click', (e) => {
     var list = document.getElementsByClassName("check")
     console.log(list)
     if (list != undefined) {
-        var fg = ""
+        var fg = []
+        list.forEach(item => {
+            fg.push(item.id)
+        });
+        var fg = fg.join(",")
         var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
         var before_friend = document.getElementById("").value + "," + myEmail
         var after_friend = before_friend.split(",")
