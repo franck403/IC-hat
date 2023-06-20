@@ -849,14 +849,17 @@ body {
     display:flex;
     width: 25vw;
 }
+.list:hover {
+    cursor: default;
+}
 
 .list p {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.check img{
-    float:left;
+.check{
+    background:var(--blue);
 }
 
 @media screen and (max-width: 970px) {
