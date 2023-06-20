@@ -156,7 +156,7 @@ window.onclick = function(event) {
 }
 
 friends.addEventListener('click', (e) => {
-    var list = document.getElementsByClassName("check")
+    var list = document.querySelectorAll(".check");
     console.log(list)
     if (list != undefined) {
         var fg = []
@@ -177,11 +177,14 @@ friends.addEventListener('click', (e) => {
             allow:endfriend,
             dname:customid
         }
+        document.getElementById("firend_list_preview").innerHTML = ""
+        /*
         set(ref(database, 'messages/' + customid + "/"), data);
         set(ref(database, 'users_friend/' + customid), data);
         console.log(document.getElementById('friend_email').value)
         document.getElementById('friend_email').value = "";
         modal.style.display = "none";
+        */
     } else {}
 });
 
