@@ -58,6 +58,10 @@ export function login(email, password) {
 }
 
 export function register(name, email, password) {
+  var email = email.replaceAll(" ","_")
+  if (email.search("@") == -1) {
+    var email = email + "@default.geoloup.com"
+  }
   let formData = new FormData();
   formData.append('email', email);
   formData.append('password', password);

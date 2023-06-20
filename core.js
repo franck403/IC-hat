@@ -163,10 +163,10 @@ friends.addEventListener('click', (e) => {
         list.forEach(item => {
             fg.push(item.id)
         });
-        var fg = fg.join(",")
+        var fg = fg.join(" ")
         var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
         var before_friend = document.getElementById("").value + "," + myEmail
-        var after_friend = before_friend.split(",")
+        var after_friend = before_friend.split(" ")
         var endfriend =[]
         after_friend.forEach(item => {
             if (item.search("@" != -1)) {
