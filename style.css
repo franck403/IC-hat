@@ -849,6 +849,12 @@ body {
     display:flex;
     width: 25vw;
 }
+
+.list p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .check img{
     float:left;
 }

@@ -195,6 +195,20 @@ function key_add() {
         });
       });
   }
+  let input = document.getElementById('friend_email').value
+  input = input.toLowerCase();
+  let x = document.getElementsByClassName('friend-preview');
+
+  for (i = 0; i < x.length; i++) {
+    if (!x[i].innerHTML.toLowerCase().includes(input)) {
+      if (!x[i].classList.contains("check")) {
+        x[i].style.display = "none";
+      }
+    }
+    else {
+      x[i].style.display = "list-item";
+    }
+  }
 }
 function friend(email) {
   if (!document.getElementById("friend-preview-" + email).classList.contains("check")) {
