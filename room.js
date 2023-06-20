@@ -206,7 +206,7 @@ function key_add() {
       }
     }
     else {
-      x[i].style.display = "list-item";
+      x[i].style.display = "flex";
     }
   }
 }
