@@ -156,11 +156,12 @@ window.onclick = function(event) {
 }
 
 friends.addEventListener('click', (e) => {
-    var fg = document.getElementById('friend_email').value
-    var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-    if (document.getElementById('friend_email').value != "" && fg.replace(/\s/g, '').length != 0) {
+    var list = document.getElementsByClassName("check")
+    console.log(list)
+    if (list != undefined) {
+        var fg = ""
         var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
-        var before_friend = document.getElementById("friend_email").value + "," + myEmail
+        var before_friend = document.getElementById("").value + "," + myEmail
         var after_friend = before_friend.split(",")
         var endfriend =[]
         after_friend.forEach(item => {
