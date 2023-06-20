@@ -165,7 +165,7 @@ friends.addEventListener('click', (e) => {
         });
         var fg = fg.join(" ")
         var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
-        var before_friend = document.getElementById("").value + "," + myEmail
+        var before_friend = fg + "," + myEmail
         var after_friend = before_friend.split(" ")
         var endfriend =[]
         after_friend.forEach(item => {
