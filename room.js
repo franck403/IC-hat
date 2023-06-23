@@ -129,7 +129,7 @@ function search() {
     }
     console.log("[search core] Searching Person in db...")
     document.getElementById('search_bar').disabled
-    fetch('https://auth.francoischouin1.repl.co/user/search?name=' + input)
+    fetch('https://auth.geoloup.com/user/search?name=' + input)
       .then((response) => response.json())
       .then((responseJson) => {
         for (i = 0; i < z.length; i++) {
@@ -178,7 +178,7 @@ function key_add() {
   if (document.getElementById("firend_list_preview").innerHTML == "") {
     console.log("[core] Getting db content")
     document.getElementById('friend_email').disabled
-    fetch('https://auth.francoischouin1.repl.co/user/search?name=')
+    fetch('https://auth.geoloup.com/user/search?name=')
       .then((response) => response.json())
       .then((responseJson) => {
         document.getElementById('friend_email').removeAttribute("disable")

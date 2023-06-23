@@ -11,11 +11,11 @@ fetch("https://fireimage.francoischouin1.repl.co/", {
     });
 });
 
-fetch("https://auth.francoischouin1.repl.co/", {
+fetch("https://auth.geoloup.com/", {
     method: "GET"
 })
 .catch((error) => {
-    fetch("https://auth.francoischouin1.repl.co/", {
+    fetch("https://auth.geoloup.com/", {
         method: "GET",
         mode:"no-cors"
     })

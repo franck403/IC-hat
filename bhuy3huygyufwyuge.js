@@ -41,7 +41,7 @@ export function login(email, password) {
   let formData = new FormData();
   formData.append('email', email);
   formData.append('password', password)
-  fetch("https://auth.francoischouin1.repl.co/login", {
+  fetch("https://auth.geoloup.com/login", {
     method: "POST",
     body: formData
   })
@@ -66,7 +66,7 @@ export function register(name, email, password) {
   formData.append('email', email);
   formData.append('password', password);
   formData.append('name', name);
-  fetch("https://auth.francoischouin1.repl.co/register", {
+  fetch("https://auth.geoloup.com/register", {
     method: "POST",
     body: formData
   })
@@ -84,7 +84,7 @@ export function register(name, email, password) {
 
 export function getuser() {
   if (getCookie("geoloup") != null) {
-    return fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"))
+    return fetch("https://auth.geoloup.com/getuser?geoloup=" + getCookie("geoloup"))
       .then((reponse) => reponse.text())
       .then((data) => {
         if (data != "no") {
@@ -93,7 +93,7 @@ export function getuser() {
         return null
       })
       .catch(() => {
-        return fetch("https://auth.francoischouin1.repl.co/getuser?geoloup=" + getCookie("geoloup"), { mode: "no-cors" })
+        return fetch("https://auth.geoloup.com/getuser?geoloup=" + getCookie("geoloup"), { mode: "no-cors" })
           .then((reponse) => reponse.text())
           .then((data) => {
             if (data != "no") {
