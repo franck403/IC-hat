@@ -63,7 +63,7 @@ if (myData != null & myData.error == undefined) {
     setCookie("name",myName)
     document.getElementById("not-connected").remove()
     document.getElementById("wait-connected").remove()
-} else if (myData == null){
+} else if (myData == null | myData.error == undefined){
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
 } else if (myData.search("<title>500 Internal Server Error</title>") != -1) {
