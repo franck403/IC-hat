@@ -57,8 +57,10 @@ if (myData != null & myData.error == undefined) {
     var myEmail = myData.email
     var myName = myData.name
     console.log(myData)
-    var myImage = String(myData.image).replaceAll('"',"").replaceAll("'","")
-    document.getElementById("user_pic").src = String(myData.image).replaceAll('"',"").replaceAll("'","")
+    if (myData.image != '"error"') {
+        var myImage = String(myData.image).replaceAll('"',"").replaceAll("'","")
+        document.getElementById("user_pic").src = String(myData.image).replaceAll('"',"").replaceAll("'","")
+    }
     setCookie("email",myEmail)
     setCookie("name",myName)
     document.getElementById("not-connected").remove()
