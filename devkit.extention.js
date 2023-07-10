@@ -1,16 +1,18 @@
 export const OnNewMessage = {
-    code : "",
+    code : [],
     LauchCode : function(data) {    
-        let lauch = ""
-        lauch = OnNewMessage.code
-        if (lauch != null) {
-            try {
-            lauch(data)
-            } catch {}
-        } else {}
+        let lauchs = ""
+        lauchs = OnNewMessage.code
+        lauchs.forEach(lauch => {
+            if (lauch != null) {
+                try {
+                lauch(data)
+                } catch {}
+            } else {}            
+        });
     },
-    setup_code : function(name,code) {
-        OnNewMessage.code = code
+    setup_code : function(code) {
+        OnNewMessage.code.push(code)
     },
     OnMessage : function(val) {
         var CodeToLauch =  OnNewMessage.code
@@ -22,7 +24,7 @@ export const docs = {
     help : 
     `import {OnNewMessage} from '../.devkit.extention.js'
     // note the type supported by the core are not send 
-    OnNewMessage.setup_code("code name",(data) => {
+    OnNewMessage.setup_code((data) => {
         console.log("message recive = " + data.message)
     })
     `
