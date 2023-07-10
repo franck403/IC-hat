@@ -52,7 +52,8 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 var myData = await getuser()
-if (myData != null & myData.error == undefined) {
+if (myData != null & JSON.parse(myData).error == undefined) {
+    console.log(JSON.parse(myData).error == undefined)
     var myData = JSON.parse(myData)
     var myEmail = myData.email
     var myName = myData.name
