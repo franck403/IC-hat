@@ -56,9 +56,7 @@ if (myData != null) {
     var myData = JSON.parse(myData)
     var myEmail = myData.email
     var myName = myData.name
-    var myImage = myData.image
-    var myImage = myImage.replaceAll('"',"")
-    var myImage = myImage.replaceAll("'","")
+    var myImage = myData.image.replaceAll('"',"").replaceAll("'","")
     document.getElementById("user_pic").src = myImage
     setCookie("email",myEmail)
     setCookie("name",myName)
