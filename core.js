@@ -57,7 +57,7 @@ if (myData != null) {
     var myEmail = myData.email
     var myName = myData.name
     var myImage = myData.image.replaceAll('"',"").replaceAll("'","")
-    document.getElementById("user_pic").src = myImage
+    document.getElementById("user_pic").src = myData.image.replaceAll('"',"").replaceAll("'","")
     setCookie("email",myEmail)
     setCookie("name",myName)
     document.getElementById("not-connected").remove()
