@@ -10,8 +10,8 @@ const loginEmailPassword = async () => {
   const loginEmail = txtEmail.value
   const loginPassword = txtPassword.value
   try {
-    login(loginEmail, loginPassword)
-    showLoginState()
+    await login(loginEmail, loginPassword)
+    await showLoginState()
   } catch {}
 }
 const createAccount = async () => {
@@ -20,8 +20,8 @@ const createAccount = async () => {
   const name = txtName.value
 
   try {
-    register(name,email, password)
-    showLoginState()
+    await register(name,email, password)
+    await showLoginState()
   }
   catch(error) {} 
 }
