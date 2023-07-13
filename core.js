@@ -52,7 +52,8 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 var myData = await getuser()
-if (myData != null & JSON.parse(myData).error == undefined) {
+if (myData != null) {
+    if (JSON.parse(myData).error == undefined) {
     console.log(JSON.parse(myData).error == undefined)
     var myData = JSON.parse(myData)
     var myEmail = myData.email
@@ -66,6 +67,7 @@ if (myData != null & JSON.parse(myData).error == undefined) {
     setCookie("name",myName)
     document.getElementById("not-connected").remove()
     document.getElementById("wait-connected").remove()
+    }
 } else if (myData == null | myData.error == undefined){
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
