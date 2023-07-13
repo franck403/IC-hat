@@ -54,26 +54,23 @@ const database = getDatabase(app);
 var myData = await getuser()
 if (myData != null) {
     if (JSON.parse(myData).error == undefined) {
-    console.log(JSON.parse(myData).error == undefined)
-    var myData = JSON.parse(myData)
-    var myEmail = myData.email
-    var myName = myData.name
-    console.log(myData)
-    if (myData.image != '"error"') {
-        var myImage = String(myData.image).replaceAll('"',"").replaceAll("'","")
-        document.getElementById("user_pic").src = String(myData.image).replaceAll('"',"").replaceAll("'","")
+        console.log(JSON.parse(myData).error == undefined)
+        var myData = JSON.parse(myData)
+        var myEmail = myData.email
+        var myName = myData.name
+        console.log(myData)
+        if (myData.image != '"error"') {
+            var myImage = String(myData.image).replaceAll('"',"").replaceAll("'","")
+            document.getElementById("user_pic").src = String(myData.image).replaceAll('"',"").replaceAll("'","")
+        }
+        setCookie("email",myEmail)
+        setCookie("name",myName)
+        document.getElementById("not-connected").remove()
+        document.getElementById("wait-connected").remove()
+    } else {
+        document.getElementById("connected").remove()
+        document.getElementById("wait-connected").remove()
     }
-    setCookie("email",myEmail)
-    setCookie("name",myName)
-    document.getElementById("not-connected").remove()
-    document.getElementById("wait-connected").remove()
-    }
-} else if (myData == null | myData.error == undefined){
-    document.getElementById("connected").remove()
-    document.getElementById("wait-connected").remove()
-} else if (myData.search("<title>500 Internal Server Error</title>") != -1) {
-    document.getElementById("connected").remove()
-    document.getElementById("wait-connected").remove()
 } else {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
