@@ -49,7 +49,7 @@ export function login(email, password) {
     .then((data) => {
       if (data != "no") {
         setCookie("geoloup", data)
-        window.location.replace("https://" + window.location.host)
+        //window.location.replace("https://" + window.location.host)
       }
     })
     .catch((error) => {
