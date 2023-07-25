@@ -9,6 +9,6 @@ iframe.onload = () => {
         netlifyIdentity.open("login") 
     });
     register.addEventListener('click', (e) => {
-        netlifyIdentity.open()
+        netlifyIdentity.open("signup")
     });
 }
