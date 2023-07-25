@@ -12,7 +12,9 @@
 </head>
 
 <body>
-  <script>netlifyIdentity.init(0);netlifyIdentity.close();netlifyIdentity.open()</script>
+  <script>
+    netlifyIdentity.on('init', user => netlifyIdentity.open()));
+  </script>
 </body>
 
 </html>
