@@ -37,76 +37,19 @@ export function bip() {
   audio.play();
 }
 
-export function login(email, password) {
-  let formData = new FormData();
-  formData.append('email', email);
-  formData.append('password', password)
-  fetch("https://auth.geoloup.com/login", {
-    method: "POST",
-    body: formData
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      if (data != "no") {
-        setCookie("geoloup", data)
-        //window.location.replace("https://" + window.location.host)
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
-
-export function register(name, email, password) {
-  var email = email.replaceAll(" ","_")
-  if (email.search("@") == -1) {
-    var email = email + "@default.geoloup.com"
-  }
-  let formData = new FormData();
-  formData.append('email', email);
-  formData.append('password', password);
-  formData.append('name', name);
-  fetch("https://auth.geoloup.com/register", {
-    method: "POST",
-    body: formData
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      if (data != "no") {
-        setCookie("geoloup", data)
-        window.location.replace("https://" + window.location.host)
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
-
 export function getuser() {
-  if (getCookie("geoloup") != null) {
-    return fetch("https://auth.geoloup.com/getuser?geoloup=" + getCookie("geoloup"))
-      .then((reponse) => reponse.text())
-      .then((data) => {
-        if (data != "no") {
-          return data
-        }
-        return null
-      })
-      .catch(() => {
-        return fetch("https://auth.geoloup.com/getuser?geoloup=" + getCookie("geoloup"), { mode: "no-cors" })
-          .then((reponse) => reponse.text())
-          .then((data) => {
-            if (data != "no") {
-              return data
-            }
-            return null
-          })
-          .catch(() => {
-            return null
-          })
-      })
+  const user = netlifyIdentity.currentUser();
+  if (user != null) {
+      console.log(user)
+      netlifyIdentity.on('init', user => console.log('init', user));
+      netlifyIdentity.on('login', user => console.log('login', user));
+      netlifyIdentity.on('logout', () => console.log('Logged out'));
+      netlifyIdentity.on('error', err => console.error('Error', err));
+  
   } else {
-    return null
+      if (location.pathname == "/addmods") {
+          location.replace("/")
+      }
   }
 }
 
