@@ -39,18 +39,7 @@ export function bip() {
 
 export function getuser() {
   const user = netlifyIdentity.currentUser();
-  if (user != null) {
-      console.log(user)
-      netlifyIdentity.on('init', user => console.log('init', user));
-      netlifyIdentity.on('login', user => console.log('login', user));
-      netlifyIdentity.on('logout', () => console.log('Logged out'));
-      netlifyIdentity.on('error', err => console.error('Error', err));
-  
-  } else {
-      if (location.pathname == "/addmods") {
-          location.replace("/")
-      }
-  }
+  return user
 }
 
 export function before(text) {
