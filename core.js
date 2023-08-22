@@ -1,29 +1,3 @@
-fetch("https://fireimage.francoischouin1.repl.co/", {
-    method: "GET"
-})
-.catch((error) => {
-    fetch("https://fireimage.francoischouin1.repl.co/", {
-        method: "GET",
-        mode:"no-cors"
-    })
-    .catch((error) => {
-        window.location.replace("https://" + window.location.host)
-    });
-});
-
-fetch("https://auth.geoloup.com/", {
-    method: "GET"
-})
-.catch((error) => {
-    fetch("https://auth.geoloup.com/", {
-        method: "GET",
-        mode:"no-cors"
-    })
-    .catch((error) => {
-        window.location.replace("https://" + window.location.host)
-    });
-});
-
 import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date,message_render,time_fresh} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
@@ -349,8 +323,6 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
                 } else if (data2.val().type == "new-image") {
-                    const reader = new FileReader();
-                    reader.onload = () => {
                         if(data2.val().email == myEmail) {
                             var DateNow = data2.val().date
                             var date = message_date(DateNow,dnamef)
@@ -362,19 +334,15 @@ onChildAdded(friend_invite, (data) => {
                         }else{
                             var DateNow = data2.val().date
                             var date = message_date(DateNow,dnamef)
-                            var html = `<div class="bubble you"><div onclick="big(this.src)" class="bubble-name">${ data2.val().name }</div><div><img class="type-img" id="${data2().email + date}" src=""></img></div></div>`
+                            var html = `<div class="bubble you"><div onclick="big(this.src)" class="bubble-name">${ data2.val().name }</div><div><img class="type-img" id="${data2().email + date}" src="${data2.val().message}"></img></div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
                             document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
                         }
-                        document.getElementById(data2().email + date).src = reader.result
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
-                    };
-                    reader.readAsBinaryString(atob(data2.val().message));
-
                 } else if(data2.val().type == "new-encrypted") {
                         if(data2.val().email == myEmail) {
                             var message = decrypt(data2.val().message)
