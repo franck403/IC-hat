@@ -3,6 +3,10 @@ import {load} from "./loader.extention.js"
 import {add,check} from "./add.extention.js"
 import {getCookie} from "./bhuy3huygyufwyuge.js"
 
+if (url.endsWith("#")) {
+    url = url.slice(0,-1)
+}
+
 if (url == "https://splendorous-hamster-ecd34b.netlify.app/"|| url == "https://chat.geoloup.com/" || url == "https://ic-hat.geoloup.com/" ) {
     load()
 } else if (url == "https://splendorous-hamster-ecd34b.netlify.app/store" || url == "https://chat.geoloup.com/store" || url == "https://ic-hat.geloup.com/store" ) {
