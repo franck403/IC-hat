@@ -158,7 +158,7 @@ friends.addEventListener('click', (e) => {
     } else {
         var fg = document.getElementById('friend_email').value
         var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-        if (document.getElementById('friend_email').value != "" && fg.replace(/\s/g, '').length != 0) {
+        if (document.getElementById('friend_email').value != "" && document.getElementById('friend_email').value != " " && fg.replace(/\s/g, '').length != 0) {
             var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
             var before_friend = document.getElementById("friend_emails").value + "," + myEmail
             var after_friend = before_friend.split(",")
@@ -248,7 +248,7 @@ form.addEventListener('submit', (event) => {
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
-    if(dte.indexOf(myEmail) != -1 && "" in dte.split(",")) {
+    if(dte.indexOf(myEmail) != -1 && "" in dte.split(",") && " " in dte.split(",")) {
         var n_allow = data.val().allow
         try {
             var new_allow = n_allow.join(",")
