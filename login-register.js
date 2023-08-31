@@ -18,7 +18,7 @@ iframe.onload = () => {
         log_out.addEventListener('click', (e) => {
             netlifyIdentity.logout()
         });
-        document.getElementById("no").remove()
+        fc.document.getElementById("no").remove()
     } else {
         login.addEventListener('click', (e) => {
             netlifyIdentity.open("login")
@@ -26,7 +26,7 @@ iframe.onload = () => {
         register.addEventListener('click', (e) => {
             netlifyIdentity.open("signup")
         });
-        document.getElementById("yes").remove()
+        fc.document.getElementById("yes").remove()
     }
 }
 if (window.location.href.endsWith("#")) {
