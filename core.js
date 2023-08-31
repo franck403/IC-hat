@@ -248,7 +248,7 @@ form.addEventListener('submit', (event) => {
 const friend_invite = ref(database, 'users_friend/');
 onChildAdded(friend_invite, (data) => {
     var dte = data.val().allow
-    if(dte.indexOf(myEmail) != -1 && "" in dte.split(",") && " " in dte.split(",")) {
+    if(dte.indexOf(myEmail) != -1) {
         var n_allow = data.val().allow
         try {
             var new_allow = n_allow.join(",")
