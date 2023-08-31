@@ -29,3 +29,6 @@ iframe.onload = () => {
         document.getElementById("yes").remove()
     }
 }
+if (window.location.href.endsWith("#")) {
+    window.location.replace(`${window.location.origin}/chat`)
+}
