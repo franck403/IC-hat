@@ -4,6 +4,8 @@ iframe.onload = () => {
     var fc = (if1.contentWindow || if1.contentDocument);
     var login = fc.document.getElementById("login");
     var register = fc.document.getElementById("register");
+    var home = netlifyIdentity.currentUser()
+    if (home != null) {}
 
     login.addEventListener('click', (e) => {
         netlifyIdentity.open("login") 

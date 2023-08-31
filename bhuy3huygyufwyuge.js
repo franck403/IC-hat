@@ -192,7 +192,7 @@ export function changepic(img,email) {
   let formData = new FormData();
   formData.append('email', email);
   formData.append('image', img);
-  fetch("https://auth-pic.virusgaming1.repl.cochangepic", {
+  fetch("https://auth-pic.virusgaming1.repl.co/changepic", {
     method: "POST",
     body: formData
   })
