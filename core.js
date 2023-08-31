@@ -157,6 +157,7 @@ friends.addEventListener('click', (e) => {
         } else {}
     } else {
         var fg = document.getElementById('friend_email').value
+        console.log(fg)
         var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
         if (document.getElementById('friend_email').value != "" && document.getElementById('friend_email').value != " " && fg.replace(/\s/g, '').length != 0) {
             var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
