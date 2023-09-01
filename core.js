@@ -323,11 +323,10 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
                 } else if (data2.val().type == "new-image") {
-                    /*
                         if(data2.val().email == myEmail) {
                             var DateNow = data2.val().date
                             var date = message_date(DateNow,dnamef)
-                            var html = `<div class="bubble me"><img onclick="big(this.src)" class="type-img"" src="${data2.val().message}"></img></div>`
+                            var html = `<div class="bubble me"><img onclick="big(this.src)" class="type-img img-load-${dnamef}" data-src="${data2.val().message}"></img></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
@@ -335,7 +334,7 @@ onChildAdded(friend_invite, (data) => {
                         }else{
                             var DateNow = data2.val().date
                             var date = message_date(DateNow,dnamef)
-                            var html = `<div class="bubble you"><div onclick="big(this.src)" class="bubble-name">${ data2.val().name }</div><div><img class="type-img" src="${data2.val().message}"></img></div></div>`
+                            var html = `<div class="bubble you"><div onclick="big(this.src)" class="bubble-name">${ data2.val().name }</div><div><img class="type-img img-load-${dnamef}" data-src="${data2.val().message}"></img></div></div>`
                             const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                             d1.innerHTML = d1.innerHTML + html
                             document.getElementById(`time_${dnamef}`).innerHTML =  date
@@ -344,7 +343,6 @@ onChildAdded(friend_invite, (data) => {
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
-                    */
                 } else if(data2.val().type == "new-encrypted") {
                         if(data2.val().email == myEmail) {
                             var message = decrypt(data2.val().message)
