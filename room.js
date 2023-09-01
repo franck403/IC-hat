@@ -1,3 +1,25 @@
+function load_image(chat_id,min,max) {
+  var main = document.getElementById("room_" + chat_id)
+  var images = document.getElementsByClassName(`img-load-${chat_id}`)
+  let data = []
+  let max = max
+  let min
+  let calc = 0
+  images.forEach(image => {
+    if (image.dataset.state != "load") {
+      data.push(image)
+    }
+  });
+  data.reverse()
+  data.forEach(image => {
+    if (image.dataset.state != "load") {
+      if (min <= calc && calc <= (min + max)) {
+        image.src = image.dataset.src
+      }
+      calc = calc + 1
+    }
+  });
+}
 function room(id) {
   if (id == "geoloup_chat") {
     var new2 = document.getElementById(id + "_c")
@@ -31,6 +53,7 @@ function room(id) {
   to.innerHTML = new1.dataset.name
   new2.scrollTop = new2.scrollHeight;
   new2.scrollTop = new2.scrollHeight;
+  load_image(id,0,10)
 }
 // spam counter
 var send_by_img = document.getElementById("send")

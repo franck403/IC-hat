@@ -238,11 +238,12 @@ export const b64toBlob = (b64Data, contentType='', sliceSize=512) => {
 }
 
 
-export function load_image(chat_id) {
-  var main = document.getElementById("time_" + chat_id)
+export function load_image(chat_id,min,max) {
+  var main = document.getElementById("room_" + chat_id)
   var images = document.getElementsByClassName(`img-load-${chat_id}`)
   let data = []
-  let max = 10
+  let max = max
+  let min
   let calc = 0
   images.forEach(image => {
     if (image.dataset.state != "load") {
@@ -252,7 +253,7 @@ export function load_image(chat_id) {
   data.reverse()
   data.forEach(image => {
     if (image.dataset.state != "load") {
-      if (calc <= max) {
+      if (min <= calc && calc <= (min + max)) {
         image.src = image.dataset.src
       }
       calc = calc + 1
