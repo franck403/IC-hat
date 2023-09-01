@@ -323,6 +323,7 @@ onChildAdded(friend_invite, (data) => {
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
                 } else if (data2.val().type == "new-image") {
+                    /*
                         if(data2.val().email == myEmail) {
                             var DateNow = data2.val().date
                             var date = message_date(DateNow,dnamef)
@@ -343,6 +344,7 @@ onChildAdded(friend_invite, (data) => {
                         var elem = document.querySelector(`[data-chat="${dnamef}"]`);
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;
+                    */
                 } else if(data2.val().type == "new-encrypted") {
                         if(data2.val().email == myEmail) {
                             var message = decrypt(data2.val().message)
