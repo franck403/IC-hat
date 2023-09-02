@@ -22,6 +22,7 @@ export function delCookie(name) {
 export function removeloader() {
   document.getElementById("loader").remove();
   document.getElementById("loader_box").remove()
+  localStorage.setItem("state","yes")
 }
 
 export function encrypt(text) {
@@ -32,9 +33,17 @@ export function decrypt(data) {
   return cryptoJs.enc.Base64.parse(data).toString(cryptoJs.enc.Utf8);
 };
 
+export function state() {
+  localStorage.setItem("state","yes")
+}
+
 export function bip() {
-  var audio = new Audio('message_recive.mp3');
-  audio.play();
+  if (localStorage.getItem("state") == "yes") {
+    var audio = new Audio('message_recive.mp3');
+    audio.play();
+    localStorage.setItem("state","no")
+  }
+  setTimeout
 }
 
 export function getuser() {

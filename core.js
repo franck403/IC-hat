@@ -1,4 +1,4 @@
-import {setCookie,getCookie,delCookie,decrypt,removeloader,getuser,message_date,message_render,time_fresh} from "./bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,delCookie,decrypt,bip,removeloader,getuser,message_date,message_render,time_fresh} from "./bhuy3huygyufwyuge.js"
 import {OnNewMessage} from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
@@ -10,7 +10,7 @@ import {
     onValue,
     onChildAdded
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
-
+localStorage.setItem("state","no")
 const firebaseConfig = {
   apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
   authDomain: "ic-hat.firebaseapp.com",
@@ -422,6 +422,7 @@ onChildAdded(friend_invite, (data) => {
                 } else {
                     OnNewMessage.OnMessage(data2.val())
                 }
+                bit()
             }
             else {}
         }
@@ -429,7 +430,7 @@ onChildAdded(friend_invite, (data) => {
     } else{}    
 });
 
-removeloader()
+setTimeout(removeloader(),100000)
 } catch (err){
     console.log(err.message)
 }
