@@ -22,7 +22,9 @@ export function delCookie(name) {
 export function removeloader() {
   document.getElementById("loader").remove();
   document.getElementById("loader_box").remove()
-  localStorage.setItem("state","yes")
+  if (localStorage.getItem("state" != "disable")) {
+    localStorage.setItem("state","yes")
+  }
 }
 
 export function encrypt(text) {
@@ -43,7 +45,9 @@ export function bip() {
     audio.play();
     localStorage.setItem("state","no")
   }
-  setTimeout
+  if (localStorage.getItem("state" != "disable")) {
+    setTimeout(state,1000)
+  }
 }
 
 export function getuser() {

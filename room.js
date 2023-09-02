@@ -241,3 +241,13 @@ function friend(email) {
     document.getElementById("friend-preview-" + email).classList.toggle('check');
   }
 }
+
+function notif() {
+  if (localStorage.getItem != "disable") {
+    localStorage.setItem("state","disable")
+    document.getElementById("notification_state").innerHTML = "notifiquation are disable"
+  } else {    
+    localStorage.setItem("state","yes")
+    document.getElementById("notification_state").innerHTML = "notifiquation are enable"
+  }
+}
