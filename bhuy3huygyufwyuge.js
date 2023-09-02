@@ -116,6 +116,11 @@ else then
   "":() => {},
 }
 */
+export function addYears(date, years) {
+  const dateCopy = new Date(date);
+  dateCopy.setFullYear(dateCopy.getFullYear() + years);
+  return dateCopy;
+}
 
 export function message_date(DateNow,dname) {
   document.getElementById(`time_${dname}`).dataset.send = DateNow
@@ -124,6 +129,7 @@ export function message_date(DateNow,dname) {
   var dateUtc = dateUtc[0].split(" ")
   var dateUtc = [0]
   var dateActual = new Date(Date.now())
+  var dateActual = addYears(dateActual,1)
   if (dateConvert.getFullYear() == dateActual.getFullYear()) {
     if (dateConvert.getMonth() == dateActual.getMonth()) {
       if (dateConvert.getDate() == dateActual.getDate()) {
