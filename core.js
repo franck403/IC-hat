@@ -422,7 +422,7 @@ onChildAdded(friend_invite, (data) => {
                 } else {
                     OnNewMessage.OnMessage(data2.val())
                 }
-                bit()
+                bip()
             }
             else {}
         }
