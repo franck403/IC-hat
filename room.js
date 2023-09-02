@@ -1,8 +1,9 @@
-function load_image(chat_id,min,max) {
+let max = 0
+function load_image(chat_id,min_,max_) {
   var main = document.getElementById("room_" + chat_id)
   var images = document.getElementsByClassName(`img-load-${chat_id}`)
   let data = []
-  let max = max
+  max = max_
   let min
   let calc = 0
   images.forEach(image => {

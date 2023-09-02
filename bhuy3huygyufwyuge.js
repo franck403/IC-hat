@@ -255,27 +255,3 @@ export const b64toBlob = (b64Data, contentType='', sliceSize=512) => {
   const blob = new Blob(byteArrays, {type: contentType});
   return blob;
 }
-
-
-export function load_image(chat_id,min,max) {
-  var main = document.getElementById("room_" + chat_id)
-  var images = document.getElementsByClassName(`img-load-${chat_id}`)
-  let data = []
-  let max = max
-  let min
-  let calc = 0
-  images.forEach(image => {
-    if (image.dataset.state != "load") {
-      data.push(image)
-    }
-  });
-  data.reverse()
-  data.forEach(image => {
-    if (image.dataset.state != "load") {
-      if (min <= calc && calc <= (min + max)) {
-        image.src = image.dataset.src
-      }
-      calc = calc + 1
-    }
-  });
-}
