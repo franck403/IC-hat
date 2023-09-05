@@ -11,14 +11,14 @@ function load_image(chat_id, min_, max_) {
     return
   }
   for (i = 0; i < images.length; i++) {
-    var image = x[i]
+    var image = images[i]
     if (image.dataset.state != "load") {
       data.push(image)
     }
   }
   data.reverse()
   for (i = 0; i < data.length; i++) {
-    var image = x[i]
+    var image = images[i]
     if (image.dataset.state != "load") {
       if (min <= calc && calc <= (min + max)) {
         image.src = image.dataset.src
