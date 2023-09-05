@@ -129,12 +129,12 @@ export function message_date(DateNow,dname) {
   var dateUtc = dateUtc[0].split(" ")
   var dateUtc = [0]
   var dateActual = new Date(Date.now())
-  var dateActual = addYears(dateActual,1)
-  if (dateConvert.getFullYear() == dateActual.getFullYear()) {
-    if (dateConvert.getMonth() == dateActual.getMonth()) {
-      if (dateConvert.getDate() == dateActual.getDate()) {
-        if (dateConvert.getHours() == dateActual.getHours()) {
-          if (dateConvert.getMinutes() == dateActual.getMinutes()) {
+  var dateActualY = addYears(dateActual,1)
+  if (dateConvert.getFullYear() == dateActualY.getFullYear()) {
+    if (dateConvert.getMonth() == dateActualY.getMonth()) {
+      if (dateConvert.getDate() == dateActualY.getDate()) {
+        if (dateConvert.getHours() == dateActualY.getHours()) {
+          if (dateConvert.getMinutes() == dateActualY.getMinutes()) {
             var date = dateActual.getSeconds() - dateConvert.getSeconds()
             var date = before(date) + " Sec ago"
           } else {
