@@ -6,20 +6,25 @@ function load_image(chat_id,min_,max_) {
   max = max_
   let min
   let calc = 0
-  images.forEach(image => {
-    if (image.dataset.state != "load") {
-      data.push(image)
-    }
-  });
-  data.reverse()
-  data.forEach(image => {
-    if (image.dataset.state != "load") {
-      if (min <= calc && calc <= (min + max)) {
-        image.src = image.dataset.src
+  try {
+    images.forEach(image => {
+      if (image.dataset.state != "load") {
+        data.push(image)
       }
-      calc = calc + 1
-    }
-  });
+    });
+    data.reverse()
+    data.forEach(image => {
+      if (image.dataset.state != "load") {
+        if (min <= calc && calc <= (min + max)) {
+          image.src = image.dataset.src
+        }
+        calc = calc + 1
+      }
+    });
+    return True
+  } catch {
+    return False
+  }
 }
 function room(id) {
   if (id == "geoloup_chat") {
