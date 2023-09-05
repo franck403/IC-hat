@@ -1,5 +1,6 @@
 let max = 0
 function load_image(chat_id,min_,max_) {
+  console.log(chat_id)
   var main = document.getElementById("room_" + chat_id)
   var images = document.getElementsByClassName(`img-load-${chat_id}`)
   let data = []
