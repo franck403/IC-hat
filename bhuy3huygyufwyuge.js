@@ -129,32 +129,32 @@ export function message_date(DateNow,dname) {
   var dateUtc = dateUtc[0].split(" ")
   var dateUtc = [0]
   var dateActual = new Date(Date.now())
-  var dateActualY = addYears(dateActual,1)
-  if (dateConvert.getFullYear() == dateActualY.getFullYear()) {
-    if (dateConvert.getMonth() == dateActualY.getMonth()) {
-      if (dateConvert.getDate() == dateActualY.getDate()) {
-        if (dateConvert.getHours() == dateActualY.getHours()) {
-          if (dateConvert.getMinutes() == dateActualY.getMinutes()) {
-            var date = dateActual.getSeconds() - dateConvert.getSeconds()
+  var dateActualy = addYears(dateActual,1)
+  if (dateConvert.getFullYear() == dateActual.getFullYear()) {
+    if (dateConvert.getMonth() == dateActual.getMonth()) {
+      if (dateConvert.getDate() == dateActual.getDate()) {
+        if (dateConvert.getHours() == dateActual.getHours()) {
+          if (dateConvert.getMinutes() == dateActual.getMinutes()) {
+            var date = dateActualy.getSeconds() - dateConvert.getSeconds()
             var date = before(date) + " Sec ago"
           } else {
-            var date = dateActual.getMinutes() - dateConvert.getMinutes()
+            var date = dateActualy.getMinutes() - dateConvert.getMinutes()
             var date = before(date) + " Min ago"
           }
         } else {
-          var date = dateActual.getHours() - dateConvert.getHours()
+          var date = dateActualy.getHours() - dateConvert.getHours()
           var date = before(date) + " Hours ago"
         }
       } else {
-        var date = dateActual.getDate() - dateConvert.getDate()
+        var date = dateActualy.getDate() - dateConvert.getDate()
         var date = before(date) + " Days ago"
       }
     } else {
-      var date = dateActual.getMonth() - dateConvert.getMonth()
+      var date = dateActualy.getMonth() - dateConvert.getMonth()
       var date = before(date) + " Months ago"
     }
   } else {
-    var date = dateActual.getFullYear() - dateConvert.getFullYear()
+    var date = dateActualy.getFullYear() - dateConvert.getFullYear()
     var date = before(date) + " Years ago"
   }
   return date
