@@ -1,5 +1,5 @@
 let max = 0
-function load_image(chat_id,min_,max_) {
+function load_image(chat_id, min_, max_) {
   console.log(chat_id)
   var main = document.getElementById("room_" + chat_id)
   var images = document.getElementsByClassName(`img-load-${chat_id}`)
@@ -7,27 +7,23 @@ function load_image(chat_id,min_,max_) {
   max = max_
   let min
   let calc = 0
-  try {
-    for (i = 0; i < image.length; i++) {
-      var image = x[i]
-      if (image.dataset.state != "load") {
-        data.push(image)
-      }
-    }  
-    data.reverse()
-    for (i = 0; i < image.length; i++) {
-      var image = x[i]
-      if (image.dataset.state != "load") {
-        if (min <= calc && calc <= (min + max)) {
-          image.src = image.dataset.src
-        }
-        calc = calc + 1
-      }
-    };
-    return true
-  } catch {
-    return false
+  for (i = 0; i < image.length; i++) {
+    var image = x[i]
+    if (image.dataset.state != "load") {
+      data.push(image)
+    }
   }
+  data.reverse()
+  for (i = 0; i < image.length; i++) {
+    var image = x[i]
+    if (image.dataset.state != "load") {
+      if (min <= calc && calc <= (min + max)) {
+        image.src = image.dataset.src
+      }
+      calc = calc + 1
+    }
+  };
+  return true
 }
 function room(id) {
   if (id == "geoloup_chat") {
@@ -62,7 +58,7 @@ function room(id) {
   to.innerHTML = new1.dataset.name
   new2.scrollTop = new2.scrollHeight;
   new2.scrollTop = new2.scrollHeight;
-  load_image(id,0,10)
+  load_image(id, 0, 10)
 }
 // spam counter
 var send_by_img = document.getElementById("send")
