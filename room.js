@@ -8,20 +8,22 @@ function load_image(chat_id,min_,max_) {
   let min
   let calc = 0
   try {
-    images.forEach(image => {
+    for (i = 0; i < image.length; i++) {
+      var image = x[i]
       if (image.dataset.state != "load") {
         data.push(image)
       }
-    });
+    }  
     data.reverse()
-    data.forEach(image => {
+    for (i = 0; i < image.length; i++) {
+      var image = x[i]
       if (image.dataset.state != "load") {
         if (min <= calc && calc <= (min + max)) {
           image.src = image.dataset.src
         }
         calc = calc + 1
       }
-    });
+    };
     return true
   } catch {
     return false
