@@ -21,9 +21,9 @@ function load_image(chat_id,min_,max_) {
         calc = calc + 1
       }
     });
-    return True
+    return true
   } catch {
-    return False
+    return false
   }
 }
 function room(id) {
