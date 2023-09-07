@@ -405,12 +405,14 @@ body {
     background-position: top 12px left 14px;
     border-radius: 50%;
 }
+
 .container .left a.search img {
     background: none;
     margin: 2px;
     height: 35px;
-    width: 35px;    
+    width: 35px;
 }
+
 .people {
     margin-left: -1px;
     overflow-y: scroll;
@@ -671,7 +673,7 @@ body {
     float: left;
     color: var(--white);
     overflow: hidden;
-    max-width: 50%;
+    max-width: 60%;
     background-color: var(--blue);
     align-self: flex-start;
     word-break: break-word;
@@ -796,7 +798,7 @@ body {
 }
 
 .dropdown {
-    z-index:7;
+    z-index: 7;
     position: fixed;
     top: 0px;
     right: 0px;
@@ -846,9 +848,10 @@ body {
 }
 
 .list {
-    display:flex;
+    display: flex;
     width: 25vw;
 }
+
 .list:hover {
     cursor: default;
 }
@@ -858,8 +861,8 @@ body {
     margin-bottom: 10px;
 }
 
-.check{
-    background:var(--blue);
+.check {
+    background: var(--blue);
 }
 
 @media screen and (max-width: 970px) {
@@ -995,4 +998,39 @@ body {
     .people-active {
         z-index: 4;
     }
+}
+
+.tooltip {
+    overflow: visible !important;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 23;
+    left: 36%;
+    top: -4.5vh;
+    margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
