@@ -1006,12 +1006,13 @@ body {
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    max-width: 400%;
+    min-width: 120px;
     background-color: black;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 5px;
     position: absolute;
     z-index: 23;
     left: 36%;
