@@ -192,7 +192,6 @@ export function message_render(message,type="none") {
 }
 
 
-data2.val().date
 export function changepic(img,email) {
   let formData = new FormData();
   formData.append('email', email);
