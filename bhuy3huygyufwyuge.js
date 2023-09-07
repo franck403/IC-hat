@@ -191,7 +191,6 @@ export function message_render(message,type="none") {
   }
 }
 
-
 export function time_fresh() {
   try {
     var list = document.getElementsByClassName("people-person")
