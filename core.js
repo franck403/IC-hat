@@ -278,7 +278,7 @@ onChildAdded(friend_invite, (data) => {
         onChildAdded(romc, async (data2) => {
             var class_added = `tooltip`
             var time_updater = Math.random() + dnamef + Math.random()
-            var time_updater = time_updater.replaceALl(".","")
+            var time_updater = time_updater.replaceAll(".","")
             var tooltip = `
                 <span class="tooltiptext" id="time_tooltip${time_updater}">${message_date(data2.val().date,dnamef)}</span>
                 <script>async function time_updater_${time_updater}() {var id = ${time_updater};var t = ${data2.val().date};var elm = document.getElementById(id);elm.innerHTML = message_date(elf);setTimeout(time_updater_${time_updater}, 1000);};setTimeout(time_updater_${time_updater}, 1000);</script>
