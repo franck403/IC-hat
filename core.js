@@ -278,7 +278,7 @@ onChildAdded(friend_invite, (data) => {
         onChildAdded(romc, async (data2) => {
             var class_added = `tooltip`
             var tooltip = `
-                <span class="tooltiptext">Tooltip text</span>
+                <span class="tooltiptext">${message_date(data2.val().date,dnamef)}</span>
             `
             if (data2.val().name != null) {
             if (data2.val().message != null) {
