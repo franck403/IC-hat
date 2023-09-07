@@ -673,7 +673,7 @@ body {
     float: left;
     color: var(--white);
     overflow: hidden;
-    max-width: 50%;
+    max-width: 60%;
     background-color: var(--blue);
     align-self: flex-start;
     word-break: break-word;
@@ -1001,8 +1001,7 @@ body {
 }
 
 .tooltip {
-    position: relative;
-    display: inline-block;
+    overflow: visible !important;
     border-bottom: 1px dotted black;
 }
 
@@ -1015,9 +1014,9 @@ body {
     border-radius: 6px;
     padding: 5px 0;
     position: absolute;
-    z-index: 1;
-    bottom: 150%;
-    left: 50%;
+    z-index: 23;
+    left: 36%;
+    top: -4.5vh;
     margin-left: -60px;
 }
 
