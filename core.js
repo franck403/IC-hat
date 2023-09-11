@@ -140,6 +140,7 @@ export function image_render(email, name) {
             document.getElementById("file").style.display = "none";
             document.getElementById("file_input").value = "";
         }
+        reader.readAsDataURL(file)
     });
 }
 try {
