@@ -980,9 +980,12 @@ body {
     .people-active {
         z-index: 4;
     }
-    .chat::-webkit-scrollbar {
-        width: 9px;
+    .chat::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.2) !important;
+        border-radius: 0px;
+        border: none;
     }
+    
 }
 
 .tooltip {
@@ -1020,10 +1023,6 @@ body {
     visibility: visible;
 }
 .chat::-webkit-scrollbar {
-    width: 0px;
-}
-
-.chat::-webkit-scrollbar:hover {
     width: 9px;
 }
 
@@ -1036,7 +1035,13 @@ body {
 }
 
 .chat::-webkit-scrollbar-thumb {
-    background-color: #000000;
+    background-color: rgba(0,0,0,0);
+    border-radius: 0px;
+    border: none;
+}
+
+.chat::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.2);
     border-radius: 0px;
     border: none;
 }
