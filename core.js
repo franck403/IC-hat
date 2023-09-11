@@ -138,6 +138,7 @@ export function image_render(email, name) {
             var dturl = file
             resizeImage(dturl, 900000, 1).then((res) => {
                 var s = file.type
+                console.log(urltoFile(res,"resize_image." + s.split("/")[1],s ))
                 reader.readAsBinaryString(urltoFile(res,"resize_image." + s.split("/")[1],s ))
             });
         }
