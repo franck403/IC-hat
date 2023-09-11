@@ -134,7 +134,7 @@ export function image_render(email, name) {
                     })
                     console.log("[image render] File perfect")
                 } else {
-                    console.log("[image render] File to big")
+                    console.log("[image render] File to big " + res.size + " | " +  file.size)
                 }
             });
             document.getElementById("file").style.display = "none";
