@@ -1041,7 +1041,7 @@ body {
 }
 
 .chat::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgb(0, 0, 0);
     border-radius: 0px;
     border: none;
 }
