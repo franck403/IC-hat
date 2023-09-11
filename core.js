@@ -122,7 +122,7 @@ export function image_render(email, name) {
             const id = push(child(ref(database), 'messages')).key;
             console.log("[image render] Sending...")
             resizeImage(reader.result, 900000, 1).then((res) => {
-                if (file.size < 1072701) {
+                if (res.size < 1072701) {
                     set(ref(database, "messages/" + cusid + "/" + id), {
                         email: name,
                         name: myName,
