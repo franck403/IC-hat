@@ -120,27 +120,23 @@ export function image_render(email, name) {
         var reader = new FileReader();
         reader.onload = function () {
             const id = push(child(ref(database), 'messages')).key;
-            set(ref(database, "messages/" + cusid + "/" + id), {
-                email: name,
-                name: myName,
-                friend: "none",
-                type: "new-image",
-                message: "png;base64," + btoa(reader.result),
-                date: Date.now(),
-                dname: cusid
-            })
+            resizeImage(reader.result, 900000, 1).then((res) => {
+                if (file.size < 1072701) {
+                    set(ref(database, "messages/" + cusid + "/" + id), {
+                        email: name,
+                        name: myName,
+                        friend: "none",
+                        type: "new-image",
+                        message: "png;base64," + btoa(res),
+                        date: Date.now(),
+                        dname: cusid
+                    })
+                } else {
+                    console.log("[image render] File to big")
+                }
+            });
             document.getElementById("file").style.display = "none";
             document.getElementById("file_input").value = "";
-        }
-        if (file.size < 1072701) {
-            reader.readAsBinaryString(file);
-        } else {
-            var dturl = file
-            resizeImage(dturl, 900000, 1).then((res) => {
-                var s = file.type
-                console.log(urltoFile(res,"resize_image." + s.split("/")[1],s ))
-                reader.readAsBinaryString(urltoFile(res,"resize_image." + s.split("/")[1],s ))
-            });
         }
     });
 }
