@@ -120,6 +120,7 @@ export function image_render(email, name) {
         var reader = new FileReader();
         reader.onload = function () {
             const id = push(child(ref(database), 'messages')).key;
+            console.log("[image render] Sending...")
             resizeImage(reader.result, 900000, 1).then((res) => {
                 if (file.size < 1072701) {
                     set(ref(database, "messages/" + cusid + "/" + id), {
@@ -131,6 +132,7 @@ export function image_render(email, name) {
                         date: Date.now(),
                         dname: cusid
                     })
+                    console.log("[image render] File perfect")
                 } else {
                     console.log("[image render] File to big")
                 }
