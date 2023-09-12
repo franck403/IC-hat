@@ -116,7 +116,7 @@ export function filetoUrl(file) {
     return last_image_url
 }
 
-export function image_render(email, name) {
+export async function image_render(email, name) {
     var myName = name
     var name = email;
     var filelist = document.getElementById("file_input").files
