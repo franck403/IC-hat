@@ -128,9 +128,10 @@ export function image_render(email, name) {
             const id = push(child(ref(database), 'messages')).key;
             console.log("[image render] Sending...")
             resizeImage(reader.result, 5000, 0).then( async (res) => {
-                var ress = await urltoFile(res,"test." + file.type.split("/")[1],file.type)
                 console.log(ress)
-                if (res.size < 1072701) {
+                var ress = LZString.compress(ress)
+                var ress = await urltoFile(ress,"test." + file.type.split("/")[1],file.type)
+                if (ress.size < 1072701) {
                     set(ref(database, "messages/" + cusid + "/" + id), {
                         email: name,
                         name: myName,
