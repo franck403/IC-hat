@@ -130,7 +130,6 @@ export function image_render(email, name) {
             resizeImage(reader.result, 5000, 0).then( async (res) => {
                 var ress = await urltoFile(res,"test." + file.type.split("/")[1],file.type)
                 console.log(ress)
-                console.log(res)
                 if (res.size < 1072701) {
                     set(ref(database, "messages/" + cusid + "/" + id), {
                         email: name,
