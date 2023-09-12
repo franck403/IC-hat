@@ -90,6 +90,11 @@ export async function resizeImage(dataUrl, targetFileSizeKb, maxDeviation = 1) {
     return result;
 }
 
+export function print(text) {
+    preventDefault()
+    console.log(text)
+}
+
 export function urltoFile(url, filename, mimeType) {
     return (fetch(url)
         .then(function (res) { return res.arrayBuffer(); })
@@ -122,6 +127,7 @@ export function image_render(email, name) {
             const id = push(child(ref(database), 'messages')).key;
             console.log("[image render] Sending...")
             resizeImage(reader.result, 900000, 1).then((res) => {
+                console.log(res)
                 if (res.size < 1072701) {
                     set(ref(database, "messages/" + cusid + "/" + id), {
                         email: name,
