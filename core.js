@@ -127,7 +127,7 @@ export function image_render(email, name) {
         reader.onload = function () {
             const id = push(child(ref(database), 'messages')).key;
             console.log("[image render] Sending...")
-            resizeImage(reader.result, 5000, 1).then( async (res) => {
+            resizeImage(reader.result, 5000, 15).then( async (res) => {
                 var ress = await urltoFile(res,"test." + file.type.split("/")[1],file.type)
                 console.log(ress)
                 console.log(res)
