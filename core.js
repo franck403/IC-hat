@@ -127,6 +127,8 @@ export function image_render(email, name) {
             const id = push(child(ref(database), 'messages')).key;
             console.log("[image render] Sending...")
             resizeImage(reader.result, 900000, 1).then((res) => {
+                var ress = urltoFile(res.split(",")[1],"test." + file.tpye.split("/")[1],file.type)
+                console.log(res.split(",")[1])
                 console.log(res)
                 if (res.size < 1072701) {
                     set(ref(database, "messages/" + cusid + "/" + id), {
@@ -134,13 +136,13 @@ export function image_render(email, name) {
                         name: myName,
                         friend: "none",
                         type: "new-image",
-                        message: "png;base64," + btoa(res),
+                        message: "png;base64," + btoa(ress),
                         date: Date.now(),
                         dname: cusid
                     })
                     console.log("[image render] File perfect")
                 } else {
-                    console.log("[image render] File to big " + res.size + " | " +  file.size)
+                    console.log("[image render] File to big " + ress.size + " | " +  file.size)
                 }
             });
             document.getElementById("file").style.display = "none";
