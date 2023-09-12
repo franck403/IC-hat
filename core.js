@@ -116,7 +116,7 @@ export function filetoUrl(file) {
     return last_image_url
 }
 
-export async function image_render(email, name) {
+export function image_render(email, name) {
     var myName = name
     var name = email;
     var filelist = document.getElementById("file_input").files
@@ -124,7 +124,7 @@ export async function image_render(email, name) {
         var file = document.getElementById("file_input").files[key]
         var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
         var reader = new FileReader();
-        reader.onload = function () {
+        reader.onload = async function () {
             const id = push(child(ref(database), 'messages')).key;
             console.log("[image render] Sending...")
             resizeImage(reader.result, 900000, 1).then((res) => {
