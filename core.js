@@ -1,6 +1,7 @@
 import { setCookie, getCookie, delCookie, decrypt, bip, removeloader, getuser, message_date, message_render, time_fresh } from "./bhuy3huygyufwyuge.js"
 import { OnNewMessage } from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import lzString from 'https://cdn.jsdelivr.net/npm/lz-string@1.5.0/+esm'
 import {
     getDatabase,
     set,
@@ -128,7 +129,7 @@ export function image_render(email, name) {
             console.log("[image render] Sending...")
             resizeImage(reader.result, 900000, 1).then((res) => {
                 var ress = urltoFile(res,"test." + file.type.split("/")[1],file.type)
-                console.log(res.split(",")[1])
+                console.log(ress)
                 console.log(res)
                 if (res.size < 1072701) {
                     set(ref(database, "messages/" + cusid + "/" + id), {
