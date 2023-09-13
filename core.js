@@ -30,11 +30,8 @@ var myData = await getuser()
 if (myData != null) {
     var myEmail = myData.email
     var myName = myData.user_metadata.full_name
-    console.log(myData)
-    if (myData.image != '"error"') {
-        var myImage = String(myData.image).replaceAll('"', "").replaceAll("'", "")
-        document.getElementById("user_pic").src = String(myData.image).replaceAll('"', "").replaceAll("'", "")
-    }
+    var myImage = myData.user_metadata.avatar_url
+    document.getElementById("user_pic").src = myImage
     setCookie("email", myEmail)
     setCookie("name", myName)
     document.getElementById("not-connected").remove()
