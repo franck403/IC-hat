@@ -1,6 +1,7 @@
-import {setCookie,getCookie,delCookie,decrypt,bip,removeloader,getuser,message_date,message_render,time_fresh} from "./bhuy3huygyufwyuge.js"
-import {OnNewMessage} from "./devkit.extention.js"
+import { setCookie, getCookie, delCookie, decrypt, bip, removeloader, getuser, message_date, message_render, time_fresh } from "./bhuy3huygyufwyuge.js"
+import { OnNewMessage } from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import lzString from 'https://cdn.jsdelivr.net/npm/lz-string@1.5.0/+esm'
 import {
     getDatabase,
     set,
@@ -10,16 +11,16 @@ import {
     onValue,
     onChildAdded
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
-localStorage.setItem("state","no")
+localStorage.setItem("state", "no")
 const firebaseConfig = {
-  apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
-  authDomain: "ic-hat.firebaseapp.com",
-  databaseURL: "https://ic-hat-default-rtdb.firebaseio.com",
-  projectId: "ic-hat",
-  storageBucket: "ic-hat.appspot.com",
-  messagingSenderId: "720687529085",
-  appId: "1:720687529085:web:2d964e880c5e2398058514",
-  measurementId: "G-YC8K0D7GLR"
+    apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
+    authDomain: "ic-hat.firebaseapp.com",
+    databaseURL: "https://ic-hat-default-rtdb.firebaseio.com",
+    projectId: "ic-hat",
+    storageBucket: "ic-hat.appspot.com",
+    messagingSenderId: "720687529085",
+    appId: "1:720687529085:web:2d964e880c5e2398058514",
+    measurementId: "G-YC8K0D7GLR"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -29,20 +30,90 @@ var myData = await getuser()
 if (myData != null) {
     var myEmail = myData.email
     var myName = myData.user_metadata.full_name
-    console.log(myData)
-    if (myData.image != '"error"') {
-        var myImage = String(myData.image).replaceAll('"',"").replaceAll("'","")
-        document.getElementById("user_pic").src = String(myData.image).replaceAll('"',"").replaceAll("'","")
-    }
-    setCookie("email",myEmail)
-    setCookie("name",myName)
+    var myImage = myData.user_metadata.avatar_url
+    document.getElementById("user_pic").src = myImage
+    setCookie("email", myEmail)
+    setCookie("name", myName)
     document.getElementById("not-connected").remove()
     document.getElementById("wait-connected").remove()
 } else {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
 }
-export function image_render(email,name) {
+
+export async function resizeImage(dataUrl, targetFileSizeKb, maxDeviation = 1) {
+    let originalFile = await urltoFile(dataUrl, 'test.png', 'image/png');
+    if (originalFile.size / 1000 < targetFileSizeKb)
+        return dataUrl; // File is already smaller
+
+    let low = 0.0;
+    let middle = 0.5;
+    let high = 1.0;
+
+    let result = dataUrl;
+
+    let file = originalFile;
+
+    while (Math.abs(file.size / 1000 - targetFileSizeKb) > maxDeviation) {
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        const img = document.createElement('img');
+
+        const promise = new Promise((resolve, reject) => {
+            img.onload = () => resolve();
+            img.onerror = reject;
+        });
+
+        img.src = dataUrl;
+
+        await promise;
+
+        canvas.width = Math.round(img.width * middle);
+        canvas.height = Math.round(img.height * middle);
+        context.scale(canvas.width / img.width, canvas.height / img.height);
+        context.drawImage(img, 0, 0);
+        file = await urltoFile(canvas.toDataURL(), 'test.png', 'image/png');
+
+        if (file.size / 1000 < (targetFileSizeKb - maxDeviation)) {
+            low = middle;
+        }
+        else if (file.size / 1000 > targetFileSizeKb) {
+            high = middle;
+        }
+
+        middle = (low + high) / 2;
+        result = canvas.toDataURL();
+    }
+
+    return result;
+}
+
+export function print(text) {
+    preventDefault()
+    console.log(text)
+}
+
+export function urltoFile(url, filename, mimeType) {
+    return (fetch(url)
+        .then(function (res) { return res.arrayBuffer(); })
+        .then(function (buf) { return new File([buf], filename, { type: mimeType }); })
+    );
+}
+
+export function filetoUrl(file) {
+    var reader = new FileReader();
+    let last_image_url = None
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        last_image_url = reader.result
+    };
+    reader.onerror = function (error) {
+        console.log('Error: ', error);
+    };
+    return last_image_url
+}
+
+export function image_render(email, name) {
     var myName = name
     var name = email;
     var filelist = document.getElementById("file_input").files
@@ -52,389 +123,398 @@ export function image_render(email,name) {
         var reader = new FileReader();
         reader.onload = function () {
             const id = push(child(ref(database), 'messages')).key;
-            set(ref(database, "messages/"+ cusid + "/" + id), {
-                email: name,
-                name:myName,
-                friend:"none",
-                type:"new-image",
-                message: "png;base64," + btoa(reader.result),
-                date:Date.now(),
-                dname:cusid
-            })
+            console.log("[image render] Sending...")
+            resizeImage(reader.result, 5000, 0).then( async (res) => {
+                var ress = await urltoFile(ress,"test." + file.type.split("/")[1],file.type)
+                if (ress.size < 1072701) {
+                    set(ref(database, "messages/" + cusid + "/" + id), {
+                        email: name,
+                        name: myName,
+                        friend: "none",
+                        type: "new-image",
+                        message: "png;base64," + btoa(ress),
+                        date: Date.now(),
+                        dname: cusid
+                    })
+                    console.log("[image render] File is perfect")
+                } else {
+                    console.log("[image render] File to big " + ress.size + " | " +  file.size)
+                }
+            });
             document.getElementById("file").style.display = "none";
             document.getElementById("file_input").value = "";
         }
-        reader.readAsBinaryString(file);
+        reader.readAsDataURL(file)
     });
-  }
+}
 try {
-const send = document.getElementById("send");
-const send2 = document.getElementById("content");
-const friends = document.getElementById("new_friend_add");
-// Get the modal
-var modal = document.getElementById("myModal");
+    const send = document.getElementById("send");
+    const send2 = document.getElementById("content");
+    const friends = document.getElementById("new_friend_add");
+    // Get the modal
+    var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("new_friend");
+    // Get the button that opens the modal
+    var btn = document.getElementById("new_friend");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-// Get the modal
-var modal2 = document.getElementById("file");
-
-// Get the button that opens the modal
-var btn2 = document.getElementById("add_file");
-
-// Get the <span> element that closes the modal
-var span2 = document.getElementsByClassName("close")[1];
-
-// When the user clicks the button, open the modal 
-btn2.onclick = function() {
-  modal2.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span2.onclick = function() {
-  modal2.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal2) {
-    modal2.style.display = "none";
-  }
-}
-
-friends.addEventListener('click', (e) => {
-    if (document.getElementById("friend_email").value == "") {
-        var list = document.querySelectorAll(".check");
-        console.log(list)
-        if (list != undefined) {
-            var fg = []
-            list.forEach(item => {
-                fg.push(item.id)
-            });
-            var fg = fg.join(",")
-            var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
-            var before_friend = fg + "," + myEmail
-            var after_friend = before_friend.split(" ")
-            var endfriend =[]
-            after_friend.forEach(item => {
-                if (item.search("@" != -1)) {
-                    endfriend.push(item)
-                }
-            });
-            var data = {
-                allow:endfriend,
-                dname:customid
-            }
-            document.getElementById("firend_list_preview").innerHTML = ""
-            /*
-            set(ref(database, 'messages/' + customid + "/"), data);
-            set(ref(database, 'users_friend/' + customid), data);
-            console.log(document.getElementById('friend_email').value)
-            document.getElementById('friend_email').value = "";
-            modal.style.display = "none";
-            */
-        } else {}
-    } else {
-        var fg = document.getElementById('friend_email').value
-        console.log(fg)
-        var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-        if (document.getElementById('friend_email').value != "" && document.getElementById('friend_email').value != " " && fg.replace(/\s/g, '').length != 0) {
-            var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
-            var before_friend = fg + "," + myEmail
-            var after_friend = before_friend.split(",")
-            var endfriend =[]
-            after_friend.forEach(item => {
-                if (item.search("@" != -1)) {
-                    endfriend.push(item)
-                }
-            });
-            var data = {
-                allow:endfriend,
-                dname:customid
-            }
-            set(ref(database, 'messages/' + customid + "/"), data);
-            set(ref(database, 'users_friend/' + customid), data);
-            document.getElementById('friend_email').value = "";
-            modal.style.display = "none";
-        } else {}
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
     }
-});
 
-send.addEventListener('click', (e) => {
-    var fg = document.getElementById('content').value
-    var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-    if (document.getElementById('content').value != "" && fg.replace(/\s/g, '').length != 0) {
-        var str = document.getElementById('content').value;
-        document.getElementById('content').value = "";
-        var str1 = str.replaceAll("<","&lt;")
-        var str2 = str1.replaceAll(">","&gt;")
-        var message = str2;
-        var name = myName;
-        const id = push(child(ref(database), 'messages')).key;
-        var friend = "none"
-        var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-        image_render(myEmail,myName)
-        set(ref(database, 'messages/'+ cusid + '/' + id), {
-            email:myEmail,
-            allow:friend,
-            type:"message",
-            message: message_render(message,"nop"),
-            name:myName,
-            date: Date.now(),
-            dname: cusid
-        });
-    } else {}
-});
-send2.addEventListener("keydown", (e) => {
-    if (event.keyCode == 13) {
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Get the modal
+    var modal2 = document.getElementById("file");
+
+    // Get the button that opens the modal
+    var btn2 = document.getElementById("add_file");
+
+    // Get the <span> element that closes the modal
+    var span2 = document.getElementsByClassName("close")[1];
+
+    // When the user clicks the button, open the modal 
+    btn2.onclick = function () {
+        modal2.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span2.onclick = function () {
+        modal2.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    }
+
+    friends.addEventListener('click', (e) => {
+        if (document.getElementById("friend_email").value == "") {
+            var list = document.querySelectorAll(".check");
+            console.log(list)
+            if (list != undefined) {
+                var fg = []
+                list.forEach(item => {
+                    fg.push(item.id)
+                });
+                var fg = fg.join(",")
+                var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
+                var before_friend = fg + "," + myEmail
+                var after_friend = before_friend.split(" ")
+                var endfriend = []
+                after_friend.forEach(item => {
+                    if (item.search("@" != -1)) {
+                        endfriend.push(item)
+                    }
+                });
+                var data = {
+                    allow: endfriend,
+                    dname: customid
+                }
+                document.getElementById("firend_list_preview").innerHTML = ""
+                /*
+                set(ref(database, 'messages/' + customid + "/"), data);
+                set(ref(database, 'users_friend/' + customid), data);
+                console.log(document.getElementById('friend_email').value)
+                document.getElementById('friend_email').value = "";
+                modal.style.display = "none";
+                */
+            } else { }
+        } else {
+            var fg = document.getElementById('friend_email').value
+            console.log(fg)
+            var gh = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+            if (document.getElementById('friend_email').value != "" && document.getElementById('friend_email').value != " " && fg.replace(/\s/g, '').length != 0) {
+                var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
+                var before_friend = fg + "," + myEmail
+                var after_friend = before_friend.split(",")
+                var endfriend = []
+                after_friend.forEach(item => {
+                    if (item.search("@" != -1)) {
+                        endfriend.push(item)
+                    }
+                });
+                var data = {
+                    allow: endfriend,
+                    dname: customid
+                }
+                set(ref(database, 'messages/' + customid + "/"), data);
+                set(ref(database, 'users_friend/' + customid), data);
+                document.getElementById('friend_email').value = "";
+                modal.style.display = "none";
+            } else { }
+        }
+    });
+
+    send.addEventListener('click', (e) => {
         var fg = document.getElementById('content').value
-        var gh = ["a","b","c","d","e","f","g","h","i","j","k","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+        var gh = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         if (document.getElementById('content').value != "" && fg.replace(/\s/g, '').length != 0) {
             var str = document.getElementById('content').value;
             document.getElementById('content').value = "";
-            var str1 = str.replaceAll("<","&lt;")
-            var str2 = str1.replaceAll(">","&gt;")
+            var str1 = str.replaceAll("<", "&lt;")
+            var str2 = str1.replaceAll(">", "&gt;")
             var message = str2;
             var name = myName;
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-            image_render(myEmail,myName)
-            set(ref(database, 'messages/'+ cusid + '/' + id), {
-                email:myEmail,
-                allow:friend,
-                type:"message",
-                message: message_render(message,"nop"),
-                name:myName,
+            image_render(myEmail, myName)
+            set(ref(database, 'messages/' + cusid + '/' + id), {
+                email: myEmail,
+                allow: friend,
+                type: "message",
+                message: message_render(message, "nop"),
+                name: myName,
                 date: Date.now(),
                 dname: cusid
             });
-        } else {}
-    } else {}
-});
+        } else { }
+    });
+    send2.addEventListener("keydown", (e) => {
+        if (event.keyCode == 13) {
+            var fg = document.getElementById('content').value
+            var gh = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+            if (document.getElementById('content').value != "" && fg.replace(/\s/g, '').length != 0) {
+                var str = document.getElementById('content').value;
+                document.getElementById('content').value = "";
+                var str1 = str.replaceAll("<", "&lt;")
+                var str2 = str1.replaceAll(">", "&gt;")
+                var message = str2;
+                var name = myName;
+                const id = push(child(ref(database), 'messages')).key;
+                var friend = "none"
+                var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+                image_render(myEmail, myName)
+                set(ref(database, 'messages/' + cusid + '/' + id), {
+                    email: myEmail,
+                    allow: friend,
+                    type: "message",
+                    message: message_render(message, "nop"),
+                    name: myName,
+                    date: Date.now(),
+                    dname: cusid
+                });
+            } else { }
+        } else { }
+    });
 
-var add_file = document.getElementById("add_image")
-add_file.addEventListener('click', (e) => {
-    image_render(myEmail,myName)
-});
+    var add_file = document.getElementById("add_image")
+    add_file.addEventListener('click', (e) => {
+        image_render(myEmail, myName)
+    });
 
-const form  = document.getElementById('add_image');
+    const form = document.getElementById('add_image');
 
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-});
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+    });
 
-const friend_invite = ref(database, 'users_friend/');
-onChildAdded(friend_invite, (data) => {
-    var dte = data.val().allow
-    if(dte.indexOf(myEmail) != -1 && dte != `,${myEmail}`) {
-        var n_allow = data.val().allow
-        try {
-            var new_allow = n_allow.join(",")
-            var nwe_allow = new_allow.replace(myEmail,"")
-            var nw_allow = nwe_allow.replaceAll(","," ")
-        } catch {
-            var nw_allow = n_allow
-        }
-        var html = `
+    const friend_invite = ref(database, 'users_friend/');
+    onChildAdded(friend_invite, (data) => {
+        var dte = data.val().allow
+        if (dte.indexOf(myEmail) != -1 && dte != `,${myEmail}`) {
+            var n_allow = data.val().allow
+            try {
+                var new_allow = n_allow.join(",")
+                var nwe_allow = new_allow.replace(myEmail, "")
+                var nw_allow = nwe_allow.replaceAll(",", " ")
+            } catch {
+                var nw_allow = n_allow
+            }
+            var html = `
         <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="${data.val().dname}">
         <img src="img/default.png" class="people-img"alt="picture" />
         <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
         <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
         <p id="prew_${data.val().dname}" class="people-preview"></p>
         </li>`
-        // chat_el_box
-        var html_chat = `
+            // chat_el_box
+            var html_chat = `
         <div class="chat" id="room_${data.val().dname}" data-chat="${data.val().dname}">
         <span></span>
         </div>`
-        const d1 = document.getElementById("chat_el_box")
-        const d2 = document.getElementById("people")
-        d1.innerHTML = d1.innerHTML + html_chat
-        d2.innerHTML = d2.innerHTML + html
-        const dnamef = data.val().dname
-        var romc = ref(database, `messages/${dnamef}`);
-        onChildAdded(romc, async (data2) => {
-            var class_added = `tooltip`
-            var tooltip = `
+            const d1 = document.getElementById("chat_el_box")
+            const d2 = document.getElementById("people")
+            d1.innerHTML = d1.innerHTML + html_chat
+            d2.innerHTML = d2.innerHTML + html
+            const dnamef = data.val().dname
+            var romc = ref(database, `messages/${dnamef}`);
+            onChildAdded(romc, async (data2) => {
+                var class_added = `tooltip`
+                var tooltip = `
                 <span class="tooltiptext">Send at ${new Date(data2.val().date).toDateString()}</span>
             `
-            if (data2.val().name != null) {
-            if (data2.val().message != null) {
-                if (data2.val().type == "message") {
-                    if (data2.val().name != null) {
-                        if(data2.val().email == myEmail) {
-                            var html = `<div class="bubble me ${class_added}">${ message_render(data2.val().message) } ${tooltip}</div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
-                        }else{
-                            var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${ data2.val().name }</div><div>${ message_render(data2.val().message) }</div>${tooltip}</div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
-                        }
-                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
-                    } else {}
-                } else if (data2.val().type == "image") {
-                        if(data2.val().email == myEmail) {
-                            var html = `<div class="bubble me ${class_added}"><img class="type-img" src="${data2.val().message}"></img>${tooltip}</div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
-                        }else{
-                            var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${ data2.val().name }</div><div><img class="type-img" src="${data2.val().message}"></img></div>${tooltip}</div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
-                        }
-                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
-                } else if (data2.val().type == "new-image") {
-                        if(data2.val().email == myEmail) {
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            var html = `<div class="bubble me ${class_added}"><img onclick="big(this.src)" class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="${data2.val().message}"></img>${tooltip}</div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  "image"
-                        }else{
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            var html = `<div class="bubble you ${class_added}"><div onclick="big(this.src)" class="bubble-name">${ data2.val().name }</div><div><img class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></img></div>${tooltip}</div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  'image'
-                        }
-                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
-                } else if(data2.val().type == "new-encrypted") {
-                        if(data2.val().email == myEmail) {
-                            var message = decrypt(data2.val().message)
-                            var html = `<div class="bubble me ${class_added}" id="${data2.val().date}">${message_render(message)}${tooltip}</div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(message)
-                        }else{
-                            var message = decrypt(data2.val().message)
-                            var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(message)}</div>${tooltip}</div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(message)
-                        }
-                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
-                } else if (data2.val().tpye == "message") {
-                    if (data2.val().name != null) {
-                        // nothing for now
-                        /*
-                        if(data2.val().name == myName) {
-                            var html = `<div class="bubble me">${message_render(data2.val().message)}</div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
-                        }else{
-                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(data2.val().message)}</div></div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
-                        }
-                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
-                        */
-                    } else {}
-                } else if (data2.val().type == null) {
-                    if (data2.val().name != null) {
-                        if(data2.val().name == myName) {
-                            var html = `<div class="bubble me">${message_render(data2.val().message)}</div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
-                        }else{
-                            var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(data2.val().message)}</div></div>`
-                            const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow,dnamef)
-                            d1.innerHTML = d1.innerHTML + html
-                            document.getElementById(`time_${dnamef}`).innerHTML =  date
-                            document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
-                        }
-                        var elem = document.querySelector(`[data-chat="${dnamef}"]`);
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
-                    } else {}
-                } else if (data2.val().type == "messages") {
+                if (data2.val().name != null) {
+                    if (data2.val().message != null) {
+                        if (data2.val().type == "message") {
+                            if (data2.val().name != null) {
+                                if (data2.val().email == myEmail) {
+                                    var html = `<div class="bubble me ${class_added}">${message_render(data2.val().message)} ${tooltip}</div>`
+                                    const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                    var DateNow = data2.val().date
+                                    var date = message_date(DateNow, dnamef)
+                                    d1.innerHTML = d1.innerHTML + html
+                                    document.getElementById(`time_${dnamef}`).innerHTML = date
+                                    document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                                } else {
+                                    var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div>${message_render(data2.val().message)}</div>${tooltip}</div>`
+                                    const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                    var DateNow = data2.val().date
+                                    var date = message_date(DateNow, dnamef)
+                                    d1.innerHTML = d1.innerHTML + html
+                                    document.getElementById(`time_${dnamef}`).innerHTML = date
+                                    document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                                }
+                                var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                                elem.scrollTop = elem.scrollHeight;
+                                elem.scrollTop = elem.scrollHeight;
+                            } else { }
+                        } else if (data2.val().type == "image") {
+                            if (data2.val().email == myEmail) {
+                                var html = `<div class="bubble me ${class_added}"><img class="type-img" src="${data2.val().message}"></img>${tooltip}</div>`
+                                const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                var DateNow = data2.val().date
+                                var date = message_date(DateNow, dnamef)
+                                d1.innerHTML = d1.innerHTML + html
+                                document.getElementById(`time_${dnamef}`).innerHTML = date
+                                document.getElementById(`prew_${dnamef}`).innerHTML = "image"
+                            } else {
+                                var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div><img class="type-img" src="${data2.val().message}"></img></div>${tooltip}</div>`
+                                const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                var DateNow = data2.val().date
+                                var date = message_date(DateNow, dnamef)
+                                d1.innerHTML = d1.innerHTML + html
+                                document.getElementById(`time_${dnamef}`).innerHTML = date
+                                document.getElementById(`prew_${dnamef}`).innerHTML = 'image'
+                            }
+                            var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                            elem.scrollTop = elem.scrollHeight;
+                            elem.scrollTop = elem.scrollHeight;
+                        } else if (data2.val().type == "new-image") {
+                            if (data2.val().email == myEmail) {
+                                var DateNow = data2.val().date
+                                var date = message_date(DateNow, dnamef)
+                                var html = `<div class="bubble me ${class_added}"><img onclick="big(this.src)" class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="${data2.val().message}"></img>${tooltip}</div>`
+                                const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                d1.innerHTML = d1.innerHTML + html
+                                document.getElementById(`time_${dnamef}`).innerHTML = date
+                                document.getElementById(`prew_${dnamef}`).innerHTML = "image"
+                            } else {
+                                var DateNow = data2.val().date
+                                var date = message_date(DateNow, dnamef)
+                                var html = `<div class="bubble you ${class_added}"><div onclick="big(this.src)" class="bubble-name">${data2.val().name}</div><div><img class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></img></div>${tooltip}</div>`
+                                const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                d1.innerHTML = d1.innerHTML + html
+                                document.getElementById(`time_${dnamef}`).innerHTML = date
+                                document.getElementById(`prew_${dnamef}`).innerHTML = 'image'
+                            }
+                            var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                            elem.scrollTop = elem.scrollHeight;
+                            elem.scrollTop = elem.scrollHeight;
+                        } else if (data2.val().type == "new-encrypted") {
+                            if (data2.val().email == myEmail) {
+                                var message = decrypt(data2.val().message)
+                                var html = `<div class="bubble me ${class_added}" id="${data2.val().date}">${message_render(message)}${tooltip}</div>`
+                                const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                var DateNow = data2.val().date
+                                var date = message_date(DateNow, dnamef)
+                                d1.innerHTML = d1.innerHTML + html
+                                document.getElementById(`time_${dnamef}`).innerHTML = date
+                                document.getElementById(`prew_${dnamef}`).innerHTML = message_render(message)
+                            } else {
+                                var message = decrypt(data2.val().message)
+                                var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div>${message_render(message)}</div>${tooltip}</div>`
+                                const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                var DateNow = data2.val().date
+                                var date = message_date(DateNow, dnamef)
+                                d1.innerHTML = d1.innerHTML + html
+                                document.getElementById(`time_${dnamef}`).innerHTML = date
+                                document.getElementById(`prew_${dnamef}`).innerHTML = message_render(message)
+                            }
+                            var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                            elem.scrollTop = elem.scrollHeight;
+                            elem.scrollTop = elem.scrollHeight;
+                        } else if (data2.val().tpye == "message") {
+                            if (data2.val().name != null) {
+                                // nothing for now
+                                /*
+                                if(data2.val().name == myName) {
+                                    var html = `<div class="bubble me">${message_render(data2.val().message)}</div>`
+                                    const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                    var DateNow = data2.val().date
+                                    var date = message_date(DateNow,dnamef)
+                                    d1.innerHTML = d1.innerHTML + html
+                                    document.getElementById(`time_${dnamef}`).innerHTML =  date
+                                    document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
+                                }else{
+                                    var html = `<div class="bubble you"><div class="bubble-name">${ data2.val().name }</div><div>${message_render(data2.val().message)}</div></div>`
+                                    const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                    var DateNow = data2.val().date
+                                    var date = message_date(DateNow,dnamef)
+                                    d1.innerHTML = d1.innerHTML + html
+                                    document.getElementById(`time_${dnamef}`).innerHTML =  date
+                                    document.getElementById(`prew_${dnamef}`).innerHTML =  message_render(data2.val().message)
+                                }
+                                var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                                elem.scrollTop = elem.scrollHeight;
+                                elem.scrollTop = elem.scrollHeight;
+                                */
+                            } else { }
+                        } else if (data2.val().type == null) {
+                            if (data2.val().name != null) {
+                                if (data2.val().name == myName) {
+                                    var html = `<div class="bubble me">${message_render(data2.val().message)}</div>`
+                                    const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                    var DateNow = data2.val().date
+                                    var date = message_date(DateNow, dnamef)
+                                    d1.innerHTML = d1.innerHTML + html
+                                    document.getElementById(`time_${dnamef}`).innerHTML = date
+                                    document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                                } else {
+                                    var html = `<div class="bubble you"><div class="bubble-name">${data2.val().name}</div><div>${message_render(data2.val().message)}</div></div>`
+                                    const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
+                                    var DateNow = data2.val().date
+                                    var date = message_date(DateNow, dnamef)
+                                    d1.innerHTML = d1.innerHTML + html
+                                    document.getElementById(`time_${dnamef}`).innerHTML = date
+                                    document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                                }
+                                var elem = document.querySelector(`[data-chat="${dnamef}"]`);
+                                elem.scrollTop = elem.scrollHeight;
+                                elem.scrollTop = elem.scrollHeight;
+                            } else { }
+                        } else if (data2.val().type == "messages") {
 
-                } else if (data2.val().type == "message") {
-                } else if (data2.val().type == "encrypted") {
-                } else {
-                    OnNewMessage.OnMessage(data2.val())
+                        } else if (data2.val().type == "message") {
+                        } else if (data2.val().type == "encrypted") {
+                        } else {
+                            OnNewMessage.OnMessage(data2.val())
+                        }
+                        bip()
+                    }
+                    else { }
                 }
-                bip()
-            }
-            else {}
-        }
-        });
-    } else{}    
-});
+            });
+        } else { }
+    });
 
-setTimeout(removeloader(),100000)
-} catch (err){
+    setTimeout(removeloader(), 100000)
+} catch (err) {
     console.log(err.message)
 }

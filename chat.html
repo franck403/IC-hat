@@ -122,11 +122,11 @@
                           <p class="to">To: <p id="to" style="width: 62vw;" class="name">Nobody</p></p>
                           <script>
                             function log_out() {
-                              localStorage.removeItem("geoloup")
+                              netlifyIdentity.logout()
                               window.location.replace("https://" + window.location.host)
                             }
                             function show_profile() {
-                              window.location.replace("https://" + window.location.host + "/profile")
+                              console.log("[Profile] in active dev")
                             }
                           </script>
                           <div class="dropdown">

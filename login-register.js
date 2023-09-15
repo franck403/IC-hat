@@ -17,6 +17,7 @@ iframe.onload = () => {
         });
         log_out.addEventListener('click', (e) => {
             netlifyIdentity.logout()
+            document.location.replace(document.location.origin)
         });
         fc.document.getElementById("no").remove()
     } else {

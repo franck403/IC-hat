@@ -5,3 +5,7 @@ fetch("https://I-home.calebgauthier.repl.co/text.html")
     document.getElementById("homedata").innerHTML = ldata
 })
 .catch((error) => {});
+var iFrameDetection = (window === window.parent) ? false : true;
+if (!iFrameDetection) {
+    document.location.replace(document.location.origin)
+}

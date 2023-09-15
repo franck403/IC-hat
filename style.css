@@ -559,24 +559,6 @@ body {
     scrollbar-color: #000000 #ffffff;
 }
 
-.chat::-webkit-scrollbar {
-    width: 9px;
-}
-
-.chat::-webkit-scrollbar-track {
-    background: #ffffff;
-}
-
-.chat::-webkit-scrollbar-thumb {
-    background-color: #000000;
-    border-radius: 0px;
-    border: none;
-}
-
-.container .right .chat.active-chat {
-    display: block;
-
-}
 
 .container .right .chat.active-chat .bubble {
     transition-timing-function: cubic-bezier(0.4, -0.04, 1, 1);
@@ -998,6 +980,12 @@ body {
     .people-active {
         z-index: 4;
     }
+    .chat::-webkit-scrollbar-thumb {
+        background-color: rgba(0,0,0,0.2) !important;
+        border-radius: 0px;
+        border: none;
+    }
+    
 }
 
 .tooltip {
@@ -1033,4 +1021,32 @@ body {
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+.chat::-webkit-scrollbar {
+    width: 9px;
+}
+
+.scrolling_chat::-webkit-scrollbar {
+    width: 9px;
+}
+
+.chat::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+.chat::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0);
+    border-radius: 0px;
+    border: none;
+}
+
+.chat::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(0, 0, 0);
+    border-radius: 0px;
+    border: none;
+}
+
+.container .right .chat.active-chat {
+    display: block;
+
 }
