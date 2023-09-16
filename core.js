@@ -31,7 +31,11 @@ if (myData != null) {
     var myEmail = myData.email
     var myName = myData.user_metadata.full_name
     var myImage = myData.user_metadata.avatar_url
-    document.getElementById("user_pic").src = myImage
+    if (myImage != null) {
+        document.getElementById("user_pic").src = myImage
+    } else {
+        document.getElementById("user_pic").src = "chat.geoloup.com/img/default.png"
+    }
     setCookie("email", myEmail)
     setCookie("name", myName)
     document.getElementById("not-connected").remove()
