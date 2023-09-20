@@ -138,23 +138,10 @@
                     <div class="right" id="chat_el_box">
                         <div class="top">
                           <p class="to">To: <p id="to" style="width: 62vw;" class="name">Nobody</p></p>
-                          <script>
-                            function log_out() {
-                              netlifyIdentity.logout()
-                              window.location.replace("https://" + window.location.host)
-                            }
-                            function show_profile() {
-                              u_open()
-                            }
-                          </script>
-                          <div class="dropdown">
-                            <button class="dropbtn">
+                          <div class="user_pic" onclick="u_open()">
+                            <button>
                               <img id="user_pic" src=""></img>
                             </button>
-                            <div class="dropdown-content">
-                              <a onclick="show_profile()" >Profile</a>
-                              <a onclick="log_out()">Log-out</a>
-                            </div>
                           </div>
                         </div>
                     </div>
