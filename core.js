@@ -35,7 +35,7 @@ if (myData != null) {
         document.getElementById("user_pic").src = myImage
         document.getElementById("user_picture_img").src = myImage
     } else {
-        document.getElementById("user_pic").src = "chat.geoloup.com/img/default.png"
+        document.getElementById("user_pic").src = "img/default.png"
     }
     setCookie("email", myEmail)
     setCookie("name", myName)
