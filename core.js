@@ -33,6 +33,7 @@ if (myData != null) {
     var myImage = myData.user_metadata.avatar_url
     if (myImage != null) {
         document.getElementById("user_pic").src = myImage
+        document.getElementById("user_picture_img").src = myImage
     } else {
         document.getElementById("user_pic").src = "chat.geoloup.com/img/default.png"
     }
