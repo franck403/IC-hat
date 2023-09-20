@@ -29,11 +29,13 @@
           <div class="user inactive" id="div_user">
             <div class="flex">
                 <h1 class="name" id="user_name">Hi, Gilaxy04 !</h1>
-                <i class="cross fas fa-x fa-2x" onclick="close()"></i>
+                <div class="cross" onclick="close()">
+                  <i class="fas fa-x fa-2x"></i>
+                </div>
             </div>
-            <div class="img">
+            <div class="img" onclick="change_picture()">
                 <img src="img/default.png" class="image" id="user_picture_img">
-                <div class="middle" onclick="change_picture()">
+                <div class="middle">
                   <i class="fas fa-camera fa-3x"></i>
                 </div>
             </div>
