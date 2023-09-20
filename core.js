@@ -44,6 +44,7 @@ if (myData != null) {
 } else {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
+    window.location.replace(window.location.origin)
 }
 
 export async function resizeImage(dataUrl, targetFileSizeKb, maxDeviation = 1) {
