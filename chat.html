@@ -24,6 +24,20 @@
         </div>
         <div id="not-connected"><iframe class="not-connected-iframe" id="not-connected-iframe" src="home.html"></iframe><script src="login-register.js"></script></div>
         <div id="connected"  onresize="resize()">
+          <div class="user inactive">
+            <div class="flex">
+                <h1 class="name" id="user_name">Hi, Gilaxy04 !</h1>
+                <i class="cross fas fa-x fa-2x"></i>
+            </div>
+            <div class="img">
+                <img src="default.png" class="image">
+                <div class="middle" onclick="change_picture()">
+                  <i class="fas fa-camera fa-3x"></i>
+                </div>
+            </div>
+            <h1 class="reset button" onclick="reset_password()" id="user_logout">Reset Password</h1>
+            <h1 class="logout button" onclick="logout()" id="user_logout">Logout</h1>
+          </div>
           <img class="mobile" onclick="mobile()" src="/img/mobile.png"></img>
           <div id="drawer" class="emoji-box emoji-hidden">
               <div id="selector" class="emoji-class">

@@ -49,6 +49,12 @@
     padding: 16px 32px;
 }
 
+.inactive {
+    display:none;
+    visibility: hidden;
+}
+
+
 @media only screen and (min-width: 550px) and (max-width: 1100px) {
     .user {
         background: white;
