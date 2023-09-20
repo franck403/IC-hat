@@ -522,4 +522,5 @@ try {
     setTimeout(removeloader(), 100000)
 } catch (err) {
     console.log(err.message)
+    console.log(err)
 }
