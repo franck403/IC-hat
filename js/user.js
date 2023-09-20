@@ -10,6 +10,7 @@ function reset_password() {
 function logout() {
     try {
         netlifyIdentity.logout()
+        window.location.replace(window.location.origin)
     } catch {
         window.location.replace(window.location.origin)
     }
