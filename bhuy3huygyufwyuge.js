@@ -50,8 +50,11 @@ export function bip() {
   }
 }
 
-export function getuser() {
+export async function getuser() {
   const user = netlifyIdentity.currentUser();
+  const response = await fetch(`https://kv.replit.com/v0/eyJhbGciOiJIUzUxMiIsImlzcyI6ImNvbm1hbiIsImtpZCI6InByb2Q6MSIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb25tYW4iLCJleHAiOjE2OTUzMzYyNTQsImlhdCI6MTY5NTIyNDY1NCwiZGF0YWJhc2VfaWQiOiIxNzQ1ODkwYi1mYmYxLTQ4MTktYWJlNy1hNGYxOGQ0YTc4NzIiLCJ1c2VyIjoidmlydXNnYW1pbmcxIiwic2x1ZyI6ImltYWdlY2hvb3NlcmFwaSJ9.GKhlSQXAW3lTsqkiYPQ-oYZC0h7HbmOuVNacUjGv2Wabay2F1ofCF45aXsTEcdtSlT4X4E5lo64OKB_c2nFdoQ/${user.user_metadata.name}`);
+  const movies = await response.json();
+  user.user_metadata.avatar_url = ""
   return user
 }
 
