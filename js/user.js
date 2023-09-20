@@ -1,10 +1,3 @@
-try {
-    netlifyIdentity.gotrue.verify()
-} catch {
-    if (window.location.origin + "/" != window.location.href)
-        window.location.replace(window.location.origin)
-}
-
 function reset_password() {
     try {
         netlifyIdentity.gotrue.requestPasswordRecovery(netlifyIdentity.gotrue.currentUser().email)
