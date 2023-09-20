@@ -30,6 +30,6 @@ function change_picture() {
 function close() {
     document.getElementById("div_user").classList.add("inactive")
 }
-function open() {
+function u_open() {
     document.getElementById("div_user").classList.remove("inactive")
 }
