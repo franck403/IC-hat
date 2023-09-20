@@ -24,7 +24,7 @@
         </div>
         <div id="not-connected"><iframe class="not-connected-iframe" id="not-connected-iframe" src="home.html"></iframe><script src="login-register.js"></script></div>
         <div id="connected"  onresize="resize()">
-          <div class="user inactive">
+          <div class="user inactive" id="div_user">
             <div class="flex">
                 <h1 class="name" id="user_name">Hi, Gilaxy04 !</h1>
                 <i class="cross fas fa-x fa-2x"></i>
@@ -140,7 +140,7 @@
                               window.location.replace("https://" + window.location.host)
                             }
                             function show_profile() {
-                              console.log("[Profile] in active dev")
+                              open()
                             }
                           </script>
                           <div class="dropdown">
@@ -207,6 +207,7 @@
           <div id="extention_import" style="display:none;height: 0px;width: 0px;position: fixed;"></div>
           <script type="module" src="extention.js"></script>
           <script src="room.js"></script>
+          <script src="js/user.js"></script>
         </div>
       </div>
     </body>
