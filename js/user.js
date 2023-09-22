@@ -17,6 +17,15 @@ function logout() {
 
 }
 
+function set_picture(base64){
+    netlifyIdentity.gotrue.currentUser().update({
+        data: {
+            avatar_url: bass64
+        }
+    }).then(user => console.log(user))
+}
+
+
 function change_picture() {
     console.log("[info] change picture is in active devloppment")
 }
