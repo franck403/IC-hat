@@ -19,6 +19,23 @@
 .user_pic {
     border: 100% 100%;
 }
+.user_pic button img {
+    height: 50px;
+    z-index: 1;
+    width: 50px;
+    border: none;
+    border-radius: 100%;
+}
+
+.user_pic button {
+    position: fixed;
+    z-index: 36;
+    right: 0;
+    top: 0;
+    border: none;
+    background: white;
+    border-radius: 100%;
+}
 
 .user .img .image {
     opacity: 1;
