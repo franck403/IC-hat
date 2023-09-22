@@ -59,7 +59,6 @@ function change_picture() {
     input.type = 'file';
     input.onchange = e => {
         var file = e.target.files[0];
-        input.close();
         // setting up the reader
         var reader = new FileReader();
         reader.readAsText(file, 'UTF-8');
