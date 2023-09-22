@@ -1,9 +1,9 @@
 function reset_password() {
     try {
         netlifyIdentity.gotrue.requestPasswordRecovery(netlifyIdentity.gotrue.currentUser().email)
-        document.getElementById("user_logout").innerText ="The Email was send"
+        document.getElementById("user_logout").innerText = "The Email was send"
     } catch {
-        document.getElementById("user_logout").innerText ="The Email was not send"
+        document.getElementById("user_logout").innerText = "The Email was not send"
     }
 }
 
@@ -17,7 +17,7 @@ function logout() {
 
 }
 
-function set_picture(base64){
+function set_picture(base64) {
     netlifyIdentity.gotrue.currentUser().update({
         data: {
             avatar_url: bass64
@@ -35,7 +35,6 @@ function set_picture(base64){
 }
 
 function imageToDataUri(img, width, height) {
-
     // create an off-screen canvas
     var canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d');
@@ -56,24 +55,21 @@ function base64ToDataUri(base64) {
 }
 
 function change_picture() {
-    console.log("[info] change picture is in active devloppment")
     var input = document.createElement('input');
     input.type = 'file';
-
-    input.onchange = e => { 
-        var file = e.target.files[0]; 
+    input.onchange = e => {
+        var file = e.target.files[0];
         input.close();
         // setting up the reader
         var reader = new FileReader();
-        reader.readAsText(file,'UTF-8');
+        reader.readAsText(file, 'UTF-8');
 
         // here we tell the reader what to do when it's done reading...
         reader.onload = readerEvent => {
             var content = readerEvent.target.result; // this is the content!
-            set_picture(base64ToDataUri(imageToDataUri(content,100,100)))
+            set_picture(base64ToDataUri(imageToDataUri(content, 100, 100)))
         }
     }
-
     input.click();
 }
 
