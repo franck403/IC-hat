@@ -36,8 +36,8 @@ function set_picture(base64) {
 
 function imageToDataUri(img, width, height) {
     // create an off-screen canvas
-    var canvas = document.createElement('canvas'),
-        ctx = canvas.getContext('2d');
+    var canvas = document.createElement('canvas')
+    var ctx = canvas.getContext('2d');
 
     // set its dimension to target size
     canvas.width = width;
