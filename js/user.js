@@ -57,6 +57,7 @@ function base64ToDataUri(base64) {
 function change_picture() {
     var input = document.createElement('input');
     input.type = 'file';
+    input.accept = "image/png, image/gif, image/jpeg";
     input.onchange = e => {
         var file = e.target.files[0];
         // setting up the reader
