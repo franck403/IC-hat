@@ -61,7 +61,8 @@ window.addEventListener('message', function (event) {
         set_picture(event.data)
         close()
     } else {
-        document.getElementById("crop_iframe").classList.toggle.remove('show')
+        document.getElementById("crop_iframe").classList.remove('show')
         document.getElementById('crop_iframe').src = document.getElementById('crop_iframe').src
+        close()
     }
 });
