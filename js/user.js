@@ -52,7 +52,6 @@ function sendMessage(message) {
     const iframe = document.querySelector("iframe");
     iframe.contentWindow.postMessage(message, "*");
     document.getElementById("crop_iframe").classList.add('show')
-    document.getElementById("crop_img").classList.remove('show')
 }
 window.addEventListener('message', function (event) {
     console.log("Message received from the child: " + event.data);
