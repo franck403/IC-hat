@@ -51,20 +51,18 @@ function call() {
 function sendMessage(message) {
     const iframe = document.querySelector("iframe");
     iframe.contentWindow.postMessage(message, "*");
-    document.getElementById("crop_iframe").classList.toggle('show')
+    document.getElementById("crop_iframe").classList.add('show')
     document.getElementById("crop_img").classList.remove('show')
 }
 window.addEventListener('message', function (event) {
     console.log("Message received from the child: " + event.data);
     if (event.data != "close") {
-        document.getElementById("crop_img").src = event.data
-        document.getElementById("crop_img").classList.toggle('show')
-        document.getElementById("crop_iframe").classList.toggle('show')
+        document.getElementById("crop_iframe").classList.remove('show')
         document.getElementById('crop_iframe').src = document.getElementById('crop_iframe').src
         set_picture(event.data)
         close()
     } else {
-        document.getElementById("crop_iframe").classList.toggle('show')
+        document.getElementById("crop_iframe").classList.toggle.remove('show')
         document.getElementById('crop_iframe').src = document.getElementById('crop_iframe').src
     }
 });
