@@ -226,7 +226,11 @@
                     data-feather="download"></i></button>
         </div>
     </div>
-
+    <script>
+        function close() {
+            window.parent.postMessage("close", "*");
+        }
+    </script>
     <div class="modal fade" id="imageModalContainer" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-md modal-dialog-centered crop__modal">
