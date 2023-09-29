@@ -20,7 +20,7 @@ function logout() {
 function set_picture(base64) {
     netlifyIdentity.gotrue.currentUser().update({
         data: {
-            avatar_url: bass64
+            avatar_url: base64
         }
     }).then((user) => {
         var myImage = netlifyIdentity.currentUser().user_metadata.avatar_url
