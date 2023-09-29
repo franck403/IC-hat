@@ -34,43 +34,8 @@ function set_picture(base64) {
     )
 }
 
-function imageToDataUri(img, width, height) {
-    // create an off-screen canvas
-    var canvas = document.createElement('canvas')
-    var ctx = canvas.getContext('2d');
-
-    // set its dimension to target size
-    canvas.width = width;
-    canvas.height = height;
-
-    // draw source image into the off-screen canvas:
-    ctx.drawImage(img, 0, 0, width, height);
-
-    // encode image to data-uri with base64 version of compressed image
-    return canvas.toDataURL();
-}
-
-function base64ToDataUri(base64) {
-    return 'data:image/png;base64,' + base64;
-}
-
 function change_picture() {
-    var input = document.createElement('input');
-    input.type = 'file';
-    input.accept = "image/png, image/gif, image/jpeg";
-    input.onchange = e => {
-        var file = e.target.files[0];
-        // setting up the reader
-        var reader = new FileReader();
-        reader.readAsText(file, 'UTF-8');
-
-        // here we tell the reader what to do when it's done reading...
-        reader.onload = readerEvent => {
-            var content = readerEvent.target.result; // this is the content!
-            set_picture(base64ToDataUri(imageToDataUri(content, 100, 100)))
-        }
-    }
-    input.click();
+    call()
 }
 
 function close() {
@@ -79,3 +44,27 @@ function close() {
 function u_open() {
     document.getElementById("div_user").classList.remove("inactive")
 }
+
+function call() {
+    sendMessage("document.getElementById('selectedFile').click()")
+}
+function sendMessage(message) {
+    const iframe = document.querySelector("iframe");
+    iframe.contentWindow.postMessage(message, "*");
+    document.getElementById("crop_iframe").classList.toggle('show')
+    document.getElementById("crop_img").classList.remove('show')
+}
+window.addEventListener('message', function (event) {
+    console.log("Message received from the child: " + event.data);
+    if (event.data != "close") {
+        document.getElementById("crop_img").src = event.data
+        document.getElementById("crop_img").classList.toggle('show')
+        document.getElementById("crop_iframe").classList.toggle('show')
+        document.getElementById('crop_iframe').src = document.getElementById('crop_iframe').src
+        set_picture(event.data)
+        close()
+    } else {
+        document.getElementById("crop_iframe").classList.toggle('show')
+        document.getElementById('crop_iframe').src = document.getElementById('crop_iframe').src
+    }
+});

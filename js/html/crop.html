@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ic-hat | Profile picture crop</title>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css'>
+    <style>
+        body {
+            background: white;
+            margin: 0;
+        }
+
+        .text {
+            background: -webkit-linear-gradient(#006999, #FADDE2);
+            text-shadow: 1px 1px 2px #F6A7A7, 0 0 1.45px #006999, 0 0 1.45px rgba(0, 0, 0, 0.25);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .crop__title {
+            font-size: 72px;
+            font-weight: 200;
+            margin: 80px auto 20px;
+            text-align: center;
+            height: 100px;
+        }
+
+        .crop__modal {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .crop__modal-content {
+            max-width: 100vw;
+            height: 100vh;
+            min-width: 100vw;
+            background: #DEDCDD;
+            border-radius: 0%;
+            border: none;
+        }
+
+        .crop__modal-content .modal-header h5 {
+            font-size: 24px;
+            margin-left: 10px;
+        }
+
+        .crop__modal-content .modal-header {
+            border-bottom: none;
+            color: #949191;
+            align-items: center;
+        }
+
+        .crop__modal-content .modal-header .close {
+            margin: -1rem !important;
+        }
+
+        .crop__modal-content .modal-header .modal-title {
+            flex-grow: 1;
+        }
+
+        .crop__modal-content .modal-footer {
+            margin-top: 40px;
+            justify-content: center;
+        }
+
+        .crop__action {
+            background: linear-gradient(0.45turn, #D4D2D2, #EEECED);
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.35), -3px -3px 8px rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            padding: 16px;
+            color: #949191;
+        }
+
+        .crop__action:focus {
+            outline: 0;
+            box-shadow: 0 0 2px 3px #00b0ff;
+        }
+
+        .crop__action:hover {
+            color: #006999;
+        }
+
+        .crop__action:first-child {
+            margin-right: 20px;
+        }
+
+        .contact-links {
+            justify-content: center;
+            align-items: center;
+            margin-top: 80px;
+        }
+
+        .contact-links a {
+            margin: 10px;
+            color: #949191;
+        }
+
+        .contact-links a:hover {
+            color: #006999;
+        }
+
+        .container-form {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            padding-bottom: 0;
+        }
+
+        #result {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            display: none;
+            margin: 0 auto;
+        }
+
+        #crop__result {
+            height: 218px;
+            border-radius: 12px;
+            margin-top: 40px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        }
+
+        .croppie-container {
+            max-height: 100%;
+        }
+
+        .modal-body {
+            max-height: calc(100% - 120px) !important;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: none;
+            grid-area: range;
+            width: 100%;
+            box-shadow: 0 0 10px transparent;
+            height: 30px;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            display: flex;
+            align-items: center;
+            height: 20px;
+            border-radius: 5px;
+            background-image: var(--track-background, linear-gradient(180deg, #006999, #00b0ff));
+            cursor: ew-resize;
+            box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.25), inset 1.5px 1.5px 3px white;
+            border: none;
+            border-radius: 6px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            position: relative;
+            top: -5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(0.45turn, #D4D2D2, #EEECED);
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.35), -3px -3px 8px rgba(255, 255, 255, 0.6);
+        }
+
+        input[type=range]::-moz-range-track {
+            -moz-appearance: none;
+            display: flex;
+            align-items: center;
+            height: 20px;
+            border-radius: 5px;
+            background-image: var(--track-background, linear-gradient(180deg, #006999, #00b0ff));
+            cursor: ew-resize;
+            box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.25), inset 1.5px 1.5px 3px white;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            position: relative;
+            top: -10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(0.45turn, #D4D2D2, #EEECED);
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.35), -3px -3px 8px rgba(255, 255, 255, 0.6);
+        }
+
+        .cr-vp-square {
+            border-radius: 100%;
+        }
+
+        #crop__result {
+            border-radius: 100%;
+        }
+
+        .none {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container-form none'>
+        <div class="file-selector">
+            <input id="selectedFile" class="file-selector__input" type='file' accept=".png, .jpg, .jpeg, .svg">
+            <button class="file-selector__button" class="btn">
+                <span class="text">
+                    Choosing image
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <div id='result'>
+        <img id='crop__result' src=''>
+        <br> <br>
+        <div class="d-flex justify-content-center crop__download">
+            <button type="button" class="btn crop__action mr-10" onclick="copyImage()"><i
+                    data-feather="copy"></i></button>
+            <button type="button" class="btn crop__action" onclick="saveImage()"><i
+                    data-feather="download"></i></button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imageModalContainer" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered crop__modal">
+            <div class="modal-content crop__modal-content modal-content1">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="close()" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i data-feather="arrow-left"></i></span>
+                    </button>
+                    <h5 class="modal-title" id="imageModal">Crop Image</h5>
+                </div>
+                <div class="modal-body" id="crop__modal-body">
+                    <img id='crop-image-container'>
+
+                    </img>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn crop__action" data-dismiss="modal"><i
+                            data-feather="x"></i></button>
+                    <button type="button" class="btn crop__action save-modal" onclick="cropImage()"><i
+                            data-feather="check"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace()
+    </script>
+    <!-- partial -->
+    <script>
+        let croppi;
+
+        $('#selectedFile').change(function () {
+            if (this.files[0] == undefined) return;
+            $('#imageModalContainer').modal('show');
+            let reader = new FileReader();
+            reader.addEventListener("load", function () {
+                $("#crop-image-container").attr("src", reader.result);
+                window.src = reader.result;
+                $('#selectedFile').val('');
+            }, false);
+            if (this.files[0]) {
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        $('#imageModalContainer').on('shown.bs.modal', function () {
+            let width = document.getElementById('crop__modal-body').offsetHeight;
+            $('#crop-image-container').height((width - 100) + 'px');
+            croppi = $('#crop-image-container').croppie({
+                viewport: {
+                    width: width - 100,
+                    height: width - 100
+                },
+            });
+            $('.modal-body1').height(document.getElementById('crop-image-container').offsetHeight + 50 + 'px');
+            croppi.croppie('bind', {
+                url: window.src,
+            }).then(function () {
+                croppi.croppie('setZoom', 0.8);
+            });
+        });
+
+        $('#imageModalContainer').on('hidden.bs.modal', function () {
+            croppi.croppie('destroy');
+        });
+
+        function cropImage() {
+            console.log('started');
+            croppi.croppie('result', {
+                type: 'base64',
+                format: 'jpeg',
+                size: 'original'
+            }).then(function (resp) {
+                $('#crop__result').attr('src', resp);
+                $('.modal').modal('hide');
+                $('#result').show();
+                console.log('done');
+                window.parent.postMessage(resp, "*");
+            });
+        }
+
+        function saveImage() {
+            var gh = $('#crop__result')[0].src;
+            var a = document.createElement('a');
+            a.href = gh;
+            a.download = 'image.png';
+            a.click();
+        }
+
+        function copyImage() {
+            const img = document.getElementById('crop__result');
+            const canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height);
+            canvas.toBlob((blob) => {
+                navigator.clipboard.write([
+                    new ClipboardItem({
+                        "image/png": blob
+                    })
+                ]);
+            }, "image/png");
+        }
+
+        window.addEventListener('message', function (event) {
+            console.log("Message received from the parent: " + event.data);
+            if (event.data == `document.getElementById('selectedFile').click()`) {
+                eval(event.data)
+            }
+        });
+
+        function close() {
+            window.parent.postMessage("close", "*");
+        }
+    </script>
+
+</body>
+
+</html>
