@@ -16,6 +16,10 @@
     --blue: #00b0ff;
 }
 
+.user_pic button {
+    padding: 0px;
+}
+
 .user_pic {
     border: 100% 100%;
 }
