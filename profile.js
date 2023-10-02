@@ -53,3 +53,30 @@ c.addEventListener("click", () => {
     input.click();
 });
 removeloader
+
+document.body.onload = main;
+
+function main() {
+    body = document.getElementsByTagName("body")[0]
+    body.innerHTML = body.innerHTML + html
+    if (localStorage.getItem("Theme") == "dark") {
+    setTheme("dark");
+    document.getElementById("slider").checked = false;
+  } else {
+    setTheme("light");
+    document.getElementById("slider").checked = true;
+  }
+}
+
+function setTheme(themeName) {
+  localStorage.setItem("Theme", themeName);
+  document.documentElement.className = themeName;
+}
+
+function toggleTheme() {
+  if (localStorage.getItem("Theme") == "dark") {
+    setTheme("light");
+  } else {
+    setTheme("dark");
+  }
+}
