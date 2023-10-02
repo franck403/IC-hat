@@ -10,12 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://i-home.calebgauthier.repl.co/style.css">
     <script type="text/javascript" src="auth.js"></script>
-    <script type="text/javascript" src="https://replit.com/@calebgauthier/themes#onefile/load.js"></script>
+    <script type="text/javascript" src="https://replit.com/@calebgauthier/themes#g.js"></script>
 </head>
 <body>
   <nav class="navbar">
       <a class="logo">IC-hat</a>
       <div class="nav-links">
+          <div class="container selector">
+    <label id="switch" class="switch">
+        <input type="checkbox" onchange="toggleTheme()" id="slider">
+        <span class="slider round"></span>
+    </label>
+</div>
         <ul id="no">
           <li id="login"><a class="connect">Login</a></li>
           <li id="register"><a class="connect">Register</a></li>
@@ -28,7 +34,6 @@
       <img src="https://i-home.calebgauthier.repl.co/menu-btn.png" alt="mobile" class="mobile">
   </nav>
 <div id="homedata"></div>
-<script src="https://replit.com/@calebgauthier/themes#onefile/load.js"></script>
 <script src="home.js"></script>
 </body>
 
