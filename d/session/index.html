@@ -1,0 +1,11 @@
+<script type="text/javascript" src="chat.geoloup.com/auth.js"></script>
+<script>
+    // post api
+    window.addEventListener('message', function(event) {
+        var data = event.data
+        if (data == "state") {
+            const user = netlifyIdentity.currentUser();
+            window.parent.postMessage(user, "*");
+        }
+    });
+</script>
