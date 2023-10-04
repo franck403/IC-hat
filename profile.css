@@ -1,3 +1,15 @@
+.light {
+    --color: #0060df;
+    --background: #fbfbfe;
+    --text-color: #000000;
+}
+
+.dark {
+    --color: #17ed90;
+    --background: #2a2c2d;
+    --text-color: #ffffff;
+}
+
 .container {
     position: relative;
     width: 50%;
@@ -31,7 +43,7 @@
   }
   
   .text {
-    background-color: #04AA6D;
+    background-color: var(--color);
     color: white;
     font-size: 30px;
     width:180px;

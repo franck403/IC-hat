@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+.light {
+    --color: #0060df;
+    --background: #fbfbfe;
+    --text-color: #000000;
+}
+
+.dark {
+    --color: #17ed90;
+    --background: #2a2c2d;
+    --text-color: #ffffff;
+}
+
 :root {
     --white: #fff;
     --black: #000;
