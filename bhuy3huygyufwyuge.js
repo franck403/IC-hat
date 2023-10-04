@@ -50,7 +50,7 @@ export function bip() {
   }
 }
 
-export function getuser() {
+export async function getuser() {
   const user = netlifyIdentity.currentUser();
   return user
 }

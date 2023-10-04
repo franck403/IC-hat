@@ -10,8 +10,9 @@
         <script src="resize.js"></script>
         <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
         <script type="text/javascript" src="auth.js"></script>
-        <script src="https://replit.com/@calebgauthier/themes#onefile/g.js"></script>
-    </head>
+        <script src="https://kit.fontawesome.com/f1f8c73324.js" crossorigin="anonymous"></script>
+        <script src="js/user.js"></script>
+      </head>    
     <body>
       <div>
         <div id="wait-connected">
@@ -25,6 +26,22 @@
         </div>
         <div id="not-connected"><iframe class="not-connected-iframe" id="not-connected-iframe" src="home.html"></iframe><script src="login-register.js"></script></div>
         <div id="connected"  onresize="resize()">
+          <div class="user inactive" id="div_user">
+            <div class="flex">
+                <h1 class="name" id="user_name">Hi, Gilaxy04 !</h1>
+                <div class="cross" onclick="close()">
+                  <i class="fas fa-x fa-2x"></i>
+                </div>
+            </div>
+            <div class="img" onclick="change_picture()">
+                <img src="img/default.png" class="image" id="user_picture_img">
+                <div class="middle">
+                  <i class="fas fa-camera fa-3x"></i>
+                </div>
+            </div>
+            <h1 class="reset button" onclick="reset_password()" id="user_logout">Reset Password</h1>
+            <h1 class="logout button" onclick="logout()" id="user_logout">Logout</h1>
+          </div>
           <img class="mobile" onclick="mobile()" src="/img/mobile.png"></img>
           <div id="drawer" class="emoji-box emoji-hidden">
               <div id="selector" class="emoji-class">
@@ -121,23 +138,10 @@
                     <div class="right" id="chat_el_box">
                         <div class="top">
                           <p class="to">To: <p id="to" style="width: 62vw;" class="name">Nobody</p></p>
-                          <script>
-                            function log_out() {
-                              netlifyIdentity.logout()
-                              window.location.replace("https://" + window.location.host)
-                            }
-                            function show_profile() {
-                              console.log("[Profile] in active dev")
-                            }
-                          </script>
-                          <div class="dropdown">
-                            <button class="dropbtn">
+                          <div class="user_pic" onclick="u_open()">
+                            <button>
                               <img id="user_pic" src=""></img>
                             </button>
-                            <div class="dropdown-content">
-                              <a onclick="show_profile()" >Profile</a>
-                              <a onclick="log_out()">Log-out</a>
-                            </div>
                           </div>
                         </div>
                     </div>
@@ -194,6 +198,22 @@
           <div id="extention_import" style="display:none;height: 0px;width: 0px;position: fixed;"></div>
           <script type="module" src="extention.js"></script>
           <script src="room.js"></script>
+          <iframe id="crop_iframe" src="js/html/crop.html"></iframe>
+          <style>
+            iframe {
+                display: none;
+                visibility: hidden;
+                height: 100vh;
+                width: 100vw;
+                z-index: 100;
+                border: none;
+                position:fixed;
+            }
+            .show {
+                display: block;
+                visibility: visible;
+            }
+          </style>
         </div>
       </div>
     </body>

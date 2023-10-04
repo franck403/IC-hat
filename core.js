@@ -31,7 +31,12 @@ if (myData != null) {
     var myEmail = myData.email
     var myName = myData.user_metadata.full_name
     var myImage = myData.user_metadata.avatar_url
-    document.getElementById("user_pic").src = myImage
+    if (myImage != null) {
+        document.getElementById("user_pic").src = myImage
+        document.getElementById("user_picture_img").src = myImage
+    } else {
+        document.getElementById("user_pic").src = "img/default.png"
+    }
     setCookie("email", myEmail)
     setCookie("name", myName)
     document.getElementById("not-connected").remove()
@@ -39,6 +44,7 @@ if (myData != null) {
 } else {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
+    window.location.replace(window.location.origin)
 }
 
 export async function resizeImage(dataUrl, targetFileSizeKb, maxDeviation = 1) {
@@ -517,4 +523,5 @@ try {
     setTimeout(removeloader(), 100000)
 } catch (err) {
     console.log(err.message)
+    console.log(err)
 }
