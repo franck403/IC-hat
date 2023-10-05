@@ -201,6 +201,7 @@ export function time_fresh() {
       elt.innerHTML = message_date(elf,el.dataset.chatid)
     });
   } catch {}
+  clearTimeout()
   setTimeout(time_fresh, 1000);
 }
 

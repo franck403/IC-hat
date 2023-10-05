@@ -41,6 +41,7 @@ function room(id) {
   } else {
     var new2 = document.getElementById("room_" + id)
   }
+  localStorage.setItem("lastChat",id)
   var old1 = document.getElementsByClassName("write")[0].setAttribute("class", "write write-active")
   var old2 = document.getElementsByClassName("chat active-chat")[0]
   var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class", "mobile mobile-active")
