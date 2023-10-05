@@ -6,6 +6,9 @@
         if (data == "state") {
             const user = netlifyIdentity.currentUser();
             window.parent.postMessage(user, "*");
-        }
+        } else if (data == "many") {
+            localStorage.getItem("manyAsk","true")
+        } else if (data == "state") {
+        } 
     });
 </script>
