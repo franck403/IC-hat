@@ -33,7 +33,6 @@ function room(id) {
     var new2 = document.getElementById(id + "_c")
   } else if (id.search("new") != -1) {
     var research = id.replace("new", "")
-    localStorage.setItem("lastChat",id)
     document.getElementById("friend_emails").value = research
     document.getElementById("new_friend_add").click()
     document.getElementById('search_bar').value = ""
@@ -42,6 +41,7 @@ function room(id) {
   } else {
     var new2 = document.getElementById("room_" + id)
   }
+  localStorage.setItem("lastChat",id)
   var old1 = document.getElementsByClassName("write")[0].setAttribute("class", "write write-active")
   var old2 = document.getElementsByClassName("chat active-chat")[0]
   var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class", "mobile mobile-active")
