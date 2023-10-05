@@ -191,17 +191,7 @@ export function message_render(message,type="none") {
   }
 }
 
-export function update() {
-  if (localStorage.getItem("manyAsk") != undefined && window.manyAsk != true) {
-    var now = parseFloat(localStorage.getItem("many"))
-    var news = now + 1
-    localStorage.setItem("many",news)
-    window.manyAsk = true
-  }
-}
-
 export function time_fresh() {
-  update()
   try {
     var list = document.getElementsByClassName("people-person")
     Object.keys(list).forEach(id => {
