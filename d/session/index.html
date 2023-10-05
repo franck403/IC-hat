@@ -1,0 +1,11 @@
+<script>
+    window.addEventListener('message', function(event) {
+        console.log("Message received from the parent: " + event.data)
+        if (event.data == "email") {
+            sendMessage(localStorage.getItem("email"))
+        }
+    });
+    function sendMessage(message) {
+        window.parent.postMessage(message, "*");
+    }
+</script>
