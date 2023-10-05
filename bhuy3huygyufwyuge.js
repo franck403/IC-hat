@@ -192,10 +192,11 @@ export function message_render(message,type="none") {
 }
 
 export function update() {
-  if (localStorage.getItem("manyAsk") != undefined) {
+  if (localStorage.getItem("manyAsk") != undefined && window.manyAsk != true) {
     var now = parseFloat(localStorage.getItem("many"))
     var news = now + 1
     localStorage.setItem("many",news)
+    window.manyAsk = true
   }
 }
 
@@ -210,6 +211,7 @@ export function time_fresh() {
       elt.innerHTML = message_date(elf,el.dataset.chatid)
     });
   } catch {}
+  clearTimeout()
   setTimeout(time_fresh, 1000);
 }
 
