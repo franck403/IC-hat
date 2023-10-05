@@ -8,6 +8,7 @@
             window.parent.postMessage(user, "*");
         } else if (data == "many") {
             localStorage.getItem("manyAsk","true")
+            window.parent.postMessage("alive", "*");
         } else if (data == "state") {
         } 
     });
