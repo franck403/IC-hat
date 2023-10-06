@@ -2,11 +2,11 @@
     window.addEventListener('message', function(event) {
         console.log("Message received from the parent: " + event.data)
         if (event.data == "email") {
-            sendMessage(localStorage.getItem("email"))
+            sendMessage("e" + localStorage.getItem("email"))
         } else if (event.data == "name") {
-            sendMessage(localStorage.getItem("name"))
+            sendMessage("n" + localStorage.getItem("name"))
         } else if (event.data == "room") {
-            sendMessage(localStorage.getItem("lastChat"))
+            sendMessage("r" + localStorage.getItem("lastChat"))
         }
     });
     function sendMessage(message) {
