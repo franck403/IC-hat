@@ -26,11 +26,17 @@ const database = getDatabase(app);
 
 const library = ref(database, 'extention/lib/');
 onChildAdded(library, (data) => {
-    var val = data.val()
-    var content = val.content
-    var extName = val.name
-    var description = val.description
-    var creator = val.user_name
-    var email = val.email
+    val = data.val()
+    content = val.content
+    extName = val.name
+    description = val.description
+    creator = val.user_name
+    email = val.emai
+    `   
+    <div class="store-2 store_box" data-name="${extName}" data-content="${content}" id="add_extention">
+        <img class="store_img" src="img/ic-hat.png"></img>
+        <button class="store_button">Add crypt message</button>
+    </div>
+    `
     console.log(val)
 });
