@@ -26,11 +26,11 @@ const database = getDatabase(app);
 
 const library = ref(database, 'extention/lib/');
 onChildAdded(library, (data) => {
-    val = data.val()
-    content = val.content
-    extName = val.name
-    description = val.description
-    creator = val.user_name
-    email = val.email
+    var val = data.val()
+    var content = val.content
+    var extName = val.name
+    var description = val.description
+    var creator = val.user_name
+    var email = val.email
     console.log(val)
 });
