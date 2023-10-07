@@ -35,7 +35,7 @@ if (myData != null) {
 } else {
     document.getElementById("connected").remove()
     document.getElementById("wait-connected").remove()
-    window.location.replace(window.location.origin)
+    //window.location.replace(window.location.origin)
 }
 
 const library = ref(database, 'extention/lib/');
