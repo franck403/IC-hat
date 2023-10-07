@@ -13,7 +13,10 @@ if (url == "https://splendorous-hamster-ecd34b.netlify.app/chat"|| url == "https
     if (localStorage.getItem("extention") != null) {} else {localStorage.setItem("extention","")}
     const btn_add = document.getElementById("add_extention")
     btn_add.addEventListener('click', (event) => {
-        add(btn_add.dataset.name,btn_add.dataset.content)
+        if (btn_add.dataset.content != undefined) {
+            add(btn_add.dataset.name,btn_add.dataset.content)
+            return true
+        }
         add(btn_add.dataset.name,"https://" + window.location.host + "/" + btn_add.dataset.url)
     });
     check()
