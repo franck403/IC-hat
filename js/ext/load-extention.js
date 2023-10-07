@@ -31,7 +31,7 @@ onChildAdded(library, (data) => {
     var extName = val.name
     var description = val.description
     var creator = val.user_name
-    var email = val.emai
+    var email = val.email
     `   
     <div class="store-2 store_box" data-name="${extName}" data-content="${content}" id="add_extention">
         <img class="store_img" src="img/ic-hat.png"></img>
