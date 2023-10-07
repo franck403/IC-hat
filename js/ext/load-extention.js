@@ -39,5 +39,5 @@ onChildAdded(library, (data) => {
         <button class="store_button">Add crypt message</button>
     </div>
     `
-    document.getElementById(store).innerHTML = document.getElementById(store).innerHTML + elem
+    document.getElementById("store").innerHTML = document.getElementById("store").innerHTML + elem
 });
