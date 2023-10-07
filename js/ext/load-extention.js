@@ -24,21 +24,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-var myData = await getuser()
-console.log(myData)
-if (myData != null) {
-    var myEmail = myData.email
-    var myName = myData.user_metadata.full_name
-    setCookie("email", myEmail)
-    setCookie("name", myName)
-    document.getElementById("not-connected").remove()
-    document.getElementById("wait-connected").remove()
-} else {
-    document.getElementById("connected").remove()
-    document.getElementById("wait-connected").remove()
-    //window.location.replace(window.location.origin)
-}
-
 const library = ref(database, 'extention/lib/');
 onChildAdded(library, (data) => {
     val = data.val()
