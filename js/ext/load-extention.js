@@ -27,6 +27,7 @@ const database = getDatabase(app);
 const library = ref(database, 'extention/lib/');
 onChildAdded(library, (data) => {
     var val = data.val()
+    console.log(val)
     var content = val.content
     var extName = val.name
     var description = val.description
@@ -38,5 +39,4 @@ onChildAdded(library, (data) => {
         <button class="store_button">Add crypt message</button>
     </div>
     `
-    console.log(val)
 });
