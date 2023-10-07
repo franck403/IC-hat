@@ -28,7 +28,7 @@ const library = ref(database, 'extention/lib/');
 onChildAdded(library, (data) => {
     var val = data.val()
     console.log(val)
-    var content = val.content
+    var content = val.content.replaceAll('"','gcode.custom1')
     var extName = val.name
     var description = val.description
     var creator = val.user_name
