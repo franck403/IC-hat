@@ -19,8 +19,10 @@ body {
     background: #dfdcdc;
     border-radius: 13px;
     cursor: pointer;
+    margin: 8px;
 }
 .store-grid {
     display: flex;
     margin: 8px;
+    flex-wrap: wrap;
 }
