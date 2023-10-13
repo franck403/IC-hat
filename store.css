@@ -31,4 +31,7 @@ body {
     grid-row-gap: 0px;
 }
 
-.store-1 { grid-area: 3 / 3 / 3 / 3; }
+.store-1 {
+    margin-right: 50%;
+    margin-top: 35%;
+}
