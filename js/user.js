@@ -43,6 +43,7 @@ function close() {
 }
 function u_open() {
     document.getElementById("div_user").classList.remove("inactive")
+    document.getElementById("user_name").innerHTML = "Hi " + localStorage.getItem("name") + "!";
 }
 
 function call() {
@@ -66,4 +67,3 @@ window.addEventListener('message', function (event) {
         close()
     }
 });
-document.getElementById("user_name").innerHTML = "Hi " + localStorage.getItem("name") + "!";
