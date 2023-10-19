@@ -38,7 +38,7 @@ function change_picture() {
     call()
 }
 
-function close() {
+function uclose() {
     document.getElementById("div_user").classList.add("inactive")
     document.getElementById("user_name").innerHTML = "";
 }
