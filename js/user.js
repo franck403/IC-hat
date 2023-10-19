@@ -40,6 +40,7 @@ function change_picture() {
 
 function close() {
     document.getElementById("div_user").classList.add("inactive")
+    document.getElementById("user_name").innerHTML = "";
 }
 function u_open() {
     document.getElementById("div_user").classList.remove("inactive")
