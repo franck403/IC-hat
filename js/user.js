@@ -66,3 +66,5 @@ window.addEventListener('message', function (event) {
         close()
     }
 });
+const name = localStorage.getItem("name");
+document.getElementById("user_name") = "Hi " + name + "!"
