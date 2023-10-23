@@ -317,3 +317,10 @@ footer a:focus {
 	padding: 0px;
 	margin: 35vh 35vw 35vh 35vw;
 }
+
+.logl {
+    margin-top: 1px;
+    margin-left: 10px;
+    width: 15px;
+    height: auto;
+}

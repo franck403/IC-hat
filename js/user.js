@@ -40,9 +40,11 @@ function change_picture() {
 
 function u_close() {
     document.getElementById("div_user").classList.add("inactive")
+    document.getElementById("user_name").innerHTML = "";
 }
 function u_open() {
     document.getElementById("div_user").classList.remove("inactive")
+    document.getElementById("user_name").innerHTML = "Hi " + localStorage.getItem("name") + "!";
 }
 
 function call() {

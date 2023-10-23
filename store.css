@@ -26,3 +26,8 @@ body {
     margin: 8px;
     flex-wrap: wrap;
 }
+.store-1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
