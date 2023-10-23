@@ -4,8 +4,8 @@ function load_image(chat_id, min_, max_) {
   var main = document.getElementById("room_" + chat_id)
   var images = document.getElementsByClassName(`img-load-${chat_id}`)
   let data = []
-  max = max_
-  let min
+  let max = max_
+  let min = min_
   let calc = 0
   if (images.length == 0) {
     return
