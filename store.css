@@ -18,19 +18,14 @@ body {
     width: 200px;
     background: #dfdcdc;
     border-radius: 13px;
-    padding: 2px;
-    margin-right: 12px;
-    margin-top: 13px;
     cursor: pointer;
+    margin: 8px;
 }
 .store-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    display: flex;
+    margin: 8px;
+    flex-wrap: wrap;
 }
-
 .store-1 {
     position: absolute;
     left: 50%;

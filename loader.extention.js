@@ -2,22 +2,19 @@ import { getCookie, getuser } from "./bhuy3huygyufwyuge.js"
 export function load() {
     try {
         var ext = localStorage.getItem("extention")
-        var act = ext.split(",")
+        var act = ext.split("gcode.custom2")
         act.forEach((main) => {
             if (main != "" && getCookie("geoloup") != null) {
-                var act2 = main.split(";")
-                fetch(act2[1], { method: "GET" })
-                    .then((response) => response.text())
-                    .then((data) => {
-                        var tag = document.createElement("script");
-                        tag.src = act2[1];
-                        tag.type = "module"
-                        document.getElementById("extention_import").appendChild(tag);
-                        console.log("[extention loader] " + act2[1] + " loaded")
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error);
-                    });
+                var act2 = main.split("gcode.custom3")
+                var tag = document.createElement("script");
+                if (act2[1].search() == -1) {
+                    var blob = new Blob([act2.replaceAll('"','gcode.custom1')], {type: "text/plain"});
+                    act2[1]= window.URL.createObjectURL(blob);
+                }
+                tag.src = act2[1];
+                tag.type = "module"
+                document.getElementById("extention_import").appendChild(tag);
+                console.log("[extention loader] " + act2[1] + " loaded")
             } else { }
 
         });

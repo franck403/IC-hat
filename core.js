@@ -31,6 +31,7 @@ if (myData != null) {
     var myEmail = myData.email
     var myName = myData.user_metadata.full_name
     var myImage = myData.user_metadata.avatar_url
+    document.getElementById("user_name").myName
     if (myImage != null) {
         document.getElementById("user_pic").src = myImage
         document.getElementById("user_picture_img").src = myImage
