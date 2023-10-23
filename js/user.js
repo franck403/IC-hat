@@ -38,8 +38,9 @@ function change_picture() {
     call()
 }
 
-function close() {
+function u_close() {
     document.getElementById("div_user").classList.add("inactive")
+    
 }
 function u_open() {
     document.getElementById("div_user").classList.remove("inactive")

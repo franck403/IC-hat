@@ -1,4 +1,4 @@
-function call() {
+function callVideo() {
     const myRequest = new Request("https://testnode.virusgaming1.repl.co/room/");
     fetch(myRequest)
         .then((response) => {
