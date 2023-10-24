@@ -41,7 +41,7 @@ function room(id) {
   } else {
     var new2 = document.getElementById("room_" + id)
   }
-  localStorage.setItem("lastChat",id)
+  localStorage.setItem("lastChat", id)
   var old1 = document.getElementsByClassName("write")[0].setAttribute("class", "write write-active")
   var old2 = document.getElementsByClassName("chat active-chat")[0]
   var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class", "mobile mobile-active")
@@ -250,3 +250,29 @@ function friend(email) {
     document.getElementById("friend-preview-" + email).classList.toggle('check');
   }
 }
+
+var modal = document.getElementById("Calling");
+
+function openModal() {
+  modal.style.display = "flex";
+}
+function refuseCall() {
+  modal.style.display = "none";
+}
+function acceptCall() {
+  console.log("Login to call...")
+  window.open("https://testnode.virusgaming1.repl.co/room/" + document.getElementById("Calling").dataset.uuid + "?name=Gilaxy04")
+  console.log("Call started!")
+  modal.style.display = "none";
+}
+window.addEventListener("click", function (event) {
+  if (event.target == modal) {
+    refuseCall();
+  }
+});
+var phoneButton = document.querySelector(".phone-button");
+phoneButton.style.backgroundRepeat = "no-repeat";
+phoneButton.style.backgroundPosition = "center";
+var xButton = document.querySelector(".x-button");
+xButton.style.backgroundRepeat = "no-repeat";
+xButton.style.backgroundPosition = "12px 8px";

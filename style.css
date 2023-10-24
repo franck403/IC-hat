@@ -1229,3 +1229,77 @@ body {
     display: block;
 
 }
+.modal-call {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-call-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    height: max-content;
+    width: max-content;
+}
+
+.phone-button-call {
+    background-color: #0fc202;
+    background-image: url(img/phone.png);
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    margin-right: 40%;
+    background-size: 27px;
+}
+
+.x-button-call {
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-image: url(img/x.png);
+    background-size: 27px;
+}
+
+.answer-call {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 50%;
+    height: 30%;
+}
+
+.content-call {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.content-call h1,
+.content-call h2 {
+    margin: 0px;
+    width: 100%;
+    height: max-content;
+}
