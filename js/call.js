@@ -1,11 +1,12 @@
 var socket;
-var usernameInput;
-var chatRoom;
+var usernameInput
+var chatIDInput;
 
 function onload() {
     socket = io("https://staticlimemonad.virusgaming1.repl.co");
-    usernameInput = localStorage.getItem("name")
-    chatRoom = "geoloupChat"
+    const data = new URLSearchParams(window.location.search);
+    usernameInput = data.get('name')
+    chatRoom = data.get('id')
     socket.on("join", function(room) {})
 
     socket.on("recieve", function(message) {
@@ -29,7 +30,7 @@ function Send(message) {
 }
 
 function uuidv4() { 
-    return 'xyxxyxxx-xxxx-4xxx-yxxx-xyxxxxxyxxxx'
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
     .replace(/[xy]/g, function (c) { 
         const r = Math.random() * 16 | 0, 
             v = c == 'x' ? r : (r & 0x3 | 0x8); 
@@ -38,5 +39,5 @@ function uuidv4() {
 }
 
 function StartCall() {
-    Send(`?f&type=call&uuid=${uuidv4()}&name=gilaxy05&room=${localStorage.getITem("lastChat")}`)
+    Send(`?f&type=call&uuid=${uuidv4()}&name=gilaxy05`)
 }
