@@ -1,11 +1,8 @@
-var socket;
-var usernameInput
-var chatIDInput;
-
 window.onload = function(name,id) {
+    var socket = eval(`window.socket${id}`)
     socket = io("https://staticlimemonad.virusgaming1.repl.co");
-    usernameInput = name
-    chatRoom = id
+    var usernameInput = name
+    var chatRoom = id
     socket.on("join", function(room) {})
 
     socket.on("recieve", function(message) {
@@ -24,7 +21,7 @@ window.onload = function(name,id) {
 
 function Send(message) {
     if (message.replace(/\s/g, "") != "") {
-        socket.emit("send", message);
+        eval(`window.socket${localStorage.getITem("lastChat")}.emit("send", message);`)
     }
 }
 
