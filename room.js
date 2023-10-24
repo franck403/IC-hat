@@ -270,9 +270,9 @@ window.addEventListener("click", function (event) {
     refuseCall();
   }
 });
-var phoneButton = document.querySelector(".phone-button");
+var phoneButton = document.querySelector(".phone-button-call");
 phoneButton.style.backgroundRepeat = "no-repeat";
 phoneButton.style.backgroundPosition = "center";
-var xButton = document.querySelector(".x-button");
+var xButton = document.querySelector(".x-button-call");
 xButton.style.backgroundRepeat = "no-repeat";
 xButton.style.backgroundPosition = "12px 8px";
