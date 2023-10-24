@@ -2,11 +2,10 @@ var socket;
 var usernameInput
 var chatIDInput;
 
-function onload() {
+window.onload = function(name,id) {
     socket = io("https://staticlimemonad.virusgaming1.repl.co");
-    const data = new URLSearchParams(window.location.search);
-    usernameInput = data.get('name')
-    chatRoom = data.get('id')
+    usernameInput = name
+    chatRoom = id
     socket.on("join", function(room) {})
 
     socket.on("recieve", function(message) {
@@ -30,7 +29,7 @@ function Send(message) {
 }
 
 function uuidv4() { 
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+    return 'xyxxyxxx-xxxx-4xxx-yxxx-xyxxxxxyxxxx'
     .replace(/[xy]/g, function (c) { 
         const r = Math.random() * 16 | 0, 
             v = c == 'x' ? r : (r & 0x3 | 0x8); 
