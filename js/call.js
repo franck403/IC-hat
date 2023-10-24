@@ -1,8 +1,11 @@
-window.onload = function(name,id) {
-    var socket = eval(`window.socket${id}`)
+var socket;
+var usernameInput;
+var chatRoom;
+
+function onload() {
     socket = io("https://staticlimemonad.virusgaming1.repl.co");
-    var usernameInput = name
-    var chatRoom = id
+    usernameInput = localStorage.getItem("name")
+    chatRoom = "geoloupChat"
     socket.on("join", function(room) {})
 
     socket.on("recieve", function(message) {
@@ -21,7 +24,7 @@ window.onload = function(name,id) {
 
 function Send(message) {
     if (message.replace(/\s/g, "") != "") {
-        eval(`window.socket${localStorage.getITem("lastChat")}.emit("send", message);`)
+        socket.emit("send", message);
     }
 }
 
@@ -35,5 +38,5 @@ function uuidv4() {
 }
 
 function StartCall() {
-    Send(`?f&type=call&uuid=${uuidv4()}&name=gilaxy05`)
+    Send(`?f&type=call&uuid=${uuidv4()}&name=gilaxy05&room=${localStorage.getITem("lastChat")}`)
 }
