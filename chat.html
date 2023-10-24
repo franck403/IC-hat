@@ -29,6 +29,19 @@
         </div>
         <div id="not-connected"><iframe class="not-connected-iframe" id="not-connected-iframe" src="home.html"></iframe><script src="login-register.js"></script></div>
         <div id="connected"  onresize="resize()">
+          <div id="Calling" class="modal-call">
+            <div class="modal-call-content">
+                <div class="content-call">
+                    <h1 id="UserNameCall">None/h1>
+                    <br>
+                    <h2> is calling you</h2>
+                </div>
+                <div class="answer-call">
+                    <button onclick="acceptCall()" class="phone-button-call"></button>
+                    <button onclick="refuseCall()" class="x-button-call"></button>
+                </div>
+            </div>
+          </div>
           <div class="user inactive" id="div_user">
             <div class="flex">
                 <h1 class="name" id="user_name">Hi, Gilaxy04 !</h1>
