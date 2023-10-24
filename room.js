@@ -21,7 +21,7 @@ function load_image(chat_id, min_, max_) {
     var image = images[i]
     if (image.dataset.state != "load") {
       if (min <= calc && calc <= (min + max)) {
-        image.src = image.dataset.src
+        image.src = "data:image/" + image.dataset.src
       }
       calc = calc + 1
     }
