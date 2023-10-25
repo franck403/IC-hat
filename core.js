@@ -362,6 +362,13 @@ try {
             d2.innerHTML = d2.innerHTML + html
             const dnamef = data.val().dname
             var romc = ref(database, `messages/${dnamef}`);
+            Storage.prototype.setObj = function(key, obj) {
+                return this.setItem(key, JSON.stringify(obj))
+            }
+            Storage.prototype.getObj = function(key) {
+                return JSON.parse(this.getItem(key))
+            }
+            localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([dname]))
             onChildAdded(romc, async (data2) => {
                 var class_added = `tooltip`
                 var tooltip = `

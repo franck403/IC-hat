@@ -1,3 +1,10 @@
+Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
+localStorage.setObj("roomlist",[])
 var socket;
 var usernameInput
 var chatIDInput;
@@ -5,15 +12,15 @@ var chatIDInput;
 function onload() {
     socket = io("https://staticlimemonad.virusgaming1.repl.co");
     const data = new URLSearchParams(window.location.search);
-    usernameInput = data.get('name')
-    chatRoom = data.get('id')
+    usernameInput = localStorage.getItem("name")
+    chatRoom = "geoloupChat"
     socket.on("join", function(room) {})
 
     socket.on("recieve", function(message) {
         var d = new URLSearchParams(message)
         console.log(d.get("type"))
         console.log(d.get("uuid"))
-        if (d.get("type") == "call") {
+        if (d.get("type") == "call" && localStorage.getObj("roomlist").indexof(d.get("room")) ) {
             document.getElementById("Calling").dataset.uuid = d.get("uuid")
             document.getElementById("UserNameCall").innerText = d.get("name")
             openModal()
@@ -39,5 +46,5 @@ function uuidv4() {
 }
 
 function StartCall() {
-    Send(`?f&type=call&uuid=${uuidv4()}&name=gilaxy05`)
+    Send(`?f&type=call&uuid=${uuidv4()}&name=${localStorage.getItem("name")}&`)
 }
