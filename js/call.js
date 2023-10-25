@@ -4,7 +4,7 @@ Storage.prototype.setObj = function(key, obj) {
 Storage.prototype.getObj = function(key) {
     return JSON.parse(this.getItem(key))
 }
-localStorage.setObj("roomlist",[])
+localStorage.setObj("roomlist",[""])
 var socket;
 var usernameInput
 var chatIDInput;
