@@ -368,7 +368,7 @@ try {
             Storage.prototype.getObj = function(key) {
                 return JSON.parse(this.getItem(key))
             }
-            localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([dname]))
+            localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildAdded(romc, async (data2) => {
                 var class_added = `tooltip`
                 var tooltip = `
