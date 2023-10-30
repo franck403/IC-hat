@@ -129,25 +129,19 @@ export function image_render(email, name) {
         var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
         var reader = new FileReader();
         reader.onload = function () {
+            console.log(reader)
             const id = push(child(ref(database), 'messages')).key;
             console.log("[image render] Sending...")
-            resizeImage(reader.result, 5000, 0).then( async (res) => {
-                var ress = await urltoFile(ress,"test." + file.type.split("/")[1],file.type)
-                if (ress.size < 1072701) {
-                    set(ref(database, "messages/" + cusid + "/" + id), {
-                        email: name,
-                        name: myName,
-                        friend: "none",
-                        type: "new-image",
-                        message: "png;base64," + btoa(ress),
-                        date: Date.now(),
-                        dname: cusid
-                    })
-                    console.log("[image render] File is perfect")
-                } else {
-                    console.log("[image render] File to big " + ress.size + " | " +  file.size)
-                }
-            });
+            set(ref(database, "messages/" + cusid + "/" + id), {
+                email: name,
+                name: myName,
+                friend: "none",
+                type: "new-image",
+                message: "png;base64," + reader,
+                date: Date.now(),
+                dname: cusid
+            })
+            console.log("[image render] File is perfect")
             document.getElementById("file").style.display = "none";
             document.getElementById("file_input").value = "";
         }
