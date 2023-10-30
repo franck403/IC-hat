@@ -51,7 +51,7 @@ function room(id) {
   var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class", "mobile mobile-active")
   var old5 = document.getElementsByClassName("mobile-frame")[0].setAttribute("class", "mobile-frame mobile-frame-active")
   var listener = function() {
-    load_image(id, 0, 10)
+    load_image(id, 0)
   };
   
   window.removeEventListener('scroll', listener, false);
