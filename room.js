@@ -1,10 +1,9 @@
 let max = 0
-function load_image(chat_id, min_, max_) {
+function load_image(chat_id, min_) {
   console.log(chat_id)
   var main = document.getElementById("room_" + chat_id)
   var images = document.getElementsByClassName(`img-load-${chat_id}`)
   let data = []
-  let max = max_
   let min = min_
   let calc = 0
   if (images.length == 0) {
@@ -20,9 +19,10 @@ function load_image(chat_id, min_, max_) {
   for (i = 0; i < data.length; i++) {
     var image = images[i]
     if (image.dataset.state != "load") {
-      if (min <= calc && calc <= (min + max)) {
+      if (isScrolledIntoView(image)) {
         try {
           image.src = "data:image/" + image.dataset.src
+          image.dataset.state = "load"
         } catch {
           image.remove()
         }
@@ -50,6 +50,13 @@ function room(id) {
   var old2 = document.getElementsByClassName("chat active-chat")[0]
   var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class", "mobile mobile-active")
   var old5 = document.getElementsByClassName("mobile-frame")[0].setAttribute("class", "mobile-frame mobile-frame-active")
+  var listener = function() {
+    load_image(id, 0, 10)
+  };
+  
+  window.removeEventListener('scroll', listener, false);
+  window.addEventListener('scroll', listener, false);
+
   try {
     var old6 = document.getElementsByClassName("left left-active")[0].setAttribute("class", "left")
     var old7 = document.getElementsByClassName("top")[1].setAttribute("class", "top top-active")
@@ -280,3 +287,15 @@ phoneButton.style.backgroundPosition = "center";
 var xButton = document.querySelector(".x-button-call");
 xButton.style.backgroundRepeat = "no-repeat";
 xButton.style.backgroundPosition = "12px 8px";
+
+function isScrolledIntoView(el) {
+  var rect = el.getBoundingClientRect();
+  var elemTop = rect.top;
+  var elemBottom = rect.bottom;
+
+  // Only completely visible elements return true:
+  var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+  // Partially visible elements return true:
+  //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+  return isVisible;
+}
