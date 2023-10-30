@@ -432,7 +432,7 @@ try {
                             } else {
                                 var DateNow = data2.val().date
                                 var date = message_date(DateNow, dnamef)
-                                var html = `<div class="bubble you ${class_added}"><div onclick="big(this.src)" class="bubble-name">${data2.val().name}</div><div><img class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></img></div>${tooltip}</div>`
+                                var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div><img onclick="big(this.src)" class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></img></div>${tooltip}</div>`
                                 const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                                 d1.innerHTML = d1.innerHTML + html
                                 document.getElementById(`time_${dnamef}`).innerHTML = date
