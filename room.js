@@ -55,8 +55,8 @@ function room(id) {
     load_image(localStorage.getItem("lastChat"), 0)
   };
   
-  window.removeEventListener('scroll', listener, true);
-  window.addEventListener('scroll', listener, false);
+  new2.removeEventListener('scroll', listener, true);
+  new2.addEventListener('scroll', listener, false);
 
   try {
     var old6 = document.getElementsByClassName("left left-active")[0].setAttribute("class", "left")
