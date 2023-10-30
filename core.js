@@ -10,7 +10,7 @@ import {
     child,
     onValue,
     onChildAdded,
-    onChildUpdated
+    onChildChanged
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 localStorage.setItem("state", "no")
 const firebaseConfig = {
@@ -496,7 +496,22 @@ try {
                 return JSON.parse(this.getItem(key))
             }
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
-            onChildUpdated(ref(database, 'preload/' + cusid + '/Message'), async (data2) => {
+            onChildChanged(ref(database, 'preload/' + cusid + '/Message'), async (data2) => {
+                if (data2.val().name != null && data2.val().type == "message" && data2.val().message != null) {
+                    if (data2.val().email == myEmail) {
+                        var DateNow = data2.val().date
+                        var date = message_date(DateNow, dnamef)
+                        document.getElementById(`time_${dnamef}`).innerHTML = date
+                        document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                    } else {
+                        var DateNow = data2.val().date
+                        var date = message_date(DateNow, dnamef)
+                        document.getElementById(`time_${dnamef}`).innerHTML = date
+                        document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                    }
+                }
+            })
+            onChildAdded(ref(database, 'preload/' + cusid + '/Message'), async (data2) => {
                 if (data2.val().name != null && data2.val().type == "message" && data2.val().message != null) {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
