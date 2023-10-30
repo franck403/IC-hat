@@ -497,7 +497,7 @@ export async function messageeventlink(data2) {
                 return JSON.parse(this.getItem(key))
             }
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
-            onChildChanged(ref(database, 'preload/' + cusid + '/Message'), async (data2) => {
+            onChildChanged(ref(database, 'preload/' + dnamef + '/Message'), async (data2) => {
                 if (data2.val().name != null && data2.val().type == "message" && data2.val().message != null) {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
@@ -512,7 +512,7 @@ export async function messageeventlink(data2) {
                     }
                 }
             })
-            onChildAdded(ref(database, 'preload/' + cusid + '/Message'), async (data2) => {
+            onChildAdded(ref(database, 'preload/' + dnamef + '/Message'), async (data2) => {
                 if (data2.val().name != null && data2.val().type == "message" && data2.val().message != null) {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
