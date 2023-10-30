@@ -51,10 +51,11 @@ function room(id) {
   var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class", "mobile mobile-active")
   var old5 = document.getElementsByClassName("mobile-frame")[0].setAttribute("class", "mobile-frame mobile-frame-active")
   var listener = function() {
-    load_image(id, 0)
+    console.log("scroll")
+    load_image(localStorage.getItem("lastChat"), 0)
   };
   
-  window.removeEventListener('scroll', listener, false);
+  window.removeEventListener('scroll', listener, true);
   window.addEventListener('scroll', listener, false);
 
   try {
