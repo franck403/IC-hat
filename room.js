@@ -1,6 +1,5 @@
 let max = 0
 function load_image(chat_id, min_) {
-  console.log(chat_id)
   var main = document.getElementById("room_" + chat_id)
   var images = document.getElementsByClassName(`img-load-${chat_id}`)
   let data = []
@@ -51,7 +50,6 @@ function room(id) {
   var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class", "mobile mobile-active")
   var old5 = document.getElementsByClassName("mobile-frame")[0].setAttribute("class", "mobile-frame mobile-frame-active")
   var listener = function() {
-    console.log("scroll")
     load_image(localStorage.getItem("lastChat"), 0)
   };
   
