@@ -1,9 +1,9 @@
+import {load} from "./loader.extention.js"
+import {add,check} from "./add.extention.js"
+import {getCookie} from "./bhuy3huygyufwyuge.js"
 document.addEventListener("DOMContentLoaded", (event) => {
     var url = window. location.href;
-    import {load} from "./loader.extention.js"
-    import {add,check} from "./add.extention.js"
-    import {getCookie} from "./bhuy3huygyufwyuge.js"
-    
+     
     if (url.endsWith("#")) {
         url = url.slice(0,-1)
     }
