@@ -204,18 +204,10 @@ function url(link) {
 }
 
 
-function big(src) {
-  var image = src
-  document.getElementById("big-img").src = image
-  document.getElementById("big-img").style.display = "block"
-}
+function big(elem) {
+  elem.classList.toggle("big-image")
 
-function small() {
-  var image = ""
-  document.getElementById("big-img").src = image
-  document.getElementById("big-img").style.display = "none"
 }
-
 function key_add() {
   if (document.getElementById("firend_list_preview").innerHTML == "") {
     console.log("[core] Getting db content")

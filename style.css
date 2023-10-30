@@ -1303,3 +1303,13 @@ body {
     width: 100%;
     height: max-content;
 }
+
+.big-image {
+    position:fixed;
+    z-index: 10;
+    height: 70%;
+    width:auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
