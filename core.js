@@ -1,4 +1,4 @@
-import { setCookie, getCookie, delCookie, decrypt, bip, removeloader, getuser, message_date, message_render, time_fresh } from "./bhuy3huygyufwyuge.js"
+import { setCookie, getCookie, delCookie, decrypt, bip, removeloader, getuser, message_date, message_render} from "./bhuy3huygyufwyuge.js"
 import { OnNewMessage } from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import lzString from 'https://cdn.jsdelivr.net/npm/lz-string@1.5.0/+esm'
