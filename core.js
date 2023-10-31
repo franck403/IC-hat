@@ -486,6 +486,7 @@ export async function messageeventlink(data2) {
             d1.innerHTML = d1.innerHTML + html_chat
             d2.innerHTML = d2.innerHTML + html
             const dnamef = data.val().dname
+            console.log(document.getElementById(dnamef))
             document.getElementById(dnamef).addEventListener("click", () => {
                 console.log("Called")
                 onChildAdded(ref(database, `messages/${dnamef}`), messageeventlink)
