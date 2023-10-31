@@ -487,11 +487,12 @@ export async function messageeventlink(data2) {
             d2.innerHTML = d2.innerHTML + html
             const dnamef = data.val().dname
             console.log(document.getElementById(dnamef))
-            document.getElementById(dnamef).addEventListener("click", () => {
+            var funct = () => {
                 console.log("Called")
                 onChildAdded(ref(database, `messages/${dnamef}`), messageeventlink)
-
-            }, true)
+                document.getElementById(dnamef).removeEventListener('click',funct,true)
+            }
+            document.getElementById(dnamef).addEventListener("click", funct , false)
             Storage.prototype.setObj = function (key, obj) {
                 return this.setItem(key, JSON.stringify(obj))
             }

@@ -191,22 +191,6 @@ export function message_render(message,type="none") {
   }
 }
 
-export function time_fresh() {
-  try {
-    var list = document.getElementsByClassName("people-person")
-    Object.keys(list).forEach(id => {
-      var el = list[id]
-      var elt = document.getElementById("time_" + el.dataset.chatid)
-      var elf = parseFloat(elt.dataset.send)
-      elt.innerHTML = message_date(elf,el.dataset.chatid)
-    });
-  } catch {}
-  clearTimeout()
-  setTimeout(time_fresh, 1000);
-}
-
-setTimeout(time_fresh, 30000);
-
 export function changepic(img,email) {
   let formData = new FormData();
   formData.append('email', email);
