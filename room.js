@@ -54,6 +54,9 @@ function room(id) {
   };
   try {
     old2.removeEventListener('scroll', listener, true);
+  } catch {
+    console.log("First discussion clicked ")
+  }
   new2.addEventListener('scroll', listener, false);
 
   try {
