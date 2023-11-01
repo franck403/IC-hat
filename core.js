@@ -470,7 +470,7 @@ export async function messageeventlink(data2) {
                 var nw_allow = n_allow
             }
             var html = `
-        <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="${data.val().dname}">
+        <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id=d"${data.val().dname}">
         <img src="img/default.png" class="people-img"alt="picture" />
         <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
         <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
@@ -486,13 +486,6 @@ export async function messageeventlink(data2) {
             d1.innerHTML = d1.innerHTML + html_chat
             d2.innerHTML = d2.innerHTML + html
             const dnamef = data.val().dname
-            console.log(document.getElementById(dnamef))
-            var funct = () => {
-                console.log("Called")
-                onChildAdded(ref(database, `messages/${dnamef}`), messageeventlink)
-                document.getElementById(dnamef).removeEventListener('click',funct,true)
-            }
-            document.getElementById(dnamef).addEventListener("click", funct , false)
             Storage.prototype.setObj = function (key, obj) {
                 return this.setItem(key, JSON.stringify(obj))
             }
@@ -533,6 +526,13 @@ export async function messageeventlink(data2) {
                 }
             })
         } else { }
+        console.log(document.getElementById("d" + dnamef))
+        var funct = () => {
+            console.log("Called")
+            onChildAdded(ref(database, `messages/${dnamef}`), messageeventlink)
+            document.getElementById("d" + dnamef).removeEventListener('click',funct,true)
+        }
+        document.getElementById("d" + dnamef).addEventListener("click", funct , false)
     });
 
     setTimeout(removeloader(), 100000)
