@@ -27,7 +27,7 @@ function receive(message) {
     var d = new URLSearchParams(message)
     console.log(d.get("type"))
     console.log(d.get("uuid"))
-    if (d.get("type") == "call" && localStorage.getObj("roomlist").indexof(d.get("room"))) {
+    if (d.get("type") == "call") {
         document.getElementById("Calling").dataset.uuid = d.get("uuid")
         document.getElementById("UserNameCall").innerText = d.get("name")
         openModal()
