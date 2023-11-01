@@ -1,13 +1,7 @@
 import { setCookie, getCookie, delCookie, decrypt, bip, removeloader, getuser, message_date, message_render } from "./bhuy3huygyufwyuge.js"
 import { OnNewMessage } from "./devkit.extention.js"
 import {
-    getDatabase,
-    set,
     ref,
-    push,
-    child,
-    onValue,
-    onChildAdded,
     onChildChanged
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 
@@ -15,7 +9,11 @@ var app = window.appFire
 var database = window.databaseFire
 
 const friend_invite = ref(database, database, 'preload/' + cusid + '/Message');
-onChildAdded(friend_invite, (data) => {})
+onChildChanged(friend_invite, (data) => {
+    if (data.val().type = "call") {
+        receive(`?f&type=call&uuid=${data.val().uuid}&name=${data.val().name}&`)
+    }
+})
 
 /*
     email: myEmail,
@@ -25,6 +23,12 @@ onChildAdded(friend_invite, (data) => {})
     name: myName,
     date: Date.now(),
     dname: cusid
+*/
+
+/*
+    type: "call",
+    uuid: uuidv4(),
+    name: myName,
 */
 
 function receive(message) {
@@ -39,10 +43,13 @@ function receive(message) {
 
 }
 
-function Send(message) {
-    if (message.replace(/\s/g, "") != "") {
-        socket.emit("send", message);
-    }
+function StartCall() {
+    var myName = localStorage.getItem("name")
+    set(ref(database, 'preload/' + cusid + '/Message'), {
+        type: "call",
+        uuid: uuidv4(),
+        name: myName,
+    })
 }
 
 function uuidv4() {
@@ -52,8 +59,4 @@ function uuidv4() {
                 v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
-}
-
-function StartCall() {
-    Send(`?f&type=call&uuid=${uuidv4()}&name=${localStorage.getItem("name")}&`)
 }
