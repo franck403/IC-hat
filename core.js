@@ -159,7 +159,6 @@ export async function messageeventlink(data2) {
         if (data2.val().message != null) {
             if (data2.val().type == "message") {
                 if (data2.val().name != null) {
-                    console.log(dnamef)
                     if (data2.val().email == myEmail) {
                         var html = `<div class="bubble me ${class_added}">${message_render(data2.val().message)} ${tooltip}</div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
@@ -458,7 +457,7 @@ export async function messageeventlink(data2) {
 
 
     document.getElementById("people").addEventListener("click", (e) => {
-        const el = e.target;
+        const el = e.target.closest("li");;
         console.log(el)
         if (!el.dataset.enable) {
             console.log(el.id);
