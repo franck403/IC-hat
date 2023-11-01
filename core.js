@@ -459,7 +459,7 @@ export function messageeventlink(data2) {
     document.getElementById("people").addEventListener("click", (e) => {
         const el = e.target.closest("li");;
         console.log(el)
-        if (!el.dataset.enable) {
+        if (el.dataset.enable != "true") {
             console.log(el.id);
             console.log("Called")
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), messageeventlink)
