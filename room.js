@@ -76,6 +76,7 @@ function room(id) {
   new2.scrollTop = new2.scrollHeight;
   new2.scrollTop = new2.scrollHeight;
   load_image(id, 0, 10)
+  history.pushState("disscusion change", "IC-hat - By GL team", `/chat?room=${localStorage.getItem("lastChat")}`);
 }
 // spam counter
 var send_by_img = document.getElementById("send")
@@ -98,6 +99,9 @@ let spam_event = (spam_database) => {
 send_by_img.addEventListener('click', spam_event(spam_database));
 send_by_enter.addEventListener('click', spam_event(spam_database));
 
+// automaticlly load discussion
+var newroom = new URLSearchParams(window.location.search);
+if (newroom.has("room")) {room(newroom.get("room"))}
 
 function mobile() {
   var old1 = document.getElementsByClassName("write write-active")[0].setAttribute("class", "write")
