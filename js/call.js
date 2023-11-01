@@ -39,6 +39,7 @@ window.receive = receive
 
 function StartCall() {
     var myName = localStorage.getItem("name")
+    var cusid = localStorage.getItem("lastChat")
     set(ref(database, 'preload/' + cusid + '/Message'), {
         type: "call",
         uuid: uuidv4(),
