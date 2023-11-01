@@ -123,41 +123,45 @@ export function addYears(date, years) {
 }
 
 export function message_date(DateNow,dname) {
-  document.getElementById(`time_${dname}`).dataset.send = DateNow
-  var dateConvert = new Date(DateNow)
-  var dateUtc = String(dateConvert).split("GMT")
-  var dateUtc = dateUtc[0].split(" ")
-  var dateUtc = [0]
-  var dateActual = new Date(Date.now())
-  var dateActualy = addYears(dateActual,1)
-  if (dateConvert.getFullYear() == dateActual.getFullYear()) {
-    if (dateConvert.getMonth() == dateActual.getMonth()) {
-      if (dateConvert.getDate() == dateActual.getDate()) {
-        if (dateConvert.getHours() == dateActual.getHours()) {
-          if (dateConvert.getMinutes() == dateActual.getMinutes()) {
-            var date = dateActualy.getSeconds() - dateConvert.getSeconds()
-            var date = before(date) + " Sec ago"
+  try {
+    document.getElementById(`time_${dname}`).dataset.send = DateNow
+    var dateConvert = new Date(DateNow)
+    var dateUtc = String(dateConvert).split("GMT")
+    var dateUtc = dateUtc[0].split(" ")
+    var dateUtc = [0]
+    var dateActual = new Date(Date.now())
+    var dateActualy = addYears(dateActual,1)
+    if (dateConvert.getFullYear() == dateActual.getFullYear()) {
+      if (dateConvert.getMonth() == dateActual.getMonth()) {
+        if (dateConvert.getDate() == dateActual.getDate()) {
+          if (dateConvert.getHours() == dateActual.getHours()) {
+            if (dateConvert.getMinutes() == dateActual.getMinutes()) {
+              var date = dateActualy.getSeconds() - dateConvert.getSeconds()
+              var date = before(date) + " Sec ago"
+            } else {
+              var date = dateActualy.getMinutes() - dateConvert.getMinutes()
+              var date = before(date) + " Min ago"
+            }
           } else {
-            var date = dateActualy.getMinutes() - dateConvert.getMinutes()
-            var date = before(date) + " Min ago"
+            var date = dateActualy.getHours() - dateConvert.getHours()
+            var date = before(date) + " Hours ago"
           }
         } else {
-          var date = dateActualy.getHours() - dateConvert.getHours()
-          var date = before(date) + " Hours ago"
+          var date = dateActualy.getDate() - dateConvert.getDate()
+          var date = before(date) + " Days ago"
         }
       } else {
-        var date = dateActualy.getDate() - dateConvert.getDate()
-        var date = before(date) + " Days ago"
+        var date = dateActualy.getMonth() - dateConvert.getMonth()
+        var date = before(date) + " Months ago"
       }
     } else {
-      var date = dateActualy.getMonth() - dateConvert.getMonth()
-      var date = before(date) + " Months ago"
+      var date = dateActualy.getFullYear() - dateConvert.getFullYear()
+      var date = before(date) + " Years ago"
     }
-  } else {
-    var date = dateActualy.getFullYear() - dateConvert.getFullYear()
-    var date = before(date) + " Years ago"
+    return date
+  } catch {
+    return null
   }
-  return date
 }
 
 export function urlify(text) {
