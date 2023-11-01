@@ -150,7 +150,7 @@ export function image_render(email, name) {
     });
 }
 export async function messageeventlink(data2) {
-    const dnamef = data2.val().cusid
+    const dnamef = data2.val().dname
     var class_added = `tooltip`
     var tooltip = `
         <span class="tooltiptext">Send at ${new Date(data2.val().date).toDateString()}</span>
