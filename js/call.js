@@ -1,5 +1,3 @@
-import { setCookie, getCookie, delCookie, decrypt, bip, removeloader, getuser, message_date, message_render } from "./bhuy3huygyufwyuge.js"
-import { OnNewMessage } from "./devkit.extention.js"
 import {
     ref,
     onChildChanged
