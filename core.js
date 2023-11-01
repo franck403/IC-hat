@@ -1,4 +1,4 @@
-import { setCookie, getCookie, delCookie, decrypt, bip, removeloader, getuser, message_date, message_render} from "./bhuy3huygyufwyuge.js"
+import { setCookie, getCookie, delCookie, decrypt, bip, removeloader, getuser, message_date, message_render } from "./bhuy3huygyufwyuge.js"
 import { OnNewMessage } from "./devkit.extention.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import lzString from 'https://cdn.jsdelivr.net/npm/lz-string@1.5.0/+esm'
@@ -525,13 +525,14 @@ export async function messageeventlink(data2) {
                     }
                 }
             })
+
+            console.log(document.getElementById("d" + dnamef))
+            var funct = () => {
+                console.log("Called")
+                onChildAdded(ref(database, `messages/${dnamef}`), messageeventlink)
+            }
+            document.getElementById("d" + dnamef).addEventListener("click", funct, { once: true })
         } else { }
-        console.log(document.getElementById("d" + dnamef))
-        var funct = () => {
-            console.log("Called")
-            onChildAdded(ref(database, `messages/${dnamef}`), messageeventlink)
-        }
-        document.getElementById("d" + dnamef).addEventListener("click", funct , {once:true})
     });
 
     setTimeout(removeloader(), 100000)
