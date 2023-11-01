@@ -500,7 +500,7 @@ export function messageeventlink(data2) {
                 console.log("Child changed")
                 if (data.val().type == "call") {
                     window.receive(`?f&type=call&uuid=${data.val().uuid}&name=${data.val().name}&`)
-                } else if (data2.val().name != null && data2.val().type == "message" && data2.val().message != null) {
+                } else if (data2.val().name != null && data2.val().type == "message") {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
                         var date = message_date(DateNow, dnamef)
