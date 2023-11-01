@@ -32,7 +32,6 @@ function load_image(chat_id, min_) {
   return true
 }
 function room(id) {
-  console.log(id)
   if (id == "geoloup_chat") {
     var new2 = document.getElementById(id + "_c")
   } else if (id.search("new") != -1) {
@@ -66,8 +65,8 @@ function room(id) {
   } catch {
 
   }
-  var new1 = document.getElementById(id)
-  var new1 = document.getElementById(id)
+  var new1 = document.getElementById("d" + id)
+  var new1 = document.getElementById("d" + id)
   var to = document.querySelector("#to")
   try {
     old2.setAttribute("class", "chat")
