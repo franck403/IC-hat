@@ -498,7 +498,7 @@ export function messageeventlink(data2) {
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef + '/Message'), async (data2) => {
                 console.log("Child changed")
-                if (data.val().type = "call") {
+                if (data.val().type == "call") {
                     window.receive(`?f&type=call&uuid=${data.val().uuid}&name=${data.val().name}&`)
                 } else if (data2.val().name != null && data2.val().type == "message" && data2.val().message != null) {
                     if (data2.val().email == myEmail) {
