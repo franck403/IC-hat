@@ -392,7 +392,7 @@ export function messageeventlink(data2) {
             var friend = "none"
             var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
             image_render(myEmail, myName)
-            const id = push(child(ref(database), 'messages')).key;
+            var id = push(child(ref(database), 'messages')).key;
             set(ref(database, 'preload/' + cusid + '/Message'), {
                 email: myEmail,
                 allow: friend,
@@ -427,7 +427,7 @@ export function messageeventlink(data2) {
                 var friend = "none"
                 var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
                 image_render(myEmail, myName)
-                const id = push(child(ref(database), 'messages')).key;
+                var id = push(child(ref(database), 'messages')).key;
                 set(ref(database, 'preload/' + cusid + '/Message'), {
                     email: myEmail,
                     allow: friend,
