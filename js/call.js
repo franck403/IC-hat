@@ -6,12 +6,6 @@ import {
 var app = window.appFire
 var database = window.databaseFire
 
-const friend_invite = ref(database, database, 'preload/' + cusid + '/Message');
-onChildChanged(friend_invite, (data) => {
-    if (data.val().type = "call") {
-        receive(`?f&type=call&uuid=${data.val().uuid}&name=${data.val().name}&`)
-    }
-})
 
 /*
     email: myEmail,
@@ -40,6 +34,8 @@ function receive(message) {
     }
 
 }
+
+window.receive = receive
 
 function StartCall() {
     var myName = localStorage.getItem("name")
