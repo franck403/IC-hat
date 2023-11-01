@@ -530,9 +530,8 @@ export async function messageeventlink(data2) {
         var funct = () => {
             console.log("Called")
             onChildAdded(ref(database, `messages/${dnamef}`), messageeventlink)
-            document.getElementById("d" + dnamef).removeEventListener('click',funct,true)
         }
-        document.getElementById("d" + dnamef).addEventListener("click", funct , false)
+        document.getElementById("d" + dnamef).addEventListener("click", funct , {once:true})
     });
 
     setTimeout(removeloader(), 100000)
