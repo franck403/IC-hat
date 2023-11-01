@@ -463,7 +463,7 @@ export async function messageeventlink(data2) {
         if (!el.dataset.enable) {
             console.log(el.id);
             console.log("Called")
-            onChildAdded(ref(database, `messages/${dnamef}`), messageeventlink)
+            onChildAdded(ref(database, `messages/${el.dataset.chatid}`), messageeventlink)
             el.dataset.enable = true
         }
     });
