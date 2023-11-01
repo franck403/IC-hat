@@ -22,6 +22,10 @@ export function load() {
         tag.src = "core.js";
         tag.type = "module"
         document.getElementById("extention_import").appendChild(tag);
+        var tag = document.createElement("script");
+        tag.src = "js/call.js";
+        tag.type = "module"
+        document.getElementById("extention_import").appendChild(tag);
         return true
     } catch {
         return null
