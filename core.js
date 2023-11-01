@@ -470,7 +470,7 @@ export async function messageeventlink(data2) {
                 var nw_allow = n_allow
             }
             var html = `
-        <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id=d"${data.val().dname}">
+        <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
         <img src="img/default.png" class="people-img"alt="picture" />
         <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
         <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
