@@ -32,6 +32,7 @@ function load_image(chat_id, min_) {
   return true
 }
 function room(id) {
+  console.log(id)
   if (id == "geoloup_chat") {
     var new2 = document.getElementById(id + "_c")
   } else if (id.search("new") != -1) {
