@@ -149,7 +149,7 @@ export function image_render(email, name) {
         reader.readAsDataURL(file)
     });
 }
-export async function messageeventlink(data2) {
+export function messageeventlink(data2) {
     const dnamef = data2.val().dname
     var class_added = `tooltip`
     var tooltip = `
