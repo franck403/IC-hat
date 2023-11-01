@@ -46,6 +46,8 @@ function StartCall() {
     })
 }
 
+window.StartCall = StartCall
+
 function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
         .replace(/[xy]/g, function (c) {
