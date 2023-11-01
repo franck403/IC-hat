@@ -457,7 +457,16 @@ export async function messageeventlink(data2) {
     });
 
 
-
+    document.getElementById("people").addEventListener("click", (e) => {
+        const el = e.target;
+        console.log(el)
+        if (!el.dataset.enable) {
+            console.log(el.id);
+            console.log("Called")
+            onChildAdded(ref(database, `messages/${dnamef}`), messageeventlink)
+            el.dataset.enable = true
+        }
+    });
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
         var dte = data.val().allow
@@ -527,12 +536,6 @@ export async function messageeventlink(data2) {
                 }
             })
 
-            console.log(document.getElementById("d" + dnamef))
-            var funct = () => {
-                console.log("Called")
-                onChildAdded(ref(database, `messages/${dnamef}`), messageeventlink)
-            }
-            document.getElementById("d" + dnamef).addEventListener("click", funct, { once: true })
         } else { }
     });
 
