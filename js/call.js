@@ -41,6 +41,7 @@ function StartCall() {
     var myName = localStorage.getItem("name")
     var cusid = localStorage.getItem("lastChat")
     var myEmail = localStorage.getItem("email")
+    var friend = null
     set(ref(database, 'preload/' + cusid + '/Message'), {
         email: myEmail,
         allow: friend,
