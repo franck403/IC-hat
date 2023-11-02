@@ -503,7 +503,7 @@ try {
                 f.addEventListener('scroll', window.listener, false);
             }
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
-            onChildChanged(ref(database, 'preload/' + dnamef + '/Message'), async (data2) => {
+            onChildChanged(ref(database, 'preload/' + dnamef),  (data2) => {
                 console.log("Child changed")
                 console.log(data2.val().type)
                 if (data2.val().type == "call") {
@@ -523,7 +523,7 @@ try {
                     }
                 }
             })
-            onChildAdded(ref(database, 'preload/' + dnamef + '/Message'), async (data2) => {
+            onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
                 console.log("Child added")
                 if (data2.val().name != null && data2.val().type == "message" && data2.val().message != null) {
                     if (data2.val().email == myEmail) {
