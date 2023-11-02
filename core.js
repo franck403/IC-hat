@@ -505,10 +505,10 @@ try {
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef + '/Message'), async (data2) => {
                 console.log("Child changed")
-                console.log(data.val())
-                if (data.val().type == "call") {
+                console.log(data2.val())
+                if (data2.val().type == "call") {
                     console.log("Geting call")
-                    window.receive(`?f&type=call&uuid=${data.val().message}&name=${data.val().name}&`)
+                    window.receive(`?f&type=call&uuid=${data2.val().message}&name=${data2.val().name}&`)
                 } else if (data2.val().name != null && data2.val().type == "message") {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
