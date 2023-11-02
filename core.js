@@ -498,7 +498,9 @@ export function messageeventlink(data2) {
             var newroom = new URLSearchParams(window.location.search);
             if (dnamef == newroom.get("room") && newroom.has("room")) {
                 window.room(newroom.get("room"))
-                document.getElementById("d" + newroom.get("room")).click()
+                var f = document.getElementById("d" + newroom.get("room"))
+                f.click()
+                f.addEventListener('scroll', window.listener, false);
             }
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef + '/Message'), async (data2) => {
