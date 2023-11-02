@@ -348,13 +348,13 @@ try {
     });
 
 
-    document.getElementById("people").addEventListener("click", (e) => {
+    document.getElmentById("people").addEventListener("click", (e) => {
         const el = e.target.closest("li");;
         console.log(el)
         if (el.dataset.enable != "true") {
             console.log(el.id);
             console.log("Called")
-            onChildAdded(ref(database, `messages/${el.dataset.chatid}`), () => {
+            onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 const dnamef = data2.val().dname
                 var class_added = `tooltip`
                 var tooltip = `
@@ -382,7 +382,7 @@ try {
                             } else { }
                         } else if (data2.val().type == "image") {
                             if (data2.val().email == myEmail) {
-                                var html = `<div class="bubble me ${class_added}"><img class="type-img" src="${data2.val().message}"></img>${tooltip}</div>`                    
+                                var html = `<div class="bubble me ${class_added}"><img class="type-img" src="${data2.val().message}"></img>${tooltip}</div>`
                                 var DateNow = data2.val().date
                                 var date = message_date(DateNow, dnamef)
                                 d1.innerHTML = d1.innerHTML + html
@@ -445,7 +445,7 @@ try {
                                 elem.scrollTop = elem.scrollHeight;
                             } else { }
                         } else if (data2.val().type == "messages") {
-            
+
                         } else if (data2.val().type == "message") {
                         } else if (data2.val().type == "encrypted") {
                         } else {
@@ -455,7 +455,7 @@ try {
                     }
                     else { }
                 };
-            
+
             })
             el.dataset.enable = true
         }
