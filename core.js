@@ -348,7 +348,7 @@ try {
     });
 
 
-    document.getElmentById("people").addEventListener("click", (e) => {
+    document.getElementById("people").addEventListener("click", (e) => {
         const el = e.target.closest("li");;
         console.log(el)
         if (el.dataset.enable != "true") {
