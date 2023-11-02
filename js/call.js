@@ -40,11 +40,16 @@ window.receive = receive
 function StartCall() {
     var myName = localStorage.getItem("name")
     var cusid = localStorage.getItem("lastChat")
+    var myEmail = localStorage.getItem("email")
     set(ref(database, 'preload/' + cusid + '/Message'), {
+        email: myEmail,
+        allow: friend,
         type: "call",
-        uuid: uuidv4(),
+        message: uuidv4(),
         name: myName,
-    })
+        date: Date.now(),
+        dname: cusid
+    });
 }
 
 window.StartCall = StartCall
