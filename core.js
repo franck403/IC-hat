@@ -465,7 +465,7 @@ try {
         }
     });
     function MessageWorker() {
-        snapshot = window.processingMessage
+        var snapshot = window.processingMessage
         window.processingMessage.forEach(data2 => {
             newMessage(data2)
         });
