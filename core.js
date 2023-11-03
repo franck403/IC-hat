@@ -347,7 +347,7 @@ try {
         } else { }
     });
 
-    function newMessage(data2) {
+    async function newMessage(data2) {
         const dnamef = data2.val().dname
         var class_added = `tooltip`
         var tooltip = `
@@ -462,6 +462,7 @@ try {
                 window.processingMessage.push(data2)
             })
             el.dataset.enable = true
+            MessageWorker()
         }
     });
     function MessageWorker() {
