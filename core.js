@@ -473,6 +473,11 @@ try {
             newMessage(data2)
             snapshotRev.pop()
         }
+        for (let i = 0; i < (snapshot.length/2); i++) {
+            var data2 = snapshot[i]
+            newMessage(data2)
+            snapshotRev.pop()
+        }
         var data2 = null
         if (window.processingMessage != snapshotRev.reverse()) {
             var g = window.processingMessage.reverse()
