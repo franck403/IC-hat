@@ -462,7 +462,7 @@ try {
                 window.processingMessage.push(data2)
             })
             el.dataset.enable = true
-            MessageWorker()
+            setTimeout(MessageWorker, 500);
         }
     });
     function MessageWorker() {
@@ -540,6 +540,7 @@ try {
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
+                    setTimeout(MessageWorker, 500);
                 }
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
