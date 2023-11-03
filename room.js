@@ -260,17 +260,28 @@ function friend(email) {
 
 var modal = document.getElementById("Calling");
 
-function openModal() {
+function openModal(text,type) {
   modal.style.display = "flex";
+  document.getElementById("Calling").dataset.type = type
+  if (text != null) {
+    document.getElementById("UserNameText").innerText = text
+  }
 }
 function refuseCall() {
   modal.style.display = "none";
 }
 function acceptCall() {
-  console.log("Login to call...")
-  window.open("https://testnode.virusgaming1.repl.co/room/" + document.getElementById("Calling").dataset.uuid + "?name=Gilaxy04")
-  console.log("Call started!")
-  modal.style.display = "none";
+  if (document.getElementById("Calling").dataset.type == "call") {
+    console.log("Login to call...")
+    window.open("https://testnode.virusgaming1.repl.co/room/" + document.getElementById("Calling").dataset.uuid + "?name=Gilaxy04")
+    console.log("Call started!")
+    modal.style.display = "none";
+  } else if (document.getElementById("Calling").dataset.type = "game") {
+    console.log("Login to game...")
+    window.open(document.getElementById("Calling").dataset.uuid)
+    console.log("Game started!")
+    modal.style.display = "none";
+  }
 }
 window.addEventListener("click", function (event) {
   if (event.target == modal) {
