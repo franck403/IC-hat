@@ -473,6 +473,7 @@ try {
             newMessage(data2)
             snapshotRev.pop()
         }
+        setTimeout(() => {
         for (let i = 0; i < (snapshot.length); i++) {
             var data2 = snapshot[i]
             newMessage(data2)
@@ -488,6 +489,7 @@ try {
         } else {
             window.processingMessage = []
         }
+        },100);
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
