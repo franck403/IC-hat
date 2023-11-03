@@ -473,7 +473,7 @@ try {
             newMessage(data2)
             snapshotRev.pop()
         }
-        for (let i = 0; i < (snapshot.length/2); i++) {
+        for (let i = 0; i < (snapshot.length); i++) {
             var data2 = snapshot[i]
             newMessage(data2)
             snapshotRev.pop()
