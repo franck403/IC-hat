@@ -465,10 +465,18 @@ try {
         }
     });
     function MessageWorker() {
+        snapshot = window.processingMessage
         window.processingMessage.forEach(data2 => {
             newMessage(data2)
         });
+        if (window.processingMessage != snapshot) {
+            window.processingMessage.remove
+        } else {
+            window.processingMessage = []
+        }
     }
+    window.MessageWorker = MessageWorker
+    window.newMessage = newMessage
     MessageWorker()
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
