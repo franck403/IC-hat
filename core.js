@@ -467,11 +467,19 @@ try {
     });
     function MessageWorker() {
         var snapshot = window.processingMessage
-        window.processingMessage.forEach(data2 => {
+        var snapshotRev = snapshot.reverse()
+        for (let i = 0; i < (snapshot.length/2); i++) {
+            var data2 = snapshot[i]
             newMessage(data2)
-        });
-        if (window.processingMessage != snapshot) {
-            window.processingMessage.remove
+            snapshotRev.pop()
+        }
+        var data2 = null
+        if (window.processingMessage != snapshotRev.reverse()) {
+            var g = window.processingMessage.reverse()
+            for (let i = 0; i < (g.length); i++) {
+                g.pop()
+            }
+            window.processingMessage = g.reverse()
         } else {
             window.processingMessage = []
         }
