@@ -473,13 +473,13 @@ try {
         }
         return snapshotRev
     }
-    function MessageWorkerEnd(snapshot, snapshotRev) {
+    function MessageWorkerEnd(snapshotRev) {
         if (window.processingMessage != snapshotRev.reverse()) {
             var g = window.processingMessage
             for (let i = 0; i < (g.length); i++) {
                 g.pop()
             }
-            window.processingMessage = g.reverse()
+            window.processingMessage
         } else {
             window.processingMessage = []
         }
