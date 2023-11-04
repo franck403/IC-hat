@@ -466,28 +466,28 @@ try {
         }
     });
     async function MessageWorker() {
-        var snapshot = window.processingMessage
-        var snapshotRev = snapshot.reverse()
+        var snapshot = window.processingMessage.reverse()
+        var snapshotRev = snapshot
         for (let i = 0; i < (snapshot.length / 4); i++) {
-            var data2 = snapshot.reverse()[i]
+            var data2 = snapshot[i]
             newMessage(data2)
             snapshotRev.pop()
         }
         setTimeout((snapshot, snapshotRev) => {
             for (let i = 0; i < (snapshot.length / 2); i++) {
-                var data2 = snapshot.reverse()[i]
+                var data2 = snapshot[i]
                 newMessage(data2)
                 snapshotRev.pop()
             }
             setTimeout((snapshot, snapshotRev) => {
                 for (let i = 0; i < (snapshot.length / 2); i++) {
-                    var data2 = snapshot.reverse()[i]
+                    var data2 = snapshot[i]
                     newMessage(data2)
                     snapshotRev.pop()
                 }
                 var data2 = null
                 if (window.processingMessage != snapshotRev.reverse()) {
-                    var g = window.processingMessage.reverse()
+                    var g = window.processingMessage
                     for (let i = 0; i < (g.length); i++) {
                         g.pop()
                     }
