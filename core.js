@@ -475,7 +475,7 @@ try {
     }
     function MessageWorkerEnd(snapshotRev) {
         if (window.processingMessage != snapshotRev.reverse()) {
-            var g = window.processingMessage
+            var g = window.processingMessage.reverse()
             for (let i = 0; i < (g.length); i++) {
                 g.pop()
             }
@@ -485,7 +485,7 @@ try {
         }
     }
     async function MessageWorker() {
-        var snapshot = window.processingMessage
+        var snapshot = window.processingMessage.reverse()
         var snapshotRev = snapshot
         MessageWorkerLoop(snapshot, snapshotRev, 8)
         setTimeout((snapshot, snapshotRev) => {
