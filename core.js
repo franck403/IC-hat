@@ -465,39 +465,40 @@ try {
             setTimeout(MessageWorker, 500);
         }
     });
-    async function MessageWorker() {
-        var snapshot = window.processingMessage.reverse()
-        var snapshotRev = snapshot
-        for (let i = 0; i < (snapshot.length / 4); i++) {
+    function MessageWorkerLoop(snapshot, snapshotRev, divide) {
+        for (let i = 0; i < (snapshot.length / divide); i++) {
             var data2 = snapshot[i]
             newMessage(data2)
             snapshotRev.pop()
         }
-        setTimeout((snapshot, snapshotRev) => {
-            for (let i = 0; i < (snapshot.length / 2); i++) {
-                var data2 = snapshot[i]
-                newMessage(data2)
-                snapshotRev.pop()
+        return snapshotRev
+    }
+    function MessageWorkerEnd(snapshot, snapshotRev) {
+        if (window.processingMessage != snapshotRev.reverse()) {
+            var g = window.processingMessage
+            for (let i = 0; i < (g.length); i++) {
+                g.pop()
             }
+            window.processingMessage = g.reverse()
+        } else {
+            window.processingMessage = []
+        }
+    }
+    async function MessageWorker() {
+        var snapshot = window.processingMessage.reverse()
+        var snapshotRev = snapshot
+        MessageWorkerLoop(snapshot, snapshotRev, 8)
+        setTimeout((snapshot, snapshotRev) => {
+            MessageWorkerLoop(snapshot, snapshotRev, 4)
             setTimeout((snapshot, snapshotRev) => {
-                for (let i = 0; i < (snapshot.length / 2); i++) {
-                    var data2 = snapshot[i]
-                    newMessage(data2)
-                    snapshotRev.pop()
-                }
-                var data2 = null
-                if (window.processingMessage != snapshotRev.reverse()) {
-                    var g = window.processingMessage
-                    for (let i = 0; i < (g.length); i++) {
-                        g.pop()
-                    }
-                    window.processingMessage = g.reverse()
-                } else {
-                    window.processingMessage = []
-                }
-                    }, 100, snapshot, snapshotRev);
+                MessageWorkerLoop(snapshot, snapshotRev, 2)
+                setTimeout((snapshot, snapshotRev) => {
+                    MessageWorkerLoop(snapshot, snapshotRev, 1)
+                }, 100, snapshot, snapshotRev);
+            }, 100, snapshot, snapshotRev);
         }, 100, snapshot, snapshotRev);
-}
+        MessageWorkerEnd(snapshot, snapshotRev)
+    }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
     MessageWorker()
