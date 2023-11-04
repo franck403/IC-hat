@@ -467,21 +467,21 @@ try {
     });
     async function MessageWorker() {
         var snapshot = window.processingMessage
-        var snapshotRev = snapshot.reverse().reverse()
+        var snapshotRev = snapshot.reverse()
         for (let i = 0; i < (snapshot.length / 4); i++) {
-            var data2 = snapshot[i]
+            var data2 = snapshot.reverse()[i]
             newMessage(data2)
             snapshotRev.pop()
         }
         setTimeout((snapshot, snapshotRev) => {
             for (let i = 0; i < (snapshot.length / 2); i++) {
-                var data2 = snapshot[i]
+                var data2 = snapshot.reverse()[i]
                 newMessage(data2)
                 snapshotRev.pop()
             }
             setTimeout((snapshot, snapshotRev) => {
                 for (let i = 0; i < (snapshot.length / 2); i++) {
-                    var data2 = snapshot[i]
+                    var data2 = snapshot.reverse()[i]
                     newMessage(data2)
                     snapshotRev.pop()
                 }
