@@ -466,7 +466,7 @@ try {
         }
     });
     function MessageWorkerLoop(snapshot, snapshotRev, divide) {
-        for (let i = 0; i < (snapshotRev.length / divide); i++) {
+        for (let i = 0; i < (snapshot.length / divide); i++) {
             var data2 = snapshot[i]
             newMessage(data2)
             snapshotRev.pop()
@@ -485,8 +485,8 @@ try {
         }
     }
     async function MessageWorker() {
-        var snapshot = window.processingMessage.reverse()
-        var snapshotRev = snapshot
+        var snapshot = window.processingMessage
+        var snapshotRev = snapshot.reverse()
         MessageWorkerLoop(snapshot, snapshotRev, 8)
         setTimeout((snapshot, snapshotRev) => {
             MessageWorkerLoop(snapshot, snapshotRev, 4)
