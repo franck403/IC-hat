@@ -466,7 +466,7 @@ try {
         }
     });
     function MessageWorkerLoop(snapshot, snapshotRev, divide) {
-        for (let i = 0; i < (snapshot.length / divide); i++) {
+        for (let i = 0; i < (snapshotRev.length / divide); i++) {
             var data2 = snapshot[i]
             newMessage(data2)
             snapshotRev.pop()
