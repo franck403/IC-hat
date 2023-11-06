@@ -351,7 +351,7 @@ try {
         const dnamef = data2.val().dname
         var class_added = `tooltip`
         var tooltip = `
-            <span class="tooltiptext">Send at ${new Date(data2.val().date).toDateString()}</span>
+            <span class="tooltiptext">Send at ${String(new Date(data2.val().date))}</span>
         `
         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
         if (data2.val().name != null) {
