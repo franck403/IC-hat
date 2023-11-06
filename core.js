@@ -485,7 +485,7 @@ try {
         }
     }
     async function MessageWorker() {
-        var snapshot = window.processingMessage
+        var snapshot = window.processingMessage.reverse()
         var snapshotRev = snapshot.reverse()
         MessageWorkerLoop(snapshot, snapshotRev, 8)
         setTimeout((snapshot, snapshotRev) => {
