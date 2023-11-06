@@ -6,6 +6,13 @@ function errorReceiver(event) {
   throw event.data;
 }
 
-onmessage = function (event) {
-    window.
-};
+function MessageWorkerLoop(snapshot, snapshotRev) {
+    snapshot.forEach(data2 => {
+        self.newMessage(data2)
+        snapshotRev.pop()
+    });
+    return snapshotRev
+}
+onmessage = (event) => {
+    console.log(event)
+}
