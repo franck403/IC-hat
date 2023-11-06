@@ -501,14 +501,8 @@ try {
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
-    var entire = MessageWorker.toString();
-    var body = entire.slice(entire.indexOf("{") + 1, entire.lastIndexOf("}"));
-    new Blob([body], {
-        type: "text/javascript",
-    });
-    window.URL.createObjectURL(blob)
 
-    var worker = new Worker('worker.js');
+    var worker = new Worker('core.threaded.js');
     worker.addEventListener('message', function (e) {
         console.log(e.data);
     })
