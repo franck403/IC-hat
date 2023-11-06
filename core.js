@@ -462,7 +462,7 @@ try {
                 window.processingMessage.push(data2)
             })
             el.dataset.enable = true
-            //setTimeout(MessageWorker, 1000);
+            setTimeout(MessageWorker, 1000);
         }
     });
     function MessageWorkerLoop(snapshot, snapshotRev) {
