@@ -276,7 +276,7 @@ function acceptCall() {
     window.open("https://testnode.virusgaming1.repl.co/room/" + document.getElementById("Calling").dataset.uuid + "?name=Gilaxy04")
     console.log("Call started!")
     modal.style.display = "none";
-  } else if (document.getElementById("Calling").dataset.type = "game") {
+  } else if (document.getElementById("Calling").dataset.type == "game") {
     console.log("Login to game...")
     window.open(document.getElementById("Calling").dataset.uuid)
     console.log("Game started!")

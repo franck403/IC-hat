@@ -41,6 +41,7 @@ function receive(message) {
     console.log(d.get("uuid"))
     if (d.get("type") == "call") {
         document.getElementById("Calling").dataset.uuid = d.get("uuid")
+        document.getElementById("Calling").dataset.type = "type"
         document.getElementById("UserNameCall").innerText = d.get("name")
         openModal()
     }
