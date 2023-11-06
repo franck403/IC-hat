@@ -466,7 +466,7 @@ try {
         }
     });
     function MessageWorkerLoop(snapshot, snapshotRev, divide) {
-        for (let i = 0; i < (snapshot.length / divide); i++) {
+        for (let i = 0; i < (snapshot.length); i++) {
             var data2 = snapshot[i]
             newMessage(data2)
             snapshotRev.pop()
@@ -487,16 +487,7 @@ try {
     async function MessageWorker() {
         var snapshot = window.processingMessage.reverse()
         var snapshotRev = snapshot.reverse()
-        MessageWorkerLoop(snapshot, snapshotRev, 8)
-        setTimeout((snapshot, snapshotRev) => {
-            MessageWorkerLoop(snapshot, snapshotRev, 4)
-            setTimeout((snapshot, snapshotRev) => {
-                MessageWorkerLoop(snapshot, snapshotRev, 2)
-                setTimeout((snapshot, snapshotRev) => {
-                    MessageWorkerLoop(snapshot, snapshotRev, 1)
-                }, 100, snapshot, snapshotRev);
-            }, 100, snapshot, snapshotRev);
-        }, 100, snapshot, snapshotRev);
+        MessageWorkerLoop(snapshot, snapshotRev)
         MessageWorkerEnd(snapshot, snapshotRev)
     }
     window.MessageWorker = MessageWorker
