@@ -462,7 +462,7 @@ try {
                 window.processingMessage.push(data2)
             })
             el.dataset.enable = true
-            setTimeout(MessageWorker, 1000);
+            setTimeout(MessageLoad, 1000);
         }
     });
     function MessageWorkerLoop(snapshot, snapshotRev) {
@@ -511,7 +511,7 @@ try {
     }
     window.MessageLoad = MessageLoad
 
-    MessageWorker()
+    MessageLoad()
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
         var dte = data.val().allow
@@ -574,7 +574,7 @@ try {
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
-                    setTimeout(MessageWorker, 100);
+                    setTimeout(MessageLoad, 100);
                 }
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
