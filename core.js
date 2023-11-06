@@ -466,12 +466,13 @@ try {
         }
     });
     function MessageWorkerLoop(snapshot, snapshotRev) {
-        snapshot.forEach(Data2 => {
+        snapshot.forEach(data2 => {
             newMessage(data2)
-            snapshotRev.pop()            
+            snapshotRev.pop()
         });
         return snapshotRev
     }
+    window.MessageWorkerLoop = MessageWorkerLoop
     function MessageWorkerEnd(snapshotRev) {
         if (window.processingMessage != snapshotRev.reverse()) {
             var g = window.processingMessage.reverse()
@@ -483,12 +484,39 @@ try {
             window.processingMessage = []
         }
     }
+    window.MessageWorkerEnd  = MessageWorkerEnd 
     async function MessageWorker() {
         var snapshot = window.processingMessage.reverse()
-        MessageWorkerEnd(MessageWorkerLoop(snapshot, snapshot.reverse()))
+        window.snapshotRev = snapshot
+        var arr = snapshot
+        window.chunks = [arr.slice(0, arr.length / 2), arr.slice(arr.length / 2, arr.length)]
+        var chunks = window.chunk
+        window.MessageCalc = 0
+        chunks.forEach(chunk => {
+            window.chunks[window.MessageCalc] = MessageWorkerLoop(chunk, chunk.reverse())
+            window.MessageCalc++
+        });
+        var snapshotRev = window.snapshotRev
+        MessageWorkerEnd(snapshotRev)
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
+    var entire = MessageWorker.toString();
+    var body = entire.slice(entire.indexOf("{") + 1, entire.lastIndexOf("}"));
+    new Blob([body], {
+        type: "text/javascript",
+    });
+    window.URL.createObjectURL(blob)
+
+    var worker = new Worker('worker.js');
+    worker.addEventListener('message', function (e) {
+        console.log(e.data);
+    })
+    function MessageLoad() {
+        worker.postMessage('called')
+    }
+    window.MessageLoad = MessageLoad
+
     MessageWorker()
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
