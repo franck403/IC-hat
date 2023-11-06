@@ -521,6 +521,7 @@ try {
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
         var dte = data.val().allow
+        // salut caleb je pars dans le bus la donc tu poura pas modifier
         if (dte.indexOf(myEmail) != -1 && dte != `,${myEmail}`) {
             var n_allow = data.val().allow
             try {
