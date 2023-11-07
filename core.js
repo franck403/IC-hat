@@ -504,7 +504,15 @@ try {
 
     var worker = new Worker('core.threaded.js');
     worker.addEventListener('message', function (e) {
-        console.log(e.data);
+        try {
+            if (typeof(e.data) == typeof("d"))  {
+                worker.postMessage(Function(e.data)())
+            } else {
+                window.snapshotRev = e.data
+            }
+        } catch {
+            console.log(e.data)
+        }
     })
     worker.postMessage(window)
     function MessageLoad() {
