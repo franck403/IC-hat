@@ -514,7 +514,6 @@ try {
             console.log(e.data)
         }
     })
-    worker.postMessage(window)
     function MessageLoad() {
         worker.postMessage('called')
     }
