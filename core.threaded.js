@@ -28,5 +28,7 @@ onmessage = (event) => {
         });
         var snapshotRev = self.window.snapshotRev
         self.MessageWorkerEnd(snapshotRev)
+    } else {
+        self.window = event.data
     }
 }

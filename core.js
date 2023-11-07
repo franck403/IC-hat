@@ -506,6 +506,7 @@ try {
     worker.addEventListener('message', function (e) {
         console.log(e.data);
     })
+    worker.postMessage(window)
     function MessageLoad() {
         worker.postMessage('called')
     }
