@@ -515,7 +515,8 @@ try {
         }
     })
     function MessageLoad() {
-        worker.postMessage('called')
+        MessageWorker()
+        //worker.postMessage('called')
     }
     window.MessageLoad = MessageLoad
 

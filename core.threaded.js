@@ -19,6 +19,7 @@ onmessage = (event) => {
         self.working = true
         self.postMessage('console.log("called");')
         self.postMessage('return window.processingMessage;')
+        console.log(self.processingMessage)
         var snapshot = self.processingMessage.reverse()
         self.snapshotRev = snapshot.reverse()
         var arr = snapshot
