@@ -488,6 +488,7 @@ try {
     async function MessageWorker() {
         var snapshot = window.processingMessage.reverse()
         window.snapshotRev = snapshot.reverse()
+        var snapshotRev = snapshot.reverse()
         var arr = snapshot
         MessageWorkerLoop(snapshot,snapshotRev)
         var snapshotRev = window.snapshotRev
