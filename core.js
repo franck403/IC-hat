@@ -487,9 +487,8 @@ try {
     window.MessageWorkerEnd  = MessageWorkerEnd 
     async function MessageWorker() {
         var snapshot = window.processingMessage.reverse()
-        window.snapshotRev = snapshot
+        window.snapshotRev = snapshot.reverse()
         var arr = snapshot
-        MessageWorkerLoop(snapshot,snapshotRev)
         MessageWorkerLoop(snapshot,snapshotRev)
         var snapshotRev = window.snapshotRev
         MessageWorkerEnd(snapshotRev)
