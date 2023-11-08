@@ -140,7 +140,7 @@ export function image_render(email, name) {
                 name: myName,
                 friend: "none",
                 type: "new-image",
-                message: "png;base64," + reader,
+                message: reader.result.replaceAll("data:image/"),
                 date: Date.now(),
                 dname: cusid
             })
