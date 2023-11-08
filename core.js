@@ -474,22 +474,26 @@ try {
     }
     window.MessageWorkerLoop = MessageWorkerLoop
     function MessageWorkerEnd(snapshotRev) {
-        if (window.processingMessage != snapshotRev.reverse()) {
-            var g = window.processingMessage.reverse()
+        if (window.processingMessage != snapshotRev.slice().reverse()) {
+            var g = window.processingMessage.slice().reverse()
             for (let i = 0; i < (g.length); i++) {
                 g.pop()
             }
-            window.processingMessage
+            window.processingMessage = g
         } else {
             window.processingMessage = []
         }
     }
     window.MessageWorkerEnd  = MessageWorkerEnd 
     async function MessageWorker() {
-        var snapshot = window.processingMessage.slice().reverse()
+        var date1 = Date(window.processingMessage[window.processingMessage.length].val().date).getTime()
+        var date2 = Date(window.processingMessage[0].val().date).getTime()
+        if (date1 < date2) {
+            window.processingMessage.reverse()
+        }
+        var snapshot = window.processingMessage
         window.snapshotRev = snapshot.slice().reverse()
         var snapshotRev = snapshot.slice().reverse()
-        var arr = snapshot
         MessageWorkerLoop(snapshot,snapshotRev)
         var snapshotRev = window.snapshotRev
         MessageWorkerEnd(snapshotRev)
