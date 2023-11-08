@@ -491,7 +491,7 @@ try {
         if (date1 < date2) {
             window.processingMessage.reverse()
         }
-        var snapshot = window.processingMessage
+        var snapshot = window.processingMessage[window.processingMessage.length/2:window.processingMessage.length]
         window.snapshotRev = snapshot.slice().reverse()
         var snapshotRev = snapshot.slice().reverse()
         MessageWorkerLoop(snapshot,snapshotRev)
