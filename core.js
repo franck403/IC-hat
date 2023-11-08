@@ -486,7 +486,7 @@ try {
     }
     window.MessageWorkerEnd  = MessageWorkerEnd 
     async function MessageWorker() {
-        var date1 = Date(window.processingMessage[window.processingMessage.length].val().date).getTime()
+        var date1 = Date(window.processingMessage[window.processingMessage.length-1].val().date).getTime()
         var date2 = Date(window.processingMessage[0].val().date).getTime()
         if (date1 < date2) {
             window.processingMessage.reverse()
