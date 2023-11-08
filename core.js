@@ -489,13 +489,7 @@ try {
         var snapshot = window.processingMessage.reverse()
         window.snapshotRev = snapshot
         var arr = snapshot
-        window.chunks = [arr.slice(0, arr.length / 2), arr.slice(arr.length / 2, arr.length)]
-        var chunks = window.chunks
-        window.MessageCalc = 0
-        chunks.forEach(chunk => {
-            window.chunks[window.MessageCalc] = MessageWorkerLoop(chunk, chunk.reverse())
-            window.MessageCalc++
-        });
+        MessageWorkerLoop(arr, arr.reverse())
         var snapshotRev = window.snapshotRev
         MessageWorkerEnd(snapshotRev)
     }
