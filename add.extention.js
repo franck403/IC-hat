@@ -5,9 +5,10 @@ export function add(name,url) {
         var old = localStorage.getItem("extention")
         localStorage.setItem("extention", old +  "gcode.custom2" + name + "gcode.custom3" + url).replaceAll('"','gcode.custom1')
         return true
+    } else {
+        var old = localStorage.getItem("extention")
+        localStorage.setItem("extention", old +  "," + name + ";" + url)
     }
-    var old = localStorage.getItem("extention")
-    localStorage.setItem("extention", old +  "," + name + ";" + url)
     window.location.replace("https://" + window.location.host)
 }
 

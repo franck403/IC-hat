@@ -7,7 +7,7 @@ export function load() {
             if (main != "" && getCookie("geoloup") != null) {
                 var act2 = main.split("gcode.custom3")
                 var tag = document.createElement("script");
-                if (act2[1].search() == -1) {
+                if (act2[1].search("https://") == -1) {
                     var blob = new Blob([act2.replaceAll('"','gcode.custom1')], {type: "text/plain"});
                     act2[1]= window.URL.createObjectURL(blob);
                 }
