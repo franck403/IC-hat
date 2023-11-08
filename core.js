@@ -489,7 +489,8 @@ try {
         var snapshot = window.processingMessage.reverse()
         window.snapshotRev = snapshot
         var arr = snapshot
-        MessageWorkerLoop(arr, arr.reverse())
+        MessageWorkerLoop(snapshot,snapshotRev)
+        MessageWorkerLoop(snapshot,snapshotRev)
         var snapshotRev = window.snapshotRev
         MessageWorkerEnd(snapshotRev)
     }
