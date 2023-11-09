@@ -549,11 +549,10 @@ try {
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
         var dte = data.val().allow
-        // salut caleb je pars dans le bus la donc tu poura pas modifier
         if (dte.indexOf(myEmail) != -1 && dte != `,${myEmail}`) {
             var array = window.userdb
             var object = []
-            // finding the object whose id is '3'
+            var last = []
             for (let i = 0; i < array.length; i++) {
                 try {
                     if (array.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
@@ -573,8 +572,6 @@ try {
                     })
                 }
             }
-            var last = []
-            console.log(object)
             for (let i = 0; i < object.length; i++) {
                 try {
                     if (object.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
