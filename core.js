@@ -555,12 +555,20 @@ try {
             var object = []
             // finding the object whose id is '3'
             for (let i = 0; i < array.length; i++) {
+                try {
                 object.push(array.find(obj => obj.val().email === data.val().allow[i]))
+                } catch {}
             }
             var last = []
             console.log(object)
             for (let i = 0; i < object.length; i++) {
-                last.push(object.find(obj => obj.val().email === data.val().allow[i]).val().name)
+                try {
+                    last.push(object.find(obj => obj.val().email === data.val().allow[i]).val().name)
+                } catch {}
+            }
+            if (last == []) {
+                var object = [data,data]
+                var last = object.val().allow
             }
             var n_allow = last
             try {
