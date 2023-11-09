@@ -28,6 +28,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 window.appFire = app
 window.databaseFire = database
+window.userdb = []
 
 var myData = await getuser()
 if (myData != null) {
