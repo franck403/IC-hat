@@ -505,26 +505,12 @@ try {
             setTimeout(MessageLoad, 1000);
         }
     });
-    function MessageWorkerLoop(snapshot, snapshotRev) {
+    function MessageWorkerLoop(snapshot) {
         snapshot.forEach(data2 => {
             newMessage(data2)
-            snapshotRev.pop()
         });
-        return snapshotRev
     }
     window.MessageWorkerLoop = MessageWorkerLoop
-    function MessageWorkerEnd(snapshotRev) {
-        if (window.processingMessage != snapshotRev.slice().reverse()) {
-            var g = window.processingMessage.slice().reverse()
-            for (let i = 0; i < (g.length); i++) {
-                g.pop()
-            }
-            window.processingMessage = g
-        } else {
-            window.processingMessage = []
-        }
-    }
-    window.MessageWorkerEnd = MessageWorkerEnd
     async function MessageWorker() {
         for (let i = 0; i < (window.processingMessage.length); i++) {
             var date1 = Date(window.processingMessage[i][window.processingMessage.length - 1].val().date)
@@ -538,8 +524,7 @@ try {
                 var snapshot = window.processingMessage[i].slice()
             }
             var snapshotRev = snapshot.slice().reverse()
-            var snapshotRev = MessageWorkerLoop(snapshot, snapshotRev)
-            MessageWorkerEnd(snapshotRev)
+            var snapshotRev = MessageWorkerLoop(snapshot)
         }
     }
     window.MessageWorker = MessageWorker
