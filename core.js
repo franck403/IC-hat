@@ -580,6 +580,9 @@ try {
             }
 
             // printing object on the console
+            if (object[1].val().email == myEmail) {
+                object.reverse()
+            }
             console.log(object)
             try {
                 var html = `
