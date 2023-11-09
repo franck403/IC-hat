@@ -558,6 +558,7 @@ try {
                 object.push(array.find(obj => obj.val().email === data.val().allow[i]))
             }
             var last = []
+            console.log(object)
             for (let i = 0; i < object.length; i++) {
                 last.push(object.find(obj => obj.val().email === data.val().allow[i]).val().name)
             }
