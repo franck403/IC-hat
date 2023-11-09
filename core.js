@@ -508,6 +508,8 @@ try {
         }
         if (window.processingMessage.length > 100) {
             var snapshot = window.processingMessage.slice(window.processingMessage.length/2,window.processingMessage.length)
+        } else {
+            var snapshot = window.processingMessage.slice()
         }
         window.snapshotRev = snapshot.slice().reverse()
         var snapshotRev = snapshot.slice().reverse()
