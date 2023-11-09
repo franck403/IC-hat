@@ -582,7 +582,7 @@ try {
             }
             var n_allow = last
             try {
-                n_allow.pop()
+                n_allow[n.length-1] = ""
                 var new_allow = n_allow.join(",")
                 var nwe_allow = new_allow.replace(myEmail, "")
                 var nw_allow = nwe_allow.replaceAll(",", " ")
@@ -601,7 +601,7 @@ try {
             console.log(last)
             console.log(nw_allow)
             try {
-                if (last[0] != undefined) {
+                if (last[0] != undefined && nw_allow != "") {
                     var html = `
             <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
             <img src="${last[1].val().image}" class="people-img"alt="picture" />
