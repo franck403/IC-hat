@@ -450,6 +450,9 @@ try {
         };
 
     }
+    onChildAdded(ref(database, `user/`), (data2) => {
+        window.db.push(data2)
+    })
     window.processingMessage = []
     document.getElementById("people").addEventListener("click", (e) => {
         const el = e.target.closest("li");
