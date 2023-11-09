@@ -462,8 +462,8 @@ try {
                 window.processingMessage.push(data2)
             })
             document.getElementById("room_" + el.id.replace("d","")).addEventListener("scroll", (e) => {
-                var date1 = new Date(window.processingMessage[window.processingMessage.length-1].val().date).getTime()
-                var date2 = new Date(window.processingMessage[0].val().date).getTime()
+                var date1 = Date(window.processingMessage[window.processingMessage.length-1].val().date)
+                var date2 = Date(window.processingMessage[0].val().date)
                 if (date1 < date2) {
                     window.processingMessage.reverse()
                 }
@@ -501,8 +501,8 @@ try {
     }
     window.MessageWorkerEnd  = MessageWorkerEnd 
     async function MessageWorker() {
-        var date1 = new Date(window.processingMessage[window.processingMessage.length-1].val().date).getTime()
-        var date2 = new Date(window.processingMessage[0].val().date).getTime()
+        var date1 = Date(window.processingMessage[window.processingMessage.length-1].val().date)
+        var date2 = Date(window.processingMessage[0].val().date)
         if (date1 < date2) {
             window.processingMessage.reverse()
         }
