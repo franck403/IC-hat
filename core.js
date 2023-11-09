@@ -461,6 +461,21 @@ try {
                 // To do make a list of message to load
                 window.processingMessage.push(data2)
             })
+            document.getElementById("room_" + el.id.replace("d","")).addEventListener("scroll", (e) => {
+                var date1 = new Date(window.processingMessage[window.processingMessage.length-1].val().date).getTime()
+                var date2 = new Date(window.processingMessage[0].val().date).getTime()
+                if (date1 < date2) {
+                    window.processingMessage.reverse()
+                }
+                if (window.processingMessage.length > 100) {
+                    var snapshot = window.processingMessage.slice(window.processingMessage.length/2,window.processingMessage.length)
+                }
+                window.snapshotRev = snapshot.slice().reverse()
+                var snapshotRev = snapshot.slice().reverse()
+                MessageWorkerLoop(snapshot,snapshotRev)
+                var snapshotRev = window.snapshotRev
+                MessageWorkerEnd(snapshotRev)
+            })
             el.dataset.enable = true
             setTimeout(MessageLoad, 1000);
         }
@@ -486,8 +501,8 @@ try {
     }
     window.MessageWorkerEnd  = MessageWorkerEnd 
     async function MessageWorker() {
-        var date1 = Date(window.processingMessage[window.processingMessage.length-1].val().date).getTime()
-        var date2 = Date(window.processingMessage[0].val().date).getTime()
+        var date1 = new Date(window.processingMessage[window.processingMessage.length-1].val().date).getTime()
+        var date2 = new Date(window.processingMessage[0].val().date).getTime()
         if (date1 < date2) {
             window.processingMessage.reverse()
         }
