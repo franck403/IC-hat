@@ -556,15 +556,30 @@ try {
             // finding the object whose id is '3'
             for (let i = 0; i < array.length; i++) {
                 try {
-                object.push(array.find(obj => obj.val().email === data.val().allow[i]))
+                    if (object.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
+                        object.push({
+                            val: () => {
+                                return {email:data.val().allow[i],image:"img/default.png"}
+                            }
+                        })
+                    }
+                    object.push(array.find(obj => obj.val().email === data.val().allow[i]))
                 } catch {}
             }
             var last = []
             console.log(object)
             for (let i = 0; i < object.length; i++) {
                 try {
-                    last.push(object.find(obj => obj.val().email === data.val().allow[i]).val().name)
-                } catch {}
+                    if (object.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
+                        last.push({
+                            val: () => {
+                                return {email:data.val().allow[i],image:"img/default.png"}
+                            }
+                        })
+                    } else {
+                        last.push(object.find(obj => obj.val().email === data.val().allow[i]).val().name)
+                    }
+                    } catch {}
             }
             if (last == []) {
                 var object = [data,data]
