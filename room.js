@@ -212,41 +212,7 @@ function big(elem) {
 
 }
 function key_add() {
-  if (document.getElementById("firend_list_preview").innerHTML == "") {
-    console.log("[core] Getting db content")
-    document.getElementById('friend_email').disabled
-    fetch('https://auth.geoloup.com/user/search?name=')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        document.getElementById('friend_email').removeAttribute("disable")
-        var list = responseJson
-        Object.keys(list).forEach(key => {
-          var db = list[key]
-          var html = `
-          <li onclick="friend('${db['email']}')" id="friend-preview-${db['email']}" class="friend-preview list">
-          <img src="img/default.png" class="people-img"alt="picture" />
-          <p id="name_" class="people-name">${db['name']}</p>
-          </li>`
-          const d2 = document.getElementById("firend_list_preview")
-          d2.innerHTML = d2.innerHTML + html
-        });
-      });
-  }
-  let input = document.getElementById('friend_email').value
-  input = input.toLowerCase();
-  let x = document.getElementsByClassName('friend-preview');
-
-  for (i = 0; i < x.length; i++) {
-    var a = x[i]
-    if (!a.innerHTML.toLowerCase().includes(input)) {
-      if (!a.classList.contains("check")) {
-        a.style.display = "none";
-      }
-    }
-    else {
-      a.style.display = "flex";
-    }
-  }
+  search()
 }
 function friend(email) {
   if (!document.getElementById("friend-preview-" + email).classList.contains("check")) {
