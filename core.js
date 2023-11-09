@@ -597,6 +597,7 @@ try {
                 object.reverse()
             }
             console.log(object)
+            console.log(last)
             try {
                 var html = `
             <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
