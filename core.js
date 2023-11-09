@@ -469,7 +469,7 @@ try {
             console.log("Called")
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
-                window.processingMessage.push([data2.dname,data2])
+                window.processingMessage[data2.dname].push(data2)
             })
             document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
                 var array = window.processingMessage
@@ -521,21 +521,21 @@ try {
     }
     window.MessageWorkerEnd = MessageWorkerEnd
     async function MessageWorker() {
-        var date1 = Date(window.processingMessage[window.processingMessage.length - 1].val().date)
-        var date2 = Date(window.processingMessage[0].val().date)
-        if (date1 < date2) {
-            window.processingMessage.reverse()
+        for (let i = 0; i < (window.processingMessage.length); i++) {
+            var date1 = Date(window.processingMessage[i][window.processingMessage.length - 1].val().date)
+            var date2 = Date(window.processingMessage[i][0].val().date)
+            if (date1 < date2) {
+                window.processingMessage[i].reverse()
+            }
+            if (window.processingMessage.length > 100) {
+                var snapshot = window.processingMessage[i].slice(window.processingMessage[i].length / 2, window.processingMessage[i].length)
+            } else {
+                var snapshot = window.processingMessage[i].slice()
+            }
+            var snapshotRev = snapshot.slice().reverse()
+            var snapshotRev = MessageWorkerLoop(snapshot, snapshotRev)
+            MessageWorkerEnd(snapshotRev)
         }
-        if (window.processingMessage.length > 100) {
-            var snapshot = window.processingMessage.slice(window.processingMessage.length / 2, window.processingMessage.length)
-        } else {
-            var snapshot = window.processingMessage.slice()
-        }
-        window.snapshotRev = snapshot.slice().reverse()
-        var snapshotRev = snapshot.slice().reverse()
-        MessageWorkerLoop(snapshot, snapshotRev)
-        var snapshotRev = window.snapshotRev
-        MessageWorkerEnd(snapshotRev)
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
@@ -558,16 +558,16 @@ try {
                     if (array.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
                         object.push({
                             val: () => {
-                                return {email:data.val().allow[i],image:"img/default.png"}
+                                return { email: data.val().allow[i], image: "img/default.png" }
                             }
                         })
                     }
                     object.push(array.find(obj => obj.val().email === data.val().allow[i]))
-                } catch (err){
+                } catch (err) {
                     console.log(err)
                     object.push({
                         val: () => {
-                            return {email:data.val().allow[i],image:"img/default.png"}
+                            return { email: data.val().allow[i], image: "img/default.png" }
                         }
                     })
                 }
@@ -607,7 +607,7 @@ try {
                 <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
                 <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
                 <p id="prew_${data.val().dname}" class="people-preview"></p>
-                </li>`    
+                </li>`
             }
             // chat_el_box
             var html_chat = `
