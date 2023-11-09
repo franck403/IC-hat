@@ -557,7 +557,11 @@ try {
             for (let i = 0; i < array.length; i++) {
                 object.push(array.find(obj => obj.val().email === data.val().allow[i]))
             }
-            var n_allow = object
+            var last = []
+            for (let i = 0; i < object.length; i++) {
+                last.push(object.find(obj => obj.val().email === data.val().allow[i]).val().name)
+            }
+            var n_allow = last
             try {
                 var new_allow = n_allow.join(",")
                 var nwe_allow = new_allow.replace(myEmail, "")
@@ -571,7 +575,7 @@ try {
             try {
                 var html = `
             <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
-            <img src="${object[0].val().image}" class="people-img"alt="picture" />
+            <img src="${object[1].val().image}" class="people-img"alt="picture" />
             <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
             <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
             <p id="prew_${data.val().dname}" class="people-preview"></p>
