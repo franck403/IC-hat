@@ -469,7 +469,12 @@ try {
             console.log("Called")
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
-                window.processingMessage[data2.dname].push(data2)
+                try {
+                    window.processingMessage[data2.dname].push(data2)
+                } catch {
+                    window.processingMessage[data2.dname] = []
+                    window.processingMessage[data2.dname].push(data2)
+                }
             })
             document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
                 var array = window.processingMessage
