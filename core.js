@@ -573,28 +573,7 @@ try {
                 }
             }
             for (let i = 0; i < object.length; i++) {
-                try {
-                    if (object.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
-                        last.push({
-                            val: () => {
-                                return {email:data.val().allow[i],image:"img/default.png"}
-                            }
-                        })
-                    } else {
-                        last.push(object.find(obj => obj.val().email === data.val().allow[i]).val().name)
-                    }
-                    } catch (err){
-                        console.log(err)
-                        last.push({
-                            val: () => {
-                                return {email:data.val().allow[i],image:"img/default.png"}
-                            }
-                        })
-                    }
-            }
-            if (last == []) {
-                var object = [data,data]
-                var last = object.val().allow
+                last.push(object[i].val().name)
             }
             var n_allow = last
             try {
@@ -616,7 +595,7 @@ try {
             try {
                 var html = `
             <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
-            <img src="${object[1].val().image}" class="people-img"alt="picture" />
+            <img src="${last[1].val().image}" class="people-img"alt="picture" />
             <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
             <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
             <p id="prew_${data.val().dname}" class="people-preview"></p>
