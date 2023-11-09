@@ -551,7 +551,13 @@ try {
         var dte = data.val().allow
         // salut caleb je pars dans le bus la donc tu poura pas modifier
         if (dte.indexOf(myEmail) != -1 && dte != `,${myEmail}`) {
-            var n_allow = data.val().allow
+            var array = window.userdb
+            var object = []
+            // finding the object whose id is '3'
+            for (let i = 0; i < array.length; i++) {
+                object.push(array.find(obj => obj.val().email === data.val().allow[i]))
+            }
+            var n_allow = object
             try {
                 var new_allow = n_allow.join(",")
                 var nwe_allow = new_allow.replace(myEmail, "")
@@ -559,23 +565,26 @@ try {
             } catch {
                 var nw_allow = n_allow
             }
-            var array = window.userdb
-            var object = []
-            // finding the object whose id is '3'
-            for (let i = 0; i < array.length; i++) {
-                object.push(array.find(obj => obj.val().email === data.val().allow[i]))
-            }
 
             // printing object on the console
             console.log(object)
-
-            var html = `
-        <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
-        <img src="${object[0].val().image}" class="people-img"alt="picture" />
-        <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
-        <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
-        <p id="prew_${data.val().dname}" class="people-preview"></p>
-        </li>`
+            try {
+                var html = `
+            <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
+            <img src="${object[0].val().image}" class="people-img"alt="picture" />
+            <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
+            <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
+            <p id="prew_${data.val().dname}" class="people-preview"></p>
+            </li>`
+            } catch {
+                var html = `
+                <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
+                <img src="img/default.png" class="people-img"alt="picture" />
+                <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
+                <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
+                <p id="prew_${data.val().dname}" class="people-preview"></p>
+                </li>`    
+            }
             // chat_el_box
             var html_chat = `
         <div class="chat" id="room_${data.val().dname}" data-chat="${data.val().dname}">
