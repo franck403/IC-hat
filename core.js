@@ -582,6 +582,7 @@ try {
             }
             var n_allow = last
             try {
+                n_allow.pop()
                 var new_allow = n_allow.join(",")
                 var nwe_allow = new_allow.replace(myEmail, "")
                 var nw_allow = nwe_allow.replaceAll(",", " ")
