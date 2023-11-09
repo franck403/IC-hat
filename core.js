@@ -468,22 +468,29 @@ try {
             console.log("Called")
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
-                window.processingMessage.push(data2)
+                Function(`window.processingMessage${el.dataset.chatid}.push(${data2})`)()
             })
             document.getElementById("room_" + el.id.replace("d","")).addEventListener("scroll", (e) => {
-                var date1 = Date(window.processingMessage[window.processingMessage.length-1].val().date)
-                var date2 = Date(window.processingMessage[0].val().date)
+                mess = Function(`return window.processingMessage${e.id.replace("room_","")}`)()
+                var date1 = Date(mess[mes.length-1].val().date)
+                var date2 = Date(mess[0].val().date)
                 if (date1 < date2) {
-                    window.processingMessage.reverse()
+                    mes.reverse()
                 }
-                if (window.processingMessage.length > 100) {
-                    var snapshot = window.processingMessage.slice(window.processingMessage.length/2,window.processingMessage.length)
+                if (mes.length > 100) {
+                    var snapshot = mes.slice(mes.length/2,mes.length)
                 }
-                window.snapshotRev = snapshot.slice().reverse()
                 var snapshotRev = snapshot.slice().reverse()
-                MessageWorkerLoop(snapshot,snapshotRev)
-                var snapshotRev = window.snapshotRev
-                MessageWorkerEnd(snapshotRev)
+                var snapshotRev = MessageWorkerLoop(snapshot,snapshotRev)
+                if (mes != snapshotRev.slice().reverse()) {
+                    var g = mes.slice().reverse()
+                    for (let i = 0; i < (g.length); i++) {
+                        g.pop()
+                    }
+                    mes = g
+                } else {
+                    mes = []
+                }
             })
             el.dataset.enable = true
             setTimeout(MessageLoad, 1000);
