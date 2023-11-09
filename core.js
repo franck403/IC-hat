@@ -556,7 +556,7 @@ try {
             // finding the object whose id is '3'
             for (let i = 0; i < array.length; i++) {
                 try {
-                    if (object.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
+                    if (array.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
                         object.push({
                             val: () => {
                                 return {email:data.val().allow[i],image:"img/default.png"}
