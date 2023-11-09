@@ -471,18 +471,18 @@ try {
                 // To do make a list of message to load
                 Function(`window.processingMessage${el.dataset.chatid}.push(${data2})`)()
             })
-            document.getElementById("room_" + el.id.replace("d","")).addEventListener("scroll", (e) => {
-                mess = Function(`return window.processingMessage${e.id.replace("room_","")}`)()
-                var date1 = Date(mess[mes.length-1].val().date)
+            document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
+                mess = Function(`return window.processingMessage${e.id.replace("room_", "")}`)()
+                var date1 = Date(mess[mes.length - 1].val().date)
                 var date2 = Date(mess[0].val().date)
                 if (date1 < date2) {
                     mes.reverse()
                 }
                 if (mes.length > 100) {
-                    var snapshot = mes.slice(mes.length/2,mes.length)
+                    var snapshot = mes.slice(mes.length / 2, mes.length)
                 }
                 var snapshotRev = snapshot.slice().reverse()
-                var snapshotRev = MessageWorkerLoop(snapshot,snapshotRev)
+                var snapshotRev = MessageWorkerLoop(snapshot, snapshotRev)
                 if (mes != snapshotRev.slice().reverse()) {
                     var g = mes.slice().reverse()
                     for (let i = 0; i < (g.length); i++) {
@@ -516,21 +516,21 @@ try {
             window.processingMessage = []
         }
     }
-    window.MessageWorkerEnd  = MessageWorkerEnd 
+    window.MessageWorkerEnd = MessageWorkerEnd
     async function MessageWorker() {
-        var date1 = Date(window.processingMessage[window.processingMessage.length-1].val().date)
+        var date1 = Date(window.processingMessage[window.processingMessage.length - 1].val().date)
         var date2 = Date(window.processingMessage[0].val().date)
         if (date1 < date2) {
             window.processingMessage.reverse()
         }
         if (window.processingMessage.length > 100) {
-            var snapshot = window.processingMessage.slice(window.processingMessage.length/2,window.processingMessage.length)
+            var snapshot = window.processingMessage.slice(window.processingMessage.length / 2, window.processingMessage.length)
         } else {
             var snapshot = window.processingMessage.slice()
         }
         window.snapshotRev = snapshot.slice().reverse()
         var snapshotRev = snapshot.slice().reverse()
-        MessageWorkerLoop(snapshot,snapshotRev)
+        MessageWorkerLoop(snapshot, snapshotRev)
         var snapshotRev = window.snapshotRev
         MessageWorkerEnd(snapshotRev)
     }
@@ -540,7 +540,7 @@ try {
     var worker = new Worker('core.threaded.js');
     worker.addEventListener('message', function (e) {
         try {
-            if (typeof(e.data) == typeof("d"))  {
+            if (typeof (e.data) == typeof ("d")) {
                 worker.postMessage(Function(e.data)())
             } else {
                 window.snapshotRev = e.data
@@ -569,9 +569,19 @@ try {
             } catch {
                 var nw_allow = n_allow
             }
+            var array = window.userdb
+            var object = []
+            // finding the object whose id is '3'
+            for (let i = 0; i < array.length; i++) {
+                object.push(array.find(obj => obj.val().email === data.val().allow[i]))
+            }
+
+            // printing object on the console
+            console.log(object)
+
             var html = `
         <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
-        <img src="img/default.png" class="people-img"alt="picture" />
+        <img src="${object[0].val().image}" class="people-img"alt="picture" />
         <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
         <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
         <p id="prew_${data.val().dname}" class="people-preview"></p>

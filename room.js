@@ -182,10 +182,10 @@ function search() {
         document.getElementById('search_bar').removeAttribute("disable")
         var list = responseJson
         Object.keys(list).forEach(key => {
-          var db_name = list[key]
-          var db_name = db_name["email"]
+          var db_name = key.val().name
+          var db_email = key.val().email
           var html = `
-          <li onclick="room('new${db_name}')" class="people-person db" data-name="" data-chatid="" id="">
+          <li onclick="room('new${db_email}')" class="people-person db" data-name="" data-chatid="" id="">
           <img src="img/default.png" class="people-img"alt="picture" />
           <p id="name_" class="people-name">${db_name}</p>
           <p id="time_" class="people-time"></p>
