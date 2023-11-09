@@ -34,6 +34,23 @@ function set_picture(base64) {
     )
 }
 
+function set_name() {
+    netlifyIdentity.gotrue.currentUser().update({
+        data: {
+            avatar_url: base64
+        }
+    }).then((user) => {
+        var myImage = netlifyIdentity.currentUser().user_metadata.avatar_url
+        if (myImage != null) {
+            document.getElementById("user_pic").src = myImage
+            document.getElementById("user_picture_img").src = myImage
+        } else {
+            document.getElementById("user_pic").src = "img/default.png"
+        }
+    }
+    )
+}
+
 function change_picture() {
     call()
 }
