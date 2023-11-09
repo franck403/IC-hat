@@ -469,10 +469,13 @@ try {
             console.log("Called")
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
-                Function(`window.processingMessage${el.dataset.chatid}.push(${data2})`)()
+                window.processingMessage.push([data2.dname,data2])
             })
             document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
-                mess = Function(`return window.processingMessage${e.id.replace("room_", "")}`)()
+                var array = window.processingMessage
+                console.log(e)
+                array.find(obj => obj[0] === e.id)
+                mess = e.id.replace("room_", "")
                 var date1 = Date(mess[mes.length - 1].val().date)
                 var date2 = Date(mess[0].val().date)
                 if (date1 < date2) {
@@ -536,19 +539,6 @@ try {
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
-
-    var worker = new Worker('core.threaded.js');
-    worker.addEventListener('message', function (e) {
-        try {
-            if (typeof (e.data) == typeof ("d")) {
-                worker.postMessage(Function(e.data)())
-            } else {
-                window.snapshotRev = e.data
-            }
-        } catch {
-            console.log(e.data)
-        }
-    })
     function MessageLoad() {
         MessageWorker()
         //worker.postMessage('called')
