@@ -564,7 +564,14 @@ try {
                         })
                     }
                     object.push(array.find(obj => obj.val().email === data.val().allow[i]))
-                } catch {}
+                } catch (err){
+                    console.log(err)
+                    object.push({
+                        val: () => {
+                            return {email:data.val().allow[i],image:"img/default.png"}
+                        }
+                    })
+                }
             }
             var last = []
             console.log(object)
@@ -579,7 +586,14 @@ try {
                     } else {
                         last.push(object.find(obj => obj.val().email === data.val().allow[i]).val().name)
                     }
-                    } catch {}
+                    } catch (err){
+                        console.log(err)
+                        last.push({
+                            val: () => {
+                                return {email:data.val().allow[i],image:"img/default.png"}
+                            }
+                        })
+                    }
             }
             if (last == []) {
                 var object = [data,data]
@@ -683,6 +697,5 @@ try {
 
     setTimeout(removeloader(), 100000)
 } catch (err) {
-    console.log(err.message)
     console.log(err)
 }
