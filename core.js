@@ -34,7 +34,13 @@ if (myData != null) {
     var myEmail = myData.email
     var myName = myData.user_metadata.full_name
     var myImage = myData.user_metadata.avatar_url
-    document.getElementById("user_name").myName
+    document.getElementById("user_name").innerText = myName
+    var data = {
+        name: myName,
+        email: myEmail,
+        image: myImage
+    }
+    set(ref(database, 'user/' + myEmail.replace(/\W/g, '')), data);
     if (myImage != null) {
         document.getElementById("user_pic").src = myImage
         document.getElementById("user_picture_img").src = myImage
@@ -451,7 +457,7 @@ try {
 
     }
     onChildAdded(ref(database, `user/`), (data2) => {
-        window.db.push(data2)
+        window.userdb.push(data2)
     })
     window.processingMessage = []
     document.getElementById("people").addEventListener("click", (e) => {

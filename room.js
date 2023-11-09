@@ -39,7 +39,6 @@ function room(id) {
     document.getElementById("friend_emails").value = research
     document.getElementById("new_friend_add").click()
     document.getElementById('search_bar').value = ""
-    search()
     var new2 = document.getElementById("room_" + research)
   } else {
     var new2 = document.getElementById("room_" + id)
@@ -176,9 +175,7 @@ function search() {
     }
     console.log("[search core] Searching Person in db...")
     document.getElementById('search_bar').disabled
-    fetch('https://auth.geoloup.com/user/search?name=' + input)
-      .then((response) => response.json())
-      .then((responseJson) => {
+    var f = (responseJson) => {
         for (i = 0; i < z.length; i++) {
           z[i].remove()
         }
@@ -196,8 +193,9 @@ function search() {
           </li>`
           const d2 = document.getElementById("people")
           d2.innerHTML = d2.innerHTML + html
-        });
-      });
+        })
+      }
+    f(window.userdb)
   } else {
     console.log("[search core] Searching Person in friend...")
   }
