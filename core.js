@@ -599,14 +599,25 @@ try {
             }
             console.log(object)
             console.log(last)
+            console.log(nw_allow)
             try {
-                var html = `
+                if (last[0] != undefined) {
+                    var html = `
             <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
             <img src="${last[1].val().image}" class="people-img"alt="picture" />
             <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
             <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
             <p id="prew_${data.val().dname}" class="people-preview"></p>
             </li>`
+                } else {
+                    var html = `
+                <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
+                <img src="img/default.png" class="people-img"alt="picture" />
+                <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
+                <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
+                <p id="prew_${data.val().dname}" class="people-preview"></p>
+                </li>`
+                }
             } catch {
                 var html = `
                 <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
