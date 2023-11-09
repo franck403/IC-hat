@@ -609,6 +609,9 @@ try {
             }
 
             // printing object on the console
+            for (let i = 0; i < object.length; i++) {
+                console.log(object[i].val())
+            }
             if (object[1].val().email == myEmail) {
                 object.reverse()
             }
