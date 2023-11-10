@@ -354,7 +354,7 @@ try {
         } else { }
     });
 
-    async function newMessage(data2) {
+    function newMessage(data2) {
         const dnamef = data2.val().dname
         var class_added = `tooltip`
         var tooltip = `
@@ -368,91 +368,67 @@ try {
                         if (data2.val().email == myEmail) {
                             var html = `<div class="bubble me ${class_added}">${message_render(data2.val().message)} ${tooltip}</div>`
                             var DateNow = data2.val().date
-                            var date = message_date(DateNow, dnamef)
-                            d1.innerHTML = d1.innerHTML + html
                         } else {
                             var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div>${message_render(data2.val().message)}</div>${tooltip}</div>`
                             var DateNow = data2.val().date
-                            var date = message_date(DateNow, dnamef)
-                            d1.innerHTML = d1.innerHTML + html
                         }
-                        var elem = d1
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
                     } else { }
                 } else if (data2.val().type == "image") {
                     if (data2.val().email == myEmail) {
                         var html = `<div class="bubble me ${class_added}"><img class="type-img" src="${data2.val().message}"></img>${tooltip}</div>`
                         var DateNow = data2.val().date
-                        var date = message_date(DateNow, dnamef)
-                        d1.innerHTML = d1.innerHTML + html
                     } else {
                         var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div><img class="type-img" src="${data2.val().message}"></img></div>${tooltip}</div>`
                         var DateNow = data2.val().date
-                        var date = message_date(DateNow, dnamef)
-                        d1.innerHTML = d1.innerHTML + html
                     }
-                    var elem = d1
-                    elem.scrollTop = elem.scrollHeight;
-                    elem.scrollTop = elem.scrollHeight;
                 } else if (data2.val().type == "new-image") {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
-                        var date = message_date(DateNow, dnamef)
                         var html = `<div class="bubble me ${class_added}"><img onclick="big(this.src)" class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="${data2.val().message}"></img>${tooltip}</div>`
-                        d1.innerHTML = d1.innerHTML + html
                     } else {
                         var DateNow = data2.val().date
-                        var date = message_date(DateNow, dnamef)
                         var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div><img onclick="big(this.src)" class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></img></div>${tooltip}</div>`
-                        d1.innerHTML = d1.innerHTML + html
                     }
-                    var elem = d1
-                    elem.scrollTop = elem.scrollHeight;
-                    elem.scrollTop = elem.scrollHeight;
                 } else if (data2.val().type == "new-encrypted") {
                     if (data2.val().email == myEmail) {
                         var message = decrypt(data2.val().message)
                         var html = `<div class="bubble me ${class_added}" id="${data2.val().date}">${message_render(message)}${tooltip}</div>`
                         var DateNow = data2.val().date
-                        var date = message_date(DateNow, dnamef)
-                        d1.innerHTML = d1.innerHTML + html
                     } else {
                         var message = decrypt(data2.val().message)
                         var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div>${message_render(message)}</div>${tooltip}</div>`
                         var DateNow = data2.val().date
-                        var date = message_date(DateNow, dnamef)
-                        d1.innerHTML = d1.innerHTML + html
                     }
-                    var elem = d1
-                    elem.scrollTop = elem.scrollHeight;
-                    elem.scrollTop = elem.scrollHeight;
                 } else if (data2.val().type == null) {
                     if (data2.val().name != null) {
                         if (data2.val().name == myName) {
                             var html = `<div class="bubble me">${message_render(data2.val().message)}</div>`
                             var DateNow = data2.val().date
-                            var date = message_date(DateNow, dnamef)
-                            d1.innerHTML = d1.innerHTML + html
                         } else {
                             var html = `<div class="bubble you"><div class="bubble-name">${data2.val().name}</div><div>${message_render(data2.val().message)}</div></div>`
                             var DateNow = data2.val().date
-                            var date = message_date(DateNow, dnamef)
-                            d1.innerHTML = d1.innerHTML + html
                         }
-                        var elem = d1
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
                     } else { }
                 } else if (data2.val().type == "messages") {
-
                 } else if (data2.val().type == "message") {
                 } else if (data2.val().type == "encrypted") {
                 } else {
                     OnNewMessage.OnMessage(data2.val())
                 }
-                bip()
+                /*  
+                    var message = newMessage()
+                    var d1 = message[0]
+                    d1.innerHTML = d1.innerHTML + html
+                    //d1.innerHTML = html + d1.innerHTML
+                    var elem = d1
+                    elem.scrollTop = elem.scrollHeight;
+                    elem.scrollTop = elem.scrollHeight;
+                */ 
+                try {
+                    return [d1,html]
+                } catch {}
             }
+
             else { }
         };
 
@@ -507,8 +483,17 @@ try {
     });
     function MessageWorkerLoop(snapshot) {
         snapshot.forEach(data2 => {
-            newMessage(data2)
-        });
+            var message = newMessage(data2)
+            var d1 = message[0]
+            if (back) {
+                d1.innerHTML = d1.innerHTML + message[1]
+            } else {
+                d1.innerHTML = message[1] + d1.innerHTML
+            }
+            var elem = d1
+            elem.scrollTop = elem.scrollHeight;
+            elem.scrollTop = elem.scrollHeight;
+    });
     }
     window.MessageWorkerLoop = MessageWorkerLoop
     async function MessageWorker() {
@@ -523,8 +508,7 @@ try {
             } else {
                 var snapshot = window.processingMessage[i].slice()
             }
-            var snapshotRev = snapshot.slice().reverse()
-            var snapshotRev = MessageWorkerLoop(snapshot)
+            MessageWorkerLoop(snapshot)
         }
     }
     window.MessageWorker = MessageWorker
@@ -637,6 +621,7 @@ try {
             }
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
+                bip()
                 console.log("Child changed")
                 console.log(data2.val().type)
                 if (data2.val().type == "call") {
