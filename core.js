@@ -482,17 +482,21 @@ try {
         }
     });
     function MessageWorkerLoop(snapshot) {
-        snapshot.forEach(data2 => {
-            var message = newMessage(data2)
-            var d1 = message[0]
-            if (back) {
-                d1.innerHTML = d1.innerHTML + message[1]
-            } else {
-                d1.innerHTML = message[1] + d1.innerHTML
+        snapshot.forEach(data => {
+            var data2 = data[0]
+            var state = data[1]
+            if (!state) {
+                var message = newMessage(data2)
+                var d1 = message[0]
+                if (back) {
+                    d1.innerHTML = d1.innerHTML + message[1]
+                } else {
+                    d1.innerHTML = message[1] + d1.innerHTML
+                }
+                var elem = d1
+                elem.scrollTop = elem.scrollHeight;
+                elem.scrollTop = elem.scrollHeight;
             }
-            var elem = d1
-            elem.scrollTop = elem.scrollHeight;
-            elem.scrollTop = elem.scrollHeight;
     });
     }
     window.MessageWorkerLoop = MessageWorkerLoop
@@ -503,10 +507,10 @@ try {
             if (date1 < date2) {
                 window.processingMessage[i].reverse()
             }
-            if (window.processingMessage.length > 100) {
-                var snapshot = window.processingMessage[i].slice(window.processingMessage[i].length / 2, window.processingMessage[i].length)
+            if (window.processingMessage[i].findAll(obj => obj[1] === true).length > 100) {
+                var snapshot = window.processingMessage[i].findAll(obj => obj[1] === true).slice(window.processingMessage[i].length / 2, window.processingMessage[i].length)
             } else {
-                var snapshot = window.processingMessage[i].slice()
+                var snapshot = window.processingMessage[i].findAll(obj => obj[1] === true).slice()
             }
             MessageWorkerLoop(snapshot)
         }
