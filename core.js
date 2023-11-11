@@ -540,8 +540,9 @@ try {
                                 return { email: data.val().allow[i], image: "img/default.png" }
                             }
                         })
+                    } else {
+                        object.push(array.find(obj => obj.val().email === data.val().allow[i]))
                     }
-                    object.push(array.find(obj => obj.val().email === data.val().allow[i]))
                 } catch (err) {
                     console.log(err)
                     object.push({
@@ -552,6 +553,7 @@ try {
                 }
             }
             for (let i = 0; i < object.length; i++) {
+                console.log(object[i])
                 last.push(object[i].val().name)
             }
             var n_allow = last
