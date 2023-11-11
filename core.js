@@ -554,6 +554,13 @@ try {
             }
             for (let i = 0; i < object.length; i++) {
                 console.log(object[i])
+                if (object[i] == undefined) {
+                    object[i] = {
+                        val: () => {
+                            return { email: data.val().allow[i], image: "img/default.png" }
+                        }
+                    }
+                }
                 last.push(object[i].val().name)
             }
             var n_allow = last
