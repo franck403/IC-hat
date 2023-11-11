@@ -559,7 +559,7 @@ try {
             var n_allow = last
             try {
                 n_allow[n.length-1] = ""
-                var new_allow = n_allow.join(",")
+                var new_allow = n_allow.join(" ")
                 var nwe_allow = new_allow.replace(myEmail, "")
                 var nwe_allow = new_allow.replace(myName, "")
                 var nw_allow = nwe_allow.replaceAll(",", " ")
