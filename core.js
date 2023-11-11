@@ -446,10 +446,10 @@ try {
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
                 try {
-                    window.processingMessage[data2.dname].push(data2)
+                    window.processingMessage[data2.dname].push([data2,false])
                 } catch {
                     window.processingMessage[data2.dname] = []
-                    window.processingMessage[data2.dname].push(data2)
+                    window.processingMessage[data2.dname].push([data2,false])
                 }
             })
             document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
@@ -554,6 +554,7 @@ try {
                 n_allow[n.length-1] = ""
                 var new_allow = n_allow.join(",")
                 var nwe_allow = new_allow.replace(myEmail, "")
+                var nwe_allow = new_allow.replace(myName, "")
                 var nw_allow = nwe_allow.replaceAll(",", " ")
             } catch {
                 var nw_allow = n_allow
