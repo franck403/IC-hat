@@ -423,10 +423,10 @@ try {
                     var elem = d1
                     elem.scrollTop = elem.scrollHeight;
                     elem.scrollTop = elem.scrollHeight;
-                */ 
+                */
                 try {
-                    return [d1,html]
-                } catch {}
+                    return [d1, html]
+                } catch { }
             }
 
             else { }
@@ -446,10 +446,10 @@ try {
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
                 try {
-                    window.processingMessage[data2.dname].push([data2,false])
+                    window.processingMessage[data2.dname].push([data2, false])
                 } catch {
                     window.processingMessage[data2.dname] = []
-                    window.processingMessage[data2.dname].push([data2,false])
+                    window.processingMessage[data2.dname].push([data2, false])
                 }
             })
             document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
@@ -498,7 +498,7 @@ try {
                 elem.scrollTop = elem.scrollHeight;
                 elem.scrollTop = elem.scrollHeight;
             }
-    });
+        });
     }
     window.MessageWorkerLoop = MessageWorkerLoop
     async function MessageWorker() {
@@ -571,6 +571,17 @@ try {
                 var nw_allow = nwe_allow.replaceAll(",", " ")
             } catch {
                 var nw_allow = n_allow
+            }
+            if (nw_allow == " ") {
+                n_allow = data.val().allow
+                try {
+                    var new_allow = n_allow.join(" ")
+                    var nwe_allow = new_allow.replace(myEmail, "")
+                    var nwe_allow = nwe_allow.replace(myName, "")
+                    var nw_allow = nwe_allow.replaceAll(",", " ")
+                } catch {
+                    var nw_allow = n_allow
+                }
             }
 
             // printing object on the console
