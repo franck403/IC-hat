@@ -501,6 +501,16 @@ try {
             }
         });
     }
+    function findAll(findFunc,object){
+        var d = []
+        for (let i = 0; i < (object.length); i++) {
+            if (findFunc(object[i])) {
+                d.push(object[i])
+            }
+        }
+        return d
+    }
+    window.findAll = findAll 
     window.MessageWorkerLoop = MessageWorkerLoop
     async function MessageWorker() {
         console.log("[Message worker] Loading message")
@@ -517,10 +527,10 @@ try {
             if (date1 < date2) {
                 window.processingMessage[window.processingMessage[i]].reverse()
             }
-            if (window.processingMessage[window.processingMessage[i]].findAll(obj => obj[1] === true).length > 100) {
-                var snapshot = window.processingMessage[window.processingMessage[i]].findAll(obj => obj[1] === true).slice(window.processingMessage[window.processingMessage[i]].length / 2, window.processingMessage[window.processingMessage[i]].length)
+            if (findAll((obj => obj[1] === true),window.processingMessage[window.processingMessage[i]]).length > 30) {
+                var snapshot = findAll((obj => obj[1] === true),window.processingMessage[window.processingMessage[i]]).slice(0,30)
             } else {
-                var snapshot = window.processingMessage[window.processingMessage[i]].findAll(obj => obj[1] === true).slice()
+                var findAll((obj => obj[1] === true),window.processingMessage[window.processingMessage[i]]).slice()
             }
             MessageWorkerLoop(snapshot)
         }
