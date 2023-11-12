@@ -573,7 +573,7 @@ try {
             } catch {
                 var nw_allow = n_allow
             }
-            if (nw_allow == " ") {
+            if (nw_allow.replaceAll(" ") == "") {
                 n_allow = data.val().allow
                 try {
                     var new_allow = n_allow.join(" ")
