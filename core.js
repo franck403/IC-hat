@@ -511,7 +511,7 @@ try {
                 var date1 = Date(window.processingMessage[i][window.processingMessage[i].length - 1].val().date)
                 var date2 = Date(window.processingMessage[i][0].val().date)
             } catch {
-                console.log(window.processingMessage[i][window.processingMessage[i]].reverse)
+                console.log(window.processingMessage[i][window.processingMessage[i]])
                 window.processingMessage[i][window.processingMessage[i]].reverse()
             }
             if (date1 < date2) {
