@@ -511,11 +511,11 @@ try {
                 var date1 = Date(window.processingMessage[i][window.processingMessage[i].length - 1].val().date)
                 var date2 = Date(window.processingMessage[i][0].val().date)
             } catch {
-                console.log(window.processingMessage[i][window.processingMessage[i]])
-                window.processingMessage[i][window.processingMessage[i]].reverse()
+                console.log(window.processingMessage[window.processingMessage[i]])
+                window.processingMessage[window.processingMessage[i]].reverse()
             }
             if (date1 < date2) {
-                window.processingMessage[i][window.processingMessage[i]].reverse()
+                window.processingMessage[window.processingMessage[i]].reverse()
             }
             if (window.processingMessage[i].findAll(obj => obj[1] === true).length > 100) {
                 var snapshot = window.processingMessage[i].findAll(obj => obj[1] === true).slice(window.processingMessage[i].length / 2, window.processingMessage[i].length)
