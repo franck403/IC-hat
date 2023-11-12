@@ -446,10 +446,10 @@ try {
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
                 try {
-                    window.processingMessage[data2.val().dname].push([data2, false])
+                    window.processingMessage[String(data2.val().dname)].push([data2, false])
                 } catch {
-                    window.processingMessage[data2.val().dname] = []
-                    window.processingMessage[data2.val().dname].push([data2, false])
+                    window.processingMessage[String(data2.val().dname)] = []
+                    window.processingMessage[String(data2.val().dname)].push([data2, false])
                 }
             })
             document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
