@@ -448,6 +448,7 @@ try {
                 try {
                     window.processingMessage[String(data2.val().dname)].push([data2, false])
                 } catch {
+                    window.processingMessage.push(String(data2.val().dname))
                     window.processingMessage[String(data2.val().dname)] = []
                     window.processingMessage[String(data2.val().dname)].push([data2, false])
                 }
