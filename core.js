@@ -507,8 +507,8 @@ try {
         for (let i = 0; i < (window.processingMessage.length); i++) {
             console.log("[Message worker] Chargin message")
             try {
-                console.log(window.processingMessage[i][(window.processingMessage[i].length - 1)])
-                var date1 = Date(window.processingMessage[i][window.processingMessage[i].length - 1].val().date)
+                console.log(window.processingMessage[i][(window.processingMessage[window.processingMessage[i]].length - 1)])
+                var date1 = Date(window.processingMessage[i][window.processingMessage[window.processingMessage[i]].length - 1].val().date)
                 var date2 = Date(window.processingMessage[i][0].val().date)
             } catch {
                 console.log(window.processingMessage[window.processingMessage[i]])
@@ -517,10 +517,10 @@ try {
             if (date1 < date2) {
                 window.processingMessage[window.processingMessage[i]].reverse()
             }
-            if (window.processingMessage[i].findAll(obj => obj[1] === true).length > 100) {
-                var snapshot = window.processingMessage[i].findAll(obj => obj[1] === true).slice(window.processingMessage[i].length / 2, window.processingMessage[i].length)
+            if (window.processingMessage[window.processingMessage[i]].findAll(obj => obj[1] === true).length > 100) {
+                var snapshot = window.processingMessage[window.processingMessage[i]].findAll(obj => obj[1] === true).slice(window.processingMessage[window.processingMessage[i]].length / 2, window.processingMessage[window.processingMessage[i]].length)
             } else {
-                var snapshot = window.processingMessage[i].findAll(obj => obj[1] === true).slice()
+                var snapshot = window.processingMessage[window.processingMessage[i]].findAll(obj => obj[1] === true).slice()
             }
             MessageWorkerLoop(snapshot)
         }
