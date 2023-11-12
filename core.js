@@ -482,7 +482,7 @@ try {
             setTimeout(MessageLoad, 1000);
         }
     });
-    function MessageWorkerLoop(snapshot) {
+    function MessageWorkerLoop(snapshot,back) {
         snapshot.forEach(data => {
             var data2 = data[0]
             var state = data[1]
@@ -491,7 +491,7 @@ try {
                 state = true
                 var message = newMessage(data2)
                 var d1 = message[0]
-                if (back) {
+                if (!back) {
                     d1.innerHTML = d1.innerHTML + message[1]
                 } else {
                     d1.innerHTML = message[1] + d1.innerHTML
