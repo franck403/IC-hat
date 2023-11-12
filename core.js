@@ -446,10 +446,10 @@ try {
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
                 try {
-                    window.processingMessage[data2.dname].push([data2, false])
+                    window.processingMessage[data2.val().dname].push([data2, false])
                 } catch {
-                    window.processingMessage[data2.dname] = []
-                    window.processingMessage[data2.dname].push([data2, false])
+                    window.processingMessage[data2.val().dname] = []
+                    window.processingMessage[data2.val().dname].push([data2, false])
                 }
             })
             document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
@@ -503,7 +503,7 @@ try {
     window.MessageWorkerLoop = MessageWorkerLoop
     async function MessageWorker() {
         console.log("[Message worker] Loading message")
-        for (let i = 0; i < (window.processingMessage.length); i++) {
+        for (let i = 0; i <= (window.processingMessage.length); i++) {
             console.log("[Message worker] Chargin message")
             var date1 = Date(window.processingMessage[i][window.processingMessage.length - 1].val().date)
             var date2 = Date(window.processingMessage[i][0].val().date)
