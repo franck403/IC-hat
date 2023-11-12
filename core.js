@@ -530,7 +530,7 @@ try {
             if (findAll((obj => obj[1] === true),window.processingMessage[window.processingMessage[i]]).length > 30) {
                 var snapshot = findAll((obj => obj[1] === true),window.processingMessage[window.processingMessage[i]]).slice(0,30)
             } else {
-                var findAll((obj => obj[1] === true),window.processingMessage[window.processingMessage[i]]).slice()
+                var snapshot = findAll((obj => obj[1] === true),window.processingMessage[window.processingMessage[i]]).slice()
             }
             MessageWorkerLoop(snapshot)
         }
