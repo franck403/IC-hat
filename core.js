@@ -504,13 +504,14 @@ try {
     window.MessageWorkerLoop = MessageWorkerLoop
     async function MessageWorker() {
         console.log("[Message worker] Loading message")
-        for (let i = 0; i <= (window.processingMessage.length); i++) {
+        for (let i = 0; i < (window.processingMessage.length); i++) {
             console.log("[Message worker] Chargin message")
             try {
                 console.log(window.processingMessage[i][(window.processingMessage[i].length - 1)])
                 var date1 = Date(window.processingMessage[i][window.processingMessage[i].length - 1].val().date)
                 var date2 = Date(window.processingMessage[i][0].val().date)
             } catch {
+                console.log(window.processingMessage[i])
                 window.processingMessage[i].reverse()
                 console.log(window.processingMessage[i][(window.processingMessage[i].length - 1)])
             }
