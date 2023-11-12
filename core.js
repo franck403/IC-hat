@@ -486,6 +486,7 @@ try {
         snapshot.forEach(data => {
             var data2 = data[0]
             var state = data[1]
+            console.log(state)
             if (!state) {
                 state = true
                 var message = newMessage(data2)
