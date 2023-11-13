@@ -484,6 +484,7 @@ try {
     });
     function MessageWorkerLoop(snapshot,back) {
         console.log("dsdsdsds")
+        // the loop does not work ??
         snapshot.forEach(data => {
             console.log("dsdsdsds")
             var data2 = data[0]
@@ -503,6 +504,7 @@ try {
                 elem.scrollTop = elem.scrollHeight;
             }
         });
+        console.log("dsdsdsds")
     }
     function findAll(findFunc,object){
         var d = []
