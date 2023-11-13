@@ -485,6 +485,9 @@ try {
     function MessageWorkerLoop(snapshot,back) {
         console.log("dsdsdsds")
         // the loop does not work ??
+        console.log(snapshot)
+        // test if snapshot have content
+        console.log(back)
         snapshot.forEach(data => {
             console.log("dsdsdsds")
             var data2 = data[0]
