@@ -533,6 +533,7 @@ try {
             } else {
                 var snapshot = findAll((obj => obj[1] === true),window.processingMessage[window.processingMessage[i]]).slice()
             }
+            console.log("dsdsdsds")
             MessageWorkerLoop(snapshot)
         }
     }
