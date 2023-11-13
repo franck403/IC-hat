@@ -483,7 +483,9 @@ try {
         }
     });
     function MessageWorkerLoop(snapshot,back) {
+        console.log("dsdsdsds")
         snapshot.forEach(data => {
+            console.log("dsdsdsds")
             var data2 = data[0]
             var state = data[1]
             console.log(state)
@@ -535,6 +537,8 @@ try {
             }
             console.log("dsdsdsds")
             MessageWorkerLoop(snapshot)
+            console.log("dsdsdsds")
+
         }
     }
     window.MessageWorker = MessageWorker
