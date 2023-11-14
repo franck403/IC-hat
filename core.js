@@ -516,6 +516,7 @@ try {
                 d.push(object[i])
             }
         }
+        console.log(d)
         return d
     }
     window.findAll = findAll 
