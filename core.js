@@ -512,7 +512,7 @@ try {
                 console.log(window.processingMessage[window.processingMessage[i]])
                 window.processingMessage[window.processingMessage[i]].reverse()
             }
-            if (date1 < date2) {
+            if (date1 < date2 && date1 != undefined && date2 != undefined) {
                 window.processingMessage[window.processingMessage[i]].reverse()
             }
             if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 30) {
