@@ -460,7 +460,7 @@ try {
             setTimeout(MessageLoad, 1000);
         }
     });
-    function MessageWorkerLoop(snapshot,back) {        
+    function MessageWorkerLoop(snapshot, back) {
 
         for (let i = 0; i < (snapshot.length); i++) {
             var data = snapshot[i]
@@ -484,7 +484,7 @@ try {
         }
         return snapshot
     }
-    function findAll(findFunc,object){
+    function findAll(findFunc, object) {
         var d = []
         for (let i = 0; i < (object.length); i++) {
             if (findFunc(object[i])) {
@@ -493,7 +493,7 @@ try {
         }
         return d
     }
-    window.findAll = findAll 
+    window.findAll = findAll
     window.MessageWorkerLoop = MessageWorkerLoop
     async function MessageWorker() {
         console.log("[Message worker] Loading message")
@@ -501,8 +501,13 @@ try {
             console.log("[Message worker] Chargin message")
             try {
                 console.log(window.processingMessage[i][(window.processingMessage[window.processingMessage[i]].length - 1)])
-                var date1 = Date(window.processingMessage[i][window.processingMessage[window.processingMessage[i]].length - 1].val().date)
-                var date2 = Date(window.processingMessage[i][0].val().date)
+                try {
+                    var date1 = Date(window.processingMessage[i][window.processingMessage[window.processingMessage[i]].length - 1].val().date)
+                    var date2 = Date(window.processingMessage[i][window.processingMessage[window.processingMessage[i]].length - 2].val().date)
+                } catch {
+                    var date1 = Date(window.processingMessage[i][0].val().date)
+                    var date2 = Date(window.processingMessage[i][1].val().date)
+                }
             } catch {
                 console.log(window.processingMessage[window.processingMessage[i]])
                 window.processingMessage[window.processingMessage[i]].reverse()
@@ -510,10 +515,10 @@ try {
             if (date1 < date2) {
                 window.processingMessage[window.processingMessage[i]].reverse()
             }
-            if (findAll((obj) => {if(obj[1] !== true) {return true}},window.processingMessage[window.processingMessage[i]]).length > 30) {
-                var snapshot = findAll((obj => obj[1] !== true),window.processingMessage[window.processingMessage[i]]).slice(0,30)
+            if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 30) {
+                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 30)
             } else {
-                var snapshot = findAll((obj) => {if(obj[1] !== true) {return true}},window.processingMessage[window.processingMessage[i]]).slice()
+                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
             }
             window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot)
         }
@@ -574,7 +579,7 @@ try {
             } catch {
                 var nw_allow = n_allow
             }
-            if (nw_allow.replaceAll(" ","") == "") {
+            if (nw_allow.replaceAll(" ", "") == "") {
                 n_allow = data.val().allow
                 try {
                     var new_allow = n_allow.join(" ")
