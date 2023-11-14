@@ -513,7 +513,7 @@ try {
             } else {
                 var snapshot = findAll((obj) => {if(obj[1] !== true) {return true}},window.processingMessage[window.processingMessage[i]]).slice()
             }
-            MessageWorkerLoop(snapshot)
+            window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot)
         }
     }
     window.MessageWorker = MessageWorker
