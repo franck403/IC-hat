@@ -454,49 +454,21 @@ try {
                 }
             })
             document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
-                var array = window.processingMessage
                 console.log(e)
-                array.find(obj => obj[0] === e.id)
-                mess = e.id.replace("room_", "")
-                var date1 = Date(mess[mes.length - 1].val().date)
-                var date2 = Date(mess[0].val().date)
-                if (date1 < date2) {
-                    mes.reverse()
-                }
-                if (mes.length > 100) {
-                    var snapshot = mes.slice(mes.length / 2, mes.length)
-                }
-                var snapshotRev = snapshot.slice().reverse()
-                var snapshotRev = MessageWorkerLoop(snapshot, snapshotRev)
-                if (mes != snapshotRev.slice().reverse()) {
-                    var g = mes.slice().reverse()
-                    for (let i = 0; i < (g.length); i++) {
-                        g.pop()
-                    }
-                    mes = g
-                } else {
-                    mes = []
-                }
             })
             el.dataset.enable = true
             setTimeout(MessageLoad, 1000);
         }
     });
-    function MessageWorkerLoop(snapshot,back) {
-        console.log("dsdsdsds")
-        // the loop does not work ??
-        console.log(snapshot)
-        // test if snapshot have content
-        console.log(back)
-        snapshot.forEach(data => {
-            console.log("dsdsdsds")
+    function MessageWorkerLoop(snapshot,back) {        
+
+        for (let i = 0; i < (snapshot.length); i++) {
+            var data = snapshot[i]
             var data2 = data[0]
             var state = data[1]
-            console.log(state)
             if (!state) {
                 state = true
                 var message = newMessage(data2)
-                console.log(message)
                 var d1 = message[0]
                 if (!back) {
                     d1.innerHTML = d1.innerHTML + message[1]
@@ -507,8 +479,8 @@ try {
                 elem.scrollTop = elem.scrollHeight;
                 elem.scrollTop = elem.scrollHeight;
             }
-        });
-        console.log("dsdsdsds")
+        }
+        return snapshot
     }
     function findAll(findFunc,object){
         var d = []
@@ -517,7 +489,6 @@ try {
                 d.push(object[i])
             }
         }
-        console.log(d)
         return d
     }
     window.findAll = findAll 
@@ -537,15 +508,12 @@ try {
             if (date1 < date2) {
                 window.processingMessage[window.processingMessage[i]].reverse()
             }
-            if (findAll((obj => obj[1] !== true),window.processingMessage[window.processingMessage[i]]).length > 30) {
+            if (findAll((obj) => {if(obj[1] !== true) {return true}},window.processingMessage[window.processingMessage[i]]).length > 30) {
                 var snapshot = findAll((obj => obj[1] !== true),window.processingMessage[window.processingMessage[i]]).slice(0,30)
             } else {
-                var snapshot = findAll((obj => obj[1] !== true),window.processingMessage[window.processingMessage[i]]).slice()
+                var snapshot = findAll((obj) => {if(obj[1] !== true) {return true}},window.processingMessage[window.processingMessage[i]]).slice()
             }
-            console.log("dsdsdsds")
             MessageWorkerLoop(snapshot)
-            console.log("dsdsdsds")
-
         }
     }
     window.MessageWorker = MessageWorker
