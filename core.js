@@ -536,10 +536,10 @@ try {
             if (date1 < date2) {
                 window.processingMessage[window.processingMessage[i]].reverse()
             }
-            if (findAll((obj => obj[1] === true),window.processingMessage[window.processingMessage[i]]).length > 30) {
-                var snapshot = findAll((obj => obj[1] === true),window.processingMessage[window.processingMessage[i]]).slice(0,30)
+            if (findAll((obj => obj[1] !== true),window.processingMessage[window.processingMessage[i]]).length > 30) {
+                var snapshot = findAll((obj => obj[1] !== true),window.processingMessage[window.processingMessage[i]]).slice(0,30)
             } else {
-                var snapshot = findAll((obj => obj[1] === true),window.processingMessage[window.processingMessage[i]]).slice()
+                var snapshot = findAll((obj => obj[1] !== true),window.processingMessage[window.processingMessage[i]]).slice()
             }
             console.log("dsdsdsds")
             MessageWorkerLoop(snapshot)
