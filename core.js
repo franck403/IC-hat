@@ -467,7 +467,7 @@ try {
             var data2 = data[0]
             var state = data[1]
             if (!state) {
-                state = true
+                data[1] = true
                 var message = newMessage(data2)
                 var d1 = message[0]
                 if (!back) {
