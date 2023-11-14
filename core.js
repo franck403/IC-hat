@@ -469,16 +469,17 @@ try {
             if (!state) {
                 data[1] = true
                 var message = newMessage(data2)
-                console.log(message)
-                var d1 = message[0]
-                if (!back) {
-                    d1.innerHTML = d1.innerHTML + message[1]
-                } else {
-                    d1.innerHTML = message[1] + d1.innerHTML
+                if (message != undefined) {
+                    var d1 = message[0]
+                    if (!back) {
+                        d1.innerHTML = d1.innerHTML + message[1]
+                    } else {
+                        d1.innerHTML = message[1] + d1.innerHTML
+                    }
+                    var elem = d1
+                    elem.scrollTop = elem.scrollHeight;
+                    elem.scrollTop = elem.scrollHeight;
                 }
-                var elem = d1
-                elem.scrollTop = elem.scrollHeight;
-                elem.scrollTop = elem.scrollHeight;
             }
         }
         return snapshot
