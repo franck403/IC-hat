@@ -502,13 +502,13 @@ try {
             try {
                 try {
                     var date1 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 1][0].val().date)
-                    var date2 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 2][0].val().date)
+                    var date2 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 4][0].val().date)
                     if (date1 < date2) {
                         window.processingMessage[window.processingMessage[i]].reverse()
                     }
-                        } catch (err) {
+                } catch (err) {
                     var date1 = Date(window.processingMessage[window.processingMessage[i]][0][0].val().date)
-                    var date2 = Date(window.processingMessage[window.processingMessage[i]][1][0].val().date)
+                    var date2 = Date(window.processingMessage[window.processingMessage[i]][3][0].val().date)
                     if (date1 < date2) {
                         window.processingMessage[window.processingMessage[i]].reverse()
                     }
