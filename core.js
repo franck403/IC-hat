@@ -502,14 +502,14 @@ try {
             try {
                 console.log(window.processingMessage[i][(window.processingMessage[window.processingMessage[i]].length - 1)])
                 try {
-                    console.log(window.processingMessage[i][window.processingMessage[window.processingMessage[i]].length - 1])
-                    console.log(window.processingMessage[i][window.processingMessage[window.processingMessage[i]].length - 2])
-                    var date1 = Date(window.processingMessage[i][window.processingMessage[window.processingMessage[i]].length - 1].val().date)
-                    var date2 = Date(window.processingMessage[i][window.processingMessage[window.processingMessage[i]].length - 2].val().date)
+                    console.log(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 1])
+                    console.log(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 2])
+                    var date1 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 1].val().date)
+                    var date2 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 2].val().date)
                 } catch (err) {
                     console.log(err)
-                    var date1 = Date(window.processingMessage[i][0].val().date)
-                    var date2 = Date(window.processingMessage[i][1].val().date)
+                    var date1 = Date(window.processingMessage[window.processingMessage[i]][0].val().date)
+                    var date2 = Date(window.processingMessage[window.processingMessage[i]][1].val().date)
                 }
             } catch (err){
                 console.log(err)
