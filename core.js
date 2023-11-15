@@ -504,12 +504,13 @@ try {
                 try {
                     var date1 = Date(window.processingMessage[i][window.processingMessage[window.processingMessage[i]].length - 1].val().date)
                     var date2 = Date(window.processingMessage[i][window.processingMessage[window.processingMessage[i]].length - 2].val().date)
-                } catch {
+                } catch (err) {
+                    console.log(err)
                     var date1 = Date(window.processingMessage[i][0].val().date)
                     var date2 = Date(window.processingMessage[i][1].val().date)
                 }
-            } catch {
-                console.log(window.processingMessage[window.processingMessage[i]])
+            } catch (err){
+                console.log(err)
                 window.processingMessage[window.processingMessage[i]].reverse()
             }
             if (date1 < date2 && date1 != undefined && date2 != undefined) {
