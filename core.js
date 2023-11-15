@@ -497,22 +497,17 @@ try {
     window.MessageWorkerLoop = MessageWorkerLoop
     async function MessageWorker() {
         console.log("[Message worker] Loading message")
-        for (let i = 0; i < (window.processingMessage.length); i++) {
+        for (let i = 0; i < (window.processingMessage.length/2); i++) {
             console.log("[Message worker] Chargin message")
             try {
-                console.log(window.processingMessage[i][(window.processingMessage[window.processingMessage[i]].length - 1)])
                 try {
-                    console.log(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 1])
-                    console.log(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 2])
                     var date1 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 1][0].val().date)
                     var date2 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 2][0].val().date)
                 } catch (err) {
-                    console.log(err)
                     var date1 = Date(window.processingMessage[window.processingMessage[i]][0][0].val().date)
                     var date2 = Date(window.processingMessage[window.processingMessage[i]][1][0].val().date)
                 }
             } catch (err){
-                console.log(err)
                 window.processingMessage[window.processingMessage[i]].reverse()
             }
             if (date1 < date2 && date1 != undefined && date2 != undefined) {
