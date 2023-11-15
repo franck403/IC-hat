@@ -503,7 +503,7 @@ try {
                 try {
                     try {
                         var date1 = Date(window.processingMessage[window.processingMessage[i]][0][0].val().date)
-                        var date2 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 4][0].val().date)
+                        var date2 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 1][0].val().date)
                         console.log("[Message worker]" + date1)
                         console.log("[Message worker]" + date2)
                         if (date1 < date2) {
