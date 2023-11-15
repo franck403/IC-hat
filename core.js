@@ -503,14 +503,17 @@ try {
                 try {
                     var date1 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 1][0].val().date)
                     var date2 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 2][0].val().date)
-                } catch (err) {
+                    if (date1 < date2) {
+                        window.processingMessage[window.processingMessage[i]].reverse()
+                    }
+                        } catch (err) {
                     var date1 = Date(window.processingMessage[window.processingMessage[i]][0][0].val().date)
                     var date2 = Date(window.processingMessage[window.processingMessage[i]][1][0].val().date)
-                }
+                    if (date1 < date2) {
+                        window.processingMessage[window.processingMessage[i]].reverse()
+                    }
+                        }
             } catch (err){
-                window.processingMessage[window.processingMessage[i]].reverse()
-            }
-            if (date1 < date2 && date1 != undefined && date2 != undefined) {
                 window.processingMessage[window.processingMessage[i]].reverse()
             }
             if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 30) {
