@@ -499,8 +499,6 @@ try {
         console.log("[Message worker] Loading message")
         for (let i = 0; i < (window.processingMessage.length / 2); i++) {
             console.log("[Message worker] Chargin message")
-            console.log("[Message worker]" + date1)
-            console.log("[Message worker]" + date2)
             if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 30) {
                 var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 30)
             } else {
