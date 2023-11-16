@@ -499,37 +499,6 @@ try {
         console.log("[Message worker] Loading message")
         for (let i = 0; i < (window.processingMessage.length / 2); i++) {
             console.log("[Message worker] Chargin message")
-            try {
-                try {
-                    try {
-                        var date1 = Date(window.processingMessage[window.processingMessage[i]][0][0].val().date)
-                        var date2 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 1][0].val().date)
-                        console.log("[Message worker]" + date1)
-                        console.log("[Message worker]" + date2)
-                        if (date1 < date2) {
-                            window.processingMessage[window.processingMessage[i]].reverse()
-                        }
-                    } catch {
-                        var date1 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 1][0].val().date)
-                        var date2 = Date(window.processingMessage[window.processingMessage[i]][window.processingMessage[window.processingMessage[i]].length - 4][0].val().date)
-                        console.log("[Message worker]" + date1)
-                        console.log("[Message worker]" + date2)
-                        if (date1 < date2) {
-                            window.processingMessage[window.processingMessage[i]].reverse()
-                        }
-                    }
-                } catch (err) {
-                    console.log("[Message worker]" + date1)
-                    console.log("[Message worker]" + date2)
-                    var date1 = Date(window.processingMessage[window.processingMessage[i]][0][0].val().date)
-                    var date2 = Date(window.processingMessage[window.processingMessage[i]][3][0].val().date)
-                    if (date1 < date2) {
-                        window.processingMessage[window.processingMessage[i]].reverse()
-                    }
-                }
-            } catch (err) {
-                window.processingMessage[window.processingMessage[i]].reverse()
-            }
             console.log("[Message worker]" + date1)
             console.log("[Message worker]" + date2)
             if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 30) {
