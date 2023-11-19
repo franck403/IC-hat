@@ -526,11 +526,7 @@ try {
             for (let i = 0; i < array.length; i++) {
                 try {
                     if (array.find(obj => obj.val().email === data.val().allow[i]).val().image != undefined) {
-                        object.push({
-                            val: () => {
-                                return { email: data.val().allow[i], image: array.find(obj => obj.val().email === data.val().allow[i]).val().image }
-                            }
-                        })
+                        object.push(array.find(obj => obj.val().email === data.val().allow[i]))
                     }
                     else if (array.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
                             object.push({
