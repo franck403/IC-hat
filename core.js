@@ -533,19 +533,11 @@ try {
                         })
                     }
                     else if (array.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
-                        if (array.find(obj => obj.val().email === data.val().allow[i]).val().image != undefined) {
-                            object.push({
-                                val: () => {
-                                    return { email: data.val().allow[i], image: array.find(obj => obj.val().email === data.val().allow[i]).val().image }
-                                }
-                            })
-                        } else {
                             object.push({
                                 val: () => {
                                     return { email: data.val().allow[i], image: "img/default.png" }
                                 }
                             })
-                        }
                     } else {
                         object.push(array.find(obj => obj.val().email === data.val().allow[i]))
                     }
