@@ -566,6 +566,8 @@ body {
     border-radius: 21px;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .container .left input:focus {
@@ -583,6 +585,8 @@ body {
     background-repeat: no-repeat;
     background-position: top 12px left 14px;
     border-radius: 50%;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .container .left a.search img {
