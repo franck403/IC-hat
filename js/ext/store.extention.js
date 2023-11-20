@@ -18,7 +18,3 @@ const cacheFirst = async (request) => {
     const responseFromNetwork = await fetch(request);
     return responseFromNetwork;
 };
-
-self.addEventListener("fetch", (event) => {
-    event.respondWith(cacheFirst(event.request));
-});
