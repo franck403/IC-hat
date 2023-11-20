@@ -579,7 +579,7 @@ body {
     float: left;
     width: 42px;
     height: 42px;
-    margin-left: 10px;
+    margin-left: 5px;
     border: 1px solid var(--light);
     background-color: var(--blue);
     background-repeat: no-repeat;
