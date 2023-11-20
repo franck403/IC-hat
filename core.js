@@ -466,8 +466,8 @@ try {
             var data = snapshot[i]
             var data2 = data[0]
             var state = data[1]
-            if (!state) {
-                data[1] = true
+            if (state) {
+                data[1] = false
                 var message = newMessage(data2)
                 if (message != undefined) {
                     var d1 = message[0]
