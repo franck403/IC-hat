@@ -18,7 +18,6 @@ class AudioPlayer extends HTMLElement {
     
         #audio-player-container {
           position: relative;
-          margin: 100px 2.5% auto 2.5%;
           width: 95%;
           display: flex;
           max-width: 50%;

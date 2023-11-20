@@ -466,8 +466,8 @@ try {
             var data = snapshot[i]
             var data2 = data[0]
             var state = data[1]
-            if (state) {
-                data[1] = false
+            if (!state) {
+                data[1] = true
                 var message = newMessage(data2)
                 if (message != undefined) {
                     var d1 = message[0]
@@ -504,6 +504,7 @@ try {
             } else {
                 var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
             }
+            console.log("[Message worker] " + snapshot)
             window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot)
         }
     }
