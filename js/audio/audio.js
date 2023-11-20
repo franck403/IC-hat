@@ -3,7 +3,7 @@ import lottieWeb from "https://cdn.skypack.dev/lottie-web";
 class AudioPlayer extends HTMLElement {
     constructor() {
         super();
-        const templateContent = `
+        const tem = `
         <style>
         button {
           padding: 0;
@@ -234,6 +234,9 @@ class AudioPlayer extends HTMLElement {
         height: 40px;" id="mute-icon"></button>
       </div>
       `;
+        const template = document.createElement('template')
+        template.innerHTML = tem
+        const templateContent = template.content
         const shadow = this.attachShadow({ mode: "open" });
         shadow.appendChild(templateContent.cloneNode(true));
     }
