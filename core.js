@@ -469,6 +469,7 @@ try {
             if (!state) {
                 data[1] = true
                 var message = newMessage(data2)
+                console.log(message)
                 if (message != undefined) {
                     var d1 = message[0]
                     if (!back) {
