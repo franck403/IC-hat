@@ -8,13 +8,11 @@ const putInCache = async (request) => {
 };
 
 const cacheFirst = async (request) => {
-
     const url = new URL(request.url);
     var cache = caches.open("extention")
     var responseFromCache = await cache.match(request)
     if (responseFromCache) {
         return responseFromCache;
     }
-    const responseFromNetwork = await fetch(request);
-    return responseFromNetwork;
+    return false;
 };
