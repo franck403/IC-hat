@@ -47,7 +47,7 @@
     position: fixed;
     z-index: 36;
     right: 0;
-    top: 0;
+    top: 4px;
     border: none;
     background: white;
     border-radius: 100%;
