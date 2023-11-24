@@ -1,6 +1,14 @@
 import {load} from "./loader.extention.js"
 import {add,check} from "./add.extention.js"
-import {getCookie} from "./bhuy3huygyufwyuge.js"
+const putInCache = async (request) => {
+    response = await fetch(request)
+    if (url.search("api/extention/") != -1) {
+        const cache = await caches.open("extention");
+        var id = url.split("/").reverse()[0]
+        await cache.put(request, response);
+        }
+};
+
 document.addEventListener("DOMContentLoaded", (event) => {
     var url = window. location.href;
      
@@ -10,7 +18,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     url = url.split("?")[0]; 
     if (url == "https://splendorous-hamster-ecd34b.netlify.app/chat"|| url == "https://chat.geoloup.com/chat" || url == "https://ic-hat.geoloup.com/chat" || url == "https://beta.chat.geoloup.com/chat" || url == "https://chat.beta.geoloup.com/chat" ) {
         load()
-        console.info("[extention core] Extention are enable with id :" + getCookie("geoloup"))
+        console.info("[extention core] Extention are enable")
     } else if (url == "https://splendorous-hamster-ecd34b.netlify.app/store" || url == "https://chat.geoloup.com/store" || url == "https://ic-hat.geloup.com/store" || url == "https://beta.chat.geoloup.com/store" || url == "https://chat.beta.geoloup.com/store") {
         if (localStorage.getItem("extention") != null) {} else {localStorage.setItem("extention","")}
         const btn_add = document.getElementById("add_extention")

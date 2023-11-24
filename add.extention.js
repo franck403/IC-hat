@@ -1,9 +1,16 @@
 if (localStorage.getItem("extention") != null) {} else {localStorage.setItem("extention","")}
+const putInCache = async (request) => {
+    response = await fetch(request)
+    if (url.search("api/extention/") != -1) {
+        const cache = await caches.open("extention");
+        var id = url.split("/").reverse()[0]
+        await cache.put(request, response);
+        }
+};
 
 export function add(name,url) {
     if (url.search("https://") == -1) {
-        var old = localStorage.getItem("extention")
-        localStorage.setItem("extention", old +  "gcode.custom2" + name + "gcode.custom3" + url).replaceAll('"','gcode.custom1')
+        putInCache()        
         return true
     } else {
         var old = localStorage.getItem("extention")
