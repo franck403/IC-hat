@@ -29,7 +29,7 @@ self.addEventListener("fetch", (event) => {
 
 self.addEventListener('message', event => {
     console.log(`[Message] event: `, event);
-    clients.match(event.data.value[0]).then(clients => {
+    clients.match(event.data.value[0]).then(client => {
         client.postMessage({
             value: event.data.value[1]
         });
