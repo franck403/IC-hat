@@ -7,8 +7,8 @@ function uuidv4() {
         });
 }
 
-const putInCache = async (request, response) => {
-    const cache = await caches.open("GlE");
+const putInCache = async (response, uuid) => {
+    const cache = await caches.open("GlE-" + uuid);
     await cache.put(new Request(new URL("/extention/", "gl-extention:/")), response);
 };
 
@@ -28,13 +28,21 @@ self.addEventListener("fetch", (event) => {
 });
 
 self.addEventListener('message', event => {
-    clients.matchAll().then(clients => {
-        clients.forEach(client => {
-            client.postMessage({
-                value: event.data.value
-            });
+    if (event.data.value[2] == "start") {
+        const cacheKeepList = ["GlE-" + event.data.value[0]];
+        const keyList = await caches.keys();
+        const cachesToDelete = keyList.filter((key) => cacheKeepList.includes(key));
+        await Promise.all(cachesToDelete.map(deleteCache));    
+    } else {
+        putInCache(event.data.value[1], event.data.value[0])
+        clients.matchAll().then(clients => {
+            clients.forEach(client => {
+                client.postMessage({
+                    value: event.data.value
+                });
+            })
         })
-    })
+    }
 });
 const deleteCache = async (key) => {
     await caches.delete(key);

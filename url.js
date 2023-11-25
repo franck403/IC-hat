@@ -15,9 +15,9 @@ var startup = async () => {
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', sw.scope);
             navigator.serviceWorker.addEventListener('message', event => {
-                num = event.data.value;
-                increasePoint(num);
-                // console.log(event.data.value);
+                if (event.data.value[0] == window.uuid) {
+
+                }
             });
         } catch (err) {
             // registration failed :(
