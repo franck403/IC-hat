@@ -26,7 +26,7 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(cacheFirst(event.request));
 });
 
-self.addEventListener('message', event => {
+self.addEventListener('message', async (event) => {
     if (event.data.value[2] == "start") {
         const cacheKeepList = ["GlE-" + event.data.value[0]];
         const keyList = await caches.keys();
