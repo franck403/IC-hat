@@ -6,6 +6,9 @@ function uuidv4() {
             return v.toString(16);
         });
 }
+var GlEbackup = startup
+var GlESW = undefined
+window.GlESW = undefined
 var startup = async () => {
     window.uuid = uuidv4()
 
@@ -19,6 +22,10 @@ var startup = async () => {
 
                 }
             });
+            navigator.serviceWorker.ready.then((registration) => {
+                window.GlESW = registration.active
+                registration.active.postMessage([uuidv4(),undefined,"start"]);
+            });
         } catch (err) {
             // registration failed :(
             console.log('ServiceWorker registration failed: ', err);
@@ -29,4 +36,24 @@ var startup = async () => {
     }
 }
 startup()
-var startup = undefined
+var startup = GlEbackup
+
+// wrapper for the functions
+
+var GlE = {
+    createUrl : async (url) => {
+        var id = uuidv4()
+        window.GlESW.postMessage([uuidv4(),id,"addURL",url]);
+        return id
+    },
+    revokeUrl : async (uuid) => {
+        var id = uuid
+        window.GlESW.postMessage([uuidv4(),id,"removeURL"]);
+        return id
+    },
+    getUrl : async (uuid) => {
+        var id = uuid
+        window.GlESW.postMessage([uuidv4(),id,"removeURL"]);
+        return id
+    }
+}
