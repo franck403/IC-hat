@@ -6,19 +6,27 @@ function uuidv4() {
             return v.toString(16);
         });
 }
+var startup = async () => {
+    window.uuid = uuidv4()
 
-
-if ("serviceWorker" in navigator) {
-    // declaring scope manually
-    navigator.serviceWorker.register("/sw.js", { scope: "gl-extention:/" + uuidv4() +"/" }).then(
-      (registration) => {
-        console.log("Service worker registration succeeded:", registration);
-      },
-      (error) => {
-        console.error(`Service worker registration failed: ${error}`);
-      },
-    );
-  } else {
-    console.error("Service workers are not supported.");
-  }
-  
+    if ("serviceWorker" in navigator) {
+        try {
+            let sw = await navigator.serviceWorker.register("serviceWorker.js", { scope: "gl-extention:/" + uuidv4() +"/" });
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', sw.scope);
+            navigator.serviceWorker.addEventListener('message', event => {
+                num = event.data.value;
+                increasePoint(num);
+                // console.log(event.data.value);
+            });
+        } catch (err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+        }
+        // declaring scope manually
+    } else {
+        console.error("Service workers are not supported.");
+    }
+}
+startup()
+var startup = undefined
