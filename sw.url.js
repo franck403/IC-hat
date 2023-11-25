@@ -9,14 +9,13 @@ function uuidv4() {
 
 const putInCache = async (response, uuid) => {
     const cache = await caches.open("GlE-" + uuid);
-    await cache.put(new Request(new URL("/extention/", "gl-extention:/")), response);
+    await cache.put(new Request("/GlE/"), response);
 };
 
 const cacheFirst = async (request) => {
     var responseFromCache = await caches.match(request);
     var url = new URL(request.url);
-    var pattern1 = /gl-extention:\/cdn\/extention\//i;
-    if (pattern1.test(url.pathname)) {
+    if (url.search("/GlE/") != -1) {
         return responseFromCache;
     }
     const responseFromNetwork = await fetch(request);

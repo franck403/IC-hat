@@ -11,7 +11,7 @@ var startup = async () => {
 
     if ("serviceWorker" in navigator) {
         try {
-            let sw = await navigator.serviceWorker.register("serviceWorker.js", { scope: "gl-extention://" + uuidv4() +"/" });
+            let sw = await navigator.serviceWorker.register("serviceWorker.js", { scope: "/GlE/" + uuidv4() +"/" });
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', sw.scope);
             navigator.serviceWorker.addEventListener('message', event => {
