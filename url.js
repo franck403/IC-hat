@@ -9,6 +9,8 @@ function uuidv4() {
 var GlEbackup = startup
 var GlESW = undefined
 window.GlESW = undefined
+window.GlEId = uuidv4()
+
 var startup = async () => {
     window.uuid = uuidv4()
 
@@ -43,17 +45,29 @@ var startup = GlEbackup
 var GlE = {
     createUrl : async (url) => {
         var id = uuidv4()
-        window.GlESW.postMessage([uuidv4(),id,"addURL",url]);
+        window.GlELId = id
+        navigator.serviceWorker.ready.then((registration) => {
+            var id = window.GlELId
+            registration.active.postMessage([window.GlEId,id,"addURL",url]);
+        });
         return id
     },
     revokeUrl : async (uuid) => {
         var id = uuid
-        window.GlESW.postMessage([uuidv4(),id,"removeURL"]);
+        window.GlELId = id
+        navigator.serviceWorker.ready.then((registration) => {
+            var id = window.GlELId
+            registration.active.postMessage([window.GlEId,id,"removeURL"]);
+        });
         return id
     },
     getUrl : async (uuid) => {
         var id = uuid
-        window.GlESW.postMessage([uuidv4(),id,"removeURL"]);
+        window.GlELId = id
+        navigator.serviceWorker.ready.then((registration) => {
+            var id = window.GlELId
+            registration.active.postMessage([window.GlEId,id,"getURL"]);
+        });
         return id
     }
 }
