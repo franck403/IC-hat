@@ -23,9 +23,9 @@ var startup = async () => {
                 }
             });
             navigator.serviceWorker.ready.then((registration) => {
-                window.GlESW = registration.active
                 registration.active.postMessage([uuidv4(),undefined,"start"]);
             });
+            window.GlESW = navigator.serviceWorker.controller
         } catch (err) {
             // registration failed :(
             console.log('ServiceWorker registration failed: ', err);
