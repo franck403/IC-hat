@@ -9,7 +9,7 @@ function uuidv4() {
 
 const putInCache = async (response, uuid) => {
     const cache = await caches.open("GlE-" + uuid);
-    await cache.put(new Request("/GlE/"), response);
+    await cache.put(new Request("/GlE/" + uuidv4()), response);
 };
 
 const cacheFirst = async (request) => {

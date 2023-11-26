@@ -14,7 +14,7 @@ var startup = async () => {
 
     if ("serviceWorker" in navigator) {
         try {
-            let sw = await navigator.serviceWorker.register("sw.url.js", { scope: "/GlE/" + uuidv4() +"/" });
+            let sw = await navigator.serviceWorker.register("sw.url.js", { scope: "/"});
             // Registration was successful
             console.log('ServiceWorker registration successful with scope: ', sw.scope);
             navigator.serviceWorker.addEventListener('message', event => {
@@ -25,7 +25,7 @@ var startup = async () => {
             navigator.serviceWorker.ready.then((registration) => {
                 registration.active.postMessage([uuidv4(),undefined,"start"]);
             });
-            window.GlESW = navigator.serviceWorker.controller
+            window.GlESW = navigator.serviceWorker
         } catch (err) {
             // registration failed :(
             console.log('ServiceWorker registration failed: ', err);
