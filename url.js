@@ -57,3 +57,4 @@ var GlE = {
         return id
     }
 }
+window.GlE = GlE
