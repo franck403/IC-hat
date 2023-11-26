@@ -28,13 +28,13 @@ self.addEventListener("fetch", (event) => {
 
 self.addEventListener('message', async (event) => {
     console.log(event)
-    if (event.data.value[2] == "start") {
-        const cacheKeepList = ["GlE-" + event.data.value[0]];
+    if (event.data[2] == "start") {
+        const cacheKeepList = ["GlE-" + event.data[0]];
         const keyList = await caches.keys();
         const cachesToDelete = keyList.filter((key) => cacheKeepList.includes(key));
         await Promise.all(cachesToDelete.map(deleteCache));    
     } else {
-        putInCache(event.data.value[1], event.data.value[0])
+        putInCache(event.data[1], event.data[0])
         clients.matchAll().then(clients => {
             clients.forEach(client => {
                 client.postMessage({
