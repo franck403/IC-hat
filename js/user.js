@@ -86,19 +86,19 @@ window.addEventListener('message', function (event) {
     }
 });
 
-var modal = document.getElementById("myModal");
-var span = document.getElementsByClassName("close")[0];
+var mm = document.getElementById("mm");
+var span = document.getElementsByClassName("cls")[0];
 var checked = localStorage.getItem("checked");
 function check() {
 	if (checked == "yes") {
-		modal.style.display = "none";
+		mm.style.display = "none";
 	
 	} else {
-		modal.style.display = "block";
+		mm.style.display = "block";
 	};
 };
 
 function accept() {
 	localStorage.setItem("checked", "yes")
-	modal.style.display = "none";
+	mm.style.display = "none";
 }
