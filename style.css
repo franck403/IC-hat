@@ -1325,10 +1325,6 @@ body {
     color: #333;
 }
 
-.body {
-	backdrop-filter: grayscale(30%);
-}
-
 @media only screen and (min-width: 501px) {
 	.modal {
 		display: none;
