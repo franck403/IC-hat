@@ -16,11 +16,6 @@
       </head>    
     <body>
       <div>
-	<div id="mm" class="mm">
-		<span class="cls" onclick="acpt()">Accept</span>
-		<h2>Terms of service</h2>
-		<p>Welcome to Ic-hat! These Terms of Service govern your use and outline the rights and responsibilities between you and us. By accessing or using the Application, you agree to be bound by these Terms. Please take note that the messages are filtred by an AI.</p>
-	</div>
         <div id="wait-connected">
           <div class="loader">
             <h2>Loading IC-hat</h2>
@@ -32,6 +27,11 @@
         </div>
         <div id="not-connected"><iframe class="not-connected-iframe" id="not-connected-iframe" src="home.html"></iframe><script src="login-register.js"></script></div>
         <div id="connected"  onresize="resize()"  onload="check()">
+	  <div id="mm" class="mm">
+		<span class="cls" onclick="acpt()">Accept</span>
+		<h2>Terms of service</h2>
+		<p>Welcome to Ic-hat! These Terms of Service govern your use and outline the rights and responsibilities between you and us. By accessing or using the Application, you agree to be bound by these Terms. Please take note that the messages are filtred by an AI.</p>
+	  </div>
           <div id="Calling" class="modal-call">
             <div class="modal-call-content">
                 <div class="content-call">
