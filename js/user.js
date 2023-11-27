@@ -97,7 +97,6 @@ function check() {
 	
 	} else {
 		modal.style.display = "block";
-		bodyf.style.backdropFilter = "grayscale(30%)";
 	};
 };
 
