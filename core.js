@@ -527,6 +527,7 @@ try {
                 var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
             }
             console.log("[Message worker] " + snapshot)
+            console.log(window.processingMessage[window.processingMessage[i]])
             window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot)
         }
     }
