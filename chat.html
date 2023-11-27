@@ -14,7 +14,7 @@
         <script src="js/user.js"></script>
         <script src="https://staticlimemonad.virusgaming1.repl.co/socket.io/socket.io.js"></script>
       </head>    
-    <body onload="check()">
+    <body>
       <div>
 	<div id="myModal" class="modal">
 		<span class="close" onclick="accept()">Accept</span>
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div id="not-connected"><iframe class="not-connected-iframe" id="not-connected-iframe" src="home.html"></iframe><script src="login-register.js"></script></div>
-        <div id="connected"  onresize="resize()">
+        <div id="connected"  onresize="resize()"  onload="check()">
           <div id="Calling" class="modal-call">
             <div class="modal-call-content">
                 <div class="content-call">
