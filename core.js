@@ -460,7 +460,10 @@ try {
                     window.processingMessage[String(data2.val().dname)].push([data2, false])
                 } catch {
                     window.processingMessage.push(String(data2.val().dname))
-                    window.processingMessage[String(data2.val().dname)] = []
+                    
+                    if (typeof(window.processingMessage[String(data2.val().dname)]) != typeof([])){
+                        window.processingMessage[String(data2.val().dname)] = []
+                    }
                     window.processingMessage[String(data2.val().dname)].push([data2, false])
                 }
             })
@@ -479,7 +482,7 @@ try {
                 console.log(e)
             })
             el.dataset.enable = true
-            setTimeout(MessageLoad, 1000);
+            setTimeout(MessageLoad, 2000);
         }
     });
     function MessageWorkerLoop(snapshot, back) {
@@ -658,10 +661,9 @@ try {
             }
             var newroom = new URLSearchParams(window.location.search);
             if (dnamef == newroom.get("room") && newroom.has("room")) {
-                window.room(newroom.get("room"))
                 var f = document.getElementById("d" + newroom.get("room"))
                 f.click()
-                f.addEventListener('scroll', window.listener, false);
+                window.room(newroom.get("room"))
             }
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
