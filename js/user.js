@@ -85,3 +85,23 @@ window.addEventListener('message', function (event) {
         close()
     }
 });
+
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+var checked = localStorage.getItem("checked");
+var bodyf = document.getElementsByClassName("body")[0];
+function check() {
+	if (checked == "yes") {
+		modal.style.display = "none";
+		bodyf.style.backdropFilter = "none";
+	
+	} else {
+		modal.style.display = "block";
+		bodyf.style.backdropFilter = "grayscale(30%)";
+	};
+};
+
+function accept() {
+	localStorage.setItem("checked", "yes")
+	modal.style.display = "none";
+}
