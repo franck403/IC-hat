@@ -441,6 +441,7 @@ try {
         const el = e.target.closest("li");
         console.log(el)
         if (el.dataset.enable != "true") {
+            window.MessageLoad()
             console.log(el.id);
             console.log("Called")
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
