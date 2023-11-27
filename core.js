@@ -455,6 +455,7 @@ try {
             console.log("Called")
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
+                if (data2.val().dname == undefined) {return}
                 try {
                     window.processingMessage[String(data2.val().dname)].push([data2, false])
                 } catch {
@@ -528,7 +529,7 @@ try {
             }
             console.log("[Message worker] " + snapshot)
             console.log(window.processingMessage[window.processingMessage[i]])
-            window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot)
+            window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot.slice(0,snapshot.length))
         }
     }
     window.MessageWorker = MessageWorker
