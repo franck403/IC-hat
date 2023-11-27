@@ -454,6 +454,17 @@ try {
                 }
             })
             document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
+                console.log("[Message worker] Loading message")
+                for (let i = 0; i < (window.processingMessage.length / 2); i++) {
+                    console.log("[Message worker] Chargin message")
+                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 10) {
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
+                    } else {
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
+                    }
+                    console.log("[Message worker] " + snapshot)
+                    window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot, true)
+                }
                 console.log(e)
             })
             el.dataset.enable = true
@@ -531,11 +542,11 @@ try {
                         object.push(array.find(obj => obj.val().email === data.val().allow[i]))
                     }
                     else if (array.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
-                            object.push({
-                                val: () => {
-                                    return { email: data.val().allow[i], image: "img/default.png" }
-                                }
-                            })
+                        object.push({
+                            val: () => {
+                                return { email: data.val().allow[i], image: "img/default.png" }
+                            }
+                        })
                     } else {
                         object.push(array.find(obj => obj.val().email === data.val().allow[i]))
                     }
