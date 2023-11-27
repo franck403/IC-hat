@@ -98,7 +98,7 @@ function check() {
 	};
 };
 
-function accept() {
+function acpt() {
 	localStorage.setItem("checked", "yes")
 	mm.style.display = "none";
 }
