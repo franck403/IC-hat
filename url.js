@@ -62,7 +62,7 @@ var GlE = {
             registration.active.postMessage([window.GlEId,id,"removeURL"]);
         });
         var url = window.GlEUrlList[window.GlEUrlList.indexOf(id)]
-        return 
+        return url
     },
     getUrl : (uuid) => {
         var id = uuid
@@ -71,7 +71,8 @@ var GlE = {
             var id = window.GlELId
             registration.active.postMessage([window.GlEId,id,"getURL"]);
         });
-        return id
+        var url = window.GlEUrlList[window.GlEUrlList.indexOf(id)]
+        return url
     }
 }
 window.GlE = GlE
