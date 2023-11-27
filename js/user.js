@@ -89,11 +89,9 @@ window.addEventListener('message', function (event) {
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 var checked = localStorage.getItem("checked");
-var bodyf = document.getElementsByClassName("body")[0];
 function check() {
 	if (checked == "yes") {
 		modal.style.display = "none";
-		bodyf.style.backdropFilter = "none";
 	
 	} else {
 		modal.style.display = "block";
