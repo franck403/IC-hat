@@ -457,7 +457,7 @@ try {
                 // To do make a list of message to load
                 if (data2.val().dname == undefined) {return}
                 try {
-                    window.processingMessage[String(data2.val().dname)].push([data2, false])
+                    window.processingMessage.push([data2, false])
                 } catch {
                     window.processingMessage.push(String(data2.val().dname))
                     
@@ -526,7 +526,7 @@ try {
         for (let i = 0; i < (window.processingMessage.length / 2); i++) {
             console.log("[Message worker] Chargin message")
             if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 50) {
-                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 30)
+                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 50)
             } else {
                 var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
             }
