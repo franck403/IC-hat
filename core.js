@@ -456,7 +456,7 @@ try {
             })
             document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
                 console.log("[Message worker] Loading message")
-                for (let i = 0; i < (window.processingMessage.length / 2); i++) {
+                for (let i = 0; i < (window.processingMessage.length); i++) {
                     console.log("[Message worker] Chargin message")
                     if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 10) {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
