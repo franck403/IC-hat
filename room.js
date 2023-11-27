@@ -51,11 +51,7 @@ function room(id) {
   var listener = function() {
     load_image(localStorage.getItem("lastChat"), 0)
   };
-  try {
-    old2.removeEventListener('scroll', listener, true);
-  } catch {
-    console.log("First discussion clicked ")
-  }
+  window.MessageLoad()
   new2.addEventListener('scroll', listener, false);
 
   try {
