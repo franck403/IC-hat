@@ -40,28 +40,31 @@ var startup = async () => {
 startup()
 var startup = GlEbackup
 
+window.GlEUrlList = []
 // wrapper for the functions
 
 var GlE = {
-    createUrl : async (url) => {
+    createUrl : (url) => {
         var id = uuidv4()
         window.GlELId = id
+        window.GlEUrlList.push([id,url])
         navigator.serviceWorker.ready.then((registration) => {
             var id = window.GlELId
             registration.active.postMessage([window.GlEId,id,"addURL",url]);
         });
         return id
     },
-    revokeUrl : async (uuid) => {
+    revokeUrl : (uuid) => {
         var id = uuid
         window.GlELId = id
         navigator.serviceWorker.ready.then((registration) => {
             var id = window.GlELId
             registration.active.postMessage([window.GlEId,id,"removeURL"]);
         });
-        return id
+        var url = window.GlEUrlList[window.GlEUrlList.indexOf(id)]
+        return 
     },
-    getUrl : async (uuid) => {
+    getUrl : (uuid) => {
         var id = uuid
         window.GlELId = id
         navigator.serviceWorker.ready.then((registration) => {
