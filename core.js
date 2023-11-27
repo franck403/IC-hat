@@ -49,7 +49,7 @@ if (myData != null) {
             email: myEmail,
             image: 'img/default.png'
         }
-        set(ref(database, 'user/' + myEmail.replace(/\W/g, '')), data);    
+        set(ref(database, 'user/' + myEmail.replace(/\W/g, '')), data);
     }
     if (myImage != null) {
         document.getElementById("user_pic").src = myImage
@@ -455,13 +455,13 @@ try {
             console.log("Called")
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
-                if (data2.val().dname == undefined) {return}
+                if (data2.val().dname == undefined) { return }
                 try {
                     window.processingMessage.push([data2, false])
                 } catch {
                     window.processingMessage.push(String(data2.val().dname))
-                    
-                    if (typeof(window.processingMessage[String(data2.val().dname)]) != typeof([])){
+
+                    if (typeof (window.processingMessage[String(data2.val().dname)]) != typeof ([])) {
                         window.processingMessage[String(data2.val().dname)] = []
                     }
                     window.processingMessage[String(data2.val().dname)].push([data2, false])
@@ -532,7 +532,7 @@ try {
             }
             console.log("[Message worker] " + snapshot)
             console.log(window.processingMessage[window.processingMessage[i]])
-            window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot.slice(0,snapshot.length))
+            window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
         }
     }
     window.MessageWorker = MessageWorker
@@ -664,6 +664,21 @@ try {
                 var f = document.getElementById("d" + newroom.get("room"))
                 f.click()
                 window.room(newroom.get("room"))
+                document.getElementById("room_" + document.getElementById(newroom.get("room")).id.replace("d", "")).addEventListener("scroll", (e) => {
+                    console.log("[Message worker] Loading message")
+                    for (let i = 0; i < (window.processingMessage.length); i++) {
+                        console.log("[Message worker] Chargin message")
+                        if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 10) {
+                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
+                        } else {
+                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
+                        }
+                        console.log("[Message worker] " + snapshot)
+                        window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot, true)
+                    }
+                    console.log(e)
+                })
+                document.getElementById(newroom.get("room")).dataset.enable = true
             }
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
