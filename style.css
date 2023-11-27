@@ -1326,7 +1326,7 @@ body {
 }
 
 @media only screen and (min-width: 501px) {
-	.modal {
+	.mm {
 		display: none;
 		position: fixed;
 		z-index: 0;
@@ -1341,7 +1341,7 @@ body {
 
 	}
 
-	.close {
+	.cls {
 		margin-left: 45vw;
 		width: 10vw;
 		color: #108a00;
@@ -1354,21 +1354,21 @@ body {
 		text-align: center;
 	}
 
-	.close:hover,
-	.close:focus {
+	.cls:hover,
+	.cls:focus {
 		color: #108a00;
 		background-color: rgba(0, 159, 0, 0.20);
 		text-decoration: none;
 		cursor: pointer;
 	}
 
-	.modal p {
+	.mm p {
 		padding-right: 30px;
 	}
 }
 
 @media only screen and (max-width: 500px) {
-	.modal {
+	.mm {
 		display: none;
 		position: fixed;
 		z-index: 0;
@@ -1385,7 +1385,7 @@ body {
 
 	}
 
-	.close {
+	.cls {
 		margin-left: 36vw;
 		width: 12vh;
 		color: #108a00;
@@ -1400,15 +1400,15 @@ body {
 		padding-left: 1vw;
 	}
 
-	.close:hover,
-	.close:focus {
+	.cls:hover,
+	.cls:focus {
 		color: #108a00;
 		background-color: rgba(0, 159, 0, 0.20);
 		text-decoration: none;
 		cursor: pointer;
 	}
 
-	.modal p {
+	.mm p {
 		padding-right: 30px;
 	}
 }
