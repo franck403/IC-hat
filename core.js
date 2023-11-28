@@ -443,7 +443,7 @@ try {
                     }
                     console.log("[Message worker] " + snapshot)
                     var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
-                    window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length) + resultSnapshot + window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length)
+                    window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
                 }
                 console.log(e)
             })
@@ -509,7 +509,7 @@ try {
                 console.log("[Message worker] " + snapshot)
                 console.log(window.processingMessage[window.processingMessage[i]])
                 var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
-                window.processingMessage[window.processingMessage[i]] = resultSnapshot + window.processingMessage[window.processingMessage[i]].slice(snapshot.length)
+                window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
             }
         }
     }
@@ -653,7 +653,7 @@ try {
                         }
                         console.log("[Message worker] " + snapshot)
                         var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
-                        window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length) + resultSnapshot + window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length)                        window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot, true)
+                        window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
                     }
                     console.log(e)
                 })
