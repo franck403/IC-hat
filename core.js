@@ -507,6 +507,7 @@ try {
                 }
             }
         }
+        console.log(snapshot)
         return snapshot
     }
     function findAll(findFunc, object) {
