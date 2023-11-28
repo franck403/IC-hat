@@ -664,7 +664,7 @@ try {
                 var f = document.getElementById("d" + newroom.get("room"))
                 f.click()
                 window.room(newroom.get("room"))
-                document.getElementById("room_" + document.getElementById(newroom.get("room")).id.replace("d", "")).addEventListener("scroll", (e) => {
+                document.getElementById("room_" + document.getElementById("d" + newroom.get("room")).id.replace("d", "")).addEventListener("scroll", (e) => {
                     console.log("[Message worker] Loading message")
                     for (let i = 0; i < (window.processingMessage.length); i++) {
                         console.log("[Message worker] Chargin message")
@@ -678,7 +678,7 @@ try {
                     }
                     console.log(e)
                 })
-                document.getElementById(newroom.get("room")).dataset.enable = true
+                document.getElementById("d" + newroom.get("room")).dataset.enable = true
             }
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
