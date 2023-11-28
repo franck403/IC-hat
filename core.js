@@ -492,6 +492,7 @@ try {
             var data2 = data[0]
             var state = data[1]
             if (!state) {
+                console.log(data[1])
                 data[1] = true
                 var message = newMessage(data2)
                 console.log(message)
