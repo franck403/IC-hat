@@ -476,7 +476,8 @@ try {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
                     }
                     console.log("[Message worker] " + snapshot)
-                    window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot, true)
+                    var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
+                    window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length) + resultSnapshot + window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length)
                 }
                 console.log(e)
             })
@@ -684,7 +685,8 @@ try {
                             var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
                         }
                         console.log("[Message worker] " + snapshot)
-                        window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot, true)
+                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
+                        window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length) + resultSnapshot + window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length)                        window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot, true)
                     }
                     console.log(e)
                 })
