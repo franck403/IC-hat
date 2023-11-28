@@ -1373,11 +1373,11 @@ body {
 		position: fixed;
 		z-index: 0;
 		left: 2.5vw;
-		top: 3vh;
+		top: 2.5vh;
 		bottom: 2.5vh;
 		right: 2.5vh;
-		width: 87.5vw;
-		height: 90vh;
+		width: 87vw;
+		height: 88.5vh;
 		overflow: none;
 		background-color: #fefefe;
 		padding: 15px;
@@ -1386,8 +1386,8 @@ body {
 	}
 
 	.cls {
-		margin-left: 36vw;
-		width: 12vh;
+		margin-left: 35vw;
+		width: 20vw;
 		color: #108a00;
 		border: 1px solid transparent;
 		border-radius: 5px;
@@ -1398,6 +1398,7 @@ body {
 		text-align: center;
 		padding-right: 1vw;
 		padding-left: 1vw;
+		transition: 0.25s;
 	}
 
 	.cls:hover,
@@ -1408,7 +1409,12 @@ body {
 		cursor: pointer;
 	}
 
+	.mm h2 {
+		text-align: center;
+	}
+	
 	.mm p {
-		padding-right: 30px;
+		padding-right: 20px;
+		text-align: center;
 	}
 }
