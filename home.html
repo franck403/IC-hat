@@ -9,8 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://i-home.calebgauthier.repl.co/style.css">
+    <script src="user.js"></script>
 </head>
-<body onload="check()">
+<body>
   <nav class="navbar">
       <a class="logo">IC-hat</a>
       <div class="nav-links">
@@ -40,20 +41,5 @@
   mobileMenu.addEventListener('click',()=>{
     navLinks.classList.toggle('mobile-menu')
   })
-  var mm = document.getElementsByClassName("mm")[0];
-  var span = document.getElementsByClassName("cls")[0];
-  var checked = localStorage.getItem("checked");
-  function check() {
-	  if (checked === "yes") {
-		  mm.style.display = "none";
-	  } else {
-		  mm.style.display = "block";
-	  };
-  };
-
-  function acpt() {
-	  localStorage.setItem("checked", "yes")
-	  mm.style.display = "none";
-  }
 </script>
 </html>
