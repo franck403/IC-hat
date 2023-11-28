@@ -540,7 +540,8 @@ try {
                 }
                 console.log("[Message worker] " + snapshot)
                 console.log(window.processingMessage[window.processingMessage[i]])
-                window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
+                var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
+                window.processingMessage[window.processingMessage[i]] = resultSnapshot + window.processingMessage[window.processingMessage[i]].slice(snapshot.length)
             }
         }
     }
