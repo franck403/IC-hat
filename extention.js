@@ -16,6 +16,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
         url = url.slice(0,-1)
     }
     url = url.split("?")[0]; 
+    if (url == "https://chat.geoloup.com/chat") {
+        window.location.replace("https://ic-hat.geoloup.com/chat")
+    }
+    if (url == "https://chat.geoloup.com") {
+        window.location.replace("https://ic-hat.geoloup.com/")
+    }
+    if (url == "https://chat.geoloup.com") {
+        window.location.replace("https://ic-hat.geoloup.com/store")
+    }
     if (url == "https://splendorous-hamster-ecd34b.netlify.app/chat"|| url == "https://chat.geoloup.com/chat" || url == "https://ic-hat.geoloup.com/chat" || url == "https://beta.chat.geoloup.com/chat" || url == "https://chat.beta.geoloup.com/chat" ) {
         load()
         console.info("[extention core] Extention are enable")
