@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://i-home.calebgauthier.repl.co/style.css">
 </head>
-<body>
+<body onload="check()">
   <nav class="navbar">
       <a class="logo">IC-hat</a>
       <div class="nav-links">
@@ -23,6 +23,11 @@
           <li id="out"><a class="connect">log out</a></li>
         </ul>
       </div>
+      <div id="mm" class="mm">
+        <span class="cls" onclick="acpt()">Accept</span>
+        <h2>Terms of service</h2>
+        <p>Welcome to Ic-hat! These Terms of Service govern your use and outline the rights and responsibilities between you and us. By accessing or using the Application, you agree to be bound by these Terms. Please take note that the messages are filtred by an AI.</p>
+      </div>
       <img src="https://i-home.calebgauthier.repl.co/menu-btn.png" alt="mobile" class="mobile">
   </nav>
 <div id="homedata"></div>
@@ -30,11 +35,25 @@
 </body>
 
 <script>
-    const mobileMenu = document.querySelector(".mobile")
-    const navLinks = document.querySelector(".nav-links")
-
-    mobileMenu.addEventListener('click',()=>{
+  const mobileMenu = document.querySelector(".mobile")
+  const navLinks = document.querySelector(".nav-links")
+  mobileMenu.addEventListener('click',()=>{
     navLinks.classList.toggle('mobile-menu')
-    })
+  })
+  var mm = document.getElementsByClassName("mm")[0];
+  var span = document.getElementsByClassName("cls")[0];
+  var checked = localStorage.getItem("checked");
+  function check() {
+	  if (checked == "yes") {
+		  mm.style.display = "none";
+	  } else {
+		  mm.style.display = "block";
+	  };
+  };
+
+  function acpt() {
+	  localStorage.setItem("checked", "yes")
+	  mm.style.display = "none";
+  }
 </script>
 </html>
