@@ -524,15 +524,24 @@ try {
     async function MessageWorker() {
         console.log("[Message worker] Loading message")
         for (let i = 0; i < (window.processingMessage.length / 2); i++) {
-            console.log("[Message worker] Chargin message")
-            if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 50) {
-                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 50)
-            } else {
-                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
+            var err = false
+            try {
+                findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]])
+                var err = true
+            } catch {
+                console.log("no message were finded")
+                var err = false
+            } if (err) {
+                console.log("[Message worker] Chargin message")
+                if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 50) {
+                    var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 50)
+                } else {
+                    var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
+                }
+                console.log("[Message worker] " + snapshot)
+                console.log(window.processingMessage[window.processingMessage[i]])
+                window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
             }
-            console.log("[Message worker] " + snapshot)
-            console.log(window.processingMessage[window.processingMessage[i]])
-            window.processingMessage[window.processingMessage[i]] = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
         }
     }
     window.MessageWorker = MessageWorker
