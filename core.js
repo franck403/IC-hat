@@ -437,7 +437,7 @@ try {
                 for (let i = 0; i < (window.processingMessage.length); i++) {
                     console.log("[Message worker] Chargin message")
                     if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 10) {
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 5)
                     } else {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
                     }
@@ -489,7 +489,7 @@ try {
     }
     window.findAll = findAll
     window.MessageWorkerLoop = MessageWorkerLoop
-    async function MessageWorker() {
+    async function MessageWorker(select) {
         console.log("[Message worker] Loading message")
         for (let i = 0; i < (window.processingMessage.length / 2); i++) {
             var err = false
@@ -501,8 +501,15 @@ try {
                 var err = false
             } if (err) {
                 console.log("[Message worker] Chargin message")
+                if (select != undefined && select == i) {
+                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 50) {
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 50)
+                    } else {
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
+                    }    
+                }
                 if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 50) {
-                    var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 50)
+                    var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 20)
                 } else {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
                 }
@@ -515,8 +522,8 @@ try {
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
-    function MessageLoad() {
-        MessageWorker()
+    function MessageLoad(select) {
+        MessageWorker(select)
         //worker.postMessage('called')
     }
     window.MessageLoad = MessageLoad
@@ -642,12 +649,12 @@ try {
                 var f = document.getElementById("d" + newroom.get("room"))
                 f.click()
                 window.room(newroom.get("room"))
-                document.getElementById("room_" + document.getElementById("d" + newroom.get("room")).id.replace("d", "")).addEventListener("scroll", (e) => {
+                document.getElementById("room_" + newroom.get("room")).addEventListener("scroll", (e) => {
                     console.log("[Message worker] Loading message")
                     for (let i = 0; i < (window.processingMessage.length); i++) {
                         console.log("[Message worker] Chargin message")
                         if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 10) {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
+                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 5)
                         } else {
                             var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
                         }

@@ -51,7 +51,7 @@ function room(id) {
   var listener = function() {
     load_image(localStorage.getItem("lastChat"), 0)
   };
-  window.MessageLoad()
+  window.MessageLoad(window.processingMessage.indexOf(toString(id)))
   new2.addEventListener('scroll', listener, false);
 
   try {
