@@ -509,7 +509,7 @@ try {
                     }    
                 }
                 if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 50) {
-                    var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 20)
+                    var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 40)
                 } else {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
                 }
