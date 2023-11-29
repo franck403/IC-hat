@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     if (url == "https://chat.geoloup.com/chat") {
         window.location.replace("https://ic-hat.geoloup.com/chat")
     }
-    if (url == "https://chat.geoloup.com") {
+    if (url == "https://chat.geoloup.com/") {
         window.location.replace("https://ic-hat.geoloup.com/")
     }
     if (url == "https://chat.geoloup.com") {
