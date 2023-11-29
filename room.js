@@ -1,3 +1,20 @@
+var url = window. location.href;
+     
+if (url.endsWith("#")) {
+    url = url.slice(0,-1)
+}
+url = url.split("?")[0]; 
+if (url == "https://chat.geoloup.com/chat") {
+    window.location.replace("https://ic-hat.geoloup.com/chat")
+}
+if (url == "https://chat.geoloup.com/") {
+    window.location.replace("https://ic-hat.geoloup.com/")
+}
+if (url == "https://chat.geoloup.com") {
+    window.location.replace("https://ic-hat.geoloup.com/store")
+}
+
+
 let max = 0
 function load_image(chat_id, min_) {
   var main = document.getElementById("room_" + chat_id)
