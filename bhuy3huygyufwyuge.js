@@ -40,8 +40,12 @@ export function state() {
 }
 
 export function bip() {
+  if (localStorage.getItem("state") == 'yes') {
     var audio = new Audio('message_recive.mp3');
     audio.play();
+  } else {
+    console.log("notification disable by user")
+  }
 }
 
 export async function getuser() {
