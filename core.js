@@ -662,6 +662,7 @@ try {
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
                 bip()
+                MessageLoad()
                 console.log("Child changed")
                 console.log(data2.val().type)
                 if (data2.val().type == "call") {
@@ -679,7 +680,6 @@ try {
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
-                    setTimeout(MessageLoad, 100);
                 }
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {

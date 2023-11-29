@@ -40,14 +40,8 @@ export function state() {
 }
 
 export function bip() {
-  if (localStorage.getItem("state") == "yes") {
     var audio = new Audio('message_recive.mp3');
     audio.play();
-    localStorage.setItem("state","no")
-  }
-  if (localStorage.getItem("state" != "disable")) {
-    setTimeout(state,1000)
-  }
 }
 
 export async function getuser() {
