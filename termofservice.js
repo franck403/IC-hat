@@ -1,6 +1,6 @@
 var mm = document.getElementsByClassName("mm")[0];
 var span = document.getElementsByClassName("cls")[0];
-var checked = netlifyIdentity.currentUser().user_metadata.termofservice
+var checked = netlifyIdentity.goture.currentUser().user_metadata.termofservice
 if (checked === "yes") {
     mm.style.display = "none";
 } else {
