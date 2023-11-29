@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IC-hat</title>
-    <link rel="shortcut icon" href="img/ic-hat.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://i-home.calebgauthier.repl.co/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IC-hat</title>
+  <link rel="shortcut icon" href="img/ic-hat.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://i-home.calebgauthier.repl.co/style.css">
 </head>
+
 <body>
   <nav class="navbar">
-      <a class="logo">IC-hat</a>
-      <div class="nav-links">
-        <ul id="no">
-          <li id="login"><a class="connect">Login</a></li>
-          <li id="register"><a class="connect">Register</a></li>
-        </ul>
-        <ul id="yes">
-          <li id="start"><a class="connect">Start app</a></li>
-          <li id="out"><a class="connect">log out</a></li>
-        </ul>
-      </div>
-      <img src="https://i-home.calebgauthier.repl.co/menu-btn.png" alt="mobile" class="mobile">
+    <a class="logo">IC-hat</a>
+    <div class="nav-links">
+      <ul id="no">
+        <li id="login"><a class="connect">Login</a></li>
+        <li id="register"><a class="connect">Register</a></li>
+      </ul>
+      <ul id="yes">
+        <li id="start"><a class="connect">Start app</a></li>
+        <li id="out"><a class="connect">log out</a></li>
+      </ul>
+    </div>
+    <img src="https://i-home.calebgauthier.repl.co/menu-btn.png" alt="mobile" class="mobile">
   </nav>
-<div id="homedata"></div>
-<script src="home.js"></script>
+  <div id="homedata"></div>
+  <script src="home.js"></script>
 </body>
 
 <script>
   const mobileMenu = document.querySelector(".mobile")
   const navLinks = document.querySelector(".nav-links")
-  mobileMenu.addEventListener('click',()=>{
+  mobileMenu.addEventListener('click', () => {
     navLinks.classList.toggle('mobile-menu')
   })
 </script>
+
 </html>
