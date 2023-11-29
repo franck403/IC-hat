@@ -12,10 +12,10 @@
   <script src="user.js"></script>
   <style>
     @media only screen and (min-width: 501px) {
-	    .mm {
+      .mm {
         display: none;
         position: fixed;
-        z-index: 0;
+        z-index: 1;
         left: 0px;
         bottom: 0px;
         width: 100%;
@@ -24,146 +24,147 @@
         background-color: #fefefe;
         padding: 15px;
         border: 1px solid #888;
-  }
+      }
 
-	.cls {
-		margin-left: 44vw;
-		width: 6vw;
-		color: #108a00;
-		border: 1px solid transparent;
-		border-radius: 5px;
-		position: fixed;
-		font-size: 20px;
-		font-weight: bold;
-		bottom: 8px;
-		text-align: center;
-	}
+      .cls {
+        margin-left: 44vw;
+        width: 6vw;
+        color: #108a00;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        position: fixed;
+        font-size: 20px;
+        font-weight: bold;
+        bottom: 8px;
+        text-align: center;
+      }
 
-	.cls:hover,
-	.cls:focus {
-		color: #108a00;
-		background-color: rgba(0, 159, 0, 0.20);
-		text-decoration: none;
-		cursor: pointer;
-	}
+      .cls:hover,
+      .cls:focus {
+        color: #108a00;
+        background-color: rgba(0, 159, 0, 0.20);
+        text-decoration: none;
+        cursor: pointer;
+      }
 
-	.mm p {
-		padding-right: 30px;
-	}
-}
+      .mm p {
+        padding-right: 30px;
+      }
+    }
 
-@media only screen and (max-width: 500px) {
-	.mm {
-		display: none;
-		position: fixed;
-		z-index: 0;
-		left: 2.5vw;
-		top: 2.5vh;
-		bottom: 2.5vh;
-		right: 2.5vh;
-		width: 87vw;
-		height: 88.5vh;
-		overflow: none;
-		background-color: #fefefe;
-		padding: 15px;
-		border: 1px solid #888;
+    @media only screen and (max-width: 500px) {
+      .mm {
+        display: none;
+        position: fixed;
+        z-index: 0;
+        left: 2.5vw;
+        top: 2.5vh;
+        bottom: 2.5vh;
+        right: 2.5vh;
+        width: 87vw;
+        height: 88.5vh;
+        overflow: none;
+        background-color: #fefefe;
+        padding: 15px;
+        border: 1px solid #888;
 
-	}
+      }
 
-	.cls {
-		margin-left: 35vw;
-		width: 20vw;
-		color: #108a00;
-		border: 1px solid transparent;
-		border-radius: 5px;
-		position: fixed;
-		font-size: 24px;
-		font-weight: bold;
-		bottom: 25vh;
-		text-align: center;
-		padding-right: 1vw;
-		padding-left: 1vw;
-		transition: 0.25s;
-	}
+      .cls {
+        margin-left: 35vw;
+        width: 20vw;
+        color: #108a00;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        position: fixed;
+        font-size: 24px;
+        font-weight: bold;
+        bottom: 25vh;
+        text-align: center;
+        padding-right: 1vw;
+        padding-left: 1vw;
+        transition: 0.25s;
+      }
 
-	.cls:hover,
-	.cls:focus {
-		color: #108a00;
-		background-color: rgba(0, 159, 0, 0.20);
-		text-decoration: none;
-		cursor: pointer;
-	}
+      .cls:hover,
+      .cls:focus {
+        color: #108a00;
+        background-color: rgba(0, 159, 0, 0.20);
+        text-decoration: none;
+        cursor: pointer;
+      }
 
-	.mm h2 {
-		text-align: center;
-	}
-	
-	.mm p {
-		padding-right: 20px;
-		text-align: center;
-	}
-}
+      .mm h2 {
+        text-align: center;
+      }
 
-@media only screen and (max-width: 500px) {
-	.mm {
-		display: none;
-		position: fixed;
-		z-index: 0;
-		left: 2.5vw;
-		top: 2.5vh;
-		bottom: 2.5vh;
-		right: 2.5vh;
-		width: 87vw;
-		height: 88.5vh;
-		overflow: none;
-		background-color: #fefefe;
-		padding: 15px;
-		border: 1px solid #888;
-	}
-	
-	.cls {
-		margin-left: 35vw;
-		width: 20vw;
-		color: #108a00;
-		border: 1px solid transparent;
-		border-radius: 5px;
-		position: fixed;
-		font-size: 24px;
-		font-weight: bold;
-		bottom: 25vh;
-		text-align: center;
-		padding-right: 1vw;
-		padding-left: 1vw;
-		transition: 0.25s;
-	}
+      .mm p {
+        padding-right: 20px;
+        text-align: center;
+      }
+    }
 
-	.cls:hover,
-	.cls:focus {
-		color: #108a00;
-		background-color: rgba(0, 159, 0, 0.20);
-		text-decoration: none;
-		cursor: pointer;
-	}
+    @media only screen and (max-width: 500px) {
+      .mm {
+        display: none;
+        position: fixed;
+        z-index: 0;
+        left: 2.5vw;
+        top: 2.5vh;
+        bottom: 2.5vh;
+        right: 2.5vh;
+        width: 87vw;
+        height: 88.5vh;
+        overflow: none;
+        background-color: #fefefe;
+        padding: 15px;
+        border: 1px solid #888;
+      }
 
-	.mm h2 {
-		text-align: center;
-	}
-	
-	.mm p {
-		padding-right: 20px;
-		text-align: center;
-	}
-}
+      .cls {
+        margin-left: 35vw;
+        width: 20vw;
+        color: #108a00;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        position: fixed;
+        font-size: 24px;
+        font-weight: bold;
+        bottom: 25vh;
+        text-align: center;
+        padding-right: 1vw;
+        padding-left: 1vw;
+        transition: 0.25s;
+      }
+
+      .cls:hover,
+      .cls:focus {
+        color: #108a00;
+        background-color: rgba(0, 159, 0, 0.20);
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .mm h2 {
+        text-align: center;
+      }
+
+      .mm p {
+        padding-right: 20px;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <div id="mm" class="mm"><h2>Terms of service</h2>
+  <div id="mm" class="mm">
+    <h2>Terms of service</h2>
     <p>Welcome to Ic-hat! These Terms of Service govern your use and outline the rights and responsibilities between you
       and us. By accessing or using the Application, you agree to be bound by these Terms. Please take note that the
     </p>
     <span class="cls" onclick="acpt()">Accept</span>
-    </div>
+  </div>
   <iframe class="not-connected-iframe" id="not-connected-iframe" src="home.html"></iframe>
   <script src="login-register.js"></script>
   <script src="termofservice.js"></script>
