@@ -22,11 +22,14 @@
 
 <body>
     <div class="big">
-        <script src="https://cdn.logwork.com/widget/countdown.js"></script>
-        <a class="countdown-timer" data-style="flip3" data-timezone="America/Montreal" data-language="fr"
-            data-date="2023-11-30 11:20">IC-hat opening</a>
+        <iframe id="opening">
+            <a class="countdown-timer" data-style="flip3" data-timezone="America/Montreal" data-language="fr"
+                data-date="2023-11-30 11:20">IC-hat opening</a>    
+            <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+            </iframe>
     </div>
     <script>
+        
         function time_fresh() {
             try {
                 a = new Date(Date.now());
