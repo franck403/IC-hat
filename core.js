@@ -1,14 +1,11 @@
-import { setCookie, getCookie, delCookie, decrypt, bip, removeloader, getuser, message_date, message_render } from "./bhuy3huygyufwyuge.js"
-import { OnNewMessage } from "./devkit.extention.js"
+import { setCookie, bip, removeloader, getuser, message_date, message_render } from "./bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import lzString from 'https://cdn.jsdelivr.net/npm/lz-string@1.5.0/+esm'
 import {
     getDatabase,
     set,
     ref,
     push,
     child,
-    onValue,
     onChildAdded,
     onChildChanged
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
@@ -595,7 +592,7 @@ try {
             for (let i = 0; i < object.length; i++) {
                 console.log(object[i].val())
             }
-            if (object[1].val().email == myEmail) {
+            if (object[0].val().email != myEmail) {
                 object.reverse()
             }
             console.log(object)
@@ -686,10 +683,10 @@ try {
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
+                    setTimeout(() => {
+                        MessageLoad()
+                    }, 500);
                 }
-                setTimeout(() => {
-                    MessageLoad()
-                }, 500);
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
                 console.log("Child added")

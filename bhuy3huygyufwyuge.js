@@ -36,7 +36,11 @@ export function decrypt(data) {
 };
 
 export function state() {
-  localStorage.setItem("state","yes")
+  if (localStorage.getItem("state") == 'yes') {
+    localStorage.setItem("state","no")
+  } else {
+    localStorage.setItem("state","yes")
+  }
 }
 
 export function bip() {
@@ -192,28 +196,6 @@ export function message_render(message,type="none") {
     return message_start
   }
 }
-
-export function changepic(img,email) {
-  let formData = new FormData();
-  formData.append('email', email);
-  formData.append('image', img);
-  fetch("https://auth-pic.virusgaming1.repl.co/changepic", {
-    method: "POST",
-    body: formData
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      if (data != "no") {
-        window.location.replace("https://" + window.location.host)
-      } else {
-        alert("user was not find or a error occurrent. Please try again in 10min")
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
-
 
 export function loadScript(file) {
   var tag = document.createElement("script");

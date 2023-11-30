@@ -283,12 +283,18 @@ function time_fresh() {
     Object.keys(list).forEach(id => {
       var el = list[id]
       var elt = document.getElementById("time_" + el.dataset.chatid)
-      var elf = parseFloat(elt.dataset.send)
-      elt.innerHTML = message_date(elf,el.dataset.chatid)
+      try { 
+        var elf = parseFloat(elt.dataset.send)
+        elt.innerHTML = message_date(elf,el.dataset.chatid)
+      } catch {
+        console.log("no message date were find with id of " + elt.id)
+      }
     });
-  } catch {}
-  clearTimeout()
-  setTimeout(time_fresh, 1000);
+  } catch {
+    console.log("no message were loaded with a data...")
+  }
+  clearTimeout(window.lastId)
+  window.lastId = setTimeout(time_fresh, 1000);
 }
 
-setTimeout(time_fresh, 30000);
+window.lastId = setTimeout(time_fresh, 30000);
