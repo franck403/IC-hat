@@ -671,6 +671,7 @@ try {
                 if (data2.val().type == "call") {
                     console.log("Geting call")
                     window.receive(`?f&type=call&uuid=${data2.val().message}&name=${data2.val().name}&`)
+                    new Notification(data2.val().name, { body: message_render(`${data2.val().name} is calling you on IC-hat`), requireInteraction: true }).onclick = (() => { window.focus(); console.log("d") })
                 } else if (data2.val().name != null && data2.val().type == "message") {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
@@ -683,6 +684,7 @@ try {
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
+                    new Notification(data2.val().name, { body: message_render(`${data2.val().name} is calling you on IC-hat`), requireInteraction: true }).onclick = (() => { window.focus(); console.log("d") })
                     setTimeout(() => {
                         MessageLoad()
                     }, 500);
