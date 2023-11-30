@@ -10,9 +10,9 @@ iframe.onload = () => {
     if (home != null) {
         start.addEventListener('click', (e) => {
             if (window.location.origin.endsWith("/")) {
-                window.location.replace(`${window.location.origin}chat`)
+                window.location.replace(`${window.location.origin}open`)
             } else {
-                window.location.replace(`${window.location.origin}/chat`)
+                window.location.replace(`${window.location.origin}/open`)
             }
         });
         log_out.addEventListener('click', (e) => {
@@ -31,5 +31,5 @@ iframe.onload = () => {
     }
 }
 if (window.location.href.endsWith("#")) {
-    window.location.replace(`${window.location.origin}/chat`)
+    window.location.replace(`${window.location.origin}/open`)
 }

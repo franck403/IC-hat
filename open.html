@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="auth.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IC hat - By Geoloup team</title>
+    <link rel="shortcut icon" href="img/ic-hat.png">
+    <link href="style.css" rel="stylesheet">
+    <style>
+        .big {
+            position: absolute;
+            background: white;
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="big">
+        <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+        <a class="countdown-timer" data-style="flip3" data-timezone="America/Montreal" data-language="fr"
+            data-date="2023-11-30 11:20">IC-hat opening</a>
+    </div>
+    <script>
+        function time_fresh() {
+            try {
+                a = new Date(Date.now());
+                b = new Date('2023-11-30 11:20');
+                if (a.getTime() === b.getTime()) {
+                    
+                }
+            } catch {
+                console.log("no message were loaded with a data...")
+            }
+            clearTimeout(window.lastId)
+            window.lastId = setTimeout(time_fresh, 1000);
+        }
+
+        window.lastId = setTimeout(time_fresh, 30000);
+    </script>
+</body>
+
+</html>
