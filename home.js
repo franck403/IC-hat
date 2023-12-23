@@ -1,8 +1,8 @@
 var data = `
 <div class="info">
 	<h1>IC-hat</h1>
-	<h2>Created by Geoloup Team</h2>
-	<h3>Its Free and without AD</h3>
+	<h2>The new fast chat that work online and offline</h2>
+	<h3>What to try it ? click on login or register to start testing</h3>
 </div>
 <div id="mm" class="mm">
 	<span class="cls" onclick="acpt()">Accept</span>
