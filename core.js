@@ -684,10 +684,9 @@ try {
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
-                    new Notification(data2.val().name, { body: message_render(`${data2.val().name} is calling you on IC-hat`), requireInteraction: true }).onclick = (() => { window.focus(); console.log("d") })
                     setTimeout(() => {
                         MessageLoad()
-                    }, 500);
+                    }, 10);
                 }
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
