@@ -10,9 +10,9 @@ iframe.onload = () => {
     if (home != null) {
         start.addEventListener('click', (e) => {
             if (window.location.origin.endsWith("/")) {
-                window.location.replace(`${window.location.origin}open`)
+                window.location.replace(`${window.location.origin}chat`)
             } else {
-                window.location.replace(`${window.location.origin}/open`)
+                window.location.replace(`${window.location.origin}/chat`)
             }
         });
         log_out.addEventListener('click', (e) => {
