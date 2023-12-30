@@ -10,7 +10,14 @@ import {
     onValue,
     onChildAdded
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
-
+function Imageupload(image) {
+    let formData = new FormData();
+    formData.append('name', 'John');
+    const request = new XMLHttpRequest();
+    request.open("POST", "https://zupimageapi-vyx9hh4wa6t5.runkit.sh/upload", false);
+    request.send(formData)
+    return request.responseText
+  }
 const firebaseConfig = {
   apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
   authDomain: "ic-hat.firebaseapp.com",
@@ -31,22 +38,18 @@ export function image_render(email,name) {
     Object.keys(filelist).forEach(key => {
         var file = document.getElementById("file_input").files[key]
         var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-        var reader = new FileReader();
-        reader.onload = function () {
-            const id = push(child(ref(database), 'messages')).key;
-            set(ref(database, "messages/"+ cusid + "/" + id), {
-                email: name,
-                name:myName,
-                friend:"none",
-                type:"new-image",
-                message: "png;base64," + btoa(reader.result),
-                date:Date.now(),
-                dname:cusid
-            })
-            document.getElementById("file").style.display = "none";
-            document.getElementById("file_input").value = "";
-        }
-        reader.readAsBinaryString(file);
+        const id = push(child(ref(database), 'messages')).key;
+        set(ref(database, "messages/"+ cusid + "/" + id), {
+            email: name,
+            name:myName,
+            friend:"none",
+            type:"new-image",
+            message: Imageupload(file),
+            date:Date.now(),
+            dname:cusid
+        })
+        document.getElementById("file").style.display = "none";
+        document.getElementById("file_input").value = "";
     });
   }
 

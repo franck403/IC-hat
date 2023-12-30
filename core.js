@@ -10,6 +10,14 @@ import {
     onChildChanged
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 localStorage.setItem("state", "no")
+function Imageupload(image) {
+    let formData = new FormData();
+    formData.append('name', 'John');
+    const request = new XMLHttpRequest();
+    request.open("POST", "https://zupimageapi-vyx9hh4wa6t5.runkit.sh/upload", false);
+    request.send(formData)
+    return request.responseText
+}
 const firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
     authDomain: "ic-hat.firebaseapp.com",
@@ -143,25 +151,21 @@ export function image_render(email, name) {
     Object.keys(filelist).forEach(key => {
         var file = document.getElementById("file_input").files[key]
         var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-        var reader = new FileReader();
-        reader.onload = function () {
-            console.log(reader)
-            const id = push(child(ref(database), 'messages')).key;
-            console.log("[image render] Sending...")
-            set(ref(database, "messages/" + cusid + "/" + id), {
-                email: name,
-                name: myName,
-                friend: "none",
-                type: "new-image",
-                message: reader.result.replaceAll("data:image/"),
-                date: Date.now(),
-                dname: cusid
-            })
-            console.log("[image render] File is perfect")
-            document.getElementById("file").style.display = "none";
-            document.getElementById("file_input").value = "";
-        }
-        reader.readAsDataURL(file)
+        const id = push(child(ref(database), 'messages')).key;
+        console.log("[image render] Sending...")
+        var imgurl = Imageupload(file)
+        set(ref(database, "messages/" + cusid + "/" + id), {
+            email: name,
+            name: myName,
+            friend: "none",
+            type: "new-image",
+            message: imgurl,
+            date: Date.now(),
+            dname: cusid
+        })
+        console.log("[image render] File is perfect")
+        document.getElementById("file").style.display = "none";
+        document.getElementById("file_input").value = "";
     });
 }
 try {

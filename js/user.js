@@ -17,10 +17,10 @@ function logout() {
 
 }
 
-function set_picture(base64) {
+function set_picture(url) {
     netlifyIdentity.gotrue.currentUser().update({
         data: {
-            avatar_url: base64
+            avatar_url: url
         }
     }).then((user) => {
         var myImage = netlifyIdentity.currentUser().user_metadata.avatar_url
@@ -34,10 +34,10 @@ function set_picture(base64) {
     )
 }
 
-function set_name() {
+function set_name(name) {
     netlifyIdentity.gotrue.currentUser().update({
         data: {
-            avatar_url: base64
+            full_name: name
         }
     }).then((user) => {
         var myImage = netlifyIdentity.currentUser().user_metadata.avatar_url
