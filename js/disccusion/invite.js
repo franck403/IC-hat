@@ -1,5 +1,5 @@
 var newroom = new URLSearchParams(window.location.search);
-import { getDatabase, ref, query, orderByChild } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+import { getDatabase, ref, query,initializeApp, orderByChild } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 const firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
     authDomain: "ic-hat.firebaseapp.com",

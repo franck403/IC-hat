@@ -287,11 +287,11 @@ function time_fresh() {
         var elf = parseFloat(elt.dataset.send)
         elt.innerHTML = message_date(elf,el.dataset.chatid)
       } catch {
-        console.log("no message date were find with id of " + elt.id)
+        // nothing for now
       }
     });
   } catch {
-    console.log("no message were loaded with a data...")
+    // when user is new or his account was recreated
   }
   clearTimeout(window.lastId)
   window.lastId = setTimeout(time_fresh, 1000);
