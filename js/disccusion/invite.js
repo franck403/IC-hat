@@ -15,7 +15,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-if (dnamef == newroom.get("invite") && newroom.has("invite")) {
+if (newroom.has("invite")) {
     var invites = query(ref(db, 'invites'));
     var inviteId = newroom.get("invite")
     var userinfo = {
