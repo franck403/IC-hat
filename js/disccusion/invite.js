@@ -11,7 +11,8 @@ const firebaseConfig = {
     measurementId: "G-YC8K0D7GLR"
 };
 
-const database = getDatabase(window.appFire);
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 if (dnamef == newroom.get("invite") && newroom.has("invite")) {
     var invites = query(ref(db, 'invites'));
