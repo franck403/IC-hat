@@ -13,9 +13,6 @@ const firebaseConfig = {
 
 const database = getDatabase(window.appFire);
 
-// getting database and querying info about invite
-const db = getDatabase();
-
 if (dnamef == newroom.get("invite") && newroom.has("invite")) {
     var invites = query(ref(db, 'invites'));
     var inviteId = newroom.get("invite")
@@ -32,18 +29,20 @@ function createInvite(allowedUser,cusid) {
         return false
     }
     var id = push(child(ref(database), 'invites')).key;
-    console.log("[image render] Sending...")
+    console.log("[invite] Sending...")
     var userinfo = {
         email:localStorage.getItem("email"),
         name:localStorage.getItem("name")
     }
-    set(ref(database, "invites/" + cusid + "/" + id), {
+    // adding invite to the database
+    set(ref(database, "invites/" + id), {
         email: userinfo.email,
         name: userinfo.name,
         allowed: allowedUser,
         date: Date.now(),
         dname: cusid
     })
+    // return the url for invite to send
     return "chat.geoloup.com/chat?invite=" + id
 }
 
