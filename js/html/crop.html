@@ -259,6 +259,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
+    <script src=""></script>
     <script>
         feather.replace()
     </script>
@@ -304,10 +305,11 @@
         function cropImage() {
             console.log('started');
             croppi.croppie('result', {
-                type: 'base64',
+                type: 'bytes',
                 format: 'jpeg',
                 size: 'original'
             }).then(function (resp) {
+                var resp = Imageupload(resp)
                 $('#crop__result').attr('src', resp);
                 $('.modal').modal('hide');
                 $('#result').show();

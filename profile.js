@@ -1,13 +1,5 @@
 import { getuser, changepic} from ".././bhuy3huygyufwyuge.js"
-
-function Imageupload(image) {
-  let formData = new FormData();
-  formData.append('name', 'John');
-  const request = new XMLHttpRequest();
-  request.open("POST", "https://zupimageapi-vyx9hh4wa6t5.runkit.sh/upload", false);
-  request.send(formData)
-  return request.responseText
-}
+var Imageupload = window.Imageupload
 
 var myData = await getuser()
 if (myData != null) {

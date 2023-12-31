@@ -10,14 +10,7 @@ import {
     onChildChanged
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 localStorage.setItem("state", "no")
-function Imageupload(image) {
-    let formData = new FormData();
-    formData.append('name', 'John');
-    const request = new XMLHttpRequest();
-    request.open("POST", "https://zupimageapi-vyx9hh4wa6t5.runkit.sh/upload", false);
-    request.send(formData)
-    return request.responseText
-}
+var Imageupload = window.Imageupload
 const firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
     authDomain: "ic-hat.firebaseapp.com",
