@@ -411,8 +411,6 @@ try {
         console.log(el)
         if (el.dataset.enable != "true") {
             window.MessageLoad()
-            console.log(el.id);
-            console.log("Called")
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
                 if (data2.val().dname == undefined) { return }
@@ -433,7 +431,7 @@ try {
                     } else {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
                     }
-                    var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
+                    var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),true)
                     window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
                 }
             })
