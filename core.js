@@ -430,8 +430,8 @@ try {
                 console.log("[Message worker] Loading message")
                 for (let i = 0; i < (window.processingMessage.length); i++) {
                     console.log("[Message worker] Chargin message")
-                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 10) {
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 5)
+                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 1)
                     } else {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
                     }
@@ -439,10 +439,9 @@ try {
                     var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
                     window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
                 }
-                console.log(e)
             })
             el.dataset.enable = true
-            setTimeout(MessageLoad, 100);
+            setTimeout(MessageLoad, 1000);
         }
     });
     function MessageWorkerLoop(snapshot, back) {
