@@ -442,7 +442,7 @@ try {
                 console.log(e)
             })
             el.dataset.enable = true
-            setTimeout(MessageLoad, 2000);
+            setTimeout(MessageLoad, 100);
         }
     });
     function MessageWorkerLoop(snapshot, back) {
