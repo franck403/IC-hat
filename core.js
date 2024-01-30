@@ -496,7 +496,7 @@ try {
             } if (err) {
                 console.log("[Message worker] Chargin message")
                 if (select != undefined && select == i) {
-                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 50) {
+                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 20) {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 20)
                     } else {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
