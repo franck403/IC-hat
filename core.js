@@ -636,27 +636,6 @@ try {
             Storage.prototype.getObj = function (key) {
                 return JSON.parse(this.getItem(key))
             }
-            var newroom = new URLSearchParams(window.location.search);
-            if (dnamef == newroom.get("room") && newroom.has("room")) {
-                var f = document.getElementById("d" + newroom.get("room"))
-                f.click()
-                window.room(newroom.get("room"))
-                document.getElementById("room_" + newroom.get("room")).addEventListener("scroll", (e) => {
-                    console.log("[Message worker] Loading message")
-                    for (let i = 0; i < (window.processingMessage.length); i++) {
-                        console.log("[Message worker] Chargin message")
-                        if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 10) {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 1)
-                        } else {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
-                        }
-                        console.log("[Message worker] " + snapshot)
-                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
-                        window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
-                    }
-                    console.log(e)
-                })
-                document.getElementById("d" + newroom.get("room")).dataset.enable = true
             }
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
