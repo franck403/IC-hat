@@ -88,7 +88,7 @@ function room(id) {
   new2.scrollTop = new2.scrollHeight;
   new2.scrollTop = new2.scrollHeight;
   load_image(id, 0, 10)
-  history.pushState("disscusion change", "IC-hat - By GL team", `/chat?room=${localStorage.getItem("lastChat")}`);
+  history.pushState("disscusion change", "IC-hat - By GL team", `/chat`);
 }
 // spam counter
 var send_by_img = document.getElementById("send")

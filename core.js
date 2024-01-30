@@ -451,12 +451,11 @@ try {
             var data2 = data[0]
             var state = data[1]
             if (!state) {
-                console.log(data[1])
                 data[1] = true
                 var message = newMessage(data2)
-                console.log(message)
                 if (message != undefined) {
                     var d1 = message[0]
+                    console.log(d1)
                     if (!back) {
                         d1.innerHTML = d1.innerHTML + message[1]
                     } else {
