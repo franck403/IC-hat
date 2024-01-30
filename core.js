@@ -442,6 +442,10 @@ try {
             })
             el.dataset.enable = true
             setTimeout(MessageLoad, 1000);
+            setTimeout(() => {
+                elem.scrollTop = elem.scrollHeight;
+                elem.scrollTop = elem.scrollHeight;                    
+            }, 2000);
         }
     });
     function MessageWorkerLoop(snapshot, back) {
@@ -461,8 +465,6 @@ try {
                         d1.innerHTML = message[1] + d1.innerHTML
                     }
                     var elem = d1
-                    elem.scrollTop = elem.scrollHeight;
-                    elem.scrollTop = elem.scrollHeight;
                 }
             }
         }
