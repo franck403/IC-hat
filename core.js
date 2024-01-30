@@ -636,7 +636,6 @@ try {
             Storage.prototype.getObj = function (key) {
                 return JSON.parse(this.getItem(key))
             }
-            }
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
                 bip()
@@ -679,8 +678,7 @@ try {
                     }
                 }
             })
-
-        } else { }
+       } else { }
     });
 
     setTimeout(removeloader(), 100000)
