@@ -446,7 +446,6 @@ try {
         }
     });
     function MessageWorkerLoop(snapshot, back) {
-        console.log(snapshot)
         for (let i = 0; i < (snapshot.length); i++) {
             var data = snapshot[i]
             var data2 = data[0]
@@ -469,7 +468,6 @@ try {
                 }
             }
         }
-        console.log(snapshot)
         return snapshot
     }
     function findAll(findFunc, object) {
