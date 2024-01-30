@@ -648,7 +648,7 @@ try {
                     for (let i = 0; i < (window.processingMessage.length); i++) {
                         console.log("[Message worker] Chargin message")
                         if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 10) {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 5)
+                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 1)
                         } else {
                             var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
                         }
