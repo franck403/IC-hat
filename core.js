@@ -659,7 +659,7 @@ try {
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
-                    MessageLoad(undefined,1)
+                    MessageLoad(undefined,2)
                 }
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
