@@ -215,7 +215,7 @@ function search() {
 }
 
 
-function url(link) {
+function Openurl(link) {
   window.open(link);
 }
 
