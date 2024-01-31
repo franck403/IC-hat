@@ -657,7 +657,22 @@ try {
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
                     setTimeout(() => {
-                        MessageLoad()
+                        if (select != undefined && select == i) {
+                            if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
+                                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, 1).reverse()
+                            } else {
+                                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
+                            }    
+                        }
+                        if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
+                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, 1).reverse()
+                        } else {
+                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
+                        }
+                        console.log("[Message worker] " + snapshot)
+                        console.log(window.processingMessage[window.processingMessage[i]])
+                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
+       
                     }, 10);
                 }
             })
