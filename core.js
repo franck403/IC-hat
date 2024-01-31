@@ -480,7 +480,10 @@ try {
     }
     window.findAll = findAll
     window.MessageWorkerLoop = MessageWorkerLoop
-    async function MessageWorker(select) {
+    async function MessageWorker(select,max) {
+        if (max == undefined) {
+            max = 20
+        }
         console.log("[Message worker] Loading message")
         for (let i = 0; i < (window.processingMessage.length / 2); i++) {
             var err = false
@@ -493,14 +496,14 @@ try {
             } if (err) {
                 console.log("[Message worker] Chargin message")
                 if (select != undefined && select == i) {
-                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 20) {
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, 20).reverse()
+                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > max) {
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, max).reverse()
                     } else {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
                     }    
                 }
-                if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 20) {
-                    var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, 20).reverse()
+                if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > max) {
+                    var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, max).reverse()
                 } else {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
                 }
@@ -513,8 +516,8 @@ try {
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
-    function MessageLoad(select) {
-        MessageWorker(select)
+    function MessageLoad(select,max) {
+        MessageWorker(select,max)
         //worker.postMessage('called')
     }
     window.MessageLoad = MessageLoad
@@ -656,21 +659,7 @@ try {
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
-                    var i = dnamef
-                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[i]).slice().reverse().slice(0, 1).reverse()
-                    } else {
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[i]).slice().reverse()
-                    }    
-                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[i]).slice().reverse().slice(0, 1).reverse()
-                    } else {
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[i]).slice().reverse()
-                    }
-                    console.log("[Message worker] " + snapshot)
-                    console.log(window.processingMessage[window.processingMessage[i]])
-                    var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
-                    window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
+                    MessageLoad()
                 }
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
