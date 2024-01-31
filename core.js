@@ -660,6 +660,8 @@ try {
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
                     MessageLoad(undefined,2)
+                    elem.scrollTop = elem.scrollHeight;
+                    elem.scrollTop = elem.scrollHeight;         
                 }
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
