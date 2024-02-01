@@ -509,7 +509,7 @@ try {
                 }
                 console.log("[Message worker] " + snapshot)
                 var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
-                //window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
+                window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
             }
         }
     }
