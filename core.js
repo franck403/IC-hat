@@ -441,10 +441,10 @@ try {
             })
             el.dataset.enable = true
             setTimeout(MessageLoad, 1000);
-            setTimeout(() => {
-                elem.scrollTop = elem.scrollHeight;
-                elem.scrollTop = elem.scrollHeight;                    
-            }, 2000);
+            setTimeout((el) => {
+                el.scrollTop = el.scrollHeight;
+                el.scrollTop = el.scrollHeight;                    
+            }, 2000,el);
         }
     });
     function MessageWorkerLoop(snapshot, back) {
@@ -659,7 +659,7 @@ try {
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
-                    MessageLoad(undefined,2)
+                    MessageLoad(undefined,3)
                     var elem = document.getElementById(`roow_${dnamef}`)
                     elem.scrollTop = elem.scrollHeight;
                     elem.scrollTop = elem.scrollHeight;         
