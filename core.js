@@ -464,6 +464,8 @@ try {
                         d1.innerHTML = message[1] + d1.innerHTML
                     }
                     var elem = d1
+                    elem.scrollTop = elem.scrollHeight;
+                    elem.scrollTop = elem.scrollHeight;  
                 }
             }
         }
