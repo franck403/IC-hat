@@ -640,10 +640,7 @@ try {
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
                 bip()
-                console.log("Child changed")
-                console.log(data2.val().type)
                 if (data2.val().type == "call") {
-                    console.log("Geting call")
                     window.receive(`?f&type=call&uuid=${data2.val().message}&name=${data2.val().name}&`)
                     new Notification(data2.val().name, { body: message_render(`${data2.val().name} is calling you on IC-hat`), requireInteraction: true }).onclick = (() => { window.focus(); console.log("d") })
                 } else if (data2.val().name != null && data2.val().type == "message") {
