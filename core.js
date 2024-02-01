@@ -660,7 +660,7 @@ try {
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
                     MessageLoad(undefined,3)
-                    var elem = document.getElementById(`roow_${dnamef}`)
+                    var elem = document.getElementById(`roo_${dnamef}`)
                     elem.scrollTop = elem.scrollHeight;
                     elem.scrollTop = elem.scrollHeight;         
                 }
