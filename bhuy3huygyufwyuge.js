@@ -169,7 +169,7 @@ export function message_date(DateNow,dname) {
 export function urlify(text) {
   var urlRegex = /(https?:\/\/[^\s]+)/g;
   return text.replace(urlRegex, function(url) {
-    return `<a class="link" onclick="url('${url}')">${url}</a>`;
+    return `<a class="link" onclick="Openurl('${url}')">${url}</a>`;
   })
 }
 
