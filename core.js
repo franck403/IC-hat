@@ -667,7 +667,7 @@ try {
                         }
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;             
-                    },2000,data2)
+                    },1000,data2)
                 }
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
