@@ -444,10 +444,10 @@ try {
         }
     });
     function MessageWorkerLoop(snapshot, back,noscroll=false) {
+        var state = back
         for (let i = 0; i < (snapshot.length); i++) {
             var data = snapshot[i]
             var data2 = data[0]
-            var state = data[1]
             if (!state) {
                 data[1] = true
                 var message = newMessage(data2)
