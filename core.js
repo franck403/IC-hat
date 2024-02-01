@@ -508,9 +508,8 @@ try {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
                 }
                 console.log("[Message worker] " + snapshot)
-                console.log(window.processingMessage[window.processingMessage[i]])
                 var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
-                window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
+                //window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
             }
         }
     }
@@ -659,12 +658,21 @@ try {
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
-                    setTimeout(()=> {
-                        MessageLoad(undefined,3)
-                        var elem = document.getElementById(`room_${dnamef}`)
+                    setTimeout((data2)=> {
+                        var message = newMessage(data2)
+                        if (message != undefined) {
+                            var d1 = message[0]
+                            console.log(d1)
+                            if (!back) {
+                                d1.innerHTML = d1.innerHTML + message[1]
+                            } else {
+                                d1.innerHTML = message[1] + d1.innerHTML
+                            }
+                            var elem = d1
+                        }
                         elem.scrollTop = elem.scrollHeight;
                         elem.scrollTop = elem.scrollHeight;             
-                    },2000)
+                    },2000,data2)
                 }
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
