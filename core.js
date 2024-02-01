@@ -425,19 +425,15 @@ try {
                 }
             })
             document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
-                window.ScrollLastEvent = e
-                /*
                 for (let i = 0; i < (window.processingMessage.length); i++) {
                     if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
                     } else {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
                     }
-                    var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),true)
-                    e.preventDefault();
+                    var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),true,true)
                     window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
                 }
-                */
             })
             el.dataset.enable = true
             setTimeout(MessageLoad, 1000);
@@ -447,7 +443,7 @@ try {
             }, 2000,el);
         }
     });
-    function MessageWorkerLoop(snapshot, back) {
+    function MessageWorkerLoop(snapshot, back,noscroll=false) {
         for (let i = 0; i < (snapshot.length); i++) {
             var data = snapshot[i]
             var data2 = data[0]
@@ -463,9 +459,11 @@ try {
                     } else {
                         d1.innerHTML = message[1] + d1.innerHTML
                     }
-                    var elem = d1
-                    elem.scrollTop = elem.scrollHeight;
-                    elem.scrollTop = elem.scrollHeight;  
+                    if (!noscroll) {
+                        var elem = d1
+                        elem.scrollTop = elem.scrollHeight;
+                        elem.scrollTop = elem.scrollHeight;      
+                    }
                 }
             }
         }
@@ -482,7 +480,7 @@ try {
     }
     window.findAll = findAll
     window.MessageWorkerLoop = MessageWorkerLoop
-    async function MessageWorker(select,max) {
+    async function MessageWorker(select,max,noscroll=false) {
         if (max == undefined) {
             max = 20
         }
@@ -510,15 +508,15 @@ try {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
                 }
                 console.log("[Message worker] " + snapshot)
-                var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length))
+                var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),noscroll)
                 window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
             }
         }
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
-    function MessageLoad(select,max) {
-        MessageWorker(select,max)
+    function MessageLoad(select,max,noscroll=false) {
+        MessageWorker(select,max,noscroll)
         //worker.postMessage('called')
     }
     window.MessageLoad = MessageLoad
