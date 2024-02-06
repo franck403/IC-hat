@@ -64,7 +64,22 @@ if (myData != null) {
     document.getElementById("wait-connected").remove()
     window.location.replace(window.location.origin)
 }
-
+export function fromHTML(html, trim = true,id) {
+    // Process the HTML string.
+    html = trim ? html.trim() : html;
+    if (!html) return null;
+  
+    // Then set up a new template element.
+    const template = document.createElement('template');
+    template.innerHTML = html;
+    template.id = id
+    const result = template.content.children;
+  
+    // Then return either an HTMLElement or HTMLCollection,
+    // based on whether the input HTML had one or more roots.
+    if (result.length === 1) return result[0];
+    return result;
+  }
 export async function resizeImage(dataUrl, targetFileSizeKb, maxDeviation = 1) {
     let originalFile = await urltoFile(dataUrl, 'test.png', 'image/png');
     if (originalFile.size / 1000 < targetFileSizeKb)
@@ -637,6 +652,71 @@ try {
             Storage.prototype.getObj = function (key) {
                 return JSON.parse(this.getItem(key))
             }
+            document.getElementById(`d${dnamef}`).addEventListener('contextmenu', e => {
+                // make the context menu don't open
+                e?.cancelable && e.preventDefault()
+                // display the setting
+                var style = `
+                        .dsettings {
+                            background: #eee;
+                            opacity: 0;
+                            height: auto;
+                            width:40px;
+                            border:none;
+                            border-radius:10px;
+                        }
+                        .dsettings.open {
+                            height: auto;
+                            opacity: 1;
+                          }
+                        .dsettings .main-settings {
+                            list-style: none;
+                            margin: 0;
+                            padding: 0;
+                        }
+                        .dsettings .main-settings::after {
+                            clear: both;
+                            content: "";
+                            display: table;
+                        }
+                        .dsettings .main-settings li {
+                            float: left;
+                            width: 33%;
+                            text-align: center;
+                        }
+                        .dsettings .main-settings li a {
+                            display: block;
+                            padding: 10px 0;
+                        }
+                        .dsettings .main-settings li a .icon {
+                            display: block;
+                            padding: 10px;
+                        }
+                        .dsettings .main-settings li a:hover {
+                            text-decoration: none;
+                        }
+                    `
+                var setting = `
+                    <div class="dsettings">
+                        <ul class="main-settings">
+                            <li>
+                                <a href="Invite People"></a>
+                            </li>
+                            <li>
+                                <a href="">Guestlist details</a>
+                            </li>
+                            <li>
+                                <a href="">Messages</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <style>${style}</style>
+                `
+                var newe = fromHTML(setting,True,e.target.id + 'rightmenu')
+                newe.style.left = (e.clientX);
+                newe.style.top =  (e.clientY);
+                // to implement close menu
+            });
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
                 bip()
