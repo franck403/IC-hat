@@ -616,6 +616,7 @@ try {
             <img src="${last[1].val().image}" class="people-img"alt="picture" />
             <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
             <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
+            <p class='people-setting'><popup-setting-menu></popup-setting-menu></p>
             <p id="prew_${data.val().dname}" class="people-preview"></p>
             </li>`
                 } else {
@@ -624,6 +625,7 @@ try {
                 <img src="img/default.png" class="people-img"alt="picture" />
                 <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
                 <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
+                <p class='people-setting'><popup-setting-menu></popup-setting-menu></p>
                 <p id="prew_${data.val().dname}" class="people-preview"></p>
                 </li>`
                 }
@@ -633,6 +635,7 @@ try {
                 <img src="img/default.png" class="people-img"alt="picture" />
                 <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
                 <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
+                <p class='people-setting'><popup-setting-menu></popup-setting-menu></p>
                 <p id="prew_${data.val().dname}" class="people-preview"></p>
                 </li>`
             }
@@ -652,71 +655,6 @@ try {
             Storage.prototype.getObj = function (key) {
                 return JSON.parse(this.getItem(key))
             }
-            document.getElementById(`d${dnamef}`).addEventListener('contextmenu', e => {
-                // make the context menu don't open
-                e?.cancelable && e.preventDefault()
-                // display the setting
-                var style = `
-                        .dsettings {
-                            background: #eee;
-                            opacity: 0;
-                            height: auto;
-                            width:40px;
-                            border:none;
-                            border-radius:10px;
-                        }
-                        .dsettings.open {
-                            height: auto;
-                            opacity: 1;
-                          }
-                        .dsettings .main-settings {
-                            list-style: none;
-                            margin: 0;
-                            padding: 0;
-                        }
-                        .dsettings .main-settings::after {
-                            clear: both;
-                            content: "";
-                            display: table;
-                        }
-                        .dsettings .main-settings li {
-                            float: left;
-                            width: 33%;
-                            text-align: center;
-                        }
-                        .dsettings .main-settings li a {
-                            display: block;
-                            padding: 10px 0;
-                        }
-                        .dsettings .main-settings li a .icon {
-                            display: block;
-                            padding: 10px;
-                        }
-                        .dsettings .main-settings li a:hover {
-                            text-decoration: none;
-                        }
-                    `
-                var setting = `
-                    <div class="dsettings">
-                        <ul class="main-settings">
-                            <li>
-                                <a href="Invite People"></a>
-                            </li>
-                            <li>
-                                <a href="">Guestlist details</a>
-                            </li>
-                            <li>
-                                <a href="">Messages</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <style>${style}</style>
-                `
-                var newe = fromHTML(setting,True,e.target.id + 'rightmenu')
-                newe.style.left = (e.clientX);
-                newe.style.top =  (e.clientY);
-                // to implement close menu
-            });
             //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
                 bip()
