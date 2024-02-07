@@ -625,6 +625,14 @@ body {
     transform: translate(-50%, 0);
 }
 
+.people-setting {
+    font-size: 14px;
+    position: absolute;
+    top: 14px;
+    right: 5%;
+    margin: 0px;
+}
+
 .people-img {
     float: left;
     width: 40px;
