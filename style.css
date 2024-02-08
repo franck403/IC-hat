@@ -699,6 +699,7 @@ body {
     width: 62%;
     height: 96%;
     right: 0px;
+    z-index: -1;
 }
 
 .container .right .top {
