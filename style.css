@@ -737,6 +737,7 @@ body {
     display: none;
     overflow: hidden;
     overflow-y: scroll;
+    z-index:-1;
     padding: 10px 35px 40px;
     border-width: 1px 1px 1px 0;
     border-style: solid;
