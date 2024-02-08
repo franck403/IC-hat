@@ -674,7 +674,7 @@ body {
 }
 
 .people-person.active,
-.people-person:not(.people-setting>.item:hover):hover {
+.people-person:not(.people-setting>.people-setting popup-setting-menu *:hover):hover {
     position: relative;
     width: 100%;
     padding: 12px 10% 16px;
