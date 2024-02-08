@@ -674,14 +674,17 @@ body {
 }
 
 .people-person.active,
-.people-person:not(.people-setting>.item:hover) {
+.people-person:not(.people-setting>.item:hover):hover {
     position: relative;
     width: 100%;
     padding: 12px 10% 16px;
     cursor: pointer;
     color: var(--white);
     background-color: var(--blue);
-    
+}
+.people-setting *{
+    color:black;
+    background: white;
 }
 
 .people-person.active span,
