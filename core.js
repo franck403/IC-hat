@@ -701,8 +701,7 @@ try {
             })
        } else { }
     });
-    removeloader()
 } catch (err) {
     console.log(err)
-    removeloader()
 }
+removeloader()
