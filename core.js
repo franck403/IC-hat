@@ -1,4 +1,5 @@
 import { setCookie, bip, removeloader, getuser, message_date, message_render } from "./bhuy3huygyufwyuge.js"
+setTimeout(removeloader,10000)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
     getDatabase,
@@ -704,4 +705,3 @@ try {
 } catch (err) {
     console.log(err)
 }
-removeloader()
