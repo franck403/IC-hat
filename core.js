@@ -703,7 +703,7 @@ try {
             })
        } else { }
     });
-    setTimeout(removeloader(), 200000)
+    //setTimeout(removeloader(), 200000)
 } catch (err) {
     console.log(err)
 }
