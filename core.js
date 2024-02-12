@@ -701,7 +701,8 @@ try {
             })
        } else { }
     });
-    setTimeout(removeloader(), 5000)
+    removeloader()
 } catch (err) {
     console.log(err)
+    removeloader()
 }
