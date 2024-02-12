@@ -701,7 +701,7 @@ try {
             })
        } else { }
     });
-    setTimeout(removeloader(), 200000)
+    setTimeout(removeloader(), 5000)
 } catch (err) {
     console.log(err)
 }
