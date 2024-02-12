@@ -58,10 +58,8 @@ if (myData != null) {
     setCookie("email", myEmail)
     setCookie("name", myName)
     document.getElementById("not-connected").remove()
-    document.getElementById("wait-connected").remove()
 } else {
     document.getElementById("connected").remove()
-    document.getElementById("wait-connected").remove()
     window.location.replace(window.location.origin)
 }
 export function fromHTML(html, trim = true,id) {
@@ -703,7 +701,7 @@ try {
             })
        } else { }
     });
-    //setTimeout(removeloader(), 200000)
+    setTimeout(removeloader(), 200000)
 } catch (err) {
     console.log(err)
 }

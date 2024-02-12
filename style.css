@@ -413,8 +413,7 @@ body {
     width: 100%;
     display:block;
     z-index: 1;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(180deg, rgb(255, 255, 255) 75%, rgb(49 49 49) 15%);
+    background: rgb(136 136 136);
 }
 
 .loader {

@@ -32,7 +32,7 @@ onChildAdded(library, (data) => {
     var extName = val.name
     var description = val.description
     var creator = val.user_name
-    var email = val["email"]
+    var email = val.email
     var elem = `   
     <div class="store_box" data-name="${extName}" onclick="(() => {if (this.dataset.content != undefined) {;add(this.dataset.name,this.dataset.content);return true}})()" data-content="${content}" id="add_extention">
         <img class="store_img" src="img/ic-hat.png"></img>
