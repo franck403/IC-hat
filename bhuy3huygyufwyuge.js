@@ -21,7 +21,7 @@ export function delCookie(name) {
 
 export function removeloader() {
   document.getElementById("loader").remove();
-  document.getElementById("loader_box").remove()
+  document.getElementById("wait-connected").remove()
   if (localStorage.getItem("state" != "disable")) {
     localStorage.setItem("state","yes")
   }
