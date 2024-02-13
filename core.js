@@ -615,7 +615,7 @@ try {
             <img src="${last[1].val().image}" class="people-img"alt="picture" />
             <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
             <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
-            <p class='people-setting'><popup-setting-menu class="popmenu"></popup-setting-menu></p>
+            <p class='people-setting popmenu'><popup-setting-menu></popup-setting-menu></p>
             <p id="prew_${data.val().dname}" class="people-preview"></p>
             </li>`
                 } else {
@@ -624,7 +624,7 @@ try {
                 <img src="img/default.png" class="people-img"alt="picture" />
                 <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
                 <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
-                <p class='people-setting'><popup-setting-menu class="popmenu"></popup-setting-menu></p>
+                <p class='people-setting popmenu'><popup-setting-menu></popup-setting-menu></p>
                 <p id="prew_${data.val().dname}" class="people-preview"></p>
                 </li>`
                 }
