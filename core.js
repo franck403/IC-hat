@@ -237,8 +237,8 @@ try {
             modal.style.display = "none";
         }
         console.log(event.target)
-        console.log(event.target.tagName.toLowerCase())
-        if (event.target.tagName.toLowerCase() != 'popup-setting-menu') {
+        console.log(event.target.parentElement.tagName.toLowerCase())
+        if (event.target.parentElement.tagName.toLowerCase() != 'popup-setting-menu') {
             allclose()
         }
 
