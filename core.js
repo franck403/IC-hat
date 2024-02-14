@@ -558,9 +558,14 @@ try {
     window.hidediscusionintern = hidediscusionintern
 
     function changeDisplayNameIntern(id) {
+        var newname = prompt('newdiscusinname','')
+        if (newname == null) {
+            // abort
+            return
+        }
         const dbRef = ref(getDatabase())
         const updates = {};
-        updates[`users_friend/${id}/displayName`] = 'Renamed discusion';
+        updates[`users_friend/${id}/displayName`] = newname;
         update(dbRef, updates);
     }
     window.changeDisplayNameIntern = changeDisplayNameIntern
