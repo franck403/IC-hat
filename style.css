@@ -572,9 +572,9 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-
-.people-person:not(popup-setting-menu *:hover).active,
-.people-person:not(popup-setting-menu *:hover) {
+ 
+.people-person.active,
+.people-person:hover {
     position: relative;
     width: 100%;
     padding: 12px 10% 16px;
@@ -582,15 +582,23 @@ body {
     color: var(--white);
     background-color: var(--blue);
 }
+.people-person:has(.people-setting *:hover) {
+    position: relative;
+    width: 100%;
+    padding: 12px 10% 16px;
+    cursor: pointer;
+    color: var(--black);
+    background-color: var(--white);
+}
 
+.people-person .people-setting *:hover,
 .people-person .people-setting *{
+    color:black !important;
+}
+.people-setting *:hover{
     color:black;
-    background: white;
 }
 
-.people-person:hover .people-setting *{
-    color:black;
-}
 .people-person.active span,
 .people-person:hover span {
     color: var(--white);
