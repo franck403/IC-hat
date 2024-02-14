@@ -3,7 +3,7 @@ class MyCustomElement extends HTMLElement { constructor() {super(); } connectedC
 // to create <popup-setting-menu></popup-setting-menu>
 // make popumenu disapera after click
 function allclose() {
-    var elements = document.getElementsByClassName('popup-setting-menu')
+    var elements = document.getElementsByClassName('context-menu')
     for (let index = 0; index < elements.length; index++) {
         var element = elements[index];
         element.style.visibility = "hidden"
