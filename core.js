@@ -8,7 +8,8 @@ import {
     push,
     child,
     onChildAdded,
-    onChildChanged
+    onChildChanged,
+    update
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 localStorage.setItem("state", "no")
 var Imageupload = window.Imageupload
@@ -547,10 +548,19 @@ try {
         //worker.postMessage('called')
     }
     window.MessageLoad = MessageLoad
-
+    function hidediscusionintern(id) {
+        const db = getDatabase();
+        const updates = {};
+        updates[`users_friend/${id}/hide`] = true;
+        update(dbRef, updates);
+    }
+    window.hidediscusionintern = hidediscusionintern
     MessageLoad()
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
+        if (data.val().hide == true) {
+            return
+        }
         var dte = data.val().allow
         if (dte.indexOf(myEmail) != -1 && dte != `,${myEmail}`) {
             var array = window.userdb
