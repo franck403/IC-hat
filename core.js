@@ -548,6 +548,7 @@ try {
         //worker.postMessage('called')
     }
     window.MessageLoad = MessageLoad
+
     function hidediscusionintern(id) {
         const dbRef = ref(getDatabase())
         const updates = {};
@@ -555,6 +556,15 @@ try {
         update(dbRef, updates);
     }
     window.hidediscusionintern = hidediscusionintern
+
+    function changeDisplayNameIntern(id) {
+        const dbRef = ref(getDatabase())
+        const updates = {};
+        updates[`users_friend/${id}/displayName`] = 'Renamed discusion';
+        update(dbRef, updates);
+    }
+    window.changeDisplayNameIntern = changeDisplayNameIntern
+
     MessageLoad()
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
@@ -631,12 +641,18 @@ try {
             console.log(object)
             console.log(last)
             console.log(nw_allow)
+            if (data.val().displayName == undefined) {
+                displayName = nw_allow
+            } else {
+                displayName = data.val().displayName
+            }
+
             try {
                 if (last[0] != undefined && nw_allow != "") {
                     var html = `
             <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
             <img src="${last[1].val().image}" class="people-img"alt="picture" />
-            <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
+            <p id="name_${data.val().allow}" class="people-name">${displayName}</p>
             <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
             <p class='people-setting popmenu'><popup-setting-menu></popup-setting-menu></p>
             <p id="prew_${data.val().dname}" class="people-preview"></p>
@@ -645,7 +661,7 @@ try {
                     var html = `
                 <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
                 <img src="img/default.png" class="people-img"alt="picture" />
-                <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
+                <p id="name_${data.val().allow}" class="people-name">${displayName}</p>
                 <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
                 <p class='people-setting popmenu'><popup-setting-menu></popup-setting-menu></p>
                 <p id="prew_${data.val().dname}" class="people-preview"></p>
@@ -655,7 +671,7 @@ try {
                 var html = `
                 <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
                 <img src="img/default.png" class="people-img"alt="picture" />
-                <p id="name_${data.val().allow}" class="people-name">${nw_allow}</p>
+                <p id="name_${data.val().allow}" class="people-name">${displayName}</p>
                 <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
                 <p class='people-setting'><popup-setting-menu></popup-setting-menu></p>
                 <p id="prew_${data.val().dname}" class="people-preview"></p>
