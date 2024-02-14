@@ -222,7 +222,9 @@ try {
         var elements = document.getElementsByClassName('context-menu')
         for (let index = 0; index < elements.length; index++) {
             var element = elements[index];
-            element.style.visibility = "hidden"
+            if (element.style.visibility != "hidden") {
+                element.style.visibility = "hidden"
+            } 
         }
     }
     // When the user clicks anywhere outside of the modal, close it
@@ -233,7 +235,10 @@ try {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-        allclose()
+        if (event.target.tagName == 'popup-setting-menu') {
+            allclose()
+        }
+
     }
 
     friends.addEventListener('click', (e) => {
