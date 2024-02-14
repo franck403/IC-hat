@@ -549,7 +549,7 @@ try {
     }
     window.MessageLoad = MessageLoad
     function hidediscusionintern(id) {
-        const db = getDatabase();
+        const dbRef = ref(getDatabase())
         const updates = {};
         updates[`users_friend/${id}/hide`] = true;
         update(dbRef, updates);
