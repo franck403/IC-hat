@@ -233,7 +233,7 @@ try {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-        allclose
+        allclose()
     }
 
     friends.addEventListener('click', (e) => {
