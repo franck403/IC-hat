@@ -9,5 +9,5 @@ function allclose() {
         element.style.visibility = "hidden"
     }
 }
-document.body.addEventListener("click", allclose)
+window.onclick = allclose
 // to do create all the button function
