@@ -199,11 +199,6 @@ try {
     }
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
 
     // Get the modal
     var modal2 = document.getElementById("file");
@@ -223,12 +218,22 @@ try {
     span2.onclick = function () {
         modal2.style.display = "none";
     }
-
+    function allclose() {
+        var elements = document.getElementsByClassName('context-menu')
+        for (let index = 0; index < elements.length; index++) {
+            var element = elements[index];
+            element.style.visibility = "hidden"
+        }
+    }
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal2) {
             modal2.style.display = "none";
         }
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        allclose
     }
 
     friends.addEventListener('click', (e) => {
