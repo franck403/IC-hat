@@ -647,9 +647,9 @@ try {
             console.log(last)
             console.log(nw_allow)
             if (data.val().displayName == undefined) {
-                displayName = nw_allow
+                var displayName = nw_allow
             } else {
-                displayName = data.val().displayName
+                var displayName = data.val().displayName
             }
 
             try {
