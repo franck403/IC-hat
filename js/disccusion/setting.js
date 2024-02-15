@@ -31,11 +31,11 @@ class ExpandingList extends HTMLElement {
 
     constructor() {
         // Always call super first in constructor
-        super();
+        self = super();
     }
 
     connectedCallback() {
-        this.addEventListener("keypress", function (event) {
+        self.addEventListener("keypress", function (event) {
         // If the user presses the "Enter" key on the keyboard
         if (event.key === "Enter") {
             // Cancel the default action, if needed
