@@ -41,8 +41,8 @@ class ExpandingList extends HTMLInputElement {
             // Cancel the default action, if needed
             event.preventDefault();
             // Trigger the button element with a click
-            element = event.target
-            parent = event.target.parentElement
+            var element = event.target
+            var parent = event.target.parentElement
             window.lastEv = event
             window.changeDisplayNameIntern(parentElement.dataset.chatid,event.target.value)
             event.target.value = ''
