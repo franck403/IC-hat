@@ -35,6 +35,7 @@
 .user_pic {
     border: 100% 100%;
 }
+
 .user_pic button img {
     height: 50px;
     z-index: 1;
@@ -87,7 +88,7 @@
 }
 
 .inactive {
-    display:none;
+    display: none;
     visibility: hidden;
 }
 
@@ -412,7 +413,7 @@ body {
     position: fixed;
     height: 100%;
     width: 100%;
-    display:block;
+    display: block;
     z-index: 1;
     background: rgb(136 136 136);
 }
@@ -420,7 +421,7 @@ body {
 .loader {
     z-index: 100;
     margin: 0;
-    display:block;
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -529,7 +530,7 @@ body {
     font-size: 14px;
     position: absolute;
     top: 14px;
-    color:black;
+    color: black;
     right: 5%;
     margin: 0px;
 }
@@ -572,7 +573,7 @@ body {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
- 
+
 .people-person.active,
 .people-person:hover {
     position: relative;
@@ -582,6 +583,7 @@ body {
     color: var(--white);
     background-color: var(--blue);
 }
+
 .people-person:has(.people-setting *:hover) {
     position: relative;
     width: 100%;
@@ -592,11 +594,12 @@ body {
 }
 
 .people-person .people-setting *:hover,
-.people-person .people-setting *{
-    color:black !important;
+.people-person .people-setting * {
+    color: black !important;
 }
-.people-setting *:hover{
-    color:black;
+
+.people-setting *:hover {
+    color: black;
 }
 
 .people-person.active span,
@@ -654,7 +657,7 @@ body {
     display: none;
     overflow: hidden;
     overflow-y: scroll;
-    z-index:-1;
+    z-index: -1;
     padding: 10px 35px 40px;
     border-width: 1px 1px 1px 0;
     border-style: solid;
@@ -1162,6 +1165,7 @@ body {
     display: block;
 
 }
+
 .modal-call {
     display: none;
     position: fixed;
@@ -1238,16 +1242,57 @@ body {
 }
 
 .big-image {
-    position:fixed;
+    position: fixed;
     z-index: 10;
     height: 70%;
-    width:auto;
-    top:50%;
-    left:50%;
+    width: auto;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
 }
 
 .banner {
     text-align: center;
     color: #333;
+}
+
+.rename-file {
+    outline: none;
+    display: none;
+    visibility: hidden;
+    position: fixed;
+    z-index: 100000;
+}
+
+.rename-active {
+    outline: none;
+    display: block !important;
+    visibility: visible !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    border-bottom: 0.2em solid #000;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 0.2em 0.2em 0 0;
+    padding: 0.2em;
+    color: #000;
+    animation-name: inputanimation;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+@keyframes inputanimation {
+    0% {
+        border-bottom: 0.2em solid #000;
+    }
+
+    50% {
+        border-bottom: 0.2em solid #fff;
+    }
+
+    100% {
+        border-bottom: 0.2em solid #000;
+    }
 }
