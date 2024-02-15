@@ -259,7 +259,35 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://zupimageapi-whp7j1pmkn89.runkit.sh/chat.js"></script>
+    <script>
+        function Imageupload(image) {
+            let formData = new FormData();
+            formData.append('name', 'files[' + image + ']');
+            const request = new XMLHttpRequest();
+            request.open("POST", "https://zupimageapi-vyx9hh4wa6t5.runkit.sh/upload", false);
+            request.send(formData)
+            return request.responseText
+        }
+        function dataURItoBlob(dataURI) {
+            // convert base64/URLEncoded data component to raw binary data held in a string
+            var byteString;
+            if (dataURI.split(',')[0].indexOf('base64') >= 0)
+                byteString = atob(dataURI.split(',')[1]);
+            else
+                byteString = unescape(dataURI.split(',')[1]);
+
+            // separate out the mime component
+            var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+            // write the bytes of the string to a typed array
+            var ia = new Uint8Array(byteString.length);
+            for (var i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            }
+
+            return new Blob([ia], { type: mimeString });
+        }
+    </script>
     <script>
         feather.replace()
     </script>

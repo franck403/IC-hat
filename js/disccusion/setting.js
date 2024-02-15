@@ -36,19 +36,19 @@ class ExpandingList extends HTMLInputElement {
 
     connectedCallback() {
         self.addEventListener("keypress", function (event) {
-        // If the user presses the "Enter" key on the keyboard
-        if (event.key === "Enter") {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
-            var element = event.target
-            var parent = event.target.parentElement
-            window.lastEv = event
-            window.changeDisplayNameIntern(element.id.replace('rename_',''),element.value)
-            event.target.value = ''
-            event.target.classList.remove('rename-active')
-        }
-    });
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                var element = event.target
+                var parent = event.target.parentElement
+                window.lastEv = event
+                window.changeDisplayNameIntern(element.id.replace('rename_', ''), element.value)
+                event.target.value = ''
+                event.target.classList.remove('rename-active')
+            }
+        });
     }
 
     disconnectedCallback() {
@@ -58,3 +58,31 @@ class ExpandingList extends HTMLInputElement {
 }
 customElements.define("expanding-list", ExpandingList, { extends: "input" });
 
+function Imageupload(image) {
+    let formData = new FormData();
+    formData.append('name', 'files[' + image + ']');
+    const request = new XMLHttpRequest();
+    request.open("POST", "https://zupimageapi-vyx9hh4wa6t5.runkit.sh/upload", false);
+    request.send(formData)
+    return request.responseText
+}
+
+function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], { type: mimeString });
+}
