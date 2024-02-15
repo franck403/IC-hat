@@ -44,7 +44,9 @@ class ExpandingList extends HTMLElement {
             element = event.target
             parent = event.target.parentElement
             window.lastEv = event
-            window.changeDisplayNameIntern(localStorage.getItem('lastChat'),event.target.value)
+            window.changeDisplayNameIntern(parentElement.dataset.chatid,event.target.value)
+            event.target.value = ''
+            event.target.classList.remove('rename-active')
         }
     });
     }
