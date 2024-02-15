@@ -1257,30 +1257,31 @@ body {
 }
 
 .rename-file {
-    outline: none;
-    display: none;
-    visibility: hidden;
-    position: fixed;
-    z-index: 100000;
+    outline: none !important;
+    display: none !important;
+    visibility: hidden !important;
+    position: fixed !important;
+    z-index: 100000 !important;
 }
 
 .rename-active {
-    outline: none;
+    outline: none !important;
     display: block !important;
     visibility: visible !important;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    outline: none;
-    border-bottom: 0.2em solid #000;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 0.2em 0.2em 0 0;
-    padding: 0.2em;
-    color: #000;
-    animation-name: inputanimation;
-    animation-iteration-count: infinite;
-    animation-duration: 1s;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    border: none !important;
+    width:20% !important;
+    outline: none !important;
+    border-bottom: 0.2em solid #000 !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    border-radius: 0.2em 0.2em 0 0 !important;
+    padding: 0.2em !important;
+    color: #000 !important;
+    animation-name: inputanimation !important;
+    animation-iteration-count: infinite !important;
+    animation-duration: 1s !important;
 }
 
 @keyframes inputanimation {
