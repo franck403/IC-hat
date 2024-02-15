@@ -27,7 +27,7 @@ function createInviteDiscusion() {
 }
 
 // Create a class for the element
-class ExpandingList extends HTMLElement {
+class ExpandingList extends HTMLUListElement {
 
     constructor() {
         // Always call super first in constructor
