@@ -248,9 +248,7 @@ try {
         console.log(event.target.parentElement.tagName.toLowerCase())
         if (event.target.parentElement.tagName.toLowerCase() != 'popup-setting-menu') {
             allclose()
-            if (event.target.parentElement.tagName.toLowerCase() != 'input') {
-                allclose1()
-            }
+            allclose1()
         }
     }
 
