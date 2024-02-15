@@ -98,7 +98,7 @@ window.addEventListener('message', function (event) {
     if (event.data != "close") {
         document.getElementById("crop_iframe").classList.remove('show')
         document.getElementById('crop_iframe').src = document.getElementById('crop_iframe').src
-        set_picture(Imageupload(dataURItoBlob(event.data)))
+        set_picture(Imageupload(dataURItoBlob(":" + event.data)))
         close()
     } else {
         document.getElementById("crop_iframe").classList.remove('show')
