@@ -44,7 +44,7 @@ class ExpandingList extends HTMLInputElement {
             var element = event.target
             var parent = event.target.parentElement
             window.lastEv = event
-            window.changeDisplayNameIntern(parent.dataset.chatid,element.value)
+            window.changeDisplayNameIntern(element.id.replace('rename_',''),element.value)
             event.target.value = ''
             event.target.classList.remove('rename-active')
         }
