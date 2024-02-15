@@ -558,11 +558,6 @@ try {
     window.hidediscusionintern = hidediscusionintern
 
     function changeDisplayNameIntern(id,newDisplayName) {
-        var newname = prompt('newdiscusinname','')
-        if (newname == null) {
-            // abort
-            return
-        }
         const dbRef = ref(getDatabase())
         const updates = {};
         updates[`users_friend/${id}/displayName`] = newDisplayName;
