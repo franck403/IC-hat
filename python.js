@@ -84,8 +84,9 @@ async function ImportPY(filepath) {
     const blob = new Blob([myText], { type: 'text/javascript' });
     const blobUrl = URL.createObjectURL(blob);
     const scriptElement = document.createElement('script');
+    scriptElement.type = 'module'
     scriptElement.src = blobUrl;
-    document.head.appendChild(scriptElement);
+    //document.head.appendChild(scriptElement);
 }
 
 ImportPY('convert.py')
