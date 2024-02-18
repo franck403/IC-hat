@@ -79,6 +79,7 @@ async function loadPYFromFile(path) {
 }
 function fixJS(code) {
     var code = code.replaceAll(/from\s+'(\w+)'/g, "from 'https://ic-hat.geoloup.com/$1.js'");
+    var code = code.replaceAll(/(\w+)\(\)/g, "await $1()")
     return code
 }
 
