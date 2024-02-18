@@ -11,8 +11,7 @@ async function convertPyToJs(code) {
     });
     if (response.ok) {
         const data = await response.json();
-        console.log(data.stdout);
-        return eval(data.stdout)
+        return data.stdout
     } else { console.error("Error fetching data:", response.status, response.statusText); }
 }
 
