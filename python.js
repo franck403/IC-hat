@@ -67,8 +67,8 @@ async function loadDataFromFile(onlinePath) {
         "credentials": "omit"
     });
     if (response.ok) {
-        const data = await response.json();
-        return 
+        const data = await response.text();
+        return data
     } else { console.error("Error fetching data:", response.status, response.statusText); }
 }
 
