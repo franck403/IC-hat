@@ -78,7 +78,7 @@ async function loadPYFromFile(path) {
     return await convertPyToJs(data)
 }
 function fixJS(code) {
-    var code = code.replaceAll(/from\s+'(\w+)'/g, "from '../$1'")
+    var code = code.replaceAll(/from\s+'(\w+)'/g, "from '../$1.js'");
     return code
 }
 
