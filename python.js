@@ -80,7 +80,7 @@ async function loadPYFromFile(path) {
 }
 
 async function ImportPY(filepath) {
-    const myText = await loadPYFromFile();
+    const myText = await loadPYFromFile(filepath);
     const blob = new Blob([myText], { type: 'text/javascript' });
     const blobUrl = URL.createObjectURL(blob);
     const scriptElement = document.createElement('script');
