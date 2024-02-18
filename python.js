@@ -79,7 +79,7 @@ async function loadPYFromFile(path) {
 }
 function fixJS(code) {
     var code = code.replaceAll(/from\s+'(\w+)'/g, "from 'https://ic-hat.geoloup.com/$1.js'");
-    var code = code.replaceAll(/(\w+)\(\)/g, "await $1()")
+    var code = code.replaceAll(/(\w+)\(\)/g, "await $0()")
     return code
 }
 
@@ -90,8 +90,8 @@ async function ImportPY(filepath) {
     const blobUrl = URL.createObjectURL(blob);
     const scriptElement = document.createElement('script');
     scriptElement.type = 'module'
-    scriptElement.src = blobUrl;
     scriptElement.async = true
+    scriptElement.src = blobUrl;
     document.head.appendChild(scriptElement);
 }
 
