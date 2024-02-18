@@ -77,9 +77,14 @@ async function loadPYFromFile(path) {
     var data = await loadDataFromFile(path)
     return await convertPyToJs(data)
 }
+function fixJS(code) {
+    var code = code.replaceAll(/from\s+'(\w+)'/g, "from '../$1'")
+    return code
+}
 
 async function ImportPY(filepath) {
-    const myText = await loadPYFromFile(filepath);
+    var myText = await loadPYFromFile(filepath);
+    var myText = fixJS(myText)
     const blob = new Blob([myText], { type: 'text/javascript' });
     const blobUrl = URL.createObjectURL(blob);
     const scriptElement = document.createElement('script');
