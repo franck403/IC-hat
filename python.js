@@ -91,6 +91,7 @@ async function ImportPY(filepath) {
     const scriptElement = document.createElement('script');
     scriptElement.type = 'module'
     scriptElement.src = blobUrl;
+    scriptElement.defer = True
     document.head.appendChild(scriptElement);
 }
 
