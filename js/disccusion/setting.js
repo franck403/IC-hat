@@ -16,7 +16,7 @@ function uploadFile(file) {
     fd.append('upload_preset', unsignedUploadPreset);
     fd.append('tags', 'browser_upload'); // Optional - add tags for image admin in Cloudinary
     fd.append('file', file);
-    const request = new XMLHttpRequest();
+    var request = new XMLHttpRequest();
     request.open("POST", url, false);
     request.send(fd)
     const data  = response.json()
@@ -25,7 +25,8 @@ function uploadFile(file) {
     const tokens = url.split('/');
     tokens.splice(-3, 0, 'w_150,c_scale');
     const img = new Image();
-    img.src = tokens.join('/');
+    const opt = `https://res.cloudinary.com/freshpm/image/upload/c_scale,w_500/f_auto/q_auto/${tokens.join('/')}`;
+    img.src = opt;
     img.alt = data.public_id;
     return img
 }
