@@ -9,6 +9,27 @@ function allclose() {
         element.style.visibility = "hidden"
     }
 }
+function uploadFile(file) {
+    if ( /\.(jpe?g|png|gif)$/i.test(file.name) === false ) { return false }
+    const url = `https://api.cloudinary.com/v1_1/djsemwoio/upload`;
+    const fd = new FormData();
+    fd.append('upload_preset', unsignedUploadPreset);
+    fd.append('tags', 'browser_upload'); // Optional - add tags for image admin in Cloudinary
+    fd.append('file', file);
+    const request = new XMLHttpRequest();
+    request.open("POST", url, false);
+    request.send(fd)
+    const data  = response.json()
+    const url = data.secure_url;
+    // Create a thumbnail of the uploaded image, with 150px width
+    const tokens = url.split('/');
+    tokens.splice(-3, 0, 'w_150,c_scale');
+    const img = new Image();
+    img.src = tokens.join('/');
+    img.alt = data.public_id;
+    return img
+}
+
 window.onclick = allclose
 // to do create all the button function
 
@@ -59,12 +80,8 @@ class ExpandingList extends HTMLInputElement {
 customElements.define("expanding-list", ExpandingList, { extends: "input" });
 
 function Imageupload(image) {
-    let formData = new FormData();
-    formData.append('name', 'files[' + image + ']');
-    const request = new XMLHttpRequest();
-    request.open("POST", "https://zupimageapi-vyx9hh4wa6t5.runkit.sh/upload", false);
-    request.send(formData)
-    return request.responseText
+    var img = uploadFile(image)
+    return img.src
 }
 
 function dataURItoBlob(dataURI) {
