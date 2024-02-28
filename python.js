@@ -77,12 +77,15 @@ async function loadPYFromFile(path) {
     var data = await loadDataFromFile(path)
     return await convertPyToJs(data)
 }
-function fixJS(code) {
-    var code = code.replaceAll(/from\s+'(\w+)'/g, "from 'https://ic-hat.geoloup.com/$1.js'");
-    var code = code.replaceAll(/(\w+)\(\)/g, "await $0()")
-    return code
-}
 
+function fixJS(code) {
+    code = code.replace(/from\s+'(\w+)'/g, "from 'https://ic-hat.geoloup.com/$1.js'");
+    code = code.replace(/ (\w+)\.(\w+)\.(\w+)\(\)/g, " await $1.$2.$3()");
+    code = code.replace(/ (\w+)\.(\w+)\(\)/g, " await $1.$2()");
+    code = code.replace(/ (\w+)\(\)/g, " await $1()");
+    return code;
+}
+  
 async function ImportPY(filepath) {
     var myText = await loadPYFromFile(filepath);
     var myText = fixJS(myText)
