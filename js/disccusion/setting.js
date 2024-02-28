@@ -11,7 +11,7 @@ function allclose() {
 }
 function uploadFile(file) {
     if ( /\.(jpe?g|png|gif)$/i.test(file.name) === false ) { return false }
-    const url = `https://api.cloudinary.com/v1_1/djsemwoio/upload`;
+    var url = `https://api.cloudinary.com/v1_1/djsemwoio/upload`;
     const fd = new FormData();
     fd.append('upload_preset', unsignedUploadPreset);
     fd.append('tags', 'browser_upload'); // Optional - add tags for image admin in Cloudinary
@@ -20,7 +20,7 @@ function uploadFile(file) {
     request.open("POST", url, false);
     request.send(fd)
     const data  = response.json()
-    const url = data.secure_url;
+    var url = data.secure_url;
     // Create a thumbnail of the uploaded image, with 150px width
     const tokens = url.split('/');
     tokens.splice(-3, 0, 'w_150,c_scale');
