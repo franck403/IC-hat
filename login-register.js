@@ -33,9 +33,3 @@ iframe.onload = () => {
 if (window.location.href.endsWith("#")) {
     window.location.replace(`${window.location.origin}/chat`)
 }
-netlifyIdentity.on('login',(info)=>{
-    window.location.replace(`${window.location.origin}/chat`)
-})
-netlifyIdentity.on('register',(info)=>{
-    window.location.replace(`${window.location.origin}/`)
-})
