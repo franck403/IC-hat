@@ -565,6 +565,12 @@ try {
                     } else {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
                     }    
+                } else if (localStorage.getItem('lastChat') == i) {
+                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > max) {
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, max).reverse()
+                    } else {
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
+                    }    
                 }
                 if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > max) {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, max).reverse()
