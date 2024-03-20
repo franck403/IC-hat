@@ -160,7 +160,6 @@ export function image_render(email, name) {
         var file = document.getElementById("file_input").files[key]
         var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
         const id = push(child(ref(database), 'messages')).key;
-        console.log("[image render] Sending...")
         var imgurl = Imageupload(file)
         set(ref(database, "messages/" + cusid + "/" + id), {
             email: name,
@@ -171,7 +170,6 @@ export function image_render(email, name) {
             date: Date.now(),
             dname: cusid
         })
-        console.log("[image render] File is perfect")
         document.getElementById("file").style.display = "none";
         document.getElementById("file_input").value = "";
     });
@@ -244,8 +242,6 @@ try {
         if (event.target == modal) {
             modal.style.display = "none";
         }
-        console.log(event.target)
-        console.log(event.target.parentElement.tagName.toLowerCase())
         if (event.target.parentElement.tagName.toLowerCase() != 'popup-setting-menu') {
             allclose()
             allclose1()
@@ -255,7 +251,6 @@ try {
     friends.addEventListener('click', (e) => {
         if (document.getElementById("friend_email").value == "") {
             var list = document.querySelectorAll(".check");
-            console.log(list)
             if (list != undefined) {
                 var fg = []
                 list.forEach(item => {
@@ -276,17 +271,9 @@ try {
                     dname: customid
                 }
                 document.getElementById("firend_list_preview").innerHTML = ""
-                /*
-                set(ref(database, 'messages/' + customid + "/"), data);
-                set(ref(database, 'users_friend/' + customid), data);
-                console.log(document.getElementById('friend_email').value)
-                document.getElementById('friend_email').value = "";
-                modal.style.display = "none";
-                */
             } else { }
         } else {
             var fg = document.getElementById('friend_email').value
-            console.log(fg)
             var gh = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
             if (document.getElementById('friend_email').value != "" && document.getElementById('friend_email').value != " " && fg.replace(/\s/g, '').length != 0) {
                 var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
@@ -311,7 +298,6 @@ try {
     });
 
     function createDisc(fg) {
-        console.log(fg)
         var gh = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         if (fg != "" && fg != " " && fg.replace(/\s/g, '').length != 0) {
             var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
@@ -559,17 +545,14 @@ try {
         if (max == undefined) {
             max = 20
         }
-        console.log("[Message worker] Loading message")
         for (let i = 0; i < (window.processingMessage.length / 2); i++) {
             var err = false
             try {
                 findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]])
                 var err = true
             } catch {
-                console.log("no message were finded")
                 var err = false
             } if (err) {
-                console.log("[Message worker] Chargin message")
                 if (select != undefined && select == i) {
                     if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > max) {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, max).reverse()
@@ -588,7 +571,6 @@ try {
                 } else {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                 }
-                console.log("[Message worker] " + snapshot)
                 var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),noscroll)
                 window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
             }
@@ -628,7 +610,6 @@ try {
         try {
             dte.indexOf(myEmail)
         } catch {
-            console.log('wrong value returning')
             return
         }
         if (dte.indexOf(myEmail) != -1 && dte != `,${myEmail}`) {
@@ -650,7 +631,6 @@ try {
                         object.push(array.find(obj => obj.val().email === data.val().allow[i]))
                     }
                 } catch (err) {
-                    console.log(err)
                     object.push({
                         val: () => {
                             return { email: data.val().allow[i], image: "img/default.png" }
@@ -659,7 +639,6 @@ try {
                 }
             }
             for (let i = 0; i < object.length; i++) {
-                console.log(object[i])
                 if (object[i] == undefined) {
                     object[i] = {
                         val: () => {
@@ -690,16 +669,9 @@ try {
                 }
             }
 
-            // printing object on the console
-            for (let i = 0; i < object.length; i++) {
-                console.log(object[i].val())
-            }
             if (object[0].val().email != myEmail) {
                 object.reverse()
             }
-            console.log(object)
-            console.log(last)
-            console.log(nw_allow)
             if (data.val().displayName == undefined) {
                 var displayName = nw_allow
             } else {
@@ -783,7 +755,6 @@ try {
                 }
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
-                console.log("Child added")
                 if (data2.val().name != null && data2.val().type == "message" && data2.val().message != null) {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
