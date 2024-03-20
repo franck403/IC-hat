@@ -80,7 +80,7 @@ async function loadPYFromFile(path) {
 
 function fixJS(code) {
     code = code.replace(/from\s+'(\w+)'/g, "from 'https://ic-hat.geoloup.com/$1.js'");
-    code = code.replace(/bhuy3huygyufwyuge.(\w+)\(\)/g, " await $1.$2()");
+    code = code.replace(/bhuy3huygyufwyuge.(\w+)\(\)/g, " await bhuy3huygyufwyuge.$1()");
     return code;
 }
   
