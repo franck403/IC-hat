@@ -55,6 +55,7 @@ function room(id) {
     var research = id.replace("new", "")
     window.createDisc(research)
     document.getElementById('search_bar').value = ""
+    search()
     var new2 = document.getElementById("room_" + research)
     var id = research
     console.log('new diccusion')
