@@ -1,17 +1,17 @@
-var url = window. location.href;
-     
+var url = window.location.href;
+
 if (url.endsWith("#")) {
-    url = url.slice(0,-1)
+  url = url.slice(0, -1)
 }
-url = url.split("?")[0]; 
+url = url.split("?")[0];
 if (url == "https://chat.geoloup.com/chat") {
-    window.location.replace("https://ic-hat.geoloup.com/chat")
+  window.location.replace("https://ic-hat.geoloup.com/chat")
 }
 if (url == "https://chat.geoloup.com/") {
-    window.location.replace("https://ic-hat.geoloup.com/")
+  window.location.replace("https://ic-hat.geoloup.com/")
 }
 if (url == "https://chat.geoloup.com") {
-    window.location.replace("https://ic-hat.geoloup.com/store")
+  window.location.replace("https://ic-hat.geoloup.com/store")
 }
 
 
@@ -65,7 +65,7 @@ function room(id) {
   var old2 = document.getElementsByClassName("chat active-chat")[0]
   var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class", "mobile mobile-active")
   var old5 = document.getElementsByClassName("mobile-frame")[0].setAttribute("class", "mobile-frame mobile-frame-active")
-  var listener = function() {
+  var listener = function () {
     load_image(localStorage.getItem("lastChat"), 0)
   };
   //window.MessageLoad(window.processingMessage.indexOf(toString(id)),0)
@@ -189,25 +189,28 @@ function search() {
     console.log("[search core] Searching Person in db...")
     document.getElementById('search_bar').disabled
     var f = (responseJson) => {
-        for (i = 0; i < z.length; i++) {
-          z[i].remove()
-        }
-        document.getElementById('search_bar').removeAttribute("disable")
-        var list = responseJson
-        Object.keys(list).forEach(key => {
-          var db_name = key.val().name
-          var db_email = key.val().email
-          var html = `
-          <li onclick="room('new${db_email}')" class="people-person db" data-name="" data-chatid="" id="">
-          <img src="img/default.png" class="people-img"alt="picture" />
-          <p id="name_" class="people-name">${db_name}</p>
-          <p id="time_" class="people-time"></p>
-          <p id="prew_" class="people-preview"></p>
-          </li>`
-          const d2 = document.getElementById("people")
-          d2.innerHTML = d2.innerHTML + html
-        })
+      for (i = 0; i < z.length; i++) {
+        z[i].remove()
       }
+
+      document.getElementById('search_bar').removeAttribute("disable")
+      var list = responseJson
+      Object.keys(list).forEach(keyid => {
+        console.log(key)
+        var key = window.userdb[keyid]
+        var db_name = key.val().name
+        var db_email = key.val().email
+        var html = `
+                    <li onclick="room('new${db_email}')" class="people-person db" data-name="" data-chatid="" id="">
+                    <img src="img/default.png" class="people-img"alt="picture" />
+                    <p id="name_" class="people-name">${db_name}</p>
+                    <p id="time_" class="people-time"></p>
+                    <p id="prew_" class="people-preview"></p>
+                    </li>`
+        const d2 = document.getElementById("people")
+        d2.innerHTML = d2.innerHTML + html
+      })
+    }
     f(window.userdb)
   } else {
     console.log("[search core] Searching Person in friend...")
@@ -237,7 +240,7 @@ function friend(email) {
 
 var modal = document.getElementById("Calling");
 
-function openModal(text,type) {
+function openModal(text, type) {
   modal.style.display = "flex";
   document.getElementById("Calling").dataset.type = type
   if (text != null) {
@@ -248,10 +251,10 @@ function refuseCall() {
   modal.style.display = "none";
 }
 function acceptCall() {
-    console.log("Login to call...")
-    window.open("https://testnode.virusgaming1.repl.co/room/" + document.getElementById("Calling").dataset.uuid + "?name=Gilaxy04")
-    console.log("Call started!")
-    modal.style.display = "none";
+  console.log("Login to call...")
+  window.open("https://testnode.virusgaming1.repl.co/room/" + document.getElementById("Calling").dataset.uuid + "?name=Gilaxy04")
+  console.log("Call started!")
+  modal.style.display = "none";
 }
 window.addEventListener("click", function (event) {
   if (event.target == modal) {
@@ -283,9 +286,9 @@ function time_fresh() {
     Object.keys(list).forEach(id => {
       var el = list[id]
       var elt = document.getElementById("time_" + el.dataset.chatid)
-      try { 
+      try {
         var elf = parseFloat(elt.dataset.send)
-        elt.innerHTML = message_date(elf,el.dataset.chatid)
+        elt.innerHTML = message_date(elf, el.dataset.chatid)
       } catch {
         // nothing for now
       }
