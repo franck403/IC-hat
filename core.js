@@ -310,6 +310,30 @@ try {
         }
     });
 
+    function createDisc(fg) {
+        console.log(fg)
+        var gh = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+        if (fg != "" && fg != " " && fg.replace(/\s/g, '').length != 0) {
+            var customid = String(btoa(fg) + btoa(fg.replace(/\s/g, '').length) + btoa(myEmail))
+            var before_friend = fg + "," + myEmail
+            var after_friend = before_friend.split(",")
+            var endfriend = []
+            after_friend.forEach(item => {
+                if (item.search("@" != -1)) {
+                    endfriend.push(item)
+                }
+            });
+            var data = {
+                allow: endfriend,
+                dname: customid
+            }
+            set(ref(database, 'messages/' + customid + "/"), data);
+            set(ref(database, 'users_friend/' + customid), data);
+        } else { }
+    
+    }
+    window.createDisc = createDisc
+
     var add_file = document.getElementById("add_image")
     add_file.addEventListener('click', (e) => {
         image_render(myEmail, myName)

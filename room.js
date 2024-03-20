@@ -53,8 +53,7 @@ function room(id) {
     var new2 = document.getElementById(id + "_c")
   } else if (id.search("new") != -1) {
     var research = id.replace("new", "")
-    document.getElementById("friend_emails").value = research
-    document.getElementById("new_friend_add").click()
+    window.createDisc(research)
     document.getElementById('search_bar').value = ""
     var new2 = document.getElementById("room_" + research)
     var id = research
