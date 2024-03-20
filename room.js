@@ -58,6 +58,7 @@ function room(id) {
     document.getElementById('search_bar').value = ""
     var new2 = document.getElementById("room_" + research)
     var id = research
+    console.log('new diccusion')
   } else {
     var new2 = document.getElementById("room_" + id)
   }

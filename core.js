@@ -459,17 +459,22 @@ try {
                     window.processingMessage[String(data2.val().dname)].push([data2, false])
                 }
             })
-            document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
-                for (let i = 0; i < (window.processingMessage.length); i++) {
-                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
-                    } else {
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
+            try {
+                document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
+                    for (let i = 0; i < (window.processingMessage.length); i++) {
+                        if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
+                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
+                        } else {
+                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
+                        }
+                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),true,true)
+                        window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
                     }
-                    var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),true,true)
-                    window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
-                }
-            })
+                })
+    
+            } catch {
+                console.log('evnet listener could no be added')
+            }
             el.dataset.enable = true
             setTimeout(MessageLoad, 1000);
             setTimeout((el) => {
