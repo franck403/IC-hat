@@ -24,22 +24,10 @@
 <body>
     <script>
 
-        function time_fresh() {
+        function userLoader() {
             location.replace(location.origin + "/chat")
-            try {
-                a = new Date(Date.now());
-                b = new Date('2023-11-30 11:20');
-                if (a.getTime() === b.getTime()) {
-                    location.replace(location.origin + "/chat")
-                }
-            } catch {
-                console.log("no message were loaded with a data...")
-            }
-            clearTimeout(window.lastId)
-            window.lastId = setTimeout(time_fresh, 1000);
         }
-
-        window.lastId = setTimeout(time_fresh, 30000);
+        userLoader()
     </script>
 </body>
 
