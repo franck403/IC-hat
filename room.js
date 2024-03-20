@@ -218,6 +218,35 @@ function search() {
     }
     f(window.userdb)
   } else {
+    var f = (responseJson) => {
+      for (i = 0; i < z.length; i++) {
+        z[i].remove()
+      }
+
+      var list = responseJson
+      Object.keys(list).forEach(keyid => {
+        console.log(key)
+        var key = window.userdb[keyid]
+        
+        if (key.val().name.toUpperCase().indexOf(document.getElementById('search_bar').value.toUpperCase()) > 2) {
+          var db_name = key.val().name
+          var db_email = key.val().email
+          var html = `
+                      <li onclick="room('new${db_email}')" class="people-person db" data-name="" data-chatid="" id="">
+                      <img src="img/default.png" class="people-img"alt="picture" />
+                      <p id="name_" class="people-name">${db_name}</p>
+                      <p id="time_" class="people-time"></p>
+                      <p id="prew_" class="people-preview"></p>
+                      </li>`
+          const d2 = document.getElementById("people")
+          d2.innerHTML = d2.innerHTML + html  
+        } else {
+          console.log('user does not fit search...' + key.val().name)
+        }
+        document.getElementById('search_bar').removeAttribute("disable")
+      })
+    }
+    f(window.userdb)
     console.log("[search core] Searching Person in friend...")
   }
 }
