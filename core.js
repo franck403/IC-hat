@@ -579,6 +579,12 @@ try {
             return
         }
         var dte = data.val().allow
+        try {
+            dte.indexOf(myEmail)
+        } catch {
+            console.log('wrong value returning')
+            return
+        }
         if (dte.indexOf(myEmail) != -1 && dte != `,${myEmail}`) {
             var array = window.userdb
             var object = []
