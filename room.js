@@ -57,9 +57,11 @@ function room(id) {
     document.getElementById("new_friend_add").click()
     document.getElementById('search_bar').value = ""
     var new2 = document.getElementById("room_" + research)
+    var id = research
   } else {
     var new2 = document.getElementById("room_" + id)
   }
+
   localStorage.setItem("lastChat", id)
   var old1 = document.getElementsByClassName("write")[0].setAttribute("class", "write write-active")
   var old2 = document.getElementsByClassName("chat active-chat")[0]
