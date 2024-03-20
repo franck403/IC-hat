@@ -198,7 +198,7 @@ function search() {
         console.log(key)
         var key = window.userdb[keyid]
         
-        if (key.val().name.toUpperCase().indexOf(document.getElementById('search_bar').valuetoUpperCase()) > -1) {
+        if (key.val().name.toUpperCase().indexOf(document.getElementById('search_bar').value.toUpperCase()) > -1) {
           var db_name = key.val().name
           var db_email = key.val().email
           var html = `
