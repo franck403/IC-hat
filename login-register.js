@@ -28,6 +28,12 @@ iframe.onload = () => {
             netlifyIdentity.open("signup")
         });
         fc.document.getElementById("yes").remove()
+        netlifyIdentity.on('login', (info) => {
+            window.location.replace(`${window.location.origin}/chat`)
+        })
+        netlifyIdentity.on('register', (info) => {
+            window.location.replace(`${window.location.origin}/`)
+        })
     }
 }
 if (window.location.href.endsWith("#")) {
