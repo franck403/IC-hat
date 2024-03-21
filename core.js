@@ -598,6 +598,21 @@ try {
     }
     window.hidediscusionintern = hidediscusionintern
 
+    function createInviteDiscusionIntern(id) {
+        const id = push(child(ref(database), 'invites')).key;
+        var cusid = localStorage.getItem('lastChat')
+        set(ref(database, 'invites/' + cusid + '/' + id), {
+            email: myEmail,
+            allow: 'everyone',
+            type: "invite",
+            message: message_render('Do you want to get in this conversation', "nop"),
+            name: myName,
+            date: Date.now(),
+            dname: cusid
+        });
+    }
+    window.createInviteDiscusionIntern = createInviteDiscusionIntern
+
     function changeDisplayNameIntern(id,newDisplayName) {
         const dbRef = ref(getDatabase())
         const updates = {};
