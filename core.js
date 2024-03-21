@@ -458,6 +458,8 @@ try {
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
                 if (data2.val().dname == undefined) { return }
+                //  don't display hidden message
+                if (data2.val().ide == true) { return }
                 try {
                     window.processingMessage[data2.val().dname].push([data2, false])
                 } catch {
@@ -467,6 +469,10 @@ try {
                     }
                     window.processingMessage[String(data2.val().dname)].push([data2, false])
                 }
+            })
+            onChildChanged(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
+                if (data2.val().dname == undefined) { return }
+                // when message is edited or hide get message element and hide or chnge the content
             })
             try {
                 document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
@@ -600,6 +606,24 @@ try {
     }
     window.changeDisplayNameIntern = changeDisplayNameIntern
 
+    function changeMessageContentIntern(id,messageID,newValue) {
+        const dbRef = ref(getDatabase())
+        const updates = {};
+        updates[`'messages/'${id}/${messageID}/message`] = newValue;
+        update(dbRef, updates);
+    }
+
+    window.changeMessageContentIntern = changeMessageContentIntern
+
+    function hideMessageInter(id,messageID) {
+        const dbRef = ref(getDatabase())
+        const updates = {};
+        updates[`'messages/'${id}/${messageID}/hide`] = True;
+        update(dbRef, updates);
+    }
+
+    window.hideMessageInter = hideMessageInter
+
     MessageLoad()
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
@@ -724,7 +748,6 @@ try {
             Storage.prototype.getObj = function (key) {
                 return JSON.parse(this.getItem(key))
             }
-            //localStorage.setObj("roomlist",localStorage.getObj("roomlist").push([data.val().dname]))
             onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
                 bip()
                 if (data2.val().type == "call") {
