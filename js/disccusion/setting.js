@@ -45,7 +45,9 @@ function ChangeDisplayName() {
 }
 
 function createInviteDiscusion() {
-    window.createInviteDiscusionIntern()
+    var url = window.createInviteDiscusionIntern()
+    console.log(url)
+    return url
 }
 
 // Create a class for the element
