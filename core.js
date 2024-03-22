@@ -598,8 +598,8 @@ try {
     }
     window.hidediscusionintern = hidediscusionintern
 
-    function createInviteDiscusionIntern(id) {
-        const id = push(child(ref(database), 'invites')).key;
+    function createInviteDiscusionIntern() {
+        var id = push(child(ref(database), 'invites')).key;
         var cusid = localStorage.getItem('lastChat')
         set(ref(database, 'invites/' + cusid + '/' + id), {
             email: myEmail,
@@ -610,6 +610,7 @@ try {
             date: Date.now(),
             dname: cusid
         });
+        return cusid
     }
     window.createInviteDiscusionIntern = createInviteDiscusionIntern
 
