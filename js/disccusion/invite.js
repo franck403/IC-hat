@@ -40,7 +40,7 @@ if (newroom.has("invite")) {
         console.log(data2.val())
         // check the good id from the url
         var inviteId = newroom.get("invite")
-        console.log(value.inviteid)
+        console.log(data2.val().inviteid)
         console.log(inviteId)
         console.log('-----------')
         if (value.inviteid == inviteId) {
