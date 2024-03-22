@@ -610,7 +610,7 @@ try {
             date: Date.now(),
             dname: cusid
         });
-        return cusid
+        return id
     }
     window.createInviteDiscusionIntern = createInviteDiscusionIntern
 
