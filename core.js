@@ -605,7 +605,7 @@ try {
             email: myEmail,
             allow: 'everyone',
             type: "invite",
-            message: message_render('Do you want to get in this conversation', "nop"),
+            message: message_render('Do you want to get in this conversation ? From ' + myName, "nop"),
             name: myName,
             date: Date.now(),
             dname: cusid

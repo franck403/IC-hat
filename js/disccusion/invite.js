@@ -1,6 +1,6 @@
 var newroom = new URLSearchParams(window.location.search);
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getDatabase, ref, set, push, query,child, orderByChild } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+import { getDatabase, ref, query,onChildAdded} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
@@ -17,36 +17,14 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 if (newroom.has("invite")) {
-    var invites = query(ref(db, 'invites'));
-    var inviteId = newroom.get("invite")
-    var userinfo = {
-        email:localStorage.getItem("email"),
-        name:localStorage.getItem("name")
-    }
-    console.log(invites)
+    onChildAdded(ref(database, 'invites/'), async (data2) => {
+        var value = data2.val()
+        var id = value.dname
+        // check the good id from the url
+        var inviteId = newroom.get("invite")
+        if (value.dname == inviteId) {
+            // good invite show message
+        }
+    })    
 }
 
-// create invite and give link to user
-function createInvite(allowedUser,cusid) {
-    if (allowedUser == undefined) {
-        return false
-    }
-    var id = push(child(ref(database), 'invites')).key;
-    console.log("[invite] Sending...")
-    var userinfo = {
-        email:localStorage.getItem("email"),
-        name:localStorage.getItem("name")
-    }
-    // adding invite to the database
-    set(ref(database, "invites/" + id), {
-        email: userinfo.email,
-        name: userinfo.name,
-        allowed: allowedUser,
-        date: Date.now(),
-        dname: cusid
-    })
-    // return the url for invite to send
-    return "chat.geoloup.com/chat?invite=" + id
-}
-
-window.createInvite = createInvite
