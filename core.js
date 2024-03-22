@@ -313,6 +313,9 @@ try {
                 allow: endfriend,
                 dname: customid
             }
+            /*
+
+            */ 
             set(ref(database, 'messages/' + customid + "/"), data);
             set(ref(database, 'users_friend/' + customid), data);
         } else { }

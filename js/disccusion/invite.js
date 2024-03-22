@@ -1,6 +1,6 @@
 var newroom = new URLSearchParams(window.location.search);
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getDatabase, ref, query,onChildAdded} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+import { getDatabase, ref, query,update ,onChildAdded} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
@@ -16,6 +16,24 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
+function InviteChange(id) {
+    // query data to change
+
+    ref(`users_friend/${id}/allow`).once('value')
+    .then((snapshot) => {
+        const allowValue = snapshot.val();
+        const dbRef = ref(getDatabase())
+        const updates = {};
+        updates[`users_friend/${id}/allow`] = allowValue;
+        update(dbRef, updates);
+        console.log(allowValue);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+}
+
+
 if (newroom.has("invite")) {
     console.log('got invite')
     onChildAdded(ref(database, 'invites/'), async (data2) => {
@@ -26,6 +44,7 @@ if (newroom.has("invite")) {
         if (value.id == inviteId) {
             // good invite show message
             console.log('got invite')
+            InviteChange(inviteId)
         }
     })    
 }
