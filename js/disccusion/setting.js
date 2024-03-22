@@ -45,7 +45,7 @@ function ChangeDisplayName() {
 }
 
 function createInviteDiscusion() {
-    window.createInviteDiscusionIntern(localStorage.getItem('lastChat'))
+    window.createInviteDiscusionIntern()
 }
 
 // Create a class for the element
