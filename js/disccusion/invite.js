@@ -21,12 +21,12 @@ function InviteChange(id) {
 
     ref(`users_friend/${id}/allow`).once('value')
     .then((snapshot) => {
+        console.log(allowValue);
         const allowValue = snapshot.val();
         const dbRef = ref(getDatabase())
         const updates = {};
         updates[`users_friend/${id}/allow`] = allowValue;
         update(dbRef, updates);
-        console.log(allowValue);
     })
     .catch((error) => {
         console.error(error);
