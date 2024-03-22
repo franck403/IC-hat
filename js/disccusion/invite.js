@@ -24,6 +24,7 @@ if (newroom.has("invite")) {
         var inviteId = newroom.get("invite")
         if (value.dname == inviteId) {
             // good invite show message
+            console.log('got invite')
         }
     })    
 }
