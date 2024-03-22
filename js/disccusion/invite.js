@@ -38,6 +38,7 @@ if (newroom.has("invite")) {
     console.log('got invite')
     onChildAdded(ref(database, 'invites/'), async (data2) => {
         var value = data2.val()
+        console.log(value)
         // check the good id from the url
         var inviteId = newroom.get("invite")
         console.log(value.inviteid)
