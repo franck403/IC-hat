@@ -610,7 +610,7 @@ try {
             type: "invite",
             message: message_render('Do you want to get in this conversation ? From ' + myName, "nop"),
             name: myName,
-            id:id,
+            inviteid: id,
             date: Date.now(),
             dname: cusid
         });
