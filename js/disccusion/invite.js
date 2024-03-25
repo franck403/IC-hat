@@ -18,7 +18,7 @@ const database = getDatabase(app);
 
 function InviteChange(id) {
     // query data to change
-    ref(`users_friend/${id}/allow`).once('value')
+    ref(`users_friend/${id}/allow`)
     .then((snapshot) => {
         console.log(allowValue);
         const allowValue = snapshot.val();
