@@ -18,7 +18,6 @@ const database = getDatabase(app);
 
 function InviteChange(id) {
     // query data to change
-
     ref(`users_friend/${id}/allow`).once('value')
     .then((snapshot) => {
         console.log(allowValue);
@@ -49,5 +48,4 @@ if (newroom.has("invite")) {
             InviteChange(inviteId)
         }
     })    
-}
-
+} 

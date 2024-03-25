@@ -604,7 +604,7 @@ try {
     function createInviteDiscusionIntern() {
         var id = push(child(ref(database), 'invites')).key;
         var cusid = localStorage.getItem('lastChat')
-        set(ref(database, 'invites/' + cusid + '/' + id), {
+        set(ref(database, 'invites/' + id), {
             email: myEmail,
             allow: 'everyone',
             type: "invite",
