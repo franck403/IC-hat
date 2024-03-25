@@ -18,13 +18,15 @@ const database = getDatabase(app);
 
 function InviteChange(id) {
     // query data to change
-    ref(`users_friend/${id}/allow`)
+    console.log(id)
+    ref(`users_friend/${id}/`)
     .then((snapshot) => {
         console.log(allowValue);
         const allowValue = snapshot.val();
         const dbRef = ref(getDatabase())
         const updates = {};
-        updates[`users_friend/${id}/allow`] = allowValue;
+        console.log(allowValue)
+        updates[`users_friend/${id}/allow`] = allowValue.allow;
         update(dbRef, updates);
     })
     .catch((error) => {
