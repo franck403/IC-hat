@@ -24,9 +24,6 @@ if (newroom.has("invite")) {
         console.log(data2.val())
         // check the good id from the url
         var inviteId = newroom.get("invite")
-        console.log(data2.val().inviteid)
-        console.log(inviteId)
-        console.log('-----------')
         if (data2.val().inviteid == inviteId) {
             // good invite show message
             console.log('got invite')
@@ -36,6 +33,7 @@ if (newroom.has("invite")) {
 }
 
 function controlInvte(snapshot) {
+    console.log('Starting invite')
     const dbRef = ref(database);
     get(child(dbRef, `users_friend/${snapshot.val().dname}/}`)).then((snapshot) => {
         if (snapshot.exists()) {
