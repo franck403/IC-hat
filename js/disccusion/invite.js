@@ -1,6 +1,6 @@
 var newroom = new URLSearchParams(window.location.search);
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getDatabase, ref, get, child ,update ,onChildAdded} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+import { getDatabase, ref, get, child, update, onChildAdded } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
@@ -16,26 +16,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-function InviteChange(id) {
-    // query data to change
-    const dbRef = ref(database);
-    get(child(dbRef, `users_friend/${id}/}`)).then((snapshot) => {
-        if (snapshot.exists()) {
-            console.log(snapshot)
-            const allowValue = snapshot.val();
-            const dbRef = ref(getDatabase())
-            const updates = {};
-            console.log(allowValue)
-            updates[`users_friend/${id}/allow`] = allowValue.allow;
-            update(dbRef, updates);
-        } else {
-          console.log("No data available");
-        }
-      }).catch((error) => {
-        console.error(error);
-      });
-      
-}
 
 
 if (newroom.has("invite")) {
@@ -50,7 +30,50 @@ if (newroom.has("invite")) {
         if (data2.val().inviteid == inviteId) {
             // good invite show message
             console.log('got invite')
-            InviteChange(data2.val().dname)
+            controlInvte(data2)
         }
-    })    
-} 
+    })
+}
+
+function controlInvte(snapshot) {
+    const dbRef = ref(database);
+    get(child(dbRef, `users_friend/${id}/}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+            const w = window.open() // access the "about:blank" window you've opened
+            w.document.body.innerHTML = `<div><h1>Do you want to join a disccusion with</h1><h2>${snapshot.val().allow}</h2><button onclick="window.accept(${snapshot.val().dname})">Acccept invite</button></div>`
+            const style = w.document.createElement("link")
+            link.href = "https://ic-hat.geoloup.com/invite.css"
+            link.rel = "stylesheet"
+            w.document.head.appendChild(style)
+            /*
+            function accept() {
+                InviteChange(data2.val().dname)
+            }
+            function InviteChange(id) {
+                // query data to change
+                const dbRef = ref(database);
+                get(child(dbRef, `users_friend/${id}/}`)).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        console.log(snapshot)
+                        const allowValue = snapshot.val();
+                        const dbRef = ref(getDatabase())
+                        const updates = {};
+                        console.log(allowValue)
+                        updates[`users_friend/${id}/allow`] = allowValue.allow;
+                        update(dbRef, updates);
+                    } else {
+                    console.log("No data available");
+                    }
+                }).catch((error) => {
+                    console.error(error);
+                });      
+            }
+            */
+        } else {
+            console.log("No data available");
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+
+}
