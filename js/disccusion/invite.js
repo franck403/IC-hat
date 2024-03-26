@@ -47,7 +47,7 @@ if (newroom.has("invite")) {
         if (data2.val().inviteid == inviteId) {
             // good invite show message
             console.log('got invite')
-            InviteChange(data2.dname)
+            InviteChange(data2.val().dname)
         }
     })    
 } 
