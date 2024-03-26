@@ -32,7 +32,7 @@ function controlInvte(snapshot) {
     console.log('Starting invite')
     const dbRef = ref(database);
     console.log(snapshot.val().dname)
-    get(child(dbRef, `users_friend/${snapshot.val().dname}/}`)).then((snapshot) => {
+    get(child(dbRef, `users_friend/${snapshot.val().dname}}`)).then((snapshot) => {
         if (snapshot.exists()) {
             const w = window.open() // access the "about:blank" window you've opened
             var script = `
