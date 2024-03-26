@@ -16,12 +16,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-
-
 if (newroom.has("invite")) {
-    console.log('got invite')
     onChildAdded(ref(database, 'invites/'), async (data2) => {
-        console.log(data2.val())
         // check the good id from the url
         var inviteId = newroom.get("invite")
         if (data2.val().inviteid == inviteId) {
