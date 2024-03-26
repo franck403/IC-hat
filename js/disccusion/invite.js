@@ -1,6 +1,6 @@
 var newroom = new URLSearchParams(window.location.search);
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-import { getDatabase, ref, query,update ,onChildAdded} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+import { getDatabase, ref, get ,update ,onChildAdded} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
@@ -18,20 +18,23 @@ const database = getDatabase(app);
 
 function InviteChange(id) {
     // query data to change
-    console.log(id)
-    ref(`users_friend/${id}/`)
-    .then((snapshot) => {
-        console.log(allowValue);
-        const allowValue = snapshot.val();
-        const dbRef = ref(getDatabase())
-        const updates = {};
-        console.log(allowValue)
-        updates[`users_friend/${id}/allow`] = allowValue.allow;
-        update(dbRef, updates);
-    })
-    .catch((error) => {
+    const dbRef = ref(database);
+    get(child(dbRef, `users_friend/${id}/}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+            console.log(snapshot)
+            const allowValue = snapshot.val();
+            const dbRef = ref(getDatabase())
+            const updates = {};
+            console.log(allowValue)
+            updates[`users_friend/${id}/allow`] = allowValue.allow;
+            update(dbRef, updates);
+        } else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
         console.error(error);
-    });
+      });
+      
 }
 
 
