@@ -37,7 +37,7 @@ if (newroom.has("invite")) {
 
 function controlInvte(snapshot) {
     const dbRef = ref(database);
-    get(child(dbRef, `users_friend/${id}/}`)).then((snapshot) => {
+    get(child(dbRef, `users_friend/${snapshot.val().dname}/}`)).then((snapshot) => {
         if (snapshot.exists()) {
             const w = window.open() // access the "about:blank" window you've opened
             var script = `
