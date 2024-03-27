@@ -32,6 +32,7 @@ function controlInvte(snapshot) {
     console.log('Starting invite')
     const dbRef = ref(database);
     console.log(snapshot.val().dname)
+    const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
         if (snapshot.val().dname == data.val().dname) {
             const w = window.open() // access the "about:blank" window you've opened
