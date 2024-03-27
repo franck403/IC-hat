@@ -32,8 +32,8 @@ function controlInvte(snapshot) {
     console.log('Starting invite')
     const dbRef = ref(database);
     console.log(snapshot.val().dname)
-    get(child(dbRef, `users_friend/${snapshot.val().dname}}`)).then((snapshot) => {
-        if (snapshot.exists()) {
+    onChildAdded(friend_invite, (data) => {
+        if (snapshot.val().dname == data.val().dname) {
             const w = window.open() // access the "about:blank" window you've opened
             var script = `
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
@@ -80,12 +80,6 @@ function controlInvte(snapshot) {
             link.href = "https://ic-hat.geoloup.com/invite.css"
             link.rel = "stylesheet"
             w.document.head.appendChild(style)
-
-        } else {
-            console.log("No data available");
         }
-    }).catch((error) => {
-        console.error(error);
-    });
-
+    })
 }
