@@ -1,5 +1,5 @@
-import bhuy3huygyufwyuge
+import api
 
-useraccount = bhuy3huygyufwyuge.getuser()
+useraccount = api.getuser()
 
 print(useraccount)
