@@ -35,7 +35,7 @@ function controlInvte(snapshot) {
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
         if (snapshot.val().dname == data.val().dname) {
-            const w = window.open()
+            var w = window.open()
             var script = `
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
             import { getDatabase, ref, get, child, update, onChildAdded } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
