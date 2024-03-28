@@ -57,6 +57,7 @@ function controlInvte(snapshot) {
             function accept(val) {
                 InviteChange(val)
             }
+            window.accept = accept
             function InviteChange(id) {
                 // query data to change
                 const dbRef = ref(database);
@@ -76,7 +77,7 @@ function controlInvte(snapshot) {
                     console.error(error);
                 });      
             }`
-            w.document.body.innerHTML = `<div><h1>Do you want to join a disccusion with</h1><h2>${snapshot.val().allow}</h2><button onclick="window.accept(${snapshot.val().dname})">Acccept invite</button><script>${script}</script></div>`
+            w.document.body.innerHTML = `<div><h1>Do you want to join a disccusion with</h1><h2>${snapshot.val().allow}</h2><button onclick="window.accept(${snapshot.val().dname})">Acccept invite</button><script type="module">${script}</script></div>`
             const style = w.document.createElement("link")
             link.href = "https://ic-hat.geoloup.com/invite.css"
             link.rel = "stylesheet"
