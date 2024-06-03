@@ -478,6 +478,7 @@ try {
                 // when message is edited or hide get message element and hide or chnge the content
             })
             try {
+                console.log('event lisner added')
                 var lastScroll = 0;
                 document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
                     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; // Get Current Scroll Value
