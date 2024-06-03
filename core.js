@@ -1,5 +1,5 @@
 import { setCookie, bip, removeloader, getuser, message_date, message_render } from "./bhuy3huygyufwyuge.js"
-setTimeout(removeloader,5000)
+setTimeout(removeloader, 5000)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
     getDatabase,
@@ -64,22 +64,22 @@ if (myData != null) {
     document.getElementById("connected").remove()
     window.location.replace(window.location.origin)
 }
-export function fromHTML(html, trim = true,id) {
+export function fromHTML(html, trim = true, id) {
     // Process the HTML string.
     html = trim ? html.trim() : html;
     if (!html) return null;
-  
+
     // Then set up a new template element.
     const template = document.createElement('template');
     template.innerHTML = html;
     template.id = id
     const result = template.content.children;
-  
+
     // Then return either an HTMLElement or HTMLCollection,
     // based on whether the input HTML had one or more roots.
     if (result.length === 1) return result[0];
     return result;
-  }
+}
 export async function resizeImage(dataUrl, targetFileSizeKb, maxDeviation = 1) {
     let originalFile = await urltoFile(dataUrl, 'test.png', 'image/png');
     if (originalFile.size / 1000 < targetFileSizeKb)
@@ -223,7 +223,7 @@ try {
             var element = elements[index];
             if (element.style.visibility != "hidden") {
                 element.style.visibility = "hidden"
-            } 
+            }
         }
     }
     function allclose1() {
@@ -315,11 +315,11 @@ try {
             }
             /*
 
-            */ 
+            */
             set(ref(database, 'messages/' + customid + "/"), data);
             set(ref(database, 'users_friend/' + customid), data);
         } else { }
-    
+
     }
     window.createDisc = createDisc
 
@@ -423,7 +423,7 @@ try {
                             var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div>${message_render(data2.val().message)}</div>${tooltip}</div>`
                             var DateNow = data2.val().date
                         }
-                    } else { }                
+                    } else { }
                 } else if (data2.val().type == "image") {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
@@ -440,7 +440,7 @@ try {
                         var DateNow = data2.val().date
                         var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div><audio class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></audio></div>${tooltip}</div>`
                     }
-                } else {}
+                } else { }
                 try {
                     return [d1, html]
                 } catch { }
@@ -478,21 +478,29 @@ try {
                 // when message is edited or hide get message element and hide or chnge the content
             })
             try {
+                var lastScroll = 0;
                 document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
-                    for (let i = 0; i < (window.processingMessage.length); i++) {
-                        if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
-                        } else {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
+                    let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; // Get Current Scroll Value
+                    if (currentScroll > 0 && lastScroll <= currentScroll) {
+                        lastScroll = currentScroll;
+                    } else {
+                        lastScroll = currentScroll;
+                        // scrolling up !
+                        for (let i = 0; i < (window.processingMessage.length); i++) {
+                            if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
+                                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
+                            } else {
+                                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
+                            }
+                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true, true)
+                            window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0, findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0, findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
                         }
-                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),true,true)
-                        window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
                     }
                 })
-    
+
             } catch {
                 console.log('event listener could no be added')
-                setTimeout(1000,()=> {
+                setTimeout(1000, () => {
                     document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
                         for (let i = 0; i < (window.processingMessage.length); i++) {
                             if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
@@ -500,21 +508,21 @@ try {
                             } else {
                                 var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
                             }
-                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),true,true)
-                            window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0,findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
+                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true, true)
+                            window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0, findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0, findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
                         }
-                    })    
+                    })
                 })
             }
             el.dataset.enable = true
             setTimeout(MessageLoad, 1000);
             setTimeout((el) => {
                 el.scrollTop = el.scrollHeight;
-                el.scrollTop = el.scrollHeight;                    
-            }, 2000,el);
+                el.scrollTop = el.scrollHeight;
+            }, 2000, el);
         }
     });
-    function MessageWorkerLoop(snapshot, back,noscroll=false) {
+    function MessageWorkerLoop(snapshot, back, noscroll = false) {
         var state = back
         for (let i = 0; i < (snapshot.length); i++) {
             var data = snapshot[i]
@@ -532,7 +540,7 @@ try {
                     if (!noscroll) {
                         var elem = d1
                         elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;      
+                        elem.scrollTop = elem.scrollHeight;
                     }
                 }
             }
@@ -550,7 +558,7 @@ try {
     }
     window.findAll = findAll
     window.MessageWorkerLoop = MessageWorkerLoop
-    async function MessageWorker(select,max,noscroll=false) {
+    async function MessageWorker(select, max, noscroll = false) {
         if (max == undefined) {
             max = 20
         }
@@ -567,28 +575,28 @@ try {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, max).reverse()
                     } else {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
-                    }    
+                    }
                 } else if (localStorage.getItem('lastChat') == i) {
                     if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
                     } else {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
-                    }    
+                    }
                 }
                 if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
                 } else {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                 }
-                var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),noscroll)
+                var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), noscroll)
                 window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
             }
         }
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
-    function MessageLoad(select,max,noscroll=false) {
-        MessageWorker(select,max,noscroll)
+    function MessageLoad(select, max, noscroll = false) {
+        MessageWorker(select, max, noscroll)
         //worker.postMessage('called')
     }
     window.MessageLoad = MessageLoad
@@ -618,7 +626,7 @@ try {
     }
     window.createInviteDiscusionIntern = createInviteDiscusionIntern
 
-    function changeDisplayNameIntern(id,newDisplayName) {
+    function changeDisplayNameIntern(id, newDisplayName) {
         const dbRef = ref(getDatabase())
         const updates = {};
         updates[`users_friend/${id}/displayName`] = newDisplayName;
@@ -626,7 +634,7 @@ try {
     }
     window.changeDisplayNameIntern = changeDisplayNameIntern
 
-    function changeMessageContentIntern(id,messageID,newValue) {
+    function changeMessageContentIntern(id, messageID, newValue) {
         const dbRef = ref(getDatabase())
         const updates = {};
         updates[`'messages/'${id}/${messageID}/message`] = newValue;
@@ -635,7 +643,7 @@ try {
 
     window.changeMessageContentIntern = changeMessageContentIntern
 
-    function hideMessageInter(id,messageID) {
+    function hideMessageInter(id, messageID) {
         const dbRef = ref(getDatabase())
         const updates = {};
         updates[`'messages/'${id}/${messageID}/hide`] = True;
@@ -785,7 +793,7 @@ try {
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
-                    setTimeout((data2)=> {
+                    setTimeout((data2) => {
                         var message = newMessage(data2)
                         if (message != undefined) {
                             var d1 = message[0]
@@ -793,8 +801,8 @@ try {
                             var elem = d1
                         }
                         elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;             
-                    },1000,data2)
+                        elem.scrollTop = elem.scrollHeight;
+                    }, 1000, data2)
                 }
             })
             onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
@@ -812,7 +820,7 @@ try {
                     }
                 }
             })
-       } else { }
+        } else { }
     });
 } catch (err) {
     console.log(err)
