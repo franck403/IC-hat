@@ -484,8 +484,10 @@ try {
                     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; // Get Current Scroll Value
                     if (currentScroll > 0 && lastScroll <= currentScroll) {
                         lastScroll = currentScroll;
+                        console.log('down')
                     } else {
                         lastScroll = currentScroll;
+                        console.log('up')
                         // scrolling up !
                         for (let i = 0; i < (window.processingMessage.length); i++) {
                             if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
