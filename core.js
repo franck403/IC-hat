@@ -481,7 +481,7 @@ try {
                 console.log('event lisner added')
                 var lastScroll = 0;
                 document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
-                    let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; // Get Current Scroll Value
+                    let currentScroll = e.target.scrollTop
                     if (currentScroll > 0 && lastScroll <= currentScroll) {
                         lastScroll = currentScroll;
                         console.log('down')
