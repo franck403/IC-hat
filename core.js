@@ -457,7 +457,6 @@ try {
     document.getElementById("people").addEventListener("click", (e) => {
         const el = e.target.closest("li");
         if (el.dataset.enable != "true") {
-            window.MessageLoad()
             onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 // To do make a list of message to load
                 if (data2.val().dname == undefined) { return }
@@ -484,11 +483,15 @@ try {
                     let currentScroll = e.target.scrollTop
                     if (currentScroll > 0 && lastScroll <= currentScroll) {
                         lastScroll = currentScroll;
-                        console.log('down')
                     } else {
+                        console.log(currentScroll)
+                        console.log(lastScroll)
+                        console.log(currentScroll - lastScroll)
+                        console.log(lastScroll - currentScroll)
                         lastScroll = currentScroll;
-                        console.log('up')
+                        console.log('loading more message')
                         // scrolling up !
+                        // load more message (To-do)
                         for (let i = 0; i < (window.processingMessage.length); i++) {
                             if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
                                 var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
@@ -517,6 +520,7 @@ try {
                     })
                 })
             }
+            window.MessageLoad()
             el.dataset.enable = true
             setTimeout(MessageLoad, 1000);
             setTimeout((el) => {
