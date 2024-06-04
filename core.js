@@ -533,6 +533,8 @@ try {
                             console.log('loading more message')
                             // scrolling up !
                             // load more message (To-do)
+                            window.MessageLoad(undefined,undefined,false,true)
+                            /*
                             for (let i = 0; i < (window.processingMessage.length); i++) {
                                 if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
                                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
@@ -542,6 +544,7 @@ try {
                                 var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true, true)
                                 window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0, findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0, findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
                             }
+                            */
                         }
                     }
                 })
@@ -607,7 +610,7 @@ try {
     }
     window.findAll = findAll
     window.MessageWorkerLoop = MessageWorkerLoop
-    async function MessageWorker(select, max, noscroll = false) {
+    async function MessageWorker(select, max, noscroll = false,reversed = false) {
         if (max == undefined) {
             max = 20
         }
@@ -637,15 +640,15 @@ try {
                 } else {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                 }
-                var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), noscroll)
+                var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),reversed ,noscroll)
                 window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
             }
         }
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
-    function MessageLoad(select, max, noscroll = false) {
-        MessageWorker(select, max, noscroll)
+    function MessageLoad(select, max, noscroll = false,reversed = false) {
+        MessageWorker(select, max, noscroll,reversed)
         //worker.postMessage('called')
     }
     window.MessageLoad = MessageLoad
