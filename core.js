@@ -487,7 +487,7 @@ try {
                         console.log(currentScroll)
                         console.log(lastScroll)
                         var scrolledAmount = lastScroll - currentScroll
-                        if (currentScroll < 11) {
+                        if (currentScroll < 60) {
                             // now load more message
                             console.log(scrolledAmount)
                             lastScroll = currentScroll;
