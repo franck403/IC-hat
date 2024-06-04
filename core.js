@@ -404,13 +404,52 @@ try {
             } else { }
         } else { }
     });
+    function dateDifference(date1, date2) {
+        // Get 1 second, 1 minute, and 1 hour in milliseconds
+        const oneSecond = 1000;
+        const oneMinute = 60 * oneSecond;
+        const oneHour = 60 * oneMinute;
 
+        // Calculate the difference in milliseconds
+        const diffInMilliseconds = Math.abs(date2 - date1);
+
+        // Convert back to seconds, minutes, and hours
+        const diffInSeconds = Math.round(diffInMilliseconds / oneSecond);
+        const diffInMinutes = Math.round(diffInMilliseconds / oneMinute);
+        const diffInHours = Math.round(diffInMilliseconds / oneHour);
+
+        // Format the output
+        if (diffInHours > 1) {
+            return `sent ${diffInHours} hours ago`;
+        } else if (diffInHours === 1) {
+            return `sent ${diffInHours} hour ago`;
+        } else if (diffInMinutes > 1) {
+            return `sent ${diffInMinutes} minutes ago`;
+        } else if (diffInMinutes === 1) {
+            return `sent ${diffInMinutes} minute ago`;
+        } else if (diffInSeconds > 1) {
+            return `sent ${diffInSeconds} seconds ago`;
+        } else if (diffInSeconds === 1) {
+            return `sent ${diffInSeconds} second ago`;
+        } else {
+            return `sent today`;
+        }
+    }
+    function formatDate(date) {
+        let formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} `;
+        let formattedTime = `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+
+        return formattedDate + formattedTime;
+    }
+    
     function newMessage(data2) {
         const dnamef = data2.val().dname
         var class_added = `tooltip`
+
         var tooltip = `
-            <span class="tooltiptext">Send at ${String(new Date(data2.val().date))}</span>
+            <span class="tooltiptext">Send at ${String(dateDifference(new Date(data2.val().date),new Date()) + '. Sent at' + formatDate(new Date()))}</span>
         `
+        
         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
         if (data2.val().name != null) {
             if (data2.val().message != null) {
