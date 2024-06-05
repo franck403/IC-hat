@@ -533,7 +533,7 @@ try {
                             console.log('loading more message')
                             // scrolling up !
                             // load more message (To-do)
-                            window.MessageLoad(undefined,undefined,false,true)
+                            window.MessageLoad(reversed = true)
                             /*
                             for (let i = 0; i < (window.processingMessage.length); i++) {
                                 if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
@@ -550,20 +550,7 @@ try {
                 })
 
             } catch {
-                console.log('event listener could no be added')
-                setTimeout(1000, () => {
-                    document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
-                        for (let i = 0; i < (window.processingMessage.length); i++) {
-                            if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
-                                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice(0, 10)
-                            } else {
-                                var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice()
-                            }
-                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true, true)
-                            window.processingMessage[window.processingMessage[i]] = window.processingMessage[window.processingMessage[i]].slice(0, findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length).concat(resultSnapshot).concat(window.processingMessage[window.processingMessage[i]].slice((window.processingMessage[window.processingMessage[i]].slice(0, findAll((obj => obj[1] === true), window.processingMessage[window.processingMessage[i]]).length)).length + snapshot.length))
-                        }
-                    })
-                })
+                console.log('event lisner wasnt added. Disabled scroll event to load more msessages')
             }
             window.MessageLoad()
             el.dataset.enable = true
@@ -574,7 +561,7 @@ try {
             }, 2000, el);
         }
     });
-    function MessageWorkerLoop(snapshot, back, noscroll = false) {
+    function MessageWorkerLoop(snapshot, back) {
         var state = back
         for (let i = 0; i < (snapshot.length); i++) {
             var data = snapshot[i]
@@ -584,16 +571,14 @@ try {
                 var message = newMessage(data2)
                 if (message != undefined) {
                     var d1 = message[0]
-                    if (!back) {
+                    if (back == false) {
                         d1.innerHTML = d1.innerHTML + message[1]
                     } else {
                         d1.innerHTML = message[1] + d1.innerHTML
                     }
-                    if (!noscroll) {
-                        var elem = d1
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
-                    }
+                    var elem = d1
+                    elem.scrollTop = elem.scrollHeight;
+                    elem.scrollTop = elem.scrollHeight;
                 }
             }
         }
@@ -614,7 +599,7 @@ try {
     }
     window.findAll = findAll
     window.MessageWorkerLoop = MessageWorkerLoop
-    async function MessageWorker(select, max, noscroll = false,reversed = false) {
+    async function MessageWorker(select, max,reversed = false) {
         if (max == undefined) {
             max = 20
         }
@@ -644,14 +629,14 @@ try {
                 } else {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                 }
-                var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),reversed ,noscroll)
+                var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),reversed)
                 window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
             }
         }
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
-    function MessageLoad(select, max, noscroll = false,reversed = false) {
+    function MessageLoad(select, max,reversed = false) {
         MessageWorker(select, max, noscroll,reversed)
         //worker.postMessage('called')
     }
