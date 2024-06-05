@@ -637,7 +637,7 @@ try {
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
     function MessageLoad(select, max,reversed = false) {
-        MessageWorker(select, max, noscroll,reversed)
+        MessageWorker(select, max,reversed)
         //worker.postMessage('called')
     }
     window.MessageLoad = MessageLoad
