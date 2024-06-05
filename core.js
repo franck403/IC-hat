@@ -587,7 +587,7 @@ try {
     function findAll(findFunc, object) {
         var d = []
         if (object == undefined) {
-            consolem.log('object is null')
+            console.error('object is null')
             return d
         }
         for (let i = 0; i < (object.length); i++) {
