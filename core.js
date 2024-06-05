@@ -533,7 +533,7 @@ try {
                             console.log('loading more message')
                             // scrolling up !
                             // load more message (To-do)
-                            window.MessageLoad(reversed = true)
+                            window.MessageLoadReversed()
                             /*
                             for (let i = 0; i < (window.processingMessage.length); i++) {
                                 if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > 1) {
@@ -636,10 +636,16 @@ try {
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
-    function MessageLoad(select, max,reversed = false) {
+    function MessageLoad(select, max,reversed=false) {
         MessageWorker(select, max,reversed)
         //worker.postMessage('called')
     }
+    // reversed
+    function MessageLoadReversed(select, max) {
+        MessageWorker(select, max,true)
+        //worker.postMessage('called')
+    }
+    window.MessageLoadReversed = MessageLoadReversed
     window.MessageLoad = MessageLoad
 
     function hidediscusionintern(id) {
