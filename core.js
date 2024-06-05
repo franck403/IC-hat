@@ -523,8 +523,6 @@ try {
                     if (currentScroll > 0 && lastScroll <= currentScroll) {
                         lastScroll = currentScroll;
                     } else {
-                        console.log(currentScroll)
-                        console.log(lastScroll)
                         var scrolledAmount = lastScroll - currentScroll
                         if (currentScroll < 60) {
                             // now load more message
