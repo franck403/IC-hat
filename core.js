@@ -629,6 +629,7 @@ try {
                 } else {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                 }
+                console.log(snapshot)
                 var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),reversed)
                 window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
             }
