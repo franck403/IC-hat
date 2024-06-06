@@ -441,15 +441,15 @@ try {
 
         return formattedDate + formattedTime;
     }
-    
+
     function newMessage(data2) {
         const dnamef = data2.val().dname
         var class_added = `tooltip`
 
         var tooltip = `
-            <span class="tooltiptext">Send at ${String(dateDifference(new Date(data2.val().date),new Date()) + '. Sent at' + formatDate(new Date()))}</span>
+            <span class="tooltiptext">Send at ${String(dateDifference(new Date(data2.val().date), new Date()) + '. Sent at' + formatDate(new Date()))}</span>
         `
-        
+
         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
         if (data2.val().name != null) {
             if (data2.val().message != null) {
@@ -561,24 +561,21 @@ try {
         }
     });
     function MessageWorkerLoop(snapshot, back) {
-        var state = back
         for (let i = 0; i < (snapshot.length); i++) {
             var data = snapshot[i]
             var data2 = data[0]
-            if (!state) {
-                data[1] = true
-                var message = newMessage(data2)
-                if (message != undefined) {
-                    var d1 = message[0]
-                    if (back == false) {
-                        d1.innerHTML = d1.innerHTML + message[1]
-                    } else {
-                        d1.innerHTML = message[1] + d1.innerHTML
-                    }
-                    var elem = d1
-                    elem.scrollTop = elem.scrollHeight;
-                    elem.scrollTop = elem.scrollHeight;
+            data[1] = true
+            var message = newMessage(data2)
+            if (message != undefined) {
+                var d1 = message[0]
+                if (back == false) {
+                    d1.innerHTML = d1.innerHTML + message[1]
+                } else {
+                    d1.innerHTML = message[1] + d1.innerHTML
                 }
+                var elem = d1
+                elem.scrollTop = elem.scrollHeight;
+                elem.scrollTop = elem.scrollHeight;
             }
         }
         return snapshot
@@ -598,7 +595,7 @@ try {
     }
     window.findAll = findAll
     window.MessageWorkerLoop = MessageWorkerLoop
-    async function MessageWorker(select, max,reversed = false) {
+    async function MessageWorker(select, max, reversed = false) {
         console.log(select)
         console.log(max)
         console.log(reversed)
@@ -631,21 +628,26 @@ try {
                 } else {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                 }
-                var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),reversed)
-                window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
+                if (reversed) {
+                    var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true)
+                    window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
+                } else {
+                    var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), false)
+                    window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
+                }
             }
         }
     }
     window.MessageWorker = MessageWorker
     window.newMessage = newMessage
-    function MessageLoad(select, max,reversed=false) {
-        MessageWorker(select, max,reversed)
+    function MessageLoad(select, max, reversed = false) {
+        MessageWorker(select, max, reversed)
         //worker.postMessage('called')
     }
     // reversed
     function MessageLoadReversed() {
         var p = {}
-        MessageWorker(p.select, p.max,true)
+        MessageWorker(p.select, p.max, true)
         //worker.postMessage('called')
     }
     window.MessageLoadReversed = MessageLoadReversed
@@ -702,7 +704,6 @@ try {
 
     window.hideMessageInter = hideMessageInter
 
-    MessageLoad()
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
         if (data.val().hide == true) {
