@@ -599,6 +599,9 @@ try {
     window.findAll = findAll
     window.MessageWorkerLoop = MessageWorkerLoop
     async function MessageWorker(select, max,reversed = false) {
+        console.log(select)
+        console.log(max)
+        console.log(reversed)
         if (max == undefined) {
             max = 20
         }
