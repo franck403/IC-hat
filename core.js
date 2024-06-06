@@ -560,7 +560,7 @@ try {
             }, 2000, el);
         }
     });
-    function MessageWorkerLoop(snapshot, back) {
+    function MessageWorkerLoop(snapshot, reversed=false) {
         for (let i = 0; i < (snapshot.length); i++) {
             var data = snapshot[i]
             var data2 = data[0]
@@ -568,14 +568,14 @@ try {
             var message = newMessage(data2)
             if (message != undefined) {
                 var d1 = message[0]
-                if (back == false) {
+                if (reversed == false) {
                     d1.innerHTML = d1.innerHTML + message[1]
                 } else {
                     d1.innerHTML = message[1] + d1.innerHTML
+                    var elem = d1
+                    elem.scrollTop = elem.scrollHeight;
+                    elem.scrollTop = elem.scrollHeight;
                 }
-                var elem = d1
-                elem.scrollTop = elem.scrollHeight;
-                elem.scrollTop = elem.scrollHeight;
             }
         }
         return snapshot
