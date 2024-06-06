@@ -531,6 +531,7 @@ try {
                             console.log('loading more message')
                             // scrolling up !
                             // load more message (To-do)
+                            // not message are showed WHY
                             window.MessageLoadReversed()
                             /*
                             for (let i = 0; i < (window.processingMessage.length); i++) {
@@ -627,7 +628,6 @@ try {
                 } else {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                 }
-                console.log(snapshot)
                 var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length),reversed)
                 window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
             }
@@ -640,8 +640,9 @@ try {
         //worker.postMessage('called')
     }
     // reversed
-    function MessageLoadReversed(select, max) {
-        MessageWorker(select, max,true)
+    function MessageLoadReversed() {
+        var p = {}
+        MessageWorker(p.select, p.max,true)
         //worker.postMessage('called')
     }
     window.MessageLoadReversed = MessageLoadReversed
