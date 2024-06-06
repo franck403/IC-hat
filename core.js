@@ -9,7 +9,8 @@ import {
     child,
     onChildAdded,
     onChildChanged,
-    update
+    update,
+    onDisconnect
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 localStorage.setItem("state", "no")
 var Imageupload = window.Imageupload
@@ -29,6 +30,11 @@ const database = getDatabase(app);
 window.appFire = app
 window.databaseFire = database
 window.userdb = []
+
+const presenceRef = ref(database, "disconnectmessage");
+onDisconnect(presenceRef).set(function () {
+    console.log('disconected from DB')
+});
 
 var myData = await getuser()
 if (myData != null) {
@@ -660,6 +666,56 @@ try {
     }
     window.createInviteDiscusionIntern = createInviteDiscusionIntern
 
+        function CustomAlert(message,title,element){
+            document.body.innerHTML = document.body.innerHTML + '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
+        
+            let dialogoverlay = document.getElementById('dialogoverlay');
+            let dialogbox = document.getElementById('dialogbox');
+            
+            let winH = window.innerHeight;
+            dialogoverlay.style.height = winH+"px";
+            
+            dialogbox.style.top = "100px";
+        
+            dialogoverlay.style.display = "block";
+            dialogbox.style.display = "block";
+            
+            document.getElementById('dialogboxhead').style.display = 'block';
+        
+            if(typeof title === 'undefined') {
+              document.getElementById('dialogboxhead').style.display = 'none';
+            } else {
+              document.getElementById('dialogboxhead').innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> '+ title;
+            }
+            document.getElementById('dialogboxbody').innerHTML = message;
+            document.getElementById('dialogboxfoot').innerHTML = '<button class="pure-material-button-contained active" onclick="'+ `(() => {
+            document.getElementById('dialogbox').style.display = 'none';
+            document.getElementById('dialogoverlay').style.display = 'none';})()
+            ` +'">OK</button>';
+        }
+        
+    function waitInternetLoader(repeatTime) {
+
+        var interval = setInterval(()=>{
+            if (navigator.onLine) {
+                console.log("Stopping Repeater");
+                // stop the repeat process
+                clearInterval(interval)
+                // reload message after 1s of reconecting
+                setTimeout(() => {
+                }, 1000);
+              } else {
+                console.log("User Offline repeating");
+              }
+        },repeatTime)
+    }
+    window.addEventListener("offline", (e) => {
+        window.waitInternetLoader(100)
+        console.log("offline");
+      });
+      
+    window.waitInternetLoader = waitInternetLoader
+    
     function changeDisplayNameIntern(id, newDisplayName) {
         const dbRef = ref(getDatabase())
         const updates = {};

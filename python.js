@@ -15,41 +15,6 @@ async function convertPyToJs(code) {
     } else { console.error("Error fetching data:", response.status, response.statusText); }
 }
 
-
-const visitedDirs = new Set(); // Set to keep track of visited directories
-const dirStack = []; // Stack to store directories to process
-
-async function PYprocessDirectory(dirHandle) {
-    if (visitedDirs.has(dirHandle)) {
-        // Skip this directory if it has already been visited
-        return;
-    }
-
-    visitedDirs.add(dirHandle); // Mark the current directory as visited
-    dirStack.push(dirHandle); // Add the current directory to the stack
-
-    while (dirStack.length > 0) {
-        const currentDir = dirStack.pop(); // Get the last directory from the stack
-
-        for await (const entry of currentDir.values()) {
-            if (entry.kind === 'file') {
-                try {
-                    // Handle file content as before
-                    const file = await entry.getFile();
-                    var fileContent = await file.text();
-                    var fileContent = await convertPyToJs(fileContent);
-                    console.log(`File "${entry.name}" content:\n${fileContent}`);
-                } catch {
-                    console.log('Not supported python thing')
-                }
-            } else if (entry.kind === 'directory') {
-                // Add subdirectories to the stack
-                dirStack.push(entry);
-            }
-        }
-    }
-}
-
 async function loadDataFromFile(onlinePath) {
     var response = await fetch(onlinePath, {
         "headers": {
