@@ -7,5 +7,5 @@ netlfly
 github
 image cropper
 #### Note : Extention loaders are still in devloppement
-[Chat link](ic-hat.geoloup.com)
+[Chat link](https://ic-hat.geoloup.com)
 We do not accept pull request only bug fix and bug report !
