@@ -1118,7 +1118,7 @@ body {
     position: absolute;
     z-index: 23;
     left: 36%;
-    top: -4.5vh;
+    top: -100%;
     margin-left: -60px;
 }
 
