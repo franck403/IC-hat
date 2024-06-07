@@ -31,11 +31,6 @@ window.appFire = app
 window.databaseFire = database
 window.userdb = []
 
-const presenceRef = ref(database, "disconnectmessage");
-onDisconnect(presenceRef).set(function () {
-    console.log('disconected from DB')
-});
-
 var myData = await getuser()
 if (myData != null) {
     var myEmail = myData.email
