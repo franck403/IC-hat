@@ -695,7 +695,7 @@ try {
         }
         
     function waitInternetLoader(repeatTime) {
-
+        CustomAlert('You are offline !','No internet')
         var interval = setInterval(()=>{
             if (navigator.onLine) {
                 console.log("Stopping Repeater");
