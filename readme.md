@@ -1,5 +1,4 @@
-# IC-hat 
-## by geoloup
+# IC-hat *by geoloup*
 **Free and open source chat**
 ### Use :
 firebase realtime db
