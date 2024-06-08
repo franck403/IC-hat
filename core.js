@@ -707,7 +707,11 @@ try {
     window.addEventListener("offline", (e) => {
         window.waitInternetLoader(100)
         console.log("offline");
-      });
+    });
+    window.addEventListener("online", (e) => {
+        location.reload()
+        console.log("online");
+    });
       
     window.waitInternetLoader = waitInternetLoader
     
