@@ -18,15 +18,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
     url = url.split("?")[0]; 
     if (url == "https://chat.geoloup.com/chat") {
         window.location.replace("https://ic-hat.geoloup.com/chat")
-        alert('redirecting')
     }
     if (url == "https://chat.geoloup.com/") {
         window.location.replace("https://ic-hat.geoloup.com/")
-        alert('redirecting')
     }
     if (url == "https://chat.geoloup.com/store") {
         window.location.replace("https://ic-hat.geoloup.com/store")
-        alert('redirecting')
     }
     if (url == "https://splendorous-hamster-ecd34b.netlify.app/chat"|| url == "https://chat.geoloup.com/chat" || url == "https://ic-hat.geoloup.com/chat" || url == "https://beta.chat.geoloup.com/chat" || url == "https://chat.beta.geoloup.com/chat" ) {
         load()
