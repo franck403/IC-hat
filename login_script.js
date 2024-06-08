@@ -58,4 +58,4 @@ get(child(dbRef, `users/` + user)).then((snapshot) => {
 
 
 
-window.location.replace("https://" + window.location.host);
+//window.location.replace("https://" + window.location.host);
