@@ -830,7 +830,7 @@ try {
             </li>`
                 } else {
                     var html = `
-                <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
+                <li onclick="room('${data.val().dname}',event)" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
                 <img src="img/default.png" class="people-img"alt="picture" />
                 <p id="name_${data.val().allow}" class="people-name"><input is="expanding-list" id="rename_${data.val().dname}" class='rename-file' type="text"/>${displayName}</p>
                 <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
@@ -840,7 +840,7 @@ try {
                 }
             } catch {
                 var html = `
-                <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
+                <li onclick="room('${data.val().dname}',event)" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
                 <img src="img/default.png" class="people-img"alt="picture" />
                 <p id="name_${data.val().allow}" class="people-name"><input is="expanding-list" id="rename_${data.val().dname}" class='rename-file' type="text"/>${displayName}</p>
                 <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time"></p>
