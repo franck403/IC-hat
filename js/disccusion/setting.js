@@ -4,9 +4,17 @@ class MyCustomElement extends HTMLElement {
         super();
     }
     connectedCallback() {
+        this.uuid = crypto.randomUUID()
         var style = `@media screen and (min-width:900px){.context-menu{background-color:#fff;color:#1f194c;max-width:200px;z-index:10;padding:4px;font-size:20px;display:flex;flex-wrap:wrap;position:fixed;border-radius:5px;border:1px solid #00000030;visibility:hidden}.context-menu span{color:#000;padding:10px;width:100%}.context-menu span i{margin-right:20px;color:#000}.context-menu span i:hover{background-color:rgba(44,141,247,.2);color:#000}.item{color:#000}.context-menu span:hover{color:#000;background-color:rgba(44,141,247,.2);cursor:pointer}}@media screen and (max-width:900px){.context-menu{background-color:#fff;color:#1f194c;max-width:200px;z-index:10;padding:4px;font-size:20px;display:flex;flex-wrap:wrap;position: relative;right: 60px;border-radius:5px;border:1px solid #00000030;visibility:hidden}.context-menu span{color:#000;padding:10px;width:100%}.context-menu span i{margin-right:20px;color:#000}.context-menu span i:hover{background-color:rgba(44,141,247,.2);color:#000}.item{color:#000}.context-menu span:hover{color:#000;background-color:rgba(44,141,247,.2);cursor:pointer}}`
-        var div = `<style>${style}</style><i class="fa-solid fa-ellipsis"style="rotate: 90deg;"onclick='!function(i){var e=i.parentNode.querySelector("div");"visible"==e.style.visibility?e.style.visibility="hidden":e.style.visibility="visible"}(this)'></i><div class=context-menu><span class=item onclick="createInviteDiscusion()"><i class="fa-solid fa-user-plus"></i>Create invite</span><span class=item onclick='hidediscusion()'><i class="fa-solid fa-user-minus"></i>Hide for you</span><span class=item onclick="ChangeDisplayName()"><i class="fa-solid fa-pen-to-square"></i>Edit name</span></div>`;
+        var div = `<div id='${this.uuid}'><style>${style}</style><i class="fa-solid fa-ellipsis"style="rotate: 90deg;"onclick='!function(i){var e=i.parentNode.querySelector("div");"visible"==e.style.visibility?e.style.visibility="hidden":e.style.visibility="visible"}(this)'></i><div class=context-menu><span class=item onclick="createInviteDiscusion()"><i class="fa-solid fa-user-plus"></i>Create invite</span><span class=item onclick='hidediscusion()'><i class="fa-solid fa-user-minus"></i>Hide for you</span><span class=item onclick="ChangeDisplayName()"><i class="fa-solid fa-pen-to-square"></i>Edit name</span></div></div>`;
         this.innerHTML = div
+    }
+
+    disconnectedCallback() {
+        console.log("Custom element removed from page.");
+        try {
+        document.getElementById(this.uuid).remove()
+        } catch {}
     }
 }
 customElements.define("popup-setting-menu", MyCustomElement);
