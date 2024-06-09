@@ -4,6 +4,7 @@ if (url.endsWith("#")) {
   url = url.slice(0, -1)
 }
 url = url.split("?")[0];
+console.log('[room] checking url')
 if (url == "https://chat.geoloup.com/chat") {
   window.location.replace("https://ic-hat.geoloup.com/chat")
 }
@@ -13,6 +14,7 @@ if (url == "https://chat.geoloup.com/") {
 if (url == "https://chat.geoloup.com") {
   window.location.replace("https://ic-hat.geoloup.com/store")
 }
+console.log('[room] room was loaded')
 
 
 let max = 0
