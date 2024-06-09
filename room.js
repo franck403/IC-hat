@@ -50,6 +50,10 @@ function load_image(chat_id, min_) {
 }
 function room(id,e) {
   console.log(e)
+  if (e.target.parentElement.parentElement.classList.contains('people-setting') || e.target.parentElement.classList.contains('people-setting') || e.target.classList.contains('people-setting')) {
+    console.log('setting menu was clicked aborting ...')
+    return;
+  }
   if (id == "geoloup_chat") {
     var new2 = document.getElementById(id + "_c")
   } else if (id.search("new") != -1) {
