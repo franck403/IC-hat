@@ -654,8 +654,10 @@ body {
     overflow: hidden;
     overflow-y: scroll;
     z-index: -1;
-    border: #eceff1 solid 1px;
     border-radius: 15px;
+    background-image: url(img/chatbackground.png);
+    background-position: center;
+    background-size: cover;
     margin: 5px;
     padding: 10px;
     height: 82%;
