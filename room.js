@@ -48,7 +48,8 @@ function load_image(chat_id, min_) {
   };
   return true
 }
-function room(id) {
+function room(id,e) {
+  console.log(e)
   if (id == "geoloup_chat") {
     var new2 = document.getElementById(id + "_c")
   } else if (id.search("new") != -1) {
