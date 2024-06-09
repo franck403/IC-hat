@@ -7,7 +7,7 @@ class MyCustomElement extends HTMLElement {
         var div = `
         <style>@media screen and (min-width: 900px) {
     .context-menu{background-color:#fff;color:#1f194c;max-width:200px;z-index:10;padding:4px;font-size:20px;display:flex;flex-wrap:wrap;position:fixed;border-radius:5px;border:solid #00000030 1px;visibility:hidden}.context-menu span{color:black;padding:10px;width:100%}.context-menu span i{margin-right:20px;color:black;}.context-menu span i:hover{background-color:rgba(44,141,247,.2);color:black}.item{color:black}.context-menu span:hover{color:black;background-color:rgba(44,141,247,.2);cursor:pointer}
-                }@media screen and (min-width: 900px) {
+                }@media screen and (max-width: 900px) {
     .context-menu{.context-menu{background-color:#fff;color:#1f194c;max-width:200px;z-index:10;padding:4px;font-size:20px;display:flex;flex-wrap:wrap;position:fixed;border-radius:5px;border:solid #00000030 1px;visibility:hidden}.context-menu span{color:black;padding:10px;width:100%}.context-menu span i{margin-right:20px;color:black;}.context-menu span i:hover{background-color:rgba(44,141,247,.2);color:black}.item{color:black}.context-menu span:hover{color:black;background-color:rgba(44,141,247,.2);cursor:pointer}}
                 }
         </style>
