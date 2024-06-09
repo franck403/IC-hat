@@ -1084,6 +1084,8 @@ body {
         left: 0px;
         top: 0px;
         width: 100%;
+        background-image: url(img/background.png);
+        background-size: cover;
         background: white;
     }
 
