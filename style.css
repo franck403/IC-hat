@@ -32,26 +32,16 @@
     padding: 0px;
 }
 
-.user_pic {
-    border: 100% 100%;
-}
-
 .user_pic button img {
     height: 50px;
-    z-index: 1;
     width: 50px;
     border: none;
-    border-radius: 100%;
+    border-radius: 15px;
 }
 
 .user_pic button {
-    position: fixed;
-    z-index: 36;
-    right: 4px;
-    top: 4px;
     border: none;
-    background: white;
-    border-radius: 100%;
+    border-radius: 15px;
 }
 
 .user .img .image {
@@ -229,28 +219,31 @@ body {
 }
 
 .emoji-box {
-    height: 258px;
-    width: 321px;
+    height: 41%;
+    width: 40%;
     position: fixed;
     background: white;
-    border-radius: 30px;
-    bottom: 70px;
+    border-radius: 15px;
+    bottom: 56px;
     right: 24px;
+    border: #eceff1 solid 1px;
     z-index: 5;
 }
 
 .emoji-drawer .emoji-drawer-class-active {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    width: auto;
-    max-width: 400px;
-    margin-bottom: 32px;
-    height: 230px;
+    width: 100%;
+    margin-bottom: 31px;
+    height: 100%;
     overflow: scroll;
 }
 
 .emoji-active-toggle {
     border: none;
+    padding: 5px;
+    height: 37px;
+    width: 37px;
     border-radius: 5px;
     background: #bcb8b836;
 }
@@ -261,22 +254,26 @@ body {
 }
 
 .emoji-class-img {
-    width: 20px;
+    width: 25px;
     height: auto;
 }
 
 .emoji-class {
     position: absolute;
     bottom: 0;
-    border-top: 1px solid;
-    width: 322px;
+    background: white;
+    border-top: #cbcbcb 2px solid;
+    width: 100%;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
     text-align: center;
 }
 
 .emoji-drawer {
     position: absolute;
     top: 0;
-    height: 231px;
+    width: 100%;
+    height: 85%;
 }
 
 .hidden {
@@ -431,8 +428,10 @@ body {
 .container .left {
     position: fixed;
     left: 0;
-    width: 38%;
-    height: 100%;
+    width: calc(38% - 10px);
+    height: calc(100% - 15px);
+    margin: 5px;
+    border-radius: 15px;
     border: 1px solid var(--light);
     background-color: var(--white);
     overflow: hidden;
@@ -622,11 +621,16 @@ body {
 }
 
 .container .right .top {
-    width: 100%;
-    height: 47px;
-    padding: 15px 29px;
+    width: calc(100% - 15px);
+    height: 10%;
+    padding: 15px;
     background-color: #eceff1;
-    display: inline-flex;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin: 5px;
+    border-radius: 15px;
 }
 
 .container .right .top p {
@@ -658,11 +662,11 @@ body {
     overflow: hidden;
     overflow-y: scroll;
     z-index: -1;
-    padding: 10px 35px 40px;
-    border-width: 1px 1px 1px 0;
-    border-style: solid;
-    border-color: var(--light);
-    height: calc(100% - 86px);
+    border: #eceff1 solid 1px;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 10px;
+    height: 82%;
     justify-content: flex-end;
     flex-direction: column;
 }
@@ -679,19 +683,19 @@ body {
 
 .write {
     position: absolute;
-    bottom: 20px;
-    right: 18px;
+    bottom: 15px;
+    right: 5px;
     height: 42px;
     padding-left: 8px;
     border: 1px solid var(--light);
     background-color: #eceff1;
-    width: calc(64% - 58px);
-    border-radius: 5px;
+    width: 61%;
+    border-radius: 15px;
 }
 
 .write input {
     font-size: 16px;
-    width: 51.5vw;
+    width: 89%;
     height: 40px;
     padding: 0 6px;
     color: var(--dark);
@@ -1096,7 +1100,7 @@ body {
 
     .chat::-webkit-scrollbar-thumb {
         background-color: rgba(0, 0, 0, 0.2) !important;
-        border-radius: 0px;
+        border-radius: 15px;
         border: none;
     }
 
@@ -1138,26 +1142,28 @@ body {
 }
 
 .chat::-webkit-scrollbar {
-    width: 9px;
+    width: 15px;
 }
 
 .scrolling_chat::-webkit-scrollbar {
-    width: 9px;
+    width: 15px;
 }
 
 .chat::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: #eceff1;
+    border-top-right-radius:14px 14px;
+    border-bottom-right-radius:14px 14px;
 }
 
 .chat::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0);
-    border-radius: 0px;
+    border-radius: 15px;
     border: none;
 }
 
 .chat::-webkit-scrollbar-thumb:hover {
     background-color: rgb(0, 0, 0);
-    border-radius: 0px;
+    border-radius: 15px;
     border: none;
 }
 
@@ -1510,4 +1516,3 @@ body {
   padding:10px; 
   text-align:right; 
 }
-/*#endregion Alert*/
