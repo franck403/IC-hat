@@ -41,6 +41,7 @@
 
 .user_pic button {
     border: none;
+    height: 50px;
     border-radius: 15px;
 }
 
@@ -129,6 +130,9 @@
     }
 }
 
+.user_pic {
+    height:50px;
+}
 .user .name {
     padding-left: 10px;
     color: black;
@@ -440,8 +444,8 @@ body {
 .container .left .top {
     position: relative;
     width: 100%;
-    height: 96px;
-    padding: 29px;
+    height: 63px;
+    padding: 10px 5px;
 }
 
 .container .left .top:after {
@@ -449,7 +453,7 @@ body {
     bottom: 0;
     left: 50%;
     display: block;
-    width: 80%;
+    width: 100%;
     height: 1px;
     content: '';
     background-color: var(--light);
@@ -458,16 +462,16 @@ body {
 
 .container .left input {
     float: left;
-    width: 80%;
+    width: 88%;
     height: 42px;
-    padding: 0 15px;
+    padding: 0 13px;
     border: 1px solid var(--light);
     background-color: #eceff1;
-    border-radius: 21px;
+    border-radius: 15px;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .container .left input:focus {
@@ -479,14 +483,14 @@ body {
     float: left;
     width: 42px;
     height: 42px;
-    margin-left: 5px;
+    margin-left: 1px;
     border: 1px solid var(--light);
     background-color: var(--blue);
     background-repeat: no-repeat;
     background-position: top 12px left 14px;
-    border-radius: 50%;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
+    border-radius: 15px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
 .container .left a.search img {
@@ -497,59 +501,56 @@ body {
 }
 
 .people {
-    margin-left: -1px;
+    margin: 0px;
     overflow-y: scroll;
-    height: 82vh;
-    border-right: 1px solid var(--light);
-    border-left: 1px solid var(--light);
+    height: 86%;
     width: calc(100% + 2px);
+    padding: 10px;
     list-style: none;
 }
 
 .people-person {
+    margin-bottom: 5px;
     position: relative;
+    border: #eceff1 solid 1px;
+    border-radius: 15px;
     width: 100%;
-    padding: 12px 10% 16px;
+    padding: 5px 10px;
     cursor: pointer;
-}
-
-.people-person:after {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    display: block;
-    width: 90%;
-    height: 1px;
-    content: '';
-    background-color: var(--light);
-    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
 .people-setting {
     font-size: 14px;
     position: absolute;
-    top: 14px;
+    top: 17px;
     color: black;
     right: 5%;
     margin: 0px;
 }
 
 .people-img {
-    float: left;
     width: 40px;
     height: 40px;
-    margin-right: 12px;
-    border-radius: 50%;
+    left: -10px;
+    border-radius: 15px;
+    position: relative;
+    top: 10px;
     object-fit: cover;
 }
 
 .people-name {
-    font-size: 14px;
+    font-size: 18px;
     margin: 0;
     width: 80%;
-    height: 16px;
+    margin-right: 5%;
+    height: 22px;
     overflow: hidden !important;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: sans-serif;
     font-weight: 600;
     text-overflow: ellipsis;
 }
@@ -557,16 +558,17 @@ body {
 .people-time {
     font-size: 14px;
     position: absolute;
-    top: 16px;
+    top: 25px;
     right: 10%;
-    padding: 0 0 5px 5px;
 }
 
 .people-preview {
+    top: -7px;
+    left: -13%;
     font-size: 14px;
-    display: inline-block;
     overflow: hidden !important;
     width: 47%;
+    position: relative;
     height: 23px;
     margin: 0;
     white-space: nowrap;
@@ -576,8 +578,6 @@ body {
 .people-person.active,
 .people-person:hover {
     position: relative;
-    width: 100%;
-    padding: 12px 10% 16px;
     cursor: pointer;
     color: var(--white);
     background-color: var(--blue);
@@ -690,7 +690,7 @@ body {
     border: 1px solid var(--light);
     background-color: #eceff1;
     width: 61%;
-    border-radius: 15px;
+    border-radius: 13px;
 }
 
 .write input {
