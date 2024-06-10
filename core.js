@@ -546,7 +546,7 @@ try {
             }, 2000, el);
         }
     });
-    function MessageWorkerLoop(snapshot, reversed=false) {
+    function MessageWorkerLoop(snapshot, reversed = false) {
         for (let i = 0; i < (snapshot.length); i++) {
             var data = snapshot[i]
             var data2 = data[0]
@@ -661,37 +661,37 @@ try {
     }
     window.createInviteDiscusionIntern = createInviteDiscusionIntern
 
-        function CustomAlert(message,title,element){
-            document.body.innerHTML = document.body.innerHTML + '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
-        
-            let dialogoverlay = document.getElementById('dialogoverlay');
-            let dialogbox = document.getElementById('dialogbox');
-            
-            let winH = window.innerHeight;
-            dialogoverlay.style.height = winH+"px";
-            
-            dialogbox.style.top = "100px";
-        
-            dialogoverlay.style.display = "block";
-            dialogbox.style.display = "block";
-            
-            document.getElementById('dialogboxhead').style.display = 'block';
-        
-            if(typeof title === 'undefined') {
-              document.getElementById('dialogboxhead').style.display = 'none';
-            } else {
-              document.getElementById('dialogboxhead').innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> '+ title;
-            }
-            document.getElementById('dialogboxbody').innerHTML = message;
-            document.getElementById('dialogboxfoot').innerHTML = '<button class="pure-material-button-contained active" onclick="'+ `(() => {
+    function CustomAlert(message, title, element) {
+        document.body.innerHTML = document.body.innerHTML + '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
+
+        let dialogoverlay = document.getElementById('dialogoverlay');
+        let dialogbox = document.getElementById('dialogbox');
+
+        let winH = window.innerHeight;
+        dialogoverlay.style.height = winH + "px";
+
+        dialogbox.style.top = "100px";
+
+        dialogoverlay.style.display = "block";
+        dialogbox.style.display = "block";
+
+        document.getElementById('dialogboxhead').style.display = 'block';
+
+        if (typeof title === 'undefined') {
+            document.getElementById('dialogboxhead').style.display = 'none';
+        } else {
+            document.getElementById('dialogboxhead').innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' + title;
+        }
+        document.getElementById('dialogboxbody').innerHTML = message;
+        document.getElementById('dialogboxfoot').innerHTML = '<button class="pure-material-button-contained active" onclick="' + `(() => {
             document.getElementById('dialogbox').style.display = 'none';
             document.getElementById('dialogoverlay').style.display = 'none';})()
-            ` +'">OK</button>';
-        }
-        
+            ` + '">OK</button>';
+    }
+
     function waitInternetLoader(repeatTime) {
-        CustomAlert('You are offline !','No internet')
-        var interval = setInterval(()=>{
+        CustomAlert('You are offline !', 'No internet')
+        var interval = setInterval(() => {
             if (navigator.onLine) {
                 console.log("Stopping Repeater");
                 // stop the repeat process
@@ -699,10 +699,10 @@ try {
                 // reload message after 1s of reconecting
                 setTimeout(() => {
                 }, 1000);
-              } else {
+            } else {
                 console.log("User Offline repeating");
-              }
-        },repeatTime)
+            }
+        }, repeatTime)
     }
     window.addEventListener("offline", (e) => {
         window.waitInternetLoader(100)
@@ -712,9 +712,9 @@ try {
         location.reload()
         console.log("online");
     });
-      
+
     window.waitInternetLoader = waitInternetLoader
-    
+
     function changeDisplayNameIntern(id, newDisplayName) {
         const dbRef = ref(getDatabase())
         const updates = {};
