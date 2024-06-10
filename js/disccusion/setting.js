@@ -20,9 +20,11 @@ class MyCustomElement extends HTMLElement {
 }
 
 function popupSettingMenuShow(uuid) {
-    console.log('cliked')
+    console.log('clicked')
     //!function(i){var e=i.parentNode.querySelector("div");"visible"==e.style.visibility?e.style.visibility="hidden":e.style.visibility="visible"}(this)
     var pop = document.getElementById(uuid)
+    console.log(uuid)
+    console.log(pop)
     "visible"==pop.style.visibility?pop.style.visibility="hidden":pop.style.visibility="visible"
 }
 
