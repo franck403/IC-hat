@@ -51,7 +51,6 @@ function load_image(chat_id, min_) {
   return true
 }
 function room(id,e) {
-  console.log(e)
   if (e.target.parentElement.parentElement.classList.contains('people-setting') || e.target.parentElement.classList.contains('people-setting') || e.target.classList.contains('people-setting') || e.target.classList.contains('fa-ellipsis')) {
     console.log('setting menu was clicked aborting ...')
     return;

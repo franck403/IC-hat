@@ -222,7 +222,8 @@ body {
     font-weight: 400;
     margin: 0;
     background-image: url(img/background.png);
-    background-size: cover;
+    background-size: 110%;
+    background-repeat: no-repeat;
 }
 
 .emoji-drawer .emoji-drawer-class {
