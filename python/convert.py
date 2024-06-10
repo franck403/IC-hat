@@ -2,6 +2,6 @@ import api
 
 print(api)
 
-useraccount = api.getuser()
+useraccount = api.getUser()
 
 print(useraccount)
