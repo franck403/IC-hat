@@ -986,7 +986,6 @@ body {
     .mobile {
         position: fixed;
         top: 16px;
-        left: 9px;
         width: 38px;
         height: auto;
         display: none;
