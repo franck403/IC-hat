@@ -1,4 +1,8 @@
 // to-do
+const api = {
+    getUser : getUser,
+    alert:Alert
+}
 export function getUser() {
     const user = netlifyIdentity.currentUser();
     return user
