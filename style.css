@@ -1,11 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
 
 *,
 *:before,
 *:after {
     box-sizing: border-box;
 }
-
+.lato-light {
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
 .light {
     --color: #0060df;
     --background: #fbfbfe;
@@ -755,6 +767,9 @@ body {
     position: relative;
     display: inline-block;
     clear: both;
+    font-family: "Lato", sans-serif;
+    font-weight: 300;
+    font-style: normal;
     margin-bottom: 8px;
     padding: 12px 13px;
     vertical-align: top;
@@ -1014,7 +1029,6 @@ body {
     .container .right .chat.active-chat {
         display: block;
         z-index: 4;
-        background: white;
     }
 
     .container .right .chat {
@@ -1027,9 +1041,7 @@ body {
         overflow: hidden;
         overflow-y: scroll;
         padding: 10px 35px 40px;
-        border-width: 1px;
-        border-style: solid;
-        border-color: var(--light);
+        border:none;
         height: 83%;
         justify-content: flex-end;
         flex-direction: column;
@@ -1051,7 +1063,12 @@ body {
         width: calc(100% - 58px);
         border-radius: 5px;
     }
-
+    .fa-ellipsis {
+        margin-left: 100%;
+    }
+    .context-menu {
+        margin-right: -103px;
+    }
     .write.write-active {
         z-index: 4;
         position: absolute;
@@ -1097,7 +1114,6 @@ body {
         width: 100%;
         background-image: url(img/background.png);
         background-size: cover;
-        background: white;
     }
 
     .mobile-frame-active {
