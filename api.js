@@ -5,7 +5,7 @@ const api = {
 }
 export function getUser() {
     const user = netlifyIdentity.currentUser();
-    return user
+    return {"email":user.email,"user_metadata":user.user_metadata}
 }
 
 export function Alert(message,title,callback) {
