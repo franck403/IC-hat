@@ -21,13 +21,16 @@ class MyCustomElement extends HTMLElement {
 
 function popupSettingMenuShow(uuid) {
     console.log('clicked')
-    //!function(i){var e=i.parentNode.querySelector("div");"visible"==e.style.visibility?e.style.visibility="hidden":e.style.visibility="visible"}(this)
     var pop = document.getElementById(uuid)
-    if (pop.style.visibility == "hidden") {
-        pop.style.visibility="visible"
-    } else {
-        pop.style.visibility="hidden"
+    switch (pop.style.visibility) {
+        case "hidden":
+            pop.style.visibility = 'visible'
+            break;    
+        default:
+            pop.style.visibility="hidden"
+            break;
     }
+    //!function(i){var e=i.parentNode.querySelector("div");"visible"==e.style.visibility?e.style.visibility="hidden":e.style.visibility="visible"}(this)
 }
 
 customElements.define("popup-setting-menu", MyCustomElement);

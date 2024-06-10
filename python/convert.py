@@ -1,6 +1,5 @@
 import api
 
-print(api)
 
 useraccount = api.getUser()
 
