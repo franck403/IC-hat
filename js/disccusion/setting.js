@@ -25,7 +25,11 @@ function popupSettingMenuShow(uuid) {
     var pop = document.getElementById(uuid)
     console.log(uuid)
     console.log(pop)
-    "visible"==pop.style.visibility?pop.style.visibility="hidden":pop.style.visibility="visible"
+    if (pop.style.visibility == "hidden") {
+        pop.style.visibility="visible"
+    } else {
+        pop.style.visibility="hidden"
+    }
 }
 
 customElements.define("popup-setting-menu", MyCustomElement);
