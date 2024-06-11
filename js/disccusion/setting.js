@@ -26,9 +26,11 @@ function popupSettingMenuShow(uuid) {
     switch (pop.style.visibility) {
         case "visible":
             pop.style.visibility = 'hidden'
+            console.log('hidden')
             break;    
         default:
             pop.style.visibility="visible"
+            console.log('visible')
             break;
     }
     //!function(i){var e=i.parentNode.querySelector("div");"visible"==e.style.visibility?e.style.visibility="hidden":e.style.visibility="visible"}(this)
