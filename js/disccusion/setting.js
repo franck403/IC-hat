@@ -22,6 +22,7 @@ class MyCustomElement extends HTMLElement {
 function popupSettingMenuShow(uuid) {
     console.log('clicked')
     var pop = document.getElementById(uuid)
+    console.log(pop.style.visibility)
     switch (pop.style.visibility) {
         case "hidden":
             pop.style.visibility = 'visible'
