@@ -21,16 +21,18 @@ class MyCustomElement extends HTMLElement {
 
 function popupSettingMenuShow(uuid) {
     console.log('clicked')
-    var pop = document.getElementById(uuid)
-    console.log(pop.style.visibility)
-    switch (pop.style.visibility) {
+    var pop = document.getElementById(uuid)    
+    console.log(pop)
+    switch (pop.dataset.visible) {
         case "visible":
-            pop.style.visibility = 'hidden'
+            pop.dataset.visible = 'hidden'
             console.log('hidden')
+            pop.classList.remove('visibleClass')
             break;    
         default:
-            pop.style.visibility="visible"
+            pop.dataset.visible="visible"
             console.log('visible')
+            pop.classList.add('visibleClass')
             break;
     }
     //!function(i){var e=i.parentNode.querySelector("div");"visible"==e.style.visibility?e.style.visibility="hidden":e.style.visibility="visible"}(this)

@@ -149,6 +149,10 @@
     height: 50px;
 }
 
+.visibleClass {
+    visibility: visible !important;
+}
+
 .user .name {
     padding-left: 10px;
     color: black;
