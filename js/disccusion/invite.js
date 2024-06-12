@@ -35,7 +35,6 @@ function controlInvte(snapshot) {
     const friend_invite = ref(database, 'users_friend/');
     onChildAdded(friend_invite, (data) => {
         if (snapshot.val().dname == data.val().dname) {
-            var w = window.open()
             var script = `
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
             import { getDatabase, ref, get, child, update, onChildAdded } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
@@ -77,11 +76,11 @@ function controlInvte(snapshot) {
                     console.error(error);
                 });      
             }`
-            w.document.body.innerHTML = `<div><h1>Do you want to join a disccusion with</h1><h2>${snapshot.val().allow}</h2><button onclick="window.accept(${snapshot.val().dname})">Acccept invite</button><script type="module">${script}</script></div>`
-            const style = w.document.createElement("link")
+            document.body.innerHTML = `<div><h1>Do you want to join a disccusion with</h1><h2>${snapshot.val().allow}</h2><button onclick="window.accept(${snapshot.val().dname})">Acccept invite</button><script type="module">${script}</script></div>`
+            const style = document.createElement("link")
             link.href = "https://ic-hat.geoloup.com/invite.css"
             link.rel = "stylesheet"
-            w.document.head.appendChild(style)
+            document.head.appendChild(style)
         }
     })
 }
