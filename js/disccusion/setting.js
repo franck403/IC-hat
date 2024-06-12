@@ -86,6 +86,7 @@ function ChangeDisplayName() {
 function createInviteDiscusion() {
     var url = window.createInviteDiscusionIntern()
     console.log(url)
+    window.customAlert(`Here the link <input value="${url}" disabled> of the invite`,'Discusion invite')
     return url
 }
 
