@@ -112,7 +112,7 @@ function ChangeDisplayName() {
 function createInviteDiscusion() {
     var url = window.createInviteDiscusionIntern()
     console.log(url)
-    CustomAlert(`Here the link <input value="${url}" disabled> of the invite`,'Discusion invite')
+    CustomAlert(`Here the link <input value="https://ic-hat.geoloup.com/chat?invite=${url}" disabled> of the invite`,'Discusion invite')
     return url
 }
 
