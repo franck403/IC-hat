@@ -689,6 +689,7 @@ try {
             ` + '">OK</button>';
     }
 
+    window.CustomAlert = CustomAlert
     function waitInternetLoader(repeatTime) {
         CustomAlert('You are offline !', 'No internet')
         var interval = setInterval(() => {
