@@ -748,6 +748,15 @@ body {
     background-position: center;
 }
 
+input:disabled {
+    background: none;
+    border: none;
+    color: #7878f8;
+    font-family: "Comfortaa",sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+}
 .write .write-link.smiley:before {
     display: inline-block;
     position: absolute;
