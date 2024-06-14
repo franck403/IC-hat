@@ -16,12 +16,13 @@ var startup = async () => {
 
     if ("serviceWorker" in navigator) {
         try {
-            let sw = await navigator.serviceWorker.register("sw.url.js", { scope: "/GlE/"});
+            let sw = await navigator.serviceWorker.register("sw.url.js", { scope: "/"});
             // Registration was successful
+
             console.log('ServiceWorker registration successful with scope: ', sw.scope);
             navigator.serviceWorker.addEventListener('message', event => {
                 if (event.data.value[0] == window.uuid) {
-
+                    // ? GlE
                 }
             });
             navigator.serviceWorker.ready.then((registration) => {
