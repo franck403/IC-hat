@@ -53,7 +53,7 @@ function uploadFile(file,callback) {
         apiKey: "public_W142iez33syWtZFeh6fNmfXuAE9k" // This is your API key.
     });
     try {
-        const { fileUrl, filePath } = await uploadManager.upload({ data: file });
+        const { fileUrl, filePath } = uploadManager.upload({ data: file });
         callback(fileUrl)
         console.log(`File uploaded:\n${fileUrl}`);
     } catch (e) {
