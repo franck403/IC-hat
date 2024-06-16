@@ -28,11 +28,12 @@ c.addEventListener("click", () => {
     input.onchange = _ => {
         var filelist = input.files[0]
         // uploading image and get return adress
-        var blobUrl = Imageupload(filelist)
-        document.getElementById("image").src = blobUrl
-        document.getElementById("user_pic_ready").innerHTML = "Select this picture"
-        document.getElementById("user_pic_ready").addEventListener("click",() => {
-          changepic(img, myEmail)
+        Imageupload(filelist,(blobUrl)=>{
+            document.getElementById("image").src = blobUrl
+            document.getElementById("user_pic_ready").innerHTML = "Select this picture"
+            document.getElementById("user_pic_ready").addEventListener("click",() => {
+              changepic(img, myEmail)
+            })
         })
     };
     input.click();

@@ -161,18 +161,20 @@ export function image_render(email, name) {
         var file = document.getElementById("file_input").files[key]
         var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
         const id = push(child(ref(database), 'messages')).key;
-        var imgurl = Imageupload(file)
-        set(ref(database, "messages/" + cusid + "/" + id), {
-            email: name,
-            name: myName,
-            friend: "none",
-            type: "new-image",
-            message: imgurl,
-            date: Date.now(),
-            dname: cusid
+        Imageupload(file,(imgurl)=> {
+            set(ref(database, "messages/" + cusid + "/" + id), {
+                email: name,
+                name: myName,
+                friend: "none",
+                type: "new-image",
+                message: imgurl,
+                date: Date.now(),
+                dname: cusid
+            })
+            document.getElementById("file").style.display = "none";
+            document.getElementById("file_input").value = "";
+   
         })
-        document.getElementById("file").style.display = "none";
-        document.getElementById("file_input").value = "";
     });
 }
 try {

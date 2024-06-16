@@ -14,23 +14,23 @@ class MyCustomElement extends HTMLElement {
 
     disconnectedCallback() {
         try {
-        document.getElementById(this.uuid).remove()
-        } catch {}
+            document.getElementById(this.uuid).remove()
+        } catch { }
     }
 }
 
 function popupSettingMenuShow(uuid) {
     console.log('clicked')
-    var pop = document.getElementById(uuid)    
+    var pop = document.getElementById(uuid)
     console.log(pop)
     switch (pop.dataset.visible) {
         case "visible":
             pop.dataset.visible = 'hidden'
             console.log('hidden')
             pop.classList.remove('visibleClass')
-            break;    
+            break;
         default:
-            pop.dataset.visible="visible"
+            pop.dataset.visible = "visible"
             console.log('visible')
             pop.classList.add('visibleClass')
             break;
@@ -48,26 +48,17 @@ function allclose() {
         element.style.visibility = "hidden"
     }
 }
-function uploadFile(file) {
-    if (/\.(jpe?g|png|gif)$/i.test(file.name) === false) { return false }
-    var url = `https://api.cloudinary.com/v1_1/djsemwoio/upload`;
-    const fd = new FormData();
-    fd.append('upload_preset', unsignedUploadPreset);
-    fd.append('tags', 'browser_upload'); // Optional - add tags for image admin in Cloudinary
-    fd.append('file', file);
-    var request = new XMLHttpRequest();
-    request.open("POST", url, false);
-    request.send(fd)
-    const data = response.json()
-    var url = data.secure_url;
-    // Create a thumbnail of the uploaded image, with 150px width
-    const tokens = url.split('/');
-    tokens.splice(-3, 0, 'w_150,c_scale');
-    const img = new Image();
-    const opt = `https://res.cloudinary.com/freshpm/image/upload/c_scale,w_500/f_auto/q_auto/${tokens.join('/')}`;
-    img.src = opt;
-    img.alt = data.public_id;
-    return img
+function uploadFile(file,callback) {
+    const uploadManager = new Bytescale.UploadManager({
+        apiKey: "public_W142iez33syWtZFeh6fNmfXuAE9k" // This is your API key.
+    });
+    try {
+        const { fileUrl, filePath } = await uploadManager.upload({ data: file });
+        callback(fileUrl)
+        console.log(`File uploaded:\n${fileUrl}`);
+    } catch (e) {
+        alert(`Error:\n${e.message}`);
+    }
 }
 
 window.onclick = allclose
@@ -112,7 +103,7 @@ function ChangeDisplayName() {
 function createInviteDiscusion() {
     var url = window.createInviteDiscusionIntern()
     console.log(url)
-    CustomAlert(`Here the link <input value="https://ic-hat.geoloup.com/chat?invite=${url}" disabled> of the invite`,'Discusion invite')
+    CustomAlert(`Here the link <input value="https://ic-hat.geoloup.com/chat?invite=${url}" disabled> of the invite`, 'Discusion invite')
     return url
 }
 
@@ -148,10 +139,10 @@ class ExpandingList extends HTMLInputElement {
 }
 customElements.define("expanding-list", ExpandingList, { extends: "input" });
 
-function Imageupload(image) {
-    var img = uploadFile(image)
-    return img.src
+function Imageupload(image,callback) {
+    uploadFile(image,callback)
 }
+window.Imageupload = Imageupload
 
 function dataURItoBlob(dataURI) {
     // convert base64/URLEncoded data component to raw binary data held in a string
