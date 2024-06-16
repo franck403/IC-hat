@@ -159,9 +159,10 @@ export function image_render(email, name) {
     var filelist = document.getElementById("file_input").files
     Object.keys(filelist).forEach(key => {
         var file = document.getElementById("file_input").files[key]
-        var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
-        const id = push(child(ref(database), 'messages')).key;
         Imageupload(file,(imgurl)=> {
+            var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+            const id = push(child(ref(database), 'messages')).key;
+            console.log(imgurl)
             set(ref(database, "messages/" + cusid + "/" + id), {
                 email: name,
                 name: myName,
