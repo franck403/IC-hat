@@ -54,8 +54,8 @@ function uploadFile(file,callback) {
     });
     try {
         const { fileUrl, filePath } = uploadManager.upload({ data: file });
-        callback(fileUrl)
         console.log(`File uploaded:\n${fileUrl}`);
+        callback(fileUrl)
     } catch (e) {
         console.error(e)
         alert(`Error:\n${e.message}`);
