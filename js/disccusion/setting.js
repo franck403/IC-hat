@@ -57,6 +57,7 @@ function uploadFile(file,callback) {
         callback(fileUrl)
         console.log(`File uploaded:\n${fileUrl}`);
     } catch (e) {
+        console.error(e)
         alert(`Error:\n${e.message}`);
     }
 }
