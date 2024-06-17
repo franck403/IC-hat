@@ -167,7 +167,7 @@ export function image_render(email, name) {
                 email: name,
                 name: myName,
                 friend: "none",
-                type: "new-image",
+                type: "CDNIMAGE",
                 message: imgurl,
                 date: Date.now(),
                 dname: cusid
@@ -467,7 +467,7 @@ try {
                             var DateNow = data2.val().date
                         }
                     } else { }
-                } else if (data2.val().type == "image") {
+                } else if (data2.val().type == "CDNIMAGE") {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
                         var html = `<div class="bubble me ${class_added}"><img onclick="big(this.src)" class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="${data2.val().message}"></img>${tooltip}</div>`
