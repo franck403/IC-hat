@@ -39,7 +39,7 @@ function load_image(chat_id, min_) {
     if (image.dataset.state != "load") {
       if (isScrolledIntoView(image)) {
         try {
-          image.src = "data:image/" + image.dataset.src
+          image.src = image.dataset.src
           image.dataset.state = "load"
         } catch {
           image.remove()
