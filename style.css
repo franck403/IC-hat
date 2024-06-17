@@ -1299,11 +1299,13 @@ input:disabled {
 
 .big-image {
     position: fixed;
-    z-index: 10;
-    height: 70%;
+    z-index: 1000000000000;
+    height: 75%;
     width: auto;
     top: 50%;
-    left: 50%;
+    border-radius: 10px;
+    border: black solid 1px;
+    left: 68%;
     transform: translate(-50%, -50%);
 }
 
