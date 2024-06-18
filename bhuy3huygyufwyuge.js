@@ -1,4 +1,5 @@
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
 export function setCookie(cname, cvalue) {
   localStorage.setItem(cname, cvalue)
@@ -208,7 +209,10 @@ export function message_render(message, type = "none") {
     var message_good = message
   }
   var message_start = message_good.substring(0, 1000);
+  var message_start = message_start.replaceAll('<','&lt;')
+  var message_start = message_start.replaceAll('>','&gt;')
   var message_start = textMessage(message_start)
+  var message_start = marked.parse(message_start);
   if (type == "none") {
     return link_render(message_start).replaceAll("\n", "<br>")
   } else {
