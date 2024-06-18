@@ -1,16 +1,3 @@
-fetch("https://fireimage.francoischouin1.repl.co/", {
-    method: "GET"
-})
-.catch((error) => {
-    window.location.replace("https://" + window.location.host)
-});
-fetch("https://cryptjs-ic-hat-extention.francoischouin1.repl.co/", {
-    method: "GET"
-})
-.catch((error) => {
-    window.location.replace("https://" + window.location.host)
-});
-
 import {setCookie,getCookie} from "./bhuy3huygyufwyuge.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {

@@ -16,7 +16,6 @@ export function add(name,url) {
         var old = localStorage.getItem("extention")
         localStorage.setItem("extention", old +  "," + name + ";" + url)
     }
-    window.location.replace("https://" + window.location.host)
 }
 
 export function check() {

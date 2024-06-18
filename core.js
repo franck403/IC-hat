@@ -63,7 +63,7 @@ if (myData != null) {
     document.getElementById("not-connected").remove()
 } else {
     document.getElementById("connected").remove()
-    window.location.replace(window.location.origin)
+    location.replace(window.location.origin)
 }
 export function fromHTML(html, trim = true, id) {
     // Process the HTML string.
@@ -713,7 +713,11 @@ try {
         console.log("offline");
     });
     window.addEventListener("online", (e) => {
-        location.reload()
+        setTimeout(() => {
+            if (navigator.onLine) {
+                location.reload()
+            }
+        }, 1000);
         console.log("online");
     });
 
