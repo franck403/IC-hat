@@ -30,7 +30,9 @@ iframe.onload = () => {
         fc.document.getElementById("yes").remove()
         netlifyIdentity.on('login', (info) => {
             console.log('logged')
-            window.location.replace(`${window.location.origin}/chat`)
+            if (window.location.href != `${window.location.origin}/chat`) {
+                window.location.replace(`${window.location.origin}/chat`)
+            }
         })
         netlifyIdentity.on('register', (info) => {
             window.location.replace(`${window.location.origin}/`)
