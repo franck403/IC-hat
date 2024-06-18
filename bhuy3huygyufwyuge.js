@@ -177,7 +177,6 @@ export function link_render(message) {
   return urlify(message)
 }
 export function textMessage(message) {
-  var message = 'Message :' + message;
   const xhr = new XMLHttpRequest();
   xhr.open('POST', 'https://vector.profanity.dev', false); // 'false' makes the request synchronous
   xhr.setRequestHeader('Content-Type', 'application/json');
