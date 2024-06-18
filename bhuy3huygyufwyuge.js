@@ -23,7 +23,7 @@ export function removeloader() {
   document.getElementById("loader").remove();
   document.getElementById("wait-connected").remove()
   if (localStorage.getItem("state" != "disable")) {
-    localStorage.setItem("state","yes")
+    localStorage.setItem("state", "yes")
   }
 }
 
@@ -37,9 +37,9 @@ export function decrypt(data) {
 
 export function state() {
   if (localStorage.getItem("state") == 'yes') {
-    localStorage.setItem("state","no")
+    localStorage.setItem("state", "no")
   } else {
-    localStorage.setItem("state","yes")
+    localStorage.setItem("state", "yes")
   }
 }
 
@@ -124,7 +124,7 @@ export function addYears(date, years) {
   return dateCopy;
 }
 
-export function message_date(DateNow,dname) {
+export function message_date(DateNow, dname) {
   try {
     document.getElementById(`time_${dname}`).dataset.send = DateNow
     var dateConvert = new Date(DateNow)
@@ -132,7 +132,7 @@ export function message_date(DateNow,dname) {
     var dateUtc = dateUtc[0].split(" ")
     var dateUtc = [0]
     var dateActual = new Date(Date.now())
-    var dateActualy = addYears(dateActual,1)
+    var dateActualy = addYears(dateActual, 1)
     if (dateConvert.getFullYear() == dateActual.getFullYear()) {
       if (dateConvert.getMonth() == dateActual.getMonth()) {
         if (dateConvert.getDate() == dateActual.getDate()) {
@@ -168,7 +168,7 @@ export function message_date(DateNow,dname) {
 
 export function urlify(text) {
   var urlRegex = /(https?:\/\/[^\s]+)/g;
-  return text.replace(urlRegex, function(url) {
+  return text.replace(urlRegex, function (url) {
     return `<a class="link" onclick="Openurl('${url}')">${url}</a>`;
   })
 }
@@ -176,7 +176,26 @@ export function urlify(text) {
 export function link_render(message) {
   return urlify(message)
 }
-export function message_render(message,type="none") {
+export function testMessage(message) {
+  var message = 'Message :' + message;
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://vector.profanity.dev', false); // 'false' makes the request synchronous
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify({ message }));
+  var status = JSON.parse(xhr.response)
+  if (xhr.status >= 200 && xhr.status < 300) {
+    if (status.isProfanity) {
+      console.log(status)
+      var regex = new RegExp(status.flaggedFor, "gi");
+      return message.replace(regex, match => '*'.repeat(match.length));
+    }
+    return message;
+  } else {
+    throw new Error(`Request failed with status ${xhr.status}`);
+  }
+}
+
+export function message_render(message, type = "none") {
   var messages = (function (t) {
     var r = /[^\u0300-\u036F\u0489]+/g;
     var unzalgo = function () {
@@ -189,10 +208,11 @@ export function message_render(message,type="none") {
   } else {
     var message_good = message
   }
-  var message_start = message_good.substring(0,1000);
+  var message_start = message_good.substring(0, 1000);
+  var message_start = textMessage(message_start)
   if (type == "none") {
-    return link_render(message_start).replaceAll("\n","<br>")
-  } else{
+    return link_render(message_start).replaceAll("\n", "<br>")
+  } else {
     return message_start
   }
 }
@@ -204,7 +224,7 @@ export function loadScript(file) {
 }
 
 
-export const b64toBlob = (b64Data, contentType='', sliceSize=512) => {
+export const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
   const byteCharacters = atob(b64Data);
   const byteArrays = [];
 
@@ -220,6 +240,6 @@ export const b64toBlob = (b64Data, contentType='', sliceSize=512) => {
     byteArrays.push(byteArray);
   }
 
-  const blob = new Blob(byteArrays, {type: contentType});
+  const blob = new Blob(byteArrays, { type: contentType });
   return blob;
 }
