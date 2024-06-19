@@ -610,6 +610,19 @@ body {
     text-overflow: ellipsis;
 }
 
+.people-preview p {
+    top: -7px;
+    left: -13%;
+    font-size: 14px;
+    overflow: hidden !important;
+    width: 47%;
+    position: relative;
+    height: 23px;
+    margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .people-person.active,
 .people-person:hover {
     position: relative;
