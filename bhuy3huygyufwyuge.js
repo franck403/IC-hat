@@ -2,6 +2,7 @@ import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 import dompurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.1.5/+esm'
 
+console.log(dompurify)
 export function setCookie(cname, cvalue) {
   localStorage.setItem(cname, cvalue)
 }
@@ -210,7 +211,6 @@ export function message_render(message, type = "none") {
     var message_good = message
   }
   var message_start = message_good.substring(0, 1000);
-  var message_start = parseMessage(message_start)
   var message_start = textMessage(message_start)
   var message_start = markdown_render(message);
   if (type == "none") {
