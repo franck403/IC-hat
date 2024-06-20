@@ -211,8 +211,9 @@ export function message_render(message, type = "none") {
     var message_good = message
   }
   var message_start = message_good.substring(0, 1000);
+  var message_start = message_start.replaceAll('<','&lt;')
+  var message_start = message_start.replaceAll('>','&gt;')
   var message_start = textMessage(message_start)
-  var message_start = markdown_render(message);
   if (type == "none") {
   } else {
     return message_start
