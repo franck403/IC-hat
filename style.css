@@ -1173,6 +1173,19 @@ input:disabled {
     overflow: visible !important;
 }
 
+.tooltip * {
+    margin:0;
+}
+
+.tooltip p {
+    margin:0;
+}
+
+.tooltip br {
+    height: 0;
+    display: none;
+}
+
 .tooltip .tooltiptext {
     visibility: hidden;
     max-width: 400%;
