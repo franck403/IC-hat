@@ -1,5 +1,6 @@
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+import dompurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.1.5/+esm'
 
 export function setCookie(cname, cvalue) {
   localStorage.setItem(cname, cvalue)
@@ -209,15 +210,36 @@ export function message_render(message, type = "none") {
     var message_good = message
   }
   var message_start = message_good.substring(0, 1000);
-  var message_start = message_start.replaceAll('<','&lt;')
-  var message_start = message_start.replaceAll('>','&gt;')
+  var message_start = parseMessage(message_start)
   var message_start = textMessage(message_start)
-  var message_start = marked.parse(message_start);
+  var message_start = markdown_render(message);
   if (type == "none") {
-    return link_render(message_start).replaceAll("\n", "<br>")
   } else {
     return message_start
   }
+}
+
+export function parseMessage(mes) {
+  // Define a whitelist of allowed HTML tags and attributes
+  const allowedTags = ['p', 'em', 'strong', 'code', 'blockquote', 'ul', 'ol', 'li', 'hr', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a', 'img'];
+  const allowedAttributes = {
+    'a': ['href', 'title'],
+    'img': ['src', 'alt', 'title', 'width', 'height']
+  };
+  
+  // Sanitize the HTML using DOMPurify
+  const safeHtml = dompurify.sanitize(mes, {
+    ALLOWED_TAGS: allowedTags,
+    ALLOWED_ATTR: allowedAttributes
+  });
+  return safeHtml
+}
+
+export function markdown_render(message) {
+  if (message.slice(0,1) == '#') {
+    return marked.parse(message)
+  }
+  return message
 }
 
 export function loadScript(file) {
