@@ -706,7 +706,7 @@ body {
     background-size: cover;
     margin: 5px;
     padding: 10px;
-    height: 82%;
+    height: calc(100vh - 62px - 55px);
     justify-content: flex-end;
     flex-direction: column;
 }
