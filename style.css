@@ -48,16 +48,15 @@
 }
 
 .user_pic button img {
-    height: 50px;
-    width: 50px;
+    height: 100%;
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .user_pic button {
     border: none;
-    height: 50px;
-    border-radius: 15px;
+    height: 40px;
+    border-radius: 10px;
 }
 
 .user .img .image {
@@ -146,7 +145,7 @@
 }
 
 .user_pic {
-    height: 50px;
+    height: 40px;
 }
 
 .visibleClass {
@@ -661,7 +660,7 @@ body {
 
 .container .right .top {
     width: calc(100% - 15px);
-    height: 10%;
+    height: 45px;
     padding: 15px;
     background-color: #eceff1;
     display: flex;
@@ -669,7 +668,7 @@ body {
     align-items: center;
     flex-wrap: nowrap;
     margin: 5px;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .container .right .top p {
