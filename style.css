@@ -1218,10 +1218,17 @@ input:disabled {
     border-color: black transparent transparent transparent;
 }
 
+
 .tooltip:hover .tooltiptext {
     visibility: visible;
+    user-select: none;
+    transition: 0.5s;
 }
 
+.tooltip:hover .tooltiptext:hover {
+    opacity: 0.25;
+    transition: 0.25s;
+}
 .chat::-webkit-scrollbar {
     width: 15px;
 }
