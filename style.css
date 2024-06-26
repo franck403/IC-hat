@@ -46,7 +46,13 @@
 .user_pic button {
     padding: 0px;
 }
-
+.user_pic button img[src=""] {
+    background-image:url('img/default.png');
+    background-size: 40px;
+    width: 40px;
+    background-position: center;
+    border: none;
+}
 .user_pic button img {
     height: 100%;
     border: none;
