@@ -212,7 +212,10 @@ export function message_render(message, type = "none") {
   var message_start = message_start.replaceAll('<','&lt;')
   var message_start = message_start.replaceAll('>','&gt;')
   console.log(message_start)
-  var message_start = textMessage(message_start)
+  if (type == "nop") {
+    var message_start = textMessage(message_start)
+
+  }
   console.log(message_start)
   if (type == "none") {
     return message_start
