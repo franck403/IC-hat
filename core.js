@@ -467,12 +467,16 @@ try {
             if (data2.val().message != null) {
                 if (data2.val().type == "message") {
                     if (data2.val().name != null) {
-                        if (data2.val().email == myEmail) {
-                            var html = `<div class="bubble me ${class_added}">${message_render(data2.val().message)} ${tooltip}</div>`
-                            var DateNow = data2.val().date
+                        if (message_render(data2.val().message) == null) {
+                            
                         } else {
-                            var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div>${message_render(data2.val().message)}</div>${tooltip}</div>`
-                            var DateNow = data2.val().date
+                            if (data2.val().email == myEmail) {
+                                var html = `<div class="bubble me ${class_added}">${message_render(data2.val().message)} ${tooltip}</div>`
+                                var DateNow = data2.val().date
+                            } else {
+                                var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div>${message_render(data2.val().message)}</div>${tooltip}</div>`
+                                var DateNow = data2.val().date
+                            }    
                         }
                     } else { }
                 } else if (data2.val().type == "CDNIMAGE") {
