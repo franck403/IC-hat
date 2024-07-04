@@ -1,4 +1,5 @@
 import { setCookie, bip, removeloader, getuser, message_date, message_render } from "./bhuy3huygyufwyuge.js"
+import {sendNotif,accesPush} from './notification.js'
 setTimeout(removeloader, 5000)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
@@ -33,6 +34,7 @@ if ('serviceWorker' in navigator) {
       });
     });
   }
+accesPush()
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 window.appFire = app
@@ -900,6 +902,7 @@ try {
                         var date = message_date(DateNow, dnamef)
                         document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                        sendNotif(data2.val().name + ' sent said : ' + message_render(data2.val().message))
                     }
                     setTimeout((data2) => {
                         var message = newMessage(data2)
