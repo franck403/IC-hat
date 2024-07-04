@@ -14,7 +14,7 @@ function acpt() {
     netlifyIdentity.gotrue.currentUser().update({
         data: {
             termofservice: 'yes',
-            term: 'Welcome to Ic-hat! These Terms of Service govern your use and outline the rights and responsibilities between you and us. By accessing or using the Application, you agree to be bound by these Terms. Please take note that the'
+            term: 'User accepted the terms'
         }
     })
 };

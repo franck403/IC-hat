@@ -1,15 +1,17 @@
 var data = `
 <div class="info">
 	<h1>IC-hat</h1>
-	<h2>The new fast chat that work online and offline</h2>
+	<h2>The new chat 100% free.</h2>
 	<h3>What to try it ? click on login or register to start testing</h3>
+	<h4>Geoloup do not collect data. Ads are not a thing for us BUT please note that this is only for us not the other service</h4>
 </div>
 <div id="mm" class="mm">
 	<span class="cls" onclick="acpt()">Accept</span>
 	<h2>Terms of service</h2>
 	<p>Welcome to Ic-hat! These Terms of Service govern your use and outline the rights and responsibilities between you
 		and us. By accessing or using the Application, you agree to be bound by these Terms. Please take note that the
-		messages are filtred by an AI.</p>
+		messages are filtred by an AI or a public API.
+		IMPORTANT! Geoloup do not collect data. Ads are not a thing for us BUT please note that this is only for us not the other service we use.</p>
 </div>
 `
 
