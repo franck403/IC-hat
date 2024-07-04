@@ -11,7 +11,7 @@ iframe.onload = () => {
         start.addEventListener('click', (e) => {
             try {
                 terms = netlifyIdentity.gotrue.currentUser().user_metadata.termofservice
-                if (terms == 'yes') {return;}
+                if (terms == 'no') {return;}
             } catch {}
             if (window.location.origin.endsWith("/")) {
                 window.location.replace(`${window.location.origin}chat`)
@@ -36,7 +36,7 @@ iframe.onload = () => {
             console.log('logged')
             try {
                 terms = netlifyIdentity.gotrue.currentUser().user_metadata.termofservice
-                if (terms == 'yes') {return;}
+                if (terms == 'no') {return;}
             } catch {}
             if (window.location.href != `${window.location.origin}/chat`) {
                 window.location.replace(`${window.location.origin}/chat`)
