@@ -7,8 +7,6 @@ if (myData != null) {
     var myEmail = myData.email
     var myName = myData.name
     var myImage = myData.image
-    document.getElementById('user_pic').src = myImage
-    document.getElementById("image").src = myImage
     document.getElementById("not-connected").remove()
     document.getElementById("wait-connected").remove()
 } else if (myData == null) {
