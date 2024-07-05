@@ -617,19 +617,28 @@ try {
                     } else {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
                     }
+                    ActualMessages = window.processingMessage[window.processingMessage[i]]
+                    date1 = new Date(ActualMessages[0].val().data)
+                    date2 = new Date(ActualMessages[ActualMessages.length].val().data)
+                    autoReversed = date1 < date2
                 } else if (localStorage.getItem('lastChat') == i) {
                     if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
                     } else {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                     }
+                    ActualMessages = window.processingMessage[window.processingMessage[i]]
+                    date1 = new Date(ActualMessages[0].val().data)
+                    date2 = new Date(ActualMessages[ActualMessages.length].val().data)
+                    autoReversed = date1 < date2
                 }
                 if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
                 } else {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                 }
-                if (reversed) {
+                
+                if (reversed || autoReversed) {
                     var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true)
                     window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
                 } else {
