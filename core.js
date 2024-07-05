@@ -941,6 +941,9 @@ try {
                     }
                 }
             })
+            setTimeout(() => {
+                window.removeEmptyP()
+            }, 100);
         } else { }
     });
 } catch (err) {
