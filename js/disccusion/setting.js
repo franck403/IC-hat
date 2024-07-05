@@ -7,7 +7,21 @@ class MyCustomElement extends HTMLElement {
         this.uuid = crypto.randomUUID()
         const uuid = this.uuid
         var script = 'popupSettingMenuShow("d' + uuid + '")'
-        var style = `@media screen and (min-width:900px){.context-menu{background-color:#fff;color:#1f194c;max-width:220px;z-index:10;padding:4px;font-size:20px;display:flex;flex-wrap:wrap;position:fixed;border-radius:5px;border:1px solid #00000030;visibility:hidden}.context-menu span{color:#000;padding:10px;width:100%}.context-menu span i{margin-right:20px;color:#000}.context-menu span i:hover{background-color:rgba(44,141,247,.2);color:#000}.item{color:#000}.context-menu span:hover{color:#000;background-color:rgba(44,141,247,.2);cursor:pointer}}@media screen and (max-width:900px){.context-menu{background-color:#fff;color:#1f194c;max-width:220px;z-index:10;padding:4px;font-size:20px;display:flex;flex-wrap:wrap;position: relative;right: 60px;border-radius:5px;border:1px solid #00000030;visibility:hidden}.context-menu span{color:#000;padding:10px;width:100%}.context-menu span i{margin-right:20px;color:#000}.context-menu span i:hover{background-color:rgba(44,141,247,.2);color:#000}.item{color:#000}.context-menu span:hover{color:#000;background-color:rgba(44,141,247,.2);cursor:pointer}}`
+        var style = `
+        background-color: #fff;
+        color: #1f194c;
+        max-width: 50vw;
+        width: 50vw;
+        z-index: 10;
+        padding: 4px;
+        font-size: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        margin-right: -70px;
+        border-radius: 5px;
+        border: 1px solid #00000030;
+        visibility: hidden;`
         var div = `<div id='${this.uuid}'><style>${style}</style><i class="fa-solid fa-ellipsis"style="rotate: 90deg;" onclick="popupSettingMenuShow('d${uuid}')"></i><div id='d${uuid}' style="visibility:hidden;" class=context-menu><span class=item onclick="createInviteDiscusion()"><i class="fa-solid fa-user-plus"></i>Create invite</span><span class=item onclick='hidediscusion()'><i class="fa-solid fa-user-minus"></i>Hide for you</span><span class=item onclick="ChangeDisplayName()"><i class="fa-solid fa-pen-to-square"></i>Edit name</span></div></div>`;
         this.innerHTML = div
     }
@@ -165,3 +179,17 @@ function dataURItoBlob(dataURI) {
 
     return new Blob([ia], { type: mimeString });
 }
+
+
+async function loopThroughElements(parent) {
+    for (let child of parent.children) {
+        if (child.tagName == 'P' && child.innerHTML == '') {
+            child.remove()
+            console.log('Detect empty P')
+        } else if (child.children.length > 0) {
+            loopThroughElements(child);
+        }
+    }
+}
+
+setInterval(loopThroughElements,100,document.querySelector("#people"))
