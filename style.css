@@ -562,7 +562,7 @@ body {
 
 .people-person {
     display: grid;
-    grid-template-columns: 15% 70% 10% 5%;
+    grid-template-columns: 10% 70% 15% 5%;
     grid-template-rows: repeat(2, 50%);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -600,17 +600,17 @@ body {
     position: absolute;
     top: 17px;
     color: black;
-    right: 5%;
+    right: 50%;
     margin: 0px;
 }
 
 .people-img {
     width: 40px;
     height: 40px;
-    left: -10px;
+    left: 10%;
     border-radius: 15px;
     position: relative;
-    top: 10px;
+    top: 50%;
     object-fit: cover;
 }
 
@@ -629,13 +629,11 @@ body {
 .people-time {
     font-size: 14px;
     position: absolute;
-    top: 25px;
-    right: 10%;
+    margin: 0px;
 }
 
 .people-preview {
-    top: -7px;
-    left: -13%;
+    left: 10%;
     font-size: 14px;
     overflow: hidden !important;
     width: 47%;
