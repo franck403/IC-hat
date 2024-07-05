@@ -192,4 +192,7 @@ async function loopThroughElements(parent) {
     }
 }
 
-setInterval(loopThroughElements,100,document.querySelector("#people"))
+function removeEmptyP() {
+    loopThroughElements(document.querySelector("#people"))
+}
+setInterval(removeEmptyP,100)
