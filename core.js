@@ -62,8 +62,7 @@ if (myData != null) {
         }
         set(ref(database, 'user/' + myEmail.replace(/\W/g, '')), data);
     }
-    if (myImage != null) {
-        console.log(myImage)
+    if (myImage != null && myImage != '\n') {
         document.getElementById("user_pic").src = myImage
         document.getElementById("user_picture_img").src = myImage
     } else {
