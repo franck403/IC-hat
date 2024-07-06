@@ -632,7 +632,6 @@ body {
     height: 22px;
     overflow: hidden !important;
     font-family: sans-serif;
-    text-align: right;
     font-weight: 600;
     text-overflow: ellipsis;
 }
@@ -644,6 +643,7 @@ body {
     height: 1rem;
     width: 100%;
     text-overflow: ellipsis;
+    text-align: right;
     margin: 0px;
 }
 
