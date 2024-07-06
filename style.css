@@ -563,7 +563,7 @@ body {
 @media screen and (max-width: 900px) {
     .people-person {
         display: grid;
-        grid-template-columns: 40px 1fr 20% 5%;
+        grid-template-columns: 40px 1fr 70px 5%;
         grid-template-rows: repeat(2, 50%);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
@@ -573,7 +573,7 @@ body {
 @media screen and (min-width: 900px) {
     .people-person {
         display: grid;
-        grid-template-columns: 40px 1fr 36% 1%;
+        grid-template-columns: 40px 1fr 70px 1%;
         grid-template-rows: repeat(2, 50%);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
