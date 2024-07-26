@@ -241,7 +241,7 @@ body {
     font-weight: 400;
     margin: 0;
     background-image: url(img/background.png);
-    background-size: cover;
+    background-size: 150%;
     background-repeat: no-repeat;
 }
 
@@ -871,7 +871,7 @@ body {
 
 .write input {
     font-size: 16px;
-    width: 89%;
+    width: 89%!important;
     height: 40px;
     padding: 0 6px;
     color: var(--dark);
@@ -1262,7 +1262,8 @@ input:disabled {
     }
 
     .container .right .top.top-active {
-        width: calc(93% - 34px);
+        width: 93%;
+        top: -3px;
         z-index: 4;
         position: relative;
         background: black;
