@@ -208,10 +208,8 @@ export function message_render(message, type = "none") {
     var message_good = message
   }
   var message_start = message_good.substring(0, 1000);
-  console.log(message_start)
   var message_start = message_start.replaceAll('<','&lt;')
   var message_start = message_start.replaceAll('>','&gt;')
-  console.log(message_start)
   if (type == "nop") {
     var message_start = textMessage(message_start)
   }
