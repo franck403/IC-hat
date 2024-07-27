@@ -619,7 +619,7 @@ try {
                     var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
                     var date1 = new Date(ActualMessages[0][0].val().date).getTime()
                     var date2 = new Date(ActualMessages[ActualMessages.length-1][0].val().date).getTime()
-                    var autoReversed = date1 > date2
+                    var autoReversed = date1 < date2
                 } else if (localStorage.getItem('lastChat') == i) {
                     if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
@@ -629,19 +629,19 @@ try {
                     var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
                     var date1 = new Date(ActualMessages[0][0].val().date).getTime()
                     var date2 = new Date(ActualMessages[ActualMessages.length-1][0].val().date).getTime()
-                    var autoReversed = date1 > date2
+                    var autoReversed = date1 < date2
                 }
                 if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
                     var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
                     var date1 = new Date(ActualMessages[0][0].val().date).getTime()
                     var date2 = new Date(ActualMessages[ActualMessages.length-1][0].val().date).getTime()
-                    var autoReversed = date1 > date2
+                    var autoReversed = date1 < date2
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
                 } else {
                     var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
                     var date1 = new Date(ActualMessages[0][0].val().date).getTime()
                     var date2 = new Date(ActualMessages[ActualMessages.length-1][0].val().date).getTime()
-                    var autoReversed = date1 > date2
+                    var autoReversed = date1 < date2
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                 }
                 if (autoReversed == undefined) {
