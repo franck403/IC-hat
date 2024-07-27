@@ -647,6 +647,8 @@ try {
                 if (autoReversed == undefined) {
                     var autoReversed = false
                 }
+                console.log(autoReversed)
+                console.log(reversed)
                 if (reversed || autoReversed) {
                     var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true)
                     window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
