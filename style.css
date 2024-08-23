@@ -1344,8 +1344,8 @@ input:disabled {
     padding: 5px;
     position: absolute;
     z-index: 23;
-    left: 36%;
-    bottom: -49px;
+    right: 3%;
+    bottom: -50%;
     margin-left: -60px;
 }
 
