@@ -418,7 +418,7 @@ try {
             } else { }
         } else { }
     });
-    function dateDifference(date1, date2) {
+    function dateDifference(date) {
         const now = new Date();
     const pastDate = new Date(date);
     const seconds = Math.floor((now - pastDate) / 1000);
@@ -457,7 +457,7 @@ try {
         var class_added = `tooltip`
 
         var tooltip = `
-            <span class="tooltiptext">Send at ${String(dateDifference(new Date(data2.val().date), new Date()))}</span>
+            <span class="tooltiptext"><i class="fa-solid fa-ellipsis"></i>${String(dateDifference(new Date(data2.val().date), new Date()))}</span>
         `
 
         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
