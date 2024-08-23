@@ -1337,27 +1337,16 @@ input:disabled {
     visibility: hidden;
     max-width: 400%;
     min-width: 120px;
-    background-color: black;
-    color: #fff;
+    background:white;
+    color: black;
     text-align: center;
     border-radius: 6px;
     padding: 5px;
     position: absolute;
     z-index: 23;
     left: 36%;
-    top: -200%;
+    bottom: -49px;
     margin-left: -60px;
-}
-
-.tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: black transparent transparent transparent;
 }
 
 
@@ -1365,11 +1354,6 @@ input:disabled {
     visibility: visible;
     user-select: none;
     transition: 0.5s;
-}
-
-.tooltip:hover .tooltiptext:hover {
-    opacity: 0.25;
-    transition: 0.25s;
 }
 
 .chat::-webkit-scrollbar {
