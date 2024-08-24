@@ -740,7 +740,7 @@ try {
         }, repeatTime)
     }
     window.addEventListener("offline", (e) => {
-        window.waitInternetLoader(100)
+        window.waitInternetLoader(1000)
         console.log("offline");
     });
     window.addEventListener("online", (e) => {
