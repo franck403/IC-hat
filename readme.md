@@ -6,7 +6,7 @@ firebase realtime db
 <br>netlfly
 <br>github
 <br>image cropper
-<br>bytescale
+<br>firebase bucket
 #### Note : Extention loaders are still in devloppement
 [Chat link](https://ic-hat.geoloup.com)
 We do not accept pull request only bug fix and bug report !

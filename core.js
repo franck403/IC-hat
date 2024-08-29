@@ -499,9 +499,11 @@ try {
                 } catch { }
             }
 
-            else { }
-        };
-
+            else {
+                return None
+            }
+        }
+        return None
     }
     onChildAdded(ref(database, `user/`), (data2) => {
         window.userdb.push(data2)
@@ -565,7 +567,7 @@ try {
             var data2 = data[0]
             data[1] = true
             var message = newMessage(data2)
-            if (message != undefined) {
+            if (message != None) {
                 var d1 = message[0]
                 if (reversed == false) {
                     d1.innerHTML = d1.innerHTML + message[1]
@@ -923,7 +925,7 @@ try {
                     }
                     setTimeout((data2) => {
                         var message = newMessage(data2)
-                        if (message != undefined) {
+                        if (message != None) {
                             var d1 = message[0]
                             d1.innerHTML = d1.innerHTML + message[1]
                             var elem = d1
