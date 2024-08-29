@@ -48,6 +48,7 @@ function allclose() {
     }
 }
 function uploadFile(file,callback) {
+    // window.firebaseUpladeBytes
     const uploadManager = new Bytescale.UploadManager({
         apiKey: "public_W142iez33syWtZFeh6fNmfXuAE9k" // This is your API key.
     });
