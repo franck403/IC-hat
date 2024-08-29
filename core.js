@@ -26,6 +26,7 @@ const firebaseConfig = {
     appId: "1:720687529085:web:2d964e880c5e2398058514",
     measurementId: "G-YC8K0D7GLR"
 };
+const None = null
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('profnity.js').then(registration => {
