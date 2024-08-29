@@ -17,7 +17,7 @@ const storage = getStorage();
 const storageRef = ref(storage, 'some-child');
 
 // 'file' comes from the Blob or File API
-function firebaseUpladeBytes(blob,path) {
+export function firebaseUpladeBytes(blob,path) {
     const storage = getStorage();
     const storageRef = ref(storage, 'uplode/' + path);
     uploadBytes(storageRef, blob).then((snapshot) => {
@@ -26,7 +26,7 @@ function firebaseUpladeBytes(blob,path) {
 }
 
 // 'base64' is a image string
-function firebaseUpladeBase64(base64) {
+export function firebaseUpladeBase64(base64) {
     const storage = getStorage();
     const storageRef = ref(storage, 'uplode' + path);
     uploadString(storageRef, base64, 'base64url').then((snapshot) => {
