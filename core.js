@@ -1,5 +1,6 @@
 import { setCookie, bip, removeloader, getuser, message_date, message_render } from "./bhuy3huygyufwyuge.js"
 import {sendNotif,accesPush} from './notification.js'
+import {firebaseUpladeBytes,firebaseUpladeBase64} from './image.js'
 setTimeout(removeloader, 5000)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
