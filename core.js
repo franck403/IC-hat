@@ -501,10 +501,10 @@ try {
             }
 
             else {
-                return None
+                return null
             }
         }
-        return None
+        return null
     }
     onChildAdded(ref(database, `user/`), (data2) => {
         window.userdb.push(data2)
