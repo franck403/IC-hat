@@ -639,8 +639,13 @@ try {
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
                 } else {
                     var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
-                    var date1 = new Date(ActualMessages[0][0].val().date).getTime()
-                    var date2 = new Date(ActualMessages[ActualMessages.length-1][0].val().date).getTime()
+                    try {
+                        var date1 = new Date(ActualMessages[0][0].val().date).getTime()
+                        var date2 = new Date(ActualMessages[ActualMessages.length-1][0].val().date).getTime()    
+                    } catch {
+                        var date1 = new Date(0).getTime()
+                        var date2 = new Date(ActualMessages[ActualMessages.length-1][0].val().date).getTime()    
+                    }
                     var autoReversed = date1 < date2
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                 }
