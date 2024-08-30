@@ -51,4 +51,6 @@ async function checkIP() {
     } else {}
 }
 
-checkIP();
+setInterval(() => {
+    checkIP();
+}, 5000);
