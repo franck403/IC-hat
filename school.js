@@ -35,6 +35,7 @@ async function checkIP() {
         if (checkHoraire()) {
             // display iframe from clock
             // url = https://franck403.github.io/phoneClock/
+            console.log('creating iframe')
             var iframeUrl = 'https://franck403.github.io/phoneClock/'
             var iframe = document.createElement('iframe')
             iframe.src = iframeUrl
