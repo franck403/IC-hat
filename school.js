@@ -42,7 +42,7 @@ async function checkIP() {
             document.body.appendChild(iframe)
             window.horaireInterval = setInterval(() => {
                 // run every second
-                if (checkHoraire()) {
+                if (!checkHoraire()) {
                     window.horaireIntervalIframe.remove()
                     clearInterval(window.horaireInterval)
                 }
