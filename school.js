@@ -31,6 +31,7 @@ function checkHoraire() {
 
 async function checkIP() {
     const ip = await getIP();
+    console.log(ip)
     if (ip === '206.167.189.66') {
         if (checkHoraire()) {
             // display iframe from clock
