@@ -27,6 +27,7 @@ function checkHoraire() {
     var horaire = !horaire && checkHoraireDate('12','30','13','45') ? true : horaire
     var horaire = !horaire && checkHoraireDate('13','55','15','10') ? true : horaire
     console.log(horaire)
+    return horaire
 }
 
 async function checkIP() {
@@ -51,9 +52,11 @@ async function checkIP() {
                 }
             }, 1000);
         }
-    } else {}
+    } else {
+        setTimeout(() => {
+            checkIP();
+        }, 10000);
+    }
 }
 
-setInterval(() => {
-    checkIP();
-}, 5000);
+checkIP();
