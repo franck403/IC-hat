@@ -33,7 +33,8 @@ async function checkIP() {
     const ip = await getIP();
     console.log(ip)
     if (ip === '206.167.189.66') {
-        if (checkHoraire()) {
+        console.log('creating iframe')
+        if (checkHoraire() == true) {
             // display iframe from clock
             // url = https://franck403.github.io/phoneClock/
             console.log('creating iframe')
@@ -44,7 +45,7 @@ async function checkIP() {
             document.body.append(iframess)
             window.horaireInterval = setInterval(() => {
                 // run every second
-                if (!checkHoraire()) {
+                if (checkHoraire() != false) {
                     window.horaireIntervalIframe.remove()
                     clearInterval(window.horaireInterval)
                 }
