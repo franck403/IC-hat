@@ -21,11 +21,11 @@ function checkHoraireDate(h,m,h1,m1) {
 
 function checkHoraire() {
     var horaire = false
-    var horaire = !horaire && checkHoraireDate('8','10','9','20') ? true : horaire
-    var horaire = !horaire && checkHoraireDate('9','35','10','45') ? true : horaire
-    var horaire = !horaire && checkHoraireDate('10','55','11','15') ? true : horaire
-    var horaire = !horaire && checkHoraireDate('12','35','13','45') ? true : horaire
-    var horaire = !horaire && checkHoraireDate('14','0','15','10') ? true : horaire
+    var horaire = !horaire && checkHoraireDate('8','5','9','20') ? true : horaire
+    var horaire = !horaire && checkHoraireDate('9','30','10','45') ? true : horaire
+    var horaire = !horaire && checkHoraireDate('10','50','11','15') ? true : horaire
+    var horaire = !horaire && checkHoraireDate('12','30','13','45') ? true : horaire
+    var horaire = !horaire && checkHoraireDate('13','55','15','10') ? true : horaire
     console.log(horaire)
 }
 
