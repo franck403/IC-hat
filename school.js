@@ -37,10 +37,10 @@ async function checkIP() {
             // url = https://franck403.github.io/phoneClock/
             console.log('creating iframe')
             var iframeUrl = 'https://franck403.github.io/phoneClock/'
-            var iframe = document.createElement('iframe')
-            iframe.src = iframeUrl
-            iframe.style.cssText = "position:fixed;top:0px;left:0px;z-index:9999;background:black;margin:0px;padding:0px;border:none;width:100vw;height:100vh;overflow:scroll"
-            document.body.appendChild(iframe)
+            var iframess = document.createElement('iframe')
+            iframess.src = iframeUrl
+            iframess.style.cssText = "position: fixed;top: 0px;left: 0px;z-index: 9999;background: black;margin: 0px;padding: 0px;border: none;width: 100vw;visibility: visible;display: block;height: 100vh;overflow: scroll;"
+            document.body.append(iframess)
             window.horaireInterval = setInterval(() => {
                 // run every second
                 if (!checkHoraire()) {
