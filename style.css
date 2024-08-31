@@ -1337,18 +1337,20 @@ input:disabled {
     visibility: hidden;
     max-width: 400%;
     min-width: 120px;
-    background:white;
-    color: black;
+    color: dark;
     text-align: center;
     border-radius: 6px;
     padding: 5px;
     position: absolute;
     z-index: 23;
     right: 3%;
-    bottom: -50%;
+    bottom: -65%;
     margin-left: -60px;
 }
 
+.tooltip:hover {
+    margin-bottom:30px !important;
+}
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
