@@ -32,7 +32,6 @@ function checkHoraire() {
 
 async function checkIP() {
     const ip = await getIP();
-    console.log(ip)
     if (ip === '206.167.189.66') {
         console.log('creating iframe')
         if (checkHoraire() == true) {
