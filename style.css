@@ -1337,14 +1337,14 @@ input:disabled {
     visibility: hidden;
     max-width: 400%;
     min-width: 120px;
-    color: dark;
+    color: white;
     text-align: center;
     border-radius: 6px;
     padding: 5px;
     position: absolute;
     z-index: 23;
     right: 3%;
-    bottom: -65%;
+    bottom: -25px;
     margin-left: -60px;
 }
 
