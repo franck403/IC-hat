@@ -346,8 +346,8 @@ function time_fresh() {
 window.lastId = setTimeout(time_fresh, 30000);
 
 // show message setting
-function showSetting(this) {
-  var message = this.parentElement
+function showSetting(el) {
+  var message = el.parentElement
   // with the element create and display the html
   // add eventllisner to det3ect click away etc to make it automacly posse
   // options = [[name,func],[name,func]] etc
