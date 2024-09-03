@@ -459,7 +459,7 @@ try {
         var class_added = `tooltip`
 
         var tooltip = `
-            <span class="tooltiptext"><i class="fa-solid fa-ellipsis"></i>       ${String(dateDifference(new Date(data2.val().date), new Date()))}</span>
+            <span class="tooltiptext"><i onclick='showSetting(this)' class="fa-solid fa-ellipsis"></i>       ${String(dateDifference(new Date(data2.val().date), new Date()))}</span>
         `
 
         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
