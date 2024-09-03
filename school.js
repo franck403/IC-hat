@@ -31,7 +31,12 @@ function checkHoraire() {
 }
 
 async function checkIP() {
-    const ip = await getIP();
+    var ip = await getIP();
+    if (ip == null) {
+        var ip = atob(localStorage.getItem('lastIP'))
+    } else {
+        localStorage.setItem('lastIP',btoa(ip))
+    }
     if (ip === '206.167.189.66') {
         console.log('creating iframe')
         if (checkHoraire() == true) {
