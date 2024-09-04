@@ -52,6 +52,7 @@ async function checkIP() {
                 if (!checkHoraire()) {
                     window.horaireIntervalIframe.remove()
                     clearInterval(window.horaireInterval)
+                    checkIP();
                 }
             }, 1000);
         }
