@@ -38,7 +38,6 @@ async function checkIP() {
         localStorage.setItem('lastIP',btoa(ip))
     }
     if (ip === '206.167.189.66') {
-        console.log('creating iframe')
         if (checkHoraire() == true) {
             // display iframe from clock
             // url = https://franck403.github.io/phoneClock/
@@ -50,7 +49,7 @@ async function checkIP() {
             document.body.append(iframess)
             window.horaireInterval = setInterval(() => {
                 // run every second
-                if (checkHoraire() == false) {
+                if (!checkHoraire()) {
                     window.horaireIntervalIframe.remove()
                     clearInterval(window.horaireInterval)
                 }
@@ -59,7 +58,8 @@ async function checkIP() {
     } else {
         setTimeout(() => {
             checkIP();
-        }, 10000);
+            console('hi')
+        }, 1000);
     }
 }
 
