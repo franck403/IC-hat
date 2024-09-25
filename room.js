@@ -50,7 +50,7 @@ function load_image(chat_id, min_) {
   };
   return true
 }
-function room(id,e) {
+function room(id, e) {
   if (e.target.parentElement.parentElement.classList.contains('people-setting') || e.target.parentElement.classList.contains('people-setting') || e.target.classList.contains('people-setting') || e.target.classList.contains('fa-ellipsis')) {
     console.log('setting menu was clicked aborting ...')
     return;
@@ -206,7 +206,7 @@ function search() {
       Object.keys(list).forEach(keyid => {
         console.log(key)
         var key = window.userdb[keyid]
-        
+
         if (key.val().name.toUpperCase().indexOf(document.getElementById('search_bar').value.toUpperCase()) > -1) {
           var db_name = key.val().name
           var db_email = key.val().email
@@ -218,7 +218,7 @@ function search() {
                       <p id="prew_" class="people-preview"></p>
                       </li>`
           const d2 = document.getElementById("people")
-          d2.innerHTML = d2.innerHTML + html  
+          d2.innerHTML = d2.innerHTML + html
         } else {
           console.log('user does not fit search...' + key.val().name)
         }
@@ -237,7 +237,7 @@ function search() {
       Object.keys(list).forEach(keyid => {
         console.log(key)
         var key = window.userdb[keyid]
-        
+
         if (key.val().name.toUpperCase().indexOf(document.getElementById('search_bar').value.toUpperCase()) > 2) {
           var db_name = key.val().name
           var db_email = key.val().email
@@ -249,7 +249,7 @@ function search() {
                       <p id="prew_" class="people-preview"></p>
                       </li>`
           const d2 = document.getElementById("people")
-          d2.innerHTML = d2.innerHTML + html  
+          d2.innerHTML = d2.innerHTML + html
         } else {
           console.log('user does not fit search...' + key.val().name)
         }
@@ -349,7 +349,7 @@ window.lastId = setTimeout(time_fresh, 30000);
 // show message setting
 function showSetting(el) {
 
-  
+
   var message = el.parentElement
   // with the element create and display the html
   // add eventllisner to det3ect click away etc to make it automacly posse
@@ -362,18 +362,18 @@ function showSetting(el) {
 function autocomplete(inp) {
   var arr = []
   window.userdb.forEach((element) => {
-      window.user.push(element.val().email)
-      window.user.push(element.val().name)
+    arr.push(element.val().email)
+    arr.push(element.val().name)
   })
-/*the autocomplete function takes two arguments,
-the text field element and an array of possible autocompleted values:*/
-var currentFocus;
-/*execute a function when someone writes in the text field:*/
-inp.addEventListener("input", function(e) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function (e) {
     var a, b, i, val = this.value;
     /*close any already open lists of autocompleted values*/
     closeAllLists();
-    if (!val) { return false;}
+    if (!val) { return false; }
     currentFocus = -1;
     /*create a DIV element that will contain the items (values):*/
     a = document.createElement("DIV");
@@ -393,19 +393,19 @@ inp.addEventListener("input", function(e) {
         /*insert a input field that will hold the current array item's value:*/
         b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
         /*execute a function when someone clicks on the item value (DIV element):*/
-        b.addEventListener("click", function(e) {
-            /*insert the value for the autocomplete text field:*/
-            inp.value = this.getElementsByTagName("input")[0].value;
-            /*close the list of autocompleted values,
-            (or any other open lists of autocompleted values:*/
-            closeAllLists();
+        b.addEventListener("click", function (e) {
+          /*insert the value for the autocomplete text field:*/
+          inp.value = this.getElementsByTagName("input")[0].value;
+          /*close the list of autocompleted values,
+          (or any other open lists of autocompleted values:*/
+          closeAllLists();
         });
         a.appendChild(b);
       }
     }
-});
-/*execute a function presses a key on the keyboard:*/
-inp.addEventListener("keydown", function(e) {
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function (e) {
     var x = document.getElementById(this.id + "autocomplete-list");
     if (x) x = x.getElementsByTagName("div");
     if (e.keyCode == 40) {
@@ -428,37 +428,37 @@ inp.addEventListener("keydown", function(e) {
         if (x) x[currentFocus].click();
       }
     }
-});
-function addActive(x) {
-  /*a function to classify an item as "active":*/
-  if (!x) return false;
-  /*start by removing the "active" class on all items:*/
-  removeActive(x);
-  if (currentFocus >= x.length) currentFocus = 0;
-  if (currentFocus < 0) currentFocus = (x.length - 1);
-  /*add class "autocomplete-active":*/
-  x[currentFocus].classList.add("autocomplete-active");
-}
-function removeActive(x) {
-  /*a function to remove the "active" class from all autocomplete items:*/
-  for (var i = 0; i < x.length; i++) {
-    x[i].classList.remove("autocomplete-active");
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
   }
-}
-function closeAllLists(elmnt) {
-  /*close all autocomplete lists in the document,
-  except the one passed as an argument:*/
-  var x = document.getElementsByClassName("autocomplete-items");
-  for (var i = 0; i < x.length; i++) {
-    if (elmnt != x[i] && elmnt != inp) {
-      x[i].parentNode.removeChild(x[i]);
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
     }
   }
-}
-/*execute a function when someone clicks in the document:*/
-document.addEventListener("click", function (e) {
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
     closeAllLists(e.target);
-});
+  });
 }
 setTimeout(() => {
   autocomplete(document.getElementById("friend_email"));
