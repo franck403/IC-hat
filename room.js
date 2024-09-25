@@ -191,15 +191,15 @@ function search() {
     }
   }
   if (x_test == x_need) {
-    let z1 = document.getElementsByClassName('people-person db');
-    for (i = 0; i < z1.length; i++) {
-      z1[i].remove()
+    let z = document.getElementsByClassName('people-person db');
+    for (i = 0; i < z.length; i++) {
+      z[i].remove()
     }
     console.log("[search core] Searching Person in db...")
     document.getElementById('search_bar').disabled
     var f = (responseJson) => {
-      for (i = 0; i < z1.length; i++) {
-        z1[i].remove()
+      for (i = 0; i < z.length; i++) {
+        z[i].remove()
       }
 
       var list = responseJson
@@ -228,8 +228,8 @@ function search() {
     f(window.userdb)
   } else {
     var f = (responseJson) => {
-      for (i = 0; i < z1.length; i++) {
-        z1[i].remove()
+      for (i = 0; i < z.length; i++) {
+        z[i].remove()
       }
 
       var list = responseJson
