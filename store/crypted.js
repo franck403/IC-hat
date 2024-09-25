@@ -1,4 +1,4 @@
-import {setCookie,getCookie,Regex,encrypt,getuser,message_render} from ".././bhuy3huygyufwyuge.js"
+import {setCookie,getCookie,Regex,encrypt,getuser,message_render} from ".././functions.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import {

@@ -1,4 +1,4 @@
-import { getuser, changepic} from ".././bhuy3huygyufwyuge.js"
+import { getuser, changepic} from ".././functions.js"
 var Imageupload = window.Imageupload
 
 var myData = await getuser()

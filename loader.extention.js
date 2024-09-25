@@ -1,4 +1,4 @@
-import { getCookie, getuser } from "./bhuy3huygyufwyuge.js"
+import { getCookie, getuser } from "./functions.js"
 export function load() {
     try {
         var ext = localStorage.getItem("extention")
