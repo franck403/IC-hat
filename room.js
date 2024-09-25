@@ -228,6 +228,7 @@ function search() {
     f(window.userdb)
   } else {
     var f = (responseJson) => {
+      let z = document.getElementsByClassName('people-person db');
       for (i = 0; i < z.length; i++) {
         z[i].remove()
       }
@@ -461,5 +462,4 @@ document.addEventListener("click", function (e) {
 }
 setTimeout(() => {
   autocomplete(document.getElementById("friend_email"));
-  autocomplete(document.getElementById("search_bar  "));
 }, 10000);
