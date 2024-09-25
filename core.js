@@ -641,7 +641,7 @@ try {
                     try {
                         var date1 = new Date(ActualMessages[0][0].val().date).getTime()
                         var date2 = new Date(ActualMessages[ActualMessages.length-1][0].val().date).getTime()    
-                        var autoReversed = date1 > date2
+                        var autoReversed = date1 < date2
                     } catch {
                         var autoReversed = true
                     }
