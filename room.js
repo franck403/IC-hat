@@ -459,6 +459,7 @@ document.addEventListener("click", function (e) {
     closeAllLists(e.target);
 });
 }
-
-autocomplete(document.getElementById("friend_email"));
-autocomplete(document.getElementById("search_bar  "));
+setTimeout(() => {
+  autocomplete(document.getElementById("friend_email"));
+  autocomplete(document.getElementById("search_bar  "));
+}, 10000);
