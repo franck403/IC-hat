@@ -235,7 +235,6 @@ function search() {
 
       var list = responseJson
       Object.keys(list).forEach(keyid => {
-        console.log(key)
         var key = window.userdb[keyid]
 
         if (key.val().name.toUpperCase().indexOf(document.getElementById('search_bar').value.toUpperCase()) > 2) {
@@ -250,9 +249,7 @@ function search() {
                       </li>`
           const d2 = document.getElementById("people")
           d2.innerHTML = d2.innerHTML + html
-        } else {
-          console.log('user does not fit search...' + key.val().name)
-        }
+        } else {}
         document.getElementById('search_bar').removeAttribute("disable")
       })
     }
