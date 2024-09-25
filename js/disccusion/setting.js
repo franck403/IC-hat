@@ -135,7 +135,8 @@ class ExpandingList extends HTMLInputElement {
     }
 
     disconnectedCallback() {
-        console.log("Custom element removed from page.");
+        // just better delete
+        try {this.remove()} catch {}
     }
 
 }
