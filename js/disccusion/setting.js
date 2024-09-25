@@ -172,7 +172,6 @@ async function loopThroughElements(parent) {
     for (let child of parent.children) {
         if (child.tagName == 'P' && child.innerHTML == '') {
             child.remove()
-            console.log('Detect empty P')
         } else if (child.children.length > 0) {
             loopThroughElements(child);
         }
