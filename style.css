@@ -1338,13 +1338,15 @@ input:disabled {
     max-width: 400%;
     min-width: 120px;
     color: white;
+    background: black;
     text-align: center;
-    border-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
     padding: 5px;
     position: absolute;
     z-index: 23;
     right: 3%;
-    bottom: -25px;
+    bottom: -28px;
     margin-left: -60px;
 }
 
