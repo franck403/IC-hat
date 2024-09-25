@@ -1,3 +1,5 @@
+// no api its bugged
+/*
 self.addEventListener('fetch', event => {
   event.respondWith(
     (async () => {
@@ -36,3 +38,4 @@ self.addEventListener('fetch', event => {
     })
   );
 });
+*/
