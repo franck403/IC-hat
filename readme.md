@@ -9,5 +9,9 @@ firebase realtime db
 <br>firebase bucket
 #### Note : Extention loaders are still in devloppement
 [Chat link](https://ic-hat.geoloup.com)
-We do not accept pull request only bug fix and bug report !
+We do accept pull request, bug fix and bug report !
 #### important : auth.js is made by microsoft
+
+### In dev
+A python api is on devloppement for the extention
+WE need HELP for it
