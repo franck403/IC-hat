@@ -643,12 +643,12 @@ try {
                         var date2 = new Date(ActualMessages[ActualMessages.length-1][0].val().date).getTime()    
                         var autoReversed = date1 < date2
                     } catch {
-                        var autoReversed = true
+                        var autoReversed = false
                     }
                     var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                 }
                 if (autoReversed == undefined) {
-                    var autoReversed = true
+                    var autoReversed = false
                 }
                 console.log(autoReversed)
                 console.log(reversed)
