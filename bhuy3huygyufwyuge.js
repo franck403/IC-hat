@@ -213,7 +213,6 @@ export function message_render(message, type = "none") {
   if (type == "nop") {
     var message_start = textMessage(message_start)
   }
-  console.log(message_start)
   if (message_start == "undefined" || message_start == undefined) {
     return null; 
   }
