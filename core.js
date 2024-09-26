@@ -942,7 +942,9 @@ try {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
                         var date = message_date(DateNow, dnamef)
-                        document.getElementById(`time_${dnamef}`).innerHTML = date
+                        try {
+                            document.getElementById(`time_${dnamef}`).innerHTML = date
+                        } catch {}
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     } else {
                         var DateNow = data2.val().date
