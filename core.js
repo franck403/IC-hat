@@ -943,8 +943,10 @@ try {
                         var date = message_date(DateNow, dnamef)
                         try {
                             document.getElementById(`time_${dnamef}`).innerHTML = date
-                        } catch {}
-                        document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                            document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                        } catch {
+                            console.log(data2)
+                        }
                     } else {
                         var DateNow = data2.val().date
                         var date = message_date(DateNow, dnamef)
