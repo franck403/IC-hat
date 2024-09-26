@@ -466,8 +466,9 @@ try {
             if (data2.val().message != null) {
                 if (data2.val().type == "message") {
                     if (data2.val().name != null) {
-                        if (message_render(data2.val().message) == null) {
-                            
+                        if (message_render(data2.val().message) == null || message_render(data2.val().message) == undefined) {
+                            var html = ''
+                            var DateNow = ''
                         } else {
                             if (data2.val().email == myEmail) {
                                 var html = `<div class="bubble me ${class_added}">${message_render(data2.val().message)} ${tooltip}</div>`
