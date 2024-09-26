@@ -33,7 +33,6 @@ iframe.onload = () => {
         });
         fc.document.getElementById("yes").remove()
         netlifyIdentity.on('login', (info) => {
-            console.log('logged')
             try {
                 terms = netlifyIdentity.gotrue.currentUser().user_metadata.termofservice
                 if (terms == 'no') {return;}
