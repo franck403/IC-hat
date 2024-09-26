@@ -649,7 +649,11 @@ try {
                 if (autoReversed == undefined) {
                     var autoReversed = false
                 }
-                if (reversed || autoReversed) {
+                if (reversed) {
+                    var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true)
+                    window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
+                }
+                if (autoReversed) {
                     var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), false)
                     window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
                 } else {
@@ -666,9 +670,8 @@ try {
         //worker.postMessage('called')
     }
     // reversed
-    function MessageLoadReversed() {
-        var p = {}
-        MessageWorker(p.select, p.max, true)
+    function MessageLoadReversed(select, max) {
+        MessageWorker(select, max, true)
         //worker.postMessage('called')
     }
     window.MessageLoadReversed = MessageLoadReversed
