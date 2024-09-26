@@ -563,12 +563,13 @@ try {
         }
     });
     function MessageWorkerLoop(snapshot, reversed = false) {
+        console.log(reversed)
         for (let i = 0; i < (snapshot.length); i++) {
             var data = snapshot[i]
             var data2 = data[0]
             data[1] = true
             var message = newMessage(data2)
-            if (message != None) {
+            if (message !=  null || message[1] !=  '') {
                 var d1 = message[0]
                 if (reversed == false) {
                     d1.innerHTML = d1.innerHTML + message[1]
