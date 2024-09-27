@@ -265,7 +265,7 @@ function Openurl(link) {
 
 function big(elem) {
   document.getElementById('big-image').classList.toggle('big-image')
-  document.getElementById('big-image').style.cssText(`--image:url('${elem.dataset.src}')`)
+  document.getElementById('big-image').style.cssText = `--image:url('${elem.dataset.src}')`
 }
 
 function key_add() {
