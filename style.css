@@ -1465,14 +1465,15 @@ input:disabled {
 
 .big-image {
     position: fixed;
-    z-index: 1000000000000;
-    height: 75%;
-    width: auto;
+    z-index: 10000000;
+    width: 61.5vw;
+    height: auto;
+    background: white;
     top: 50%;
     border-radius: 10px;
-    border: black solid 1px;
-    left: 68%;
-    transform: translate(-50%, -50%);
+    border: #afaeae solid 1px;
+    transform: translate(-93.5%, -50%);
+
 }
 
 .banner {
