@@ -624,9 +624,8 @@ try {
                 }
             }
             if (reversed == false) {
-                elem.scrollTop = elem.scrollHeight;
-                elem.scrollTop = elem.scrollHeight;
             } else {
+                console.log(height)
                 elem.scrollTop = elem.scrollHeight-height;
                 elem.scrollTop = elem.scrollHeight-height;
             }
