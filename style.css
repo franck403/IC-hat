@@ -1470,12 +1470,14 @@ input:disabled {
     height: 100vh;
     top: 50%;
     left: 50%;
-    border-radius: 10px;
     border: #afaeae solid 1px;
     transform: translate(-50%, -50%);
     background-image: var(--image);
+    background-position: center;
+    background-size: contain;
+    background-color: white;
     display: block !important;
-    visibility:visible !important;
+    visibility: visible !important;
     opacity: 1 !important;
 }
 
