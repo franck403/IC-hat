@@ -585,7 +585,6 @@ try {
                         if (currentScroll > 0 && lastScroll <= currentScroll) {
                             lastScroll = currentScroll;
                         } else {
-                            var scrolledAmount = lastScroll - currentScroll
                             lastScroll = currentScroll;
                             if (currentScroll <= ((innerHeight-100)/1.4)) {
                                 // scrolling up !
@@ -608,6 +607,7 @@ try {
             }
         });
         function MessageWorkerLoop(snapshot, reversed = false,height) {
+            var elem = undefined
             for (let i = 0; i < (snapshot.length); i++) {
                 var data = snapshot[i]
                 var data2 = data[0]
@@ -615,6 +615,7 @@ try {
                 var message = newMessage(data2)
                 if (message != null || message[1] != '') {
                     var d1 = message[0]
+                    var elem = d1
                     if (reversed == false) {
                         d1.innerHTML = d1.innerHTML + message[1]
                     } else {
@@ -622,7 +623,6 @@ try {
                     }
                 }
             }
-            var elem = d1
             if (reversed == false) {
                 elem.scrollTop = elem.scrollHeight;
                 elem.scrollTop = elem.scrollHeight;
