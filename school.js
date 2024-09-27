@@ -57,7 +57,6 @@ async function checkIP() {
     } else {
         setTimeout(() => {
             checkIP();
-            console('hi')
         }, 1000);
     }
 }
