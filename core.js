@@ -589,7 +589,7 @@ try {
                             if (currentScroll <= ((innerHeight-100)/1.4)) {
                                 // scrolling up !
                                 // load more message
-                                window.MessageLoadReversed(undefined,undefined,currentScroll)
+                                window.MessageLoadReversed(undefined,undefined,e.target.scrollHeight)
                             }
                         }
                     })
