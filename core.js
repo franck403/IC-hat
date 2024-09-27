@@ -587,7 +587,7 @@ try {
                         } else {
                             var scrolledAmount = lastScroll - currentScroll
                             lastScroll = currentScroll;
-                            if (currentScroll < 60) {
+                            if (currentScroll < 50) {
                                 // scrolling up !
                                 // load more message
                                 window.MessageLoadReversed()
