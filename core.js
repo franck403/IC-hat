@@ -590,7 +590,8 @@ try {
                             if (currentScroll <= ((innerHeight-100)/1.4)) {
                                 // scrolling up !
                                 // load more message
-                                window.MessageLoadReversed()
+                                hn = currentScroll
+                                window.MessageLoadReversed(undefined,undefined,hn)
                             }
                         }
                     })
@@ -607,7 +608,7 @@ try {
                 }, 2000, el);
             }
         });
-        function MessageWorkerLoop(snapshot, reversed = false) {
+        function MessageWorkerLoop(snapshot, reversed = false,height) {
             for (let i = 0; i < (snapshot.length); i++) {
                 var data = snapshot[i]
                 var data2 = data[0]
@@ -622,6 +623,8 @@ try {
                         elem.scrollTop = elem.scrollHeight;
                     } else {
                         d1.innerHTML = message[1] + d1.innerHTML
+                        elem.scrollTop = elem.scrollHeight-height;
+                        elem.scrollTop = elem.scrollHeight-height;
                     }
                 }
             }
@@ -641,7 +644,7 @@ try {
         }
         window.findAll = findAll
         window.MessageWorkerLoop = MessageWorkerLoop
-        async function MessageWorker(select, max, reversed = false) {
+        async function MessageWorker(select, max, reversed = false,height) {
             if (max == undefined) {
                 max = 20
             }
@@ -695,14 +698,14 @@ try {
                         var autoReversed = false
                     }
                     if (reversed) {
-                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true)
+                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true,height)
                         window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
                     } else {
                         if (autoReversed) {
-                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), false)
+                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), false,height)
                             window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
                         } else {
-                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true)
+                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true,height)
                             window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
                         }
                     }
@@ -716,8 +719,8 @@ try {
             //worker.postMessage('called')
         }
         // reversed
-        function MessageLoadReversed(select, max) {
-            MessageWorker(select, max, true)
+        function MessageLoadReversed(select, max,height) {
+            MessageWorker(select, max, true,height)
             //worker.postMessage('called')
         }
         window.MessageLoadReversed = MessageLoadReversed
