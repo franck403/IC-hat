@@ -491,10 +491,10 @@ try {
                 } else if (data2.val().type == "new-image") {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
-                        var html = `<div class="bubble me ${class_added}"><img onclick="big(this)" class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="${data2.val().message}"></img>${tooltip}</div>`
+                        var html = `<div class="bubble me ${class_added}"><img onclick="big(this)" class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="data:image/${data2.val().message}"></img>${tooltip}</div>`
                     } else {
                         var DateNow = data2.val().date
-                        var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div><img onclick="big(this)" class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></img></div>${tooltip}</div>`
+                        var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div><img onclick="big(this)" class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="data:image/${data2.val().message}"></img></div>${tooltip}</div>`
                     }
                 } else if (data2.val().type == "encrypted") {
                     if (data2.val().name != null || data2.val().name != undefined) {
@@ -608,7 +608,6 @@ try {
             }
         });
         function MessageWorkerLoop(snapshot, reversed = false) {
-            console.log(snapshot)
             for (let i = 0; i < (snapshot.length); i++) {
                 var data = snapshot[i]
                 var data2 = data[0]
