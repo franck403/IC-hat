@@ -1466,14 +1466,14 @@ input:disabled {
 .big-image {
     position: fixed;
     z-index: 10000000;
-    width: 61.5vw;
-    height: auto;
-    background: white;
+    width: 100vw;
+    height: 100vh;
     top: 50%;
+    left: 50%;
     border-radius: 10px;
     border: #afaeae solid 1px;
-    transform: translate(-93.5%, -50%);
-
+    transform: translate(-50%, -50%);
+    background-image: var(--image);
 }
 
 .banner {

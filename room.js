@@ -263,10 +263,11 @@ function Openurl(link) {
   window.open(link);
 }
 
-
 function big(elem) {
-  elem.classList.toggle("big-image")
+  document.getElementById('big-image').toggle('')
+  document.getElementById('big-image').style.cssText(`--image:url('${elem.dataset.src}')`)
 }
+
 function key_add() {
   search()
 }
