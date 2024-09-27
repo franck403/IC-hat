@@ -6,10 +6,10 @@ const api = {
 export function getUser() {
     try {
         const user = netlifyIdentity.currentUser();
+        return {"email":user.email,"user_metadata":user.user_metadata}
     } catch {
         location.reload()
     }
-    return {"email":user.email,"user_metadata":user.user_metadata}
 }
 
 export function Alert(message,title,callback) {
