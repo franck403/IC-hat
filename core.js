@@ -627,8 +627,9 @@ try {
                 elem.scrollTop = elem.scrollHeight;
                 elem.scrollTop = elem.scrollHeight;
             } else if (height != 0){
-                console.log(height)
+                try {
                 elem.scrollTop = elem.scrollHeight-height;
+                } catch {}
             }
             return snapshot
         }
