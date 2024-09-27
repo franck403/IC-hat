@@ -615,7 +615,7 @@ try {
                 var message = newMessage(data2)
                 if (message != null || message[1] != '') {
                     var d1 = message[0]
-                    var elem = d1
+                    if (elem == undefined) {var elem = d1}
                     if (reversed == false) {
                         d1.innerHTML = d1.innerHTML + message[1]
                     } else {
