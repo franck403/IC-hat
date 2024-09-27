@@ -624,9 +624,10 @@ try {
                 }
             }
             if (reversed == false) {
-            } else {
+                elem.scrollTop = elem.scrollHeight;
+                elem.scrollTop = elem.scrollHeight;
+            } else if (height != 0){
                 console.log(height)
-                elem.scrollTop = elem.scrollHeight-height;
                 elem.scrollTop = elem.scrollHeight-height;
             }
             return snapshot
