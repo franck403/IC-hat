@@ -4,8 +4,11 @@ const api = {
     alert:Alert
 }
 export function getUser() {
-    const user = netlifyIdentity.currentUser();
-    location.reload()
+    try {
+        const user = netlifyIdentity.currentUser();
+    } catch {
+        location.reload()
+    }
     return {"email":user.email,"user_metadata":user.user_metadata}
 }
 
