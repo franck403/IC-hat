@@ -5,6 +5,7 @@ const api = {
 }
 export function getUser() {
     const user = netlifyIdentity.currentUser();
+    location.reload()
     return {"email":user.email,"user_metadata":user.user_metadata}
 }
 

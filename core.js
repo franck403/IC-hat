@@ -563,6 +563,7 @@ try {
         }
     });
     function MessageWorkerLoop(snapshot, reversed = false) {
+        console.log(snapshot)
         for (let i = 0; i < (snapshot.length); i++) {
             var data = snapshot[i]
             var data2 = data[0]
