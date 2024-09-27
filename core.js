@@ -618,15 +618,18 @@ try {
                     var d1 = message[0]
                     if (reversed == false) {
                         d1.innerHTML = d1.innerHTML + message[1]
-                        var elem = d1
-                        elem.scrollTop = elem.scrollHeight;
-                        elem.scrollTop = elem.scrollHeight;
                     } else {
                         d1.innerHTML = message[1] + d1.innerHTML
-                        elem.scrollTop = elem.scrollHeight-height;
-                        elem.scrollTop = elem.scrollHeight-height;
                     }
                 }
+            }
+            var elem = d1
+            if (reversed == false) {
+                elem.scrollTop = elem.scrollHeight;
+                elem.scrollTop = elem.scrollHeight;
+            } else {
+                elem.scrollTop = elem.scrollHeight-height;
+                elem.scrollTop = elem.scrollHeight-height;
             }
             return snapshot
         }
