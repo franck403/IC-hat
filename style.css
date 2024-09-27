@@ -1351,10 +1351,6 @@ input:disabled {
     margin-left: -60px;
 }
 
-.tooltip:hover {
-    margin-bottom:30px !important;
-}
-
 .tooltip:hover .tooltiptext {
     visibility: visible;
     user-select: none;
