@@ -587,8 +587,7 @@ try {
                         } else {
                             var scrolledAmount = lastScroll - currentScroll
                             lastScroll = currentScroll;
-                            console.log(scrolledAmount)
-                            if (currentScroll <= ((innerHeight-100)/1.3)) {
+                            if (currentScroll <= ((innerHeight-100)/1.4)) {
                                 // scrolling up !
                                 // load more message
                                 window.MessageLoadReversed()
