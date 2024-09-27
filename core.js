@@ -1,4 +1,4 @@
-import { setCookie, bip, removeloader, getuser, message_date, message_render } from "./functions.js"
+import { setCookie, bip, removeloader, getuser, message_date, message_render , decrypt} from "./functions.js"
 import { sendNotif, accesPush } from './notification.js'
 import { firebaseUpladeBytes, firebaseUpladeBase64 } from './image.js'
 setTimeout(removeloader, 5000)
