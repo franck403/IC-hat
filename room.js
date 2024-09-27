@@ -265,7 +265,6 @@ function Openurl(link) {
 
 
 function big(elem) {
-  console.log(elem)
   elem.classList.toggle("big-image")
 }
 function key_add() {
