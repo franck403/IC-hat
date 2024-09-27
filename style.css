@@ -1474,6 +1474,15 @@ input:disabled {
     border: #afaeae solid 1px;
     transform: translate(-50%, -50%);
     background-image: var(--image);
+    display: block !important;
+    visibility:visible !important;
+    opacity: 1 !important;
+}
+
+.big-hidden {
+    display:none;
+    visibility:hidden;
+    opacity: 0;
 }
 
 .banner {
