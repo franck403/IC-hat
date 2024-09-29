@@ -1001,7 +1001,10 @@ try {
                                 document.getElementById(`time_${dnamef}`).innerHTML = date
                                 document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                             } catch {
-                                console.log(data2)
+                                setTimeout(()=>{
+                                    document.getElementById(`time_${dnamef}`).innerHTML = date
+                                    document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)    
+                                },1000)
                             }
                         } else {
                             var DateNow = data2.val().date
