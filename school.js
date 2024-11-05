@@ -26,6 +26,9 @@ function checkHoraire() {
     var horaire = !horaire && checkHoraireDate('10','50','11','15') ? true : horaire
     var horaire = !horaire && checkHoraireDate('12','30','13','45') ? true : horaire
     var horaire = !horaire && checkHoraireDate('13','55','15','10') ? true : horaire
+    if (localStorage.getItem('bypass') == 'true') {
+        var horaire = false
+    }
     return horaire
 }
 
