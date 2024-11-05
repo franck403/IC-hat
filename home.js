@@ -2,7 +2,7 @@ var data = `
 <div class="info">
 	<h1>IC-hat</h1>
 	<h2>The new chat 100% free.</h2>
-	<h3>What to try it ? click on login or register to start testing</h3>
+	<h3>Want to try it ? click on login or register to start testing</h3>
 	<h4>Geoloup don't collect data. Ads are not a thing for us. Note: other service may collect data. To see the service we use please se : <a href='https://github.com/franck403/IC-hat?tab=readme-ov-file#readme' target="_blank" rel="noopener noreferrer">Ic-hat readme</a></h4>
 </div>
 <div id="mm" class="mm">
