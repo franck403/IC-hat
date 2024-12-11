@@ -56,8 +56,6 @@ function uploadFile(file, callback) {
         callback(response.data.url)
     })
     .catch(error => { console.error('Error:', error); });
-    uploadManager.upload({ data: file }).then((fileUrl) => {
-    });
 }
 
 window.onclick = allclose

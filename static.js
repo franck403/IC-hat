@@ -13,7 +13,7 @@ export async function uploadFile(file) {
       }
     });
     console.log('Success:', response.data);
-    return response.data;
+    return response.data.url;
   } catch (error) {
     console.error('Error:', error);
     throw error;
