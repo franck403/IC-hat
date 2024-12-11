@@ -47,20 +47,17 @@ function allclose() {
         element.style.visibility = "hidden"
     }
 }
-function uploadFile(file,callback) {
+function uploadFile(file, callback) {
     // window.firebaseUpladeBytes
-    const uploadManager = new Bytescale.UploadManager({
-        apiKey: "public_W142iez33syWtZFeh6fNmfXuAE9k" // This is your API key.
+    const formData = new FormData(); 
+    formData.append('file', file); axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+    .then(response => { 
+        console.log('Success:', response.data); 
+        callback(response.data.url)
+    })
+    .catch(error => { console.error('Error:', error); });
+    uploadManager.upload({ data: file }).then((fileUrl) => {
     });
-    try {
-        uploadManager.upload({ data: file }).then((fileUrl)=>{
-            console.log(`File uploaded:\n${fileUrl}`);
-            callback(fileUrl.fileUrl)
-        });
-    } catch (e) {
-        console.error(e)
-        alert(`Error:\n${e.message}`);
-    }
 }
 
 window.onclick = allclose
@@ -136,14 +133,14 @@ class ExpandingList extends HTMLInputElement {
 
     disconnectedCallback() {
         // just better delete
-        try {this.remove()} catch {}
+        try { this.remove() } catch { }
     }
 
 }
 customElements.define("expanding-list", ExpandingList, { extends: "input" });
 
-function Imageupload(image,callback) {
-    uploadFile(image,callback)
+function Imageupload(image, callback) {
+    uploadFile(image, callback)
 }
 window.Imageupload = Imageupload
 
