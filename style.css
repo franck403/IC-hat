@@ -1471,6 +1471,7 @@ input:disabled {
     top: 50%;
     left: 50%;
     border: #afaeae solid 1px;
+    background-repeat: no-repeat;
     transform: translate(-50%, -50%);
     background-image: var(--image);
     background-position: center;

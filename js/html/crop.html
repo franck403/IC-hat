@@ -262,16 +262,13 @@
     <script>
         function Imageupload(image, callback) {
             // window.firebaseUpladeBytes
-            const uploadManager = new Bytescale.UploadManager({
-                apiKey: "public_W142iez33syWtZFeh6fNmfXuAE9k" // This is your API key.
-            });
-            try {
-                const { fileUrl, filePath } = uploadManager.upload({ data: file });
-                callback(fileUrl)
-                console.log(`File uploaded:\n${fileUrl}`);
-            } catch (e) {
-                alert(`Error:\n${e.message}`);
-            }
+            const formData = new FormData(); 
+            formData.append('file', file); axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+            .then(response => { 
+                console.log('Success:', response.data); 
+                callback(response.data.url)
+            })
+            .catch(error => { console.error('Error:', error); });
         }
         function dataURItoBlob(dataURI) {
             // convert base64/URLEncoded data component to raw binary data held in a string
