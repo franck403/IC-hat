@@ -264,7 +264,7 @@
         function Imageupload(file, callback) {
             // window.firebaseUpladeBytes
             const formData = new FormData(); 
-            formData.append('file', file); axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+            formData.append('file', file,'profile.png'); axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
             .then(response => { 
                 console.log('Success:', response.data); 
                 callback(response.data.url)
@@ -336,7 +336,7 @@
         function cropImage() {
             console.log('started');
             croppi.croppie('result', {
-                type: 'bytes',
+                type: 'blob',
                 format: 'jpeg',
                 size: 'original'
             }).then(function (resp) {
