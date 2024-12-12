@@ -558,6 +558,7 @@ try {
         window.processingMessage = []
         document.getElementById("people").addEventListener("click", (e) => {
             const el = e.target.closest("li");
+            console.log(el)
             if (el.dataset.enable != "true") {
                 onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                     // To do make a list of message to load

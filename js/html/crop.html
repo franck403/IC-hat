@@ -261,8 +261,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
-        function Imageupload(file, callback) {
+        // function that replace blob with file
+        function convertBlobToFile(blob, fileName, mimeType = blob.type) {
+            return new File([blob], fileName, { type: mimeType });
+        }
+        function Imageupload(dlob, callback) {
             // window.firebaseUpladeBytes
+            var file = dlob
             const formData = new FormData(); 
             formData.append('file', file,'profile.jpeg');
             axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
