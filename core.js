@@ -563,14 +563,18 @@ try {
                 onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                     // To do make a list of message to load
                     if (data2.val().dname == undefined) { return }
-                    //  don't display hidden message
+
+                    //  don't display hidden message  Idk wich one is the good one
                     if (data2.val().ide == true) { return }
+                    if (data2.val().hide == true) { return }
+
+                    // loading message in memory for storage while waiting to be loaded
                     try {
                         window.processingMessage[data2.val().dname].push([data2, false])
                     } catch {
                         window.processingMessage.push(String(data2.val().dname))
                         if (typeof (window.processingMessage[String(data2.val().dname)]) != typeof ([])) {
-                            window.processingMessage[String(data2.val().dname)] = []
+                            window.processingMessage[String(data2.val().dname)] = undefined
                         }
                         window.processingMessage[String(data2.val().dname)].push([data2, false])
                     }
@@ -648,12 +652,23 @@ try {
         }
         window.findAll = findAll
         window.MessageWorkerLoop = MessageWorkerLoop
+        function sortArrayByDate(array) {
+            return array.sort((a, b) => {
+                const dateA = new Date(a[0].val().date).getTime();
+                const dateB = new Date(b[0].val().date).getTime();
+                return dateA - dateB;
+            });
+        }
+        
         async function MessageWorker(select, max, reversed = false,height) {
             if (max == undefined) {
                 max = 20
             }
             for (let i = 0; i < (window.processingMessage.length / 2); i++) {
                 var err = false
+                // generate new array with the date pre made
+                var narray = sortArrayByDate(window.processingMessage[window.processingMessage[i]])
+                window.processingMessage[window.processingMessage[i]] = narray
                 try {
                     findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]])
                     var err = true
@@ -677,20 +692,20 @@ try {
                             var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                         }
                         var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
-                        var date1 = new Date(ActualMessages[0][0].val().date).getTime()
+                        var date1 = new Date(ActualMessages[1][0].val().date).getTime()
                         var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
                         var autoReversed = date1 < date2
                     }
                     if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
                         var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
-                        var date1 = new Date(ActualMessages[0][0].val().date).getTime()
+                        var date1 = new Date(ActualMessages[1][0].val().date).getTime()
                         var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
                         var autoReversed = date1 < date2
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
                     } else {
                         var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
                         try {
-                            var date1 = new Date(ActualMessages[0][0].val().date).getTime()
+                            var date1 = new Date(ActualMessages[1][0].val().date).getTime()
                             var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
                             var autoReversed = date1 < date2
                         } catch {
