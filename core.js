@@ -1018,7 +1018,7 @@ try {
                                 document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                             } catch {
                                 setTimeout(()=>{
-                                    document.getElementById(`time_${dnamef}`).innerHTML = date
+                                    document.getElementById(`time_${dnamef}`).innerHTML = message_date(DateNow, dnamef)
                                     document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)    
                                 },1000)
                             }
