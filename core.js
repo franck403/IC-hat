@@ -998,6 +998,7 @@ try {
                         }
                         setTimeout((data2) => {
                             var message = newMessage(data2)
+                            console.log(message)
                             if (message != None) {
                                 var d1 = message[0]
                                 d1.innerHTML = d1.innerHTML + message[1]
