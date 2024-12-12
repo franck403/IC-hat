@@ -574,14 +574,9 @@ try {
                     } catch {
                         window.processingMessage.push(String(data2.val().dname))
                         if (typeof (window.processingMessage[String(data2.val().dname)]) != typeof ([])) {
-                            window.processingMessage[String(data2.val().dname)] = undefined
-                        }
-                        try {
-                            window.processingMessage[String(data2.val().dname)].push([data2, false])
-                        } catch {
                             window.processingMessage[String(data2.val().dname)] = []
-                            window.processingMessage[String(data2.val().dname)].push([data2, false])
                         }
+                        window.processingMessage[String(data2.val().dname)].push([data2, false])
                     }
                 })
                 onChildChanged(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
