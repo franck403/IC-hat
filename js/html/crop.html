@@ -262,14 +262,14 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
         // function that replace blob with file
-        function convertBlobToFile(blob, fileName, mimeType = blob.type) {
-            return new File([blob], fileName, { type: mimeType });
+        function blobToFile(theBlob, fileName){       
+            return new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
         }
         function Imageupload(dlob, callback) {
             // window.firebaseUpladeBytes
-            var file = dlob
+            var file = blobToFile(dlob,'profile.jpeg')
             const formData = new FormData(); 
-            formData.append('file', file,'profile.jpeg');
+            formData.append('file', file);
             axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
             .then(response => { 
                 console.log('Success:', response.data); 
