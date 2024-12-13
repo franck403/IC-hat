@@ -226,11 +226,6 @@
                     data-feather="download"></i></button>
         </div>
     </div>
-    <script>
-        function close() {
-            window.parent.postMessage("close", "*");
-        }
-    </script>
     <div class="modal fade" id="imageModalContainer" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-md modal-dialog-centered crop__modal">
@@ -267,18 +262,14 @@
             console.log(file)
             return file
         }
-        function Imageupload(dlob, callback) {
+        async function Imageupload(dlob, callback) {
             // window.firebaseUpladeBytes
             var file = blobToFile(dlob,'profile.jpeg')
             console.log(file)
             const formData = new FormData(); 
             formData.append('file', file);
-            axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
-            .then(response => { 
-                console.log('Success:', response.data); 
-                callback(response.data.url)
-            })
-            .catch(error => { console.error('Error:', error); });
+            var respinse = await axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+            console.log('Success:', response.data); 
         }
         function dataURItoBlob(dataURI) {
             // convert base64/URLEncoded data component to raw binary data held in a string
@@ -348,13 +339,13 @@
                 type: 'blob',
                 format: 'jpeg',
                 size: 'original'
-            }).then(function (resp) {
-                var resp = Imageupload(resp)
+            }).then( async function (resp) {
+                var resp = await Imageupload(resp)
                 $('#crop__result').attr('src', resp);
                 $('.modal').modal('hide');
                 $('#result').show();
                 console.log('done');
-                window.parent.postMessage(resp, "*");
+                window.parent.postMessage(response.data.url, "*");
             });
         }
 
