@@ -263,7 +263,9 @@
     <script>
         // function that replace blob with file
         function blobToFile(theBlob, fileName){       
-            return new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
+            var file = new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
+            console.log(file)
+            return file
         }
         function Imageupload(dlob, callback) {
             // window.firebaseUpladeBytes
