@@ -600,9 +600,8 @@ try {
                     })
 
                 } catch {
-                    console.log('event lisner wasnt added. Disabled scroll event to load more msessages')
+                    console.log('event lisener wasn' + "'" + 't added. Disabled scroll event to load more msessages')
                 }
-                window.MessageLoad()
                 el.dataset.enable = true
                 setTimeout(MessageLoad, 1000);
                 setTimeout((el) => {
@@ -997,13 +996,17 @@ try {
                             sendNotif(data2.val().name + ' sent said : ' + message_render(data2.val().message))
                         }
                         setTimeout((data2) => {
+                            // display message in diccusion
                             var message = newMessage(data2)
                             console.log(message)
-                            if (message != None) {
+                            /*if (message != None) {
                                 var d1 = message[0]
                                 d1.innerHTML = d1.innerHTML + message[1]
                                 var elem = d1
                             }
+                            // find the message in local DB to be set as loaded
+
+                            // scroll back to the bottom*/
                             elem.scrollTop = elem.scrollHeight;
                             elem.scrollTop = elem.scrollHeight;
                         }, 1000, data2)
