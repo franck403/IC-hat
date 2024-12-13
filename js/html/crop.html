@@ -270,6 +270,7 @@
         function Imageupload(dlob, callback) {
             // window.firebaseUpladeBytes
             var file = blobToFile(dlob,'profile.jpeg')
+            console.log(file)
             const formData = new FormData(); 
             formData.append('file', file);
             axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
