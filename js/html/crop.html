@@ -355,7 +355,7 @@
                 $('.modal').modal('hide');
                 $('#result').show();
                 console.log('done');
-                window.parent.postMessage(blobToFile(resp,'profile.jpeg'), "*");
+                window.parent.postMessage(await fileToBase64(blobToFile(resp,'profile.jpeg')), "*");
             });
         }
 
