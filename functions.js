@@ -177,22 +177,65 @@ export function link_render(message) {
   return urlify(message)
 }
 export function textMessage(message) {
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', 'https://vector.profanity.dev', false); // 'false' makes the request synchronous
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify({ message }));
-  var status = JSON.parse(xhr.response)
-  if (xhr.status >= 200 && xhr.status < 300) {
-    if (status.isProfanity) {
-      console.log(status)
-      var regex = new RegExp(status.flaggedFor, "gi");
-      return message.replace(regex, match => '*'.repeat(match.length));
+  const API_URL = 'https://vector.profanity.dev';
+  const WORD_LIMIT = 35;
+
+  function sendRequest(chunk) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', API_URL, false); // Synchronous request
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({ message: chunk }));
+
+    if (xhr.status >= 200 && xhr.status < 300) {
+      return JSON.parse(xhr.response);
+    } else {
+      throw new Error(`Request failed with status ${xhr.status}`);
     }
-    return message;
-  } else {
-    throw new Error(`Request failed with status ${xhr.status}`);
+  }
+
+  function processChunk(chunk) {
+    const status = sendRequest(chunk);
+    if (status.isProfanity) {
+      const regex = new RegExp(status.flaggedFor, "gi");
+      return chunk.replace(regex, match => '*'.repeat(match.length));
+    }
+    return chunk;
+  }
+
+  function splitIntoChunks(text) {
+    const words = text.split(/\s+/); // Split by spaces
+    const chunks = [];
+    let currentChunk = [];
+
+    for (const word of words) {
+      if (currentChunk.length + 1 > WORD_LIMIT) {
+        chunks.push(currentChunk.join(' '));
+        currentChunk = [];
+      }
+      currentChunk.push(word);
+    }
+
+    if (currentChunk.length > 0) {
+      chunks.push(currentChunk.join(' '));
+    }
+
+    return chunks;
+  }
+
+  function processMessage(message) {
+    const chunks = splitIntoChunks(message);
+    const processedChunks = chunks.map(chunk => processChunk(chunk));
+    return processedChunks.join(' ');
+  }
+
+  try {
+    return processMessage(message);
+  } catch (error) {
+    console.error("Error processing message:", error.message);
+    throw error;
   }
 }
+
 
 export function message_render(message, type = "none") {
   var messages = (function (t) {
