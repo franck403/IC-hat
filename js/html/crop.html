@@ -257,6 +257,15 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
         // function that replace blob with file
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result.split(',')[1]); // Extract the Base64 part
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file); // Read the file as a data URL
+            });
+        }
+
         function blobToFile(theBlob, fileName){       
             var file = new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
             console.log(file)

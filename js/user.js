@@ -84,13 +84,20 @@ function dataURItoBlob(dataURI) {
 
     return new Blob([ia], { type: mimeString });
 }
+function base64ToFile(base64, fileName, mimeType) {
+    const byteCharacters = atob(base64);
+    const byteNumbers = Array.from(byteCharacters).map(char => char.charCodeAt(0));
+    const byteArray = new Uint8Array(byteNumbers);
+    return new File([byteArray], fileName, { type: mimeType });
+}
+
 
 window.addEventListener('message', function (event) {
     console.log("Message received from the child: " + event.data);
     if (event.data != "close") {
         document.getElementById("crop_iframe").classList.remove('show')
         document.getElementById('crop_iframe').src = document.getElementById('crop_iframe').src
-        set_picture(Imageupload(dataURItoBlob(":" + event.data)))
+        set_picture(Imageupload(base64ToFile(event.data,'profile.jpeg'),'image/jpeg'))
         close()
     } else {
         document.getElementById("crop_iframe").classList.remove('show')
