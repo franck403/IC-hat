@@ -50,6 +50,7 @@ function allclose() {
 function uploadFile(file, callback) {
     // window.firebaseUpladeBytes
     const formData = new FormData(); 
+    console.log(file)
     formData.append('file', file); axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
     .then(response => { 
         console.log('Success:', response.data); 
