@@ -7,6 +7,9 @@
             sendMessage("n" + localStorage.getItem("name"))
         } else if (event.data == "room") {
             sendMessage("r" + localStorage.getItem("lastChat"))
+        } else if (event.data == "all") {
+            console.log(localStorage)
+            sendMessage("r" + localStorage)
         }
     });
     function sendMessage(message) {
