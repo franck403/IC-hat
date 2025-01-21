@@ -1014,16 +1014,17 @@ try {
                             // display message in diccusion
                             var message = newMessage(data2)
                             console.log(message)
-                            /*if (message != None) {
+                            if (message != None) {
                                 var d1 = message[0]
                                 d1.innerHTML = d1.innerHTML + message[1]
                                 var elem = d1
+                                elem.scrollTop = elem.scrollHeight;
+                                elem.scrollTop = elem.scrollHeight;
                             }
                             // find the message in local DB to be set as loaded
-
-                            // scroll back to the bottom*/
-                            elem.scrollTop = elem.scrollHeight;
-                            elem.scrollTop = elem.scrollHeight;
+                            caches = window.processingMessage[data2.val().dname]
+                            caches[caches.length-1][1] = true
+                            console.log(data2)
                         }, 1000, data2)
                     }
                 })
