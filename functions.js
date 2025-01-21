@@ -194,7 +194,29 @@ export function textMessage(message) {
   }
 }
 
+export function embed_render(message) {
+  var messages = (function (t) {
+    var r = /[^\u0300-\u036F\u0489]+/g;
+    var unzalgo = function () {
+      return (t.match(r) || [""]).join("");
+    };
+    return unzalgo()
+  })(message);
+  if (messages != undefined && messages != "") {
+    var message_good = messages
+  } else {
+    var message_good = message
+  }
+  var message_start = message_good.substring(0, 1000);
+  var message_start = message_start.replaceAll('<','&lt;')
+  var message_start = message_start.replaceAll('>','&gt;')
+  var message_start = message_start.replaceAll('&lt;br&gt;','<br>')
 
+  if (message_start == "undefined" || message_start == undefined) {
+    return null; 
+  }
+  return message_start
+}
 
 export function message_render(message, type = "none") {
   var messages = (function (t) {
