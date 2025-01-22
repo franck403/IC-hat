@@ -1,4 +1,4 @@
-import { setCookie, bip, removeloader, getuser, message_date, message_render , decrypt} from "./functions.js"
+import { setCookie, bip, removeloader, getuser, message_date, message_render, embed_render , decrypt} from "./functions.js"
 import { sendNotif, accesPush } from './notification.js'
 import { firebaseUpladeBytes, firebaseUpladeBase64 } from './image.js'
 setTimeout(removeloader, 5000)
@@ -1012,6 +1012,7 @@ try {
                         }
                         setTimeout((data2) => {
                             // display message in diccusion
+                            console.log(data2.val()).type
                             var message = newMessage(data2)
                             console.log(message)
                             if (message != None) {
@@ -1022,7 +1023,7 @@ try {
                                 elem.scrollTop = elem.scrollHeight;
                             }
                             // find the message in local DB to be set as loaded
-                            cache = window.processingMessage[data2.val().dname]
+                            var cache = window.processingMessage[data2.val().dname]
                             cache[cache.length-1][1] = true
                             console.log(data2)
                         }, 1000, data2)
