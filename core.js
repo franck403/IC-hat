@@ -1012,7 +1012,7 @@ try {
                         }
                         setTimeout((data2) => {
                             // display message in diccusion
-                            console.log(data2.val()).type
+                            console.log(data2.val().type)
                             var message = newMessage(data2)
                             console.log(message)
                             if (message != None) {
