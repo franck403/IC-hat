@@ -464,8 +464,8 @@ try {
 
         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
         if (data2.val().name != null) {
-            if (data2.val().message != null || data2.val().message != undefined) {
-                if (data2.val().type == "message") {
+            if (data2.val().message != null || data2.val().message != undefined ) {
+                if (data2.val().type == "message" && data2.val().mtype != 'embed') {
                     if (data2.val().name != null || data2.val().name != undefined) {
                         if (message_render(data2.val().message) == null || message_render(data2.val().message) == undefined) {
                             var html = '';
