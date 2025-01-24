@@ -480,7 +480,7 @@ try {
                             }
                         }
                     } else { }
-                } else if (data2.val().type == "embed") {
+                } else if (data2.val().mtype == "embed") {
                     if (data2.val().name != null || data2.val().name != undefined) {
                         if (embed_render(data2.val().message) == null || embed_render(data2.val().message) == undefined) {
                             var html = '';
