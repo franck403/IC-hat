@@ -487,10 +487,10 @@ try {
                             var DateNow = '';
                         } else {
                             if (data2.val().email == myEmail) {
-                                var html = `<div class="bubble me ${class_added}">${embed_render(data2.val().message)} ${tooltip}</div>`
+                                var html = `<div class="bubble me ${class_added} embed">${embed_render(data2.val().message)} ${tooltip}</div>`
                                 var DateNow = data2.val().date
                             } else {
-                                var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div>${embed_render(data2.val().message)}</div>${tooltip}</div>`
+                                var html = `<div class="bubble you ${class_added} embed"><div class="bubble-name">${data2.val().name}</div><div>${embed_render(data2.val().message)}</div>${tooltip}</div>`
                                 var DateNow = data2.val().date
                             }
                         }
