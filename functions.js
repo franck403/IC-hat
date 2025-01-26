@@ -212,7 +212,7 @@ export function embed_render(message) {
   var message_start = message_start.replaceAll('>','&gt;')
   console.log(message_start)
   var message_start = message_start.replaceAll('\n','<br>')
-
+  console.log(message_start)
   if (message_start == "undefined" || message_start == undefined) {
     return null; 
   }
