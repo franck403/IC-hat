@@ -1,5 +1,8 @@
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+import DOMPurify from 'https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.7/purify.min.js';
+
+
 export function setCookie(cname, cvalue) {
   localStorage.setItem(cname, cvalue)
 }
@@ -194,6 +197,27 @@ export function textMessage(message) {
   }
 }
 
+// js/markdownConverter.js
+export function convertMarkdownToHTML(markdownText) {
+  let htmlContent = markdownText;
+
+  // Convert headings
+  htmlContent = htmlContent.replace(/^(# .*)/gm, '<h1>$1</h1>');
+  htmlContent = htmlContent.replace(/^(## .*)/gm, '<h2>$1</h2>');
+
+  // Convert bullet lists
+  htmlContent = htmlContent.replace(/^- (.*)$/gm, '<ul><li>$1</li></ul>');
+
+  // Convert bold and italic text
+  htmlContent = htmlContent.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  htmlContent = htmlContent.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+  // Convert line breaks
+  htmlContent = htmlContent.replace(/\n\s*\n/g, '<br>');
+
+  return htmlContent;
+}
+
 export function embed_render(message) {
   var messages = (function (t) {
     var r = /[^\u0300-\u036F\u0489]+/g;
@@ -212,6 +236,8 @@ export function embed_render(message) {
   var message_start = message_start.replaceAll('>','&gt;')
   console.log(message_start)
   var message_start = message_start.replaceAll('\n','<br>')
+  var message_start = convertMarkdownToHTML(message_start)
+  var message_start = DOMPurify.sanitize(message_start)
   console.log(message_start)
   if (message_start == "undefined" || message_start == undefined) {
     return null; 
