@@ -1,7 +1,5 @@
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-import dompurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.3/+esm'
-var DOMpurify = dompurify
 
 export function setCookie(cname, cvalue) {
   localStorage.setItem(cname, cvalue)
@@ -237,7 +235,6 @@ export function embed_render(message) {
   console.log(message_start)
   var message_start = message_start.replaceAll('\n','<br>')
   var message_start = convertMarkdownToHTML(message_start)
-  var message_start = DOMPurify.sanitize(message_start)
   console.log(message_start)
   if (message_start == "undefined" || message_start == undefined) {
     return null; 
