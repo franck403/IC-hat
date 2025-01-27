@@ -1,6 +1,6 @@
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-import DOMPurify from 'https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.7/purify.min.js';
+import DOMpurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.3/+esm'
 
 
 export function setCookie(cname, cvalue) {
