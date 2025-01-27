@@ -1329,11 +1329,6 @@ input:disabled {
     margin: 0;
 }
 
-.tooltip br {
-    height: 0;
-    display: none;
-}
-
 .tooltip .tooltiptext {
     visibility: hidden;
     max-width: 400%;
