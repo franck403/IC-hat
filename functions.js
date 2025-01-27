@@ -200,8 +200,10 @@ export function convertMarkdownToHTML(markdownText) {
   let htmlContent = markdownText;
 
   // Convert headings
-  htmlContent = htmlContent.replace(/^(# .*)/gm, '<h1>$1</h1>');
-  htmlContent = htmlContent.replace(/^(## .*)/gm, '<h2>$1</h2>');
+  htmlContent = htmlContent.replace(/^(# .*)/gm, '<h2>$1</h2>');
+  htmlContent = htmlContent.replace(/^(## .*)/gm, '<h3>$1</h3>');
+  htmlContent = htmlContent.replace(/^(### .*)/gm, '<h4>$1</h4>');
+  htmlContent = htmlContent.replace(/^(#### .*)/gm, '<h5>$1</h5>');
 
   // Convert bullet lists
   htmlContent = htmlContent.replace(/^- (.*)$/gm, '<ul><li>$1</li></ul>');
