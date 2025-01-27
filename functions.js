@@ -233,7 +233,6 @@ export function embed_render(message) {
   var message_start = message_start.replaceAll('<','&lt;')
   var message_start = message_start.replaceAll('>','&gt;')
   console.log(message_start)
-  var message_start = message_start.replaceAll('\n','<br>')
   var message_start = convertMarkdownToHTML(message_start)
   console.log(message_start)
   if (message_start == "undefined" || message_start == undefined) {
