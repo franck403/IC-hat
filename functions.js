@@ -1,7 +1,7 @@
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-import DOMpurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.3/+esm'
-
+import dompurify from 'https://cdn.jsdelivr.net/npm/dompurify@3.2.3/+esm'
+var DOMpurify = dompurify
 
 export function setCookie(cname, cvalue) {
   localStorage.setItem(cname, cvalue)
