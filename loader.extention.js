@@ -1,5 +1,25 @@
 import { getCookie, getuser } from "./functions.js"
-export function load() {
+import {Peer} from "https://esm.sh/peerjs@1.5.4?bundle-deps"
+
+var peer = new Peer(getCookie('devID'));
+
+peer.on('connection', function(conn) {
+  conn.on('data', function(data){
+    // Will print 'hi!'
+    console.log(data);
+      if (data.startsWith('e')) {
+          conn.send(getCookie('email'))
+      }
+      if (data.startsWith('r')) {
+          conn.send(getCookie('lastChat'))
+      }
+      if (data.startsWith('n')) {
+          conn.send(getCookie('name'))
+      }
+  });
+});
+
+export function load() {    
     try {
         var ext = localStorage.getItem("extention")
         var act = ext.split("gcode.custom2")
