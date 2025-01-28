@@ -9,13 +9,13 @@ peer.on('connection', function(conn) {
   conn.on('data', function(data){
     console.log(data);
       if (data.startsWith('e')) {
-          conn.send(getCookie('email'))
+          conn.send('e' + getCookie('email'))
       }
       if (data.startsWith('r')) {
-          conn.send(getCookie('lastChat'))
+          conn.send('r' + getCookie('lastChat'))
       }
       if (data.startsWith('n')) {
-          conn.send(getCookie('name'))
+          conn.send('n' + getCookie('name'))
       }
   });
 });
