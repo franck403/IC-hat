@@ -2,7 +2,8 @@ import { getCookie, getuser } from "./functions.js"
 import {Peer} from "https://esm.sh/peerjs@1.5.4?bundle-deps"
 
 var peer = new Peer(getCookie('devID'));
-
+peer.on('open', () => {
+  console.log('[Extension loader] API key is : ' + peer.id)
 peer.on('connection', function(conn) {
   conn.on('data', function(data){
     // Will print 'hi!'
@@ -18,7 +19,7 @@ peer.on('connection', function(conn) {
       }
   });
 });
-
+});
 export function load() {    
     try {
         var ext = localStorage.getItem("extention")
