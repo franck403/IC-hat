@@ -5,8 +5,8 @@ var peer = new Peer(getCookie('devID'));
 peer.on('open', () => {
   console.log('[Extension loader] API key is : ' + peer.id)
 peer.on('connection', function(conn) {
+  console.log('[Extension loader] A extension has connected : ', conn)
   conn.on('data', function(data){
-    // Will print 'hi!'
     console.log(data);
       if (data.startsWith('e')) {
           conn.send(getCookie('email'))
