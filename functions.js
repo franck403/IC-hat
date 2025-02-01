@@ -213,7 +213,7 @@ export function convertMarkdownToHTML(markdownText) {
   htmlContent = htmlContent.replace(/\*(.*?)\*/g, '<em>$1</em>');
 
   // Convert line breaks
-  htmlContent = htmlContent.replace(/\n\s*\n/g, '<br>');
+  htmlContent = htmlContent.replaceAll('\n','<br>');
 
   return htmlContent;
 }
