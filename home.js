@@ -1,9 +1,8 @@
 var data = `
 <div class="info">
 	<h1>IC-hat</h1>
-	<h2>The new chat 100% free.</h2>
 	<h3>Want to try it ? click on login or register to start testing</h3>
-	<h4>Geoloup don't collect data. Ads are not a thing for us. Note: other service may collect data. To see the service we use please se : <a href='https://github.com/franck403/IC-hat?tab=readme-ov-file#readme' target="_blank" rel="noopener noreferrer">Ic-hat readme</a></h4>
+	<h4>Geoloup collect some data. Ads are not a thing for us. Note: other service may collect data. To see the service we use please se : <a href='https://github.com/franck403/IC-hat?tab=readme-ov-file#readme' target="_blank" rel="noopener noreferrer">Ic-hat readme</a></h4>
 </div>
 <div id="mm" class="mm">
 	<span class="cls" onclick="acpt()">Accept</span>
@@ -11,7 +10,7 @@ var data = `
 	<p>Welcome to Ic-hat! These Terms of Service govern your use and outline the rights and responsibilities between you
 		and us. By accessing or using the Application, you agree to be bound by these Terms. Please take note that the
 		messages are filtred by an AI or a public API.
-		IMPORTANT! Geoloup do not collect data. Ads are not a thing for us BUT please note that this is only for us not the other service we use.</p>
+		IMPORTANT! Geoloup collect some data. Ads are not a thing for us BUT please note that this is only for us not the other service we use.</p>
 </div>
 `
 
