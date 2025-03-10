@@ -188,9 +188,11 @@ function closeAllSetting() {
     });
 }
 
-document.body.addEventListener('click',()=>{
-    // close setting on click
-    closeAllSetting()
+document.addEventListener('DOMContentLoaded',()=>{
+    document.body.addEventListener('click',()=>{
+        // close setting on click
+        closeAllSetting()
+    })    
 })
 
 window.removeEmptyP = removeEmptyP
