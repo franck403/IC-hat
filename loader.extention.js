@@ -1,6 +1,8 @@
 import { getCookie, getuser } from "./functions.js"
 import {Peer} from "https://esm.sh/peerjs@1.5.4?bundle-deps"
 
+document.getElementById('search_bar').value = getCookie('devID')
+
 var peer = new Peer(getCookie('devID'));
 peer.on('open', () => {
   console.log('[Extension loader] API key is : ' + peer.id)
