@@ -198,25 +198,14 @@ export function textMessage(message) {
 // js/markdownConverter.js
 export function convertMarkdownToHTML(markdownText) {
   let htmlContent = markdownText;
-
-  // Convert headings
   htmlContent = htmlContent.replace(/^# (.*)/gm, '<h2>$1</h2>');
   htmlContent = htmlContent.replace(/^## (.*)/gm, '<h3>$1</h3>');
   htmlContent = htmlContent.replace(/^### (.*)/gm, '<h4>$1</h4>');
   htmlContent = htmlContent.replace(/^#### (.*)/gm, '<h5>$1</h5>');
-
-  // Convert bullet lists
   htmlContent = htmlContent.replace(/^- (.*)$/gm, '<ul><li>$1</li></ul>');
-
-  // Convert bold and italic text
   htmlContent = htmlContent.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
   htmlContent = htmlContent.replace(/\*(.*?)\*/g, '<em>$1</em>');
-
-  // Convert line breaks
-  console.log(htmlContent)
-  console.log(htmlContent.indexOf('\n'))
   htmlContent = htmlContent.replaceAll('\n','<br>');
-
   return htmlContent;
 }
 
@@ -236,9 +225,7 @@ export function embed_render(message) {
   var message_start = message_good.substring(0, 1000);
   var message_start = message_start.replaceAll('<','&lt;')
   var message_start = message_start.replaceAll('>','&gt;')
-  console.log(message_start)
   var message_start = convertMarkdownToHTML(message_start)
-  console.log(message_start)
   if (message_start == "undefined" || message_start == undefined) {
     return null; 
   }
