@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Key Settings</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Set API Key</h2>
+        <input type="password" id="apiKeyInput" placeholder="Enter API Key">
+        <button onclick="saveApiKey()">Save</button>
+        <p><strong>Stored API Key:</strong> <span id="storedKey" class="hidden"></span></p>
+        <button onclick="clearApiKey()">Clear Key</button>
+    </div>
+
+    <script src="dev.js"></script>
+
+</body>
+</html>
