@@ -180,7 +180,7 @@ function removeEmptyP() {
 
 function closeAllSetting() {
     var elements = document.querySelectorAll(".context-menu")
-    var elements = [...div_list]; 
+    var elements = [...elements]; 
     elements.forEach(div => {
         pop.dataset.visible = 'hidden'
         console.log('hidden')
