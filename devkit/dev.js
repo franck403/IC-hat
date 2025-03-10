@@ -2,13 +2,13 @@
 function saveApiKey() {
     const apiKey = document.getElementById('apiKeyInput').value;
     if (apiKey) {
-        localStorage.setItem('apiKey', apiKey);
+        localStorage.setItem('devID', apiKey);
         displayApiKey();
     }
 }
 
 function displayApiKey() {
-    const storedKey = localStorage.getItem('apiKey');
+    const storedKey = localStorage.getItem('devID');
     const keyDisplay = document.getElementById('storedKey');
     if (storedKey) {
         keyDisplay.textContent = '*'.repeat(storedKey.length);
@@ -19,7 +19,7 @@ function displayApiKey() {
 }
 
 function clearApiKey() {
-    localStorage.removeItem('apiKey');
+    localStorage.removeItem('devID');
     displayApiKey();
 }
 

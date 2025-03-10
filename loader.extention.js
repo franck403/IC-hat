@@ -1,7 +1,7 @@
 import { getCookie, getuser } from "./functions.js"
 import {Peer} from "https://esm.sh/peerjs@1.5.4?bundle-deps"
 
-document.getElementById('search_bar').value = getCookie('devID')
+window.CustomAlert(`You key is <input type="text">${getCookie('devID')}</input> Not supposed to have one ? go see `,'Client Dev key')
 
 var peer = new Peer(getCookie('devID'));
 peer.on('open', () => {
