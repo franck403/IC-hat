@@ -178,4 +178,19 @@ function removeEmptyP() {
     loopThroughElements(document.querySelector("#people"))
 }
 
+function closeAllSetting() {
+    var elements = document.querySelectorAll(".context-menu")
+    var elements = [...div_list]; 
+    elements.forEach(div => {
+        pop.dataset.visible = 'hidden'
+        console.log('hidden')
+        pop.classList.remove('visibleClass')
+    });
+}
+
+document.body.addEventListener('click',()=>{
+    // close setting on click
+    closeAllSetting()
+})
+
 window.removeEmptyP = removeEmptyP
