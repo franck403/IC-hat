@@ -11,7 +11,7 @@ function displayApiKey() {
     const storedKey = localStorage.getItem('devID');
     const keyDisplay = document.getElementById('storedKey');
     if (storedKey) {
-        keyDisplay.textContent = '*'.repeat(storedKey.length);
+        keyDisplay.textContent = storedKey;
         keyDisplay.classList.remove('hidden');
     } else {
         keyDisplay.classList.add('hidden');
