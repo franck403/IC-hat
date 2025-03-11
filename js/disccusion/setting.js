@@ -182,9 +182,8 @@ function closeAllSetting() {
     var elements = document.querySelectorAll(".context-menu")
     var elements = [...elements]; 
     elements.forEach(div => {
-        pop.dataset.visible = 'hidden'
-        console.log('hidden')
-        pop.classList.remove('visibleClass')
+        div.dataset.visible = 'hidden'
+        div.classList.remove('visibleClass')
     });
 }
 
