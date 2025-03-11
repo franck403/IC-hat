@@ -1,5 +1,5 @@
 import {setCookie,getCookie,Regex,encrypt,getuser,message_render} from ".././functions.js"
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import { initializeApp } from "./supbase.js";
 import cryptoJs from "https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/+esm";
 import {
     getDatabase,
@@ -9,7 +9,7 @@ import {
     child,
     onValue,
     onChildAdded
-} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+} from "./supbase.js";
 var Imageupload = window.Imageupload
 const firebaseConfig = {
   apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",

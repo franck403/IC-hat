@@ -1,9 +1,9 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import { initializeApp } from "./supbase.js";
 import {
     getDatabase,
     set,
     ref
-} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+} from "./supbase.js";
 localStorage.setItem("state", "no")
 const firebaseConfig = {
     apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",

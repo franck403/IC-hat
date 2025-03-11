@@ -1,7 +1,7 @@
 import { setCookie, bip, removeloader, getuser, message_date, message_render, embed_render , decrypt} from "./functions.js"
 import { sendNotif, accesPush } from './notification.js'
 setTimeout(removeloader, 5000)
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import { initializeApp } from "./supbase.js";
 import {
     getDatabase,
     set,
@@ -10,9 +10,8 @@ import {
     child,
     onChildAdded,
     onChildChanged,
-    update,
-    onDisconnect
-} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+    update
+} from "./supbase.js";
 localStorage.setItem("state", "no")
 var Imageupload = window.Imageupload
 const firebaseConfig = {

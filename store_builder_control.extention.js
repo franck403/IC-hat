@@ -1,5 +1,5 @@
 import {setCookie,getCookie} from "./functions.js"
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+import { initializeApp } from "./supbase.js";
 import {
     getDatabase,
     set,
@@ -8,7 +8,7 @@ import {
     child,
     onValue,
     onChildAdded
-} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
+} from "./supbase.js";
 import {getAuth} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
 const firebaseConfig = {
