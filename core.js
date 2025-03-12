@@ -363,7 +363,7 @@ try {
             var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
             // send event to a function
             var mes = message_render(message, "nop")
-            if (window.extensionEvent == undefined) {
+            if (window.extensionEvent != undefined) {
                 window.extensionEvent()
             }
             if (mes.startsWith('/')) {
@@ -406,7 +406,7 @@ try {
                 var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
                 // send event to a function
                 var mes = message_render(message, "nop")
-                if (window.extensionEvent == undefined) {
+                if (window.extensionEvent != undefined) {
                     window.extensionEvent(mes)
                 }
                 if (mes.startsWith('/')) {
