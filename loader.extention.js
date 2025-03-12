@@ -29,6 +29,65 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
         if (data.startsWith('n')) {
             conn.send('n' + getCookie('name'))
         }
+        if (data.startsWith('m')) {
+            var elements = data.split('|')
+            
+            var cusid = elements[1];
+
+            var mes = this.database.ref(
+            'messages/' + cusid + '/' + crypto.randomUUID()
+            );
+            var preload = this.database.ref('preload/' + cusid + '/Message');
+            preload.set({
+            email: getCookie('email'),
+            allow: 'none',
+            type: 'message',
+            message: elements[2],
+            name: getCookie('name'),
+            date: Date.now(),
+            dname: cusid,
+            });
+
+            mes.set({
+                email: getCookie('email'),
+                allow: 'none',
+                type: 'message',
+                message: elements[2],
+                name: getCookie('name'),
+                date: Date.now(),
+                dname: cusid,
+            });
+        }
+        if (data.startsWith('m')) {
+            var elements = data.split('|')
+            
+            var cusid = elements[1];
+
+            var mes = this.database.ref(
+            'messages/' + cusid + '/' + crypto.randomUUID()
+            );
+            var preload = this.database.ref('preload/' + cusid + '/Message');
+            preload.set({
+                email: getCookie('email'),
+                allow: 'none',
+                type: 'embed',
+                message: elements[2],
+                name: getCookie('name'),
+                date: Date.now(),
+                dname: cusid,
+            });
+
+            mes.set({
+                email: getCookie('email'),
+                allow: 'none',
+                type: 'embed',
+                message: elements[2],
+                name: getCookie('name'),
+                date: Date.now(),
+                dname: cusid,
+            });
+        }
+
       });
     });
     });    
