@@ -34,18 +34,18 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
             
             var cusid = elements[1];
 
-            var mes = this.database.ref(
+            var mes = window.databaseFire.ref(
             'messages/' + cusid + '/' + crypto.randomUUID()
             );
-            var preload = this.database.ref('preload/' + cusid + '/Message');
+            var preload = window.databaseFire.ref('preload/' + cusid + '/Message');
             preload.set({
-            email: getCookie('email'),
-            allow: 'none',
-            type: 'message',
-            message: elements[2],
-            name: getCookie('name'),
-            date: Date.now(),
-            dname: cusid,
+                email: getCookie('email'),
+                allow: 'none',
+                type: 'message',
+                message: elements[2],
+                name: getCookie('name'),
+                date: Date.now(),
+                dname: cusid,
             });
 
             mes.set({
@@ -63,10 +63,10 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
             
             var cusid = elements[1];
 
-            var mes = this.database.ref(
+            var mes = window.databaseFire.ref(
             'messages/' + cusid + '/' + crypto.randomUUID()
             );
-            var preload = this.database.ref('preload/' + cusid + '/Message');
+            var preload = window.databaseFire.ref('preload/' + cusid + '/Message');
             preload.set({
                 email: getCookie('email'),
                 allow: 'none',
