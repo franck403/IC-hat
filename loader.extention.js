@@ -7,7 +7,7 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
     var peer = new Peer(getCookie('devID'));
     var extensionEventPeer = []
     function extensionEvent(message) {
-        console.log(message)
+        console.log(message,extensionEventPeer)
         extensionEventPeer.forEach((conn)=>{
             conn.send('m' + message)
         })
