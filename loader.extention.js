@@ -2,7 +2,7 @@ import { getCookie, getuser } from "./functions.js"
 import {Peer} from "https://esm.sh/peerjs@1.5.4?bundle-deps"
 
 
-if (getCookie('devID') != undefined && getCookie('devID') != '') {
+if (getCookie('devID') != undefined && getCookie('devID') != '' && window.CustomAlert != undefined) {
     window.CustomAlert(`You key is <input type="text" value="${getCookie('devID')}" disabled> Not supposed to have one ? go see <a href="https://ic-hat.geoloup.com/devkit" target="_blank">this page</a>`,'Client Dev key')
 
     var peer = new Peer(getCookie('devID'));
