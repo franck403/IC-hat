@@ -1,15 +1,22 @@
 import { getCookie, getuser } from "./functions.js"
 import {Peer} from "https://esm.sh/peerjs@1.5.4?bundle-deps"
 
-
 if (getCookie('devID') != undefined && getCookie('devID') != '' && window.CustomAlert != undefined) {
     window.CustomAlert(`You key is <input type="text" value="${getCookie('devID')}" disabled> Not supposed to have one ? go see <a href="https://ic-hat.geoloup.com/devkit" target="_blank">this page</a>`,'Client Dev key')
 
     var peer = new Peer(getCookie('devID'));
+    var extensionEventPeer = []
+    function extensionEvent(message) {
+        extensionEventPeer.forEach((conn)=>{
+            conn.send('m' + message)
+        })
+    }
+    window.extensionEvent = extensionEvent
     peer.on('open', () => {
       console.log('[Extension loader] API key is : ' + peer.id)
     peer.on('connection', function(conn) {
       console.log('[Extension loader] A extension has connected : ', conn)
+      extensionEventPeer.push(conn)
       conn.on('data', function(data){
         console.log(data);
         if (data.startsWith('e')) {

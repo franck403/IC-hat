@@ -361,12 +361,20 @@ try {
             const id = push(child(ref(database), 'messages')).key;
             var friend = "none"
             var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+            // send event to a function
+            var mes = message_render(message, "nop")
+            if (window.extensionEvent == undefined) {
+                window.extensionEvent()
+            }
+            if (mes.startsWith('/')) {
+                return;
+            }
             image_render(myEmail, myName)
             set(ref(database, 'preload/' + cusid + '/Message'), {
                 email: myEmail,
                 allow: friend,
                 type: "message",
-                message: message_render(message, "nop"),
+                message: mes,
                 name: myName,
                 date: Date.now(),
                 dname: cusid
@@ -375,7 +383,7 @@ try {
                 email: myEmail,
                 allow: friend,
                 type: "message",
-                message: message_render(message, "nop"),
+                message: mes,
                 name: myName,
                 date: Date.now(),
                 dname: cusid
@@ -396,12 +404,20 @@ try {
                 const id = push(child(ref(database), 'messages')).key;
                 var friend = "none"
                 var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
+                // send event to a function
+                var mes = message_render(message, "nop")
+                if (window.extensionEvent == undefined) {
+                    window.extensionEvent(mes)
+                }
+                if (mes.startsWith('/')) {
+                    return;
+                }
                 image_render(myEmail, myName)
                 set(ref(database, 'preload/' + cusid + '/Message'), {
                     email: myEmail,
                     allow: friend,
                     type: "message",
-                    message: message_render(message, "nop"),
+                    message: mes,
                     name: myName,
                     date: Date.now(),
                     dname: cusid
@@ -410,7 +426,7 @@ try {
                     email: myEmail,
                     allow: friend,
                     type: "message",
-                    message: message_render(message, "nop"),
+                    message: mes,
                     name: myName,
                     date: Date.now(),
                     dname: cusid
