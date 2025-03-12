@@ -12,15 +12,15 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
       console.log('[Extension loader] A extension has connected : ', conn)
       conn.on('data', function(data){
         console.log(data);
-          if (data.startsWith('e')) {
-              conn.send('e' + getCookie('email'))
-          }
-          if (data.startsWith('r')) {
-              conn.send('r' + getCookie('lastChat'))
-          }
-          if (data.startsWith('n')) {
-              conn.send('n' + getCookie('name'))
-          }
+        if (data.startsWith('e')) {
+            conn.send('e' + getCookie('email'))
+        }
+        if (data.startsWith('r')) {
+            conn.send('r' + getCookie('lastChat'))
+        }
+        if (data.startsWith('n')) {
+            conn.send('n' + getCookie('name'))
+        }
       });
     });
     });    
