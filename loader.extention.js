@@ -1,5 +1,16 @@
 import { getCookie, getuser } from "./functions.js"
 import {Peer} from "https://esm.sh/peerjs@1.5.4?bundle-deps"
+import {
+    getDatabase,
+    set,
+    ref,
+    push,
+    child,
+    onChildAdded,
+    onChildChanged,
+    update,
+    onDisconnect
+} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 
 if (getCookie('devID') != undefined && getCookie('devID') != '' && window.CustomAlert != undefined) {
     window.CustomAlert(`You key is <input type="text" value="${getCookie('devID')}" disabled> Not supposed to have one ? go see <a href="https://ic-hat.geoloup.com/devkit" target="_blank">this page</a>`,'Client Dev key')
@@ -34,10 +45,10 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
             
             var cusid = elements[1];
 
-            var mes = window.databaseFire.ref(
+            var mes = ref(window.databaseFire,
             'messages/' + cusid + '/' + crypto.randomUUID()
             );
-            var preload = window.databaseFire.ref('preload/' + cusid + '/Message');
+            var preload = ref(window.databaseFire,'preload/' + cusid + '/Message');
             preload.set({
                 email: getCookie('email'),
                 allow: 'none',
