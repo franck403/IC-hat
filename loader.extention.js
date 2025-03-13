@@ -42,7 +42,7 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
         }
         if (data.startsWith('m')) {
             var elements = data.split('|')
-            
+            console.log(elements)
             var cusid = elements[1];
 
             var mes = ref(window.databaseFire,
