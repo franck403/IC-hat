@@ -69,16 +69,16 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
                 dname: cusid,
             });
         }
-        if (data.startsWith('m')) {
+        if (data.startsWith('b')) {
             var elements = data.split('|')
-            
+            console.log(elements)
             var cusid = elements[1];
 
-            var mes = window.databaseFire.ref(
+            var mes = ref(window.databaseFire,
             'messages/' + cusid + '/' + crypto.randomUUID()
             );
-            var preload = window.databaseFire.ref('preload/' + cusid + '/Message');
-            preload.set({
+            var preload = ref(window.databaseFire,'preload/' + cusid + '/Message');
+            set(preload,{
                 email: getCookie('email'),
                 allow: 'none',
                 type: 'embed',
@@ -88,7 +88,7 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
                 dname: cusid,
             });
 
-            mes.set({
+            set(mes,{
                 email: getCookie('email'),
                 allow: 'none',
                 type: 'embed',
