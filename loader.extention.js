@@ -49,7 +49,7 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
             'messages/' + cusid + '/' + crypto.randomUUID()
             );
             var preload = ref(window.databaseFire,'preload/' + cusid + '/Message');
-            preload.set({
+            set(preload,{
                 email: getCookie('email'),
                 allow: 'none',
                 type: 'message',
@@ -59,7 +59,7 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
                 dname: cusid,
             });
 
-            mes.set({
+            set(mes,{
                 email: getCookie('email'),
                 allow: 'none',
                 type: 'message',
