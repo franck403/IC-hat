@@ -1,6 +1,5 @@
 import { setCookie, bip, removeloader, getuser, message_date, message_render, embed_render , decrypt} from "./functions.js"
 import { sendNotif, accesPush } from './notification.js'
-setTimeout(removeloader, 5000)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
     getDatabase,
@@ -35,11 +34,12 @@ if ('serviceWorker' in navigator) {
     });
 }
 accesPush()
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig); // sync ?
 const database = getDatabase(app);
 window.appFire = app
 window.databaseFire = database
 window.userdb = []
+setTimeout(removeloader, 1000)
 
 var myData = await getuser()
 if (myData != null) {

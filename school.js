@@ -55,12 +55,12 @@ async function checkIP() {
                     clearInterval(window.horaireInterval)
                     checkIP();
                 }
-            }, 1000);
+            }, 10000);
         }
     } else {
         setTimeout(() => {
             checkIP();
-        }, 1000);
+        }, 10000);
     }
 }
 

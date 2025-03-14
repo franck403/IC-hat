@@ -8,16 +8,12 @@ if (myData != null) {
     var myName = myData.name
     var myImage = myData.image
     document.getElementById("not-connected").remove()
-    document.getElementById("wait-connected").remove()
 } else if (myData == null) {
     document.getElementById("connected").remove()
-    document.getElementById("wait-connected").remove()
 } else if (myData.search("<title>500 Internal Server Error</title>") != -1) {
     document.getElementById("connected").remove()
-    document.getElementById("wait-connected").remove()
 } else {
     document.getElementById("connected").remove()
-    document.getElementById("wait-connected").remove()
 }
 var c = document.getElementById("box")
 c.addEventListener("click", () => {
