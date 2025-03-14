@@ -81,7 +81,8 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
             set(preload,{
                 email: getCookie('email'),
                 allow: 'none',
-                type: 'embed',
+                type: 'message',
+                mtype: 'embed',
                 message: elements[2],
                 name: getCookie('name'),
                 date: Date.now(),
@@ -92,6 +93,7 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
                 email: getCookie('email'),
                 allow: 'none',
                 type: 'embed',
+                mtype: 'embed',
                 message: elements[2],
                 name: getCookie('name'),
                 date: Date.now(),
