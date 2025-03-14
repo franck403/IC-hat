@@ -19,9 +19,11 @@ if (getCookie('devID') != undefined && getCookie('devID') != '' && window.Custom
     var extensionEventPeer = []
     function extensionEvent(message) {
         console.log(message,extensionEventPeer)
-        extensionEventPeer.forEach((conn)=>{
-            conn.send('m' + message)
-        })
+        if (message.startsWith('/')) {
+            extensionEventPeer.forEach((conn)=>{
+                conn.send('m' + message)
+            })    
+        }
     }
     window.extensionEvent = extensionEvent
     peer.on('open', () => {
