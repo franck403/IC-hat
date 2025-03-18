@@ -4,6 +4,7 @@ function saveApiKey() {
     if (apiKey) {
         localStorage.setItem('devID', apiKey);
         displayApiKey();
+        location.replace('ic-hat.geoloup.com/chat') // return to the main chat
     }
 }
 
