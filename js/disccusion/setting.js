@@ -188,8 +188,9 @@ function closeAllSetting() {
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-    document.body.addEventListener('click',()=>{
+    document.body.addEventListener('click',(eventt)=>{
         // close setting on click
+        console.log(event.target)
         closeAllSetting()
     })    
 })
