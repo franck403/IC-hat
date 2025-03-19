@@ -188,10 +188,12 @@ function closeAllSetting() {
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-    document.body.addEventListener('click',(eventt)=>{
+    document.body.addEventListener('click',(event)=>{
         // close setting on click
         console.log(event.target)
-        closeAllSetting()
+        if (event.target.classList.contains('fa-ellipsis')) {
+            closeAllSetting()
+        }
     })    
 })
 
