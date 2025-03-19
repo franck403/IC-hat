@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     document.body.addEventListener('click',(event)=>{
         // close setting on click
         console.log(event.target)
-        if (event.target.classList.contains('fa-ellipsis')) {
+        if (!event.target.classList.contains('fa-ellipsis')) {
             closeAllSetting()
         }
     })    
