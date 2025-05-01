@@ -1026,7 +1026,7 @@ try {
                             var date = message_date(DateNow, dnamef)
                             document.getElementById(`time_${dnamef}`).innerHTML = date
                             document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
-                            sendNotif(data2.val().name + ' sent said : ' + message_render(data2.val().message))
+                            sendNotif(data2.val().name + ' sent : ' + message_render(data2.val().message))
                         }
                         setTimeout((data2) => {
                             // display message in diccusion
