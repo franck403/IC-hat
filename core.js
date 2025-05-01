@@ -600,7 +600,7 @@ try {
 
                     // loading message in memory for storage while waiting to be loaded
                     try {
-                        window.processingMessage[data2.val().dname][data2.val().dname] = [data2, false]
+                        window.processingMessage[data2.val().dname][data2.val().key] = [data2, false]
                         window.processingMessage[data2.val().dname].sort((a, b) => {
                             return a.val().date.localeCompare(b.val().date); // For string dates
                         });
@@ -1041,7 +1041,7 @@ try {
                                 elem.scrollTop = elem.scrollHeight;
                             }
                             // find the message in local DB to be set as loaded
-                            var cache = window.processingMessage[data2.val().key]
+                            var cache = window.processingMessage[data2.val().dname]
                             cache[cache.length-1][1] = true
                             console.log(data2)
                         }, 1000, data2)
