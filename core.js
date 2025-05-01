@@ -609,7 +609,9 @@ try {
                         if (typeof (window.processingMessage[String(data2.val().dname)]) != typeof ([])) {
                             window.processingMessage[String(data2.val().dname)] = []
                         }
-                        window.processingMessage[String(data2.val().dname)].push([data2, false])
+                        window.processingMessage[String(data2.val().dname)].push([data2, false])                        window.processingMessage[data2.val().dname].sort((a, b) => {
+                            return a.val().date.localeCompare(b.val().date); // For string dates
+                        });
                     }
                 })
                 onChildChanged(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
