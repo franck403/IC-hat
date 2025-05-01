@@ -602,24 +602,23 @@ try {
                     try {
                         data2.val()
                     } catch {
-                        return;
-                    }
-
-                    try {
-                        window.processingMessage[data2.val().dname].push([data2, false])
                         window.processingMessage[data2.val().dname].sort((a, b) => {
                             return a.val().date.localeCompare(b.val().date); // For string dates
                         });
+                        return;
+                    }
+                    try {
+                        window.processingMessage[data2.val().dname].push([data2, false])
                     } catch {
                         window.processingMessage.push(String(data2.val().dname))
                         if (typeof (window.processingMessage[String(data2.val().dname)]) != typeof ([])) {
                             window.processingMessage[String(data2.val().dname)] = []
                         }                        
                         window.processingMessage[String(data2.val().dname)].push([data2, false])
-                        window.processingMessage[data2.val().dname].sort((a, b) => {
-                            return a.val().date.localeCompare(b.val().date); // For string dates
-                        });
                     }
+                    window.processingMessage[data2.val().dname].sort((a, b) => {
+                        return a.val().date.localeCompare(b.val().date); // For string dates
+                    });
                 })
                 onChildChanged(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                     if (data2.val().dname == undefined) { return }
