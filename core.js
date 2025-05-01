@@ -750,7 +750,7 @@ try {
                         window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
                     } else {
                         if (autoReversed) {
-                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length).reverse(), true,height)
+                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length).reverse(), false,height)
                             window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
                         } else {
                             var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true,height)
