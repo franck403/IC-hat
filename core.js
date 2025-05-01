@@ -1041,7 +1041,7 @@ try {
                                 elem.scrollTop = elem.scrollHeight;
                             }
                             // find the message in local DB to be set as loaded
-                            var cache = window.processingMessage[data2.val().dname]
+                            var cache = window.processingMessage[data2.val().key]
                             cache[cache.length-1][1] = true
                             console.log(data2)
                         }, 1000, data2)
