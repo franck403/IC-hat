@@ -617,6 +617,7 @@ try {
                         window.processingMessage[String(data2.val().dname)].push([data2, false])
                     }
                     window.processingMessage[data2.val().dname].sort((a, b) => {
+                        console.log(a,b)
                         return a.val().date.localeCompare(b.val().date); // For string dates
                     });
                 })
