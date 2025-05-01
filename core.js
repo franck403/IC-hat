@@ -689,77 +689,68 @@ try {
             });
         }
         
-        async function MessageWorker(select, max, reversed = false,height) {
-            if (max == undefined) {
-                max = 20
-            }
-            for (let i = 0; i < (window.processingMessage.length / 2); i++) {
-                var err = false
-                // generate new array with the date pre made
-                var narray = sortArrayByDate(window.processingMessage[window.processingMessage[i]])
-                window.processingMessage[window.processingMessage[i]] = narray
+        async function MessageWorker(select, max = 20, reversed = false, height) {
+            const messages = window.processingMessage;
+            const lastChat = localStorage.getItem('lastChat');
+        
+            // Helper: Find valid messages (not marked true)
+            const getValidMessages = (arr) => findAll(obj => obj[1] !== true, arr);
+        
+            // Helper: Sort messages by date
+            const sortByDate = (arr) => {
+                return [...arr].sort((a, b) => {
+                    const dateA = new Date(a[0].val().date).getTime();
+                    const dateB = new Date(b[0].val().date).getTime();
+                    return dateA - dateB;
+                });
+            };
+        
+            // Loop through each conversation key
+            for (let i = 0; i < messages.length / 2; i++) {
+                const key = messages[i];
+                if (!messages[key]) continue;
+        
+                // Sort the array by date
+                messages[key] = sortByDate(messages[key]);
+        
+                // Try to get valid messages
+                let validMessages;
                 try {
-                    findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]])
-                    var err = true
+                    validMessages = getValidMessages(messages[key]);
                 } catch {
-                    var err = false
-                } if (err) {
-                    if (select != undefined && select == i) {
-                        if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > max) {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, max).reverse()
-                        } else {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
-                        }
-                        var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
-                        var date1 = new Date(ActualMessages[0][0].val().date).getTime()
-                        var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
-                        var autoReversed = date1 < date2
-                    } else if (localStorage.getItem('lastChat') == i) {
-                        if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
-                        } else {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
-                        }
-                        var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
-                        var date1 = new Date(ActualMessages[1][0].val().date).getTime()
-                        var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
-                        var autoReversed = date1 < date2
-                    }
-                    if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
-                        var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
-                        var date1 = new Date(ActualMessages[1][0].val().date).getTime()
-                        var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
-                        var autoReversed = date1 < date2
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
-                    } else {
-                        var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
-                        try {
-                            var date1 = new Date(ActualMessages[1][0].val().date).getTime()
-                            var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
-                            var autoReversed = date1 < date2
-                        } catch {
-                            var autoReversed = false
-                        }
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
-                    }
-                    if (autoReversed == undefined) {
-                        var autoReversed = false
-                    }
-                    if (reversed) {
-                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true,height)
-                        window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
-                    } else {
-                        if (autoReversed) {
-                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), false,height)
-                            window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
-                        } else {
-                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true,height)
-                            window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
-                        }
-                    }
+                    continue;
                 }
+        
+                // Determine if this is the selected chat or lastChat
+                const isSelected = (select !== undefined && select == i);
+                const isLastChat = (lastChat == i);
+        
+                if (!isSelected && !isLastChat) continue;
+        
+                const sourceKey = isSelected ? key : lastChat;
+                const fullMessages = messages[sourceKey];
+                const validList = getValidMessages(fullMessages);
+        
+                // Determine snapshot and autoReversed
+                let snapshot = validList.slice().reverse();
+                if (validList.length > max) snapshot = snapshot.slice(0, max).reverse();
+        
+                let autoReversed = false;
+                try {
+                    const firstDate = new Date(fullMessages[0][0].val().date).getTime();
+                    const lastDate = new Date(fullMessages[fullMessages.length - 1][0].val().date).getTime();
+                    autoReversed = firstDate < lastDate;
+                } catch {
+                    autoReversed = false;
+                }
+        
+                // Apply reversal and update messages
+                const useReversed = reversed || !autoReversed;
+                const processed = MessageWorkerLoop(snapshot, useReversed, height);
+                messages[key] = processed.concat(messages[key].slice(snapshot.length));
             }
         }
+        
         window.MessageWorker = MessageWorker
         window.newMessage = newMessage
         function MessageLoad(select, max, reversed = false) {
