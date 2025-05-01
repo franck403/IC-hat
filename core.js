@@ -602,7 +602,7 @@ try {
                     try {
                         window.processingMessage[data2.val().dname].push([data2, false])
                         window.processingMessage[data2.val().dname].sort((a, b) => {
-                            return a.val().date.localeCompare(b.val().date); // For string dates
+                            return b.val().date.localeCompare(a.val().date); // For string dates
                         });
                     } catch {
                         window.processingMessage.push(String(data2.val().dname))
