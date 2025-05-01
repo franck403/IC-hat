@@ -614,7 +614,7 @@ try {
                         window.processingMessage[String(data2.val().dname)].push([data2, false])
                     }
                     window.processingMessage[data2.val().dname].sort((a, b) => {
-                        return a[0].val().date.localeCompare(b[0].val().date); // For string dates
+                        return b[0].val().date.localeCompare(a[0].val().date); // For string dates
                     });
                 })
                 onChildChanged(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
