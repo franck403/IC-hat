@@ -614,7 +614,6 @@ try {
                         window.processingMessage[String(data2.val().dname)].push([data2, false])
                     }
                     window.processingMessage[data2.val().dname].sort((a, b) => {
-                        console.log(b[0].val())
                         return a[0].val().date - b[0].val().date;
                     });
                 })
@@ -657,7 +656,7 @@ try {
                 if (message != null || message[1] != '') {
                     var d1 = message[0]
                     if (elem == undefined) {var elem = d1}
-                    if (reversed == true) {
+                    if (reversed == false) {
                         d1.innerHTML = d1.innerHTML + message[1]
                     } else {
                         d1.innerHTML = message[1] + d1.innerHTML
