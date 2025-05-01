@@ -600,6 +600,12 @@ try {
 
                     // loading message in memory for storage while waiting to be loaded
                     try {
+                        data2.val()
+                    } catch {
+                        return;
+                    }
+
+                    try {
                         window.processingMessage[data2.val().dname].push([data2, false])
                         window.processingMessage[data2.val().dname].sort((a, b) => {
                             return a.val().date.localeCompare(b.val().date); // For string dates
@@ -608,7 +614,7 @@ try {
                         window.processingMessage.push(String(data2.val().dname))
                         if (typeof (window.processingMessage[String(data2.val().dname)]) != typeof ([])) {
                             window.processingMessage[String(data2.val().dname)] = []
-                        }
+                        }                        
                         window.processingMessage[String(data2.val().dname)].push([data2, false])
                         window.processingMessage[data2.val().dname].sort((a, b) => {
                             return a.val().date.localeCompare(b.val().date); // For string dates
@@ -628,8 +634,6 @@ try {
                         } else {
                             lastScroll = currentScroll;
                             if (currentScroll <= ((innerHeight-100)/1.4)) {
-                                // scrolling up !
-                                // load more message
                                 window.MessageLoadReversed(undefined,undefined,e.target.scrollHeight)
                             }
                         }
