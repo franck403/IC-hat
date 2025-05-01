@@ -743,20 +743,20 @@ try {
                         } catch {
                             var autoReversed = false
                         }
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice()
                     }
                     if (autoReversed == undefined) {
                         var autoReversed = false
                     }
                     if (reversed) {
-                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length).reverse(), true,height)
+                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true,height)
                         window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
                     } else {
                         if (autoReversed) {
-                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length).reverse(), false,height)
+                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), false,height)
                             window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
                         } else {
-                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length).reverse(), true,height)
+                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true,height)
                             window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
                         }
                     }
