@@ -600,7 +600,7 @@ try {
 
                     // loading message in memory for storage while waiting to be loaded
                     try {
-                        window.processingMessage[data2.val().dname][data2.val().key] = [data2, false]
+                        window.processingMessage[data2.val().dname].push([data2, false])
                         window.processingMessage[data2.val().dname].sort((a, b) => {
                             return a.val().date.localeCompare(b.val().date); // For string dates
                         });
