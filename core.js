@@ -602,9 +602,6 @@ try {
                     try {
                         data2.val()
                     } catch {
-                        window.processingMessage[data2.val().dname].sort((a, b) => {
-                            return a.val().date.localeCompare(b.val().date); // For string dates
-                        });
                         return;
                     }
                     try {
@@ -618,7 +615,7 @@ try {
                     }
                     window.processingMessage[data2.val().dname].sort((a, b) => {
                         console.log(a,b)
-                        return a.val().date.localeCompare(b.val().date); // For string dates
+                        return a[0].val().date.localeCompare(b[0].val().date); // For string dates
                     });
                 })
                 onChildChanged(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
