@@ -175,7 +175,7 @@ async function loopThroughElements(parent) {
 }
 
 function removeEmptyP() {
-    //loopThroughElements(document.querySelector("#people"))
+    loopThroughElements(document.querySelector("#people"))
 }
 
 function closeAllSetting() {
