@@ -836,25 +836,26 @@ try {
             let okText = buttonTexts[0] || "OK"; // Default "OK" if no text provided
             let cancelText = buttonTexts[1] || null;
         
-            // Set footer and buttons
-            let dialogboxfoot = document.getElementById('dialogboxfoot');
-            if (cancelText) {
-                dialogboxfoot.innerHTML = `
-                    <button class="pure-material-button-contained" onclick="closeDialog(); ${callback ? callback() : ''}">${okText}</button>
-                    <button class="pure-material-button-contained" onclick="closeDialog();">${cancelText}</button>
-                `;
-            } else {
-                dialogboxfoot.innerHTML = `
-                    <button class="pure-material-button-contained active" onclick="closeDialog(); ${callback ? callback() : ''}">${okText}</button>
-                `;
-            }
-        
             // Function to close the dialog
             function closeDialog() {
                 dialogbox.style.display = 'none';
                 dialogoverlay.style.display = 'none';
             }
+        
+            // Set footer and buttons
+            let dialogboxfoot = document.getElementById('dialogboxfoot');
+            if (cancelText) {
+                dialogboxfoot.innerHTML = `
+                    <button class="pure-material-button-contained" onclick="(function() { closeDialog(); ${callback ? callback() : ''}; })()">${okText}</button>
+                    <button class="pure-material-button-contained" onclick="closeDialog();">${cancelText}</button>
+                `;
+            } else {
+                dialogboxfoot.innerHTML = `
+                    <button class="pure-material-button-contained active" onclick="(function() { closeDialog(); ${callback ? callback() : ''}; })()">${okText}</button>
+                `;
+            }
         }
+        
         
         window.CustomAlert = CustomAlert
         function waitInternetLoader(repeatTime) {
