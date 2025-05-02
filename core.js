@@ -839,11 +839,7 @@ try {
             var interval = setInterval(() => {
                 if (navigator.onLine) {
                     console.log("Stopping Repeater");
-                    // stop the repeat process
                     clearInterval(interval)
-                    // reload message after 1s of reconecting
-                    setTimeout(() => {
-                    }, 1000);
                 } else {
                     console.log("User Offline repeating");
                 }

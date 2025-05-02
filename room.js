@@ -18,11 +18,11 @@ console.log('[room] room was loaded')
 
 
 let max = 0
-function load_image(chat_id, min_) {
+function load_image(chat_id) {
   var main = document.getElementById("room_" + chat_id)
   var images = document.getElementsByClassName(`img-load-${chat_id}`)
   let data = []
-  let min = min_
+  let min = 0
   let calc = 0
   if (images.length == 0) {
     return
@@ -75,11 +75,10 @@ function room(id, e) {
   var old4 = document.getElementsByClassName("mobile")[0].setAttribute("class", "mobile mobile-active")
   var old5 = document.getElementsByClassName("mobile-frame")[0].setAttribute("class", "mobile-frame mobile-frame-active")
   var listener = function () {
-    load_image(localStorage.getItem("lastChat"), 0)
+    load_image(localStorage.getItem("lastChat"))
   };
   //window.MessageLoad(window.processingMessage.indexOf(toString(id)),0)
   new2.addEventListener('scroll', listener, false);
-
   try {
     var old6 = document.getElementsByClassName("left left-active")[0].setAttribute("class", "left")
     var old7 = document.getElementsByClassName("top")[1].setAttribute("class", "top top-active")
@@ -96,31 +95,8 @@ function room(id, e) {
   to.innerHTML = new1.dataset.name
   new2.scrollTop = new2.scrollHeight;
   new2.scrollTop = new2.scrollHeight;
-  load_image(id, 0, 10)
-  history.pushState("disscusion change", "IC-hat - By GL team", `/chat`);
+  setTimeout(load_image,1000,id)
 }
-// spam counter
-var send_by_img = document.getElementById("send")
-var send_by_enter = document.getElementById("content")
-// spam database
-var spam_database = {
-  spam_counter: 0,
-  spam_max: 5
-}
-// spam code
-let spam_event = (spam_database) => {
-  spam_database.spam_counter = spam_database.spam_counter + 1
-  if (spam_database == spam_database.spam_counter) {
-    document.getElementById("content").setAttribute("disable", "true")
-  } else {
-    document.getElementById("content").removeAttribute("disable")
-  }
-}
-// spam listener
-send_by_img.addEventListener('click', spam_event(spam_database));
-send_by_enter.addEventListener('click', spam_event(spam_database));
-
-// automaticlly load discussion
 
 function mobile() {
   var old1 = document.getElementsByClassName("write write-active")[0].setAttribute("class", "write")
@@ -136,9 +112,6 @@ function mobile() {
 }
 
 function dropHandler(ev) {
-  console.log("File(s) dropped");
-
-  // Prevent default behavior (Prevent file from being opened)
   ev.preventDefault();
 
   if (ev.dataTransfer.items) {
