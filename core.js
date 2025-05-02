@@ -844,8 +844,12 @@ try {
             }
             if (cancelText) {
                 dialogboxfoot.innerHTML = `
-                    <button class="pure-material-button-contained" onclick="${closeDialog}; ${callback ? callback() : ''}">${okText}</button>
-                    <button class="pure-material-button-contained" onclick="${closeDialog};">${cancelText}</button>
+                    <button class="pure-material-button-contained" onclick="(function() {
+            document.getElementById('dialogbox').style.display = 'none';
+            document.getElementById('dialogoverlay').style.display = 'none'; ${callback ? callback() : ''})()">${okText}}</button>
+                    <button class="pure-material-button-contained" onclick="(function() {
+            document.getElementById('dialogbox').style.display = 'none';
+            document.getElementById('dialogoverlay').style.display = 'none';)()">${cancelText}</button>
                 `;
             } else {
                 dialogboxfoot.innerHTML = `
