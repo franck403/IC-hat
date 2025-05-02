@@ -846,14 +846,16 @@ try {
                 dialogboxfoot.innerHTML = `
                     <button class="pure-material-button-contained" onclick="(function() {
             document.getElementById('dialogbox').style.display = 'none';
-            document.getElementById('dialogoverlay').style.display = 'none'; ${callback ? callback() : ''})()">${okText}}</button>
+            document.getElementById('dialogoverlay').style.display = 'none'; ${callback ? callback : ''})()">${okText}}</button>
                     <button class="pure-material-button-contained" onclick="(function() {
             document.getElementById('dialogbox').style.display = 'none';
             document.getElementById('dialogoverlay').style.display = 'none';)()">${cancelText}</button>
                 `;
             } else {
                 dialogboxfoot.innerHTML = `
-                    <button class="pure-material-button-contained active" onclick="${closeDialog}; ${callback ? callback() : ''}">${okText}</button>
+                    <button class="pure-material-button-contained active" onclick="(function() {
+            document.getElementById('dialogbox').style.display = 'none';
+            document.getElementById('dialogoverlay').style.display = 'none';)()">${okText}</button>
                 `;
             }        
         }
