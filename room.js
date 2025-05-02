@@ -290,7 +290,7 @@ function isScrolledIntoView(el) {
   // Only completely visible elements return true:
   var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
   // Partially visible elements return true:
-  //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+  isVisible = elemTop < window.innerHeight && elemBottom >= 0;
   return isVisible;
 }
 
