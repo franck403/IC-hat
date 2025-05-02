@@ -12,7 +12,7 @@ import {
 import {getAuth} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD9po7l-vwO0VrY1rMYDFTYNlEBv54T6do",
+  apiKey: atob("QUl6YVN5RDlwbzdsLXZ3TzBWclkxck1ZREZUWU5sRUJ2NTRUNmRv"),
   authDomain: "ic-hat.firebaseapp.com",
   databaseURL: "https://ic-hat-default-rtdb.firebaseio.com",
   projectId: "ic-hat",
