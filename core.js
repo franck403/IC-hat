@@ -593,9 +593,6 @@ try {
                 onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                     // To do make a list of message to load
                     if (data2.val().dname == undefined) { return }
-
-                    //  don't display hidden message  Idk wich one is the good one
-                    if (data2.val().ide == true) { return }
                     if (data2.val().hide == true) { return }
 
                     // loading message in memory for storage while waiting to be loaded
@@ -781,10 +778,13 @@ try {
         window.MessageLoad = MessageLoad
 
         function hidediscusionintern(id) {
-            const dbRef = ref(getDatabase())
-            const updates = {};
-            updates[`users_friend/${id}/hide`] = true;
-            update(dbRef, updates);
+            var hider = () => {
+                const dbRef = ref(getDatabase())
+                const updates = {};
+                updates[`users_friend/${id}/hide`] = true;
+                update(dbRef, updates);    
+            }
+            CustomAlert('Confirm','Please comfirm you want to hide this diccsuion',hider,'ok | cancel')
         }
         window.hidediscusionintern = hidediscusionintern
 
@@ -805,34 +805,57 @@ try {
         }
         window.createInviteDiscusionIntern = createInviteDiscusionIntern
 
-        function CustomAlert(message, title, element) {
-            document.body.innerHTML = document.body.innerHTML + '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
-
+        function CustomAlert(message, title, callback, but = "ok") {
+            // but can be "ok|cancel" or just "ok" (ok callback by default)
+            document.body.innerHTML += '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
+        
             let dialogoverlay = document.getElementById('dialogoverlay');
             let dialogbox = document.getElementById('dialogbox');
-
             let winH = window.innerHeight;
+        
             dialogoverlay.style.height = winH + "px";
-
             dialogbox.style.top = "100px";
-
+        
             dialogoverlay.style.display = "block";
             dialogbox.style.display = "block";
-
-            document.getElementById('dialogboxhead').style.display = 'block';
-
-            if (typeof title === 'undefined') {
-                document.getElementById('dialogboxhead').style.display = 'none';
+        
+            // Set title or hide it if undefined
+            let dialogboxhead = document.getElementById('dialogboxhead');
+            if (typeof title === 'undefined' || title === '') {
+                dialogboxhead.style.display = 'none';
             } else {
-                document.getElementById('dialogboxhead').innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' + title;
+                dialogboxhead.style.display = 'block';
+                dialogboxhead.innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' + title;
             }
+        
+            // Set message content
             document.getElementById('dialogboxbody').innerHTML = message;
-            document.getElementById('dialogboxfoot').innerHTML = '<button class="pure-material-button-contained active" onclick="' + `(() => {
-            document.getElementById('dialogbox').style.display = 'none';
-            document.getElementById('dialogoverlay').style.display = 'none';})()
-            ` + '">OK</button>';
+        
+            // Split the button text into OK and Cancel (if provided)
+            let buttonTexts = but.split("|");
+            let okText = buttonTexts[0] || "OK"; // Default "OK" if no text provided
+            let cancelText = buttonTexts[1] || null;
+        
+            // Set footer and buttons
+            let dialogboxfoot = document.getElementById('dialogboxfoot');
+            if (cancelText) {
+                dialogboxfoot.innerHTML = `
+                    <button class="pure-material-button-contained" onclick="closeDialog(); ${callback ? callback() : ''}">${okText}</button>
+                    <button class="pure-material-button-contained" onclick="closeDialog();">${cancelText}</button>
+                `;
+            } else {
+                dialogboxfoot.innerHTML = `
+                    <button class="pure-material-button-contained active" onclick="closeDialog(); ${callback ? callback() : ''}">${okText}</button>
+                `;
+            }
+        
+            // Function to close the dialog
+            function closeDialog() {
+                dialogbox.style.display = 'none';
+                dialogoverlay.style.display = 'none';
+            }
         }
-
+        
         window.CustomAlert = CustomAlert
         function waitInternetLoader(repeatTime) {
             CustomAlert('You are offline !', 'No internet')
