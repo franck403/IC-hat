@@ -132,9 +132,7 @@
         <img id='crop__result' src=''>
         <br><br>
         <div class="d-flex justify-content-center crop__download">
-            <button type="button" class="btn crop__action mr-10" onclick="copyImage()"><i
-                    data-feather="copy"></i></button>
-            <button type="button" class="btn crop__action" onclick="saveImage()"><i
+            <button type="button" class="btn crop__action mr-10" onclick="saveImage()"><i
                     data-feather="download"></i></button>
         </div>
     </div>
@@ -200,13 +198,13 @@
     <script>
         let croppi;
 
-        $('#selectedFile').change(function () {
+        \$('#selectedFile').change(function () {
             if (this.files[0] == undefined) return;
-            $('#imageModalContainer').modal('show');
+            \$('#imageModalContainer').modal('show');
             let reader = new FileReader();
             reader.addEventListener("load", function () {
                 window.src = reader.result;
-                $('#selectedFile').val('');
+                \$('#selectedFile').val('');
                 initializeCroppie();
             }, false);
             if (this.files[0]) {
@@ -214,11 +212,11 @@
             }
         });
 
-        $('#imageModalContainer').on('shown.bs.modal', function () {
+        \$('#imageModalContainer').on('shown.bs.modal', function () {
             initializeCroppie();
         });
 
-        $('#imageModalContainer').on('hidden.bs.modal', function () {
+        \$('#imageModalContainer').on('hidden.bs.modal', function () {
             if (croppi) {
                 croppi.croppie('destroy');
             }
@@ -227,7 +225,7 @@
         function initializeCroppie() {
             let width = document.getElementById('crop__modal-body').offsetWidth;
             let height = document.getElementById('crop__modal-body').offsetHeight;
-            croppi = $('#crop-image-container').croppie({
+            croppi = \$('#crop-image-container').croppie({
                 viewport: {
                     width: width - 20,
                     height: height - 20,
@@ -257,32 +255,17 @@
             }).then(async function (resp) {
                 $('.modal').modal('hide');
                 $('#result').show();
-                $('#crop__result').attr('src', URL.createObjectURL(resp));
+                \$('#crop__result').attr('src', URL.createObjectURL(resp));
                 window.parent.postMessage(await fileToBase64(blobToFile(resp, 'profile.jpeg')), "*");
             });
         }
 
         function saveImage() {
-            var gh = $('#crop__result')[0].src;
+            var gh = \$('#crop__result')[0].src;
             var a = document.createElement('a');
             a.href = gh;
             a.download = 'image.png';
             a.click();
-        }
-
-        function copyImage() {
-            const img = document.getElementById('crop__result');
-            const canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height);
-            canvas.toBlob((blob) => {
-                navigator.clipboard.write([
-                    new ClipboardItem({
-                        "image/png": blob
-                    })
-                ]);
-            }, "image/png");
         }
 
         window.addEventListener('message', function (event) {
