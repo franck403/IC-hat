@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ic-hat | Profile picture crop</title>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css'>
@@ -191,7 +192,7 @@
 
         .cr-vp-square {
             border-radius: 0%;
-            margin:10px;
+            margin: 10px;
         }
 
         #crop__result {
@@ -208,9 +209,9 @@
     <div class='container-form none'>
         <div class="file-selector">
             <input id="selectedFile" class="file-selector__input" type='file' accept=".png, .jpg, .jpeg, .svg">
-            <button class="file-selector__button" class="btn">
+            <button class="file-selector__button btn">
                 <span class="text">
-                    Choosing image
+                    Choose image
                 </span>
             </button>
         </div>
@@ -218,7 +219,7 @@
 
     <div id='result'>
         <img id='crop__result' src=''>
-        <br> <br>
+        <br><br>
         <div class="d-flex justify-content-center crop__download">
             <button type="button" class="btn crop__action mr-10" onclick="copyImage()"><i
                     data-feather="copy"></i></button>
@@ -237,9 +238,7 @@
                     <h5 class="modal-title" id="imageModal">Crop Image</h5>
                 </div>
                 <div class="modal-body" id="crop__modal-body">
-                    <img id='crop-image-container'>
-
-                    </img>
+                    <div id="crop-image-container"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn crop__action" data-dismiss="modal" onclick="close()"><i
@@ -253,10 +252,10 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.4.1/croppie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
-        // function that replace blob with file
+        // Function to convert a file to a Base64 string
         function fileToBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -266,32 +265,34 @@
             });
         }
 
-        function blobToFile(theBlob, fileName){       
-            var file = new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
-            console.log(file)
-            return file
+        // Function to convert a blob to a file
+        function blobToFile(theBlob, fileName) {
+            return new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type });
         }
+
+        // Function to upload an image
         async function Imageupload(dlob, callback) {
-            // window.firebaseUpladeBytes
-            var file = blobToFile(dlob,'profile.jpeg')
-            console.log(file)
-            const formData = new FormData(); 
+            var file = blobToFile(dlob, 'profile.jpeg');
+            const formData = new FormData();
             formData.append('file', file);
-            var respinse = await axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
-            console.log('Success:', response.data); 
+            try {
+                const response = await axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+                console.log('Success:', response.data);
+            } catch (error) {
+                console.error('Error uploading image:', error);
+            }
         }
+
+        // Function to convert a data URI to a blob
         function dataURItoBlob(dataURI) {
-            // convert base64/URLEncoded data component to raw binary data held in a string
             var byteString;
             if (dataURI.split(',')[0].indexOf('base64') >= 0)
                 byteString = atob(dataURI.split(',')[1]);
             else
                 byteString = unescape(dataURI.split(',')[1]);
 
-            // separate out the mime component
             var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
 
-            // write the bytes of the string to a typed array
             var ia = new Uint8Array(byteString.length);
             for (var i = 0; i < byteString.length; i++) {
                 ia[i] = byteString.charCodeAt(i);
@@ -301,9 +302,8 @@
         }
     </script>
     <script>
-        feather.replace()
+        feather.replace();
     </script>
-    <!-- partial -->
     <script>
         let croppi;
 
@@ -312,9 +312,9 @@
             $('#imageModalContainer').modal('show');
             let reader = new FileReader();
             reader.addEventListener("load", function () {
-                $("#crop-image-container").attr("src", reader.result);
                 window.src = reader.result;
                 $('#selectedFile').val('');
+                initializeCroppie();
             }, false);
             if (this.files[0]) {
                 reader.readAsDataURL(this.files[0]);
@@ -322,40 +322,48 @@
         });
 
         $('#imageModalContainer').on('shown.bs.modal', function () {
-            let width = document.getElementById('crop__modal-body').offsetHeight;
-            $('#crop-image-container').height((width - 100) + 'px');
-            croppi = $('#crop-image-container').croppie({
-                viewport: {
-                    width: width - 100,
-                    height: width - 100
-                },
-            });
-            $('.modal-body1').height(document.getElementById('crop-image-container').offsetHeight + 50 + 'px');
-            croppi.croppie('bind', {
-                url: window.src,
-            }).then(function () {
-                croppi.croppie('setZoom', 0.8);
-            });
+            initializeCroppie();
         });
 
         $('#imageModalContainer').on('hidden.bs.modal', function () {
-            croppi.croppie('destroy');
+            if (croppi) {
+                croppi.croppie('destroy');
+            }
         });
 
+        function initializeCroppie() {
+            let width = document.getElementById('crop__modal-body').offsetWidth;
+            let height = document.getElementById('crop__modal-body').offsetHeight;
+            croppi = $('#crop-image-container').croppie({
+                viewport: {
+                    width: width - 20,
+                    height: height - 20,
+                    type: 'square'
+                },
+                boundary: {
+                    width: width,
+                    height: height
+                },
+                enableResize: true,
+                enableOrientation: true
+            });
+            croppi.croppie('bind', {
+                url: window.src,
+            }).then(function () {
+                croppi.croppie('setZoom', 0); // Disable zoom
+            });
+        }
+
         function cropImage() {
-            console.log('started');
             croppi.croppie('result', {
                 type: 'blob',
                 format: 'jpeg',
                 size: 'original'
-            }).then( async function (resp) {
-                // resp is a blob
-                //var resped = await Imageupload(resp) // double fetch
-                //$('#crop__result').attr('src', resp);
+            }).then(async function (resp) {
                 $('.modal').modal('hide');
                 $('#result').show();
-                console.log('done');
-                window.parent.postMessage(await fileToBase64(blobToFile(resp,'profile.jpeg')), "*");
+                $('#crop__result').attr('src', URL.createObjectURL(resp));
+                window.parent.postMessage(await fileToBase64(blobToFile(resp, 'profile.jpeg')), "*");
             });
         }
 
@@ -383,9 +391,8 @@
         }
 
         window.addEventListener('message', function (event) {
-            console.log("Message received from the parent: " + event.data);
             if (event.data == `document.getElementById('selectedFile').click()`) {
-                eval(event.data)
+                eval(event.data);
             }
         });
 
