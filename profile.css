@@ -61,7 +61,7 @@
 
   .cropper-view-box,
   .cropper-face {
-    border-radius: 50%;
+    border-radius: 15px;
   }
 
   /* The css styles for `outline` do not follow `border-radius` on iOS/Safari (#979). */
