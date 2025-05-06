@@ -135,61 +135,6 @@
             max-height: calc(100% - 120px) !important;
         }
 
-        input[type=range] {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background: none;
-            grid-area: range;
-            width: 100%;
-            box-shadow: 0 0 10px transparent;
-            height: 30px;
-        }
-
-        input[type=range]::-webkit-slider-runnable-track {
-            display: flex;
-            align-items: center;
-            height: 20px;
-            border-radius: 5px;
-            background-image: var(--track-background, linear-gradient(180deg, #006999, #00b0ff));
-            cursor: ew-resize;
-            box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.25), inset 1.5px 1.5px 3px white;
-            border: none;
-            border-radius: 6px;
-        }
-
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            position: relative;
-            top: -5px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(0.45turn, #D4D2D2, #EEECED);
-            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.35), -3px -3px 8px rgba(255, 255, 255, 0.6);
-        }
-
-        input[type=range]::-moz-range-track {
-            -moz-appearance: none;
-            display: flex;
-            align-items: center;
-            height: 20px;
-            border-radius: 5px;
-            background-image: var(--track-background, linear-gradient(180deg, #006999, #00b0ff));
-            cursor: ew-resize;
-            box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.25), inset 1.5px 1.5px 3px white;
-        }
-
-        input[type=range]::-moz-range-thumb {
-            position: relative;
-            top: -10px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(0.45turn, #D4D2D2, #EEECED);
-            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.35), -3px -3px 8px rgba(255, 255, 255, 0.6);
-        }
-
         .cr-vp-square {
             border-radius: 0%;
             margin: 10px;
@@ -345,12 +290,14 @@
                     height: height
                 },
                 enableResize: true,
-                enableOrientation: true
+                enableOrientation: true,
+                enableZoom: false, // Disable zoom completely
+                mouseWheelZoom: false // Disable mouse wheel zoom
             });
             croppi.croppie('bind', {
                 url: window.src,
             }).then(function () {
-                croppi.croppie('setZoom', 0); // Disable zoom
+                // No need to set zoom
             });
         }
 
