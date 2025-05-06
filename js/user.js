@@ -108,3 +108,19 @@ window.addEventListener('message', function (event) {
         close()
     }
 });
+
+var namechanger = (event) => {
+    var name = event.target.innerHTML
+    event.target.innerHTML = ''
+    var changer = document.createElement('input')
+    changer.value = name
+    changer.addEventListener('blur', () => {
+        set_name(changer.value)
+        changer.remove()
+        event.target.innerHTML = name
+    });
+    event.target.appendChild(changer)
+}
+
+
+document.getElementById('user_name').onclick = namechanger
