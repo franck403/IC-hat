@@ -64,4 +64,4 @@ async function checkIP() {
     }
 }
 
-checkIP();
+//checkIP();
