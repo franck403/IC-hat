@@ -18,6 +18,7 @@ class MyCustomElement extends HTMLElement {
 }
 
 function popupSettingMenuShow(uuid) {
+    allclose()
     console.log('clicked')
     var pop = document.getElementById(uuid)
     switch (pop.dataset.visible) {
@@ -29,7 +30,7 @@ function popupSettingMenuShow(uuid) {
         default:
             pop.dataset.visible = "visible"
             console.log('visible')
-            pop.top = '10px'
+            pop.style.top = '10px'
             pop.classList.add('visibleClass')
             break;
     }
@@ -47,7 +48,6 @@ function allclose() {
     }
 }
 function uploadFile(file, callback) {
-    // window.firebaseUpladeBytes
     const formData = new FormData(); 
     console.log(file)
     formData.append('file', file); axios.post('https://static.geoloup.com/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
