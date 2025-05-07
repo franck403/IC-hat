@@ -32,7 +32,7 @@ function popupSettingMenuShow(uuid) {
             console.log('visible')
             console.log(pop.parentElement)
             var rect = pop.parentElement.getBoundingClientRect()
-            pop.style.top = rect.top
+            pop.style.top = rect.y
             pop.classList.add('visibleClass')
             break;
     }
@@ -46,7 +46,6 @@ function allclose() {
     var elements = document.getElementsByClassName('context-menu')
     for (let index = 0; index < elements.length; index++) {
         var element = elements[index];
-        element.style.visibility = "hidden"
         element.classList.remove('visibleClass')
     }
 }
