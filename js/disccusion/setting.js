@@ -31,7 +31,8 @@ function popupSettingMenuShow(uuid) {
             pop.dataset.visible = "visible"
             console.log('visible')
             console.log(pop.parentElement)
-            pop.style.top = '10px'
+            var rect = pop.parentElement.getBoundingClientRect()
+            pop.style.top = rect.top - rect.height/2
             pop.classList.add('visibleClass')
             break;
     }
