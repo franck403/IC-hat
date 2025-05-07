@@ -6,8 +6,7 @@ class MyCustomElement extends HTMLElement {
     connectedCallback() {
         this.uuid = crypto.randomUUID()
         const uuid = this.uuid
-        var script = 'popupSettingMenuShow("d' + uuid + '")'
-        var div = `<div id='${this.uuid}'><i class="fa-solid fa-ellipsis"style="rotate: 90deg;" onclick="popupSettingMenuShow('d${uuid}')"></i><div id='d${uuid}' style="visibility:hidden;" class=context-menu><span class=item onclick="createInviteDiscusion()"><i class="fa-solid fa-user-plus"></i>Create invite</span><span class=item onclick='hidediscusion()'><i class="fa-solid fa-user-minus"></i>Hide for you</span><span class=item onclick="ChangeDisplayName()"><i class="fa-solid fa-pen-to-square"></i>Edit name</span></div></div>`;
+        var div = `<div id='${this.uuid}'><i class="fa-solid fa-ellipsis"style="rotate: 90deg;" onclick="popupSettingMenuShow('d${uuid}')"></i><div id='d${uuid}' style="visibility:hidden;" class="context-menu"><span class=item onclick="createInviteDiscusion()"><i class="fa-solid fa-user-plus"></i>Create invite</span><span class=item onclick='hidediscusion()'><i class="fa-solid fa-user-minus"></i>Hide for you</span><span class=item onclick="ChangeDisplayName()"><i class="fa-solid fa-pen-to-square"></i>Edit name</span></div></div>`;
         this.innerHTML = div
     }
 
@@ -21,7 +20,6 @@ class MyCustomElement extends HTMLElement {
 function popupSettingMenuShow(uuid) {
     console.log('clicked')
     var pop = document.getElementById(uuid)
-    console.log(pop)
     switch (pop.dataset.visible) {
         case "visible":
             pop.dataset.visible = 'hidden'
@@ -31,6 +29,7 @@ function popupSettingMenuShow(uuid) {
         default:
             pop.dataset.visible = "visible"
             console.log('visible')
+            pop.top = '10px'
             pop.classList.add('visibleClass')
             break;
     }
