@@ -32,7 +32,7 @@ function popupSettingMenuShow(uuid) {
             console.log('visible')
             console.log(pop.parentElement)
             var rect = pop.parentElement.getBoundingClientRect()
-            pop.style.top = rect.top - rect.height/2
+            pop.style.top = rect.top
             pop.classList.add('visibleClass')
             break;
     }
@@ -47,6 +47,7 @@ function allclose() {
     for (let index = 0; index < elements.length; index++) {
         var element = elements[index];
         element.style.visibility = "hidden"
+        element.classList.remove('visibleClass')
     }
 }
 function uploadFile(file, callback) {
