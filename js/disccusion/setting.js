@@ -30,6 +30,7 @@ function popupSettingMenuShow(uuid) {
         default:
             pop.dataset.visible = "visible"
             console.log('visible')
+            console.log(pop.parentElement)
             pop.style.top = '10px'
             pop.classList.add('visibleClass')
             break;
