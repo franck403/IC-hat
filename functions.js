@@ -254,11 +254,7 @@ export function message_render(message, type = "none") {
   if (message_start == "undefined" || message_start == undefined) {
     return null; 
   }
-  if (type == "none") {
     return message_start
-  } else {
-    return message_start
-  }
 }
 
 export function markdown_render(message) {
