@@ -1,5 +1,5 @@
 export function sendNotif(message) {
-  if (typeof window !== 'undefined' && window.Android && window.Android.showNotification) {
+  if (window.Android) {
     // For Android WebView
     window.Android.showNotification(message);
   } else if (typeof window !== 'undefined' && 'Notification' in window) {
