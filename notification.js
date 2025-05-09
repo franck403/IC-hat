@@ -14,7 +14,7 @@ export function sendNotif(message) {
     });
   } else {
     // Fallback for environments without Notification API
-    alert('Notification API is not available in this environment.');
+    document.getElementById('search_bar').value = 'Notification API is not available in this environment.';
   }
 }
 
