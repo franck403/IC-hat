@@ -14,7 +14,7 @@ export function sendNotif(message) {
     });
   } else {
     // Fallback for environments without Notification API
-    console.warn('Notification API is not available in this environment.');
+    alert('Notification API is not available in this environment.');
   }
 }
 
