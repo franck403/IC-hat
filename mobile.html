@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IC-hat - Mobile App Landing Page</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://ic-hat.geoloup.com/auth.js" defer></script>
+  <style>
+    :root {
+      --blue: #007bff;
+      --black: #000;
+      --white: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--blue);
+      margin-bottom: 1rem;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .description {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    button {
+      background-color: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to IC-hat</h1>
+  <img src="https://via.placeholder.com/300x200" alt="App Preview" class="hero-image" />
+  <p class="description">
+    IC-hat is a secure, family-friendly communication hub designed for all ages — from students collaborating on homework to parents staying involved and connected. Whether you're planning the day, checking in, or helping with school, IC-hat makes it easy to talk, share, and stay organized together.
+  </p>
+
+  <div id="auth-buttons">
+    <button onclick="netlifyIdentity.open('login')">Login</button>
+    <button onclick="netlifyIdentity.open('signup')">Sign Up</button>
+  </div>
+
+  <div class="footer">Made by Geoloup</div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      netlifyIdentity.on("init", function (user) {
+        if (user) {
+          window.location.href = "https://ic-hat.geoloup.com/chat";
+        }
+      });
+
+      netlifyIdentity.init();
+    });
+  </script>
+</body>
+</html>
