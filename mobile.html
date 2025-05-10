@@ -106,7 +106,7 @@
 
           netlifyIdentity.init();     
     }
-    if (img.complete) {
+    if (document.getElementById('androidLoader').complete) {
       loaded()
     } else {
       document.getElementById('androidLoader').addEventListener('load', loaded)
