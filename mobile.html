@@ -21,8 +21,8 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: var(--black);
-      color: var(--white);
+      background: var(--white);
+      color: var(--black);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -60,7 +60,7 @@
 
     button {
       background-color: var(--blue);
-      color: var(--white);
+      color: var(--black);
       border: none;
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
@@ -77,6 +77,7 @@
 </head>
 <body>
   <img src="img/ic-hat.png" id="androidLoader" style="position: fixed;z-index: 10;transform: translate(-50%,-50%);left: 50%;top: 50%;width:100px;border-radius: 50px;">
+  <div id="androidLoaderBG" style="position: fixed;z-index:9;left:0px;top:0px;width: 100vw;height: 100vh;"></div>
   <h1>Welcome to IC-hat</h1>
   <img src="https://via.placeholder.com/300x200" alt="App Preview" class="hero-image" />
   <p class="description">
@@ -92,16 +93,24 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      netlifyIdentity.on("init", function (user) {
-        if (user) {
-          window.location.href = "https://ic-hat.geoloup.com/chat";
-        } else {
-            document.getElementById('androidLoader').remove()
-        }
-      });
 
-      netlifyIdentity.init();
-      
+    function loaded() {
+      netlifyIdentity.on("init", function (user) {
+            if (user) {
+              window.location.href = "https://ic-hat.geoloup.com/chat";
+            } else {
+                document.getElementById('androidLoader').remove()
+                document.getElementById('androidLoaderBG').remove()
+            }
+          });
+
+          netlifyIdentity.init();     
+    }
+    if (img.complete) {
+      loaded()
+    } else {
+      document.getElementById('androidLoader').addEventListener('load', loaded)
+    }
     });
   </script>
 </body>
