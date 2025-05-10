@@ -76,6 +76,7 @@
   </style>
 </head>
 <body>
+  <img src="img/ic-hat.png" id="androidLoader" style="position: fixed;z-index: 10;transform: translate(-50%,-50%);left: 50%;right: 50%;">
   <h1>Welcome to IC-hat</h1>
   <img src="https://via.placeholder.com/300x200" alt="App Preview" class="hero-image" />
   <p class="description">
@@ -94,10 +95,13 @@
       netlifyIdentity.on("init", function (user) {
         if (user) {
           window.location.href = "https://ic-hat.geoloup.com/chat";
+        } else {
+            document.getElementById('androidLoader').remove()
         }
       });
 
       netlifyIdentity.init();
+      
     });
   </script>
 </body>
