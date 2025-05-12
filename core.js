@@ -1,4 +1,4 @@
-import { setCookie, bip, removeloader, getuser, message_date, message_render, embed_render , decrypt} from "./functions.js"
+import { setCookie, bip, removeloader, getuser, message_date, message_render, embed_render, decrypt } from "./functions.js"
 import { sendNotif, accesPush } from './notification.js'
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
@@ -479,7 +479,7 @@ try {
 
         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
         if (data2.val().name != null) {
-            if (data2.val().message != null || data2.val().message != undefined ) {
+            if (data2.val().message != null || data2.val().message != undefined) {
                 if (data2.val().type == "message" && data2.val().mtype != 'embed') {
                     if (data2.val().name != null || data2.val().name != undefined) {
                         if (message_render(data2.val().message) == null || message_render(data2.val().message) == undefined) {
@@ -563,287 +563,287 @@ try {
                     }
                 }
                 else if (data2.val().type == "audio") {
-                        if (data2.val().email == myEmail) {
-                            var DateNow = data2.val().date
-                            var html = `<div class="bubble me ${class_added}"><audio class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="${data2.val().message}"></audio>${tooltip}</div>`
-                        } else {
-                            var DateNow = data2.val().date
-                            var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div><audio class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></audio></div>${tooltip}</div>`
-                        }
-                    } else { }
-                    try {
-                        return [d1, html]
-                    } catch { }
-                }
-
-                else {
-                    return [d1, '']
-                }
-            }
-            return [d1, '']
-        }
-        onChildAdded(ref(database, `user/`), (data2) => {
-            window.userdb.push(data2)
-        })
-        window.processingMessage = []
-        document.getElementById("people").addEventListener("click", (e) => {
-            const el = e.target.closest("li");
-            console.log(el)
-            if (el.dataset.enable != "true") {
-                onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
-                    // To do make a list of message to load
-                    if (data2.val().dname == undefined) { return }
-                    if (data2.val().hide == true) { return }
-
-                    // loading message in memory for storage while waiting to be loaded
-                    try {
-                        data2.val()
-                    } catch {
-                        return;
-                    }
-                    try {
-                        window.processingMessage[data2.val().dname].push([data2, false])
-                    } catch {
-                        window.processingMessage.push(String(data2.val().dname))
-                        if (typeof (window.processingMessage[String(data2.val().dname)]) != typeof ([])) {
-                            window.processingMessage[String(data2.val().dname)] = []
-                        }                        
-                        window.processingMessage[String(data2.val().dname)].push([data2, false])
-                    }
-                    window.processingMessage[data2.val().dname].sort((a, b) => {
-                        return a[0].val().date - b[0].val().date;
-                    });
-                })
-                onChildChanged(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
-                    if (data2.val().dname == undefined) { return }
-                    // when message is edited or hide get message element and hide or chnge the content
-                })
-                try {
-                    var lastScroll = 0;
-                    document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
-                        let currentScroll = e.target.scrollTop
-                        if (currentScroll > 0 && lastScroll <= currentScroll) {
-                            lastScroll = currentScroll;
-                        } else {
-                            lastScroll = currentScroll;
-                            if (currentScroll <= ((innerHeight-100)/1.4)) {
-                                window.MessageLoadReversed(undefined,undefined,e.target.scrollHeight)
-                            }
-                        }
-                    })
-
-                } catch {
-                    console.log('event lisener wasn' + "'" + 't added. Disabled scroll event to load more msessages')
-                }
-                el.dataset.enable = true
-                setTimeout(MessageLoad, 1000);
-                setTimeout((el) => {
-                    el.scrollTop = el.scrollHeight;
-                    el.scrollTop = el.scrollHeight;
-                }, 2000, el);
-            }
-        });
-        function MessageWorkerLoop(snapshot, reversed = false,height) {
-            var elem = undefined
-            for (let i = 0; i < (snapshot.length); i++) {
-                var data = snapshot[i]
-                var data2 = data[0]
-                data[1] = true
-                var message = newMessage(data2)
-                if (message != null || message[1] != '') {
-                    var d1 = message[0]
-                    if (elem == undefined) {var elem = d1}
-                    if (reversed == false) {
-                        d1.innerHTML = d1.innerHTML + message[1]
+                    if (data2.val().email == myEmail) {
+                        var DateNow = data2.val().date
+                        var html = `<div class="bubble me ${class_added}"><audio class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="${data2.val().message}"></audio>${tooltip}</div>`
                     } else {
-                        d1.innerHTML = message[1] + d1.innerHTML
+                        var DateNow = data2.val().date
+                        var html = `<div class="bubble you ${class_added}"><div class="bubble-name">${data2.val().name}</div><div><audio class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></audio></div>${tooltip}</div>`
                     }
-                }
-            }
-            if (reversed == false) {
-                elem.scrollTop = elem.scrollHeight;
-                elem.scrollTop = elem.scrollHeight;
-            } else if (height != 0){
+                } else { }
                 try {
-                elem.scrollTop = elem.scrollHeight-height;
-                } catch {}
+                    return [d1, html]
+                } catch { }
             }
-            return snapshot
+
+            else {
+                return [d1, '']
+            }
         }
-        function findAll(findFunc, object) {
-            var d = []
-            if (object == undefined) {
-                return d
+        return [d1, '']
+    }
+    onChildAdded(ref(database, `user/`), (data2) => {
+        window.userdb.push(data2)
+    })
+    window.processingMessage = []
+    document.getElementById("people").addEventListener("click", (e) => {
+        const el = e.target.closest("li");
+        console.log(el)
+        if (el.dataset.enable != "true") {
+            onChildAdded(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
+                // To do make a list of message to load
+                if (data2.val().dname == undefined) { return }
+                if (data2.val().hide == true) { return }
+
+                // loading message in memory for storage while waiting to be loaded
+                try {
+                    data2.val()
+                } catch {
+                    return;
+                }
+                try {
+                    window.processingMessage[data2.val().dname].push([data2, false])
+                } catch {
+                    window.processingMessage.push(String(data2.val().dname))
+                    if (typeof (window.processingMessage[String(data2.val().dname)]) != typeof ([])) {
+                        window.processingMessage[String(data2.val().dname)] = []
+                    }
+                    window.processingMessage[String(data2.val().dname)].push([data2, false])
+                }
+                window.processingMessage[data2.val().dname].sort((a, b) => {
+                    return a[0].val().date - b[0].val().date;
+                });
+            })
+            onChildChanged(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
+                if (data2.val().dname == undefined) { return }
+                // when message is edited or hide get message element and hide or chnge the content
+            })
+            try {
+                var lastScroll = 0;
+                document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
+                    let currentScroll = e.target.scrollTop
+                    if (currentScroll > 0 && lastScroll <= currentScroll) {
+                        lastScroll = currentScroll;
+                    } else {
+                        lastScroll = currentScroll;
+                        if (currentScroll <= ((innerHeight - 100) / 1.4)) {
+                            window.MessageLoadReversed(undefined, undefined, e.target.scrollHeight)
+                        }
+                    }
+                })
+
+            } catch {
+                console.log('event lisener wasn' + "'" + 't added. Disabled scroll event to load more msessages')
             }
-            for (let i = 0; i < (object.length); i++) {
-                if (findFunc(object[i])) {
-                    d.push(object[i])
+            el.dataset.enable = true
+            setTimeout(MessageLoad, 1000);
+            setTimeout((el) => {
+                el.scrollTop = el.scrollHeight;
+                el.scrollTop = el.scrollHeight;
+            }, 2000, el);
+        }
+    });
+    function MessageWorkerLoop(snapshot, reversed = false, height) {
+        var elem = undefined
+        for (let i = 0; i < (snapshot.length); i++) {
+            var data = snapshot[i]
+            var data2 = data[0]
+            data[1] = true
+            var message = newMessage(data2)
+            if (message != null || message[1] != '') {
+                var d1 = message[0]
+                if (elem == undefined) { var elem = d1 }
+                if (reversed == false) {
+                    d1.innerHTML = d1.innerHTML + message[1]
+                } else {
+                    d1.innerHTML = message[1] + d1.innerHTML
                 }
             }
+        }
+        if (reversed == false) {
+            elem.scrollTop = elem.scrollHeight;
+            elem.scrollTop = elem.scrollHeight;
+        } else if (height != 0) {
+            try {
+                elem.scrollTop = elem.scrollHeight - height;
+            } catch { }
+        }
+        return snapshot
+    }
+    function findAll(findFunc, object) {
+        var d = []
+        if (object == undefined) {
             return d
         }
-        window.findAll = findAll
-        window.MessageWorkerLoop = MessageWorkerLoop
-        function sortArrayByDate(array) {
-            return array.sort((a, b) => {
-                const dateA = new Date(a[0].val().date).getTime();
-                const dateB = new Date(b[0].val().date).getTime();
-                return dateA - dateB;
-            });
-        }
-        
-        async function MessageWorker(select, max, reversed = false,height) {
-            if (max == undefined) {
-                max = 20
+        for (let i = 0; i < (object.length); i++) {
+            if (findFunc(object[i])) {
+                d.push(object[i])
             }
-            for (let i = 0; i < (window.processingMessage.length / 2); i++) {
+        }
+        return d
+    }
+    window.findAll = findAll
+    window.MessageWorkerLoop = MessageWorkerLoop
+    function sortArrayByDate(array) {
+        return array.sort((a, b) => {
+            const dateA = new Date(a[0].val().date).getTime();
+            const dateB = new Date(b[0].val().date).getTime();
+            return dateA - dateB;
+        });
+    }
+
+    async function MessageWorker(select, max, reversed = false, height) {
+        if (max == undefined) {
+            max = 20
+        }
+        for (let i = 0; i < (window.processingMessage.length / 2); i++) {
+            var err = false
+            // generate new array with the date pre made
+            var narray = sortArrayByDate(window.processingMessage[window.processingMessage[i]])
+            window.processingMessage[window.processingMessage[i]] = narray
+            try {
+                findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]])
+                var err = true
+            } catch {
                 var err = false
-                // generate new array with the date pre made
-                var narray = sortArrayByDate(window.processingMessage[window.processingMessage[i]])
-                window.processingMessage[window.processingMessage[i]] = narray
-                try {
-                    findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]])
-                    var err = true
-                } catch {
-                    var err = false
-                } if (err) {
-                    if (select != undefined && select == i) {
-                        if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > max) {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, max).reverse()
-                        } else {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
-                        }
-                        var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
-                        var date1 = new Date(ActualMessages[0][0].val().date).getTime()
-                        var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
-                        var autoReversed = date1 < date2
-                    } else if (localStorage.getItem('lastChat') == i) {
-                        if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
-                        } else {
-                            var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
-                        }
-                        var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
-                        var date1 = new Date(ActualMessages[1][0].val().date).getTime()
-                        var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
-                        var autoReversed = date1 < date2
+            } if (err) {
+                if (select != undefined && select == i) {
+                    if (findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).length > max) {
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse().slice(0, max).reverse()
+                    } else {
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]]).slice().reverse()
                     }
+                    var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
+                    var date1 = new Date(ActualMessages[0][0].val().date).getTime()
+                    var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
+                    var autoReversed = date1 < date2
+                } else if (localStorage.getItem('lastChat') == i) {
                     if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
-                        var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
-                        var date1 = new Date(ActualMessages[1][0].val().date).getTime()
-                        var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
-                        var autoReversed = date1 < date2
                         var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
                     } else {
-                        var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
-                        try {
-                            var date1 = new Date(ActualMessages[1][0].val().date).getTime()
-                            var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
-                            var autoReversed = date1 < date2
-                        } catch {
-                            var autoReversed = false
-                        }
-                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice()
+                        var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse()
                     }
-                    if (autoReversed == undefined) {
+                    var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
+                    var date1 = new Date(ActualMessages[1][0].val().date).getTime()
+                    var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
+                    var autoReversed = date1 < date2
+                }
+                if (findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).length > max) {
+                    var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
+                    var date1 = new Date(ActualMessages[1][0].val().date).getTime()
+                    var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
+                    var autoReversed = date1 < date2
+                    var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice().reverse().slice(0, max).reverse()
+                } else {
+                    var ActualMessages = window.processingMessage[localStorage.getItem('lastChat')]
+                    try {
+                        var date1 = new Date(ActualMessages[1][0].val().date).getTime()
+                        var date2 = new Date(ActualMessages[ActualMessages.length - 1][0].val().date).getTime()
+                        var autoReversed = date1 < date2
+                    } catch {
                         var autoReversed = false
                     }
-                    if (reversed) {
-                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true,height)
+                    var snapshot = findAll((obj => obj[1] !== true), window.processingMessage[localStorage.getItem('lastChat')]).slice()
+                }
+                if (autoReversed == undefined) {
+                    var autoReversed = false
+                }
+                if (reversed) {
+                    var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true, height)
+                    window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
+                } else {
+                    if (autoReversed) {
+                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), false, height)
                         window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
                     } else {
-                        if (autoReversed) {
-                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), false,height)
-                            window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat((window.processingMessage[window.processingMessage[i]].slice(snapshot.length)))
-                        } else {
-                            var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true,height)
-                            window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
-                        }
+                        var resultSnapshot = MessageWorkerLoop(snapshot.slice(0, snapshot.length), true, height)
+                        window.processingMessage[window.processingMessage[i]] = resultSnapshot.concat(window.processingMessage[window.processingMessage[i]].slice(snapshot.length))
                     }
                 }
             }
         }
-        window.MessageWorker = MessageWorker
-        window.newMessage = newMessage
-        function MessageLoad(select, max, reversed = false) {
-            MessageWorker(select, max, reversed)
-            //worker.postMessage('called')
-        }
-        // reversed
-        function MessageLoadReversed(select, max,height) {
-            MessageWorker(select, max, true,height)
-            //worker.postMessage('called')
-        }
-        window.MessageLoadReversed = MessageLoadReversed
-        window.MessageLoad = MessageLoad
+    }
+    window.MessageWorker = MessageWorker
+    window.newMessage = newMessage
+    function MessageLoad(select, max, reversed = false) {
+        MessageWorker(select, max, reversed)
+        //worker.postMessage('called')
+    }
+    // reversed
+    function MessageLoadReversed(select, max, height) {
+        MessageWorker(select, max, true, height)
+        //worker.postMessage('called')
+    }
+    window.MessageLoadReversed = MessageLoadReversed
+    window.MessageLoad = MessageLoad
 
-        function hidediscusionintern(id) {
-            var hider = () => {
-                const dbRef = ref(getDatabase())
-                const updates = {};
-                updates[`users_friend/${id}/hide`] = true;
-                update(dbRef, updates);    
-            }
-            CustomAlert('Confirm','Please comfirm you want to hide this diccsuion',hider,'ok | cancel')
+    function hidediscusionintern(id) {
+        var hider = () => {
+            const dbRef = ref(getDatabase())
+            const updates = {};
+            updates[`users_friend/${id}/hide`] = true;
+            update(dbRef, updates);
         }
-        window.hidediscusionintern = hidediscusionintern
+        CustomAlert('Confirm', 'Please comfirm you want to hide this diccsuion', hider, 'ok | cancel')
+    }
+    window.hidediscusionintern = hidediscusionintern
 
-        function createInviteDiscusionIntern() {
-            var id = push(child(ref(database), 'invites')).key;
-            var cusid = localStorage.getItem('lastChat')
-            set(ref(database, 'invites/' + id), {
-                email: myEmail,
-                allow: 'everyone',
-                type: "invite",
-                message: message_render('Do you want to get in this conversation ? From ' + myName, "nop"),
-                name: myName,
-                inviteid: id,
-                date: Date.now(),
-                dname: cusid
-            });
-            return id
+    function createInviteDiscusionIntern() {
+        var id = push(child(ref(database), 'invites')).key;
+        var cusid = localStorage.getItem('lastChat')
+        set(ref(database, 'invites/' + id), {
+            email: myEmail,
+            allow: 'everyone',
+            type: "invite",
+            message: message_render('Do you want to get in this conversation ? From ' + myName, "nop"),
+            name: myName,
+            inviteid: id,
+            date: Date.now(),
+            dname: cusid
+        });
+        return id
+    }
+    window.createInviteDiscusionIntern = createInviteDiscusionIntern
+
+    function CustomAlert(message, title, callback, but = "ok") {
+        // but can be "ok|cancel" or just "ok" (ok callback by default)
+        document.body.innerHTML += '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
+
+        let dialogoverlay = document.getElementById('dialogoverlay');
+        let dialogbox = document.getElementById('dialogbox');
+        let winH = window.innerHeight;
+
+        dialogoverlay.style.height = winH + "px";
+        dialogbox.style.top = "100px";
+
+        dialogoverlay.style.display = "block";
+        dialogbox.style.display = "block";
+
+        // Set title or hide it if undefined
+        let dialogboxhead = document.getElementById('dialogboxhead');
+        if (typeof title === 'undefined' || title === '') {
+            dialogboxhead.style.display = 'none';
+        } else {
+            dialogboxhead.style.display = 'block';
+            dialogboxhead.innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' + title;
         }
-        window.createInviteDiscusionIntern = createInviteDiscusionIntern
 
-        function CustomAlert(message, title, callback, but = "ok") {
-            // but can be "ok|cancel" or just "ok" (ok callback by default)
-            document.body.innerHTML += '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
-        
-            let dialogoverlay = document.getElementById('dialogoverlay');
-            let dialogbox = document.getElementById('dialogbox');
-            let winH = window.innerHeight;
-        
-            dialogoverlay.style.height = winH + "px";
-            dialogbox.style.top = "100px";
-        
-            dialogoverlay.style.display = "block";
-            dialogbox.style.display = "block";
-        
-            // Set title or hide it if undefined
-            let dialogboxhead = document.getElementById('dialogboxhead');
-            if (typeof title === 'undefined' || title === '') {
-                dialogboxhead.style.display = 'none';
-            } else {
-                dialogboxhead.style.display = 'block';
-                dialogboxhead.innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' + title;
-            }
-        
-            // Set message content
-            document.getElementById('dialogboxbody').innerHTML = message;
-        
-            // Split the button text into OK and Cancel (if provided)
-            let buttonTexts = but.split("|");
-            let okText = buttonTexts[0] || "OK"; // Default "OK" if no text provided
-            let cancelText = buttonTexts[1] || null;
-        
-            // Set footer and buttons
-            let dialogboxfoot = document.getElementById('dialogboxfoot');
-            function closeDialog() {
-                dialogbox.style.display = 'none';
-                dialogoverlay.style.display = 'none';
-            }
-            if (cancelText) {
-                dialogboxfoot.innerHTML = `
+        // Set message content
+        document.getElementById('dialogboxbody').innerHTML = message;
+
+        // Split the button text into OK and Cancel (if provided)
+        let buttonTexts = but.split("|");
+        let okText = buttonTexts[0] || "OK"; // Default "OK" if no text provided
+        let cancelText = buttonTexts[1] || null;
+
+        // Set footer and buttons
+        let dialogboxfoot = document.getElementById('dialogboxfoot');
+        function closeDialog() {
+            dialogbox.style.display = 'none';
+            dialogoverlay.style.display = 'none';
+        }
+        if (cancelText) {
+            dialogboxfoot.innerHTML = `
                     <button class="pure-material-button-contained" onclick="(function() {
             document.getElementById('dialogbox').style.display = 'none';
             document.getElementById('dialogoverlay').style.display = 'none'; ${callback ? callback : ''})()">${okText}}</button>
@@ -851,116 +851,126 @@ try {
             document.getElementById('dialogbox').style.display = 'none';
             document.getElementById('dialogoverlay').style.display = 'none';)()">${cancelText}</button>
                 `;
-            } else {
-                dialogboxfoot.innerHTML = `
+        } else {
+            dialogboxfoot.innerHTML = `
                     <button class="pure-material-button-contained active" onclick="(function() {
             document.getElementById('dialogbox').style.display = 'none';
             document.getElementById('dialogoverlay').style.display = 'none';)()">${okText}</button>
                 `;
-            }        
         }
-        
-        window.CustomAlert = CustomAlert
-        function waitInternetLoader(repeatTime) {
-            CustomAlert('You are offline !', 'No internet')
-            var interval = setInterval(() => {
-                if (navigator.onLine) {
-                    console.log("Stopping Repeater");
-                    clearInterval(interval)
-                } else {
-                    console.log("User Offline repeating");
-                }
-            }, repeatTime)
-        }
-        window.addEventListener("offline", (e) => {
-            window.waitInternetLoader(1000)
-            console.log("offline");
-        });
-        window.addEventListener("online", (e) => {
-            setTimeout(() => {
-                if (navigator.onLine) {
-                    location.reload()
-                }
-            }, 1000);
-            console.log("online");
-        });
+    }
 
-        window.waitInternetLoader = waitInternetLoader
-
-        function changeDisplayNameIntern(id, newDisplayName) {
-            const dbRef = ref(getDatabase())
-            const updates = {};
-            updates[`users_friend/${id}/displayName`] = newDisplayName;
-            update(dbRef, updates);
-        }
-        window.changeDisplayNameIntern = changeDisplayNameIntern
-
-        function changeMessageContentIntern(id, messageID, newValue) {
-            const dbRef = ref(getDatabase())
-            const updates = {};
-            updates[`'messages/'${id}/${messageID}/message`] = newValue;
-            update(dbRef, updates);
-        }
-
-        window.changeMessageContentIntern = changeMessageContentIntern
-
-        function hideMessageInter(id, messageID) {
-            const dbRef = ref(getDatabase())
-            const updates = {};
-            updates[`'messages/'${id}/${messageID}/hide`] = True;
-            update(dbRef, updates);
-        }
-
-        window.hideMessageInter = hideMessageInter
-
-        const friend_invite = ref(database, 'users_friend/');
-        onChildAdded(friend_invite, (data) => {
-            if (data.val().hide == true) {
-                return
+    window.CustomAlert = CustomAlert
+    function waitInternetLoader(repeatTime) {
+        CustomAlert('You are offline !', 'No internet')
+        var interval = setInterval(() => {
+            if (navigator.onLine) {
+                console.log("Stopping Repeater");
+                clearInterval(interval)
+            } else {
+                console.log("User Offline repeating");
             }
-            var dte = data.val().allow
-            try {
-                dte.indexOf(myEmail)
-            } catch {
-                return
+        }, repeatTime)
+    }
+    window.addEventListener("offline", (e) => {
+        window.waitInternetLoader(1000)
+        console.log("offline");
+    });
+    window.addEventListener("online", (e) => {
+        setTimeout(() => {
+            if (navigator.onLine) {
+                location.reload()
             }
-            if (dte.indexOf(myEmail) != -1 && dte != `,${myEmail}`) {
-                var array = window.userdb
-                var object = []
-                var last = []
-                for (let i = 0; i < array.length; i++) {
-                    try {
-                        if (array.find(obj => obj.val().email === data.val().allow[i]).val().image != undefined) {
-                            object.push(array.find(obj => obj.val().email === data.val().allow[i]))
-                        }
-                        else if (array.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
-                            object.push({
-                                val: () => {
-                                    return { email: data.val().allow[i], image: "img/default.png" }
-                                }
-                            })
-                        } else {
-                            object.push(array.find(obj => obj.val().email === data.val().allow[i]))
-                        }
-                    } catch (err) {
+        }, 1000);
+        console.log("online");
+    });
+
+    window.waitInternetLoader = waitInternetLoader
+
+    function changeDisplayNameIntern(id, newDisplayName) {
+        const dbRef = ref(getDatabase())
+        const updates = {};
+        updates[`users_friend/${id}/displayName`] = newDisplayName;
+        update(dbRef, updates);
+    }
+    window.changeDisplayNameIntern = changeDisplayNameIntern
+
+    function changeMessageContentIntern(id, messageID, newValue) {
+        const dbRef = ref(getDatabase())
+        const updates = {};
+        updates[`'messages/'${id}/${messageID}/message`] = newValue;
+        update(dbRef, updates);
+    }
+
+    window.changeMessageContentIntern = changeMessageContentIntern
+
+    function hideMessageInter(id, messageID) {
+        const dbRef = ref(getDatabase())
+        const updates = {};
+        updates[`'messages/'${id}/${messageID}/hide`] = True;
+        update(dbRef, updates);
+    }
+
+    window.hideMessageInter = hideMessageInter
+
+    const friend_invite = ref(database, 'users_friend/');
+    onChildAdded(friend_invite, (data) => {
+        if (data.val().hide == true) {
+            return
+        }
+        var dte = data.val().allow
+        try {
+            dte.indexOf(myEmail)
+        } catch {
+            return
+        }
+        if (dte.indexOf(myEmail) != -1 && dte != `,${myEmail}`) {
+            var array = window.userdb
+            var object = []
+            var last = []
+            for (let i = 0; i < array.length; i++) {
+                try {
+                    if (array.find(obj => obj.val().email === data.val().allow[i]).val().image != undefined) {
+                        object.push(array.find(obj => obj.val().email === data.val().allow[i]))
+                    }
+                    else if (array.find(obj => obj.val().email === data.val().allow[i]).val().name == undefined) {
                         object.push({
                             val: () => {
                                 return { email: data.val().allow[i], image: "img/default.png" }
                             }
                         })
+                    } else {
+                        object.push(array.find(obj => obj.val().email === data.val().allow[i]))
                     }
+                } catch (err) {
+                    object.push({
+                        val: () => {
+                            return { email: data.val().allow[i], image: "img/default.png" }
+                        }
+                    })
                 }
-                for (let i = 0; i < object.length; i++) {
-                    if (object[i] == undefined) {
-                        object[i] = {
-                            val: () => {
-                                return { email: data.val().allow[i], image: "img/default.png" }
-                            }
+            }
+            for (let i = 0; i < object.length; i++) {
+                if (object[i] == undefined) {
+                    object[i] = {
+                        val: () => {
+                            return { email: data.val().allow[i], image: "img/default.png" }
                         }
                     }
-                    last.push(object[i].val().name)
                 }
-                var n_allow = last
+                last.push(object[i].val().name)
+            }
+            var n_allow = last
+            try {
+                var new_allow = n_allow.join(" ")
+                var nwe_allow = new_allow.replace(myEmail, "")
+                var nwe_allow = nwe_allow.replace(myName, "")
+                var nw_allow = nwe_allow.replaceAll(",", " ")
+            } catch {
+                var nw_allow = n_allow
+            }
+            if (nw_allow.replaceAll(" ", "") == "") {
+                n_allow = data.val().allow
                 try {
                     var new_allow = n_allow.join(" ")
                     var nwe_allow = new_allow.replace(myEmail, "")
@@ -969,30 +979,20 @@ try {
                 } catch {
                     var nw_allow = n_allow
                 }
-                if (nw_allow.replaceAll(" ", "") == "") {
-                    n_allow = data.val().allow
-                    try {
-                        var new_allow = n_allow.join(" ")
-                        var nwe_allow = new_allow.replace(myEmail, "")
-                        var nwe_allow = nwe_allow.replace(myName, "")
-                        var nw_allow = nwe_allow.replaceAll(",", " ")
-                    } catch {
-                        var nw_allow = n_allow
-                    }
-                }
+            }
 
-                if (object[0].val().email != myEmail) {
-                    object.reverse()
-                }
-                if (data.val().displayName == undefined) {
-                    var displayName = nw_allow
-                } else {
-                    var displayName = data.val().displayName
-                }
+            if (object[0].val().email != myEmail) {
+                object.reverse()
+            }
+            if (data.val().displayName == undefined) {
+                var displayName = nw_allow
+            } else {
+                var displayName = data.val().displayName
+            }
 
-                try {
-                    if (last[0] != undefined && nw_allow != "") {
-                        var html = `
+            try {
+                if (last[0] != undefined && nw_allow != "") {
+                    var html = `
             <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
             <img src="${last[1].val().image}" class="people-img"alt="picture" />
             <p id="name_${data.val().allow}" class="people-name"><input is="expanding-list" id="rename_${data.val().dname}" class='rename-file' type="text"/>${displayName}</p>
@@ -1000,8 +1000,8 @@ try {
             <p class='people-setting popmenu'><popup-setting-menu></popup-setting-menu></p>
             <p id="prew_${data.val().dname}" class="people-preview">Nothing to show</p>
             </li>`
-                    } else {
-                        var html = `
+                } else {
+                    var html = `
                 <li onclick="room('${data.val().dname}',event)" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
                 <img src="img/default.png" class="people-img"alt="picture" />
                 <p id="name_${data.val().allow}" class="people-name"><input is="expanding-list" id="rename_${data.val().dname}" class='rename-file' type="text"/>${displayName}</p>
@@ -1009,9 +1009,9 @@ try {
                 <p class='people-setting popmenu'><popup-setting-menu></popup-setting-menu></p>
                 <p id="prew_${data.val().dname}" class="people-preview">Nothing to show</p>
                 </li>`
-                    }
-                } catch {
-                    var html = `
+                }
+            } catch {
+                var html = `
                 <li onclick="room('${data.val().dname}',event)" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
                 <img src="img/default.png" class="people-img"alt="picture" />
                 <p id="name_${data.val().allow}" class="people-name"><input is="expanding-list" id="rename_${data.val().dname}" class='rename-file' type="text"/>${displayName}</p>
@@ -1019,89 +1019,89 @@ try {
                 <p class='people-setting'><popup-setting-menu></popup-setting-menu></p>
                 <p id="prew_${data.val().dname}" class="people-preview">Nothing to show</p>
                 </li>`
-                }
-                // chat_el_box
-                var html_chat = `
+            }
+            // chat_el_box
+            var html_chat = `
         <div class="chat" id="room_${data.val().dname}" data-chat="${data.val().dname}">
         <span></span>
         </div>`
-                const d1 = document.getElementById("chat_el_box")
-                const d2 = document.getElementById("people")
-                d1.innerHTML = d1.innerHTML + html_chat
-                d2.innerHTML = d2.innerHTML + html
-                const dnamef = data.val().dname
-                Storage.prototype.setObj = function (key, obj) {
-                    return this.setItem(key, JSON.stringify(obj))
-                }
-                Storage.prototype.getObj = function (key) {
-                    return JSON.parse(this.getItem(key))
-                }
-                onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
-                    bip()
-                    if (data2.val().type == "call") {
-                        window.receive(`?f&type=call&uuid=${data2.val().message}&name=${data2.val().name}&`)
-                        new Notification(data2.val().name, { body: message_render(`${data2.val().name} is calling you on IC-hat`), requireInteraction: true }).onclick = (() => { window.focus(); console.log("d") })
-                    } else if (data2.val().name != null && data2.val().type == "message") {
-                        if (data2.val().email == myEmail) {
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow, dnamef)
-                            document.getElementById(`time_${dnamef}`).innerHTML = date
-                            document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
-                        } else {
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow, dnamef)
-                            document.getElementById(`time_${dnamef}`).innerHTML = date
-                            document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
-                            sendNotif(data2.val().name + ': ' + message_render(data2.val().message))
-                        }
-                        setTimeout((data2) => {
-                            // display message in diccusion
-                            console.log(data2.val().type)
-                            var message = newMessage(data2)
-                            console.log(message)
-                            if (message != None) {
-                                var d1 = message[0]
-                                d1.innerHTML = d1.innerHTML + message[1]
-                                var elem = d1
-                                elem.scrollTop = elem.scrollHeight;
-                                elem.scrollTop = elem.scrollHeight;
-                            }
-                            // find the message in local DB to be set as loaded
-                            var cache = window.processingMessage[data2.val().dname]
-                            cache[cache.length-1][1] = true
-                            console.log(data2)
-                        }, 1000, data2)
+            const d1 = document.getElementById("chat_el_box")
+            const d2 = document.getElementById("people")
+            d1.innerHTML = d1.innerHTML + html_chat
+            d2.innerHTML = d2.innerHTML + html
+            const dnamef = data.val().dname
+            Storage.prototype.setObj = function (key, obj) {
+                return this.setItem(key, JSON.stringify(obj))
+            }
+            Storage.prototype.getObj = function (key) {
+                return JSON.parse(this.getItem(key))
+            }
+            onChildChanged(ref(database, 'preload/' + dnamef), (data2) => {
+                bip()
+                if (data2.val().type == "call") {
+                    window.receive(`?f&type=call&uuid=${data2.val().message}&name=${data2.val().name}&`)
+                    new Notification(data2.val().name, { body: message_render(`${data2.val().name} is calling you on IC-hat`), requireInteraction: true }).onclick = (() => { window.focus(); console.log("d") })
+                } else if (data2.val().name != null && data2.val().type == "message") {
+                    if (data2.val().email == myEmail) {
+                        var DateNow = data2.val().date
+                        var date = message_date(DateNow, dnamef)
+                        document.getElementById(`time_${dnamef}`).innerHTML = date
+                        document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                    } else {
+                        var DateNow = data2.val().date
+                        var date = message_date(DateNow, dnamef)
+                        document.getElementById(`time_${dnamef}`).innerHTML = date
+                        document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                        sendNotif(data2.val().name + ': ' + message_render(data2.val().message))
                     }
-                })
-                onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
-                    if (data2.val().name != null && data2.val().type == "message" && data2.val().message != null) {
-                        if (data2.val().email == myEmail) {
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow, dnamef)
-                            try {
-                                document.getElementById(`time_${dnamef}`).innerHTML = date
+                    setTimeout((data2) => {
+                        // display message in diccusion
+                        console.log(data2.val().type)
+                        var message = newMessage(data2)
+                        console.log(message)
+                        if (message != None) {
+                            var d1 = message[0]
+                            d1.innerHTML = d1.innerHTML + message[1]
+                            var elem = d1
+                            elem.scrollTop = elem.scrollHeight;
+                            elem.scrollTop = elem.scrollHeight;
+                        }
+                        // find the message in local DB to be set as loaded
+                        var cache = window.processingMessage[data2.val().dname]
+                        cache[cache.length - 1][1] = true
+                        console.log(data2)
+                    }, 1000, data2)
+                }
+            })
+            onChildAdded(ref(database, 'preload/' + dnamef), async (data2) => {
+                if (data2.val().name != null && data2.val().type == "message" && data2.val().message != null) {
+                    if (data2.val().email == myEmail) {
+                        var DateNow = data2.val().date
+                        var date = message_date(DateNow, dnamef)
+                        try {
+                            document.getElementById(`time_${dnamef}`).innerHTML = date
+                            document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                        } catch {
+                            setTimeout(() => {
+                                document.getElementById(`time_${dnamef}`).innerHTML = message_date(DateNow, dnamef)
                                 document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
-                            } catch {
-                                setTimeout(()=>{
-                                    document.getElementById(`time_${dnamef}`).innerHTML = message_date(DateNow, dnamef)
-                                    document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)    
-                                },1000)
-                            }
-                        } else {
-                            var DateNow = data2.val().date
-                            var date = message_date(DateNow, dnamef)
-                            try {
-                                document.getElementById(`time_${dnamef}`).innerHTML = date
-                            } catch { }
-                            document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
+                            }, 1000)
                         }
+                    } else {
+                        var DateNow = data2.val().date
+                        var date = message_date(DateNow, dnamef)
+                        try {
+                            document.getElementById(`time_${dnamef}`).innerHTML = date
+                        } catch { }
+                        document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
-                })
-                setTimeout(() => {
-                    window.removeEmptyP()
-                }, 100);
-            } else { }
-        });
-    } catch (err) {
-        console.log(err)
-    }
+                }
+            })
+            setTimeout(() => {
+                window.removeEmptyP()
+            }, 100);
+        } else { }
+    });
+} catch (err) {
+    console.log(err)
+}
