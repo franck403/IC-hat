@@ -995,12 +995,18 @@ try {
             } else {
                 var displayName = data.val().displayName
             }
+            url = 'img/default.png'
+            userdb.forEach((data) => {
+                if (data.val().email == data2.val().email) {
+                    url = data.val().image
+                }
+            })
 
             try {
                 if (last[0] != undefined && nw_allow != "") {
                     var html = `
             <li onclick="room('${data.val().dname}')" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
-            <img src="${last[1].val().image}" class="people-img"alt="picture" />
+            <img src="${url}" class="people-img"alt="picture" />
             <p id="name_${data.val().allow}" class="people-name"><input is="expanding-list" id="rename_${data.val().dname}" class='rename-file' type="text"/>${displayName}</p>
             <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time">N/A</p>
             <p class='people-setting popmenu'><popup-setting-menu></popup-setting-menu></p>
@@ -1009,7 +1015,7 @@ try {
                 } else {
                     var html = `
                 <li onclick="room('${data.val().dname}',event)" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
-                <img src="img/default.png" class="people-img"alt="picture" />
+                <img src${url} class="people-img"alt="picture" />
                 <p id="name_${data.val().allow}" class="people-name"><input is="expanding-list" id="rename_${data.val().dname}" class='rename-file' type="text"/>${displayName}</p>
                 <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time">N/A</p>
                 <p class='people-setting popmenu'><popup-setting-menu></popup-setting-menu></p>
@@ -1019,7 +1025,7 @@ try {
             } catch {
                 var html = `
                 <li onclick="room('${data.val().dname}',event)" class="people-person" data-name="${data.val().allow}" data-chatid="${data.val().dname}" id="d${data.val().dname}">
-                <img src="img/default.png" class="people-img"alt="picture" />
+                <img src${url} class="people-img"alt="picture" />
                 <p id="name_${data.val().allow}" class="people-name"><input is="expanding-list" id="rename_${data.val().dname}" class='rename-file' type="text"/>${displayName}</p>
                 <p id="time_${data.val().dname}" data-send="${data.val().dname}" class="people-time">N/A</p>
                 <p class='people-setting'><popup-setting-menu></popup-setting-menu></p>
