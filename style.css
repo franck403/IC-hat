@@ -1806,7 +1806,7 @@ input[type=submit] {
 
 
 .messageProfile {
-    position: absolute;
+    position: relative;
     top: 0px;
     left: 0px;
     border-radius: 10px;
