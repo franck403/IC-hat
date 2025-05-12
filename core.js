@@ -496,7 +496,7 @@ try {
                                         url = data.val().image
                                     }
                                 })
-                                var html = `<div class="bubble you ${class_added}"><img src="${url}" class="profile"><div class="bubble-name">${data2.val().name}</div><div>${message_render(data2.val().message)}</div>${tooltip}</div>`
+                                var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfile"><div class="bubble-name">${data2.val().name}</div><div>${message_render(data2.val().message)}</div>${tooltip}</div>`
                                 var DateNow = data2.val().date
                             }
                         }
