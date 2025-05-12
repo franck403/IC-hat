@@ -1817,6 +1817,6 @@ input[type=submit] {
     z-index: 2;
 }
 
-.bubble.you. {
-    margin-left: calc(5px + 50px);
+.bubble.you {
+    padding-left: calc(5px + 50px);
 }
