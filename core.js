@@ -995,6 +995,7 @@ try {
             } else {
                 var displayName = data.val().displayName
             }
+            console.log(nw_allow)
             url = 'img/default.png'
             window.userdb.forEach((data2) => {
                 if (data.val().nw_allow == data2.val().email) {
