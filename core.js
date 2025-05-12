@@ -996,7 +996,7 @@ try {
                 var displayName = data.val().displayName
             }
             url = 'img/default.png'
-            userdb.forEach((data) => {
+            window.userdb.forEach((data) => {
                 if (data.val().email == data2.val().email) {
                     url = data.val().image
                 }
