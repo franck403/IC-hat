@@ -51,10 +51,12 @@ function load_image(chat_id) {
   return true
 }
 function room(id, e) {
-  if (e.target.parentElement.parentElement.classList.contains('people-setting') || e.target.parentElement.classList.contains('people-setting') || e.target.classList.contains('people-setting') || e.target.classList.contains('fa-ellipsis')) {
-    console.log('setting menu was clicked aborting ...')
-    return;
-  }
+  try {
+    if (e.target.parentElement.parentElement.classList.contains('people-setting') || e.target.parentElement.classList.contains('people-setting') || e.target.classList.contains('people-setting') || e.target.classList.contains('fa-ellipsis')) {
+      console.log('setting menu was clicked aborting ...')
+      return;
+    }
+  } catch {}
   if (id == "geoloup_chat") {
     var new2 = document.getElementById(id + "_c")
   } else if (id.search("new") != -1) {
