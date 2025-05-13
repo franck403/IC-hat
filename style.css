@@ -959,6 +959,7 @@ input:disabled {
 }
 
 .container .right .bubble.you {
+    padding-left: 55px;
     float: left;
     color: var(--white);
     overflow: hidden;
