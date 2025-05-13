@@ -46,6 +46,11 @@ if (myData != null) {
     var myEmail = myData.email
     var myName = myData.user_metadata.full_name
     var myImage = myData.user_metadata.avatar_url
+    if (myImage == undefined || myImage == null) {
+        myImage = Imageupload(generateProfilePIC(),callback => {
+            location.reload()
+        })
+    }
     document.getElementById("user_name").innerText = myName
     var data = {
         name: myName,
