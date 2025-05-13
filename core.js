@@ -996,6 +996,12 @@ try {
                 var displayName = data.val().displayName
             }
             console.log(object)
+            var usemail = ''
+            if (data.val().allow[0] == myEmail) {
+                usemail = data.val().allow[1]
+            } else {
+                usemail = data.val().allow[0]
+            }
             url = 'img/default.png'
             window.userdb.forEach((data2) => {
                 if (object[1].val().email == data2.val().email) {
