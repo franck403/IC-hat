@@ -1009,7 +1009,7 @@ try {
                     console.log(url)
                 }
             })
-            if (url == undefined) {
+            if (url == undefined || url == '') {
                 url = 'img/default.png'
             }
 
