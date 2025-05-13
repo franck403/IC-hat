@@ -1825,8 +1825,8 @@ input[type=submit] {
     transform: translateY(-50%);
     right: 5px;
     border-radius: 10px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: #eceff1;
     z-index: 2;
 }

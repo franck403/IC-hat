@@ -195,6 +195,35 @@ export function textMessage(message) {
   }
 }
 
+export async function ASYNCtextMessage(message) {
+  try {
+    const response = await fetch('https://vector.profanity.dev', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message })
+    });
+
+    if (!response.ok) {
+      return "error message";
+    }
+
+    const status = await response.json();
+
+    if (status.isProfanity) {
+      console.log(status);
+      const regex = new RegExp(status.flaggedFor, "gi");
+      return message.replace(regex, match => '*'.repeat(match.length));
+    }
+
+    return message;
+  } catch (error) {
+    console.error('Fetch error:', error);
+    return "error message";
+  }
+}
+
 // js/markdownConverter.js
 export function convertMarkdownToHTML(markdownText) {
   let htmlContent = markdownText;
@@ -250,6 +279,31 @@ export function message_render(message, type = "none") {
   var message_start = message_start.replaceAll('>','&gt;')
   if (type == "nop") {
     var message_start = textMessage(message_start)
+  }
+  if (message_start == "undefined" || message_start == undefined) {
+    return null; 
+  }
+    return message_start
+}
+
+export async function ASYNCmessage_render(message, type = "none") {
+  var messages = (function (t) {
+    var r = /[^\u0300-\u036F\u0489]+/g;
+    var unzalgo = function () {
+      return (t.match(r) || [""]).join("");
+    };
+    return unzalgo()
+  })(message);
+  if (messages != undefined && messages != "") {
+    var message_good = messages
+  } else {
+    var message_good = message
+  }
+  var message_start = message_good.substring(0, 1000);
+  var message_start = message_start.replaceAll('<','&lt;')
+  var message_start = message_start.replaceAll('>','&gt;')
+  if (type == "nop") {
+    var message_start = await ASYNCtextMessage(message_start)
   }
   if (message_start == "undefined" || message_start == undefined) {
     return null; 
