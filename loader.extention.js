@@ -1,19 +1,12 @@
 import { getCookie, getuser } from "./functions.js"
 import {Peer} from "https://esm.sh/peerjs@1.5.4?bundle-deps"
 import {
-    getDatabase,
     set,
-    ref,
-    push,
-    child,
-    onChildAdded,
-    onChildChanged,
-    update,
-    onDisconnect
+    ref
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
 
-if (getCookie('devID') != undefined && getCookie('devID') != '' && window.CustomAlert != undefined) {
-    window.CustomAlert(`You key is <input type="text" value="${getCookie('devID')}" disabled> Not supposed to have one ? go see <a href="https://ic-hat.geoloup.com/devkit" target="_blank">this page</a>`,'Client Dev key')
+if (getCookie('devID') != undefined && getCookie('devID') != '') {
+    document.getElementById("to").innerHTML = getCookie('devID')
 
     var peer = new Peer(getCookie('devID'));
     var extensionEventPeer = []
