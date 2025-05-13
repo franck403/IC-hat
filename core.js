@@ -1009,6 +1009,9 @@ try {
                     console.log(url)
                 }
             })
+            if (url == undefined) {
+                url = 'img/default.png'
+            }
 
             try {
                 if (last[0] != undefined && nw_allow != "") {
