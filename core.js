@@ -615,10 +615,24 @@ try {
                         window.processingMessage[String(data2.val().dname)] = []
                     }
                     window.processingMessage[String(data2.val().dname)].push([data2, false])
-                }
-                window.processingMessage[data2.val().dname].sort((a, b) => {
-                    return a[0].val().date - b[0].val().date;
+                }window.processingMessage[data2.val().dname] = window.processingMessage[data2.val().dname]
+                // Filter out entries where a[0].val().date is missing
+                .filter(entry => {
+                    try {
+                        return entry[0].val().date != null;
+                    } catch (e) {
+                        return false;
+                    }
+                })
+                // Sort the remaining entries by date
+                .sort((a, b) => {
+                    try {
+                        return a[0].val().date - b[0].val().date;
+                    } catch (e) {
+                        return 0;
+                    }
                 });
+            
             })
             onChildChanged(ref(database, `messages/${el.dataset.chatid}`), (data2) => {
                 if (data2.val().dname == undefined) { return }
