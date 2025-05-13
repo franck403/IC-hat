@@ -246,11 +246,11 @@ try {
         }
     }
     function allclose1() {
-        var elements = document.getElementsByClassName('rename-active')
+        /*var elements = document.getElementsByClassName('rename-active')
         for (let index = 0; index < elements.length; index++) {
             var element = elements[index];
             element.classList.remove('rename-active')
-        }
+        }*/
     }
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
