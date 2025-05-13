@@ -486,16 +486,16 @@ try {
                             var html = '';
                             var DateNow = '';
                         } else {
-                            if (data2.val().email == myEmail) {
-                                var html = `<div class="bubble me ${class_added}">${message_render(data2.val().message)} ${tooltip}</div>`
+                            url = ''
+                            userdb.forEach((data) => {
+                                if (data.val().email == data2.val().email) {
+                                    url = data.val().image
+                                }
+                            })
+                        if (data2.val().email == myEmail) {
+                                var html = `<div class="bubble me ${class_added}"><img src="${url}" class="messageProfileMe">${message_render(data2.val().message)} ${tooltip}</div>`
                                 var DateNow = data2.val().date
                             } else {
-                                url = ''
-                                userdb.forEach((data) => {
-                                    if (data.val().email == data2.val().email) {
-                                        url = data.val().image
-                                    }
-                                })
                                 var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfile"><div class="bubble-name">${data2.val().name}</div><div>${message_render(data2.val().message)}</div>${tooltip}</div>`
                                 var DateNow = data2.val().date
                             }
