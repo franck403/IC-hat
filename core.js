@@ -995,6 +995,7 @@ try {
             } else {
                 var displayName = data.val().displayName
             }
+            console.lof(object)
             url = 'img/default.png'
             window.userdb.forEach((data2) => {
                 if (object[1].val().email == data2.val().email) {
