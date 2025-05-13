@@ -790,7 +790,7 @@ try {
             updates[`users_friend/${id}/hide`] = true;
             update(dbRef, updates);
         }
-        CustomAlert('Confirm', 'Please comfirm you want to hide this diccsuion', hider, 'ok | cancel')
+        hider()
     }
     window.hidediscusionintern = hidediscusionintern
 
@@ -811,61 +811,33 @@ try {
     }
     window.createInviteDiscusionIntern = createInviteDiscusionIntern
 
-    function CustomAlert(message, title, callback, but = "ok") {
-        // but can be "ok|cancel" or just "ok" (ok callback by default)
-        document.body.innerHTML += '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
-
+    function CustomAlert(message, title, element) {
+        document.body.innerHTML = document.body.innerHTML + '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
+    
         let dialogoverlay = document.getElementById('dialogoverlay');
         let dialogbox = document.getElementById('dialogbox');
+    
         let winH = window.innerHeight;
-
         dialogoverlay.style.height = winH + "px";
+    
         dialogbox.style.top = "100px";
-
+    
         dialogoverlay.style.display = "block";
         dialogbox.style.display = "block";
-
-        // Set title or hide it if undefined
-        let dialogboxhead = document.getElementById('dialogboxhead');
-        if (typeof title === 'undefined' || title === '') {
-            dialogboxhead.style.display = 'none';
+    
+        document.getElementById('dialogboxhead').style.display = 'block';
+    
+        if (typeof title === 'undefined') {
+            document.getElementById('dialogboxhead').style.display = 'none';
         } else {
-            dialogboxhead.style.display = 'block';
-            dialogboxhead.innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' + title;
+            document.getElementById('dialogboxhead').innerHTML = '<i class="fa fa-exclamation-circle" aria-hidden="true"></i> ' + title;
         }
-
-        // Set message content
         document.getElementById('dialogboxbody').innerHTML = message;
-
-        // Split the button text into OK and Cancel (if provided)
-        let buttonTexts = but.split("|");
-        let okText = buttonTexts[0] || "OK"; // Default "OK" if no text provided
-        let cancelText = buttonTexts[1] || null;
-
-        // Set footer and buttons
-        let dialogboxfoot = document.getElementById('dialogboxfoot');
-        function closeDialog() {
-            dialogbox.style.display = 'none';
-            dialogoverlay.style.display = 'none';
-        }
-        if (cancelText) {
-            dialogboxfoot.innerHTML = `
-                    <button class="pure-material-button-contained" onclick="(function() {
+        document.getElementById('dialogboxfoot').innerHTML = '<button class="pure-material-button-contained active" onclick="' + `(() => {
             document.getElementById('dialogbox').style.display = 'none';
-            document.getElementById('dialogoverlay').style.display = 'none'; ${callback ? callback : ''})()">${okText}}</button>
-                    <button class="pure-material-button-contained" onclick="(function() {
-            document.getElementById('dialogbox').style.display = 'none';
-            document.getElementById('dialogoverlay').style.display = 'none';)()">${cancelText}</button>
-                `;
-        } else {
-            dialogboxfoot.innerHTML = `
-                    <button class="pure-material-button-contained active" onclick="(function() {
-            document.getElementById('dialogbox').style.display = 'none';
-            document.getElementById('dialogoverlay').style.display = 'none';)()">${okText}</button>
-                `;
-        }
+            document.getElementById('dialogoverlay').style.display = 'none';})()
+            ` + '">OK</button>';
     }
-
     window.CustomAlert = CustomAlert
     function waitInternetLoader(repeatTime) {
         CustomAlert('You are offline !', 'No internet')
