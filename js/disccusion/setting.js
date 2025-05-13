@@ -197,6 +197,12 @@ customElements.define("expanding-list", ExpandingList, { extends: "input" });
 function Imageupload(image, callback) {
     uploadFile(image, callback)
 }
+
+function SoundUpload(image, callback) {
+    uploadFile(image, callback)
+}
+
+window.SoundUpload = SoundUpload
 window.Imageupload = Imageupload
 window.generateProfilePIC = generateProfilePIC
 

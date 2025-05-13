@@ -120,7 +120,19 @@ function dropHandler(ev) {
     [...ev.dataTransfer.items].forEach((item, i) => {
       if (item.kind === "file") {
         console.log(ev.dataTransfer.files)
-        var imageTypes = ['image/png', 'image/gif', 'image/bmp', 'image/jpeg'];
+        var imageTypes = [
+          'image/png',
+          'image/gif',
+          'image/bmp',
+          'image/jpeg',
+          'image/webp',
+          'image/svg+xml',
+          'audio/mpeg',   // .mp3
+          'audio/wav',    // .wav
+          'audio/ogg',    // .ogg
+          'audio/mp4',    // .m4a
+          'audio/x-ms-wma'// .wma
+        ];
         if (imageTypes.includes(item.type) != 0) {
           const file = item.getAsFile();
           document.getElementById("file_input").files = ev.dataTransfer.files;
