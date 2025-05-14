@@ -650,15 +650,11 @@ try {
                 var lastScroll = 0;
                 document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
                     let currentScroll = e.target.scrollTop
-                    console.log(currentScroll)
-                    console.log(lastScroll)
                     if (currentScroll > 200) {
                         lastScroll = currentScroll;
                     } else {
                         lastScroll = currentScroll;
-                        if (currentScroll <= ((innerHeight - 100) / 1.4)) {
-                            window.MessageLoadReversed(undefined, undefined, e.target.scrollHeight)
-                        }
+                        window.MessageLoadReversed(undefined, undefined, e.target.scrollHeight)
                     }
                 })
 
