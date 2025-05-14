@@ -519,7 +519,7 @@ try {
                                 var html = `<div class="bubble me ${class_added} embed"><img src="${url}" class="messageProfileMe">${embed_render(data2.val().message)} ${tooltip}</div>`
                                 var DateNow = data2.val().date
                             } else {
-                                var html = `<div class="bubble you ${class_added} embed"><img src="${url}" class="messageProfileMe"><div class="bubble-name">${data2.val().name}</div><div>${embed_render(data2.val().message)}</div>${tooltip}</div>`
+                                var html = `<div class="bubble you ${class_added} embed"><img src="${url}" class="messageProfile"><div class="bubble-name">${data2.val().name}</div><div>${embed_render(data2.val().message)}</div>${tooltip}</div>`
                                 var DateNow = data2.val().date
                             }
                         }
@@ -530,7 +530,7 @@ try {
                         var html = `<div class="bubble me ${class_added}"><img src="${url}" class="messageProfileMe"><img onclick="big(this)" class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="${data2.val().message}"></img>${tooltip}</div>`
                     } else {
                         var DateNow = data2.val().date
-                        var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfileMe"><div class="bubble-name">${data2.val().name}</div><div><img onclick="big(this)" class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></img></div>${tooltip}</div>`
+                        var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfile"><div class="bubble-name">${data2.val().name}</div><div><img onclick="big(this)" class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></img></div>${tooltip}</div>`
                     }
                 } else if (data2.val().type == "new-image") {
                     if (data2.val().email == myEmail) {
@@ -538,7 +538,7 @@ try {
                         var html = `<div class="bubble me ${class_added}"><img src="${url}" class="messageProfileMe"><img onclick="big(this)" class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="data:image/${data2.val().message}"></img>${tooltip}</div>`
                     } else {
                         var DateNow = data2.val().date
-                        var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfileMe"><div class="bubble-name">${data2.val().name}</div><div><img onclick="big(this)" class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="data:image/${data2.val().message}"></img></div>${tooltip}</div>`
+                        var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfile"><div class="bubble-name">${data2.val().name}</div><div><img onclick="big(this)" class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="data:image/${data2.val().message}"></img></div>${tooltip}</div>`
                     }
                 } else if (data2.val().type == "encrypted") {
                     if (data2.val().name != null || data2.val().name != undefined) {
@@ -550,7 +550,7 @@ try {
                                 var html = `<div class="bubble me ${class_added}"><img src="${url}" class="messageProfileMe">${message_render(atob(data2.val().message))} ${tooltip}</div>`
                                 var DateNow = data2.val().date
                             } else {
-                                var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfileMe"><div class="bubble-name">${data2.val().name}</div><div>${message_render(atob(data2.val().message))}</div>${tooltip}</div>`
+                                var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfile"><div class="bubble-name">${data2.val().name}</div><div>${message_render(atob(data2.val().message))}</div>${tooltip}</div>`
                                 var DateNow = data2.val().date
                             }
                         }
@@ -567,7 +567,7 @@ try {
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(message)
                     } else {
                         var message = decrypt(data2.val().message)
-                        var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfileMe"><div class="bubble-name">${data2.val().name}</div><div>${message_render(message)}</div>${tooltip}</div>`
+                        var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfile"><div class="bubble-name">${data2.val().name}</div><div>${message_render(message)}</div>${tooltip}</div>`
                         const d1 = document.querySelector(`[data-chat="${dnamef}"]`);
                         var DateNow = data2.val().date
                         var date = message_date(DateNow, dnamef)
@@ -582,7 +582,7 @@ try {
                         var html = `<div class="bubble me ${class_added}"><img src="${url}" class="messageProfileMe"><audio class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="${data2.val().message}"></audio>${tooltip}</div>`
                     } else {
                         var DateNow = data2.val().date
-                        var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfileMe"><div class="bubble-name">${data2.val().name}</div><div><audio class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></audio></div>${tooltip}</div>`
+                        var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfile"><div class="bubble-name">${data2.val().name}</div><div><audio class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></audio></div>${tooltip}</div>`
                     }
                 } else { }
                 try {
@@ -650,6 +650,8 @@ try {
                 var lastScroll = 0;
                 document.getElementById("room_" + el.id.replace("d", "")).addEventListener("scroll", (e) => {
                     let currentScroll = e.target.scrollTop
+                    console.log(currentScroll)
+                    console.log(lastScroll)
                     if (currentScroll > 0 && lastScroll <= currentScroll) {
                         lastScroll = currentScroll;
                     } else {
