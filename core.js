@@ -652,7 +652,7 @@ try {
                     let currentScroll = e.target.scrollTop
                     console.log(currentScroll)
                     console.log(lastScroll)
-                    if (currentScroll > 100) {
+                    if (currentScroll > 200) {
                         lastScroll = currentScroll;
                     } else {
                         lastScroll = currentScroll;
