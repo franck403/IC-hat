@@ -203,7 +203,7 @@ function search() {
                       <p id="prew_" class="people-preview">Click to create new disscusion</p>
                       </li>`
           const d2 = document.getElementById("people")
-          if (disscusions.includes(db_name)) { // db_name not in already created disscusions
+          if (!disscusions.includes(db_name)) { // db_name not in already created disscusions
             d2.innerHTML = d2.innerHTML + html
           }
         } else {
