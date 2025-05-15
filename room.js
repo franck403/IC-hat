@@ -196,8 +196,8 @@ function search() {
                       <li onclick="room('new${db_email}')" style="background:red;" class="people-person db" data-name="" data-chatid="" id="">
                       <img src="${db_image}" class="people-img"alt="picture" />
                       <p id="name_" class="people-name">PR ${db_name}</p>
-                      <p id="time_" class="people-time"></p>
-                      <p id="prew_" class="people-preview"></p>
+                      <p id="time_" class="people-time">Never</p>
+                      <p id="prew_" class="people-preview">Click to create new disscusion</p>
                       </li>`
           const d2 = document.getElementById("people")
           d2.innerHTML = d2.innerHTML + html
@@ -207,6 +207,7 @@ function search() {
       })
     }
     f2(window.userdb)
+    window.removeEmptyP()
     if (input == '') {
       let z = document.getElementsByClassName('people-person db');
       for (i = 0; i < z.length; i++) {
