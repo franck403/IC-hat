@@ -197,9 +197,9 @@ function search() {
           var db_name = key.val().name
           var db_email = key.val().email
           var html = `
-                      <li onclick="room('new${db_email}')" class="people-person db" data-name="" data-chatid="" id="">
+                      <li onclick="room('new${db_email}')" style="background:red;" class="people-person db" data-name="" data-chatid="" id="">
                       <img src="img/default.png" class="people-img"alt="picture" />
-                      <p id="name_" class="people-name">${db_name}</p>
+                      <p id="name_" class="people-name">PR ${db_name}</p>
                       <p id="time_" class="people-time"></p>
                       <p id="prew_" class="people-preview"></p>
                       </li>`
