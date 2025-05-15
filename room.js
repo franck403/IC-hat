@@ -155,14 +155,18 @@ function search() {
   let input = document.getElementById('search_bar').value
   input = input.toLowerCase();
   let x = document.getElementsByClassName('people-person');
-
+  disscusions =  []
   for (i = 0; i < x.length; i++) {
-    if (!x[i].classList.contains("db") && !x[i].classList.contains("people-name")) {
+    if (x[i].classList.contains("people-name")) {
+      console.log("Found name" + x[i].innerHTML)
+      disscusions.push(x[i].innerHTML)
+    }
+    if (!x[i].classList.contains("db")) {
       if (!x[i].innerHTML.toLowerCase().includes(input)) {
         x[i].style.display = "none";
       }
       else {
-        x[i].style.display = "list-item";
+        x[i].style.display = "";
       }
     }
   }
@@ -193,14 +197,16 @@ function search() {
           var db_email = key.val().email
           var db_image = key.val().image
           var html = `
-                      <li onclick="room('new${db_email}')" style="background:red;" class="people-person db" data-name="" data-chatid="" id="">
+                      <li onclick="room('new${db_email}')" style="background:#eb3461;" class="people-person db" data-name="" data-chatid="" id="">
                       <img src="${db_image}" class="people-img"alt="picture" />
-                      <p id="name_" class="people-name">PR ${db_name}</p>
+                      <p id="name_" class="people-name">${db_name}</p>
                       <p id="time_" class="people-time">Never</p>
                       <p id="prew_" class="people-preview">Click to create new disscusion</p>
                       </li>`
           const d2 = document.getElementById("people")
-          d2.innerHTML = d2.innerHTML + html
+          if (disscusions.includes(db_name)) { // db_name not in already created disscusions
+            d2.innerHTML = d2.innerHTML + html
+          }
         } else {
           console.log('user does not fit search...' + key.val().name)
         }
