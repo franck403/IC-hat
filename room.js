@@ -191,9 +191,10 @@ function search() {
         if (key.val().name.toUpperCase().indexOf(document.getElementById('search_bar').value.toUpperCase()) > -1) {
           var db_name = key.val().name
           var db_email = key.val().email
+          var db_image = key.val().image
           var html = `
                       <li onclick="room('new${db_email}')" style="background:red;" class="people-person db" data-name="" data-chatid="" id="">
-                      <img src="img/default.png" class="people-img"alt="picture" />
+                      <img src="${db_image}" class="people-img"alt="picture" />
                       <p id="name_" class="people-name">PR ${db_name}</p>
                       <p id="time_" class="people-time"></p>
                       <p id="prew_" class="people-preview"></p>
@@ -203,10 +204,16 @@ function search() {
         } else {
           console.log('user does not fit search...' + key.val().name)
         }
-        document.getElementById('search_bar').removeAttribute("disable")
       })
     }
     f2(window.userdb)
+    if (input == '') {
+      let z = document.getElementsByClassName('people-person db');
+      for (i = 0; i < z.length; i++) {
+        z[i].remove()
+      }
+  
+    }
     console.log("[search core] Searching Person in friend...")
 }
 
