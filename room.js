@@ -166,7 +166,7 @@ function search() {
         x[i].style.display = "none";
       }
       else {
-        x[i].style.display = "";
+        x[i].style.display = "block";
       }
     }
   }
@@ -185,7 +185,6 @@ function search() {
     for (i = 0; i < z.length; i++) {
       z[i].remove()
     }
-    console.log("[search core] Searching Person in db...")
     var f2 = (responseJson) => {
       var list = responseJson
       Object.keys(list).forEach(keyid => {
@@ -218,10 +217,8 @@ function search() {
       let z = document.getElementsByClassName('people-person db');
       for (i = 0; i < z.length; i++) {
         z[i].remove()
-      }
-  
+      }  
     }
-    console.log("[search core] Searching Person in friend...")
 }
 
 
