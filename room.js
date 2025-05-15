@@ -182,12 +182,7 @@ function search() {
       z[i].remove()
     }
     console.log("[search core] Searching Person in db...")
-    document.getElementById('search_bar').disabled
     var f2 = (responseJson) => {
-      for (i = 0; i < z.length; i++) {
-        z[i].remove()
-      }
-
       var list = responseJson
       Object.keys(list).forEach(keyid => {
         console.log(key)
@@ -211,33 +206,6 @@ function search() {
         document.getElementById('search_bar').removeAttribute("disable")
       })
     }
-    var f = (responseJson) => {
-      let z = document.getElementsByClassName('people-person db');
-      for (i = 0; i < z.length; i++) {
-        z[i].remove()
-      }
-
-      var list = responseJson
-      Object.keys(list).forEach(keyid => {
-        var key = window.userdb[keyid]
-
-        if (key.val().name.toUpperCase().indexOf(document.getElementById('search_bar').value.toUpperCase()) > 2) {
-          var db_name = key.val().name
-          var db_email = key.val().email
-          var html = `
-                      <li onclick="room('new${db_email}')" class="people-person db" data-name="" data-chatid="" id="">
-                      <img src="img/default.png" class="people-img"alt="picture" />
-                      <p id="name_" class="people-name">${db_name}</p>
-                      <p id="time_" class="people-time"></p>
-                      <p id="prew_" class="people-preview"></p>
-                      </li>`
-          const d2 = document.getElementById("people")
-          d2.innerHTML = d2.innerHTML + html
-        } else {}
-        document.getElementById('search_bar').removeAttribute("disable")
-      })
-    }
-    f(window.userdb)
     f2(window.userdb)
     console.log("[search core] Searching Person in friend...")
 }
