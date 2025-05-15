@@ -177,14 +177,13 @@ function search() {
       x_test++
     }
   }
-  if (x_test == x_need) {
     let z = document.getElementsByClassName('people-person db');
     for (i = 0; i < z.length; i++) {
       z[i].remove()
     }
     console.log("[search core] Searching Person in db...")
     document.getElementById('search_bar').disabled
-    var f = (responseJson) => {
+    var f2 = (responseJson) => {
       for (i = 0; i < z.length; i++) {
         z[i].remove()
       }
@@ -212,8 +211,6 @@ function search() {
         document.getElementById('search_bar').removeAttribute("disable")
       })
     }
-    f(window.userdb)
-  } else {
     var f = (responseJson) => {
       let z = document.getElementsByClassName('people-person db');
       for (i = 0; i < z.length; i++) {
@@ -241,8 +238,8 @@ function search() {
       })
     }
     f(window.userdb)
+    f2(window.userdb)
     console.log("[search core] Searching Person in friend...")
-  }
 }
 
 
