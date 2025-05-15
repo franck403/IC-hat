@@ -157,7 +157,7 @@ function search() {
   let x = document.getElementsByClassName('people-person');
 
   for (i = 0; i < x.length; i++) {
-    if (x[i].classList.contains("db")) {
+    if (!x[i].classList.contains("db") && !x[i].classList.contains("people-name")) {
       if (!x[i].innerHTML.toLowerCase().includes(input)) {
         x[i].style.display = "none";
       }
