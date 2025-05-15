@@ -188,7 +188,6 @@ function search() {
     var f2 = (responseJson) => {
       var list = responseJson
       Object.keys(list).forEach(keyid => {
-        console.log(key)
         var key = window.userdb[keyid]
 
         if (key.val().name.toUpperCase().indexOf(document.getElementById('search_bar').value.toUpperCase()) > -1) {
@@ -212,12 +211,12 @@ function search() {
       })
     }
     f2(window.userdb)
-    window.removeEmptyP()
     if (input == '') {
       let z = document.getElementsByClassName('people-person db');
       for (i = 0; i < z.length; i++) {
         z[i].remove()
       }  
+      window.removeEmptyP()
     }
 }
 
