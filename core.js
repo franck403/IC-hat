@@ -622,7 +622,7 @@ try {
                     return;
                 }
                 // if date is less than 1min load message if type not embed nor message
-                if (data2.val().date < Date.now() - 60000 && data2.val().type != "embed" && data2.val().type != "message") {
+                if (data2.val().date <= (Date.now() - 30 * 1000) && data2.val().type != "embed" && data2.val().type != "message") {
                     var message_html = newMessage(data2)
                     if (message_html[1] != '') {
                         var d1 = message_html[0]
