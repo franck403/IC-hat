@@ -7,7 +7,7 @@ class AudioPlayer extends HTMLElement {
       <style>
         :host {
           display: block;
-          width: 320px;
+          width: 100%;
           font-family: sans-serif;
           background: #2c2c3e;
           padding: 20px;
@@ -84,6 +84,7 @@ class AudioPlayer extends HTMLElement {
     this.updateSeek = this.updateSeek.bind(this);
     this.seek = this.seek.bind(this);
     this.onEnded = this.onEnded.bind(this);
+    this.onPause = this.onPause.bind(this);
   }
 
   connectedCallback() {
@@ -93,10 +94,12 @@ class AudioPlayer extends HTMLElement {
     this.playBtn.addEventListener('click', this.playPause);
     this.audio.addEventListener('loadedmetadata', () => {
       this.seekBar.max = Math.floor(this.audio.duration);
+      console.log(this.audio.duration);
       this.durationEl.textContent = this.formatTime(this.audio.duration);
     });
     this.audio.addEventListener('timeupdate', this.updateSeek);
     this.audio.addEventListener('ended', this.onEnded);
+    this.audio.addEventListener('pause', this.onPause);
     this.seekBar.addEventListener('input', this.seek);
   }
 
@@ -105,6 +108,7 @@ class AudioPlayer extends HTMLElement {
     this.seekBar.removeEventListener('input', this.seek);
     this.audio.removeEventListener('timeupdate', this.updateSeek);
     this.audio.removeEventListener('ended', this.onEnded);
+    this.audio.removeEventListener('pause', this.onPause);
   }
 
   formatTime(seconds) {
@@ -133,6 +137,11 @@ class AudioPlayer extends HTMLElement {
   }
 
   onEnded() {
+    this.playBtn.textContent = '►';
+    this.seekBar.value = 0;
+  }
+
+  onPause() {
     this.playBtn.textContent = '►';
     this.seekBar.value = 0;
   }
