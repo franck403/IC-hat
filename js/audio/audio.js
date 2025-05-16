@@ -150,8 +150,6 @@ class AudioPlayer extends HTMLElement {
 
   onEnded() {
     this.playBtn.textContent = '►';
-    this.seekBar.value = 0;
-    this.currentTimeEl.textContent = '0:00';
   }
 
   onPause() {
