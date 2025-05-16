@@ -94,7 +94,7 @@ class AudioPlayer extends HTMLElement {
     this.playBtn.addEventListener('click', this.playPause);
     this.audio.addEventListener('loadedmetadata', () => {
       this.seekBar.max = Math.floor(this.audio.duration);
-      console.log(this.audio);
+      console.log(this.audio.duration);
       this.durationEl.textContent = this.formatTime(this.audio.duration);
     });
     this.audio.addEventListener('timeupdate', this.updateSeek);
