@@ -174,15 +174,21 @@ export function image_render(email, name) {
     var filelist = document.getElementById("file_input").files
     Object.keys(filelist).forEach(key => {
         var file = document.getElementById("file_input").files[key]
+        var fileExtension = file.name.split('.').pop().toLowerCase();
         Imageupload(file, (imgurl) => {
             var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
             const id = push(child(ref(database), 'messages')).key;
             console.log(imgurl)
+            if (fileExtension == "mp3" || fileExtension == "wav" || fileExtension == "ogg") {
+                var type = "CDNAUDIO"
+            } else {
+                var type = "CDNIMAGE"
+            }
             set(ref(database, "messages/" + cusid + "/" + id), {
                 email: name,
                 name: myName,
                 friend: "none",
-                type: "CDNIMAGE",
+                type: type,
                 message: imgurl,
                 date: Date.now(),
                 dname: cusid
@@ -576,7 +582,7 @@ try {
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(message)
                     }
                 }
-                else if (data2.val().type == "audio") {
+                else if (data2.val().type == "CDNAUDIO") {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
                         var html = `<div class="bubble me ${class_added}"><img src="${url}" class="messageProfileMe"><audio class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="${data2.val().message}"></audio>${tooltip}</div>`
