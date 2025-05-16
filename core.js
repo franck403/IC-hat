@@ -621,16 +621,35 @@ try {
                 } catch {
                     return;
                 }
-                try {
-                    window.processingMessage[data2.val().dname].push([data2, false])
-                } catch {
-                    window.processingMessage.push(String(data2.val().dname))
-                    if (typeof (window.processingMessage[String(data2.val().dname)]) != typeof ([])) {
-                        window.processingMessage[String(data2.val().dname)] = []
+                // if date is less than 1min load message if type not embed nor message
+                if (data2.val().date < Date.now() - 60000 && data2.val().type != "embed" && data2.val().type != "message") {
+                    var message_html = newMessage(data2)
+                    if (message_html[1] != '') {
+                        var d1 = message_html[0]
+                        d1.innerHTML = d1.innerHTML + message_html[1]
                     }
-                    window.processingMessage[String(data2.val().dname)].push([data2, false])
-                }window.processingMessage[data2.val().dname] = window.processingMessage[data2.val().dname]
+                    try {
+                        window.processingMessage[data2.val().dname].push([data2, true])
+                    } catch {
+                        window.processingMessage.push(String(data2.val().dname))
+                        if (typeof (window.processingMessage[String(data2.val().dname)]) != typeof ([])) {
+                            window.processingMessage[String(data2.val().dname)] = []
+                        }
+                        window.processingMessage[String(data2.val().dname)].push([data2, true])
+                    }                                    
+                } else {
+                    try {
+                        window.processingMessage[data2.val().dname].push([data2, false])
+                    } catch {
+                        window.processingMessage.push(String(data2.val().dname))
+                        if (typeof (window.processingMessage[String(data2.val().dname)]) != typeof ([])) {
+                            window.processingMessage[String(data2.val().dname)] = []
+                        }
+                        window.processingMessage[String(data2.val().dname)].push([data2, false])
+                    }                
+                }
                 // Filter out entries where a[0].val().date is missing
+                window.processingMessage[data2.val().dname] = window.processingMessage[data2.val().dname]
                 .filter(entry => {
                     try {
                         return entry[0].val().date != null;
