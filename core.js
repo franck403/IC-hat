@@ -585,10 +585,10 @@ try {
                 else if (data2.val().type == "CDNAUDIO") {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
-                        var html = `<div class="bubble me ${class_added}"><img src="${url}" class="messageProfileMe"><audio class="type-img img-load-${dnamef}" data-state="unload" data-date="${DateNow}" data-src="${data2.val().message}"></audio>${tooltip}</div>`
+                        var html = `<div class="bubble me ${class_added}"><img src="${url}" class="messageProfileMe"><audio class="type-img img-load-${dnamef}" data-state="load" data-date="${DateNow}" src="${data2.val().message}"></audio>${tooltip}</div>`
                     } else {
                         var DateNow = data2.val().date
-                        var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfile"><div class="bubble-name">${data2.val().name}</div><div><audio class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="unload" data-src="${data2.val().message}"></audio></div>${tooltip}</div>`
+                        var html = `<div class="bubble you ${class_added}"><img src="${url}" class="messageProfile"><div class="bubble-name">${data2.val().name}</div><div><audio class="type-img img-load-${dnamef}" data-date="${DateNow}" data-state="load" src="${data2.val().message}"></audio></div>${tooltip}</div>`
                     }
                 } else { }
                 try {
