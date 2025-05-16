@@ -1,4 +1,4 @@
-import { setCookie, bip, removeloader, getuser, message_date, message_render, embed_render, decrypt } from "./functions.js"
+import { setCookie, bip, removeloader, getuser, message_date, message_render,ASYNCmessage_render, embed_render, decrypt } from "./functions.js"
 import { sendNotif, accesPush } from './notification.js'
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
 import {
@@ -355,7 +355,7 @@ try {
         event.preventDefault();
     });
 
-    send.addEventListener('click', (e) => {
+    send.addEventListener('click', async (e) => {
         var fg = document.getElementById('content').value
         var gh = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
         if (document.getElementById('content').value != "" && fg.replace(/\s/g, '').length != 0) {
@@ -369,7 +369,7 @@ try {
             var friend = "none"
             var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
             // send event to a function
-            var mes = message_render(message, "nop")
+            var mes = await ASYNCmessage_render(message, "nop")
             if (window.extensionEvent != undefined) {
                 window.extensionEvent()
             }
@@ -397,7 +397,7 @@ try {
             });
         } else { }
     });
-    send2.addEventListener("keydown", (event) => {
+    send2.addEventListener("keydown", async (event) => {
         if (event.keyCode == 13) {
             var fg = document.getElementById('content').value
             var gh = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -412,7 +412,7 @@ try {
                 var friend = "none"
                 var cusid = document.getElementsByClassName('chat active-chat')[0].dataset.chat
                 // send event to a function
-                var mes = message_render(message, "nop")
+                var mes = await ASYNCmessage_render(message, "nop")
                 if (window.extensionEvent != undefined) {
                     window.extensionEvent(mes)
                 }

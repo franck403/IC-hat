@@ -308,7 +308,7 @@ export async function ASYNCmessage_render(message, type = "none") {
   if (message_start == "undefined" || message_start == undefined) {
     return null; 
   }
-    return message_start
+  return message_start
 }
 
 export function markdown_render(message) {
