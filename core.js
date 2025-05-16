@@ -1099,21 +1099,12 @@ try {
                     if (data2.val().email == myEmail) {
                         var DateNow = data2.val().date
                         var date = message_date(DateNow, dnamef)
-                        try {
-                            document.getElementById(`time_${dnamef}`).innerHTML = date
-                            document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
-                        } catch {
-                            setTimeout(() => {
-                                document.getElementById(`time_${dnamef}`).innerHTML = message_date(DateNow, dnamef)
-                                document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
-                            }, 1000)
-                        }
+                        document.getElementById(`time_${dnamef}`).innerHTML = date
+                        document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     } else {
                         var DateNow = data2.val().date
                         var date = message_date(DateNow, dnamef)
-                        try {
-                            document.getElementById(`time_${dnamef}`).innerHTML = date
-                        } catch { }
+                        document.getElementById(`time_${dnamef}`).innerHTML = date
                         document.getElementById(`prew_${dnamef}`).innerHTML = message_render(data2.val().message)
                     }
                 }
