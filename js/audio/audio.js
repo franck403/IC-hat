@@ -85,6 +85,7 @@ class AudioPlayer extends HTMLElement {
     this.seek = this.seek.bind(this);
     this.onEnded = this.onEnded.bind(this);
     this.onPause = this.onPause.bind(this);
+    this.onLoadedMetadata = this.onLoadedMetadata.bind(this);
   }
 
   connectedCallback() {
@@ -92,26 +93,32 @@ class AudioPlayer extends HTMLElement {
     if (src) this.audio.src = src;
 
     this.playBtn.addEventListener('click', this.playPause);
-    this.audio.addEventListener('loadedmetadata', () => {
-      this.seekBar.max = Math.floor(this.audio.duration);
-      console.log(this.audio.duration);
-      this.durationEl.textContent = this.formatTime(this.audio.duration);
-    });
+    this.seekBar.addEventListener('input', this.seek);
+
+    this.audio.addEventListener('loadedmetadata', this.onLoadedMetadata);
     this.audio.addEventListener('timeupdate', this.updateSeek);
     this.audio.addEventListener('ended', this.onEnded);
     this.audio.addEventListener('pause', this.onPause);
-    this.seekBar.addEventListener('input', this.seek);
   }
 
   disconnectedCallback() {
     this.playBtn.removeEventListener('click', this.playPause);
     this.seekBar.removeEventListener('input', this.seek);
+
+    this.audio.removeEventListener('loadedmetadata', this.onLoadedMetadata);
     this.audio.removeEventListener('timeupdate', this.updateSeek);
     this.audio.removeEventListener('ended', this.onEnded);
     this.audio.removeEventListener('pause', this.onPause);
   }
 
+  onLoadedMetadata() {
+    const duration = isNaN(this.audio.duration) ? 0 : this.audio.duration;
+    this.seekBar.max = Math.floor(duration);
+    this.durationEl.textContent = this.formatTime(duration);
+  }
+
   formatTime(seconds) {
+    if (!isFinite(seconds)) return '0:00';
     const min = Math.floor(seconds / 60);
     const sec = Math.floor(seconds % 60).toString().padStart(2, '0');
     return `${min}:${sec}`;
@@ -128,22 +135,27 @@ class AudioPlayer extends HTMLElement {
   }
 
   updateSeek() {
-    this.seekBar.value = this.audio.currentTime;
-    this.currentTimeEl.textContent = this.formatTime(this.audio.currentTime);
+    if (!isNaN(this.audio.duration)) {
+      this.seekBar.value = Math.floor(this.audio.currentTime);
+      this.currentTimeEl.textContent = this.formatTime(this.audio.currentTime);
+    }
   }
 
   seek() {
-    this.audio.currentTime = this.seekBar.value;
+    if (!isNaN(this.audio.duration)) {
+      const newTime = parseFloat(this.seekBar.value);
+      this.audio.currentTime = Math.min(Math.max(newTime, 0), this.audio.duration);
+    }
   }
 
   onEnded() {
     this.playBtn.textContent = '►';
     this.seekBar.value = 0;
+    this.currentTimeEl.textContent = '0:00';
   }
 
   onPause() {
     this.playBtn.textContent = '►';
-    this.seekBar.value = 0;
   }
 }
 
