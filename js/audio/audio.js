@@ -150,7 +150,7 @@ class AudioPlayer extends HTMLElement {
       this.currentTimeEl.textContent = this.formatTime(this.audio.currentTime);
     }
     const value = parseFloat(this.seekBar.value);
-    if (!isNaN(value) && !isNaN(this.audio.duration)) {
+    if (!isNaN(value) && !isNaN(this.audio.duration) && this.seeking) {
       this.audio.currentTime = Math.min(Math.max(value, 0), this.audio.duration);
     }
   }
