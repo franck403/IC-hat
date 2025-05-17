@@ -23,6 +23,7 @@ class AudioPlayer extends HTMLElement {
           justify-content: center;
           gap: 10px;
           margin-top: 10px;
+          flex-wrap: wrap;
         }
 
         button {
@@ -37,9 +38,17 @@ class AudioPlayer extends HTMLElement {
           cursor: pointer;
         }
 
+        .volume-container {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+
+        .volume-container input[type="range"] {
+          width: 100px;
+        }
+
         input[type="range"] {
-          width: 100%;
-          margin: 15px 0;
           appearance: none;
           height: 5px;
           background: #444;
@@ -65,8 +74,11 @@ class AudioPlayer extends HTMLElement {
 
       <audio></audio>
       <div class="controls">
-        <button id="playBtn">►</button>
+        <button id="playBtn" title="Play/Pause">►</button>
         <button id="downloadBtn" title="Download">💾</button>
+        <div class="volume-container" title="Volume">
+          🔊 <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+        </div>
       </div>
       <input type="range" id="seekBar" min="0" value="0" step="1">
       <div class="time">
@@ -78,6 +90,7 @@ class AudioPlayer extends HTMLElement {
     this.audio = shadow.querySelector('audio');
     this.playBtn = shadow.getElementById('playBtn');
     this.downloadBtn = shadow.getElementById('downloadBtn');
+    this.volumeSlider = shadow.getElementById('volumeSlider');
     this.seekBar = shadow.getElementById('seekBar');
     this.currentTimeEl = shadow.getElementById('currentTime');
     this.durationEl = shadow.getElementById('duration');
@@ -94,6 +107,7 @@ class AudioPlayer extends HTMLElement {
     this.onPause = this.onPause.bind(this);
     this.onLoadedMetadata = this.onLoadedMetadata.bind(this);
     this.downloadAudio = this.downloadAudio.bind(this);
+    this.changeVolume = this.changeVolume.bind(this);
   }
 
   connectedCallback() {
@@ -102,6 +116,7 @@ class AudioPlayer extends HTMLElement {
 
     this.playBtn.addEventListener('click', this.playPause);
     this.downloadBtn.addEventListener('click', this.downloadAudio);
+    this.volumeSlider.addEventListener('input', this.changeVolume);
 
     this.audio.addEventListener('loadedmetadata', this.onLoadedMetadata);
     this.audio.addEventListener('timeupdate', this.updateSeek);
@@ -116,6 +131,7 @@ class AudioPlayer extends HTMLElement {
   disconnectedCallback() {
     this.playBtn.removeEventListener('click', this.playPause);
     this.downloadBtn.removeEventListener('click', this.downloadAudio);
+    this.volumeSlider.removeEventListener('input', this.changeVolume);
     this.seekBar.removeEventListener('mousedown', this.beginSeek);
     this.seekBar.removeEventListener('mouseup', this.endSeek);
     this.seekBar.removeEventListener('input', this.updateSeekPreview);
@@ -201,6 +217,10 @@ class AudioPlayer extends HTMLElement {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  }
+
+  changeVolume(e) {
+    this.audio.volume = parseFloat(e.target.value);
   }
 }
 
