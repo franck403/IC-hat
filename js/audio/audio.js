@@ -33,7 +33,7 @@ class AudioPlayer extends HTMLElement {
           width: 40px;
           height: 40px;
           font-size: 18px;
-          line-height:0px;
+          line-height: 0;
           cursor: pointer;
         }
 
@@ -66,6 +66,7 @@ class AudioPlayer extends HTMLElement {
       <audio></audio>
       <div class="controls">
         <button id="playBtn">►</button>
+        <button id="downloadBtn" title="Download">💾</button>
       </div>
       <input type="range" id="seekBar" min="0" value="0" step="1">
       <div class="time">
@@ -76,6 +77,7 @@ class AudioPlayer extends HTMLElement {
 
     this.audio = shadow.querySelector('audio');
     this.playBtn = shadow.getElementById('playBtn');
+    this.downloadBtn = shadow.getElementById('downloadBtn');
     this.seekBar = shadow.getElementById('seekBar');
     this.currentTimeEl = shadow.getElementById('currentTime');
     this.durationEl = shadow.getElementById('duration');
@@ -91,6 +93,7 @@ class AudioPlayer extends HTMLElement {
     this.onEnded = this.onEnded.bind(this);
     this.onPause = this.onPause.bind(this);
     this.onLoadedMetadata = this.onLoadedMetadata.bind(this);
+    this.downloadAudio = this.downloadAudio.bind(this);
   }
 
   connectedCallback() {
@@ -98,6 +101,7 @@ class AudioPlayer extends HTMLElement {
     if (src) this.audio.src = src;
 
     this.playBtn.addEventListener('click', this.playPause);
+    this.downloadBtn.addEventListener('click', this.downloadAudio);
 
     this.audio.addEventListener('loadedmetadata', this.onLoadedMetadata);
     this.audio.addEventListener('timeupdate', this.updateSeek);
@@ -111,6 +115,7 @@ class AudioPlayer extends HTMLElement {
 
   disconnectedCallback() {
     this.playBtn.removeEventListener('click', this.playPause);
+    this.downloadBtn.removeEventListener('click', this.downloadAudio);
     this.seekBar.removeEventListener('mousedown', this.beginSeek);
     this.seekBar.removeEventListener('mouseup', this.endSeek);
     this.seekBar.removeEventListener('input', this.updateSeekPreview);
@@ -150,6 +155,7 @@ class AudioPlayer extends HTMLElement {
       this.seekBar.value = Math.floor(this.audio.currentTime);
       this.currentTimeEl.textContent = this.formatTime(this.audio.currentTime);
     }
+
     const value = parseFloat(this.seekBar.value);
     if (!isNaN(value) && !isNaN(this.audio.duration) && this.seeking) {
       this.audio.currentTime = Math.min(Math.max(value, 0), this.audio.duration);
@@ -183,6 +189,18 @@ class AudioPlayer extends HTMLElement {
 
   onPause() {
     this.playBtn.textContent = '►';
+  }
+
+  downloadAudio() {
+    const src = this.audio.src;
+    if (!src) return;
+
+    const link = document.createElement('a');
+    link.href = src;
+    link.download = src.split('/').pop() || 'audio.mp3';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }
 
