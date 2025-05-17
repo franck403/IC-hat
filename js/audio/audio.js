@@ -33,6 +33,7 @@ class AudioPlayer extends HTMLElement {
           width: 40px;
           height: 40px;
           font-size: 18px;
+          line-height:0px;
           cursor: pointer;
         }
 
