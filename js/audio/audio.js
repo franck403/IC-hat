@@ -79,10 +79,14 @@ class AudioPlayer extends HTMLElement {
     this.currentTimeEl = shadow.getElementById('currentTime');
     this.durationEl = shadow.getElementById('duration');
 
+    // Seeking state
+    this.seeking = false;
+
     // Bindings
     this.playPause = this.playPause.bind(this);
     this.updateSeek = this.updateSeek.bind(this);
-    this.seek = this.seek.bind(this);
+    this.beginSeek = this.beginSeek.bind(this);
+    this.endSeek = this.endSeek.bind(this);
     this.onEnded = this.onEnded.bind(this);
     this.onPause = this.onPause.bind(this);
     this.onLoadedMetadata = this.onLoadedMetadata.bind(this);
@@ -93,17 +97,22 @@ class AudioPlayer extends HTMLElement {
     if (src) this.audio.src = src;
 
     this.playBtn.addEventListener('click', this.playPause);
-    this.seekBar.addEventListener('input', this.seek);
 
     this.audio.addEventListener('loadedmetadata', this.onLoadedMetadata);
     this.audio.addEventListener('timeupdate', this.updateSeek);
     this.audio.addEventListener('ended', this.onEnded);
     this.audio.addEventListener('pause', this.onPause);
+
+    this.seekBar.addEventListener('mousedown', this.beginSeek);
+    this.seekBar.addEventListener('mouseup', this.endSeek);
+    this.seekBar.addEventListener('input', this.updateSeekPreview.bind(this));
   }
 
   disconnectedCallback() {
     this.playBtn.removeEventListener('click', this.playPause);
-    this.seekBar.removeEventListener('input', this.seek);
+    this.seekBar.removeEventListener('mousedown', this.beginSeek);
+    this.seekBar.removeEventListener('mouseup', this.endSeek);
+    this.seekBar.removeEventListener('input', this.updateSeekPreview);
 
     this.audio.removeEventListener('loadedmetadata', this.onLoadedMetadata);
     this.audio.removeEventListener('timeupdate', this.updateSeek);
@@ -112,9 +121,10 @@ class AudioPlayer extends HTMLElement {
   }
 
   onLoadedMetadata() {
-    const duration = isNaN(this.audio.duration) ? 0 : this.audio.duration;
-    this.seekBar.max = Math.floor(duration);
-    this.durationEl.textContent = this.formatTime(duration);
+    if (!isNaN(this.audio.duration)) {
+      this.seekBar.max = Math.floor(this.audio.duration);
+      this.durationEl.textContent = this.formatTime(this.audio.duration);
+    }
   }
 
   formatTime(seconds) {
@@ -135,21 +145,35 @@ class AudioPlayer extends HTMLElement {
   }
 
   updateSeek() {
-    if (!isNaN(this.audio.duration)) {
+    if (!this.seeking && !isNaN(this.audio.duration)) {
       this.seekBar.value = Math.floor(this.audio.currentTime);
       this.currentTimeEl.textContent = this.formatTime(this.audio.currentTime);
     }
   }
 
-  seek() {
-    if (!isNaN(this.audio.duration)) {
-      const newTime = parseFloat(this.seekBar.value);
-      this.audio.currentTime = Math.min(Math.max(newTime, 0), this.audio.duration);
+  updateSeekPreview() {
+    const value = parseFloat(this.seekBar.value);
+    if (!isNaN(value)) {
+      this.currentTimeEl.textContent = this.formatTime(value);
+    }
+  }
+
+  beginSeek() {
+    this.seeking = true;
+  }
+
+  endSeek() {
+    const value = parseFloat(this.seekBar.value);
+    if (!isNaN(value) && !isNaN(this.audio.duration)) {
+      this.audio.currentTime = Math.min(Math.max(value, 0), this.audio.duration);
+      this.seeking = false;
     }
   }
 
   onEnded() {
     this.playBtn.textContent = '►';
+    this.seekBar.value = 0;
+    this.currentTimeEl.textContent = '0:00';
   }
 
   onPause() {
