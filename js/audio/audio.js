@@ -19,11 +19,27 @@ class AudioPlayer extends HTMLElement {
 
         .controls {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
-          justify-content: center;
+          justify-content: space-between;
           gap: 10px;
           margin-top: 10px;
-          flex-wrap: wrap;
+        }
+
+        .left-controls {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .volume-container {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+
+        .volume-container input[type="range"] {
+          width: 100px;
         }
 
         button {
@@ -36,16 +52,6 @@ class AudioPlayer extends HTMLElement {
           font-size: 18px;
           line-height: 0;
           cursor: pointer;
-        }
-
-        .volume-container {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-        }
-
-        .volume-container input[type="range"] {
-          width: 100px;
         }
 
         input[type="range"] {
@@ -69,17 +75,27 @@ class AudioPlayer extends HTMLElement {
           display: flex;
           justify-content: space-between;
           font-size: 12px;
+          margin-top: 5px;
+        }
+
+        #seekBar {
+          width: 100%;
+          margin: 10px 0;
         }
       </style>
 
       <audio></audio>
+
       <div class="controls">
-        <button id="playBtn" title="Play/Pause">►</button>
-        <button id="downloadBtn" title="Download">💾</button>
+        <div class="left-controls">
+          <button id="playBtn" title="Play/Pause">►</button>
+          <button id="downloadBtn" title="Download">💾</button>
+        </div>
         <div class="volume-container" title="Volume">
           🔊 <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
         </div>
       </div>
+
       <input type="range" id="seekBar" min="0" value="0" step="1">
       <div class="time">
         <span id="currentTime">0:00</span>
@@ -95,10 +111,8 @@ class AudioPlayer extends HTMLElement {
     this.currentTimeEl = shadow.getElementById('currentTime');
     this.durationEl = shadow.getElementById('duration');
 
-    // Seeking state
     this.seeking = false;
 
-    // Bindings
     this.playPause = this.playPause.bind(this);
     this.updateSeek = this.updateSeek.bind(this);
     this.beginSeek = this.beginSeek.bind(this);
@@ -132,6 +146,7 @@ class AudioPlayer extends HTMLElement {
     this.playBtn.removeEventListener('click', this.playPause);
     this.downloadBtn.removeEventListener('click', this.downloadAudio);
     this.volumeSlider.removeEventListener('input', this.changeVolume);
+
     this.seekBar.removeEventListener('mousedown', this.beginSeek);
     this.seekBar.removeEventListener('mouseup', this.endSeek);
     this.seekBar.removeEventListener('input', this.updateSeekPreview);
