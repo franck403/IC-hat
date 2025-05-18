@@ -9,7 +9,7 @@ class AudioPlayer extends HTMLElement {
           display: block;
           width: 100%;
           font-family: sans-serif;
-          background: #2c2c3e;
+          background: transparent;
           padding: 20px;
           border-radius: 16px;
           box-shadow: 0 4px 20px rgba(0,0,0,0.4);
