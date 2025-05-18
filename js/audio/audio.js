@@ -13,7 +13,7 @@ class AudioPlayer extends HTMLElement {
           padding: 20px;
           border-radius: 16px;
           box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-          color: white;
+          color: black;
           box-sizing: border-box;
         }
 
@@ -44,7 +44,7 @@ class AudioPlayer extends HTMLElement {
 
         button {
           background: #4CAF50;
-          color: white;
+          color: black;
           border: none;
           border-radius: 50%;
           width: 40px;
