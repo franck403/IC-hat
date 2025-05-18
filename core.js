@@ -686,7 +686,7 @@ try {
             if (message != null || message[1] != '') {
                 var d1 = message[0]
                 if (elem == undefined) { var elem = d1 }
-                d1.innerHTML = d1.innerHTML + message[1]
+                d1.innerHTML = message[1] + d1.innerHTML
                 /*if (reversed == false) {
                     d1.innerHTML = d1.innerHTML + message[1]
                 } else {
