@@ -686,12 +686,11 @@ try {
             if (message != null || message[1] != '') {
                 var d1 = message[0]
                 if (elem == undefined) { var elem = d1 }
-                d1.innerHTML = message[1] + d1.innerHTML
-                /*if (reversed == false) {
+                if (reversed == false) {
                     d1.innerHTML = d1.innerHTML + message[1]
                 } else {
                     d1.innerHTML = message[1] + d1.innerHTML
-                }*/
+                }
             }
         }
         if (reversed == false) {
@@ -733,8 +732,8 @@ try {
         for (let i = 0; i < (window.processingMessage.length / 2); i++) {
             var err = false
             // generate new array with the date pre made
-            var narray = sortArrayByDate(window.processingMessage[window.processingMessage[i]])
-            window.processingMessage[window.processingMessage[i]] = narray
+            //var narray = sortArrayByDate(window.processingMessage[window.processingMessage[i]])
+            //window.processingMessage[window.processingMessage[i]] = narray
             try {
                 findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]])
                 var err = true
