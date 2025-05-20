@@ -5,7 +5,7 @@ const putInCache = async (request) => {
         const cache = await caches.open("extention");
         var id = url.split("/").reverse()[0]
         await cache.put(request, response);
-        }
+    }
 };
 
 export function add(name,url) {
