@@ -717,13 +717,6 @@ try {
     }
     window.findAll = findAll
     window.MessageWorkerLoop = MessageWorkerLoop
-    function sortArrayByDate(array) {
-        return array.sort((a, b) => {
-            const dateA = new Date(a[0].val().date).getTime();
-            const dateB = new Date(b[0].val().date).getTime();
-            return dateA - dateB;
-        });
-    }
 
     async function MessageWorker(select, max, reversed = false, height) {
         if (max == undefined) {
@@ -731,9 +724,6 @@ try {
         }
         for (let i = 0; i < (window.processingMessage.length / 2); i++) {
             var err = false
-            // generate new array with the date pre made
-            //var narray = sortArrayByDate(window.processingMessage[window.processingMessage[i]])
-            //window.processingMessage[window.processingMessage[i]] = narray
             try {
                 findAll((obj => obj[1] !== true), window.processingMessage[window.processingMessage[i]])
                 var err = true
