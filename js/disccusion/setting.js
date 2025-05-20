@@ -229,8 +229,8 @@ function dataURItoBlob(dataURI) {
 
 async function loopThroughElements(parent) {
     for (let child of parent.children) {
-        console.log(child.innerText)
-        if (child.tagName.toUpperCase() == 'P' && child.innerHTML.trim().replaceAll('<br>','').replaceAll('\n','') == '') {
+        console.log(child.tagName.toUpperCase() == 'P' && child.innerHTML.trim() == '')
+        if (child.tagName.toUpperCase() == 'P' && child.innerHTML.trim() == '') {
             child.remove()
         } else if (child.children.length > 0) {
             loopThroughElements(child);
