@@ -119,7 +119,6 @@ function dropHandler(ev) {
   if (ev.dataTransfer.items) {
     [...ev.dataTransfer.items].forEach((item, i) => {
       if (item.kind === "file") {
-        console.log(ev.dataTransfer.files)
         var imageTypes = [
           'image/png',
           'image/gif',
@@ -158,7 +157,6 @@ function search() {
   disscusions =  []
   for (i = 0; i < x.length; i++) {
     if (x[i].classList.contains("people-name")) {
-      console.log("Found name" + x[i].innerHTML)
       disscusions.push(x[i].innerHTML)
     }
     if (!x[i].classList.contains("db")) {
