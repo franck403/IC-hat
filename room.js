@@ -205,9 +205,7 @@ function search() {
           if (!disscusions.includes(db_name)) { // db_name not in already created disscusions
             d2.innerHTML = d2.innerHTML + html
           }
-        } else {
-          console.log('user does not fit search...' + key.val().name)
-        }
+        } else {}
       })
     }
     f2(window.userdb)
@@ -216,8 +214,8 @@ function search() {
       for (i = 0; i < z.length; i++) {
         z[i].remove()
       }  
-      window.removeEmptyP()
     }
+    window.removeEmptyP()
 }
 
 
