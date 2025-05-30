@@ -1,16 +1,17 @@
 # IC-hat *by geoloup*
 **Free and open source chat**
-### Use :
+### We use :
 firebase realtime db
-<br>netlfly identity
-<br>netlfly
+<br>netlify identity
+<br>netlify
 <br>github
 <br>image cropper
 <br>firebase bucket
-#### Note : Extention loaders are still in devloppement
+#### Note : the extention loader and store is still in early devloppement
 [Chat link](https://ic-hat.geoloup.com)
 We do accept pull request, bug fix and bug report !
-#### important : auth.js is made by microsoft
+<br>
+#### important : auth.js is made by netlify/microsoft under apache V2 license
 
 ### In dev
 A python api is on devloppement for the extention
