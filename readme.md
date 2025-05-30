@@ -1,12 +1,11 @@
 # IC-hat *by geoloup*
 **Free and open source chat**
 ### We use :
-firebase realtime db
-<br>netlify identity
+firebase
 <br>netlify
 <br>github
-<br>image cropper
-<br>firebase bucket
+<br>cropper.js
+
 #### Note : the extention loader and store is still in early devloppement
 [Chat link](https://ic-hat.geoloup.com)
 We do accept pull request, bug fix and bug report !
