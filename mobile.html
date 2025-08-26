@@ -1,118 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="ttps://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=es7%2Ces6%2Ces5%2Cdefault%2C%7Ehtml5-elements%2Csmoothscroll%2Cscreen.orientation%2Clocation.origin%2Cfetch%2Cdocument.elementsFromPoint%2Cdocument.visibilityState%2CdevicePixelRatio%2Cconsole.trace%2Cconsole.timelineEnd%2Cconsole.timeline%2CAbortController%2Ces2023%2Ces2021%2Ces2022%2Ces2020%2Ces2019%2Ces2018%2Ces2017%2Ces2016%2Ces2015%2Cdom4"></script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IC-hat - Mobile App Landing Page</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script src="https://ic-hat.geoloup.com/auth.js" defer></script>
-  <style>
-    :root {
-      --blue: #007bff;
-      --black: #000;
-      --white: #fff;
-    }
+    <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?version=4.8.0&features=es7%2Ces6%2Ces5%2Cdefault%2C%7Ehtml5-elements%2Csmoothscroll%2Cscreen.orientation%2Clocation.origin%2Cfetch%2Cdocument.elementsFromPoint%2Cdocument.visibilityState%2CdevicePixelRatio%2Cconsole.trace%2Cconsole.timelineEnd%2Cconsole.timeline%2CAbortController%2Ces2023%2Ces2021%2Ces2022%2Ces2020%2Ces2019%2Ces2018%2Ces2017%2Ces2016%2Ces2015%2Cdom4"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IC-hat - Mobile App Landing Page</title>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.3/auth0-spa-js.production.js"></script>
+    <script src="https://ic-hat.geoloup.com/auth.js" defer></script>
+    <style>
+        :root {
+            --blue: #007bff;
+            --black: #000;
+            --white: #fff;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--white);
-      color: var(--black);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 2rem;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      color: var(--blue);
-      margin-bottom: 1rem;
-    }
+        h1 {
+            font-size: 2.5rem;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
 
-    .hero-image {
-      width: 100%;
-      max-width: 300px;
-      margin-bottom: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    }
+        .hero-image {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
 
-    .description {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      max-width: 500px;
-    }
+        .description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
 
-    .footer {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
 
-    button {
-      background-color: var(--blue);
-      color: var(--black);
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 0.5rem;
-      transition: background-color 0.3s ease;
-    }
+        button {
+            background-color: var(--blue);
+            color: var(--black);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
 
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-  <img src="img/ic-hat.png" id="androidLoader" style="position: fixed;z-index: 10;transform: translate(-50%,-50%);left: 50%;top: 50%;width:100px;border-radius: 50px;">
-  <div id="androidLoaderBG" style="position: fixed;z-index:9;left:0px;top:0px;width: 100vw;height: 100vh;background-color: white;"></div>
-  <img src="https://geoloup.com/ic-hat.png" alt="App Preview" class="hero-image" />
-  <h1>Welcome to IC-hat</h1>
-  <p class="description">
-    IC-hat is a secure, family-friendly communication hub designed for all ages — from students collaborating on homework to parents staying involved and connected. Whether you're planning the day, checking in, or helping with school, IC-hat makes it easy to talk, share, and stay organized together.
-  </p>
+    <img src="img/ic-hat.png" id="androidLoader" style="position: fixed;z-index: 10;transform: translate(-50%,-50%);left: 50%;top: 50%;width:100px;border-radius: 50px;">
+    <div id="androidLoaderBG" style="position: fixed;z-index:9;left:0px;top:0px;width: 100vw;height: 100vh;background-color: white;"></div>
+    <img src="https://geoloup.com/ic-hat.png" alt="App Preview" class="hero-image" />
+    <h1>Welcome to IC-hat</h1>
+    <p class="description">
+        IC-hat is a secure, family-friendly communication hub designed for all ages — from students collaborating on homework to parents staying involved and connected. Whether you're planning the day, checking in, or helping with school, IC-hat makes it easy to talk, share, and stay organized together.
+    </p>
 
-  <div id="auth-buttons">
-    <button onclick="netlifyIdentity.open('login')">Login</button>
-    <button onclick="netlifyIdentity.open('signup')">Sign Up</button>
-  </div>
+    <div id="auth-buttons">
+        <button onclick="auth0API.login()">Login</button>
+        <button onclick="auth0API.login()">Sign Up</button>
+    </div>
 
-  <div class="footer">Made by Geoloup</div>
+    <div class="footer">Made by Geoloup</div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-    function loaded() {
-      netlifyIdentity.on("init", function (user) {
-            if (user) {
-              window.location.href = "https://ic-hat.geoloup.com/chat";
-            } else {
-                document.getElementById('androidLoader').remove()
-                document.getElementById('androidLoaderBG').remove()
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function loaded() {
+                auth0API.initialize().then(async () => {
+                    const user = await auth0API.getUser();
+                    if (user) {
+                        window.location.href = "https://ic-hat.geoloup.com/chat";
+                    } else {
+                        document.getElementById('androidLoader').remove();
+                        document.getElementById('androidLoaderBG').remove();
+                    }
+                });
             }
-          });
-
-          netlifyIdentity.init();     
-    }
-    if (document.getElementById('androidLoader').complete) {
-      loaded()
-    } else {
-      document.getElementById('androidLoader').addEventListener('load', loaded)
-    }
-    });
-  </script>
+            if (document.getElementById('androidLoader').complete) {
+                loaded();
+            } else {
+                document.getElementById('androidLoader').addEventListener('load', loaded);
+            }
+        });
+    </script>
 </body>
 </html>

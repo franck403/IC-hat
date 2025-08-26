@@ -1,51 +1,42 @@
 const iframe = document.querySelector('#not-connected-iframe');
-iframe.onload = () => {
+iframe.onload = async () => {
     var if1 = document.getElementById("not-connected-iframe");
     var fc = (if1.contentWindow || if1.contentDocument);
     var login = fc.document.getElementById("login");
     var register = fc.document.getElementById("register");
     var start = fc.document.getElementById("start");
     var log_out = fc.document.getElementById("out");
-    var home = netlifyIdentity.currentUser()
-    if (home != null) {
-        start.addEventListener('click', (e) => {
+    await auth0API.initialize();
+    const user = await auth0API.getUser();
+    
+    if (user != null) {
+        start.addEventListener('click', async (e) => {
             try {
-                terms = netlifyIdentity.gotrue.currentUser().user_metadata.termofservice
-                if (terms == 'no') {return;}
+                const userMetadata = (await auth0API.getUser()).user_metadata;
+                const terms = userMetadata.termofservice;
+                if (terms == 'no') { return; }
             } catch {}
             if (window.location.origin.endsWith("/")) {
-                window.location.replace(`${window.location.origin}chat`)
+                window.location.replace(`${window.location.origin}chat`);
             } else {
-                window.location.replace(`${window.location.origin}/chat`)
+                window.location.replace(`${window.location.origin}/chat`);
             }
         });
         log_out.addEventListener('click', (e) => {
-            netlifyIdentity.logout()
-            document.location.replace(document.location.origin)
+            auth0API.logout();
+            document.location.replace(document.location.origin);
         });
-        fc.document.getElementById("no").remove()
+        fc.document.getElementById("no").remove();
     } else {
         login.addEventListener('click', (e) => {
-            netlifyIdentity.open("login")
+            auth0API.login();
         });
         register.addEventListener('click', (e) => {
-            netlifyIdentity.open("signup")
+            auth0API.login();
         });
-        fc.document.getElementById("yes").remove()
-        netlifyIdentity.on('login', (info) => {
-            try {
-                terms = netlifyIdentity.gotrue.currentUser().user_metadata.termofservice
-                if (terms == 'no') {return;}
-            } catch {}
-            if (window.location.href != `${window.location.origin}/chat`) {
-                window.location.replace(`${window.location.origin}/chat`)
-            }
-        })
-        netlifyIdentity.on('register', (info) => {
-            window.location.replace(`${window.location.origin}/`)
-        })
+        fc.document.getElementById("yes").remove();
     }
 }
 if (window.location.href.endsWith("#")) {
-    window.location.replace(`${window.location.origin}/chat`)
+    window.location.replace(`${window.location.origin}/chat`);
 }

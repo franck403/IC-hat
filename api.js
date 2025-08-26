@@ -1,18 +1,26 @@
-// to-do
 const api = {
-    getUser : getUser,
-    alert:Alert
-}
-export function getUser() {
+    getUser: getUser,
+    alert: Alert
+};
+
+export async function getUser() {
     try {
-        const user = netlifyIdentity.currentUser();
-        return {"email":user.email,"user_metadata":user.user_metadata}
-    } catch {
-        location.reload()
+        const user = await auth0API.getUser();
+        if (user) {
+            return {
+                "email": user.email,
+                "user_metadata": user.user_metadata
+            };
+        } else {
+            location.reload();
+        }
+    } catch (error) {
+        console.error("Error getting user:", error);
+        location.reload();
     }
 }
 
-export function Alert(message,title,callback) {
+export function Alert(message, title, callback) {
     document.body.innerHTML = document.body.innerHTML + '<div id="dialogoverlay"></div><div id="dialogbox" class="slit-in-vertical"><div><div id="dialogboxhead"></div><div id="dialogboxbody"></div><div id="dialogboxfoot"></div></div></div>';
 
     let dialogoverlay = document.getElementById('dialogoverlay');

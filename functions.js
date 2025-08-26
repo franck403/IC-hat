@@ -54,8 +54,13 @@ export function bip() {
 }
 
 export async function getuser() {
-  const user = netlifyIdentity.currentUser();
-  return user
+    try {
+        const user = await window.auth0API.getUser();
+        return user;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
 }
 
 export function before(text) {

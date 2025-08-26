@@ -10,7 +10,7 @@ firebase
 [Chat link](https://ic-hat.geoloup.com)
 We do accept pull request, bug fix and bug report !
 <br>
-#### important : auth.js is made by netlify/microsoft under apache V2 license
+#### important : Auth is provided by auth0
 
 ### In dev
 A python api is on devloppement for the extention
