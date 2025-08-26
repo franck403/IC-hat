@@ -6,13 +6,13 @@ iframe.onload = async () => {
     var register = fc.document.getElementById("register");
     var start = fc.document.getElementById("start");
     var log_out = fc.document.getElementById("out");
-    await auth0API.initialize();
-    const user = await auth0API.getUser();
+    await window.auth0API.initialize();
+    const user = await wwindow.auth0API.getUser();
     
     if (user != null) {
         start.addEventListener('click', async (e) => {
             try {
-                const userMetadata = (await auth0API.getUser()).user_metadata;
+                const userMetadata = (await window.auth0API.getUser()).user_metadata;
                 const terms = userMetadata.termofservice;
                 if (terms == 'no') { return; }
             } catch {}
@@ -23,16 +23,16 @@ iframe.onload = async () => {
             }
         });
         log_out.addEventListener('click', (e) => {
-            auth0API.logout();
+            window.auth0API.logout();
             document.location.replace(document.location.origin);
         });
         fc.document.getElementById("no").remove();
     } else {
         login.addEventListener('click', (e) => {
-            auth0API.login();
+            window.auth0API.login();
         });
         register.addEventListener('click', (e) => {
-            auth0API.login();
+            window.auth0API.login();
         });
         fc.document.getElementById("yes").remove();
     }

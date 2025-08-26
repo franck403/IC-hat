@@ -86,8 +86,8 @@
     </p>
 
     <div id="auth-buttons">
-        <button onclick="auth0API.login()">Login</button>
-        <button onclick="auth0API.login()">Sign Up</button>
+        <button onclick="window.auth0API.login()">Login</button>
+        <button onclick="window.auth0API.login()">Sign Up</button>
     </div>
 
     <div class="footer">Made by Geoloup</div>
@@ -95,7 +95,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             function loaded() {
-                auth0API.initialize().then(async () => {
+                window.auth0API.initialize().then(async () => {
                     const user = await auth0API.getUser();
                     if (user) {
                         window.location.href = "https://ic-hat.geoloup.com/chat";

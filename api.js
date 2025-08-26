@@ -5,7 +5,7 @@ const api = {
 
 export async function getUser() {
     try {
-        const user = await auth0API.getUser();
+        const user = await window.auth0API.getUser();
         if (user) {
             return {
                 "email": user.email,

@@ -8,7 +8,7 @@ async function mainds() {
     const mm = document.getElementsByClassName("mm")[0];
 
     // Wait for the user to be loaded from Auth0
-    const user = await auth0API.getUser();
+    const user = await window.auth0API.getUser();
 
     if (user) {
         try {
@@ -59,6 +59,6 @@ async function acpt() {
 
 // Immediately invoked function to initialize the Auth0 API and run the main function
 (async () => {
-    await auth0API.initialize();
+    await window.auth0API.initialize();
     await mainds();
 })();

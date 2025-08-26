@@ -1,7 +1,7 @@
 // Function to request a password reset email
 async function reset_password() {
     try {
-        const user = await auth0API.getUser();
+        const user = await window.auth0API.getUser();
         if (user && user.email) {
             const response = await fetch(`https://${auth0Client.domain}/dbconnections/change_password`, {
                 method: 'POST',
@@ -29,7 +29,7 @@ async function reset_password() {
 // Function to log out the user
 function logout() {
     try {
-        auth0API.logout();
+        window.auth0API.logout();
         window.location.replace(window.location.origin);
     } catch {
         window.location.replace(window.location.origin);
