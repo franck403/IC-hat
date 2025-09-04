@@ -51,7 +51,6 @@ function render() {
                         auth0API.logout();
                         document.location.replace(document.location.origin);
                     });
-
                     const noEl = doc.getElementById("no");
                     if (noEl) noEl.remove();
                 } else {
