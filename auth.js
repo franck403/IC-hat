@@ -23,7 +23,7 @@ const createAuth0API = () => {
             await auth0Client.handleRedirectCallback();
             window.history.replaceState({}, document.title, window.location.pathname);
         }
-        document.getElementById('loader').remove()
+        document.getElementById('wait-connected').remove()
     };
     
     auth0API.getUser = async () => {
