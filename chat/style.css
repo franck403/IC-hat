@@ -1,0 +1,388 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ================= COLORS ================= */
+:root {
+  --blue: #2da8ff;
+  --white: #ffffff;
+  --gray: #e6e6e6;
+  --bubble-blue: #31b0ff;
+  --bubble-gray: #d9d9d9;
+  --hover-bg: #eaf6ff;
+}
+
+/* ================= BODY ================= */
+body {
+  width: 100vw;
+  height: 100vh;
+  background: var(--blue);
+  overflow: hidden;
+}
+
+.load {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.load img {
+  background-color: white;
+  padding: 0px;
+  border-radius: 50px;
+}
+
+/* ================= APP ================= */
+.app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: var(--blue);
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  width: 280px;
+  background: var(--white);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  border-right: var(--gray) 2px solid;
+}
+
+.sidebar-header {
+  background: var(--blue);
+  color: white;
+  padding: 12px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-header h2 {
+  font-size: 16px;
+  flex: 1;
+}
+
+.sidebar-header i {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.search {
+  margin: 12px 0;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  background: #f0f0f0;
+  outline: none;
+}
+
+.chat-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chat-item {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 14px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.chat-item.active,
+.chat-item:hover {
+  background: var(--gray);
+  cursor: pointer;
+}
+
+.chat-item img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.chat-item h4 {
+  font-size: 14px;
+}
+
+.chat-item span {
+  font-size: 12px;
+  color: gray;
+}
+
+/* ================= CHAT ================= */
+.chat {
+  flex: 1;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= CHAT HEADER ================= */
+.chat-header {
+  background: var(--blue);
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.chat-header img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.chat-header .info {
+  flex: 1;
+}
+
+.chat-header h3 {
+  font-size: 15px;
+}
+
+.chat-header span {
+  font-size: 12px;
+}
+
+.chat-header .actions i {
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.chat-header .actions i:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ================= MESSAGES ================= */
+.messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.msg {
+  max-width: 70%;
+  width: fit-content;
+
+  padding: 8px 12px;
+  margin: 4px 0;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+.msg.left {
+  background: var(--bubble-gray);
+  color: black;
+  margin-right: auto;
+}
+
+.msg.right {
+  background: var(--bubble-blue);
+  color: white;
+  margin-left: auto;
+}
+
+.msg.left + .msg.left,
+.msg.right + .msg.right {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.msg.left:has(+ .msg.left),
+.msg.right:has(+ .msg.right) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* ================= INPUT BAR ================= */
+.input-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+}
+
+/* ICON BOXES */
+.input-bar i {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.input-bar i:hover {
+  background: var(--hover-bg);
+}
+
+/* INPUT BOX */
+.input-bar input {
+  flex: 1;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: var(--white);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+}
+.hidden {
+  display: none;
+}
+
+/* AUTH OVERLAY */
+#auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.auth-box {
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-box input,
+.auth-box button {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.auth-box button.google {
+  background: #4285f4;
+  color: white;
+  border: none;
+}
+
+#feedback-message.error {
+  color: red;
+}
+
+#feedback-message.success {
+  color: green;
+}
+/* ================= POPUP OVERLAY ================= */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+/* ================= POPUP BOX ================= */
+.popup {
+  width: 320px;
+  background: var(--white);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: popup-in 0.18s ease-out;
+}
+
+/* ================= POPUP HEADER ================= */
+.popup h3 {
+  font-size: 15px;
+  color: #111;
+}
+
+/* ================= POPUP INPUT ================= */
+.popup input {
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--gray);
+  outline: none;
+  font-size: 14px;
+}
+
+.popup input:focus {
+  border-color: var(--blue);
+}
+
+/* ================= POPUP ACTIONS ================= */
+.popup-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* BUTTON BASE */
+.popup-actions button {
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* CANCEL */
+.popup-actions .cancel {
+  background: var(--gray);
+}
+
+/* CONFIRM */
+.popup-actions .confirm {
+  background: var(--blue);
+  color: white;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes popup-in {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

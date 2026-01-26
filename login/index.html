@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page d'Authentification Firebase</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f4f4f4;
+        margin: 0;
+      }
+      .container {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+      }
+      input[type='email'],
+      input[type='password'] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        color: white;
+        transition: background-color 0.3s;
+      }
+      #login-email-btn {
+        background-color: #4caf50;
+      }
+      #register-email-btn {
+        background-color: #007bff;
+      }
+      #login-google-btn {
+        background-color: #db4437;
+      }
+      #logout-btn {
+        background-color: #f44336;
+      }
+      #status-message {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #e0f7fa;
+        color: #00796b;
+        font-weight: bold;
+      }
+      #feedback-message {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: left;
+        display: none;
+      }
+      .error {
+        background-color: #ffdddd;
+        color: #d8000c;
+        border: 1px solid #d8000c;
+      }
+      .success {
+        background-color: #ddffdd;
+        color: #00796b;
+        border: 1px solid #00796b;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 id="page-title">Authentification Firebase</h2>
+
+      <div id="auth-section">
+        <div id="feedback-message"></div>
+
+        <input type="email" id="email" placeholder="Email" />
+        <input type="password" id="password" placeholder="Mot de passe" />
+
+        <button id="login-email-btn">Connexion</button>
+
+        <button id="register-email-btn">Inscription</button>
+
+        <button id="login-google-btn">Connexion Google</button>
+      </div>
+
+      <div id="user-section" class="hidden">
+        <div id="status-message"></div>
+        <button id="logout-btn">Déconnexion</button>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>
+      eruda.init();
+    </script>
+    <script>
+      // Traduction simple de l'interface utilisateur statique
+      document.addEventListener('DOMContentLoaded', () => {
+        const lang = (navigator.language || navigator.userLanguage)
+          .toLowerCase()
+          .startsWith('fr')
+          ? 'fr'
+          : 'en';
+
+        if (lang === 'en') {
+          document.getElementById('page-title').textContent =
+            'Firebase Authentication';
+          document.getElementById('login-email-btn').textContent = 'Login';
+          document.getElementById('register-email-btn').textContent =
+            'Register';
+          document.getElementById('login-google-btn').textContent =
+            'Login Google';
+          document.getElementById('logout-btn').textContent = 'Logout';
+          document.getElementById('email').placeholder = 'Email';
+          document.getElementById('password').placeholder = 'Password';
+        }
+      });
+    </script>
+  </body>
+</html>

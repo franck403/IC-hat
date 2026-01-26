@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IC-Hat Chat</title>
+
+    <!-- Boxicons v2 -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="ui.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>
+      eruda.init();
+    </script>
+  </head>
+
+  <body>
+    <div class="load" id='loading'>
+      <img src="https://zupimages.net/up/26/03/ade3.gif">
+    </div>
+    <!-- APP -->
+    <div class="app hidden" id="app">
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <h2>IC-Hat</h2>
+          <i class="bx bx-message-square-add"></i>
+          <i class="bx bx-user-plus"></i>
+        </div>
+
+        <input class="search" placeholder="Search..." />
+
+        <div class="chat-list"></div>
+      </div>
+
+      <!-- CHAT -->
+      <div class="chat">
+        <div class="chat-header">
+          <img src="https://i.pravatar.cc/100?img=2" />
+          <div class="info">
+            <h3 id="user-name">User</h3>
+            <span id="status-message"></span>
+          </div>
+          <div class="actions">
+            <i class="bx bx-phone"></i>
+            <i class="bx bx-video"></i>
+            <i class="bx bx-log-out" id="logout-btn"></i>
+          </div>
+        </div>
+
+        <div class="messages" id="messages"></div>
+
+        <div class="input-bar">
+          <i class="bx bx-plus"></i>
+          <i class="bx bx-microphone"></i>
+          <input
+            id="message-input"
+            type="text"
+            placeholder="Type a Message..."
+            autocomplete="off"
+          />
+          <i class="bx bx-smile"></i>
+          <i class="bx bx-send" id="send-btn"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
