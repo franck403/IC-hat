@@ -183,7 +183,7 @@ body {
 }
 
 .msg {
-  max-width: 70%;
+  max-width: 40vw;
   width: fit-content;
 
   padding: 8px 12px;
