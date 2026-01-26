@@ -72,9 +72,10 @@ logoutBtn.addEventListener('click', async () => {
 // ==================== HELPERS ====================
 
 function addMessage(msg, side = 'left') {
+  var r = /[^\u0300-\u036F\u0489]+/g;
   const div = document.createElement('div');
   div.classList.add('msg', side);
-  div.textContent = msg.text;
+  div.textContent = ((msg.text.slice(0,2000)).match(r) || [""]).join("");
   messagesEl.appendChild(div);
   messagesEl.scrollTop = messagesEl.scrollHeight;
 }
