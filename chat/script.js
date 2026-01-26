@@ -162,7 +162,7 @@ async function sendMessageUnder() {
   if (!messageInput.value || !currentDiscussion) return;
   const msgRef = push(ref(db, `discussions/${currentDiscussion.id}/messages`));
   const msg = {
-    text: messageInput.value,
+    text: messageInput.value.slice(0,2000),
     sender: currentUser.uid,
     timestamp: Date.now(),
   };
