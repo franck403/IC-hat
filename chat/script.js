@@ -144,10 +144,42 @@ function renderDiscussionList() {
     chatListEl.appendChild(div);
   });
 }
+/*
+
+avatar
+: 
+"https://i.pravatar.cc/42?u=1769452042734"
+id
+: 
+"-OjvYreiscnrvMEsH82T"
+messages
+: 
+{-OjvYsyUFycsaoDBq1cC: {…}, -OjvYt0TMwrgRLn_O8gM: {…}, -OjvYt3JffpwXGiZzgg5: {…}, -OjvYt6DDEwOIrjk_Eq1: {…}, -OjvYt8bg-tFK0jQh5pY: {…}, …}
+name
+: 
+"ew"
+users
+: 
+(2) ['gauthierc2@cssdd.ca', 'franckiebbb@gmail.com']
+[[Prototype]]
+: 
+Object
+*/
 
 // Select discussion
 function selectDiscussion(id) {
   currentDiscussion = { id, ...discussions[id] };
+  discussionName = ''
+  currentDiscussion.users.forEach(userEmail => {
+    if (userEmail != currentUser.email) {
+      if (discussionName == '') {
+        discussionName += userEmail
+      } else {
+        discussionName += ', ' + userEmail
+      }
+    }
+  });
+  
   userNameEl.textContent = currentDiscussion.name;
   messagesEl.innerHTML = '';
   if (currentDiscussion.messages) {
