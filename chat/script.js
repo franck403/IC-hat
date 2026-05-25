@@ -10,11 +10,6 @@ import {
   set,
   push,
   get,
-  query,
-  orderByChild,
-  startAt,
-  endAt,
-  child,
   onValue,
 } from 'https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js';
 
@@ -46,43 +41,67 @@ const addFriendBtn = document.querySelector('.bx-user-plus');
 
 // ==================== STATE ====================
 let currentUser = null;
-let currentDiscussion = null;
-let discussions = {};
+let currentDiscussion = null;         // { id, ...meta }
+let discussions = {};                  // { [id]: { id, ...meta } }  — NO messages here
 let usersCache = {};
 let selectedUsers = [];
+
+// Per-discussion listeners so we can detach them individually
+let discussionMetaListeners = {};     // { [id]: unsubscribeFn }
+
+// Active message listener for the currently open chat
+let activeMessageUnsub = null;
+
+// ==================== VIRTUAL SCROLL STATE ====================
+/**
+ * Instead of appending every message DOM node, we keep all messages in an
+ * in-memory array and only render a sliding window of nodes inside the
+ * scrollable container.  A single IntersectionObserver watches sentinel
+ * <div>s at the top and bottom of the rendered window; when they become
+ * visible the window shifts and off-screen nodes are removed.
+ *
+ * Layout:
+ *   [spacerTop]        ← height = ROW_H * firstRendered
+ *   [...rendered msgs]
+ *   [spacerBottom]     ← height = ROW_H * (total - lastRendered - 1)
+ */
+const BATCH = 30;          // how many messages to render at once
+const ROW_H = 48;          // estimated px per message row (used for spacers)
+
+let allMessages = [];      // sorted array of { text, sender, timestamp }
+let renderStart = 0;       // index of first rendered message
+let renderEnd = 0;         // index of last rendered message (exclusive)
+let spacerTop = null;
+let spacerBottom = null;
+let sentinelTop = null;
+let sentinelBottom = null;
+let scrollObserver = null;
 
 // ==================== AUTH STATE ====================
 onAuthStateChanged(auth, (user) => {
   if (!user) {
-    window.location.href = '/'; // redirect to login page
+    window.location.href = '/';
   } else {
     currentUser = user;
     userNameEl.textContent = user.displayName || user.email;
     statusMessageEl.textContent = 'Online';
     ensureUserInDB();
-    loadDiscussionsRealtime();
+    loadMyDiscussions();
     loadUsersRealtime();
   }
 });
 
-logoutBtn.addEventListener('click', async () => {
-  await signOut(auth);
-});
+logoutBtn.addEventListener('click', () => signOut(auth));
 
 // ==================== HELPERS ====================
 
-function addMessage(msg, side = 'left') {
-  var r = /[^\u0300-\u036F\u0489]+/g;
-  const div = document.createElement('div');
-  div.classList.add('msg', side);
-  div.textContent = ((msg.text.slice(0,2000)).match(r) || [""]).join("");
-  messagesEl.appendChild(div);
-  messagesEl.scrollTop = messagesEl.scrollHeight;
+function sanitize(text) {
+  const r = /[^\u0300-\u036F\u0489]+/g;
+  return ((text || '').slice(0, 2000).match(r) || ['']).join('');
 }
 
 // ==================== USERS ====================
 
-// Ensure current user exists in DB
 async function ensureUserInDB() {
   const userRef = ref(db, `users/${currentUser.uid}`);
   const snap = await get(userRef);
@@ -95,15 +114,13 @@ async function ensureUserInDB() {
   }
 }
 
-// Load all users in real-time
 function loadUsersRealtime() {
-  const usersRef = ref(db, 'users');
-  onValue(usersRef, (snap) => {
+  // We only need name/email/uid — safe, not discussions
+  onValue(ref(db, 'users'), (snap) => {
     usersCache = snap.exists() ? snap.val() : {};
   });
 }
 
-// Search users by name/email
 function searchUsers(queryText) {
   if (!queryText) return [];
   const q = queryText.toLowerCase().trim();
@@ -114,170 +131,366 @@ function searchUsers(queryText) {
   );
 }
 
-// ==================== DISCUSSIONS ====================
+// ==================== DISCUSSIONS (secure) ====================
+/**
+ * Security model
+ * ──────────────
+ * • We NEVER subscribe to the root `discussions` node — that would let any
+ *   authenticated user read everyone's conversations.
+ * • Instead each user has an index at  users/{uid}/discussionIds  which is
+ *   only readable by that uid (enforced in Firebase rules).
+ * • We then subscribe individually to  discussions/{id}/meta  for each id.
+ *   Firebase rules ensure that node is only readable if auth.uid is listed
+ *   in meta.members.
+ * • Messages live at  discussions/{id}/messages  and are only fetched/
+ *   subscribed when the user actually opens that conversation.
+ *
+ * Required Firebase Realtime DB rules (paste into your console):
+ * ──────────────────────────────────────────────────────────────
+ * {
+ *   "rules": {
+ *     "users": {
+ *       "$uid": {
+ *         ".read":  "$uid === auth.uid",
+ *         ".write": "$uid === auth.uid"
+ *       }
+ *     },
+ *     "discussions": {
+ *       "$discussionId": {
+ *         "meta": {
+ *           ".read":  "data.child('members').child(auth.uid).exists()",
+ *           ".write": "!data.exists() && auth != null"
+ *         },
+ *         "messages": {
+ *           ".read":  "root.child('discussions').child($discussionId).child('meta').child('members').child(auth.uid).exists()",
+ *           "$messageId": {
+ *             ".write": "root.child('discussions').child($discussionId).child('meta').child('members').child(auth.uid).exists()",
+ *             ".validate": "newData.hasChildren(['text','sender','timestamp'])
+ *                           && newData.child('sender').val() === auth.uid
+ *                           && newData.child('text').isString()
+ *                           && newData.child('text').val().length <= 2000
+ *                           && newData.child('timestamp').isNumber()
+ *                           && newData.child('timestamp').val() <= now"
+ *           }
+ *         }
+ *       }
+ *     }
+ *   }
+ * }
+ */
 
-// Load discussions in real-time
-function loadDiscussionsRealtime() {
-  const discussionsRef = ref(db, 'discussions');
-  onValue(discussionsRef, (snap) => {
-    discussions = snap.exists() ? snap.val() : {};
-    renderDiscussionList();
-    if (currentDiscussion && discussions[currentDiscussion.id]) {
-      selectDiscussion(currentDiscussion.id);
-    }
-  });
-}
+function loadMyDiscussions() {
+  const myIdsRef = ref(db, `users/${currentUser.uid}/discussionIds`);
 
-// Render sidebar discussions
-function renderDiscussionList() {
-  chatListEl.innerHTML = '';
-  Object.entries(discussions).forEach(([id, d]) => {
-    if (!d.users.includes(currentUser.email)) return; // show only user's discussions
-    const div = document.createElement('div');
-    div.classList.add('chat-item');
-    div.innerHTML = `
-      <img src="${d.avatar || 'https://i.pravatar.cc/42'}" />
-      <h4>${d.name}</h4>
-      <span>${d.users.length} user(s)</span>
-    `;
-    div.onclick = () => selectDiscussion(id);
-    chatListEl.appendChild(div);
-  });
-}
-/*
+  onValue(myIdsRef, (snap) => {
+    const ids = snap.exists() ? Object.values(snap.val()) : [];
 
-avatar
-: 
-"https://i.pravatar.cc/42?u=1769452042734"
-id
-: 
-"-OjvYreiscnrvMEsH82T"
-messages
-: 
-{-OjvYsyUFycsaoDBq1cC: {…}, -OjvYt0TMwrgRLn_O8gM: {…}, -OjvYt3JffpwXGiZzgg5: {…}, -OjvYt6DDEwOIrjk_Eq1: {…}, -OjvYt8bg-tFK0jQh5pY: {…}, …}
-name
-: 
-"ew"
-users
-: 
-(2) ['gauthierc2@cssdd.ca', 'franckiebbb@gmail.com']
-[[Prototype]]
-: 
-Object
-*/
-
-// Select discussion
-function selectDiscussion(id) {
-  currentDiscussion = { id, ...discussions[id] };
-  let discussionName = ''
-  currentDiscussion.users.forEach(userEmail => {
-    if (userEmail != currentUser.email) {
-      if (discussionName == '') {
-        discussionName += userEmail
-      } else {
-        discussionName += ', ' + userEmail
+    // Detach listeners for removed discussions
+    Object.keys(discussionMetaListeners).forEach((id) => {
+      if (!ids.includes(id)) {
+        discussionMetaListeners[id]();
+        delete discussionMetaListeners[id];
+        delete discussions[id];
       }
-    }
-  });
-  
-  userNameEl.textContent = currentDiscussion.name + ' ' + discussionName;
-  messagesEl.innerHTML = '';
-  if (currentDiscussion.messages) {
-    Object.values(currentDiscussion.messages)
-      .sort((a, b) => a.timestamp - b.timestamp)
-      .forEach((m) => {
-        addMessage(m, m.sender === currentUser.uid ? 'right' : 'left');
+    });
+
+    // Attach listener per new discussion (meta only — no messages)
+    ids.forEach((id) => {
+      if (discussionMetaListeners[id]) return;
+
+      const metaRef = ref(db, `discussions/${id}/meta`);
+      const unsub = onValue(metaRef, (metaSnap) => {
+        if (!metaSnap.exists()) return;
+        const prev = discussions[id];
+        discussions[id] = { id, ...metaSnap.val() };
+
+        // Only re-render sidebar item, not the whole list
+        if (prev) {
+          updateSidebarItem(id);
+        } else {
+          appendSidebarItem(id);
+        }
       });
-  }
+      discussionMetaListeners[id] = unsub;
+    });
+
+    if (ids.length === 0) chatListEl.innerHTML = '';
+  });
 }
 
-async function sendMessageUnder() {
-  if (!messageInput.value || !currentDiscussion) return;
+// ==================== SIDEBAR (no full re-render) ====================
+
+/**
+ * Append a single new item to the sidebar.
+ * Never wipes the whole list — eliminates the flash.
+ */
+function appendSidebarItem(id) {
+  const d = discussions[id];
+  if (!d) return;
+
+  const div = buildSidebarItem(id, d);
+  chatListEl.appendChild(div);
+}
+
+/**
+ * Update only the text/avatar of an existing sidebar item in place.
+ */
+function updateSidebarItem(id) {
+  const d = discussions[id];
+  if (!d) return;
+
+  const existing = chatListEl.querySelector(`[data-disc-id="${id}"]`);
+  if (!existing) {
+    appendSidebarItem(id);
+    return;
+  }
+
+  existing.querySelector('h4').textContent = d.name || 'Unnamed';
+  existing.querySelector('span').textContent =
+    Object.keys(d.members || {}).length + ' member(s)';
+  existing.querySelector('img').src = d.avatar || 'https://i.pravatar.cc/42';
+}
+
+function buildSidebarItem(id, d) {
+  const div = document.createElement('div');
+  div.classList.add('chat-item');
+  div.dataset.discId = id;
+  div.innerHTML = `
+    <img src="${d.avatar || 'https://i.pravatar.cc/42'}" />
+    <h4>${sanitize(d.name || 'Unnamed')}</h4>
+    <span>${Object.keys(d.members || {}).length} member(s)</span>
+  `;
+  div.addEventListener('click', () => selectDiscussion(id));
+  return div;
+}
+
+// ==================== SELECT DISCUSSION ====================
+
+function selectDiscussion(id) {
+  // Detach previous message listener
+  if (activeMessageUnsub) {
+    activeMessageUnsub();
+    activeMessageUnsub = null;
+  }
+
+  currentDiscussion = discussions[id];
+  if (!currentDiscussion) return;
+
+  // Update header — show names of OTHER members
+  const memberUids = Object.keys(currentDiscussion.members || {});
+  const otherNames = memberUids
+    .filter((uid) => uid !== currentUser.uid)
+    .map((uid) => usersCache[uid]?.name || usersCache[uid]?.email || uid)
+    .join(', ');
+
+  userNameEl.textContent =
+    (currentDiscussion.name || 'Unnamed') + (otherNames ? ' — ' + otherNames : '');
+
+  // Reset virtual scroll state
+  teardownVirtualScroll();
+  allMessages = [];
+  renderStart = 0;
+  renderEnd = 0;
+  messagesEl.innerHTML = '';
+  setupVirtualScroll();
+
+  // Subscribe to messages in real-time
+  const msgsRef = ref(db, `discussions/${id}/messages`);
+  activeMessageUnsub = onValue(msgsRef, (snap) => {
+    if (!snap.exists()) return;
+
+    const incoming = Object.values(snap.val()).sort(
+      (a, b) => a.timestamp - b.timestamp
+    );
+
+    // Only process messages we don't already have (avoid full re-render)
+    const existingCount = allMessages.length;
+    const newMsgs = incoming.slice(existingCount);
+    if (newMsgs.length === 0) return;
+
+    const wasAtBottom = isScrolledToBottom();
+
+    allMessages.push(...newMsgs);
+
+    // If we're near the bottom, extend the render window downward
+    if (wasAtBottom) {
+      renderEnd = allMessages.length;
+      renderStart = Math.max(0, renderEnd - BATCH);
+      renderWindow();
+      scrollToBottom();
+    } else {
+      // Just update spacers to account for new messages
+      updateSpacers();
+    }
+  });
+}
+
+// ==================== VIRTUAL SCROLL ====================
+
+function setupVirtualScroll() {
+  spacerTop = document.createElement('div');
+  spacerTop.className = 'spacer-top';
+  spacerTop.style.height = '0px';
+
+  spacerBottom = document.createElement('div');
+  spacerBottom.className = 'spacer-bottom';
+  spacerBottom.style.height = '0px';
+
+  sentinelTop = document.createElement('div');
+  sentinelTop.className = 'sentinel sentinel-top';
+
+  sentinelBottom = document.createElement('div');
+  sentinelBottom.className = 'sentinel sentinel-bottom';
+
+  messagesEl.appendChild(spacerTop);
+  messagesEl.appendChild(sentinelTop);
+  messagesEl.appendChild(sentinelBottom);
+  messagesEl.appendChild(spacerBottom);
+
+  scrollObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        if (entry.target === sentinelTop && renderStart > 0) {
+          // Scroll up — render earlier messages
+          const newStart = Math.max(0, renderStart - BATCH);
+          renderStart = newStart;
+          renderWindow();
+        }
+
+        if (entry.target === sentinelBottom && renderEnd < allMessages.length) {
+          // Scroll down — render later messages
+          const newEnd = Math.min(allMessages.length, renderEnd + BATCH);
+          renderEnd = newEnd;
+          renderWindow();
+        }
+      });
+    },
+    { root: messagesEl, threshold: 0.1 }
+  );
+
+  scrollObserver.observe(sentinelTop);
+  scrollObserver.observe(sentinelBottom);
+}
+
+function teardownVirtualScroll() {
+  if (scrollObserver) {
+    scrollObserver.disconnect();
+    scrollObserver = null;
+  }
+  spacerTop = spacerBottom = sentinelTop = sentinelBottom = null;
+}
+
+/**
+ * Re-render only the window [renderStart, renderEnd) of allMessages.
+ * Nodes outside the window are removed; spacers fill the empty space.
+ */
+function renderWindow() {
+  if (!spacerTop || !spacerBottom) return;
+
+  // Remove all rendered message nodes (keep spacers and sentinels)
+  const toRemove = messagesEl.querySelectorAll('.msg');
+  toRemove.forEach((n) => n.remove());
+
+  // Build a fragment for the window
+  const frag = document.createDocumentFragment();
+  for (let i = renderStart; i < renderEnd; i++) {
+    const m = allMessages[i];
+    const div = document.createElement('div');
+    div.classList.add('msg', m.sender === currentUser.uid ? 'right' : 'left');
+    div.textContent = sanitize(m.text);
+    frag.appendChild(div);
+  }
+
+  // Insert between sentinels
+  messagesEl.insertBefore(frag, sentinelBottom);
+
+  updateSpacers();
+}
+
+function updateSpacers() {
+  if (!spacerTop || !spacerBottom) return;
+  spacerTop.style.height = renderStart * ROW_H + 'px';
+  spacerBottom.style.height =
+    Math.max(0, allMessages.length - renderEnd) * ROW_H + 'px';
+}
+
+function isScrolledToBottom() {
+  if (!messagesEl) return true;
+  return messagesEl.scrollHeight - messagesEl.scrollTop - messagesEl.clientHeight < 60;
+}
+
+function scrollToBottom() {
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+// ==================== SEND MESSAGE ====================
+
+async function sendMessage() {
+  const text = messageInput.value.trim();
+  if (!text || !currentDiscussion) return;
+
+  messageInput.value = '';
+
   const msgRef = push(ref(db, `discussions/${currentDiscussion.id}/messages`));
-  const msg = {
-    text: messageInput.value.slice(0,2000),
+  await set(msgRef, {
+    text: text.slice(0, 2000),
     sender: currentUser.uid,
     timestamp: Date.now(),
-  };
-  await set(msgRef, msg);
-  messageInput.value = '';
+  });
 }
 
-// also send message
-messageInput.addEventListener('keydown', function (e) {
+messageInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault(); // prevent new line
-    sendMessageUnder();
+    e.preventDefault();
+    sendMessage();
   }
 });
 
-// Send message
-sendBtn.addEventListener('click', async () => {
-  sendMessageUnder();
-});
+sendBtn.addEventListener('click', sendMessage);
 
 // ==================== NEW DISCUSSION ====================
-newDiscussionBtn.addEventListener('click', () =>
-  openNewDiscussionPopup('discussion')
-);
 
+newDiscussionBtn.addEventListener('click', () => openNewDiscussionPopup('discussion'));
 addFriendBtn.addEventListener('click', () => openNewDiscussionPopup('friend'));
 
 function openNewDiscussionPopup(type) {
-  selectedUsers = []; // stores { name/email, uid/email }
+  selectedUsers = [];
 
-  // Create overlay
   const overlay = document.createElement('div');
   overlay.className = 'popup-overlay';
 
-  // Create popup box
   const popup = document.createElement('div');
   popup.className = 'popup';
 
-  // Title
   const title = document.createElement('h3');
   title.textContent = type === 'discussion' ? 'New Discussion' : 'Add Friend';
 
-  // Discussion name input (only for discussion)
   const nameInput = document.createElement('input');
   nameInput.placeholder = 'Discussion Name';
   if (type === 'friend') nameInput.style.display = 'none';
 
-  // User input (email or name search)
   const userInput = document.createElement('input');
   userInput.placeholder = 'Enter user email or name';
 
-  // Container for selected users/emails
   const selectedDiv = document.createElement('div');
-  selectedDiv.style.minHeight = '24px';
-  selectedDiv.style.display = 'flex';
-  selectedDiv.style.gap = '6px';
-  selectedDiv.style.flexWrap = 'wrap';
+  selectedDiv.style.cssText = 'min-height:24px;display:flex;gap:6px;flex-wrap:wrap;';
 
-  // Helper to add a user/email box
   function addUserBox(user) {
     if (selectedUsers.find((u) => u.identifier === user.identifier)) return;
-
     selectedUsers.push(user);
 
     const span = document.createElement('span');
+    span.style.cssText =
+      'background:#eee;padding:2px 6px;border-radius:6px;display:inline-flex;align-items:center;gap:4px;';
     span.textContent = user.name || user.identifier;
-    span.style.background = '#eee';
-    span.style.padding = '2px 6px';
-    span.style.borderRadius = '6px';
-    span.style.display = 'inline-flex';
-    span.style.alignItems = 'center';
-    span.style.gap = '4px';
 
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'x';
-    removeBtn.style.border = 'none';
-    removeBtn.style.background = 'transparent';
-    removeBtn.style.cursor = 'pointer';
+    removeBtn.style.cssText = 'border:none;background:transparent;cursor:pointer;';
     removeBtn.onclick = () => {
-      selectedUsers = selectedUsers.filter(
-        (u) => u.identifier !== user.identifier
-      );
+      selectedUsers = selectedUsers.filter((u) => u.identifier !== user.identifier);
       selectedDiv.removeChild(span);
     };
 
@@ -285,33 +498,24 @@ function openNewDiscussionPopup(type) {
     selectedDiv.appendChild(span);
   }
 
-  // Handle Enter key to add user
   userInput.addEventListener('keydown', async (e) => {
-    if (e.key === 'Enter' && userInput.value.trim()) {
-      const inputVal = userInput.value.trim();
+    if (e.key !== 'Enter' || !userInput.value.trim()) return;
+    const inputVal = userInput.value.trim();
 
-      // If it's an email format, just add it
-      if (inputVal.includes('@')) {
-        addUserBox({ identifier: inputVal });
+    if (inputVal.includes('@')) {
+      addUserBox({ identifier: inputVal });
+      userInput.value = '';
+    } else {
+      const users = searchUsers(inputVal);
+      if (users.length > 0) {
+        addUserBox({ identifier: users[0].email, name: users[0].name, uid: users[0].uid });
         userInput.value = '';
       } else {
-        // Search by name in Firebase DB
-        const users = searchUsers(inputVal); // returns [{uid, name, email}]
-        if (users.length > 0) {
-          addUserBox({
-            identifier: users[0].email,
-            name: users[0].name,
-            uid: users[0].uid,
-          });
-          userInput.value = '';
-        } else {
-          alert('User not found');
-        }
+        alert('User not found');
       }
     }
   });
 
-  // Buttons
   const btnsDiv = document.createElement('div');
   btnsDiv.className = 'popup-actions';
 
@@ -325,18 +529,36 @@ function openNewDiscussionPopup(type) {
   createBtn.textContent = 'Create';
   createBtn.onclick = async () => {
     if (selectedUsers.length === 0) return alert('Select at least one user');
-    if (type === 'discussion' && !nameInput.value)
+    if (type === 'discussion' && !nameInput.value.trim())
       return alert('Enter discussion name');
 
     if (type === 'discussion') {
+      // Resolve any email-only entries to uids
+      const memberUids = await resolveToUids(selectedUsers);
+      if (!memberUids) return; // unresolvable email
+
+      // Build members map  { uid: true }
+      const members = { [currentUser.uid]: true };
+      memberUids.forEach((uid) => (members[uid] = true));
+
       const discRef = push(ref(db, 'discussions'));
-      const discussion = {
-        name: nameInput.value,
-        users: [currentUser.email, ...selectedUsers.map((u) => u.identifier)],
-        messages: {},
+      const newId = discRef.key;
+
+      // Write meta (no messages node — saves bandwidth & prevents rule bypass)
+      await set(ref(db, `discussions/${newId}/meta`), {
+        name: nameInput.value.trim(),
+        members,
         avatar: `https://i.pravatar.cc/42?u=${Date.now()}`,
-      };
-      await set(discRef, discussion);
+        createdBy: currentUser.uid,
+        createdAt: Date.now(),
+      });
+
+      // Write discussion id into every member's index
+      await Promise.all(
+        Object.keys(members).map((uid) =>
+          set(ref(db, `users/${uid}/discussionIds/${newId}`), newId)
+        )
+      );
     } else if (type === 'friend') {
       const userFriendsRef = ref(db, `users/${currentUser.uid}/friends`);
       const snap = await get(userFriendsRef);
@@ -352,8 +574,6 @@ function openNewDiscussionPopup(type) {
 
   btnsDiv.appendChild(cancelBtn);
   btnsDiv.appendChild(createBtn);
-
-  // Assemble popup
   popup.appendChild(title);
   popup.appendChild(nameInput);
   popup.appendChild(userInput);
@@ -361,11 +581,38 @@ function openNewDiscussionPopup(type) {
   popup.appendChild(btnsDiv);
   overlay.appendChild(popup);
   document.body.appendChild(overlay);
-
   userInput.focus();
 }
 
+/**
+ * For selected users that were added by email (no uid yet), look them up in
+ * the cache or fetch from DB.  Returns array of uids, or null if any email
+ * is unresolvable.
+ */
+async function resolveToUids(users) {
+  const uids = [];
+  for (const u of users) {
+    if (u.uid) {
+      uids.push(u.uid);
+      continue;
+    }
+    // Look up by email
+    const match = Object.values(usersCache).find(
+      (c) => c.email === u.identifier
+    );
+    if (match) {
+      uids.push(match.uid);
+    } else {
+      alert(`User not found: ${u.identifier}`);
+      return null;
+    }
+  }
+  return uids;
+}
+
+// ==================== INIT ====================
+
 setTimeout(() => {
   document.getElementById('loading').remove();
-  document.getElementById('app').classList.remove('hidden')
+  document.getElementById('app').classList.remove('hidden');
 }, 1000);
