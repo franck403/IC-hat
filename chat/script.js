@@ -169,7 +169,7 @@ Object
 // Select discussion
 function selectDiscussion(id) {
   currentDiscussion = { id, ...discussions[id] };
-  discussionName = ''
+  let discussionName = ''
   currentDiscussion.users.forEach(userEmail => {
     if (userEmail != currentUser.email) {
       if (discussionName == '') {
@@ -180,7 +180,7 @@ function selectDiscussion(id) {
     }
   });
   
-  userNameEl.textContent = currentDiscussion.name;
+  userNameEl.textContent = currentDiscussion.name + ' ' + discussionName;
   messagesEl.innerHTML = '';
   if (currentDiscussion.messages) {
     Object.values(currentDiscussion.messages)
